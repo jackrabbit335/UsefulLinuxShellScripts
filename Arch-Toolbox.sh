@@ -198,6 +198,11 @@ Systeminfo() {
 	echo "" >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
+	echo "USER" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo $USER >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
 	echo "DISTRIBUTION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo $distribution >> $host-sysinfo.txt
@@ -235,7 +240,12 @@ Systeminfo() {
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "UPTIME" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
-	uptime >> $host-sysinfo.txt
+	uptime -p >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "LOAD AVERAGE" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	cat /proc/loadavg >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "DISK SPACE" >> $host-sysinfo.txt
