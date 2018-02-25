@@ -936,7 +936,7 @@ Backup() {
 		echo "Please select the device you wish to use"
 		read device
 		sudo mount $device /mnt
-		sudo rsync -aAXv --delete --exclude=.cache --exclude=.thumbnails /home/$USER /mnt/$host-backups
+		sudo rsync -aAXv --delete --exclude={"/home/*/.cache","/home/*/.thumbnails","/home/*/.local/share/Trash"} /home/$USER /mnt/$host-backups
 	else
 		echo "Found a block device at designated coordinates, if this is the preferred
 		device, try umounting it and then running this again."
