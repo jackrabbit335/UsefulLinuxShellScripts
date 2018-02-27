@@ -392,7 +392,7 @@ InstallAndConquer() {
 		echo "8 - hdparm"
 		echo "9 - hddtemp xsensors"
 		echo "10 - Code/text editor/IDE"
-		echo "11 - htop iotop"
+		echo "11 - htop iotop inxi"
 		echo "12 - wget"
 		echo "13 - rkhunter"
 		echo "14 - abiword gnumeric"
@@ -413,7 +413,8 @@ InstallAndConquer() {
 		echo "29 - guvcview"
 		echo "30 - A dock program"
 		echo "31 - Audio/Video Decoding software"
-		echo "32 - to skip"
+		echo "32 - Screen Capture"
+		echo "33 - to skip"
 		
 	read software;
 
@@ -485,7 +486,7 @@ InstallAndConquer() {
 	;;
 			11)
 			echo "This installs command line system monitors"
-			sudo pacman -S --noconfirm htop iotop
+			sudo pacman -S --noconfirm htop iotop inxi
 	;;
 			12)
 			echo "This installs a download manager"
@@ -583,15 +584,17 @@ InstallAndConquer() {
 			elif [[ $browser == 8 ]];
 			then
 				sudo pacman -S --noconfirm lynx
-			elif [[ $browser == vivaldi ]];
+			elif [[ $browser == 9 ]];
 			then
+				cd /tmp
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi-snapshot.tar.gz
 				gunzip vivaldi-snapshot.tar.gz
 				tar -xvf vivaldi-snapshot.tar
-				cd vivaldi
+				cd vivaldi-snapshot
 				makepkg -si
-			elif [[ $browser == google-chrome ]];
+			elif [[ $browser == 10 ]];
 			then
+				cd /tmp
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz
 				gunzip google-chrome.tar.gz
 				tar -xvf google-chrome.tar
@@ -684,6 +687,19 @@ InstallAndConquer() {
 			sudo pacman -S --noconfirm handbrake
 	;;
 			32)
+			echo "This installs your screen capture or streaming program"
+			echo "1 - obs-studio"
+			echo "2 - simplescreenrecorder"
+			read option
+			if [[ $option == 1 ]];
+			then
+				sudo pacman -S --noconfirm obs-studio
+			elif [[ $option == 2 ]];
+			then
+				sudo pacman -S --noconfirm simplescreenrecorder
+			fi
+	;;
+			33)
 			echo "We will skip this"
 			break
 	;;
@@ -1171,7 +1187,7 @@ _EOF_
 		echo "Please select the device from the list"
 		read device
 		sudo mount $device /mnt 
-		sudo rsync -aAXv --delete /mnt/$host-backups /home/$USER
+		sudo rsync -aAXv --delete /mnt/$host-backups/* /home
 		sudo sync 
 		Restart
 	else

@@ -417,7 +417,7 @@ InstallAndConquer() {
 		echo "13 - gparted partitioning tool"
 		echo "14 - bleachbit cleaning software"
 		echo "15 - ncdu"
-		echo "16 - iotop, htop"
+		echo "16 - iotop, htop inxi"
 		echo "17 - hdparm disk configuring software"
 		echo "18 - xsensors hddtemp lm-sensors temperature checking software"
 		echo "19 - traceroute"
@@ -428,7 +428,8 @@ InstallAndConquer() {
 		echo "24 - graphical software managers"
 		echo "25 - Handbrake Audio decoding"
 		echo "26 - Steam client"
-		echo "27 - get out of this menu"
+		echo "27 - obs-studio"
+		echo "28 - get out of this menu"
 
 		read software;
 		
@@ -573,7 +574,7 @@ InstallAndConquer() {
 	;;
 			16)
 			echo "This installs iotop and htop to allow you to monitor in nearly realtime what your system is doing"
-			sudo apt-get -y install htop iotop
+			sudo apt-get -y install htop iotop inxi
 	;;
 			17)
 			echo "This installs software to allow you to control write-back-caching"
@@ -615,6 +616,10 @@ InstallAndConquer() {
 			sudo apt-get install steam
 	;;
 			27)
+			echo "Installs obs-studio"
+			sudo apt-get install -y obs-studio
+	;;
+			28)
 			echo "Aight den!"
 			break
 	;;
@@ -965,7 +970,7 @@ _EOF_
 		echo "Please select the device from the list"
 		read device
 		sudo mount $device /mnt 
-		sudo rsync -aAXv --delete /mnt/$host-backups /home/$USER
+		sudo rsync -aAXv --delete /mnt/$host-backups/* /home
 		sudo sync
 		Restart
 	else
