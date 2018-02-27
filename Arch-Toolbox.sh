@@ -120,6 +120,8 @@ Setup() {
 		echo 'alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"' >> ~/.bashrc
 		echo "#Alias to update the system" >> ~/.bashrc
 		echo 'alias pacup="sudo pacman -Syu"' >> ~/.bashrc
+		echo "#Alias to update mirrors" >> ~/.bashrc
+		echo 'alias mirrors="sudo pacman-mirrors -G && sudo pacman -Syyu"' >> ~/.bashrc
 	fi
 
 	checkNetwork
