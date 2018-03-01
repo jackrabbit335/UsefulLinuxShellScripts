@@ -429,7 +429,10 @@ InstallAndConquer() {
 		echo "25 - Handbrake Audio decoding"
 		echo "26 - Steam client"
 		echo "27 - obs-studio"
-		echo "28 - get out of this menu"
+		echo "28 - Games"
+		echo "29 - Proprietary fonts"
+		echo "30 - THEMES"
+		echo "31 - get out of this menu"
 
 		read software;
 		
@@ -620,6 +623,62 @@ InstallAndConquer() {
 			sudo apt-get install -y obs-studio
 	;;
 			28)
+			echo "Installs your choice in linux games"
+			echo "1 - supertuxkart"
+			echo "2 - gnome-mahjongg"
+			echo "3 - aisleriot"
+			echo "4 - ace of penguins"
+			echo "5 - gnome-sudoku"
+			echo "6 - gnome-mines"
+			echo "7 - chromium-bsu"
+			echo "8 - supertux"
+			echo "9 - Everything"
+			read package
+			if [[ package == 1 ]];
+			then
+				sudo apt-get -y install supertuxkart
+			elif [[ $package == 2 ]];
+			then
+				sudo apt-get -y install gnome-mahjongg
+			elif [[ $package == 3 ]];
+			then
+				sudo apt-get -y install aisleriot
+			elif [[ $package == 4 ]];
+			then
+				sudo apt-get -y install ace-of-penguins
+			elif [[ $package == 5 ]];
+			then
+				sudo apt-get -y install gnome-sudoku
+			elif [[ $package == 6 ]];
+			then
+				sudo apt-get -y install gnome-mines
+			elif [[ $package == 7 ]];
+			then
+				sudo apt-get -y install chromium-bsu
+			elif [[ $package == 8 ]];
+			then
+				sudo apt-get -y install supertux
+			elif [[ $package == 9 ]];
+			then
+				sudo apt-get install -y supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux
+			else 
+				echo "You've entered an invalid number, please come back later and try again."
+			fi
+	;;
+			29)
+			echo "This installs proprietary fonts"
+			sudo apt-get install ttf-mscorefonts-installer
+	;;
+			30)
+			echo "THEMES"
+			sudo add-apt-repository -y ppa:noobslab/themes 
+			sudo apt-add-repository -y ppa:numix/ppa
+			sudo add-apt-repository -y ppa:noobslab/icons
+			sudo add-apt-repository -y ppa:moka/stable
+			sudo apt-get update
+			sudo apt-get -y install mate-themes gtk2-engines-xfce gtk3-engines-xfce numix-icon-theme-circle emerald-icon-theme moka-icon-theme windows-10-themes dalisha-icons faenza-icon-theme
+	;;
+			31)
 			echo "Aight den!"
 			break
 	;;
@@ -675,41 +734,7 @@ InstallAndConquer() {
 			fi
 		done
 	break
-	done
-
-	#Optional
-	echo "Would you like to install games? (Y/n)" 
-	read Answer
-	if [[ $Answer == Y ]];
-	then 
-		sudo apt-get -y install supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux
-	else
-		echo "Moving on!"
-	fi 
-	
-	#More optional software
-	echo "Would you like to also install Microsoft core fonts?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		sudo apt-get install ttf-mscorefonts-installer
-	break
-	done
-
-	#This will install themes
-	echo "Would you like a dark theme? (Y/n)"
-	read answer 
-	if [[ $answer == Y ]]; 
-	then
-		sudo add-apt-repository -y ppa:noobslab/themes 
-		sudo apt-add-repository -y ppa:numix/ppa
-		sudo add-apt-repository -y ppa:noobslab/icons
-		sudo add-apt-repository -y ppa:moka/stable
-		sudo apt-get update
-		sudo apt-get -y install mate-themes gtk2-engines-xfce gtk3-engines-xfce numix-icon-theme-circle emerald-icon-theme moka-icon-theme windows-10-themes dalisha-icons faenza-icon-theme
-	else
-		echo "Guess not!"
-	fi
+	done 
 	
 	
 	clear

@@ -120,8 +120,8 @@ Setup() {
 		echo 'alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"' >> ~/.bashrc
 		echo "#Alias to update the system" >> ~/.bashrc
 		echo 'alias pacup="sudo pacman -Syu"' >> ~/.bashrc
-		echo "#Alias to update mirrors" >> ~/.bashrc
-		echo 'alias mirrors="sudo pacman-mirrors -G && sudo pacman -Syyu"' >> ~/.bashrc
+		echo "#Alias to update the mirrors" >> ~/.bashrc
+		echo 'alias mirrors="sudo pacman-mirrors -G && sudo pacman -Syy"' >> ~/.bashrc
 	fi
 
 	checkNetwork
@@ -413,10 +413,14 @@ InstallAndConquer() {
 		echo "27 - video and audio editing"
 		echo "28 - shotwell"
 		echo "29 - guvcview"
-		echo "30 - A dock program"
-		echo "31 - Audio/Video Decoding software"
-		echo "32 - Screen Capture"
-		echo "33 - to skip"
+		echo "30 - etc-update"
+		echo "31 - Games"
+		echo "32 - A dock program"
+		echo "33 - Audio/Video Decoding software"
+		echo "34 - Screenfetching utility"
+		echo "35 - Hunspell language packs"
+		echo "36 - Themes"
+		echo "37 - to skip"
 		
 	read software;
 
@@ -681,27 +685,82 @@ InstallAndConquer() {
 			sudo pacman -S --noconfirm guvcview
 	;;
 			30)
+			echo "This installs etc-update"
+			echo "etc-update can help you manage pacnew files and other configuration files after system updates."
+			sleep 2
+			cd /tmp
+			sudo pacman -S --needed base-devel 
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz
+			gunzip etc-update.tar.gz && tar -xvf etc-update.tar
+			cd etc-update
+			makepkg -si
+	;;
+			31)
+			echo "This installs games"
+			echo "1 - supertuxkart"
+			echo "2 - gnome-mahjongg"
+			echo "3 - aisleriot"
+			echo "4 - ace-of-penguins"
+			echo "5 - gnome-sudoku"
+			echo "6 - gnome-mines"
+			echo "7 - chromium-bsu"
+			echo "8 - supertux"
+			echo "9 - everything"
+			read package
+			if [[ $package == 1 ]];
+			then
+				sudo pacman -S --noconfirm supertuxkart
+			elif [[ $package == 2 ]];
+			then
+				sudo pacman -S --noconfirm gnome-mahjongg
+			elif [[ $package == 3 ]];
+			then
+				sudo pacman -S --noconfirm aisleriot
+			elif [[ $package == 4 ]];
+			then
+				sudo pacman -S --noconfirm ace-of-penguins
+			elif [[ $package == 5 ]];
+			then
+				sudo pacman -S --noconfirm gnome-sudoku
+			elif [[ $package == 6 ]];
+			then
+				sudo pacman -S --noconfirm gnome-mines
+			elif [[ $package == 7 ]];
+			then
+				sudo pacman -S --noconfirm chromium-bsu
+			elif [[ $package == 8 ]];
+			then
+				sudo pacman -S --noconfirm supertux
+			elif [[ $package == 9 ]];
+			then
+				sudo pacman -S --noconfirm supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux
+			else
+				echo "You entered an invalid number, please try again later."
+			fi
+	;;
+			32)
 			echo "This installs plank, a popular dock application"
 			sudo pacman -S --noconfirm plank
 	;;
-			31)
+			33)
 			echo "This installs handbrake"
 			sudo pacman -S --noconfirm handbrake
 	;;
-			32)
-			echo "This installs your screen capture or streaming program"
-			echo "1 - obs-studio"
-			echo "2 - simplescreenrecorder"
-			read option
-			if [[ $option == 1 ]];
-			then
-				sudo pacman -S --noconfirm obs-studio
-			elif [[ $option == 2 ]];
-			then
-				sudo pacman -S --noconfirm simplescreenrecorder
-			fi
+			34)
+			echo "This installs screenfetch"
+			sudo pacman -S --noconfirm  screenfetch
+			sudo cp /etc/bash.bashrc /etc/bash.bashrc.bak
+			echo "screenfetch" | sudo tee -a /etc/bash.bashrc
 	;;
-			33)
+			35)
+			echo "This installs extra language packs"
+			sudo pacman -S --noconfirm firefox-i18n-en-us thunderbird-i18n-en-us aspell-en gimp-help-en hunspell-en_US hunspell-en hyphen-en
+	;;
+			36)
+			echo "This installs themes"
+			sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme  evopop-icon-theme elementary-xfce-icons xfce-theme-greybird numix-themes-archblue arc-gtk-theme menda-themes-dark papirus-icon-theme gtk-theme-breath
+	;; 
+			37)
 			echo "We will skip this"
 			break
 	;;
@@ -731,60 +790,16 @@ InstallAndConquer() {
 	do
 		if [ $DESKTOP_SESSION == xfce ];
 		then
-			sudo pacman -S --noconfirm xfce4-goodies
+			echo "We found you're running the xfce desktop, would you like
+			to install extra extensions for xfce?(Y/n)"
+			read answer
+			while [ $answer == Y ];
+			do
+				sudo pacman -S --noconfirm xfce4-goodies
+			break
+			done
 		fi
 	done
-	
-	read -p "Press enter to continue..."
-	
-	#This tries to install etc-update for configuration file management
-	echo "etc-update can help you manage pacnew files and other configuration files after system updates."
-	sleep 2
-	cd /tmp
-	sudo pacman -S --needed base-devel 
-	wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz
-	gunzip etc-update.tar.gz && tar -xvf etc-update.tar
-	cd etc-update
-	makepkg -si 
-
-	read -p "Press enter to continue..."
-
-	#This will install hunspell and other language dependencies for popular software
-	echo "This will allow Libre-Office to utilize spell and grammar checking."
-	echo "Would you like to install extra language packs?(Y/n)"
-	read answer 
-	if [[ $answer == Y ]];
-	then 
-		sudo pacman -S --noconfirm firefox-i18n-en-us thunderbird-i18n-en-us aspell-en gimp-help-en hunspell-en_US hunspell-en hyphen-en
-	fi
-	
-	read -p "Press enter to continue..."
-
-	#This will set up screenfetch
-	echo "Optionally you can install screenfetch"
-	echo "Would you like to install screenfetch?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		sudo pacman -S --noconfirm  screenfetch
-		sudo cp /etc/bash.bashrc /etc/bash.bashrc.bak
-		echo "screenfetch" | sudo tee -a /etc/bash.bashrc
-	break
-	done
-	
-	read -p "Press enter to continue..."
-	
-	#As for themes #More are coming
-	echo "Would you like some extra themes? (Y/n)"
-	read answer
-	if [[ $answer == Y ]];
-	then
-		sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme  evopop-icon-theme elementary-xfce-icons xfce-theme-greybird numix-themes-archblue arc-gtk-theme menda-themes-dark papirus-icon-theme gtk-theme-breath 
-	else
-		echo "Your desktop is void like my soul!"
-	fi 
-	
-	read -p "Press enter to continue..."
 
 	clear
 	Greeting
@@ -983,7 +998,6 @@ SystemMaintenance() {
 	if [[ $distribution == Manjaro ]];
 	then
 		sudo pacman-mirrors -G && sudo pacman -Syy
-		sudo pacman-optimize && sync
 	else
 		sudo reflector -l 50 -f 20 --save /tmp/mirrorlist.new && rankmirrors -n 0 /tmp/mirrorlist.new > /tmp/mirrorlist && sudo cp /tmp/mirrorlist /etc/pacman.d
 		sudo rankmirrors -n 0 /etc/pacman.d/antergos-mirrorlist > /tmp/antergos-mirrorlist && sudo cp /tmp/antergos-mirrorlist /etc/pacman.d
