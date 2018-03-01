@@ -39,7 +39,29 @@ I can't be held accountable if something goes wrong. This software is
 freely given under the GPL license and is distributable and changeable 
 as you see fit, I only ask that you give the author the credit for the 
 original work. Linux-Toolbox has been tested and should work on your 
-device assuming that you are running an arch-based or Ubuntu-based system. 
+device assuming that you are running an Arch-based or Ubuntu-based system.
+A cronjob is any task or script that you place in the crontab file to be 
+ran at a certain time.To not go to deep into it, the basic syntax is 
+this:
+*     *     *   *    *        command to be executed
+-     -     -   -    -
+|     |     |   |    |
+|     |     |   |    +----- day of week (0 - 6) (Sunday=0)
+|     |     |   +------- month (1 - 12)
+|     |     +--------- day of        month (1 - 31)
+|     +----------- hour (0 - 23)
++------------- min (0 - 59) source: 
+http://www.adminschoice.com/crontab-quick-reference
+What I normally do is set the hosts updater to run at 8 every night ex.
+00 20 * * * /bin/sh /home/$USER/hostsupdater.sh. 
+I set it up under the root account by typing su followed by my password 
+in manjaro, sudo -i in Ubuntu systems and then typing crontab -e.
+The maintenance scripts are ok to run manually each month. 
+It is recommended that you do not run these without being present.
+Hoever, if you wish to run them as cron jobs then you can tweak the 
+cleaning routines as follows."sudo rm -r ./cache/*" should be changed to 
+"rm -r /home/$USER/.cache/*" and etc. The setup script should only be 
+ran once to set the system up.  
 
 ########################################################################
 CONTACT ME
