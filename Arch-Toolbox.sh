@@ -215,7 +215,7 @@ Systeminfo() {
 	echo $DESKTOP_SESSION >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
-	echo "SYSTEM INIT" >> $host-sysinfo.txt
+	echo "SYSTEM INITIALIZATION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	ps -p1 | awk 'NR!=1{print $4}' >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
@@ -1174,10 +1174,12 @@ Backup() {
 		echo "Please select the device you wish to use"
 		read device
 		sudo mount $device /mnt
-		sudo rsync -aAXv --delete --exclude={"/home/*/.cache","/home/*/.thumbnails","/home/*/.local/share/Trash"} /home/$USER /mnt/$host-backups
-	else
-		echo "Found a block device at designated coordinates, 
-		if this is the preferred drive, unmount it and run this again."
+		sudo rsync -aAXv --delete --exclude={"/home/*/.cache/*","/home/*/.thumbnails/*"."/home/*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups
+	elif [[ $Mountpoint == /run/media/$USER/* ]];
+	then
+		echo "Found a block device at designated coordinates...
+		If this is the preferred drive, unmount it, leave it plugged in, and run this again."
+		sleep 3
 	fi
 	
 	clear
@@ -1203,12 +1205,13 @@ _EOF_
 		echo "Please select the device from the list"
 		read device
 		sudo mount $device /mnt 
-		sudo rsync -aAXv --delete /mnt/$host-backups/* /home
+		sudo rsync -aAXv --delete --exclude={"/home/*/.cache/*","/home/*/.thumbnails/*"."/home/*/.local/share/Trash/*"}  /mnt/$host-backups/* /home
 		sudo sync 
 		Restart
-	else
-		echo "Found a block device at designated coordinates, if this is the preferred
-		drive, try unmounting the device and running this again."
+	elif [[ $Mountpoint == /run/media/$USER/* ]];
+	then
+		echo "Found a block device at designated coordinates... If this is the preferred
+		drive, try unmounting the device, leaving it plugged in, and running this again."
 	fi 
 }
 
