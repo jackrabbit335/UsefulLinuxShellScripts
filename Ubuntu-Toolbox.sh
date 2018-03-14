@@ -966,7 +966,7 @@ Backup() {
 		echo "Please select the device you wish to use"
 		read device
 		sudo mount $device /mnt
-		sudo rsync -aAXv --delete --exclude={"/home/*/.cache/*","/home/*/.thumbnails/*"."/home/*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups
+		sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*"."*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups
 	elif [[ $Mountpoint == /run/media/$USER/* ]];
 	then
 		echo "Found a block device at designated coordinates... If this is the preferred
@@ -996,7 +996,7 @@ _EOF_
 		echo "Please select the device from the list"
 		read device
 		sudo mount $device /mnt 
-		sudo rsync -aAXv --delete --exclude={"/home/*/.cache/*","/home/*/.thumbnails/*"."/home/*/.local/share/Trash/*"} /mnt/$host-backups/* /home
+		sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*"."*/.local/share/Trash/*"} /mnt/$host-backups/* /home
 		sudo sync
 		Restart
 	elif [[ $Mountpoint == /run/media/$USER/* ]];
