@@ -758,7 +758,7 @@ InstallAndConquer() {
 	;;
 			36)
 			echo "This installs themes"
-			sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme  evopop-icon-theme elementary-xfce-icons xfce-theme-greybird numix-themes-archblue arc-gtk-theme menda-themes-dark papirus-icon-theme gtk-theme-breath
+			sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme  evopop-icon-theme numix-themes-archblue arc-gtk-theme menda-themes-dark papirus-icon-theme gtk-theme-breath faenza-green-icon-theme osx-arc-white
 	;; 
 			37)
 			echo "We will skip this"
@@ -917,13 +917,13 @@ cleanup() {
 	sudo rm -r ~/.nv/*
 	sudo rm -r ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/* 
-	find ~/Downloads/* -mtime +3 -exec rm {} \; #Deletes contents older than three day
+	find ~/Downloads/* -mtime +3 -exec rm {} \; 
 	history -cw && cat /dev/null/ > ~/.bash_history
 
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/
-	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \; #throws away month old content
-	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \; #The times can be changed
+	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \; 
+	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \; 
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
@@ -938,7 +938,7 @@ cleanup() {
 	sudo pacman -Rsn --noconfirm $(pacman -Qqdt)
 
 	#This allows the user to remove unwanted shite
-	echo "Would you like to remove any other unwanted shite?(Y/n)"
+	echo "Would you like to remove any other unwanted junk?(Y/n)"
 	read answer 
 	while [ $answer == Y ];
 	do
@@ -1003,6 +1003,17 @@ SystemMaintenance() {
 		sudo rankmirrors -n 0 /etc/pacman.d/antergos-mirrorlist > /tmp/antergos-mirrorlist && sudo cp /tmp/antergos-mirrorlist /etc/pacman.d
 		sudo pacman -Syyu --noconfirm
 	fi
+
+	#Sets default web browser
+	echo "Would you like to switch your default browser?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		echo "Confirm the browser you wish to set as default."
+		read browser
+		xdg-settings set default-web-browser $browser.desktop
+	break
+	done
 
 	#This refreshes systemd in case of failed or changed units
 	sudo systemctl daemon-reload
@@ -1177,9 +1188,8 @@ Backup() {
 		sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*"."*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups
 	elif [[ $Mountpoint == /run/media/$USER/* ]];
 	then
-		echo "Found a block device at designated coordinates...
-		If this is the preferred drive, unmount it, leave it plugged in, and run this again."
-		sleep 3
+		read -p "Found a block device at designated coordinates...
+		If this is the preferred drive, unmount it, leave it plugged in, and run this again. Press enter to continue..."
 	fi
 	
 	clear
@@ -1210,8 +1220,8 @@ _EOF_
 		Restart
 	elif [[ $Mountpoint == /run/media/$USER/* ]];
 	then
-		echo "Found a block device at designated coordinates... If this is the preferred
-		drive, try unmounting the device, leaving it plugged in, and running this again."
+		read -p "Found a block device at designated coordinates... If this is the preferred
+		drive, try unmounting the device, leaving it plugged in, and running this again. Press enter to continue..."
 	fi 
 }
 

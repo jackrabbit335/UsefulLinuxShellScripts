@@ -4,6 +4,11 @@
 Setup() {
 	#This sets your default editor in bashrc
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
+	
+	#Sets default web browser
+	echo "Confirm the browser you wish to set as default."
+	read browser
+	xdg-settings set default-web-browser $browser.desktop
 
 	#This activates the firewall
 	sudo systemctl enable ufw
@@ -676,7 +681,7 @@ InstallAndConquer() {
 			sudo add-apt-repository -y ppa:noobslab/icons
 			sudo add-apt-repository -y ppa:moka/stable
 			sudo apt-get update
-			sudo apt-get -y install mate-themes gtk2-engines-xfce gtk3-engines-xfce numix-icon-theme-circle emerald-icon-theme moka-icon-theme windows-10-themes dalisha-icons faenza-icon-theme
+			sudo apt-get -y install mate-themes numix-icon-theme-circle emerald-icon-theme moka-icon-theme windows-10-themes dalisha-icons faenza-icon-theme
 	;;
 			31)
 			echo "Aight den!"
@@ -731,6 +736,7 @@ InstallAndConquer() {
 				sudo apt-get -y install ubuntu-restricted-extras
 			else
 				echo "You're running some other window manager I haven't tested yet."
+				sleep 1
 			fi
 		done
 	break
@@ -781,7 +787,7 @@ cleanup() {
 	sudo apt-get -y autoclean 
 	sudo apt-get clean
 
-	#This allows you to remove unwanted shite
+	#This allows you to remove unwanted junk
 	echo "Are there any other applications you wish to remove(Y/n)"
 	read answer 
 	while [ $answer ==  Y ];
@@ -799,7 +805,7 @@ cleanup() {
 	sudo rm -r ~/.nv/*
 	sudo rm -r ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/*
-	find ~/Downloads/* -mtime +3 -exec rm {} \; #Deletes content over 1 day old
+	find ~/Downloads/* -mtime +3 -exec rm {} \; 
 	history -cw && cat /dev/null/ > ~/.bash_history
 
 	#This could clean your Video folder and Picture folder based on a set time
@@ -827,7 +833,18 @@ SystemMaintenance() {
 	sudo dpkg --configure -a
 	sudo apt-get install  -f
 	sudo apt-get update && sudo apt-get dist-upgrade -yy
-	
+
+	#Sets default web browser
+	echo "Would you like to switch your default browser?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		echo "Confirm the browser you wish to set as default."
+		read browser
+		xdg-settings set default-web-browser $browser.desktop
+	break
+	done
+
 	#It is recommended that your firewall is enabled
 	sudo ufw reload
 	
@@ -970,7 +987,7 @@ Backup() {
 	elif [[ $Mountpoint == /run/media/$USER/* ]];
 	then
 		echo "Found a block device at designated coordinates... If this is the preferred
-		device, try umounting it, leave it plugged in, and then running this again."
+		device, try umounting it, leave it plugged in, and then running this again. Press enter to continue..."
 	fi
 	
 	clear
@@ -1001,8 +1018,8 @@ _EOF_
 		Restart
 	elif [[ $Mountpoint == /run/media/$USER/* ]];
 	then
-		echo "Found a block device at designated coordinates... If this is the preferred
-		device, try umounting it, leaving it plugged in, and then running this again."
+		read -p "Found a block device at designated coordinates... If this is the preferred
+		device, try umounting it, leaving it plugged in, and then running this again. Press enter to continue..."
 	fi 
 }
 
