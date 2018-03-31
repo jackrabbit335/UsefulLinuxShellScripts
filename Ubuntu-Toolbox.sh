@@ -55,7 +55,7 @@ Setup() {
 	#Tweaks the sysctl config file
 	sudo cp /etc/sysctl.conf /etc/sysctl.conf.bak
 	echo "# Reduces the swap" | sudo tee -a /etc/sysctl.conf
-	echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.conf
+	echo "vm.swappiness = 5" | sudo tee -a /etc/sysctl.conf
 	echo "# Improve cache management" | sudo tee -a /etc/sysctl.conf
 	echo "vm.vfs_cache_pressure=50" | sudo tee -a /etc/sysctl.conf
 	echo "#tcp flaw workaround" | sudo tee -a /etc/sysctl.conf
@@ -287,6 +287,11 @@ Systeminfo() {
 	echo "YET STILL MORE HARDWARE INFORMATION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	lscpu >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "TLP STATS" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	sudo tlp-stat >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "LOGS" >> $host-sysinfo.txt
