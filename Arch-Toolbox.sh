@@ -335,6 +335,11 @@ Systeminfo() {
 	lscpu >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
+	echo "TLP STATS" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	sudo tlp-stat >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
 	echo "LOGS" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	sudo dmesg >> $host-sysinfo.txt
