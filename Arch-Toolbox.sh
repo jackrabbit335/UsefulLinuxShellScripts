@@ -883,7 +883,11 @@ _EOF_
 
 }
 
-AccountSettings() {
+AccountSettings() { 
+cat <<_EOF_
+This is experimental, not tested, not sure it will work for you, but use at your
+own peril. Again, these are not tested, I am getting back to these asap.
+_EOF_
 	#This can create and remove user accounts
 	echo "What would you like to do?"
 	echo "1 - Create user account(s)"
@@ -963,7 +967,10 @@ cleanup() {
 	sudo rm -r /tmp/* 
 	find ~/Downloads/* -mtime +3 -exec rm {} \; 
 	history -cw && cat /dev/null/ > ~/.bash_history
-
+	
+	#This clears the cached RAM 
+	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches" #This clears the cached memory of inactive or not currently used pages.  
+	
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/
 	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \; 
