@@ -38,7 +38,7 @@ Setup() {
 	sudo touch /etc/sysctl.d/99-sysctl.conf
 	echo "kernel.dmesg_restrict = 1" | sudo tee -a /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "kernel.kptr_restrict = 1" | sudo tee -a /etc/sysctl.d/50-kptr-restrict.conf
-	echo "vm.swappiness = 5" | sudo tee -a /etc/sysctl.d/99-sysctl.conf #lowers swap value
+	echo "vm.swappiness = 10" | sudo tee -a /etc/sysctl.d/99-sysctl.conf #lowers swap value
 	sudo sysctl --system
 	sudo systemctl daemon-reload
 
@@ -334,11 +334,6 @@ Systeminfo() {
 	lscpu >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
-	echo "TLP STATS" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
-	sudo tlp-stat >> $host-sysinfo.txt
-	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
 	echo "LOGS" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	sudo dmesg >> $host-sysinfo.txt
@@ -424,8 +419,7 @@ InstallAndConquer() {
 		echo "34 - Screenfetching utility"
 		echo "35 - Hunspell language packs"
 		echo "36 - Themes"
-		echo "37 - Smartmontools"
-		echo "38 - to skip"
+		echo "37 - to skip"
 		
 	read software;
 
@@ -766,10 +760,6 @@ InstallAndConquer() {
 			sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme  evopop-icon-theme numix-themes-archblue arc-gtk-theme menda-themes-dark papirus-icon-theme gtk-theme-breath faenza-green-icon-theme osx-arc-white
 	;; 
 			37)
-			echo "This will install smartctl etc"
-			sudo pacman -S --noconfirm smartmontools
-	;;
-			38)
 			echo "We will skip this"
 			break
 	;;
@@ -883,45 +873,6 @@ _EOF_
 
 }
 
-AccountSettings() { 
-cat <<_EOF_
-This is experimental, not tested, not sure it will work for you, but use at your
-own peril. Again, these are not tested, I am getting back to these asap.
-_EOF_
-	#This can create and remove user accounts
-	echo "What would you like to do?"
-	echo "1 - Create user account(s)"
-	echo "2 - Delete user account(s)"
-	echo "3 - skip this menu for now"
-	
-	read operation;
-	
-	case $operation in
-		1)
-		echo $(cat /etc/group | awk -F: '{print $1}')
-		sleep 3
-		read -p "Please enter the groups you wish the user to be in:" $group1 $group2 $group3 $group4 $group5
-		echo "Please enter the name of the user"
-		read name
-		echo "Please enter the password"
-		read password
-		sudo useradd $name -m -s /bin/bash -G $group1 $group2 $group3 $group4 $group5
-		echo $password | passwd --stdin $name
-	;;
-		2)
-		echo "Please enter the name of the user you wish to delete"
-		read name
-		sudo userdel $name
-	;;
-		3)
-		echo "We can do this later"
-	;;
-	esac
-	
-	clear
-	Greeting
-}
-
 checkNetwork() {
 	#This will try to ensure you have a strong network connection
 	for c in computer;
@@ -969,8 +920,8 @@ cleanup() {
 	history -cw && cat /dev/null/ > ~/.bash_history
 	
 	#This clears the cached RAM 
-	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches" #This clears the cached memory of inactive or not currently used pages.  
-	
+	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
+
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/
 	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \; 
@@ -1048,23 +999,12 @@ SystemMaintenance() {
 	distribution=$(cat /etc/issue | awk '{print $1}')
 	if [[ $distribution == Manjaro ]];
 	then
-		sudo pacman-mirrors -G && sudo pacman -Syy
+		sudo pacman-mirrors -aS unstable && sudo pacman -Syy --noconfirm
 	else
 		sudo reflector -l 50 -f 20 --save /tmp/mirrorlist.new && rankmirrors -n 0 /tmp/mirrorlist.new > /tmp/mirrorlist && sudo cp /tmp/mirrorlist /etc/pacman.d
 		sudo rankmirrors -n 0 /etc/pacman.d/antergos-mirrorlist > /tmp/antergos-mirrorlist && sudo cp /tmp/antergos-mirrorlist /etc/pacman.d
 		sudo pacman -Syyu --noconfirm
 	fi
-
-	#Sets default web browser
-	echo "Would you like to switch your default browser?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		echo "Confirm the browser you wish to set as default."
-		read browser
-		xdg-settings set default-web-browser $browser.desktop
-	break
-	done
 
 	#This refreshes systemd in case of failed or changed units
 	sudo systemctl daemon-reload
@@ -1279,19 +1219,18 @@ _EOF_
 Greeting() {
 	echo "Enter a selection from the following list"
 	echo "1 - Setup your system"
-	echo "2 - Add/Remove user accounts"
-	echo "3 - Install software"
-	echo "4 - Setup a hosts file"
-	echo "5 - Backup your important files and photos"
-	echo "6 - Restore your important files and photos"
-	echo "7 - Manage system services"
-	echo "8 - Install or uninstall kernels"
-	echo "9 - Collect system information"
-	echo "10 - Cleanup"
-	echo "11 - System Maintenance"
-	echo "12 - Update"
-	echo "13 - Help"
-	echo "14 - exit"
+	echo "2 - Install software"
+	echo "3 - Setup a hosts file"
+	echo "4 - Backup your important files and photos"
+	echo "5 - Restore your important files and photos"
+	echo "6 - Manage system services"
+	echo "7 - Install or uninstall kernels"
+	echo "8 - Collect system information"
+	echo "9 - Cleanup"
+	echo "10 - System Maintenance"
+	echo "11 - Update"
+	echo "12 - Help"
+	echo "13 - exit"
 	
 	read selection;
 	
@@ -1300,42 +1239,39 @@ Greeting() {
 		Setup
 	;;
 		2)
-		AccountSettings
-	;;
-		3)
 		InstallAndConquer
 	;;
-		4)
+		3)
 		HostsfileSelect
 	;;
-		5)
+		4)
 		Backup
 	;;
-		6)
+		5)
 		Restore
 	;;
-		7)
+		6)
 		ServiceManager
 	;;
-		8)
+		7)
 		KernelManager
 	;;
-		9)
+		8)
 		Systeminfo
 	;;
-		10)
+		9)
 		cleanup
 	;;
-		11)
+		10)
 		SystemMaintenance
 	;;
-		12)
+		11)
 		Update
 	;;
-		13)
+		12)
 		Help
 	;;
-		14)
+		13)
 		echo "Thank you for using Arch-Toolbox... Goodbye!"
 		sleep 1
 		exit
