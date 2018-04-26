@@ -132,7 +132,7 @@ Setup() {
 	do
 		if [[ $distribution == Manjaro ]];
 		then
-			sudo pacman-mirrors -G
+			sudo pacman-mirrors -f 5
 			sudo pacman -Syyu --noconfirm 
 			if [[ $? -eq 0 ]]; 
 			then 
@@ -999,7 +999,7 @@ SystemMaintenance() {
 	distribution=$(cat /etc/issue | awk '{print $1}')
 	if [[ $distribution == Manjaro ]];
 	then
-		sudo pacman-mirrors -aS unstable && sudo pacman -Syy --noconfirm
+		sudo pacman-mirrors -f 5 && sudo pacman -Syy --noconfirm
 	else
 		sudo reflector -l 50 -f 20 --save /tmp/mirrorlist.new && rankmirrors -n 0 /tmp/mirrorlist.new > /tmp/mirrorlist && sudo cp /tmp/mirrorlist /etc/pacman.d
 		sudo rankmirrors -n 0 /etc/pacman.d/antergos-mirrorlist > /tmp/antergos-mirrorlist && sudo cp /tmp/antergos-mirrorlist /etc/pacman.d
