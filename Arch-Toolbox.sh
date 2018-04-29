@@ -42,38 +42,6 @@ Setup() {
 	sudo sysctl --system
 	sudo systemctl daemon-reload
 	
-	#Change the I/O Scheduler
-	cat <<_EOF_
-	It is also possible to change the I/O scheduler, however, some of these are more
-	suitable to a certain type of workload and device. USE CAUTION!
-	These are not created equal, but you now have four to choose from.
-_EOF_
-	read -p "Select your I/O Scheduler"
-	echo "1 - noop Great for SSDs"
-	echo "2 - deadline SOrta middle ground for HDDs and SSDs"
-	echo "3 - cfq Completely fair scheduler, probably not so good for SSDs"
-	echo "4 - bfq -sq The default in Manjaro and the like now."
-	
-	read scheduler;
-	
-	case $scheduler in
-		1)
-		sudo sed 
-	;;
-		2)
-		sudo sed 
-	;;
-		3) 
-		sudo sed 
-	;;
-		4) 
-		sudo sed 
-	;;
-		*)
-		echo "This is an invalid option"
-	;;
-	esac
-	
 	#This disables ipv6
 	echo "Sometimes ipv6 can cause network issues. Would you like to disable it?(Y/n)"
 	read answer 
