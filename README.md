@@ -2,11 +2,11 @@
 README!!!!!!!!!!!
 #########################################################################
 To use Linux-Toolbox, you must first ensure that the scripts are
-executable, to do this, you have to type chmod +x Arch-Toolbox.sh in a 
+executable, to do this, you have to type chmod +x Arch-Toolbox/Ubuntu-Toolbox.sh in a 
 command line, I know, it can be scary at first, but trust me, aside from 
 actually calling this script, that's all you will have to do. To call this
 script you have to type the name in the terminal like this:
-./Arch-Utilities.sh. That should do it. This script easily handles all 
+./Arch-Toolbox.sh. That should do it. This script easily handles all 
 the hard work for you. Each function has a number in the list associated 
 with it, just type the number of the chore you need done and this handy 
 utility goes right to work. Some root privilege may be required
