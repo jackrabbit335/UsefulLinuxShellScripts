@@ -57,10 +57,42 @@ Setup() {
 	echo "# Reduces the swap" | sudo tee -a /etc/sysctl.conf
 	echo "vm.swappiness = 5" | sudo tee -a /etc/sysctl.conf
 	echo "# Improve cache management" | sudo tee -a /etc/sysctl.conf
-	echo "vm.vfs_cache_pressure=50" | sudo tee -a /etc/sysctl.conf
+	echo "vm.vfs_cache_pressure = 50" | sudo tee -a /etc/sysctl.conf
 	echo "#tcp flaw workaround" | sudo tee -a /etc/sysctl.conf
 	echo "net.ipv4.tcp_challenge_ack_limit = 999999999" | sudo tee -a /etc/sysctl.conf
 	sudo sysctl -p
+	
+	#Change the I/O Scheduler
+	cat <<_EOF_
+	It is also possible to change the I/O scheduler, however, some of these are more
+	suitable to a certain type of workload and device. USE CAUTION!
+	These are not created equal, but you now have four to choose from.
+_EOF_
+	read -p "Select your I/O Scheduler"
+	echo "1 - noop Great for SSDs"
+	echo "2 - deadline SOrta middle ground for HDDs and SSDs"
+	echo "3 - cfq Completely fair scheduler, probably not so good for SSDs"
+	echo "4 - bfq -sq The default in Manjaro and the like now."
+	
+	read scheduler;
+	
+	case $scheduler in
+		1)
+		sudo sed 
+	;;
+		2)
+		sudo sed 
+	;;
+		3) 
+		sudo sed 
+	;;
+		4) 
+		sudo sed 
+	;;
+		*)
+		echo "This is an invalid option"
+	;;
+	esac
 	
 	#This attempts to place noatime at the end of your drive entry in fstab
 	echo "This can potentially make your drive unbootable, use with caution"
@@ -753,6 +785,46 @@ InstallAndConquer() {
 	
 }
 
+AccountSettings() {
+	#This can create and remove user accounts
+	echo "This is experimental(untested). Use at  your own risk."
+	echo "What would you like to do today?"
+	echo "1 - Create user account(s)" 
+	echo "2 - Delete user account(s)"
+	echo "3 - Skip this for now"
+	
+	read operation;
+	
+	case $operation in
+		1)
+		echo $(cat /etc/group | awk -F: '{print $1}')
+		sleep 3
+		read -p "Please enter the groups you wish the user to be in:" $group1 $group2 $group3 $group4 $group5
+		echo "Please enter the name of the user"
+		read name
+		echo "Please enter the password"
+		read password
+		sudo useradd $name -m -s /bin/bash -G $group1 $group2 $group3 $group4 $group5
+		echo $password | passwd --stdin $name
+	;;
+		2)
+		echo "Note, this will remove all files related to the account"
+		echo "Please enter the name of the user you wish to delete"
+		read name
+		sudo userdel -rf $name
+	;;
+		3)
+		echo "We can do this later"
+	;;
+		*)
+		echo "This is an invaldi selection, please run this function again and try another."
+	;;
+	esac
+	
+	clear
+	Greeting
+}
+
 CheckNetwork() {
 	for c in computer; 
 	do 
@@ -812,6 +884,10 @@ cleanup() {
 	sudo rm -r /tmp/*
 	find ~/Downloads/* -mtime +3 -exec rm {} \; 
 	history -cw && cat /dev/null/ > ~/.bash_history
+	
+	#This clears the cached RAM 
+	read -p "This will free up cached RAM. Press enter to continue..."
+	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
 
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/
@@ -1031,17 +1107,18 @@ _EOF_
 Greeting() {
 	echo "Enter a selection from the following list"
 	echo "1 - Setup your system"
-	echo "2 - Install software"
-	echo "3 - Setup a hosts file"
-	echo "4 - Backup your system"
-	echo "5 - Restore the system"
-	echo "6 - Manage system services"
-	echo "7 - Collect System Information"
-	echo "8 - Help"
-	echo "9 - Cleanup"
-	echo "10 - System Maintenance"
-	echo "11 - Update"
-	echo "12 - exit"
+	echo "2 - Add/Remove user accounts"
+	echo "3 - Install software"
+	echo "4 - Setup a hosts file"
+	echo "5 - Backup your system"
+	echo "6 - Restore the system"
+	echo "7 - Manage system services"
+	echo "8 - Collect System Information"
+	echo "9 - Help"
+	echo "10 - Cleanup"
+	echo "11 - System Maintenance"
+	echo "12 - Update"
+	echo "13 - exit"
 	
 	read selection;
 	
@@ -1050,36 +1127,39 @@ Greeting() {
 		Setup
 	;;
 		2)
-		InstallAndConquer
+		AccountSettings
 	;;
 		3)
-		HostsfileSelect
+		InstallAndConquer
 	;;
 		4)
-		Backup
+		HostsfileSelect
 	;;
 		5)
-		Restore
+		Backup
 	;;
 		6)
-		ServiceManager
+		Restore
 	;;
 		7)
-		Systeminfo
+		ServiceManager
 	;;
 		8)
-		HELP
+		Systeminfo
 	;;
 		9)
-		cleanup
+		HELP
 	;;
 		10)
-		SystemMaintenance
+		cleanup
 	;;
 		11)
-		Update
+		SystemMaintenance
 	;;
 		12)
+		Update
+	;;
+		13)
 		echo "Thank you for using Ubuntu-Toolbox... Goodbye!"
 		sleep 1
 		exit

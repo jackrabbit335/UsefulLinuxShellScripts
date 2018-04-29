@@ -41,7 +41,39 @@ Setup() {
 	echo "vm.swappiness = 5" | sudo tee -a /etc/sysctl.d/99-sysctl.conf #lowers swap value
 	sudo sysctl --system
 	sudo systemctl daemon-reload
-
+	
+	#Change the I/O Scheduler
+	cat <<_EOF_
+	It is also possible to change the I/O scheduler, however, some of these are more
+	suitable to a certain type of workload and device. USE CAUTION!
+	These are not created equal, but you now have four to choose from.
+_EOF_
+	read -p "Select your I/O Scheduler"
+	echo "1 - noop Great for SSDs"
+	echo "2 - deadline SOrta middle ground for HDDs and SSDs"
+	echo "3 - cfq Completely fair scheduler, probably not so good for SSDs"
+	echo "4 - bfq -sq The default in Manjaro and the like now."
+	
+	read scheduler;
+	
+	case $scheduler in
+		1)
+		sudo sed 
+	;;
+		2)
+		sudo sed 
+	;;
+		3) 
+		sudo sed 
+	;;
+		4) 
+		sudo sed 
+	;;
+		*)
+		echo "This is an invalid option"
+	;;
+	esac
+	
 	#This disables ipv6
 	echo "Sometimes ipv6 can cause network issues. Would you like to disable it?(Y/n)"
 	read answer 
@@ -75,6 +107,8 @@ Setup() {
 			read answer 
 			while [ $answer == Y ];
 			do 
+				sudo systemctl enable fstrim.service
+				sudo systemctl start fstrim.service
 				sudo systemctl enable fstrim.timer
 				sudo systemctl start fstrim.service
 			break
@@ -132,8 +166,7 @@ Setup() {
 	do
 		if [[ $distribution == Manjaro ]];
 		then
-			sudo pacman-mirrors -f 5
-			sudo pacman -Syyu --noconfirm 
+			sudo pacman-mirrors -f 5 && sudo pacman -Syyu --noconfirm
 			if [[ $? -eq 0 ]]; 
 			then 
 				echo "Update succeeded" 
@@ -145,7 +178,7 @@ Setup() {
 				sudo pacman-key --populate archlinux manjaro 
 				sudo pacman-key --refresh-keys 
 				sudo pacman -Sc
-				sudo pacman -Syyu
+				sudo pacman -Syyu --noconfirm
 			fi
 		elif [[ $distribution == Antergos ]];
 		then
@@ -334,6 +367,11 @@ Systeminfo() {
 	lscpu >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
+	echo "TLP STATS" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	sudo tlp-stat >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
 	echo "LOGS" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	sudo dmesg >> $host-sysinfo.txt
@@ -419,7 +457,8 @@ InstallAndConquer() {
 		echo "34 - Screenfetching utility"
 		echo "35 - Hunspell language packs"
 		echo "36 - Themes"
-		echo "37 - to skip"
+		echo "37 - Smartmontools"
+		echo "38 - to skip"
 		
 	read software;
 
@@ -760,6 +799,10 @@ InstallAndConquer() {
 			sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme  evopop-icon-theme numix-themes-archblue arc-gtk-theme menda-themes-dark papirus-icon-theme gtk-theme-breath faenza-green-icon-theme osx-arc-white
 	;; 
 			37)
+			echo "This will install smartctl etc"
+			sudo pacman -S --noconfirm smartmontools
+	;;
+			38)
 			echo "We will skip this"
 			break
 	;;
@@ -873,6 +916,46 @@ _EOF_
 
 }
 
+AccountSettings() {
+	#This can create and remove user accounts
+	echo "This is experimental(untested). Use at your own risk."
+	echo "What would you like to do?"
+	echo "1 - Create user account(s)"
+	echo "2 - Delete user account(s)"
+	echo "3 - skip this menu for now"
+	
+	read operation;
+	
+	case $operation in
+		1)
+		echo $(cat /etc/group | awk -F: '{print $1}')
+		sleep 3
+		read -p "Please enter the groups you wish the user to be in:" $group1 $group2 $group3
+		echo "Please enter the name of the user"
+		read name
+		echo "Please enter the password"
+		read password
+		sudo useradd $name -m -s /bin/bash -G $group1 $group2 $group3 
+		echo $password | passwd --stdin $name
+	;;
+		2)
+		echo "Note, this will remove all files related to the account"
+		echo "Please enter the name of the user you wish to delete"
+		read name
+		sudo userdel -rf $name
+	;;
+		3)
+		echo "We can do this later"
+	;;
+		*)
+		echo "This is an invalid selection, please run this function again and try another."
+	;;
+	esac
+	
+	clear
+	Greeting
+}
+
 checkNetwork() {
 	#This will try to ensure you have a strong network connection
 	for c in computer;
@@ -920,6 +1003,7 @@ cleanup() {
 	history -cw && cat /dev/null/ > ~/.bash_history
 	
 	#This clears the cached RAM 
+	read -p "This will free up cached RAM. Press enter to continue..."
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
 
 	#This could clean your Video folder and Picture folder based on a set time
@@ -999,12 +1083,23 @@ SystemMaintenance() {
 	distribution=$(cat /etc/issue | awk '{print $1}')
 	if [[ $distribution == Manjaro ]];
 	then
-		sudo pacman-mirrors -f 5 && sudo pacman -Syy --noconfirm
+		sudo pacman-mirrors -f 5 && sudo pacman -Syyu --noconfirm
 	else
 		sudo reflector -l 50 -f 20 --save /tmp/mirrorlist.new && rankmirrors -n 0 /tmp/mirrorlist.new > /tmp/mirrorlist && sudo cp /tmp/mirrorlist /etc/pacman.d
 		sudo rankmirrors -n 0 /etc/pacman.d/antergos-mirrorlist > /tmp/antergos-mirrorlist && sudo cp /tmp/antergos-mirrorlist /etc/pacman.d
 		sudo pacman -Syyu --noconfirm
 	fi
+
+	#Sets default web browser
+	echo "Would you like to switch your default browser?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		echo "Confirm the browser you wish to set as default."
+		read browser
+		xdg-settings set default-web-browser $browser.desktop
+	break
+	done
 
 	#This refreshes systemd in case of failed or changed units
 	sudo systemctl daemon-reload
@@ -1219,18 +1314,19 @@ _EOF_
 Greeting() {
 	echo "Enter a selection from the following list"
 	echo "1 - Setup your system"
-	echo "2 - Install software"
-	echo "3 - Setup a hosts file"
-	echo "4 - Backup your important files and photos"
-	echo "5 - Restore your important files and photos"
-	echo "6 - Manage system services"
-	echo "7 - Install or uninstall kernels"
-	echo "8 - Collect system information"
-	echo "9 - Cleanup"
-	echo "10 - System Maintenance"
-	echo "11 - Update"
-	echo "12 - Help"
-	echo "13 - exit"
+	echo "2 - Add/Remove user accounts"
+	echo "3 - Install software"
+	echo "4 - Setup a hosts file"
+	echo "5 - Backup your important files and photos"
+	echo "6 - Restore your important files and photos"
+	echo "7 - Manage system services"
+	echo "8 - Install or uninstall kernels"
+	echo "9 - Collect system information"
+	echo "10 - Cleanup"
+	echo "11 - System Maintenance"
+	echo "12 - Update"
+	echo "13 - Help"
+	echo "14 - exit"
 	
 	read selection;
 	
@@ -1239,39 +1335,42 @@ Greeting() {
 		Setup
 	;;
 		2)
-		InstallAndConquer
+		AccountSettings
 	;;
 		3)
-		HostsfileSelect
+		InstallAndConquer
 	;;
 		4)
-		Backup
+		HostsfileSelect
 	;;
 		5)
-		Restore
+		Backup
 	;;
 		6)
-		ServiceManager
+		Restore
 	;;
 		7)
-		KernelManager
+		ServiceManager
 	;;
 		8)
-		Systeminfo
+		KernelManager
 	;;
 		9)
-		cleanup
+		Systeminfo
 	;;
 		10)
-		SystemMaintenance
+		cleanup
 	;;
 		11)
-		Update
+		SystemMaintenance
 	;;
 		12)
-		Help
+		Update
 	;;
 		13)
+		Help
+	;;
+		14)
 		echo "Thank you for using Arch-Toolbox... Goodbye!"
 		sleep 1
 		exit
