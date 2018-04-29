@@ -62,38 +62,6 @@ Setup() {
 	echo "net.ipv4.tcp_challenge_ack_limit = 999999999" | sudo tee -a /etc/sysctl.conf
 	sudo sysctl -p
 	
-	#Change the I/O Scheduler
-	cat <<_EOF_
-	It is also possible to change the I/O scheduler, however, some of these are more
-	suitable to a certain type of workload and device. USE CAUTION!
-	These are not created equal, but you now have four to choose from.
-_EOF_
-	read -p "Select your I/O Scheduler"
-	echo "1 - noop Great for SSDs"
-	echo "2 - deadline SOrta middle ground for HDDs and SSDs"
-	echo "3 - cfq Completely fair scheduler, probably not so good for SSDs"
-	echo "4 - bfq -sq The default in Manjaro and the like now."
-	
-	read scheduler;
-	
-	case $scheduler in
-		1)
-		sudo sed 
-	;;
-		2)
-		sudo sed 
-	;;
-		3) 
-		sudo sed 
-	;;
-		4) 
-		sudo sed 
-	;;
-		*)
-		echo "This is an invalid option"
-	;;
-	esac
-	
 	#This attempts to place noatime at the end of your drive entry in fstab
 	echo "This can potentially make your drive unbootable, use with caution"
 	echo "Would you like to improve hard drive performance with noatime?(Y/n)"
