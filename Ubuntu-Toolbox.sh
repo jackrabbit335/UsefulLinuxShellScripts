@@ -1,6 +1,65 @@
 #!/bin/bash
 
 Setup() {
+	#This sets your default editor in bashrc
+	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
+	
+	#Sets default web browser
+	echo "Confirm the browser you wish to set as default."
+	read browser
+	xdg-settings set default-web-browser $browser.desktop
+
+	#This activates the firewall
+	sudo systemctl enable ufw
+	sudo ufw enable
+	echo "Would you like to deny ssh and telnet for security purposes?(Y/n)"
+	read answer
+	if [[ $answer == Y ]];
+	then
+		sudo ufw deny telnet && sudo ufw deny ssh
+		sudo ufw reload
+	fi
+	
+	#This disables ipv6
+	echo "Sometimes ipv6 can cause network issues. Would you like to disable it?(Y/n)"
+	read answer 
+	if [[ $answer == Y ]];
+	then
+		sudo cp /etc/default/grub /etc/default/grub.bak
+		sudo sed -i -e 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/g' /etc/default/grub
+		sudo update-grub2
+	else
+		echo "Okay!"
+	fi
+
+	#This adds a few aliases to bashrc
+	echo "Aliases are shortcuts to commonly used commands."
+	echo "would you like to add some aliases?(Y/n)"
+	read answer 
+
+	if [[ $answer == Y ]];
+	then 
+		sudo cp ~/.bashrc ~/.bashrc.bak
+		echo "#Alias to update the system" >> ~/.bashrc
+		echo 'alias update="sudo apt-get update && sudo apt-get -y dist-upgrade"' >> ~/.bashrc
+		echo "#Alias to clean the apt cache" >> ~/.bashrc
+		echo 'alias clean="sudo apt-get autoremove && sudo apt-get autoclean && sudo apt-get clean"' >> ~/.bashrc
+	fi
+
+	#System tweaks
+	sudo cp /etc/default/grub /etc/default/grub.bak
+	sudo sed -i -e '/GRUB_TIMEOUT=10/c\GRUB_TIMEOUT=3 ' /etc/default/grub
+	sudo update-grub2
+
+	#Tweaks the sysctl config file
+	sudo cp /etc/sysctl.conf /etc/sysctl.conf.bak
+	echo "# Reduces the swap" | sudo tee -a /etc/sysctl.conf
+	echo "vm.swappiness = 5" | sudo tee -a /etc/sysctl.conf
+	echo "# Improve cache management" | sudo tee -a /etc/sysctl.conf
+	echo "vm.vfs_cache_pressure = 50" | sudo tee -a /etc/sysctl.conf
+	echo "#tcp flaw workaround" | sudo tee -a /etc/sysctl.conf
+	echo "net.ipv4.tcp_challenge_ack_limit = 999999999" | sudo tee -a /etc/sysctl.conf
+	sudo sysctl -p
 	
 	#This attempts to place noatime at the end of your drive entry in fstab
 	echo "This can potentially make your drive unbootable, use with caution"
