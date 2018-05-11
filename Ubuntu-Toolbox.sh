@@ -1,66 +1,6 @@
 #!/bin/bash
 
-#Simple System Setup
 Setup() {
-	#This sets your default editor in bashrc
-	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
-	
-	#Sets default web browser
-	echo "Confirm the browser you wish to set as default."
-	read browser
-	xdg-settings set default-web-browser $browser.desktop
-
-	#This activates the firewall
-	sudo systemctl enable ufw
-	sudo ufw enable
-	echo "Would you like to deny ssh and telnet for security purposes?(Y/n)"
-	read answer
-	if [[ $answer == Y ]];
-	then
-		sudo ufw deny telnet && sudo ufw deny ssh
-		sudo ufw reload
-	fi
-	
-	#This disables ipv6
-	echo "Sometimes ipv6 can cause network issues. Would you like to disable it?(Y/n)"
-	read answer 
-	if [[ $answer == Y ]];
-	then
-		sudo cp /etc/default/grub /etc/default/grub.bak
-		sudo sed -i -e 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/g' /etc/default/grub
-		sudo update-grub2
-	else
-		echo "Okay!"
-	fi
-
-	#This adds a few aliases to bashrc
-	echo "Aliases are shortcuts to commonly used commands."
-	echo "would you like to add some aliases?(Y/n)"
-	read answer 
-
-	if [[ $answer == Y ]];
-	then 
-		sudo cp ~/.bashrc ~/.bashrc.bak
-		echo "#Alias to update the system" >> ~/.bashrc
-		echo 'alias update="sudo apt-get update && sudo apt-get -y dist-upgrade"' >> ~/.bashrc
-		echo "#Alias to clean the apt cache" >> ~/.bashrc
-		echo 'alias clean="sudo apt-get autoremove && sudo apt-get autoclean && sudo apt-get clean"' >> ~/.bashrc
-	fi
-
-	#System tweaks
-	sudo cp /etc/default/grub /etc/default/grub.bak
-	sudo sed -i -e '/GRUB_TIMEOUT=10/c\GRUB_TIMEOUT=3 ' /etc/default/grub
-	sudo update-grub2
-
-	#Tweaks the sysctl config file
-	sudo cp /etc/sysctl.conf /etc/sysctl.conf.bak
-	echo "# Reduces the swap" | sudo tee -a /etc/sysctl.conf
-	echo "vm.swappiness = 5" | sudo tee -a /etc/sysctl.conf
-	echo "# Improve cache management" | sudo tee -a /etc/sysctl.conf
-	echo "vm.vfs_cache_pressure = 50" | sudo tee -a /etc/sysctl.conf
-	echo "#tcp flaw workaround" | sudo tee -a /etc/sysctl.conf
-	echo "net.ipv4.tcp_challenge_ack_limit = 999999999" | sudo tee -a /etc/sysctl.conf
-	sudo sysctl -p
 	
 	#This attempts to place noatime at the end of your drive entry in fstab
 	echo "This can potentially make your drive unbootable, use with caution"
@@ -486,7 +426,7 @@ InstallAndConquer() {
 			then
 				cd /tmp
 				wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-				sudo dpkg -i google-chrome-stable_current_amd64.deb
+				sudo dpkg -i *.deb
 				sudo apt-get -f install
 			elif [[ $browser == 6 ]];
 			then
@@ -495,8 +435,8 @@ InstallAndConquer() {
 				./pminstaller.sh
 			elif [[ $browser == 7 ]];
 			then
-				wget https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_1.15.1094.3-1_amd64.deb
-				sudo dpkg -i vivaldi-stable_1.13.1008.40-1_amd64.deb
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_1.15.1147.36-1_amd64.deb
+				sudo dpkg -i *.deb
 				sudo apt-get install -f 
 			fi
 	;;
@@ -681,12 +621,13 @@ InstallAndConquer() {
 	;;
 			30)
 			echo "THEMES"
-			sudo add-apt-repository -y ppa:noobslab/themes 
-			sudo apt-add-repository -y ppa:numix/ppa
-			sudo add-apt-repository -y ppa:noobslab/icons
-			sudo add-apt-repository -y ppa:moka/stable
+			sudo add-apt-repository ppa:noobslab/icons
+			sudo add-apt-repository ppa:noobslab/icons
+			sudo add-apt-repository ppa:noobslab/icons
+			sudo add-apt-repository ppa:papirus/papirus
+			sudo add-apt-repository ppa:moka/daily
 			sudo apt-get update
-			sudo apt-get -y install mate-themes numix-icon-theme-circle emerald-icon-theme moka-icon-theme windows-10-themes dalisha-icons faenza-icon-theme
+			sudo apt-get install -y mate-themes faenza-icon-theme obsidian-1-icons dalisha-icons shadow-icon-theme moka-icon-theme papirus-icon-theme
 	;;
 			31)
 			echo "Aight den!"
