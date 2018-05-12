@@ -3,11 +3,6 @@
 Setup() {
 	#This sets your default editor in bashrc
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
-	
-	#Sets default web browser
-	echo "Confirm the browser you wish to set as default."
-	read browser
-	xdg-settings set default-web-browser $browser.desktop
 
 	#This activates the firewall
 	sudo systemctl enable ufw
@@ -888,9 +883,9 @@ SystemMaintenance() {
 	read answer
 	while [ $answer == Y ];
 	do
-		echo "Confirm the browser you wish to set as default."
+		echo "Confirm the browser you wish to set as default using /usr/bin/browser."
 		read browser
-		xdg-settings set default-web-browser $browser.desktop
+		sudo update-alternatives --config x-www-browser $browser.desktop
 	break
 	done
 
