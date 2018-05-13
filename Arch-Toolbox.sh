@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#Simple System Setup
 Setup() {
 	#Sets default editor to nano in bashrc
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
@@ -599,10 +598,10 @@ InstallAndConquer() {
 			elif [[ $browser == 9 ]];
 			then
 				cd /tmp
-				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi-snapshot.tar.gz
-				gunzip vivaldi-snapshot.tar.gz
-				tar -xvf vivaldi-snapshot.tar
-				cd vivaldi-snapshot
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz
+				gunzip vivaldi.tar.gz
+				tar -xvf vivaldi.tar
+				cd vivaldi
 				makepkg -si
 			elif [[ $browser == 10 ]];
 			then
@@ -764,7 +763,7 @@ InstallAndConquer() {
 	;;
 			36)
 			echo "This installs themes"
-			sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme  evopop-icon-theme numix-themes-archblue arc-gtk-theme menda-themes-dark papirus-icon-theme gtk-theme-breath faenza-green-icon-theme osx-arc-white
+			sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme numix-themes-archblue arc-gtk-theme papirus-icon-theme faenza-green-icon-theme faience-icon-theme
 	;; 
 			37)
 			echo "This will install smartctl etc"
@@ -1196,6 +1195,13 @@ KernelManager() {
 			echo "Enter the name of the kernel you wish to install"
 			read kernel
 			sudo mhwd-kernel -i $kernel
+		break
+		done
+		
+		echo "Restart?(Y/n)"
+		read answer 
+		while [ $answer == Y ];
+		do 
 			Restart
 		break
 		done
@@ -1208,13 +1214,20 @@ KernelManager() {
 			echo "Enter the name of the kernel you wish to remove"
 			read kernel
 			sudo mhwd-kernel -r $kernel
+		break
+		done
+		
+		echo "Restart?(Y/n)"
+		read answer 
+		while [ $answer == Y ];
+		do 
 			Restart
 		break
 		done
 	;;
 		3)
 		sudo mhwd-kernel -l >> kernels.txt
-		echo "######################################################" >> kernels.txt
+		echo "##########################################################" >> kernels.txt
 		sudo mhwd-kernel -li >> kernels.txt
 	;;
 		4)
