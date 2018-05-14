@@ -884,6 +884,10 @@ _EOF_
 }
 
 AccountSettings() {
+cat <<_EOF_
+This is a completely untested and experimental utility at best. 
+Use this function "Account Settings" at your own risk. 
+_EOF_
 	#This can create and remove user accounts
 	echo "This is experimental(untested). Use at your own risk."
 	echo "What would you like to do?"
