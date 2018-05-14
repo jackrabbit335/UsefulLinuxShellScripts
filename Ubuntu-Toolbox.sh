@@ -731,6 +731,7 @@ InstallAndConquer() {
 			elif [[ $DESKTOP_SESSION == gnome ]];
 			then
 				sudo apt-get -y install ubuntu-restricted-extras
+				sudo apt-get -y install gnome-session
 			elif [[ $DESKTOP_SESSION == enlightenment ]];
 			then
 				sudo apt-get -y install ubuntu-restricted-extras
