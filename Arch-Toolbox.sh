@@ -493,6 +493,8 @@ InstallAndConquer() {
 			elif [[ $package == 5 ]];
 			then
 				sudo pacman -S --noconfirm gedit
+			else 
+				echo "Perhaps you're satisfied with the default?"
 			fi
 	;;
 			11)
@@ -611,6 +613,8 @@ InstallAndConquer() {
 				tar -xvf google-chrome.tar
 				cd google-chrome
 				makepkg -si
+			else 
+				echo "Of course, we can always do this later."
 			fi
 	;;
 			24)
@@ -659,6 +663,8 @@ InstallAndConquer() {
 			then
 				sudo pacman -S --noconfirm pragha 
 				echo "comes standard with antergos"
+			else 
+				echo "Not a problem, we'll skip this for now!"
 			fi
 	;;
 			25)
@@ -676,6 +682,8 @@ InstallAndConquer() {
 			elif [[ $package == 2 ]];
 			then
 				sudo pacman -S --noconfirm grsync
+			else 
+				echo "Or not"
 			fi
 	;;
 			27)
