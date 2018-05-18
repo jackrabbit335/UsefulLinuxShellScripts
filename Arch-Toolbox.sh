@@ -133,7 +133,7 @@ Setup() {
 	do
 		if [[ $distribution == Manjaro ]];
 		then
-			sudo pacman-mirrors -f 5 && sudo pacman -Syyu --noconfirm
+			sudo pacman-mirrors -fasttrack 5 && sudo pacman -Syyu --noconfirm
 			if [[ $? -eq 0 ]]; 
 			then 
 				echo "Update succeeded" 
@@ -417,15 +417,16 @@ InstallAndConquer() {
 		echo "27 - video and audio editing"
 		echo "28 - shotwell"
 		echo "29 - guvcview"
-		echo "30 - etc-update"
-		echo "31 - Games"
-		echo "32 - A dock program"
-		echo "33 - Audio/Video Decoding software"
-		echo "34 - Screenfetching utility"
-		echo "35 - Hunspell language packs"
-		echo "36 - Themes"
-		echo "37 - Smartmontools"
-		echo "38 - to skip"
+		echo "30 - downgrade"
+		echo "31 - etc-update"
+		echo "32 - Games"
+		echo "33 - A dock program"
+		echo "34 - Audio/Video Decoding software"
+		echo "35 - Screenfetching utility"
+		echo "36 - Hunspell language packs"
+		echo "37 - Themes"
+		echo "38 - Smartmontools"
+		echo "39 - to skip"
 		
 	read software;
 
@@ -601,7 +602,6 @@ InstallAndConquer() {
 			then
 				cd /tmp
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz
-				gunzip vivaldi.tar.gz
 				tar -xvf vivaldi.tar
 				cd vivaldi
 				makepkg -si
@@ -609,7 +609,6 @@ InstallAndConquer() {
 			then
 				cd /tmp
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz
-				gunzip google-chrome.tar.gz
 				tar -xvf google-chrome.tar
 				cd google-chrome
 				makepkg -si
@@ -695,9 +694,14 @@ InstallAndConquer() {
 			sudo pacman -S --noconfirm shotwell
 	;;
 			29) 
+			echo "This installs guvcview software for using the webcam"
 			sudo pacman -S --noconfirm guvcview
 	;;
 			30)
+			echo "This installs downgrade to revert broken packages to an older version"
+			sudo pacman -S --noconfirm downgrade
+	;;
+			31)
 			echo "This installs etc-update"
 			echo "etc-update can help you manage pacnew files and other configuration files after system updates."
 			sleep 2
@@ -708,7 +712,7 @@ InstallAndConquer() {
 			cd etc-update
 			makepkg -si
 	;;
-			31)
+			32)
 			echo "This installs games"
 			echo "1 - supertuxkart"
 			echo "2 - gnome-mahjongg"
@@ -751,33 +755,34 @@ InstallAndConquer() {
 				echo "You entered an invalid number, please try again later."
 			fi
 	;;
-			32)
+			33)
 			echo "This installs plank, a popular dock application"
 			sudo pacman -S --noconfirm plank
 	;;
-			33)
+			34)
 			echo "This installs handbrake"
 			sudo pacman -S --noconfirm handbrake
 	;;
-			34)
+			35)
 			echo "This installs screenfetch"
 			sudo pacman -S --noconfirm  screenfetch
 			sudo cp /etc/bash.bashrc /etc/bash.bashrc.bak
 			echo "screenfetch" | sudo tee -a /etc/bash.bashrc
 	;;
-			35)
+			36)
 			echo "This installs extra language packs"
 			sudo pacman -S --noconfirm firefox-i18n-en-us thunderbird-i18n-en-us aspell-en gimp-help-en hunspell-en_US hunspell-en hyphen-en
 	;;
-			36)
+			37)
 			echo "This installs themes"
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/obsidian-icon-theme.tar.gz && tar -xzf obsidian-icon-theme.tar.gz && sudo mv obsidian-icon-theme /usr/share/icons
 			sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme numix-themes-archblue arc-gtk-theme papirus-icon-theme faenza-green-icon-theme faience-icon-theme
 	;; 
-			37)
+			38)
 			echo "This will install smartctl etc"
 			sudo pacman -S --noconfirm smartmontools
 	;;
-			38)
+			39)
 			echo "We will skip this"
 			break
 	;;
@@ -1062,7 +1067,7 @@ SystemMaintenance() {
 	distribution=$(cat /etc/issue | awk '{print $1}')
 	if [[ $distribution == Manjaro ]];
 	then
-		sudo pacman-mirrors -f 5 && sudo pacman -Syyu --noconfirm
+		sudo pacman-mirrors -fasttrack 5 && sudo pacman -Syyu --noconfirm
 	else
 		sudo reflector -l 50 -f 20 --save /tmp/mirrorlist.new && rankmirrors -n 0 /tmp/mirrorlist.new > /tmp/mirrorlist && sudo cp /tmp/mirrorlist /etc/pacman.d
 		sudo rankmirrors -n 0 /etc/pacman.d/antergos-mirrorlist > /tmp/antergos-mirrorlist && sudo cp /tmp/antergos-mirrorlist /etc/pacman.d
