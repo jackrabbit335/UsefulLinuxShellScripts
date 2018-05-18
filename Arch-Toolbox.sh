@@ -133,7 +133,7 @@ Setup() {
 	do
 		if [[ $distribution == Manjaro ]];
 		then
-			sudo pacman-mirrors -fasttrack 5 && sudo pacman -Syyu --noconfirm
+			sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu --noconfirm
 			if [[ $? -eq 0 ]]; 
 			then 
 				echo "Update succeeded" 
@@ -602,6 +602,7 @@ InstallAndConquer() {
 			then
 				cd /tmp
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz
+				gunzip vivaldi.tar.gz
 				tar -xvf vivaldi.tar
 				cd vivaldi
 				makepkg -si
@@ -609,6 +610,7 @@ InstallAndConquer() {
 			then
 				cd /tmp
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz
+				gunzip google-chrome.tar.gz
 				tar -xvf google-chrome.tar
 				cd google-chrome
 				makepkg -si
@@ -1067,7 +1069,7 @@ SystemMaintenance() {
 	distribution=$(cat /etc/issue | awk '{print $1}')
 	if [[ $distribution == Manjaro ]];
 	then
-		sudo pacman-mirrors -fasttrack 5 && sudo pacman -Syyu --noconfirm
+		sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu --noconfirm
 	else
 		sudo reflector -l 50 -f 20 --save /tmp/mirrorlist.new && rankmirrors -n 0 /tmp/mirrorlist.new > /tmp/mirrorlist && sudo cp /tmp/mirrorlist /etc/pacman.d
 		sudo rankmirrors -n 0 /etc/pacman.d/antergos-mirrorlist > /tmp/antergos-mirrorlist && sudo cp /tmp/antergos-mirrorlist /etc/pacman.d
