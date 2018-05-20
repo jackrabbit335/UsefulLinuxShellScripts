@@ -653,9 +653,9 @@ InstallAndConquer() {
 				distribution=$(cat /etc/issue | awk '{print $1}')
 				if [[ $distribution == manjaro ]];
 				then
-					sudo pacman -Rs --noconfirm vlc-nightly && sudo pacman -S vlc clementine
+					sudo pacman -Rs --noconfirm vlc && sudo pacman -S vlc-nightly clementine
 				else
-					sudo pacman -S --noconfirm vlc
+					sudo pacman -S --noconfirm vlc-nightly
 				fi
 			elif [[ $player == 8 ]];
 			then
@@ -1106,16 +1106,21 @@ SystemMaintenance() {
 	sudo touch /forcefsck 
 
 	#Optional and prolly not needed
-	echo "Only to be used on standard Mechanical hard drives, do not use on SSD,
-	if you don't know, don't hit Y"
-	echo "Would you like to check your hard drive fragmentation levels?(Y/n)"
-	read answer
-	while [ $answer == Y ];
+	drive=$(cat /sys/block/sda/queue/rotational)
+	for rota in drive;
 	do
-		sudo e4defrag / -c > fragmentation.log #only to be used on HDD
-		break
+		if [[ $drive == 1 ]];
+		then
+			echo "Would you like to check fragmentation levels?(Y/n)"
+			read answer 
+			while [ $answer == Y ];
+			do
+				sudo e4defrag / -c > fragmentation.log 
+			break
+			done
+		fi 
 	done
-	
+		
 	#Optional
 	echo "Would you like to run cleanup?(Y/n)"
 	read answer
@@ -1246,7 +1251,9 @@ KernelManager() {
 	;;
 		3)
 		sudo mhwd-kernel -l >> kernels.txt
+		echo "" >> kernels.txt
 		echo "##########################################################" >> kernels.txt
+		echo "" >> kernels.txt
 		sudo mhwd-kernel -li >> kernels.txt
 	;;
 		4)

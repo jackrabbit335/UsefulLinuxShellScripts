@@ -466,7 +466,7 @@ InstallAndConquer() {
 			read browser
 			if [[ $browser == 1 ]];
 			then
-				sudo apt-get -y install chromium
+				sudo apt-get -y install chromium-browser
 			elif [[ $browser == 2 ]];
 			then
 				sudo apt-get -y install epiphany
@@ -750,6 +750,10 @@ InstallAndConquer() {
 }
 
 AccountSettings() {
+cat <<_EOF_
+This is a completely untested and experimental utility at best. 
+Use this function "Account Settings" at your own risk. 
+_EOF_
 	#This can create and remove user accounts
 	echo "This is experimental(untested). Use at  your own risk."
 	echo "What would you like to do today?"
@@ -906,14 +910,19 @@ SystemMaintenance() {
 	sudo touch /forcefsck
 	
 	#Optional and prolly not needed
-	echo "Only to be used on standard Mechanical hard drives, do not use on SSD,
-	if you don't know, don't hit Y"
-	echo "Would you like to check your hard drive fragmentation levels?(Y/n)"
-	read answer
-	while [ $answer == Y ];
+	drive=$(cat /sys/block/sda/queue/rotational)
+	for rota in drive;
 	do
-		sudo e4defrag / -c > fragmentation.log #only to be used on HDD
-		break
+		if [[ $drive == 1 ]];
+		then
+			echo "Would you like to check fragmentation levels?(Y/n)"
+			read answer 
+			while [ $answer == Y ];
+			do
+				sudo e4defrag / -c > fragmentation.log 
+			break
+			done
+		fi 
 	done
 	
 	#Optional
