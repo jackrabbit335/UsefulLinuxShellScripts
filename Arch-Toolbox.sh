@@ -585,7 +585,7 @@ InstallAndConquer() {
 				sudo pacman -S --noconfirm qupzilla
 			elif [[ $browser == 4 ]];
 			then
-				sudo pacman -S --noconfirm opera
+				sudo pacman -S --noconfirm opera opera-ffmpeg-codecs
 			elif [[ $browser == 5 ]];
 			then
 				sudo pacman -S --noconfirm palemoon-bin
