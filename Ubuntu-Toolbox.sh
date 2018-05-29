@@ -735,6 +735,12 @@ InstallAndConquer() {
 			elif [[ $DESKTOP_SESSION == enlightenment ]];
 			then
 				sudo apt-get -y install ubuntu-restricted-extras
+			elif [[ $DESKTOP_SESSION == Budgie ]];
+			then
+				sudo apt-get -y install ubuntu-restricted-extras
+			elif [[ $DESKTOP_SESSION == Cinnamon ]];
+			then
+				sudo apt-get -y install ubuntu-restricted-extras
 			else
 				echo "You're running some other window manager I haven't tested yet."
 				sleep 1
