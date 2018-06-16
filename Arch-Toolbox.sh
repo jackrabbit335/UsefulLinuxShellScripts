@@ -122,7 +122,7 @@ Setup() {
 		echo "#Alias to update the system" >> ~/.bashrc
 		echo 'alias pacup="sudo pacman -Syu"' >> ~/.bashrc
 		echo "#Alias to update the mirrors" >> ~/.bashrc
-		echo 'alias mirrors="sudo pacman-mirrors -G && sudo pacman -Syy"' >> ~/.bashrc
+		echo 'alias mirrors="sudo pacman-mirrors -f 5 && sudo pacman -Syy"' >> ~/.bashrc
 	fi
 
 	checkNetwork
@@ -379,419 +379,375 @@ Systeminfo() {
 }
 
 InstallAndConquer() {
-	checkNetwork
-	
+	checkNetwork	
+
 	#This installs extra software
 	echo "Would you like to install software?(Y/n)"
-	read answer
+	read answer 
 	while [ $answer == Y ];
 	do
-		echo "Here is a list of software to choose from"
+		echo "Here is a list of software that I deem to be useful"
 		sleep 2
-		echo "1 - bleachbit"
-		echo "2 - gnome-disk-utility"
-		echo "3 - ncdu"
-		echo "4 - nmap"
-		echo "5 - preload"
-		echo "6 - hardinfo"
-		echo "7 - lshw"
-		echo "8 - hdparm"
-		echo "9 - hddtemp xsensors"
-		echo "10 - Code/text editor/IDE"
-		echo "11 - htop iotop inxi"
-		echo "12 - wget"
-		echo "13 - rkhunter"
-		echo "14 - abiword gnumeric"
-		echo "15 - bittorrent"
-		echo "16 - net-tools"
-		echo "17 - virtualbox"
-		echo "18 - redshift"
-		echo "19 - blender"
-		echo "20 - cower"
-		echo "21 - xed"
-		echo "22 - wine"
-		echo "23 - web browser"
-		echo "24 - media player"
-		echo "25 - antivirus"
-		echo "26 - backup software"
-		echo "27 - video and audio editing"
-		echo "28 - shotwell"
-		echo "29 - guvcview"
-		echo "30 - downgrade"
-		echo "31 - etc-update"
-		echo "32 - Games"
-		echo "33 - A dock program"
-		echo "34 - Audio/Video Decoding software"
-		echo "35 - Screenfetching utility"
-		echo "36 - Hunspell language packs"
-		echo "37 - Themes"
-		echo "38 - Smartmontools"
-		echo "39 - to skip"
-		
+		echo "1 - Utility suite"
+		echo "2 - Monitoring and network scanning/sniffing needs"
+		echo "3 - IDE or text/code editor"
+		echo "4 - Download managers and torrenting clients"
+		echo "5 - Web browser from a list"
+		echo "6 - Media/home theater software"
+		echo "7 - Virtual machine client"
+		echo "8 - Wine and play on linux"
+		echo "9 - quvcview"
+		echo "10 - Manipulate config files and switch between versions of software"
+		echo "11 - GAMES!!!!!!!!!"
+		echo "12 - Video editing/encoding"
+		echo "13 - Plank"
+		echo "14 - Backup"
+		echo "15 - THEMES!!!!!!!!"
+		echo "16 - Security checkers/scanners"
+		echo "17 - exit out of this menu"
+
 	read software;
 
-	case $software in 
+	case $software in
+		1)
+		echo "This installs a choice of utility software"
+		sudo pacman -S --noconfirm hardinfo lshw hdparm gparted
 
-			1)
-			echo "This installs cleaning software"
-			sudo pacman -S --noconfirm bleachbit
 	;;
-			2)
-			echo "This installs disk health checking software"
-			sudo pacman -S --noconfirm gnome-disk-utility
+		2)
+		echo "This installs sensor and system monitoring tools"
+		sudo pacman -S --noconfirm gnome-disk-utility ncdu nmap smartmontools xsensors hddtemp htop iotop inxi
+	
 	;;
-			3)
-			echo "This installs disk space checking software"
-			sudo pacman -S --noconfirm ncdu
-	;;
-			4)
-			echo "This installs network scanning software"
-			sudo pacman -S --noconfirm nmap
-	;;
-			5)
-			echo "This installs daemon that loads applications in memory"
-			sudo pacman  -S --noconfirm preload
-	;;
-			6)
-			echo "This installs hardware informations tool"
-			sudo pacman -S --noconfirm hardinfo
-	;;
-			7)
-			echo "This installs command line utility to gather certain system info"
-			sudo pacman -S --noconfirm lshw
-	;;
-			8)
-			echo "This installs software to configure hard drive settings"
-			sudo pacman -S --noconfirm hdparm
-	;;
-			9)
-			echo "This installs software to gather temps"
-			sudo pacman -S --noconfirm xsensors hddtemp
-	;;
-			10)
-			echo "This installs a light weight editor(text/code editor/IDE)"
-			echo "1 - geany"
-			echo "2 - sublime text editor"
-			echo "3 - bluefish"
-			echo "4 - atom"
-			echo "5 - gedit"
-			read package
-			if [[ $package == 1 ]];
-			then
-				sudo pacman -S --noconfirm geany
-			elif [[ $package == 2 ]];
-			then
-				wget https://aur.archlinux.org/cgit/aur.git/snapshot/sublime-text2.tar.gz
-				gunzip sublime-text2.tar.gz && tar -xvf sublime-text2.tar
-				cd /sublime-text2
-				makepkg -si
-			elif [[ $package == 3 ]];
-			then
-				sudo pacman -S --noconfirm bluefish
-			elif [[ $package == 4 ]];
-			then
-				sudo pacman -S --noconfirm atom
-			elif [[ $package == 5 ]];
-			then
-				sudo pacman -S --noconfirm gedit
-			else 
-				echo "Perhaps you're satisfied with the default?"
-			fi
-	;;
-			11)
-			echo "This installs command line system monitors"
-			sudo pacman -S --noconfirm htop iotop inxi
-	;;
-			12)
-			echo "This installs a download manager"
-			sudo pacman -S --noconfirm wget
-	;;
-			13)
-			echo "This installs a rootkit checker"
-			sudo pacman -S --noconfirm rkhunter
-	;;
-			14)
-			echo "This installs light weight office tools"
-			sudo pacman -S --noconfirm abiword gnumeric
-	;;
-			15)
-			echo "This installs your choice of bittorrent client"
-			echo "1 - qbittorrent"
-			echo "2 - transmission-gtk"
-			echo "3 - deluge"
-			read client
-			if [[ $client == 1 ]];
-			then
-				sudo pacman -S --noconfirm qbittorrent
-			elif [[ $client == 2 ]];
-			then
-				sudo pacman -S --noconfirm transmission-gtk
-			elif [[ $client == 3 ]];
-			then
-				sudo pacman -S --noconfirm deluge
-			else
-				echo "moving on"
-			fi
-	;;
-			16)
-			echo "This installs the old network tools for linux"
-			sudo pacman -S --noconfirm net-tools
-	;;
-			17)
-			echo "This installs a virtual box utility"
-			sudo pacman -S --noconfirm virtualbox
-	;;
-			18)
-			echo "This installs a program to dim the monitor at night"
-			sudo pacman -S --noconfirm redshift
-	;;
-			19)
-			echo "This installs 3D editing software"
-			sudo pacman -S --noconfirm blender
-	;;
-			20)
-			echo "This installs a command line utility for managing AUR software"
-			sudo pacman -S --noconfirm cower
-	;;
-			21)
-			echo "This installs a Linux Mint text editor"
-			sudo pacman -S --noconfirm xed 
-	;;
-			22)
-			echo "This installs windows emulation software"
-			sudo pacman -S --noconfirm wine
-	;;
-			23)
-			echo "This installs your choice in browsers"
-			echo "1 - chromium"
-			echo "2 - epiphany"
-			echo "3 - qupzilla"
-			echo "4 - opera" 
-			echo "5 - Pale Moon"
-			echo "6 - seamonkey"
-			echo "7 - dillo"
-			echo "8 - lynx"
-			echo "9 - vivaldi"
-			echo "10 - google-chrome"
-			read browser
-			if [[ $browser == 1 ]];
-			then
-				sudo pacman -S --noconfirm chromium
-			elif [[ $browser == 2 ]];
-			then
-				sudo pacman -S --noconfirm epiphany
-			elif [[ $browser == 3 ]];
-			then
-				sudo pacman -S --noconfirm qupzilla
-			elif [[ $browser == 4 ]];
-			then
-				sudo pacman -S --noconfirm opera opera-ffmpeg-codecs
-			elif [[ $browser == 5 ]];
-			then
-				sudo pacman -S --noconfirm palemoon-bin
-			elif [[ $browser == 6 ]];
-			then
-				sudo pacman -S --noconfirm seamonkey
-			elif [[ $browser == 7 ]];
-			then
-				sudo pacman -S --noconfirm dillo
-			elif [[ $browser == 8 ]];
-			then
-				sudo pacman -S --noconfirm lynx
-			elif [[ $browser == 9 ]];
-			then
-				cd /tmp
-				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz
-				gunzip vivaldi.tar.gz
-				tar -xvf vivaldi.tar
-				cd vivaldi
-				makepkg -si
-			elif [[ $browser == 10 ]];
-			then
-				cd /tmp
-				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz
-				gunzip google-chrome.tar.gz
-				tar -xvf google-chrome.tar
-				cd google-chrome
-				makepkg -si
-			else 
-				echo "Of course, we can always do this later."
-			fi
-	;;
-			24)
-			echo "This installs a choice in media players"
-			echo "1 - xplayer"
-			echo "2 - parole"
-			echo "3 - kodi"
-			echo "4 - Music"
-			echo "5 - rhythmbox"
-			echo "6 - mpv"
-			echo "7 - VLC"
-			echo "8 - totem"
-			echo "9 - pragha"
-			read player
-			if [[ $player == 1 ]];
-			then
-				sudo pacman -S --noconfirm xplayer
-			elif [[ $player == 2 ]];
-			then
-				sudo pacman -S --noconfirm parole
-			elif [[ $player == 3 ]];
-			then
-				sudo pacman -S --noconfirm kodi
-			elif [[ $player == 4 ]];
-			then
-				sudo pacman -S --noconfirm Music
-			elif [[ $player == 5 ]];
-			then
-				sudo pacman -S --noconfirm rhythmbox
-			elif [[ $player == 6 ]];
-			then
-				sudo pacman -S --noconfirm mpv 
-			elif [[ $player == 7 ]];
-			then
-				distribution=$(cat /etc/issue | awk '{print $1}')
-				if [[ $distribution == manjaro ]];
-				then
-					sudo pacman -Rs --noconfirm vlc && sudo pacman -S vlc-nightly clementine
-				else
-					sudo pacman -S --noconfirm vlc-nightly
-				fi
-			elif [[ $player == 8 ]];
-			then
-				sudo pacman -s --noconfirm totem
-			elif [[ $player == 9 ]];
-			then
-				sudo pacman -S --noconfirm pragha 
-				echo "comes standard with antergos"
-			else 
-				echo "Not a problem, we'll skip this for now!"
-			fi
-	;;
-			25)
-			echo "This installs an antivirus if you think you need it"
-			sudo pacman -S clamav clamtk 
-	;;
-			26)
-			echo "This installs your backup software"
-			echo "1 - deja-dup"
-			echo "2 - grsync"
-			read package
-			if [[ $package == 1 ]];
-			then
-				sudo pacman -S --noconfirm deja-dup
-			elif [[ $package == 2 ]];
-			then
-				sudo pacman -S --noconfirm grsync
-			else 
-				echo "Or not"
-			fi
-	;;
-			27)
-			echo "This installs audio editing software and video editing software"
-			sudo pacman -S --noconfirm kdenlive audacity
-	;;
-			28)
-			echo "This installs image organizing software"
-			sudo pacman -S --noconfirm shotwell
-	;;
-			29) 
-			echo "This installs guvcview software for using the webcam"
-			sudo pacman -S --noconfirm guvcview
-	;;
-			30)
-			echo "This installs downgrade to revert broken packages to an older version"
-			sudo pacman -S --noconfirm downgrade
-	;;
-			31)
-			echo "This installs etc-update"
-			echo "etc-update can help you manage pacnew files and other configuration files after system updates."
-			sleep 2
-			cd /tmp
-			sudo pacman -S --needed base-devel 
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz
-			gunzip etc-update.tar.gz && tar -xvf etc-update.tar
-			cd etc-update
+		3)
+		echo "This installs a light weight editor(text/code editor/IDE)"
+		echo "1 - geany"
+		echo "2 - sublime text editor"
+		echo "3 - bluefish"
+		echo "4 - atom"
+		echo "5 - gedit"
+		read package
+		if [[ $package == 1 ]];
+		then
+			sudo pacman -S --noconfirm geany
+		elif [[ $package == 2 ]];
+		then
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/sublime-text2.tar.gz
+			gunzip sublime-text2.tar.gz && tar -xvf sublime-text2.tar
+			cd /sublime-text2
 			makepkg -si
+		elif [[ $package == 3 ]];
+		then
+			sudo pacman -S --noconfirm bluefish
+		elif [[ $package == 4 ]];
+		then
+			sudo pacman -S --noconfirm atom
+		elif [[ $package == 5 ]];
+		then
+			sudo pacman -S --noconfirm gedit
+		else 
+			echo "Perhaps you're satisfied with the default?"
+		fi
+	
 	;;
-			32)
-			echo "This installs games"
-			echo "1 - supertuxkart"
-			echo "2 - gnome-mahjongg"
-			echo "3 - aisleriot"
-			echo "4 - ace-of-penguins"
-			echo "5 - gnome-sudoku"
-			echo "6 - gnome-mines"
-			echo "7 - chromium-bsu"
-			echo "8 - supertux"
-			echo "9 - everything"
-			read package
-			if [[ $package == 1 ]];
+		4)
+		echo "This installs a choice in download managers/torrent clients"
+		echo "1 - wget"
+		echo "2 - uget" 
+		echo "3 - aria2" 
+		echo "4 - transmission-gtk"
+		echo "5 - qbittorrent"
+		echo "6 - deluge"
+		read software
+		if [[ $software == 1 ]];
+		then
+			sudo pacman -S --noconfirm wget 
+		elif [[ $software == 2 ]];
+		then
+			sudo pacman -S --noconfirm uget 
+		elif [[ $software == 3 ]];
+		then
+			sudo pacman -S --noconfirm aria2
+		elif [[ $software == 4 ]];
+		then
+			sudo pacman -S --noconfirm transmission-gtk 
+		elif [[ $software == 5 ]];
+		then
+			sudo pacman -S --noconfirm qbittorrent
+		elif [[ $software == 6 ]];
+		sudo pacman -S --noconfirm deluge
+		else 
+			echo "Most systems use one of these, if yours doesn't have one, I'd go with wget and or transmission"
+		fi
+
+	;;
+		5)
+		echo "This installs your choice in browsers"
+		echo "1 - chromium"
+		echo "2 - epiphany"
+		echo "3 - falkon"
+		echo "4 - opera" 
+		echo "5 - Pale Moon"
+		echo "6 - seamonkey"
+		echo "7 - dillo"
+		echo "8 - lynx"
+		echo "9 - vivaldi"
+		echo "10 - google-chrome"
+		read browser
+		if [[ $browser == 1 ]];
+		then
+			sudo pacman -S --noconfirm chromium
+		elif [[ $browser == 2 ]];
+		then
+			sudo pacman -S --noconfirm epiphany
+		elif [[ $browser == 3 ]];
+		then	
+			sudo pacman -S --noconfirm falkon
+		elif [[ $browser == 4 ]];
+		then
+			sudo pacman -S --noconfirm opera opera-ffmpeg-codecs
+		elif [[ $browser == 5 ]];
+		then
+			sudo pacman -S --noconfirm palemoon-bin
+		elif [[ $browser == 6 ]];
+		then
+			sudo pacman -S --noconfirm seamonkey
+		elif [[ $browser == 7 ]];
+		then
+			sudo pacman -S --noconfirm dillo
+		elif [[ $browser == 8 ]];
+		then
+			sudo pacman -S --noconfirm lynx
+		elif [[ $browser == 9 ]];
+		then
+			cd /tmp
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz
+			gunzip vivaldi.tar.gz
+			tar -xvf vivaldi.tar
+			cd vivaldi
+			makepkg -si
+		elif [[ $browser == 10 ]];
+		then
+			cd /tmp
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz
+			gunzip google-chrome.tar.gz
+			tar -xvf google-chrome.tar
+			cd google-chrome
+			makepkg -si
+		else 
+			echo "Of course, we can always do this later."
+		fi
+	
+	;;
+		6)
+		echo "This installs a choice in media players"
+		echo "1 - xplayer"
+		echo "2 - parole"
+		echo "3 - kodi"
+		echo "4 - Music"
+		echo "5 - rhythmbox"
+		echo "6 - mpv"
+		echo "7 - VLC"
+		echo "8 - totem"
+		echo "9 - pragha"
+		echo "10 - clementine"
+		read player
+		if [[ $player == 1 ]];
+		then
+			sudo pacman -S --noconfirm xplayer
+		elif [[ $player == 2 ]];
+		then
+			sudo pacman -S --noconfirm parole
+		elif [[ $player == 3 ]];
+		then
+			sudo pacman -S --noconfirm kodi
+		elif [[ $player == 4 ]];
+		then
+			sudo pacman -S --noconfirm Music
+		elif [[ $player == 5 ]];
+		then
+			sudo pacman -S --noconfirm rhythmbox
+		elif [[ $player == 6 ]];
+		then
+			sudo pacman -S --noconfirm mpv 
+		elif [[ $player == 7 ]];
+		then
+			distribution=$(cat /etc/issue | awk '{print $1}')
+			if [[ $distribution == manjaro ]];
 			then
-				sudo pacman -S --noconfirm supertuxkart
-			elif [[ $package == 2 ]];
-			then
-				sudo pacman -S --noconfirm gnome-mahjongg
-			elif [[ $package == 3 ]];
-			then
-				sudo pacman -S --noconfirm aisleriot
-			elif [[ $package == 4 ]];
-			then
-				sudo pacman -S --noconfirm ace-of-penguins
-			elif [[ $package == 5 ]];
-			then
-				sudo pacman -S --noconfirm gnome-sudoku
-			elif [[ $package == 6 ]];
-			then
-				sudo pacman -S --noconfirm gnome-mines
-			elif [[ $package == 7 ]];
-			then
-				sudo pacman -S --noconfirm chromium-bsu
-			elif [[ $package == 8 ]];
-			then
-				sudo pacman -S --noconfirm supertux
-			elif [[ $package == 9 ]];
-			then
-				sudo pacman -S --noconfirm supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux
+				sudo pacman -Rs --noconfirm vlc && sudo pacman -S vlc-nightly clementine
 			else
-				echo "You entered an invalid number, please try again later."
+				sudo pacman -S --noconfirm vlc-nightly
 			fi
+		elif [[ $player == 8 ]];
+		then
+			sudo pacman -s --noconfirm totem
+		elif [[ $player == 9 ]];
+		then
+			sudo pacman -S --noconfirm pragha 
+		elif [[ $player == 10 ]];
+		then
+			sudo pacman -S --noconfirm clementine
+		else 
+			echo "Not a problem, we'll skip this for now!"
+		fi
+	
 	;;
-			33)
-			echo "This installs plank, a popular dock application"
-			sudo pacman -S --noconfirm plank
+		7)
+		echo "This installs a virtualbox client"
+		sudo pacman -S --noconfirm virtualbox
+	
 	;;
-			34)
-			echo "This installs handbrake"
-			sudo pacman -S --noconfirm handbrake
+		8)
+		echo "This installs Wine or Windows emulation software"
+		echo "1 - Wine"
+		echo "2 - playonlinux"
+		
+		read software;
+		
+		case $software in
+			1)
+			sudo pacman -S --noconfirm wine ;;
+			2)
+			sudo pacman -S --noconfirm playonlinux ;;
+		esac
+
 	;;
-			35)
-			echo "This installs screenfetch"
-			sudo pacman -S --noconfirm  screenfetch
-			sudo cp /etc/bash.bashrc /etc/bash.bashrc.bak
-			echo "screenfetch" | sudo tee -a /etc/bash.bashrc
+		9)
+		echo "This installs a webcam application for laptops"
+		sudo pacman -S --noconfirm guvcview
+
 	;;
-			36)
-			echo "This installs extra language packs"
-			sudo pacman -S --noconfirm firefox-i18n-en-us thunderbird-i18n-en-us aspell-en gimp-help-en hunspell-en_US hunspell-en hyphen-en
+		10)
+		echo "This installs downgrading and package configuration updating software"
+		echo "This installs etc-update"
+		echo "etc-update can help you manage pacnew files and other configuration files after system updates."
+		sleep 2
+		cd /tmp
+		sudo pacman -S --needed base-devel 
+		wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz
+		gunzip etc-update.tar.gz && tar -xvf etc-update.tar
+		cd etc-update
+		makepkg -si
+		
+		echo "Would you also like to install downgrade?(Y/n)"
+		read answer
+		while [ $answer ==  Y ];
+		do 
+			sudo pacman -S --noconfirm downgrade
+		break
+		done
+
 	;;
-			37)
-			echo "This installs themes"
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/obsidian-icon-theme.tar.gz && tar -xzf obsidian-icon-theme.tar.gz && sudo mv obsidian-icon-theme /usr/share/icons
-			sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme numix-themes-archblue arc-gtk-theme papirus-icon-theme faenza-green-icon-theme faience-icon-theme
-	;; 
-			38)
-			echo "This will install smartctl etc"
-			sudo pacman -S --noconfirm smartmontools
+		11)
+		echo "This installs a choice in small games"
+		echo "1 - supertuxkart"
+		echo "2 - gnome-mahjongg"
+		echo "3 - aisleriot"
+		echo "4 - ace-of-penguins"
+		echo "5 - gnome-sudoku"
+		echo "6 - gnome-mines"
+		echo "7 - chromium-bsu"
+		echo "8 - supertux"
+		echo "9 - everything"
+		read package
+		if [[ $package == 1 ]];
+		then
+			sudo pacman -S --noconfirm supertuxkart
+		elif [[ $package == 2 ]];
+		then
+			sudo pacman -S --noconfirm gnome-mahjongg
+		elif [[ $package == 3 ]];
+		then
+			sudo pacman -S --noconfirm aisleriot
+		elif [[ $package == 4 ]];
+		then
+			sudo pacman -S --noconfirm ace-of-penguins
+		elif [[ $package == 5 ]];
+		then
+			sudo pacman -S --noconfirm gnome-sudoku
+		elif [[ $package == 6 ]];
+		then
+			sudo pacman -S --noconfirm gnome-mines
+		elif [[ $package == 7 ]];
+		then
+			sudo pacman -S --noconfirm chromium-bsu
+		elif [[ $package == 8 ]];
+		then
+			sudo pacman -S --noconfirm supertux
+		elif [[ $package == 9 ]];
+		then
+			sudo pacman -S --noconfirm supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux
+		else
+			echo "You entered an invalid number, please try again later."
+		fi
+
 	;;
-			39)
-			echo "We will skip this"
-			break
+		12)
+		echo "This installs video/audio decoding/reencoding software"
+		sudo pacman -S --noconfirm kdenlive audacity
+		echo "Would you also like obs-studio?(Y/n)"
+		read answer
+		while [ $answer == Y ];
+		do 
+			sudo pacman -S --noconfirm obs-studio
+		break
+		done
+
+	;;
+		13)
+		echo "This installs a dock application"
+		sudo pacman -S --noconfirm plank
+	;;
+		14)
+		echo "This installs your backup software"
+		echo "1 - deja-dup"
+		echo "2 - grsync"
+		read package
+		if [[ $package == 1 ]];
+		then
+			sudo pacman -S --noconfirm deja-dup
+		elif [[ $package == 2 ]];
+		then
+			sudo pacman -S --noconfirm grsync
+		else 
+			echo "Or not"
+		fi
+
+	;;
+		15)
+		echo "This installs a few common themes"
+		sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme numix-themes-archblue arc-gtk-theme papirus-icon-theme faenza-green-icon-theme faience-icon-theme
+		wget https://aur.archlinux.org/cgit/aur.git/snapshot/obsidian-icon-theme.tar.gz && tar -xzf obsidian-icon-theme.tar.gz && sudo mv obsidian-icon-theme /usr/share/icons
+
+	;;
+		16)
+		echo "This installs possible security software and virus checker if you wish"
+		echo "1 - rkhunter"
+		echo "2 - clamav"
+		echo "3 - both"
+		
+		read software;
+		
+		case $software in
+			1)
+			sudo pacman -S --noconfirm rkhunter ;;
+			2)
+			sudo pacman -S --noconfirm clamav ;;
+			3)
+			sudo pacman -S --noconfirm rkhunter clamav ;;
+		esac
+
+	;;
+		17)
+		echo "Ok, well, I'm here if you change your mind"
+		break
 	;;
 	esac
 	done
 	
-	read -p "Press enter to continue..."
+
+	read -p "Please press enter to continue..."	
 
 	#This allows you to install any software you might know of that is not on the list
 	echo "If you would like to contribute software titles to this script, 
@@ -828,6 +784,7 @@ InstallAndConquer() {
 	clear
 	Greeting
 }
+
 
 Help() {
 less <<_EOF_
