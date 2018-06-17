@@ -379,8 +379,8 @@ Systeminfo() {
 }
 
 InstallAndConquer() {
-	checkNetwork	
-
+	checkNetwork
+	
 	#This installs extra software
 	echo "Would you like to install software?(Y/n)"
 	read answer 
@@ -388,38 +388,32 @@ InstallAndConquer() {
 	do
 		echo "Here is a list of software that I deem to be useful"
 		sleep 2
-		echo "1 - Utility suite"
-		echo "2 - Monitoring and network scanning/sniffing needs"
-		echo "3 - IDE or text/code editor"
-		echo "4 - Download managers and torrenting clients"
-		echo "5 - Web browser from a list"
-		echo "6 - Media/home theater software"
-		echo "7 - Virtual machine client"
-		echo "8 - Wine and play on linux"
-		echo "9 - quvcview"
-		echo "10 - Manipulate config files and switch between versions of software"
-		echo "11 - GAMES!!!!!!!!!"
-		echo "12 - Video editing/encoding"
-		echo "13 - Plank"
-		echo "14 - Backup"
-		echo "15 - THEMES!!!!!!!!"
-		echo "16 - Security checkers/scanners"
-		echo "17 - exit out of this menu"
+		echo "1 - Utility suite/Monitoring Software"
+		echo "2 - IDE or text/code editor"
+		echo "3 - Download managers and torrenting clients"
+		echo "4 - Web browser from a list"
+		echo "5 - Media/home theater software"
+		echo "6 - Virtual machine client"
+		echo "7 - Wine and play on linux"
+		echo "8 - quvcview"
+		echo "9 - Manipulate config files and switch between versions of software"
+		echo "10 - GAMES!!!!!!!!!"
+		echo "11 - Video editing/encoding"
+		echo "12 - Plank"
+		echo "13 - Backup"
+		echo "14 - THEMES!!!!!!!!"
+		echo "15 - Security checkers/scanners"
+		echo "16 - exit out of this menu"
 
 	read software;
 
 	case $software in
 		1)
 		echo "This installs a choice of utility software"
-		sudo pacman -S --noconfirm hardinfo lshw hdparm gparted
-
-	;;
-		2)
-		echo "This installs sensor and system monitoring tools"
-		sudo pacman -S --noconfirm gnome-disk-utility ncdu nmap smartmontools xsensors hddtemp htop iotop inxi
+		sudo pacman -S --noconfirm hardinfo lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools xsensors hddtemp htop iotop inxi
 	
 	;;
-		3)
+		2)
 		echo "This installs a light weight editor(text/code editor/IDE)"
 		echo "1 - geany"
 		echo "2 - sublime text editor"
@@ -450,7 +444,7 @@ InstallAndConquer() {
 		fi
 	
 	;;
-		4)
+		3)
 		echo "This installs a choice in download managers/torrent clients"
 		echo "1 - wget"
 		echo "2 - uget" 
@@ -475,13 +469,14 @@ InstallAndConquer() {
 		then
 			sudo pacman -S --noconfirm qbittorrent
 		elif [[ $software == 6 ]];
-		sudo pacman -S --noconfirm deluge
-		else 
-			echo "Most systems use one of these, if yours doesn't have one, I'd go with wget and or transmission"
+		then
+			sudo pacman -S --noconfirm deluge
+		else
+			echo "Most systems have one of these, if yours doesn't, I'd suggest wget"
 		fi
 
 	;;
-		5)
+		4)
 		echo "This installs your choice in browsers"
 		echo "1 - chromium"
 		echo "2 - epiphany"
@@ -539,7 +534,7 @@ InstallAndConquer() {
 		fi
 	
 	;;
-		6)
+		5)
 		echo "This installs a choice in media players"
 		echo "1 - xplayer"
 		echo "2 - parole"
@@ -593,12 +588,12 @@ InstallAndConquer() {
 		fi
 	
 	;;
-		7)
+		6)
 		echo "This installs a virtualbox client"
 		sudo pacman -S --noconfirm virtualbox
 	
 	;;
-		8)
+		7)
 		echo "This installs Wine or Windows emulation software"
 		echo "1 - Wine"
 		echo "2 - playonlinux"
@@ -613,12 +608,12 @@ InstallAndConquer() {
 		esac
 
 	;;
-		9)
+		8)
 		echo "This installs a webcam application for laptops"
 		sudo pacman -S --noconfirm guvcview
 
 	;;
-		10)
+		9)
 		echo "This installs downgrading and package configuration updating software"
 		echo "This installs etc-update"
 		echo "etc-update can help you manage pacnew files and other configuration files after system updates."
@@ -639,7 +634,7 @@ InstallAndConquer() {
 		done
 
 	;;
-		11)
+		10)
 		echo "This installs a choice in small games"
 		echo "1 - supertuxkart"
 		echo "2 - gnome-mahjongg"
@@ -683,7 +678,7 @@ InstallAndConquer() {
 		fi
 
 	;;
-		12)
+		11)
 		echo "This installs video/audio decoding/reencoding software"
 		sudo pacman -S --noconfirm kdenlive audacity
 		echo "Would you also like obs-studio?(Y/n)"
@@ -695,11 +690,11 @@ InstallAndConquer() {
 		done
 
 	;;
-		13)
+		12)
 		echo "This installs a dock application"
 		sudo pacman -S --noconfirm plank
 	;;
-		14)
+		13)
 		echo "This installs your backup software"
 		echo "1 - deja-dup"
 		echo "2 - grsync"
@@ -715,13 +710,13 @@ InstallAndConquer() {
 		fi
 
 	;;
-		15)
+		14)
 		echo "This installs a few common themes"
 		sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme numix-themes-archblue arc-gtk-theme papirus-icon-theme faenza-green-icon-theme faience-icon-theme
 		wget https://aur.archlinux.org/cgit/aur.git/snapshot/obsidian-icon-theme.tar.gz && tar -xzf obsidian-icon-theme.tar.gz && sudo mv obsidian-icon-theme /usr/share/icons
 
 	;;
-		16)
+		15)
 		echo "This installs possible security software and virus checker if you wish"
 		echo "1 - rkhunter"
 		echo "2 - clamav"
@@ -739,7 +734,7 @@ InstallAndConquer() {
 		esac
 
 	;;
-		17)
+		16)
 		echo "Ok, well, I'm here if you change your mind"
 		break
 	;;
@@ -768,7 +763,7 @@ InstallAndConquer() {
 	#This installs xfce4-goodies package on xfce versions of Manjaro
 	for env in $DESKTOP_SESSION
 	do
-		if [ $DESKTOP_SESSION == xfce ];
+		if [[ $DESKTOP_SESSION == xfce ]];
 		then
 			echo "We found you're running the xfce desktop, would you like
 			to install extra extensions for xfce?(Y/n)"
@@ -784,7 +779,6 @@ InstallAndConquer() {
 	clear
 	Greeting
 }
-
 
 Help() {
 less <<_EOF_
