@@ -36,9 +36,9 @@ Setup() {
 	then 
 		sudo cp ~/.bashrc ~/.bashrc.bak
 		echo "#Alias to update the system" >> ~/.bashrc
-		echo 'alias update="sudo apt-get update && sudo apt-get -y dist-upgrade"' >> ~/.bashrc
+		echo 'alias update="sudo apt update && sudo apt dist-upgrade -yy"' >> ~/.bashrc
 		echo "#Alias to clean the apt cache" >> ~/.bashrc
-		echo 'alias clean="sudo apt-get autoremove && sudo apt-get autoclean && sudo apt-get clean"' >> ~/.bashrc
+		echo 'alias clean="sudo apt autoremove && sudo apt autoclean && sudo apt clean"' >> ~/.bashrc
 	fi
 
 	#System tweaks
@@ -116,9 +116,9 @@ Setup() {
 	CheckNetwork
 	
 	#Updates the system
-	sudo apt-get update
-	sudo apt-get -y upgrade
-	sudo apt-get dist-upgrade -yy
+	sudo apt update
+	sudo apt upgrade -y
+	sudo apt dist-upgrade -yy
 	
 	#Optional
 	echo "Would you like to restart?(Y/n)"
@@ -136,7 +136,7 @@ Setup() {
 Update() {
 	CheckNetwork
 	
-	sudo apt-get update && sudo apt-get dist-upgrade -yy
+	sudo apt update && sudo apt dist-upgrade -yy
 	
 	clear
 	Greeting
@@ -399,62 +399,49 @@ InstallAndConquer() {
 	#This checks network connectivity
 	CheckNetwork
 	
-	#This installs other software that may be useful
-	echo "Would you like to install some extra packages that I've deemed useful?(Y/n)"
+	#This installs other software that I've found to be useful
+	echo "Would you like to install some useful apps?(Y/n)"
 	read answer
 	while [ $answer == Y ];
 	do
-		echo "Here is a list of software, just enter a number to install the corresponding packages"
-		sleep 2
-		echo "1 - light weight IDE or code editor"
-		echo "2 - rootkit checker"
-		echo "3 - guake drop down terminal"
-		echo "4 - gnome-tweak-tool"
-		echo "5 - browser"
-		echo "6 - Media/Music player"
-		echo "7 - Bittorrent client"
-		echo "8 - zenmap"
-		echo "9 - video editing, audio editing"
-		echo "10 - pidgin"
-		echo "11 - light office applications"
-		echo "12 - clamav"
-		echo "13 - gparted partitioning tool"
-		echo "14 - bleachbit cleaning software"
-		echo "15 - ncdu"
-		echo "16 - iotop, htop inxi"
-		echo "17 - hdparm disk configuring software"
-		echo "18 - xsensors hddtemp lm-sensors temperature checking software"
-		echo "19 - traceroute"
-		echo "20 - hardinfo"
-		echo "21 - gufw"
-		echo "22 - preload"
-		echo "23 - guvcview"
-		echo "24 - graphical software managers"
-		echo "25 - Handbrake Audio decoding"
-		echo "26 - Steam client"
-		echo "27 - obs-studio"
-		echo "28 - Games"
-		echo "29 - Proprietary fonts"
-		echo "30 - THEMES"
-		echo "31 - get out of this menu"
+		echo "1 - Light Weight IDE or text editor"
+		echo "2 - rootkit and security checkers"
+		echo "3 - Utility Software/Monitoring tools"
+		echo "4 - Web Browsers"
+		echo "5 - Media Players"
+		echo "6 - Bittorrent Clients"
+		echo "7 - Guake terminal"
+		echo "8 - video and audio editing"
+		echo "9 - preload"
+		echo "10 - Webcam application"
+		echo "11 - bleachbit cleaning software"
+		echo "12 - proprietary fonts"
+		echo "13 - THEMES"
+		echo "14 - GAMES"
+		echo "15 - get out of this menu"
 
 		read software;
-		
+	
 		case $software in
-
 			1)
-			sudo apt-get -y install geany 
-	;;
+			sudo apt install -y geany
+		;;
 			2)
-			sudo apt-get -y install rkhunter
-	;;
+			echo "1 - rkhunter"
+			echo "2 - clamav"
+			read package
+			if [[ $package == 1 ]];
+			then
+				sudo apt install -y rkhunter
+			elif [[ $package == 2 ]];
+			then
+				sudo apt install -y clamav && sudo freshclam
+			fi
+		;;
 			3)
-			sudo apt-get -y install guake
-	;;
-			4) 
-			sudo apt-get -y install gnome-tweak-tool
-	;;
-			5)
+			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute gnome-disk-utility  htop iotop inxi xsensors lm-sensors gufw gparted
+		;;
+			4)
 			echo "This installs your choice of browser"
 			echo "1 - Chromium"
 			echo "2 - epiphany"
@@ -466,22 +453,22 @@ InstallAndConquer() {
 			read browser
 			if [[ $browser == 1 ]];
 			then
-				sudo apt-get -y install chromium-browser
+				sudo apt install -y chromium-browser
 			elif [[ $browser == 2 ]];
 			then
-				sudo apt-get -y install epiphany
+				sudo apt install -y epiphany
 			elif [[ $browser == 3 ]];
 			then
-				sudo apt-get -y install qupzilla
+				sudo apt install -y qupzilla
 			elif [[ $browser == 4 ]];
 			then
-				sudo apt-get -y install midori
+				sudo apt install -y midori
 			elif [[ $browser == 5 ]];
 			then
 				cd /tmp
 				wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 				sudo dpkg -i *.deb
-				sudo apt-get -f install
+				sudo apt install -f 
 			elif [[ $browser == 6 ]];
 			then
 				wget http://linux.palemoon.org/datastore/release/pminstaller-0.2.4.tar.bz2
@@ -491,10 +478,10 @@ InstallAndConquer() {
 			then
 				wget https://downloads.vivaldi.com/stable/vivaldi-stable_1.15.1147.36-1_amd64.deb
 				sudo dpkg -i *.deb
-				sudo apt-get install -f 
+				sudo apt install -f
 			fi
-	;;
-			6)
+		;;
+			5)
 			echo "This installs your choice of media players/music players"
 			echo "1 - VLC"
 			echo "2 - rhythmbox"
@@ -506,19 +493,19 @@ InstallAndConquer() {
 			read player
 			if [[ $player == 1 ]];
 			then
-				sudo apt-get -y install vlc
+				sudo apt install -y vlc
 			elif [[ $player == 2 ]];
 			then
-				sudo apt-get -y install rhythmbox
+				sudo apt install -y rhythmbox
 			elif [[ $player == 3 ]];
 			then
-				sudo apt-get -y install banshee
+				sudo apt install -y banshee
 			elif [[ $player == 4 ]];
 			then
-				sudo apt-get -y install parole
+				sudo apt install -y parole
 			elif [[ $player == 5 ]];
 			then
-				sudo apt-get -y install clementine
+				sudo apt install -y clementine
 			elif [[ $player == 6 ]];
 			then
 				sudo apt-get -y install mplayer
@@ -529,8 +516,8 @@ InstallAndConquer() {
 				sudo apt-get update
 				sudo apt-get -y install kodi
 			fi
-	;;
-			7)
+		;;
+			6)
 			echo "This installs your choice of bittorrent client"
 			echo "1 - transmission-gtk"
 			echo "2 - deluge"
@@ -546,87 +533,37 @@ InstallAndConquer() {
 			then
 				sudo apt-get -y install qbittorrent
 			fi
-	;;
+		;;
+			7)
+			sudo apt install -y guake
+		;;
 			8)
-			echo "This installs zenmap and nmap to scan networks with"
-			sudo apt-get -y install zenmap nmap
-	;;
+			sudo apt install -y kdenlive audacity obs-studio
+		;;
 			9)
-			echo "This installs video and audio editing software"
-			sudo apt-get -y install kdenlive audacity
-	;;
+			sudo apt install -y preload
+		;;
 			10)
-			echo "Most installations come with this, but certain distros do not install this by default"
-			sudo apt-get -y install pidgin
-	;;
+			sudo apt install -y guvcview
+		;;
 			11)
-			echo "This installs lightweight office applications"
-			sudo apt-get -y install abiword gnumeric
-	;;
+			sudo apt install -y bleachbit
+		;;
 			12)
-			echo "This installs clam antivirus if you think you need it"
-			sudo apt-get -y install clamav
-	;;
+			sudo apt install -y ttf-mscorefonts-installer
+		;;
+			
 			13)
-			echo "This installs a partitioning tool"
-			sudo apt-get -y install gparted
-	;;
+			echo "THEMES"
+			sudo add-apt-repository ppa:noobslab/icons
+			sudo add-apt-repository ppa:noobslab/icons
+			sudo add-apt-repository ppa:noobslab/icons
+			sudo add-apt-repository ppa:papirus/papirus
+			sudo add-apt-repository ppa:moka/daily
+			sudo apt-get update
+			sudo apt-get install -y mate-themes faenza-icon-theme obsidian-1-icons dalisha-icons shadow-icon-theme moka-icon-theme papirus-icon-theme
+		;;
 			14)
-			echo "This installs cleaning software"
-			sudo apt-get -y install bleachbit
-	;;
-			15)
-			echo "This will install a command line disk space utility"
-			sudo apt-get -y install ncdu
-	;;
-			16)
-			echo "This installs iotop and htop to allow you to monitor in nearly realtime what your system is doing"
-			sudo apt-get -y install htop iotop inxi
-	;;
-			17)
-			echo "This installs software to allow you to control write-back-caching"
-			sudo apt-get -y install hdparm
-	;;
-			18)
-			echo "This installs temperature monitoring software"
-			sudo apt-get -y install lm-sensors xsensors hddtemp
-	;;
-			19)
-			echo "This installs extra networking tools"
-			sudo apt-get -y install traceroute
-	;;
-			20)
-			echo "This installs hardinfo a graphical way to find hardware information"
-			sudo apt-get -y install hardinfo
-	;;
-			21)
-			echo "This installs a graphical front end to the firewall we enabled earlier"
-			sudo apt-get -y install gufw
-	;;
-			22)
-			echo "This installs a preloader to store applications in memory for faster loading"
-			sudo apt-get -y install preload
-	;;
-			23)
-			sudo apt-get install guvcview
-	;;
-			24)
-			echo "This installs your graphical software managers"
-			sudo apt-get install -y gdebi synaptic
-	;;
-			25)
-			echo "This installs handbrake"
-			sudo apt-get install -y handbrake
-	;;
-			26)
-			echo "This installs your steam client"
-			sudo apt-get install steam
-	;;
-			27)
-			echo "Installs obs-studio"
-			sudo apt-get install -y obs-studio
-	;;
-			28)
 			echo "Installs your choice in linux games"
 			echo "1 - supertuxkart"
 			echo "2 - gnome-mahjongg"
@@ -636,7 +573,7 @@ InstallAndConquer() {
 			echo "6 - gnome-mines"
 			echo "7 - chromium-bsu"
 			echo "8 - supertux"
-			echo "9 - Everything"
+			echo "9 - Everything plus steam"
 			read package
 			if [[ package == 1 ]];
 			then
@@ -664,29 +601,15 @@ InstallAndConquer() {
 				sudo apt-get -y install supertux
 			elif [[ $package == 9 ]];
 			then
-				sudo apt-get install -y supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux
+				sudo apt-get install -y supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux steam
 			else 
-				echo "You've entered an invalid number, please come back later and try again."
+				echo "You have entered an invalid number, please come back later and try again."
 			fi
-	;;
-			29)
-			echo "This installs proprietary fonts"
-			sudo apt-get install ttf-mscorefonts-installer
-	;;
-			30)
-			echo "THEMES"
-			sudo add-apt-repository ppa:noobslab/icons
-			sudo add-apt-repository ppa:noobslab/icons
-			sudo add-apt-repository ppa:noobslab/icons
-			sudo add-apt-repository ppa:papirus/papirus
-			sudo add-apt-repository ppa:moka/daily
-			sudo apt-get update
-			sudo apt-get install -y mate-themes faenza-icon-theme obsidian-1-icons dalisha-icons shadow-icon-theme moka-icon-theme papirus-icon-theme
-	;;
-			31)
-			echo "Aight den!"
+		;;
+			15)
+			echo "Alright den!"
 			break
-	;;
+		;;
 		esac
 	done
 	
@@ -699,7 +622,7 @@ InstallAndConquer() {
 	do 
 		echo "Enter the name of the software you wish to install"
 		read software
-		sudo apt-get -y install $software
+		sudo apt install -y $software
 	break
 	done
 
@@ -714,38 +637,45 @@ InstallAndConquer() {
 		do
 			if [[ $DESKTOP_SESSION == unity ]];
 			then
-				sudo apt-get -y install ubuntu-restricted-extras
+				sudo apt install -y ubuntu-restricted-extras
 			elif [[ $DESKTOP_SESSION == xfce ]];
 			then
-				sudo apt-get -y install xubuntu-restricted-extras
-				sudo apt-get -y install xfce4-goodies
+				sudo apt install -y xubuntu-restricted-extras
+				sudo apt install -y xfce4-goodies
 			elif [[ $DESKTOP_SESSION == kde ]];
 			then
-				sudo apt-get -y install kubuntu-restricted-extras
+				sudo apt install -y kubuntu-restricted-extras
 			elif [[ $DESKTOP_SESSION == lxde ]];
 			then 
-				sudo apt-get -y install lubuntu-restricted-extras
+				sudo apt install -y lubuntu-restricted-extras
 			elif [[ $DESKTOP_SESSION == mate ]];
 			then
-				sudo apt-get -y install ubuntu-restricted-extras
+				sudo apt install -y ubuntu-restricted-extras
 			elif [[ $DESKTOP_SESSION == gnome ]];
 			then
-				sudo apt-get -y install ubuntu-restricted-extras
-				sudo apt-get -y install gnome-session
+				sudo apt install -y ubuntu-restricted-extras
+				sudo apt install -y gnome-session
 			elif [[ $DESKTOP_SESSION == enlightenment ]];
 			then
-				sudo apt-get -y install ubuntu-restricted-extras
+				sudo apt install -y ubuntu-restricted-extras
 			elif [[ $DESKTOP_SESSION == Budgie ]];
 			then
-				sudo apt-get -y install ubuntu-restricted-extras
+				sudo apt install -y ubuntu-restricted-extras
 			elif [[ $DESKTOP_SESSION == Cinnamon ]];
 			then
-				sudo apt-get -y install ubuntu-restricted-extras
+				sudo apt install -y ubuntu-restricted-extras
 			else
 				echo "You're running some other window manager I haven't tested yet."
 				sleep 1
 			fi
 		done
+		
+		echo "If you're running Mint, it's a good idea to install the mint meta package"
+		Release=$(cat /etc/os-release | grep PRETTY_NAME= | awk '{print $2}')
+		if [[ $Release == Mint ]];
+		then
+			sudo apt install -y mint-meta-codecs
+		fi
 	break
 	done 
 	
@@ -834,9 +764,9 @@ HostsfileSelect() {
 
 cleanup() {
 	#This flushes apt cache
-	sudo apt-get -y autoremove
-	sudo apt-get -y autoclean 
-	sudo apt-get clean
+	sudo apt autoremove -y
+	sudo apt autoclean -y
+	sudo apt clean -y
 
 	#This allows you to remove unwanted junk
 	echo "Are there any other applications you wish to remove(Y/n)"
@@ -845,7 +775,7 @@ cleanup() {
 	do
 		echo "Please enter the name of the software you wish to remove"
         read software
-		sudo apt-get -y remove --purge $software
+		sudo apt -y remove --purge $software
 	break
 	done
 
@@ -886,8 +816,8 @@ SystemMaintenance() {
 	
 	#This updates your system
 	sudo dpkg --configure -a
-	sudo apt-get install  -f
-	sudo apt-get update && sudo apt-get dist-upgrade -yy
+	sudo apt install  -f
+	sudo apt update && sudo apt dist-upgrade -yy
 
 	#Sets default web browser
 	echo "Would you like to switch your default browser?(Y/n)"
@@ -1090,7 +1020,7 @@ Greeting() {
 	echo "3 - Install software"
 	echo "4 - Setup a hosts file"
 	echo "5 - Backup your system"
-	echo "6 - Restore the system"
+	echo "6 - Restore your system"
 	echo "7 - Manage system services"
 	echo "8 - Collect System Information"
 	echo "9 - Help"
