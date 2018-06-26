@@ -407,18 +407,19 @@ InstallAndConquer() {
 		echo "1 - Light Weight IDE or text editor"
 		echo "2 - rootkit and security checkers"
 		echo "3 - Utility Software/Monitoring tools"
-		echo "4 - Web Browsers"
-		echo "5 - Media Players"
-		echo "6 - Bittorrent Clients"
-		echo "7 - Guake terminal"
-		echo "8 - video and audio editing"
-		echo "9 - preload"
-		echo "10 - Webcam application"
-		echo "11 - bleachbit cleaning software"
-		echo "12 - proprietary fonts"
-		echo "13 - THEMES"
-		echo "14 - GAMES"
-		echo "15 - get out of this menu"
+		echo "4 - Backup software"
+		echo "5 - Web Browsers"
+		echo "6 - Media Players"
+		echo "7 - Bittorrent Clients"
+		echo "8 - Guake terminal"
+		echo "9 - video and audio editing"
+		echo "10 - preload"
+		echo "11 - Webcam application"
+		echo "12 - bleachbit cleaning software"
+		echo "13 - proprietary fonts"
+		echo "14 - THEMES"
+		echo "15 - GAMES"
+		echo "16 - get out of this menu"
 
 		read software;
 	
@@ -442,6 +443,23 @@ InstallAndConquer() {
 			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute gnome-disk-utility  htop iotop inxi xsensors lm-sensors gufw gparted
 		;;
 			4)
+			echo "1 - deja-dup"
+			echo "2 - bacula"
+			echo "3 - backintime"
+			read software
+			if [[ $software == 1 ]];
+			then
+				sudo apt install -y deja-dup
+			elif [[ $software == 2 ]];
+			then
+				sudo apt install -y bacula
+			elif [[ $software == 3 ]];
+			then
+				sudo apt install -y backintime-common
+			fi
+			
+		;;
+			5)
 			echo "This installs your choice of browser"
 			echo "1 - Chromium"
 			echo "2 - epiphany"
@@ -481,7 +499,7 @@ InstallAndConquer() {
 				sudo apt install -f
 			fi
 		;;
-			5)
+			6)
 			echo "This installs your choice of media players/music players"
 			echo "1 - VLC"
 			echo "2 - rhythmbox"
@@ -517,7 +535,7 @@ InstallAndConquer() {
 				sudo apt-get -y install kodi
 			fi
 		;;
-			6)
+			7)
 			echo "This installs your choice of bittorrent client"
 			echo "1 - transmission-gtk"
 			echo "2 - deluge"
@@ -534,26 +552,26 @@ InstallAndConquer() {
 				sudo apt-get -y install qbittorrent
 			fi
 		;;
-			7)
+			8)
 			sudo apt install -y guake
 		;;
-			8)
+			9)
 			sudo apt install -y kdenlive audacity obs-studio
 		;;
-			9)
+			10)
 			sudo apt install -y preload
 		;;
-			10)
+			11)
 			sudo apt install -y guvcview
 		;;
-			11)
+			12)
 			sudo apt install -y bleachbit
 		;;
-			12)
+			13)
 			sudo apt install -y ttf-mscorefonts-installer
 		;;
 			
-			13)
+			14)
 			echo "THEMES"
 			sudo add-apt-repository ppa:noobslab/icons
 			sudo add-apt-repository ppa:noobslab/icons
@@ -563,7 +581,7 @@ InstallAndConquer() {
 			sudo apt-get update
 			sudo apt-get install -y mate-themes faenza-icon-theme obsidian-1-icons dalisha-icons shadow-icon-theme moka-icon-theme papirus-icon-theme
 		;;
-			14)
+			15)
 			echo "Installs your choice in linux games"
 			echo "1 - supertuxkart"
 			echo "2 - gnome-mahjongg"
@@ -606,7 +624,7 @@ InstallAndConquer() {
 				echo "You have entered an invalid number, please come back later and try again."
 			fi
 		;;
-			15)
+			16)
 			echo "Alright den!"
 			break
 		;;
@@ -844,6 +862,25 @@ SystemMaintenance() {
 
 	#Checks disk for errors
 	sudo touch /forcefsck
+	
+	#Attempts to run trim on your system
+	drive=$(cat /sys/block/sda/queue/rotational)
+	for rota in drive;
+	do
+		if [[ $drive == 0 ]];
+		then
+			echo "As in the set up function, we can run trim on your ssd if you wish"
+			echo "Would you like to run trim?(Y/n)"
+			read answer
+			while [ $answer == Y ];
+			do
+				sudo fstrim -v /
+			break
+			done
+		else
+			echo "Your drive is a standard hard drive"
+		fi
+	done
 	
 	#Optional and prolly not needed
 	drive=$(cat /sys/block/sda/queue/rotational)
