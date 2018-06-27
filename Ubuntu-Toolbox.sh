@@ -863,25 +863,6 @@ SystemMaintenance() {
 	#Checks disk for errors
 	sudo touch /forcefsck
 	
-	#Attempts to run trim on your system
-	drive=$(cat /sys/block/sda/queue/rotational)
-	for rota in drive;
-	do
-		if [[ $drive == 0 ]];
-		then
-			echo "As in the set up function, we can run trim on your ssd if you wish"
-			echo "Would you like to run trim?(Y/n)"
-			read answer
-			while [ $answer == Y ];
-			do
-				sudo fstrim -v /
-			break
-			done
-		else
-			echo "Your drive is a standard hard drive"
-		fi
-	done
-	
 	#Optional and prolly not needed
 	drive=$(cat /sys/block/sda/queue/rotational)
 	for rota in drive;
@@ -893,6 +874,15 @@ SystemMaintenance() {
 			while [ $answer == Y ];
 			do
 				sudo e4defrag / -c > fragmentation.log 
+			break
+			done
+		elif [[ $drive == 0 ]];
+		then
+			echo "Would you also like to run trim?(Y/n)"
+			read answer
+			while [ $answer == Y ];
+			do
+				sudo fstrim -v /
 			break
 			done
 		fi 
