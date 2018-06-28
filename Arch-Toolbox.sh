@@ -197,7 +197,6 @@ Systeminfo() {
 	echo "SYSTEM INFORMATION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "USER" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
@@ -222,6 +221,11 @@ Systeminfo() {
 	echo "DATE" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	date >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "UPDATE CHANNEL" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	cat /etc/pacman-mirrors.conf | grep "Branch" >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "KERNEL AND OPERATING SYSTEM INFORMATION" >> $host-sysinfo.txt
@@ -367,7 +371,6 @@ Systeminfo() {
 	echo "SYSTEMD'S FAILED LIST" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	systemctl --failed >> $host-sysinfo.txt
-	echo "" >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "END OF FILE" >> $host-sysinfo.txt
