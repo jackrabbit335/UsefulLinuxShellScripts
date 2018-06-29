@@ -151,7 +151,6 @@ Systeminfo() {
 	echo "SYSTEM INFORMATION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "USER" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
@@ -316,7 +315,6 @@ Systeminfo() {
 	echo "SYSTEMD'S FAILED LIST" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	systemctl --failed >> $host-sysinfo.txt
-	echo "" >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "END OF FILE" >> $host-sysinfo.txt
