@@ -403,10 +403,11 @@ InstallAndConquer() {
 		echo "10 - GAMES!!!!!!!!!"
 		echo "11 - Video editing/encoding"
 		echo "12 - Plank"
-		echo "13 - Backup"
-		echo "14 - THEMES!!!!!!!!"
-		echo "15 - Security checkers/scanners"
-		echo "16 - exit out of this menu"
+		echo "13 - Yaourt package manager/AUR helper"
+		echo "14 - Backup"
+		echo "15 - THEMES!!!!!!!!"
+		echo "16 - Security checkers/scanners"
+		echo "17 - exit out of this menu"
 
 	read software;
 
@@ -491,6 +492,8 @@ InstallAndConquer() {
 		echo "8 - lynx"
 		echo "9 - vivaldi"
 		echo "10 - google-chrome"
+		echo "11 - waterfox"
+		echo "12 - basilisk"
 		read browser
 		if [[ $browser == 1 ]];
 		then
@@ -532,6 +535,22 @@ InstallAndConquer() {
 			tar -xvf google-chrome.tar
 			cd google-chrome
 			makepkg -si
+		elif [[ $browser == 11 ]];
+		then
+			cd /tmp
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/waterfox-bin.tar.gz
+			gunzip waterfox-bin.tar.gz
+			tar -xvf waterfox-bin.tar
+			cd waterfox-bin
+			makepkg -si 
+		elif [[ $browser == 12 ]];
+		then
+			cd /tmp
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/basilisk-bin.tar.gz
+			gunzip basilisk-bin.tar.gz
+			tar -xvf basilisk-bin.tar
+			cd basilisk-bin
+			makepkg -si 
 		else 
 			echo "Of course, we can always do this later."
 		fi
@@ -698,9 +717,14 @@ InstallAndConquer() {
 		sudo pacman -S --noconfirm plank
 	;;
 		13)
+		echo "This installs yaourt a package manager for AUR"
+		sudo pacman -S --noconfirm yaourt
+	;;
+		14)
 		echo "This installs your backup software"
 		echo "1 - deja-dup"
 		echo "2 - grsync"
+		echo "3 - timeshift"
 		read package
 		if [[ $package == 1 ]];
 		then
@@ -708,18 +732,21 @@ InstallAndConquer() {
 		elif [[ $package == 2 ]];
 		then
 			sudo pacman -S --noconfirm grsync
+		elif [[ $package == 3 ]];
+		then
+			sudo pacman -S --noconfirm timeshift
 		else 
 			echo "Or not"
 		fi
 
 	;;
-		14)
+		15)
 		echo "This installs a few common themes"
 		sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme numix-themes-archblue arc-gtk-theme papirus-icon-theme faenza-green-icon-theme faience-icon-theme
 		wget https://aur.archlinux.org/cgit/aur.git/snapshot/obsidian-icon-theme.tar.gz && tar -xzf obsidian-icon-theme.tar.gz && sudo mv obsidian-icon-theme /usr/share/icons
 
 	;;
-		15)
+		16)
 		echo "This installs possible security software and virus checker if you wish"
 		echo "1 - rkhunter"
 		echo "2 - clamav"
@@ -737,7 +764,7 @@ InstallAndConquer() {
 		esac
 
 	;;
-		16)
+		17)
 		echo "Ok, well, I'm here if you change your mind"
 		break
 	;;

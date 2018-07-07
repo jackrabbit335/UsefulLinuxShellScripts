@@ -444,6 +444,7 @@ InstallAndConquer() {
 			echo "1 - deja-dup"
 			echo "2 - bacula"
 			echo "3 - backintime"
+			echo "4 - timeshift"
 			read software
 			if [[ $software == 1 ]];
 			then
@@ -454,6 +455,9 @@ InstallAndConquer() {
 			elif [[ $software == 3 ]];
 			then
 				sudo apt install -y backintime-common
+			elif [[ $software == 4 ]];
+			then
+				sudo apt install timeshift
 			fi
 			
 		;;
@@ -466,6 +470,8 @@ InstallAndConquer() {
 			echo "5 - Google-Chrome"
 			echo "6 - Pale Moon"
 			echo "7 - Vivaldi"
+			echo "8 - lynx"
+			echo "9 - dillo"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -495,6 +501,12 @@ InstallAndConquer() {
 				wget https://downloads.vivaldi.com/stable/vivaldi-stable_1.15.1147.36-1_amd64.deb
 				sudo dpkg -i *.deb
 				sudo apt install -f
+			elif [[ $browser == 8 ]];
+			then
+				sudo apt install lynx
+			elif [[ $browser == 9 ]];
+			then
+				sudo apt install dillo
 			fi
 		;;
 			6)
