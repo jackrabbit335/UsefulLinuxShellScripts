@@ -928,17 +928,7 @@ _EOF_
 		sleep 1
 	;;
 	esac
-
-	#Change the default browser
-	echo "Would you like to change your default browser also?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		echo "Enter the name of the browser you wish to use"
-		read browser
-		xdg-settings set default-web-browser $browser.desktop
-	break
-	done
+	
 
 	clear
 	Greeting
