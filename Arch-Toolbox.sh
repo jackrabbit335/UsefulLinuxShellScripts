@@ -494,6 +494,7 @@ InstallAndConquer() {
 		echo "10 - google-chrome"
 		echo "11 - waterfox"
 		echo "12 - basilisk"
+		echo "13 - slimjet"
 		read browser
 		if [[ $browser == 1 ]];
 		then
@@ -551,6 +552,14 @@ InstallAndConquer() {
 			tar -xvf basilisk-bin.tar
 			cd basilisk-bin
 			makepkg -si 
+		elif [[ $browser == 13 ]];
+		then
+			cd /tmp
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/slimjet.tar.gz
+			gunzip slimjet.tar.gz
+			tar -xvf slimjet.tar
+			cd slimjet
+			makepkg -si 
 		else 
 			echo "Of course, we can always do this later."
 		fi
@@ -564,10 +573,11 @@ InstallAndConquer() {
 		echo "4 - Music"
 		echo "5 - rhythmbox"
 		echo "6 - mpv"
-		echo "7 - VLC"
-		echo "8 - totem"
-		echo "9 - pragha"
-		echo "10 - clementine"
+		echo "7 - smplayer"
+		echo "8 - VLC"
+		echo "9 - totem"
+		echo "10 - pragha"
+		echo "11 - clementine"
 		read player
 		if [[ $player == 1 ]];
 		then
@@ -586,8 +596,11 @@ InstallAndConquer() {
 			sudo pacman -S --noconfirm rhythmbox
 		elif [[ $player == 6 ]];
 		then
-			sudo pacman -S --noconfirm mpv 
-		elif [[ $player == 7 ]];
+			sudo pacman -S --noconfirm mpv
+		elif [[ $player == 7 ]]; 
+		then
+			sudo pacman -S --noconfirm smplayer smplayer-skins
+		elif [[ $player == 8 ]];
 		then
 			distribution=$(cat /etc/issue | awk '{print $1}')
 			if [[ $distribution == manjaro ]];
@@ -596,13 +609,13 @@ InstallAndConquer() {
 			else
 				sudo pacman -S --noconfirm vlc-nightly
 			fi
-		elif [[ $player == 8 ]];
-		then
-			sudo pacman -s --noconfirm totem
 		elif [[ $player == 9 ]];
 		then
-			sudo pacman -S --noconfirm pragha 
+			sudo pacman -s --noconfirm totem
 		elif [[ $player == 10 ]];
+		then
+			sudo pacman -S --noconfirm pragha 
+		elif [[ $player == 11 ]];
 		then
 			sudo pacman -S --noconfirm clementine
 		else 
@@ -1043,6 +1056,111 @@ _EOF_
 	Greeting
 }
 
+BrowserRepair() {
+cat << _EOF_
+This can fix a lot of the usual issues with a few of the bigger browsers. 
+These can include performance hitting issues. If your browser needs a tuneup,
+it is probably best to do it in the browser itself, but when you just want something
+fast, this can do it for you. More browsers and options are coming.
+_EOF_
+
+	#Look for the following browsers
+	browser1="$(find /usr/bin/firefox)"
+	browser2="$(find /usr/bin/vivaldi*)"
+	browser3="$(find /usr/bin/palemoon)"
+	browser4="$(find /usr/bin/google-chrome*)"
+	browser5="$(find /usr/bin/chromium)"
+	browser6="$(find /usr/bin/opera)"
+	browser7="$(find /usr/bin/waterfox)"
+
+	echo $browser1
+	echo $browser2
+	echo $browser3
+	echo $browser4
+	echo $browser5
+	echo $browser6
+	echo $browser7
+
+	sleep 2
+
+	echo "choose the browser you wish to reset"
+	echo "1 - Firefox"
+	echo "2 - Vivaldi" 
+	echo "3 - Pale Moon"
+	echo "4 - Chrome"
+	echo "5 - Chromium"
+	echo "6 - Opera"
+	echo "7 - Vivaldi-snapshot"
+	echo "8 - Waterfox"
+
+	read operation;
+
+	case $operation in
+		1)
+		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old
+		sudo rm -r ~/.mozilla/firefox/profile.ini 
+		echo "Your browser has now been reset"
+		sleep 1
+	;;
+		2)
+		sudo cp -r ~/.config/vivaldi/ ~/.config/vivaldi-old
+		sudo rm -r ~/.config/vivaldi/* 
+		echo "Your browser has now been reset"
+		sleep 1
+	;;
+		3)
+		sudo cp -r ~/'.moonchild productions'/'pale moon' ~/'.moonchild productions'/'pale moon'-old
+		sudo rm -r ~/'.moonchild productions'/'pale moon'/profile.ini 
+		echo "Your browser has now been reset"
+		sleep 1
+	;;
+		4)
+		sudo cp -r ~/.config/google-chrome ~/.config/google-chrome-old
+		sudo rm -r ~/.config/google-chrome/*
+		echo "Your browser has now been reset"
+		sleep 1 
+	;;
+		5)
+		sudo cp -r ~/.config/chromium ~/.config/chromium-old
+		sudo rm -r ~/.config/chromium/*
+		echo "Your browser has now been reset"
+		sleep 1
+	;;
+		6)
+		sudo cp -r ~/.config/opera ~/.config/opera-old
+		sudo rm -r ~/.config/opera/* 
+		echo "Your browser has now been reset"
+		sleep 1
+	;;
+		7)
+		sudo cp -r ~/.config/vivaldi-snapshot ~/.config/vivaldi-snapshot-old
+		sudo rm -r ~/.config/vivaldi-snapshot/*
+		echo "Your browser has now been reset"
+		sleep 1
+	;;
+		8)
+		sudo cp -r ~/.waterfox ~/.waterfox-old
+		sudo rm -r ~/.waterfox/*
+		echo "Your browser has now been reset"
+		sleep 1
+	;;
+	esac
+	
+	#Change the default browser
+	echo "Would you like to change your default browser also?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		echo "Enter the name of the browser you wish to use"
+		read browser
+		xdg-settings set default-web-browser $browser.desktop
+	break
+	done
+
+	clear
+	Greeting
+}
+
 SystemMaintenance() {
 	checkNetwork
 	
@@ -1056,17 +1174,6 @@ SystemMaintenance() {
 		sudo rankmirrors -n 0 /etc/pacman.d/antergos-mirrorlist > /tmp/antergos-mirrorlist && sudo cp /tmp/antergos-mirrorlist /etc/pacman.d
 		sudo pacman -Syyu --noconfirm
 	fi
-
-	#Sets default web browser
-	echo "Would you like to switch your default browser?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		echo "Confirm the browser you wish to set as default."
-		read browser
-		xdg-settings set default-web-browser $browser.desktop
-	break
-	done
 
 	#This refreshes systemd in case of failed or changed units
 	sudo systemctl daemon-reload
@@ -1321,9 +1428,10 @@ Greeting() {
 	echo "9 - Collect system information"
 	echo "10 - Cleanup"
 	echo "11 - System Maintenance"
-	echo "12 - Update"
-	echo "13 - Help"
-	echo "14 - exit"
+	echo "12 - Browser Repair"
+	echo "13 - Update"
+	echo "14 - Help"
+	echo "15 - exit"
 	
 	read selection;
 	
@@ -1362,12 +1470,15 @@ Greeting() {
 		SystemMaintenance
 	;;
 		12)
-		Update
+		BrowserRepair
 	;;
 		13)
-		Help
+		Update
 	;;
 		14)
+		Help
+	;;
+		15)
 		echo "Thank you for using Arch-Toolbox... Goodbye!"
 		sleep 1
 		exit
