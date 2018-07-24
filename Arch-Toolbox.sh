@@ -283,6 +283,11 @@ Systeminfo() {
 	ss -tulpn >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
+	echo "FIREWALL STATUS" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	sudo ufw status verbose >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
 	echo "PROCESS LIST" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	ps -aux >> $host-sysinfo.txt
@@ -389,25 +394,24 @@ InstallAndConquer() {
 	read answer 
 	while [ $answer == Y ];
 	do
-		echo "Here is a list of software that I deem to be useful"
-		sleep 2
 		echo "1 - Utility suite/Monitoring Software"
 		echo "2 - IDE or text/code editor"
-		echo "3 - Download managers and torrenting clients"
-		echo "4 - Web browser from a list"
-		echo "5 - Media/home theater software"
-		echo "6 - Virtual machine client"
-		echo "7 - Wine and play on linux"
-		echo "8 - quvcview"
-		echo "9 - Manipulate config files and switch between versions of software"
-		echo "10 - GAMES!!!!!!!!!"
-		echo "11 - Video editing/encoding"
-		echo "12 - Plank"
-		echo "13 - Yaourt package manager/AUR helper"
-		echo "14 - Backup"
-		echo "15 - THEMES!!!!!!!!"
-		echo "16 - Security checkers/scanners"
-		echo "17 - exit out of this menu"
+		echo "3 - Download managers"
+		echo "4 - Torrent clients"
+		echo "5 - Web browser from a list"
+		echo "6 - Media/home theater software"
+		echo "7 - Virtual machine client"
+		echo "8 - Wine and play on linux"
+		echo "9 - quvcview"
+		echo "10 - Manipulate config files and switch between versions of software"
+		echo "11 - GAMES!!!!!!!!!"
+		echo "12 - Video editing/encoding"
+		echo "13 - Plank"
+		echo "14 - Yaourt package manager/AUR helper"
+		echo "15 - Backup"
+		echo "16 - THEMES!!!!!!!!"
+		echo "17 - Security checkers/scanners"
+		echo "18 - exit out of this menu"
 
 	read software;
 
@@ -449,13 +453,10 @@ InstallAndConquer() {
 	
 	;;
 		3)
-		echo "This installs a choice in download managers/torrent clients"
+		echo "This installs a choice in download managers"
 		echo "1 - wget"
 		echo "2 - uget" 
 		echo "3 - aria2" 
-		echo "4 - transmission-gtk"
-		echo "5 - qbittorrent"
-		echo "6 - deluge"
 		read software
 		if [[ $software == 1 ]];
 		then
@@ -466,35 +467,46 @@ InstallAndConquer() {
 		elif [[ $software == 3 ]];
 		then
 			sudo pacman -S --noconfirm aria2
-		elif [[ $software == 4 ]];
-		then
-			sudo pacman -S --noconfirm transmission-gtk 
-		elif [[ $software == 5 ]];
-		then
-			sudo pacman -S --noconfirm qbittorrent
-		elif [[ $software == 6 ]];
-		then
-			sudo pacman -S --noconfirm deluge
 		else
 			echo "Most systems have one of these, if yours doesn't, I'd suggest wget"
 		fi
-
 	;;
 		4)
+		echo "This installs your choice of torrent clients"
+		echo "1 - transmission-gtk"
+		echo "2 - deluge"
+		echo "3 - qbittorrent"
+		read client
+		if [[ $client == 1 ]];
+		then
+			sudo pacman -S --noconfirm transmission-gtk
+		elif [[ $client == 2 ]];
+		then
+			sudo pacman -S --noconfirm deluge
+		elif [[ $client == 3 ]];
+		then
+			sudo pacman -S --noconfirm qbittorrent
+		else 
+			echo "Most systems have one of these also, but if yours does not, try qbittorrent"
+		fi
+	;;
+		5)
 		echo "This installs your choice in browsers"
 		echo "1 - chromium"
 		echo "2 - epiphany"
 		echo "3 - falkon"
-		echo "4 - opera" 
-		echo "5 - Pale Moon"
-		echo "6 - seamonkey"
-		echo "7 - dillo"
-		echo "8 - lynx"
-		echo "9 - vivaldi"
-		echo "10 - google-chrome"
-		echo "11 - waterfox"
-		echo "12 - basilisk"
-		echo "13 - slimjet"
+		echo "4 - midori"
+		echo "5 - opera" 
+		echo "6 - vivaldi-snapshot"
+		echo "7 - Pale Moon"
+		echo "8 - seamonkey"
+		echo "9 - dillo"
+		echo "10 - lynx"
+		echo "11 - vivaldi"
+		echo "12 - google-chrome"
+		echo "13 - waterfox"
+		echo "14 - basilisk"
+		echo "15 - slimjet"
 		read browser
 		if [[ $browser == 1 ]];
 		then
@@ -507,20 +519,31 @@ InstallAndConquer() {
 			sudo pacman -S --noconfirm falkon
 		elif [[ $browser == 4 ]];
 		then
-			sudo pacman -S --noconfirm opera opera-ffmpeg-codecs
+			sudo pacman -S midori
 		elif [[ $browser == 5 ]];
 		then
-			sudo pacman -S --noconfirm palemoon-bin
+			sudo pacman -S --noconfirm opera opera-ffmpeg-codecs
 		elif [[ $browser == 6 ]];
 		then
-			sudo pacman -S --noconfirm seamonkey
+			cd /tmp
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi-snapshot.tar.gz
+			gunzip vivaldi-snapshot.tar.gz
+			tar -xvf vivaldi-snapshot.tar
+			cd vivaldi-snapshot
+			makepkg -si
 		elif [[ $browser == 7 ]];
 		then
-			sudo pacman -S --noconfirm dillo
+			sudo pacman -S --noconfirm palemoon-bin
 		elif [[ $browser == 8 ]];
 		then
-			sudo pacman -S --noconfirm lynx
+			sudo pacman -S --noconfirm seamonkey
 		elif [[ $browser == 9 ]];
+		then
+			sudo pacman -S --noconfirm dillo
+		elif [[ $browser == 10 ]];
+		then
+			sudo pacman -S --noconfirm lynx
+		elif [[ $browser == 11 ]];
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz
@@ -528,7 +551,7 @@ InstallAndConquer() {
 			tar -xvf vivaldi.tar
 			cd vivaldi
 			makepkg -si
-		elif [[ $browser == 10 ]];
+		elif [[ $browser == 12 ]];
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz
@@ -536,7 +559,7 @@ InstallAndConquer() {
 			tar -xvf google-chrome.tar
 			cd google-chrome
 			makepkg -si
-		elif [[ $browser == 11 ]];
+		elif [[ $browser == 13 ]];
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/waterfox-bin.tar.gz
@@ -544,7 +567,7 @@ InstallAndConquer() {
 			tar -xvf waterfox-bin.tar
 			cd waterfox-bin
 			makepkg -si 
-		elif [[ $browser == 12 ]];
+		elif [[ $browser == 14 ]];
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/basilisk-bin.tar.gz
@@ -552,7 +575,7 @@ InstallAndConquer() {
 			tar -xvf basilisk-bin.tar
 			cd basilisk-bin
 			makepkg -si 
-		elif [[ $browser == 13 ]];
+		elif [[ $browser == 15 ]];
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/slimjet.tar.gz
@@ -565,7 +588,7 @@ InstallAndConquer() {
 		fi
 	
 	;;
-		5)
+		6)
 		echo "This installs a choice in media players"
 		echo "1 - xplayer"
 		echo "2 - parole"
@@ -623,12 +646,12 @@ InstallAndConquer() {
 		fi
 	
 	;;
-		6)
+		7)
 		echo "This installs a virtualbox client"
 		sudo pacman -S --noconfirm virtualbox
 	
 	;;
-		7)
+		8)
 		echo "This installs Wine or Windows emulation software"
 		echo "1 - Wine"
 		echo "2 - playonlinux"
@@ -643,13 +666,12 @@ InstallAndConquer() {
 		esac
 
 	;;
-		8)
+		9)
 		echo "This installs a webcam application for laptops"
 		sudo pacman -S --noconfirm guvcview
 
 	;;
-		9)
-		echo "This installs downgrading and package configuration updating software"
+		10)
 		echo "This installs etc-update"
 		echo "etc-update can help you manage pacnew files and other configuration files after system updates."
 		sleep 2
@@ -669,7 +691,7 @@ InstallAndConquer() {
 		done
 
 	;;
-		10)
+		11)
 		echo "This installs a choice in small games"
 		echo "1 - supertuxkart"
 		echo "2 - gnome-mahjongg"
@@ -713,7 +735,7 @@ InstallAndConquer() {
 		fi
 
 	;;
-		11)
+		12)
 		echo "This installs video/audio decoding/reencoding software"
 		sudo pacman -S --noconfirm kdenlive audacity
 		echo "Would you also like obs-studio?(Y/n)"
@@ -725,15 +747,15 @@ InstallAndConquer() {
 		done
 
 	;;
-		12)
+		13)
 		echo "This installs a dock application"
 		sudo pacman -S --noconfirm plank
 	;;
-		13)
+		14)
 		echo "This installs yaourt a package manager for AUR"
 		sudo pacman -S --noconfirm yaourt
 	;;
-		14)
+		15)
 		echo "This installs your backup software"
 		echo "1 - deja-dup"
 		echo "2 - grsync"
@@ -753,13 +775,13 @@ InstallAndConquer() {
 		fi
 
 	;;
-		15)
+		16)
 		echo "This installs a few common themes"
 		sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme numix-themes-archblue arc-gtk-theme papirus-icon-theme faenza-green-icon-theme faience-icon-theme
 		wget https://aur.archlinux.org/cgit/aur.git/snapshot/obsidian-icon-theme.tar.gz && tar -xzf obsidian-icon-theme.tar.gz && sudo mv obsidian-icon-theme /usr/share/icons
 
 	;;
-		16)
+		17)
 		echo "This installs possible security software and virus checker if you wish"
 		echo "1 - rkhunter"
 		echo "2 - clamav"
@@ -777,7 +799,7 @@ InstallAndConquer() {
 		esac
 
 	;;
-		17)
+		18)
 		echo "Ok, well, I'm here if you change your mind"
 		break
 	;;
@@ -796,7 +818,7 @@ InstallAndConquer() {
 	do
 		echo "Enter the name of any software you'd like to install"
 		read software
-		sleep 1
+		sleep 0.5
 		sudo pacman -S --noconfirm $software
 	break
 	done
@@ -909,7 +931,7 @@ _EOF_
 	case $operation in
 		1)
 		echo $(cat /etc/group | awk -F: '{print $1}')
-		sleep 3
+		sleep 2
 		read -p "Please enter the groups you wish the user to be in:" $group1 $group2 $group3
 		echo "Please enter the name of the user"
 		read name
@@ -975,8 +997,9 @@ cleanup() {
 	#This will clean the cache
 	sudo rm -r .cache/*
 	sudo rm -r .thumbnails/*
-	sudo rm -r ~/.local/share/Trash
+	sudo rm -r ~/.local/share/Trash/*
 	sudo rm -r ~/.nv/*
+	sudo rm -r ~/.npm/*
 	sudo rm -r ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/* 
 	find ~/Downloads/* -mtime +3 -exec rm {} \; 
@@ -1037,15 +1060,15 @@ _EOF_
 	case $operation in 
 		1)
 		sudo paccache -rvk3
-		sleep 3
+		sleep 1
 		;;
 		2)
 		sudo pacman -Sc --noconfirm 
-		sleep 3
+		sleep 1
 		;;
 		3)
 		sudo pacman -Scc --noconfirm
-		sleep 3
+		sleep 1
 		;;
 		4)
 		echo "NICE!"
@@ -1081,7 +1104,7 @@ _EOF_
 	echo $browser6
 	echo $browser7
 
-	sleep 2
+	sleep 1
 
 	echo "choose the browser you wish to reset"
 	echo "1 - Firefox"
@@ -1212,7 +1235,7 @@ SystemMaintenance() {
 			read answer 
 			while [ $answer == Y ];
 			do
-				sudo fstrim -v /
+				sudo fstrim -v --all
 			break
 			done
 		fi 
@@ -1275,9 +1298,15 @@ read operation;
 		done
 	;;
 		3)
+		echo "##########################################################" >> services.txt
+		echo "SERVICES MANAGER" >> services.txt
+		echo "##########################################################" >> services.txt
 		systemctl list-unit-files --type=service >> services.txt
+		echo "##########################################################" >> services.txt
+		echo "END OF FILE" >> services.txt
+		echo "##########################################################" >> services.txt
 		echo "Thank you for your patience"
-		sleep 3
+		sleep 1
 	;;
 		4)
 		echo "Smart choice."
@@ -1347,11 +1376,15 @@ KernelManager() {
 		done
 	;;
 		3)
-		sudo mhwd-kernel -l >> kernels.txt
-		echo "" >> kernels.txt
 		echo "##########################################################" >> kernels.txt
-		echo "" >> kernels.txt
+		echo "WELCOME TO THE ALL NEW MANJARO KERNEL MANAGER" >> kernels.txt
+		echo "##########################################################" >> kernels.txt
+		sudo mhwd-kernel -l >> kernels.txt
+		echo "**********************************************************" >> kernels.txt
 		sudo mhwd-kernel -li >> kernels.txt
+		echo "##########################################################" >> kernels.txt
+		echo "END OF FILE" >> kernels.txt
+		echo "##########################################################" >> kernels.txt
 	;;
 		4)
 		echo "Skipping"

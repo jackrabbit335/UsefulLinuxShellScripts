@@ -232,6 +232,11 @@ Systeminfo() {
 	ss -tulpn >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
+	echo "FIREWALL STATUS" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	sudo ufw status verbose >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
 	echo "PROCESS LIST" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	ps -aux >> $host-sysinfo.txt
@@ -464,14 +469,15 @@ InstallAndConquer() {
 			5)
 			echo "This installs your choice of browser"
 			echo "1 - Chromium"
-			echo "2 - epiphany"
-			echo "3 - qupzilla"
-			echo "4 - midori"
+			echo "2 - Epiphany"
+			echo "3 - Qupzilla"
+			echo "4 - Midori"
 			echo "5 - Google-Chrome"
 			echo "6 - Pale Moon"
 			echo "7 - Vivaldi"
-			echo "8 - lynx"
-			echo "9 - dillo"
+			echo "8 - Vivaldi-snapshot"
+			echo "9 - Lynx"
+			echo "10 - Dillo"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -493,18 +499,26 @@ InstallAndConquer() {
 				sudo apt install -f 
 			elif [[ $browser == 6 ]];
 			then
+				cd Downloads
 				wget http://linux.palemoon.org/datastore/release/pminstaller-0.2.4.tar.bz2
 				tar -xvjf pminstaller-0.2.3.tar.bz2
 				./pminstaller.sh
 			elif [[ $browser == 7 ]];
 			then
+				cd /tmp
 				wget https://downloads.vivaldi.com/stable/vivaldi-stable_1.15.1147.36-1_amd64.deb
 				sudo dpkg -i *.deb
 				sudo apt install -f
 			elif [[ $browser == 8 ]];
 			then
-				sudo apt install lynx
+				cd /tmp
+				wget https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_1.16.1246.7-1_amd64.deb
+				sudo dpkg -i *.deb
+				sudo apt install -f
 			elif [[ $browser == 9 ]];
+			then
+				sudo apt install lynx
+			elif [[ $browser == 10 ]];
 			then
 				sudo apt install dillo
 			fi
@@ -517,7 +531,8 @@ InstallAndConquer() {
 			echo "4 - parole"
 			echo "5 - clementine"
 			echo "6 - mplayer"
-			echo "7 - kodi"
+			echo "7 - smplayer"
+			echo "8 - kodi"
 			read player
 			if [[ $player == 1 ]];
 			then
@@ -538,6 +553,11 @@ InstallAndConquer() {
 			then
 				sudo apt-get -y install mplayer
 			elif [[ $player == 7 ]];
+			then
+				sudo add-apt-repository ppa:rvm/smplayer
+				sudo apt update
+				sudo apt install smplayer smplayer-themes smplayer-skins
+			elif [[ $player == 8 ]];
 			then
 				sudo apt-get install software-properties-common
 				sudo add-apt-repository ppa:team-xbmc/ppa
@@ -812,6 +832,7 @@ cleanup() {
 	sudo rm -r .thumbnails/*
 	sudo rm -r ~/.local/share/Trash
 	sudo rm -r ~/.nv/*
+	sudo rm -r ~/.npm/*
 	sudo rm -r ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/*
 	find ~/Downloads/* -mtime +3 -exec rm {} \; 
@@ -864,7 +885,7 @@ _EOF_
 	echo $browser6
 	echo $browser7
 
-	sleep 2
+	sleep 1
 
 	echo "choose the browser you wish to reset"
 	echo "1 - Firefox"
@@ -928,7 +949,17 @@ _EOF_
 		sleep 1
 	;;
 	esac
-	
+
+	#Change the default browser
+	echo "Would you like to change your default browser also?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		echo "Enter the name of the browser you wish to use"
+		read browser
+		xdg-settings set default-web-browser $browser.desktop
+	break
+	done
 
 	clear
 	Greeting
@@ -977,7 +1008,7 @@ SystemMaintenance() {
 			read answer
 			while [ $answer == Y ];
 			do
-				sudo fstrim -v /
+				sudo fstrim -v --all
 			break
 			done
 		fi 
@@ -1031,8 +1062,14 @@ ServiceManager() {
 				done
 			;;
 				3)
+				echo "##################################################" >> services.txt
+				echo "SERVICE MANAGER" >> services.txt
+				echo "##################################################" >> services.txt
 				service --status-all >> services.txt
 				systemctl list-unit-files --type=service >> services.txt
+				echo "##################################################" >> services.txt
+				echo "END OF FILE" >> services.txt
+				echo "##################################################" >> services.txt
 			;;
 				4)
 				echo "Great choice"
@@ -1064,7 +1101,13 @@ ServiceManager() {
 				sudo systemctl disable $service
 			;;
 				3)
+				echo "##################################################" >> services.txt
+				echo "SERVICE MANAGER" >> services.txt
+				echo "##################################################" >> services.txt
 				systemctl list-unit-files --type=service >> services.txt
+				echo "##################################################" >> services.txt
+				echo "END OF FILE" >> services.txt
+				echo "##################################################" >> services.txt
 			;;
 				4)
 				echo "Nice!!!!!"
