@@ -519,7 +519,7 @@ InstallAndConquer() {
 			sudo pacman -S --noconfirm falkon
 		elif [[ $browser == 4 ]];
 		then
-			sudo pacman -S midori
+			sudo pacman -S --noconfirm midori
 		elif [[ $browser == 5 ]];
 		then
 			sudo pacman -S --noconfirm opera opera-ffmpeg-codecs
