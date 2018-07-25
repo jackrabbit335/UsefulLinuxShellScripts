@@ -138,6 +138,7 @@ Setup() {
 			then 
 				echo "Update succeeded" 
 			else
+				sudo rm -f /var/lib/pacman/sync/*
 				sudo rm /var/lib/pacman/db.lck 
 				sudo rm -r /etc/pacman.d/gnupg 
 				sudo pacman -Sy gnupg archlinux-keyring manjaro-keyring
@@ -155,6 +156,7 @@ Setup() {
 			then 
 				echo "update successful"
 			else 
+				sudo rm -f /var/lib/pacman/sync/*
 				sudo rm /var/lib/pacman/db.lck 
 				sudo rm -r /etc/pacman.d/gnupg 
 				sudo pacman -Sy --noconfirm gnupg archlinux-keyring antergos-keyring
@@ -519,7 +521,7 @@ InstallAndConquer() {
 			sudo pacman -S --noconfirm falkon
 		elif [[ $browser == 4 ]];
 		then
-			sudo pacman -S --noconfirm midori
+			sudo pacman -S midori
 		elif [[ $browser == 5 ]];
 		then
 			sudo pacman -S --noconfirm opera opera-ffmpeg-codecs
