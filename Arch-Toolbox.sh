@@ -141,7 +141,7 @@ Setup() {
 				sudo rm -f /var/lib/pacman/sync/*
 				sudo rm /var/lib/pacman/db.lck 
 				sudo rm -r /etc/pacman.d/gnupg 
-				sudo pacman -Sy gnupg archlinux-keyring manjaro-keyring
+				sudo pacman -Sy --noconfirm gnupg archlinux-keyring manjaro-keyring
 				sudo pacman-key --init 
 				sudo pacman-key --populate archlinux manjaro 
 				sudo pacman-key --refresh-keys 
@@ -162,6 +162,7 @@ Setup() {
 				sudo pacman -Sy --noconfirm gnupg archlinux-keyring antergos-keyring
 				sudo pacman-key --init
 				sudo pacman-key --populate archlinux antergos 
+				sudo pacman-key --refresh-keys
 				sudo pacman -Sc --noconfirm 
 				sudo pacman -Syyu --noconfirm
 			fi
