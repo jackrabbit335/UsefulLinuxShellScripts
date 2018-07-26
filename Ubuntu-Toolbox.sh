@@ -957,7 +957,7 @@ _EOF_
 	do
 		echo "Enter the name of the browser you wish to use"
 		read browser
-		xdg-settings set default-web-browser $browser.desktop
+		sudo update-alternatives --set x-www-browser /usr/bin/$browser
 	break
 	done
 
