@@ -145,7 +145,7 @@ Setup() {
 				sudo pacman-key --init 
 				sudo pacman-key --populate archlinux manjaro 
 				sudo pacman-key --refresh-keys 
-				sudo pacman -Sc
+				sudo pacman -Sc --noconfirm 
 				sudo pacman -Syyu --noconfirm
 			fi
 		elif [[ $distribution == Antergos ]];
