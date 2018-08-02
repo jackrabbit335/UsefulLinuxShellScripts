@@ -353,13 +353,13 @@ Many others...
 ########################################################################
 WELCOME AND RAMBLE WITH LICENSING
 ########################################################################
-Welcome to Ubuntu-Toolbox. This is a useful little utility that 
+Welcome to Arch-Toolbox. This is a useful little utility that 
 tries to setup, maintain, and keep up to date with the latest 
-software on your system. Ubuntu-Toolbox is delivered as is and thus, 
+software on your system. Arch-Toolbox is delivered as is and thus, 
 I can't be held accountable if something goes wrong. This software is 
 freely given under the GPL license and is distributable and changeable 
 as you see fit, I only ask that you give the author the credit for the 
-original work. Ubuntu-Toolbox has been tested and should work on your 
+original work. Arch-Toolbox has been tested and should work on your 
 device assuming that you are running an arch-based system. 
 A cronjob is any task or script that you place in the crontab file to be 
 ran at a certain time.To not go to deep into it, the basic syntax is 
@@ -383,6 +383,60 @@ Hoever, if you wish to run them as cron jobs then you can tweak the
 cleaning routines as follows."sudo rm -r ./cache/*" should be changed to 
 "rm -r /home/$USER/.cache/*" and etc. The setup script should only be 
 ran once to set the system up. 
+
+########################################################################
+KERNELS AND SERVICES
+########################################################################
+Kernels, as mentioned in the manager, are an important and integral part 
+of the system. For your system to work, it needs to run a certain kernel
+I'd suggest the LTS that is recommended or preconfigured by your OS. 
+Assuming that you have that kernel installed, testing out newer kernels 
+for specific hardware and or security functionality is not a bad idea
+just use caution. Disabling services is generally a bad idea, however, 
+if you know you do not need it, if it is something like Bluetooth or 
+some app that you installed personally and the service is not required
+by your system, disabling that service could potentially help speed up
+your system. However, I'd advise against disabling system critical 
+services.
+
+########################################################################
+BACKUP AND RESTORE
+########################################################################
+Backup and Restore functions are there to provide a quick and painless 
+service. The backup will be sent to an alternate drive by your request.
+This was designed that way as the working drive could infact become com-
+promised and as such, should not be relied on to store important user 
+data in the event of an unlikely hack or malware attack, nor under the
+event of hardware failure. Having these files on a separate and less 
+often used drive is important for security and redundancy. Restore will 
+attempt to place that information back on the old drive or a new one if 
+or when misfortune should befall you. Just ensure that the drive is a 
+usable and safe one and ensure that you have it ready when making 
+reparations. So far, the only available option is to Backup the home 
+directory, but that might soon change. Please also note that backing up
+the home directory can save some user settings as well.
+
+########################################################################
+HOSTS FILE MANIPULATION
+########################################################################
+Setting up a custom hosts file can be selectively simple with the script
+Hostsman4linux and the corresponding function HostsfileSelect Both have 
+the ability to compile and sort one central file out of multiple source
+third party hosts files. These can be a great extra layer to your system
+security regimen or can be a helpful adblocking tool allowing your 
+browser to be fast and clean from extensions. Running the main script 
+yourself is fine, but you have to run it as root. There is no other way
+as of yet that I have found to give it proper clearance to manipulate
+a secure system file like that without running sudo ./Hostsman4linux.sh.
+I am thinking of making the Hostsman4linux script a bit more cron-
+friendly in the future. Allowing users to use flags would give users the
+ability to make this script run on a schedule and it would always give
+them the desired hosts file. Alternatively, if you wish to run this 
+script from a menu as a regular user, chmoding the file to 755 might
+help before storing it in the /usr/local/bin directory and creating a 
+desktop file for it. I'll write a blog article for that later.
+to find my blog just go to: https://techiegeek123.blogspot.com/ in a 
+browser.
 
 ########################################################################
 CONTACT ME
@@ -833,6 +887,8 @@ cleanup() {
 	sudo rm -r ~/.local/share/Trash
 	sudo rm -r ~/.nv/*
 	sudo rm -r ~/.npm/*
+	sudo rm -r ~/.w3m/*
+	sudo rm -r ~/.esd_auth #Best I can tell cookie for pulse audio
 	sudo rm -r ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/*
 	find ~/Downloads/* -mtime +3 -exec rm {} \; 
@@ -949,7 +1005,7 @@ _EOF_
 		sleep 1
 	;;
 	esac
-
+	
 	#Change the default browser
 	echo "Would you like to change your default browser also?(Y/n)"
 	read answer
@@ -1027,6 +1083,16 @@ SystemMaintenance() {
 }
 
 ServiceManager() {
+	#This is for service management. Prolly not a good idea but...
+cat <<_EOF_
+This is usually better off left undone, only disable services you know 
+you will not need or miss. I can not be held responsible if you brick 
+your system. Handle with caution. Also, may only take effect once you 
+reboot your machine. Services can be turned back on with a good backup 
+and possibly by chrooting into the device via live cd and reversing the 
+process by running this again and reenabling the service.
+_EOF_
+
 	init=$(ps -p1 | awk 'NR!=1{print $4}')
 	for init in $init;
 	do
@@ -1156,7 +1222,8 @@ This tries to restore the home folder and nothing else, if you want to
 restore the entire system,  you will have to do that in a live environment.
 This can, however, help in circumstances where you have family photos and
 school work stored in the home directory. This also assumes that your home
-directory is on the drive in question. 
+directory is on the drive in question. This can also restore browser settings 
+including unwanted toolbars so be warned. 
 _EOF_
 
 	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)

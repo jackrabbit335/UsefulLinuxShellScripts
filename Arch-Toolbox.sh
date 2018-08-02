@@ -141,11 +141,11 @@ Setup() {
 				sudo rm -f /var/lib/pacman/sync/*
 				sudo rm /var/lib/pacman/db.lck 
 				sudo rm -r /etc/pacman.d/gnupg 
-				sudo pacman -Sy --noconfirm gnupg archlinux-keyring manjaro-keyring
+				sudo pacman -Sy gnupg archlinux-keyring manjaro-keyring
 				sudo pacman-key --init 
 				sudo pacman-key --populate archlinux manjaro 
 				sudo pacman-key --refresh-keys 
-				sudo pacman -Sc --noconfirm 
+				sudo pacman -Sc
 				sudo pacman -Syyu --noconfirm
 			fi
 		elif [[ $distribution == Antergos ]];
@@ -162,7 +162,6 @@ Setup() {
 				sudo pacman -Sy --noconfirm gnupg archlinux-keyring antergos-keyring
 				sudo pacman-key --init
 				sudo pacman-key --populate archlinux antergos 
-				sudo pacman-key --refresh-keys
 				sudo pacman -Sc --noconfirm 
 				sudo pacman -Syyu --noconfirm
 			fi
@@ -413,8 +412,10 @@ InstallAndConquer() {
 		echo "14 - Yaourt package manager/AUR helper"
 		echo "15 - Backup"
 		echo "16 - THEMES!!!!!!!!"
-		echo "17 - Security checkers/scanners"
-		echo "18 - exit out of this menu"
+		echo "17 - screenfetch"
+		echo "18 - Security checkers/scanners"
+		echo "19 - Stellarium constellation and space observation"
+		echo "20 - exit out of this menu"
 
 	read software;
 
@@ -431,6 +432,7 @@ InstallAndConquer() {
 		echo "3 - bluefish"
 		echo "4 - atom"
 		echo "5 - gedit"
+		echo "6 - kate"
 		read package
 		if [[ $package == 1 ]];
 		then
@@ -450,8 +452,11 @@ InstallAndConquer() {
 		elif [[ $package == 5 ]];
 		then
 			sudo pacman -S --noconfirm gedit
-		else 
-			echo "Perhaps you're satisfied with the default?"
+		elif [[ $package == 6 ]];
+		then
+			sudo pacman -S --noconfirm kate
+		else
+			echo "You've entered an invalid number"
 		fi
 	
 	;;
@@ -470,8 +475,8 @@ InstallAndConquer() {
 		elif [[ $software == 3 ]];
 		then
 			sudo pacman -S --noconfirm aria2
-		else
-			echo "Most systems have one of these, if yours doesn't, I'd suggest wget"
+		else 
+			echo "You have entered an invalid number"
 		fi
 	;;
 		4)
@@ -489,8 +494,8 @@ InstallAndConquer() {
 		elif [[ $client == 3 ]];
 		then
 			sudo pacman -S --noconfirm qbittorrent
-		else 
-			echo "Most systems have one of these also, but if yours does not, try qbittorrent"
+		else
+			echo "You have entered an invalid number"
 		fi
 	;;
 		5)
@@ -586,8 +591,8 @@ InstallAndConquer() {
 			tar -xvf slimjet.tar
 			cd slimjet
 			makepkg -si 
-		else 
-			echo "Of course, we can always do this later."
+		else
+			echo "You have entered an invalid number"
 		fi
 	
 	;;
@@ -597,13 +602,14 @@ InstallAndConquer() {
 		echo "2 - parole"
 		echo "3 - kodi"
 		echo "4 - Music"
-		echo "5 - rhythmbox"
-		echo "6 - mpv"
-		echo "7 - smplayer"
-		echo "8 - VLC"
-		echo "9 - totem"
-		echo "10 - pragha"
-		echo "11 - clementine"
+		echo "5 - spotify"
+		echo "6 - rhythmbox"
+		echo "7 - mpv"
+		echo "8 - smplayer"
+		echo "9 - VLC"
+		echo "10 - totem"
+		echo "11 - pragha"
+		echo "12 - clementine"
 		read player
 		if [[ $player == 1 ]];
 		then
@@ -618,15 +624,23 @@ InstallAndConquer() {
 		then
 			sudo pacman -S --noconfirm Music
 		elif [[ $player == 5 ]];
-		then
-			sudo pacman -S --noconfirm rhythmbox
+		then	
+			cd /tmp
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/spotify.tar.gz
+			gunzip spotify.tar.gz
+			tar -xvf spotify.tar
+			cd spotify
+			makepkg -si
 		elif [[ $player == 6 ]];
 		then
+			sudo pacman -S --noconfirm rhythmbox
+		elif [[ $player == 7 ]];
+		then
 			sudo pacman -S --noconfirm mpv
-		elif [[ $player == 7 ]]; 
+		elif [[ $player == 8 ]]; 
 		then
 			sudo pacman -S --noconfirm smplayer smplayer-skins
-		elif [[ $player == 8 ]];
+		elif [[ $player == 9 ]];
 		then
 			distribution=$(cat /etc/issue | awk '{print $1}')
 			if [[ $distribution == manjaro ]];
@@ -635,17 +649,17 @@ InstallAndConquer() {
 			else
 				sudo pacman -S --noconfirm vlc-nightly
 			fi
-		elif [[ $player == 9 ]];
-		then
-			sudo pacman -s --noconfirm totem
 		elif [[ $player == 10 ]];
 		then
-			sudo pacman -S --noconfirm pragha 
+			sudo pacman -s --noconfirm totem
 		elif [[ $player == 11 ]];
 		then
+			sudo pacman -S --noconfirm pragha 
+		elif [[ $player == 12 ]];
+		then
 			sudo pacman -S --noconfirm clementine
-		else 
-			echo "Not a problem, we'll skip this for now!"
+		else
+			echo "You have entered an invalid number"
 		fi
 	
 	;;
@@ -666,6 +680,8 @@ InstallAndConquer() {
 			sudo pacman -S --noconfirm wine ;;
 			2)
 			sudo pacman -S --noconfirm playonlinux ;;
+			*)
+			echo "You have entered an invalid number" ;;
 		esac
 
 	;;
@@ -734,7 +750,7 @@ InstallAndConquer() {
 		then
 			sudo pacman -S --noconfirm supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux
 		else
-			echo "You entered an invalid number, please try again later."
+			echo "You have entered an invalid number"
 		fi
 
 	;;
@@ -773,8 +789,8 @@ InstallAndConquer() {
 		elif [[ $package == 3 ]];
 		then
 			sudo pacman -S --noconfirm timeshift
-		else 
-			echo "Or not"
+		else
+			echo "You have entered an invalid number"
 		fi
 
 	;;
@@ -785,6 +801,10 @@ InstallAndConquer() {
 
 	;;
 		17)
+		echo "This installs screenfetch"
+		sudo pacman -S --noconfirm screenfetch
+	;;
+		18)
 		echo "This installs possible security software and virus checker if you wish"
 		echo "1 - rkhunter"
 		echo "2 - clamav"
@@ -799,10 +819,16 @@ InstallAndConquer() {
 			sudo pacman -S --noconfirm clamav ;;
 			3)
 			sudo pacman -S --noconfirm rkhunter clamav ;;
+			*)
+			echo "You have entered an invalid number" ;;
 		esac
 
 	;;
-		18)
+		19)
+		echo "This installs stellarium incase you are a night sky observer"
+		sudo pacman -S --noconfirm stellarium
+	;;
+		20)
 		echo "Ok, well, I'm here if you change your mind"
 		break
 	;;
@@ -811,6 +837,24 @@ InstallAndConquer() {
 	
 
 	read -p "Please press enter to continue..."	
+	
+	#This offers to install preload for storing apps in memory
+cat <<_EOF_
+Preload is as the name implies, a preloader. This nifty tool can shadow 
+your uses of the desktop and store bits of applications into memory for
+faster future use. This does have its drawbacks though as preload does
+take up its own cache of memory. This is debatably better on low end 
+devices.
+_EOF_
+	echo "Would you like to install preload?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		sudo pacman -S --noconfirm preload && sudo systemctl enable preload && sudo systemctl start preload
+	break
+	done
+	
+	read -p "Please press enter to continue..."
 
 	#This allows you to install any software you might know of that is not on the list
 	echo "If you would like to contribute software titles to this script, 
@@ -904,6 +948,60 @@ cleaning routines as follows."sudo rm -r ./cache/*" should be changed to
 ran once to set the system up. 
 
 ########################################################################
+KERNELS AND SERVICES
+########################################################################
+Kernels, as mentioned in the manager, are an important and integral part 
+of the system. For your system to work, it needs to run a certain kernel
+I'd suggest the LTS that is recommended or preconfigured by your OS. 
+Assuming that you have that kernel installed, testing out newer kernels 
+for specific hardware and or security functionality is not a bad idea
+just use caution. Disabling services is generally a bad idea, however, 
+if you know you do not need it, if it is something like Bluetooth or 
+some app that you installed personally and the service is not required
+by your system, disabling that service could potentially help speed up
+your system. However, I'd advise against disabling system critical 
+services.
+
+########################################################################
+BACKUP AND RESTORE
+########################################################################
+Backup and Restore functions are there to provide a quick and painless 
+service. The backup will be sent to an alternate drive by your request.
+This was designed that way as the working drive could infact become com-
+promised and as such, should not be relied on to store important user 
+data in the event of an unlikely hack or malware attack, nor under the
+event of hardware failure. Having these files on a separate and less 
+often used drive is important for security and redundancy. Restore will 
+attempt to place that information back on the old drive or a new one if 
+or when misfortune should befall you. Just ensure that the drive is a 
+usable and safe one and ensure that you have it ready when making 
+reparations. So far, the only available option is to Backup the home 
+directory, but that might soon change. Please also note that backing up
+the home directory can save some user settings as well.
+
+########################################################################
+HOSTS FILE MANIPULATION
+########################################################################
+Setting up a custom hosts file can be selectively simple with the script
+Hostsman4linux and the corresponding function HostsfileSelect Both have 
+the ability to compile and sort one central file out of multiple source
+third party hosts files. These can be a great extra layer to your system
+security regimen or can be a helpful adblocking tool allowing your 
+browser to be fast and clean from extensions. Running the main script 
+yourself is fine, but you have to run it as root. There is no other way
+as of yet that I have found to give it proper clearance to manipulate
+a secure system file like that without running sudo ./Hostsman4linux.sh.
+I am thinking of making the Hostsman4linux script a bit more cron-
+friendly in the future. Allowing users to use flags would give users the
+ability to make this script run on a schedule and it would always give
+them the desired hosts file. Alternatively, if you wish to run this 
+script from a menu as a regular user, chmoding the file to 755 might
+help before storing it in the /usr/local/bin directory and creating a 
+desktop file for it. I'll write a blog article for that later.
+to find my blog just go to: https://techiegeek123.blogspot.com/ in a 
+browser.
+
+########################################################################
 CONTACT ME
 ########################################################################
 For sending me hate mail, for inquiring assistance, and for sending me 
@@ -923,7 +1021,6 @@ This is a completely untested and experimental utility at best.
 Use this function "Account Settings" at your own risk. 
 _EOF_
 	#This can create and remove user accounts
-	echo "This is experimental(untested). Use at your own risk."
 	echo "What would you like to do?"
 	echo "1 - Create user account(s)"
 	echo "2 - Delete user account(s)"
@@ -1003,6 +1100,8 @@ cleanup() {
 	sudo rm -r ~/.local/share/Trash/*
 	sudo rm -r ~/.nv/*
 	sudo rm -r ~/.npm/*
+	sudo rm -r ~/.w3m/*
+	sudo rm -r ~/.esd_auth #Best I can tell cookie for pulse audio
 	sudo rm -r ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/* 
 	find ~/Downloads/* -mtime +3 -exec rm {} \; 
@@ -1262,7 +1361,9 @@ cat <<_EOF_
 This is usually better off left undone, only disable services you know 
 you will not need or miss. I can not be held responsible if you brick 
 your system. Handle with caution. Also, may only take effect once you 
-reboot your machine.
+reboot your machine. Services can be turned back on with a good backup 
+and possibly by chrooting into the device via live cd and reversing the 
+process by running this again and reenabling the service.
 _EOF_
 	
 	systemctl list-unit-files --type=service
@@ -1328,6 +1429,12 @@ Restart() {
 
 KernelManager() {
 	#This gives a list of available kernels and offers to both install and uninstall them
+cat <<_EOF_
+Kernels are an essential part of the operating system. Failure to use precaution
+could inadvertently screw up system functions. The kernel is the main engine behind
+the scenes making everything operate within normal parameters, changing kernel settings 
+or installing/uninstall a bad updated version could give undesirable results.
+_EOF_
 	sudo mhwd-kernel -l 
 	sudo mhwd-kernel -li
 	read -p "Press enter to continue..."
@@ -1429,7 +1536,8 @@ This tries to restore the home folder and nothing else, if you want to
 restore the entire system,  you will have to do that in a live environment.
 This can, however, help in circumstances where you have family photos and
 school work stored in the home directory. This also assumes that your home
-directory is on the drive in question. 
+directory is on the drive in question. This can also restore browser settings 
+including unwanted toolbars so be warned. 
 _EOF_
 
 	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
