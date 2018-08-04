@@ -295,6 +295,11 @@ Systeminfo() {
 	ps -aux >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
+	echo "LAST LOGIN ATTEMPTS" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	lastlog >> $host-sysinfo.txt
+	echo "" >> host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
 	echo "INSTALLED PACKAGES" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	sudo pacman -Q >> $host-sysinfo.txt
