@@ -427,7 +427,7 @@ InstallAndConquer() {
 	case $software in
 		1)
 		echo "This installs a choice of utility software"
-		sudo pacman -S --noconfirm hardinfo lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools xsensors hddtemp htop iotop inxi
+		sudo pacman -S --noconfirm dnsutils net-tools traceroute hardinfo lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools xsensors hddtemp htop iotop inxi
 	
 	;;
 		2)
@@ -1274,6 +1274,11 @@ _EOF_
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
+		*)
+		echo "No browser for that entry exists, please try again!"
+		sleep 1 
+		clear
+		Greeting
 	esac
 	
 	#Change the default browser

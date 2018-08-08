@@ -1009,6 +1009,11 @@ _EOF_
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
+		*)
+		echo "No browser for that entry exists, please try again"
+		sleep 1
+		clear
+		Greeting
 	esac
 	
 	#Change the default browser
