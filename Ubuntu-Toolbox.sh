@@ -146,7 +146,7 @@ Update() {
 Systeminfo() {
 	#This gives some useful information for later troubleshooting 
 	host=$(hostname)
-	distribution=$(cat /etc/issue | awk '{print $1}')
+	distribution=$(lsb_release -a | grep "Distributor ID:" | awk -F: '{print $2}')
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INFORMATION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
@@ -749,6 +749,8 @@ InstallAndConquer() {
 	while [ $answer == Y ];
 	do
 		sudo apt install -y screenfetch
+	break
+	done
 	
 	#This installs software we might have missed
 	echo "If you'd like to contribute to the previous list of software,
@@ -808,14 +810,13 @@ InstallAndConquer() {
 		done
 		
 		echo "If you're running Mint, it's a good idea to install the mint meta package"
-		Release=$(cat /etc/os-release | grep PRETTY_NAME= | awk '{print $2}')
+		Release=$(lsb_release -a | grep "Distributor ID:" | awk -F: '{print $2}')
 		if [[ $Release == Mint ]];
 		then
 			sudo apt install -y mint-meta-codecs
 		fi
 	break
 	done 
-	
 	
 	clear
 	Greeting
