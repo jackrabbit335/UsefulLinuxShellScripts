@@ -507,7 +507,7 @@ InstallAndConquer() {
 			fi
 		;;
 			3)
-			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute gnome-disk-utility  htop iotop inxi xsensors lm-sensors gufw gparted
+			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute gnome-disk-utility  htop iotop inxi xsensors lm-sensors gufw gparted smartmontools
 		;;
 			4)
 			echo "1 - deja-dup"
@@ -867,7 +867,6 @@ _EOF_
 	;;
 		5)
 		echo "We can do this later"
-	;
 	;;
 		*)
 		echo "This is an invaldi selection, please run this function again and try another."
@@ -1056,6 +1055,7 @@ _EOF_
 		sleep 1
 		clear
 		Greeting
+	;;
 	esac
 	
 	#Change the default browser
