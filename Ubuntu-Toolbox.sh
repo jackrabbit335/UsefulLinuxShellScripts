@@ -107,7 +107,7 @@ Setup() {
 			read answer 
 			while [ $answer == Y ];
 			do 
-				sudo fstrim -v /
+				sudo fstrim -v --all
 			break
 			done
 		fi
@@ -117,7 +117,7 @@ Setup() {
 	
 	#Updates the system
 	sudo apt update
-	sudo apt upgrade -y
+	sudo apt upgrade -yy
 	sudo apt dist-upgrade -yy
 	
 	#Optional
@@ -245,7 +245,7 @@ Systeminfo() {
 	echo "LAST LOGIN ATTEMPTS" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	lastlog >> $host-sysinfo.txt
-	echo "" >> host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "INSTALLED PACKAGES" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
@@ -492,12 +492,17 @@ InstallAndConquer() {
 			2)
 			echo "1 - rkhunter"
 			echo "2 - clamav"
+			echo "3 - both"
 			read package
 			if [[ $package == 1 ]];
 			then
 				sudo apt install -y rkhunter
 			elif [[ $package == 2 ]];
 			then
+				sudo apt install -y clamav && sudo freshclam
+			elif [[ $package == 3 ]];
+			then
+				sudo apt install -y rkhunter && sudo rkhunter --propupd && sudo rkhunter --update
 				sudo apt install -y clamav && sudo freshclam
 			fi
 		;;
@@ -537,6 +542,8 @@ InstallAndConquer() {
 			echo "8 - Vivaldi-snapshot"
 			echo "9 - Lynx"
 			echo "10 - Dillo"
+			echo "11 - Waterfox"
+			echo "12 - Basiliks"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -580,6 +587,22 @@ InstallAndConquer() {
 			elif [[ $browser == 10 ]];
 			then
 				sudo apt install dillo
+			elif [[ $browser == 11 ]];
+			then
+				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.2.en-US.linux-x86_64.tar.bz2
+				tar -xvf waterfox-56.2.2.en-US.linux-x86_64.tar.bz2
+				cd waterfox
+				./waterfox #To import any user data you'd like to import first run.
+				cd 
+				sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox #Now just type waterfox in a terminal and it should open
+			elif [[ $browser == 12 ]];
+			then
+				wget us.basilisk-browser.org/release/basilisk-latest.linux64.tar.bz2
+				tar -xvf basilisk-latest.linux64.tar.bz2
+				cd basilisk
+				./basilisk #To import any user data you'd like to import first run
+				cd
+				sudo mv basilisk /opt && sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk #Now just type basilisk in a terminal and it should open
 			fi
 		;;
 			6)
@@ -720,6 +743,13 @@ InstallAndConquer() {
 		esac
 	done
 	
+	#This can install screenfetch
+	echo "Would you like to install screenfetch?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		sudo apt install -y screenfetch
+	
 	#This installs software we might have missed
 	echo "If you'd like to contribute to the previous list of software,
 	contact me: jackharkness444@protonmail.com"	
@@ -802,7 +832,9 @@ _EOF_
 	echo "What would you like to do today?"
 	echo "1 - Create user account(s)" 
 	echo "2 - Delete user account(s)"
-	echo "3 - Skip this for now"
+	echo "3 - Lock pesky user accounts"
+	echo "4 - Look for empty password users on the system"
+	echo "5 - skip this menu"
 	
 	read operation;
 	
@@ -825,7 +857,17 @@ _EOF_
 		sudo userdel -rf $name
 	;;
 		3)
+		echo "Alternatively, we can lock a specific user account for security"
+		read -p "Enter the account you wish to lock:" $account
+		sudo passwd -l $account
+	;;
+		4)
+		sudo cat /etc/shadow | awk -F: '($2==""){print $1}' >> ~/accounts.txt
+		cat /etc/passwd | awk -F: '{print $1}' >> ~/accounts.txt
+	;;
+		5)
 		echo "We can do this later"
+	;
 	;;
 		*)
 		echo "This is an invaldi selection, please run this function again and try another."

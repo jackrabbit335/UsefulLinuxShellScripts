@@ -128,7 +128,7 @@ Setup() {
 	checkNetwork
 	
 	#This tries to update and rate mirrors if it fails it refreshes the keys
-	distribution=$(cat /etc/issue | awk '{print $1}')
+	distribution=$(lsb_release -a | grep "Distributor ID:" | awk -F: '{print $2}')
 	for n in $distribution;
 	do
 		if [[ $distribution == Manjaro ]];
@@ -194,7 +194,7 @@ Update() {
 Systeminfo() {
 	#This gives some useful information for later troubleshooting 
 	host=$(hostname)
-	distribution=$(cat /etc/issue | awk '{print $1}')
+	distribution=$(lsb_release -a | grep "Distributor ID:" | awk -F: '{print $2}')
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INFORMATION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
@@ -210,7 +210,7 @@ Systeminfo() {
 	echo $distribution >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
-	echo "DESKTOP_SESSION" >> $host-sysinfo.txt
+	echo "DESKTOP" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo $DESKTOP_SESSION >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
@@ -1029,7 +1029,9 @@ _EOF_
 	echo "What would you like to do?"
 	echo "1 - Create user account(s)"
 	echo "2 - Delete user account(s)"
-	echo "3 - skip this menu for now"
+	echo "3 - Lock pesky user accounts"
+	echo "4 - Look for empty password users on the system"
+	echo "5 - Skip this menu"
 	
 	read operation;
 	
@@ -1052,6 +1054,15 @@ _EOF_
 		sudo userdel -rf $name
 	;;
 		3)
+		echo "Alternatively, we can lock a specific user account for security"
+		read -p "Enter the account you wish to lock:" $account
+		sudo passwd -l $account
+	;;
+		4)
+		sudo cat /etc/shadow | awk -F: '($2==""){print $1}' >> ~/accounts.txt
+		cat /etc/passwd | awk -F: '{print $1}' >> ~/accounts.txt
+	;;
+		5)
 		echo "We can do this later"
 	;;
 		*)
@@ -1300,7 +1311,7 @@ SystemMaintenance() {
 	checkNetwork
 	
 	#This attempts to rank mirrors and update your system
-	distribution=$(cat /etc/issue | awk '{print $1}')
+	distribution=$(lsb_release -a | grep "Distributor ID:" | awk -F: '{print $2}')
 	if [[ $distribution == Manjaro ]];
 	then
 		sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu --noconfirm
@@ -1443,7 +1454,9 @@ cat <<_EOF_
 Kernels are an essential part of the operating system. Failure to use precaution
 could inadvertently screw up system functions. The kernel is the main engine behind
 the scenes making everything operate within normal parameters, changing kernel settings 
-or installing/uninstall a bad updated version could give undesirable results.
+or installing/uninstall a bad updated version could give undesirable results. It should
+also be noted that this works in Manjaro, but probably won't work in any other Arch-based operating system
+at this time. 
 _EOF_
 	sudo mhwd-kernel -l 
 	sudo mhwd-kernel -li
