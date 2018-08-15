@@ -1099,7 +1099,7 @@ HostsfileSelect() {
 	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
 	do
-		wget https://raw.githubusercontent.com/thedummy06/Helpful-Linux-Shell-Scripts/master/Hostsman4linux.sh
+		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh
 		chmod +x Hostsman4linux.sh
 	break
 	done

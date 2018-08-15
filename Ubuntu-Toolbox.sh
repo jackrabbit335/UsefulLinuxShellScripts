@@ -792,8 +792,7 @@ InstallAndConquer() {
 				sudo apt install -y ubuntu-restricted-extras
 			elif [[ $DESKTOP_SESSION == gnome ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras
-				sudo apt install -y gnome-session
+				sudo apt install -y ubuntu-restricted-extras gnome-session gnome-tweak-tool gnome-shell-extensions
 			elif [[ $DESKTOP_SESSION == enlightenment ]];
 			then
 				sudo apt install -y ubuntu-restricted-extras
@@ -802,7 +801,7 @@ InstallAndConquer() {
 				sudo apt install -y ubuntu-restricted-extras
 			elif [[ $DESKTOP_SESSION == Cinnamon ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras
+				sudo apt install -y ubuntu-restricted-extras gnome-tweak-tool
 			else
 				echo "You're running some other window manager I haven't tested yet."
 				sleep 1
@@ -810,8 +809,8 @@ InstallAndConquer() {
 		done
 		
 		echo "If you're running Mint, it's a good idea to install the mint meta package"
-		Release=$(lsb_release -a | grep "Distributor ID:" | awk -F: '{print $2}')
-		if [[ $Release == Mint ]];
+		distribution=$(lsb_release -a | grep "Distributor ID:" | awk -F: '{print $2}')
+		if [[ $distribution == LinuxMint ]];
 		then
 			sudo apt install -y mint-meta-codecs
 		fi
@@ -901,7 +900,7 @@ HostsfileSelect() {
 	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
 	do
-		wget https://raw.githubusercontent.com/thedummy06/Helpful-Linux-Shell-Scripts/master/Hostsman4linux.sh
+		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh
 		chmod +x Hostsman4linux.sh
 	break
 	done
