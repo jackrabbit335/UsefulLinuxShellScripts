@@ -136,7 +136,7 @@ Setup() {
 Update() {
 	CheckNetwork
 	
-	sudo apt update && sudo apt upgrade -yy
+	sudo apt update && sudo apt dist-upgrade -yy
 	
 	clear
 	Greeting
