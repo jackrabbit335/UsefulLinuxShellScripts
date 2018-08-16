@@ -136,7 +136,7 @@ Setup() {
 Update() {
 	CheckNetwork
 	
-	sudo apt update && sudo apt dist-upgrade -yy
+	sudo apt update && sudo apt upgrade -yy
 	
 	clear
 	Greeting
@@ -809,8 +809,9 @@ InstallAndConquer() {
 		done
 		
 		echo "If you're running Mint, it's a good idea to install the mint meta package"
-		distribution=$(lsb_release -a | grep "Distributor ID:" | awk -F: '{print $2}')
-		if [[ $distribution == LinuxMint ]];
+		distribution=$(cat /etc/issue | awk '{print $2}')
+		echo $distribution
+		if [[ $distribution == Mint ]];
 		then
 			sudo apt install -y mint-meta-codecs
 		fi
@@ -975,7 +976,7 @@ _EOF_
 	browser2="$(find /usr/bin/vivaldi*)"
 	browser3="$(find /usr/bin/palemoon)"
 	browser4="$(find /usr/bin/google-chrome*)"
-	browser5="$(find /usr/bin/chromium)"
+	browser5="$(find /usr/bin/chromium-browser)"
 	browser6="$(find /usr/bin/opera)"
 	browser7="$(find /usr/bin/waterfox)"
 
