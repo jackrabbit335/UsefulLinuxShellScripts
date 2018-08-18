@@ -44,7 +44,7 @@ Setup() {
 			while [ $answer == Y ];
 			do
             			sudo iptables -A INPUT -p tcp --dport 22 ssh -j DROP
-            			sudo iptables -A INPUT -p tcp --dport 25 telnet -j DROP
+            			sudo iptables -A INPUT -p tcp --dport 23 telnet -j DROP
 			break
 			done
 			#Save the current set of rules to a text file for future use and then restart the service
