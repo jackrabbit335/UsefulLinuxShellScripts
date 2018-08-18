@@ -35,7 +35,7 @@ Setup() {
         	read answer
         	if [[ $answer == Y ]]
         	then
-			echo "Would you like to deny ssh and telnet for security reasons?(Y/n)"
+			echo "Would you like to deny ssh telnet and ICMP for security reasons?(Y/n)"
 			read answer
 			if [[ $answer == Y ]];
 			then
@@ -65,7 +65,6 @@ Setup() {
 				sudo iptables -A INPUT -p tcp --dport 21 -j ACCEPT
 				sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 				sudo iptables -A INPUT -p tcp --dport 23 -j ACCEPT
-				sudo iptables -A INPUT -p icmp -j DROP
 				sudo iptables -P INPUT -p tcp -j DROP
 				#Save the current set of rules to a text file for future use and then restart the service
             			sudo iptables-save > first-iptables-rules.dat && sudo systemctl restart iptables
