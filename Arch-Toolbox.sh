@@ -54,8 +54,7 @@ Setup() {
 				sudo iptables -A INPUT -p tcp --dport 465 -j ACCEPT
 				sudo iptables -A INPUT -p tcp --dport 22 -j DROP
 				sudo iptables -A INPUT -p tcp --dport 23 -j DROP
-				sudo iptables -A INPUT -p icmp -j DROP
-				sudo iptables -P INPUT -p tcp -j DROP
+				sudo iptables  -P INPUT -j DROP
 			else
 				sudo iptables -P FORWARD -J DROP
 				sudo iptables -A INPUT -i lo -j ACCEPT
@@ -72,7 +71,8 @@ Setup() {
 				sudo iptables -A INPUT -p tcp --dport 23 -j ACCEPT
 				sudo iptables -A INPUT -p tcp --dport 25 -j ACCEPT
 				sudo iptables -A INPUT -p tcp --dport 465 -j ACCEPT
-				sudo iptables -P INPUT -p tcp -j DROP
+				sudo iptables -A INPUT -p icmp -j ACCEPT #Accepts all incoming pings may wanna fix that later.
+				sudo iptables -P INPUT -j DROP
 				#Save the current set of rules to a text file for future use and then restart the service
             			sudo iptables-save > first-iptables-rules.dat && sudo systemctl restart iptables
         	fi
