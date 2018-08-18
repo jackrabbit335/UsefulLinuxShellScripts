@@ -16,16 +16,30 @@ Setup() {
 	break
 	done
 
-	#This starts your firewall 
-	sudo systemctl enable ufw 
-	sudo ufw enable 
-	echo "Would you like to disable ssh and telnet for security?(Y/n)"
-	read answer
-	if [[ $answer == Y ]];
-	then 
-		sudo ufw deny telnet && sudo ufw deny ssh
-		sudo ufw reload
-	fi
+	#This starts your firewall
+    find /usr/sbin/ufw 
+    if [ $? -eq 0 ];
+    then 
+	    sudo systemctl enable ufw 
+	    sudo ufw enable 
+	    echo "Would you like to disable ssh and telnet for security?(Y/n)"
+	    read answer
+	    if [[ $answer == Y ]];
+	    then 
+		    sudo ufw deny telnet && sudo ufw deny ssh
+	    	sudo ufw reload
+	    fi
+    else
+        sudo systemctl enable iptables && sudo systemctl start iptables
+        echo "Would you like to disable ssh and telnet for security?(Y/n)"
+        read answer
+        if [[ $answer == Y ]]
+        then
+            sudo iptables -A INPUT -p tcp --dport ssh -j DROP
+            sudo iptables -A INPUT -p tcp --dport telnet -j DROP
+            sudo /sbin/iptables-save && sudo systemctl restart iptables
+        fi
+    fi
 
 	#This restricts coredumps to prevent attackers from getting info
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
@@ -35,11 +49,27 @@ Setup() {
 	sudo touch /etc/sysctl.d/50-dmesg-restrict.conf
 	sudo touch /etc/sysctl.d/50-kptr-restrict.conf
 	sudo touch /etc/sysctl.d/99-sysctl.conf
+    sudo touch /etc/syctl.d/60-network-hardening.conf
 	echo "kernel.dmesg_restrict = 1" | sudo tee -a /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "kernel.kptr_restrict = 1" | sudo tee -a /etc/sysctl.d/50-kptr-restrict.conf
 	echo "vm.swappiness = 5" | sudo tee -a /etc/sysctl.d/99-sysctl.conf #lowers swap value
-	sudo sysctl --system
-	sudo systemctl daemon-reload
+	sudo sysctl -p
+
+    #WE can block ICMP requests from the kernel if you'd like
+cat <<_EOF_
+Ping requests from unknown sources could mean that people are trying to
+locate/attack your network. If you need this functionality, you can comment
+this line out, however, this shouldn't impact normal users.
+_EOF_
+    echo "Block icmp ping requests?(Y/n)"
+    read answer
+    while [ $answer == Y ];
+    do
+        sudo touch /etc/syctl.d/60-network-hardening.conf
+        echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.d/60-network-hardening.conf
+        sudo sysctl -p
+    break
+    done
 	
 	#This disables ipv6
 	echo "Sometimes ipv6 can cause network issues. Would you like to disable it?(Y/n)"
@@ -427,7 +457,7 @@ InstallAndConquer() {
 	case $software in
 		1)
 		echo "This installs a choice of utility software"
-		sudo pacman -S --noconfirm dnsutils net-tools traceroute hardinfo lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools xsensors hddtemp htop iotop inxi
+		sudo pacman -S --noconfirm dnsutils net-tools traceroute hardinfo lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools xsensors hddtemp htop iotop inxi gufw
 	
 	;;
 		2)

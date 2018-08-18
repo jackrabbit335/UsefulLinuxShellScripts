@@ -48,6 +48,8 @@ Setup() {
 
 	#Tweaks the sysctl config file
 	sudo cp /etc/sysctl.conf /etc/sysctl.conf.bak
+	sudo touch /etc/sysctl.d/50-dmesg-restrict.conf
+	echo "kernel.dmesg_restrict = 1" | sudo tee -a /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "# Reduces the swap" | sudo tee -a /etc/sysctl.conf
 	echo "vm.swappiness = 5" | sudo tee -a /etc/sysctl.conf
 	echo "# Improve cache management" | sudo tee -a /etc/sysctl.conf
@@ -55,6 +57,20 @@ Setup() {
 	echo "#tcp flaw workaround" | sudo tee -a /etc/sysctl.conf
 	echo "net.ipv4.tcp_challenge_ack_limit = 999999999" | sudo tee -a /etc/sysctl.conf
 	sudo sysctl -p
+
+    #Block ICMP requests or Ping from foreign systems
+cat <<_EOF_
+We can also block ping requests. Ping requests coming from unknown sources can mean that people are 
+potentially trying to locate/attack your network. If you need this functionality
+you can always comment this line out later. Chances are, this won't affect normal users.
+_EOF_
+    echo "Block ping requests from foreign systems?(Y/n)"
+    read answer 
+    if [ $answer == Y ]];
+    then
+        echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.conf
+        sudo sysctl -p
+    fi
 	
 	#This attempts to place noatime at the end of your drive entry in fstab
 	echo "This can potentially make your drive unbootable, use with caution"
@@ -481,7 +497,8 @@ InstallAndConquer() {
 		echo "13 - proprietary fonts"
 		echo "14 - THEMES"
 		echo "15 - GAMES"
-		echo "16 - get out of this menu"
+		echo "16 - Wine and or PlayonLinux"
+		echo "17 - get out of this menu"
 
 		read software;
 	
@@ -543,7 +560,7 @@ InstallAndConquer() {
 			echo "9 - Lynx"
 			echo "10 - Dillo"
 			echo "11 - Waterfox"
-			echo "12 - Basiliks"
+			echo "12 - Basilisk"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -737,6 +754,10 @@ InstallAndConquer() {
 			fi
 		;;
 			16)
+			echo "Wine and Play On Linux"
+			sudo apt update && sudo apt install wine playonlinux -yy
+		;;
+			17)
 			echo "Alright den!"
 			break
 		;;
@@ -810,13 +831,29 @@ InstallAndConquer() {
 		
 		echo "If you're running Mint, it's a good idea to install the mint meta package"
 		distribution=$(cat /etc/issue | awk '{print $2}')
-		echo $distribution
-		if [[ $distribution == Mint ]];
+		if [[ $distribution == LinuxMint ]];
 		then
 			sudo apt install -y mint-meta-codecs
 		fi
 	break
 	done 
+	
+	clear
+	Greeting
+	
+}
+
+Uninstall() {
+	#This allows you to remove unwanted junk
+	echo "Are there any other applications you wish to remove(Y/n)"
+	read answer 
+	while [ $answer ==  Y ];
+	do
+		echo "Please enter the name of the software you wish to remove"
+        read software
+		sudo apt -y remove --purge $software
+	break
+	done
 	
 	clear
 	Greeting
@@ -916,15 +953,20 @@ cleanup() {
 	sudo apt autoremove -y
 	sudo apt autoclean -y
 	sudo apt clean -y
-
-	#This allows you to remove unwanted junk
-	echo "Are there any other applications you wish to remove(Y/n)"
-	read answer 
-	while [ $answer ==  Y ];
+	
+	#This remove older config files left by no longer installed applications
+	OLDCONF=$(dpkg -l | grep '^rc' | awk '{print $2}')
+	sudo apt remove --purge $OLDCONF
+	
+	#This optionally removes old kernels
+	OldKernels=$(dpkg -l | tail -n +6 | grep -E 'linux-image-[0-9]+' | grep -Fv $(uname -r))
+	echo $Kernels
+	sleep 1
+	echo "Would you like to remove older kernels to save disk space?(Y/n)"
+	read answer
+	while [ $answer == Y ];
 	do
-		echo "Please enter the name of the software you wish to remove"
-        read software
-		sudo apt -y remove --purge $software
+		sudo apt-get remove --purge $OldKernels
 	break
 	done
 
@@ -1303,17 +1345,18 @@ Greeting() {
 	echo "1 - Setup your system"
 	echo "2 - Add/Remove user accounts"
 	echo "3 - Install software"
-	echo "4 - Setup a hosts file"
-	echo "5 - Backup your system"
-	echo "6 - Restore your system"
-	echo "7 - Manage system services"
-	echo "8 - Collect System Information"
-	echo "9 - Help"
-	echo "10 - Cleanup"
-	echo "11 - System Maintenance"
-	echo "12 - Browser Repair"
-	echo "13 - Update"
-	echo "14 - exit"
+	echo "4 - Uninstall software"
+	echo "5 - Setup a hosts file"
+	echo "6 - Backup your system"
+	echo "7 - Restore your system"
+	echo "8 - Manage system services"
+	echo "9 - Collect System Information"
+	echo "10 - Help"
+	echo "11 - Cleanup"
+	echo "12 - System Maintenance"
+	echo "13 - Browser Repair"
+	echo "14 - Update"
+	echo "15 - exit"
 	
 	read selection;
 	
@@ -1328,36 +1371,39 @@ Greeting() {
 		InstallAndConquer
 	;;
 		4)
-		HostsfileSelect
+		Uninstall
 	;;
 		5)
-		Backup
+		HostsfileSelect
 	;;
 		6)
-		Restore
+		Backup
 	;;
 		7)
-		ServiceManager
+		Restore
 	;;
 		8)
-		Systeminfo
+		ServiceManager
 	;;
 		9)
-		HELP
+		Systeminfo
 	;;
 		10)
-		cleanup
+		HELP
 	;;
 		11)
-		SystemMaintenance
+		cleanup
 	;;
 		12)
-		BrowserRepair
+		SystemMaintenance
 	;;
 		13)
-		Update
+		BrowserRepair
 	;;
 		14)
+		Update
+	;;
+		15)
 		echo "Thank you for using Ubuntu-Toolbox... Goodbye!"
 		sleep 1
 		exit
