@@ -39,6 +39,8 @@ Setup() {
 			sudo iptables -A INPUT -i lo -j ACCEPT
 			sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 			sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+			sudo iptables -A INPUT -p tcp --dport 143 -j ACCEPT
+			sudo iptables -A INPUT -p tcp --dport 110 -j ACCEPT
 			echo "Would you like to disable ssh and telnet for security?(Y/n)"
 			read answer
 			while [ $answer == Y ];
