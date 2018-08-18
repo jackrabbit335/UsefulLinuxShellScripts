@@ -35,9 +35,10 @@ Setup() {
         read answer
         if [[ $answer == Y ]]
         then
-            sudo iptables -A INPUT -p tcp --dport ssh -j DROP
-            sudo iptables -A INPUT -p tcp --dport telnet -j DROP
-            sudo /sbin/iptables-save && sudo systemctl restart iptables
+		sudo iptables -P FORWARD -j DROP
+            	sudo iptables -A INPUT -p tcp --dport ssh -j DROP
+            	sudo iptables -A INPUT -p tcp --dport telnet -j DROP
+            	sudo /sbin/iptables-save && sudo systemctl restart iptables
         fi
     fi
 
