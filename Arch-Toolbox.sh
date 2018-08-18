@@ -46,7 +46,8 @@ Setup() {
             			sudo iptables -A INPUT -p tcp --dport telnet -j DROP
 			break
 			done
-            		sudo /sbin/iptables-save && sudo systemctl restart iptables
+			#Save the current set of rules to a text file for future use and then restart the service
+            		sudo /sbin/iptables-save > first-iptables-rules.txt && sudo systemctl restart iptables
         	fi
     	fi
 
