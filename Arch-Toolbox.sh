@@ -78,7 +78,7 @@ Setup() {
 	sudo touch /etc/sysctl.d/50-dmesg-restrict.conf
 	sudo touch /etc/sysctl.d/50-kptr-restrict.conf
 	sudo touch /etc/sysctl.d/99-sysctl.conf
-    sudo touch /etc/syctl.d/60-network-hardening.conf
+    	sudo touch /etc/syctl.d/60-network-hardening.conf
 	echo "kernel.dmesg_restrict = 1" | sudo tee -a /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "kernel.kptr_restrict = 1" | sudo tee -a /etc/sysctl.d/50-kptr-restrict.conf
 	echo "vm.swappiness = 5" | sudo tee -a /etc/sysctl.d/99-sysctl.conf #lowers swap value
@@ -88,7 +88,8 @@ Setup() {
 cat <<_EOF_
 Ping requests from unknown sources could mean that people are trying to
 locate/attack your network. If you need this functionality, you can comment
-this line out, however, this shouldn't impact normal users.
+this line out, however, this shouldn't impact normal users. If you blocked ICMP traffic
+in Iptables, you really don't need this here.
 _EOF_
     echo "Block icmp ping requests?(Y/n)"
     read answer
