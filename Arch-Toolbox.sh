@@ -36,8 +36,16 @@ Setup() {
         if [[ $answer == Y ]]
         then
 		sudo iptables -P FORWARD -j DROP
-            	sudo iptables -A INPUT -p tcp --dport ssh -j DROP
-            	sudo iptables -A INPUT -p tcp --dport telnet -j DROP
+		sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+		sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+		echo "Would you like to disable ssh and telnet for security?(Y/n)"
+		read answer
+		while [ $answer == Y ];
+		do
+            		sudo iptables -A INPUT -p tcp --dport ssh -j DROP
+            		sudo iptables -A INPUT -p tcp --dport telnet -j DROP
+		break
+		done
             	sudo /sbin/iptables-save && sudo systemctl restart iptables
         fi
     fi
