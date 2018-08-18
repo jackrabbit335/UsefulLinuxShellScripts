@@ -35,22 +35,38 @@ Setup() {
         	read answer
         	if [[ $answer == Y ]]
         	then
-			sudo iptables -P FORWARD -J DROP
-			sudo iptables -A INPUT -i lo -j ACCEPT
-			sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-			sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
-			sudo iptables -A INPUT -p tcp --dport 143 -j ACCEPT
-			sudo iptables -A INPUT -p tcp --dport 110 -j ACCEPT
-			echo "Would you like to disable ssh and telnet for security?(Y/n)"
+			echo "Would you like to deny ssh and telnet for security reasons?(Y/n)"
 			read answer
-			while [ $answer == Y ];
-			do
-            			sudo iptables -A INPUT -p tcp --dport 22 ssh -j DROP
-            			sudo iptables -A INPUT -p tcp --dport 23 telnet -j DROP
-			break
-			done
-			#Save the current set of rules to a text file for future use and then restart the service
-            		sudo iptables-save > first-iptables-rules.dat && sudo systemctl restart iptables
+			if [[ $answer == Y ]];
+			then
+				sudo iptables -P FORWARD -J DROP
+				sudo iptables -A INPUT -i lo -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 143 -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 110 -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 20 -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 21 -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 22 -j DROP
+				sudo iptables -A INPUT -p tcp --dport 23 -j DROP
+				sudo iptables -A INPUT -p icmp -j DROP
+				sudo iptables -P INPUT -p tcp -j DROP
+			else
+				sudo iptables -P FORWARD -J DROP
+				sudo iptables -A INPUT -i lo -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 143 -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 110 -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 20 -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 21 -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 23 -j ACCEPT
+				sudo iptables -A INPUT -p icmp -j DROP
+				sudo iptables -P INPUT -p tcp -j DROP
+				#Save the current set of rules to a text file for future use and then restart the service
+            			sudo iptables-save > first-iptables-rules.dat && sudo systemctl restart iptables
         	fi
     	fi
 
