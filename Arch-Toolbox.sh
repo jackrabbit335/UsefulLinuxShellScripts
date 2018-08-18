@@ -17,38 +17,38 @@ Setup() {
 	done
 
 	#This starts your firewall
-    find /usr/sbin/ufw 
-    if [ $? -eq 0 ];
-    then 
-	    sudo systemctl enable ufw 
-	    sudo ufw enable 
-	    echo "Would you like to disable ssh and telnet for security?(Y/n)"
-	    read answer
-	    if [[ $answer == Y ]];
-	    then 
-		    sudo ufw deny telnet && sudo ufw deny ssh
-	    	sudo ufw reload
-	    fi
-    else
-        sudo systemctl enable iptables && sudo systemctl start iptables
-        echo "Would you like to disable ssh and telnet for security?(Y/n)"
-        read answer
-        if [[ $answer == Y ]]
-        then
-		sudo iptables -P FORWARD -j DROP
-		sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-		sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
-		echo "Would you like to disable ssh and telnet for security?(Y/n)"
-		read answer
-		while [ $answer == Y ];
-		do
-            		sudo iptables -A INPUT -p tcp --dport ssh -j DROP
-            		sudo iptables -A INPUT -p tcp --dport telnet -j DROP
-		break
-		done
-            	sudo /sbin/iptables-save && sudo systemctl restart iptables
-        fi
-    fi
+    	find /usr/sbin/ufw 
+    	if [ $? -eq 0 ];
+   	 then 
+	    	sudo systemctl enable ufw 
+	   	sudo ufw enable 
+	    	echo "Would you like to disable ssh and telnet for security?(Y/n)"
+	    	read answer
+	    	if [[ $answer == Y ]];
+	    	then 
+			sudo ufw deny telnet && sudo ufw deny ssh
+	    		sudo ufw reload
+	    	fi
+    	else
+        	sudo systemctl enable iptables && sudo systemctl start iptables
+        	echo "Would you like to disable ssh and telnet for security?(Y/n)"
+        	read answer
+        	if [[ $answer == Y ]]
+        	then
+			sudo iptables -P FORWARD -j DROP
+			sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+			sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+			echo "Would you like to disable ssh and telnet for security?(Y/n)"
+			read answer
+			while [ $answer == Y ];
+			do
+            			sudo iptables -A INPUT -p tcp --dport ssh -j DROP
+            			sudo iptables -A INPUT -p tcp --dport telnet -j DROP
+			break
+			done
+            		sudo /sbin/iptables-save && sudo systemctl restart iptables
+        	fi
+    	fi
 
 	#This restricts coredumps to prevent attackers from getting info
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
