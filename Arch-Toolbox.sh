@@ -17,66 +17,25 @@ Setup() {
 	done
 
 	#This starts your firewall
-    	find /usr/sbin/ufw 
-    	if [ $? -eq 0 ];
-   	 then 
-	    	sudo systemctl enable ufw 
-	   	sudo ufw enable 
-	    	echo "Would you like to disable ssh and telnet for security?(Y/n)"
-	    	read answer
-	    	if [[ $answer == Y ]];
-	    	then 
-			sudo ufw deny telnet && sudo ufw deny ssh
-	    		sudo ufw reload
-	    	fi
-    	else
-        	sudo systemctl enable iptables && sudo systemctl start iptables
-        	echo "Would you like to disable ssh and telnet for security?(Y/n)"
-        	read answer
-        	if [[ $answer == Y ]]
-        	then
-			echo "Would you like to deny ssh telnet and ICMP for security reasons?(Y/n)"
-			read answer
-			if [[ $answer == Y ]];
-			then
-				sudo iptables -P FORWARD -J DROP
-				sudo iptables -A INPUT -i lo -j ACCEPT
-				sudo iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 143 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 993 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 110 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 995 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 20 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 21 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 25 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 465 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 22 -j DROP
-				sudo iptables -A INPUT -p tcp --dport 23 -j DROP
-				sudo iptables  -P INPUT -j DROP
-			else
-				sudo iptables -P FORWARD -J DROP
-				sudo iptables -A INPUT -i lo -j ACCEPT
-				sudo iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 143 -j ACCEPT
-				sudo iptables -A INPuT -p tcp --dport -993 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 110 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 995 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 20 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 21 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 23 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 25 -j ACCEPT
-				sudo iptables -A INPUT -p tcp --dport 465 -j ACCEPT
-				sudo iptables -A INPUT -p icmp -j ACCEPT #Accepts all incoming pings may wanna fix that later.
-				sudo iptables -P INPUT -j DROP
-				#Save the current set of rules to a text file for future use and then restart the service
-            			sudo iptables-save > first-iptables-rules.dat && sudo systemctl restart iptables
-        	fi
-    	fi
+    find /usr/sbin/ufw 
+    if [ $? -eq 0 ];
+   	then 
+         sudo systemctl enable ufw
+         sudo systemctl start ufw
+    else
+         sudo pacman -S --noconfirm ufw 
+         sudo systemctl enable ufw
+         sudo systemctl start ufw
+    fi
+    echo "Would you like to deny ssh and telnet for security?(Y/n)"
+    read answer 
+    while [ $answer == Y ]
+    do
+       sudo ufw deny ssh
+       sudo ufw deny telnet
+       sudo ufw reload
+    break
+    done
 
 	#This restricts coredumps to prevent attackers from getting info
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
