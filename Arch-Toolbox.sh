@@ -9,7 +9,7 @@ Setup() {
 	read answer
 	while [ $answer == Y ];
 	do 
-		echo "Enter your preferred timezone"
+	    echo "Enter your preferred timezone"
 		read timezone
 		sudo timedatectl set-ntp true 
 		sudo timedatectl set-timezone $timezone
@@ -20,20 +20,21 @@ Setup() {
     find /usr/sbin/ufw 
     if [ $? -eq 0 ];
    	then 
-         sudo systemctl enable ufw
-         sudo systemctl start ufw
+        sudo systemctl enable ufw
+        sudo systemctl start ufw
     else
-         sudo pacman -S --noconfirm ufw 
-         sudo systemctl enable ufw
-         sudo systemctl start ufw
+        sudo pacman -S --noconfirm ufw 
+        sudo systemctl enable ufw
+        sudo systemctl start ufw
+        sudo ufw enable
     fi
     echo "Would you like to deny ssh and telnet for security?(Y/n)"
     read answer 
     while [ $answer == Y ]
     do
-       sudo ufw deny ssh
-       sudo ufw deny telnet
-       sudo ufw reload
+      sudo ufw deny ssh
+      sudo ufw deny telnet
+      sudo ufw reload
     break
     done
 
