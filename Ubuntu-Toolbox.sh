@@ -6,6 +6,7 @@ Setup() {
 
 	#This activates the firewall
 	sudo systemctl enable ufw
+	sudo systemctl start ufw
 	sudo ufw enable
 	echo "Would you like to deny ssh and telnet for security purposes?(Y/n)"
 	read answer
@@ -162,7 +163,7 @@ Update() {
 Systeminfo() {
 	#This gives some useful information for later troubleshooting 
 	host=$(hostname)
-	distribution=$(lsb_release -a | grep "Distributor ID:" | awk -F: '{print $2}')
+	distribution=$(lsb_release -a | grep "Description:" | awk -F: '{print $2}')
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INFORMATION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
@@ -608,17 +609,13 @@ InstallAndConquer() {
 			then
 				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.2.en-US.linux-x86_64.tar.bz2
 				tar -xvf waterfox-56.2.2.en-US.linux-x86_64.tar.bz2
-				cd waterfox
-				./waterfox #To import any user data you'd like to import first run.
-				cd 
+				./waterfox/waterfox #To import any user data you'd like to import first run.
 				sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox #Now just type waterfox in a terminal and it should open
 			elif [[ $browser == 12 ]];
 			then
 				wget us.basilisk-browser.org/release/basilisk-latest.linux64.tar.bz2
 				tar -xvf basilisk-latest.linux64.tar.bz2
-				cd basilisk
-				./basilisk #To import any user data you'd like to import first run
-				cd
+				./basilisk/basilisk #To import any user data you'd like to import first run
 				sudo mv basilisk /opt && sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk #Now just type basilisk in a terminal and it should open
 			fi
 		;;
@@ -954,7 +951,7 @@ cleanup() {
 	sudo apt autoclean -y
 	sudo apt clean -y
 	
-	#This remove older config files left by no longer installed applications
+	#This removes older config files left by no longer installed applications
 	OLDCONF=$(dpkg -l | grep '^rc' | awk '{print $2}')
 	sudo apt remove --purge $OLDCONF
 	
