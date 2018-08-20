@@ -767,6 +767,7 @@ InstallAndConquer() {
 	while [ $answer == Y ];
 	do
 		sudo apt install -y screenfetch
+		echo "screenfetch" | sudo tee -a ~/.bashrc
 	break
 	done
 	
