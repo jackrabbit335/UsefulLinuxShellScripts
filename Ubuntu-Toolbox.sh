@@ -510,7 +510,8 @@ InstallAndConquer() {
 			2)
 			echo "1 - rkhunter"
 			echo "2 - clamav"
-			echo "3 - both"
+			echo "3 - chkrootkit"
+			echo "4 - all of the above"
 			read package
 			if [[ $package == 1 ]];
 			then
@@ -520,8 +521,12 @@ InstallAndConquer() {
 				sudo apt install -y clamav && sudo freshclam
 			elif [[ $package == 3 ]];
 			then
+				sudo apt install -y chkrootkit
+			elif [[ $package == 4 ]];
+			then
 				sudo apt install -y rkhunter && sudo rkhunter --propupd && sudo rkhunter --update
 				sudo apt install -y clamav && sudo freshclam
+				sudo apt install -y chkrootkit
 			fi
 		;;
 			3)
