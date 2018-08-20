@@ -179,7 +179,7 @@ Systeminfo() {
 	echo $distribution >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
-	echo "DESKTOP_SESSION" >> $host-sysinfo.txt
+	echo "DESKTOP" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo $DESKTOP_SESSION >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
@@ -817,7 +817,7 @@ InstallAndConquer() {
 			elif [[ $DESKTOP_SESSION == Budgie ]];
 			then
 				sudo apt install -y ubuntu-restricted-extras
-			elif [[ $DESKTOP_SESSION == Cinnamon ]];
+			elif [[ $DESKTOP_SESSION == cinnamon ]];
 			then
 				sudo apt install -y ubuntu-restricted-extras gnome-tweak-tool
 			else
@@ -828,7 +828,7 @@ InstallAndConquer() {
 		
 		echo "If you're running Mint, it's a good idea to install the mint meta package"
 		distribution=$(cat /etc/issue | awk '{print $2}')
-		if [[ $distribution == LinuxMint ]];
+		if [[ $distribution == Mint ]];
 		then
 			sudo apt install -y mint-meta-codecs
 		fi
