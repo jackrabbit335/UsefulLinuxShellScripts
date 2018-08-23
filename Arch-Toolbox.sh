@@ -22,6 +22,7 @@ Setup() {
    	then 
         sudo systemctl enable ufw
         sudo systemctl start ufw
+	sudo ufw enable
     else
         sudo pacman -S --noconfirm ufw 
         sudo systemctl enable ufw
