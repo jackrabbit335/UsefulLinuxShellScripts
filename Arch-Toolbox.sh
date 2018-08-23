@@ -22,7 +22,7 @@ Setup() {
    	then 
         sudo systemctl enable ufw
         sudo systemctl start ufw
-	sudo ufw enable
+        sudo ufw enable
     else
         sudo pacman -S --noconfirm ufw 
         sudo systemctl enable ufw
@@ -830,9 +830,7 @@ InstallAndConquer() {
 	;;
 		16)
 		echo "This installs a few common themes"
-		sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme numix-themes-archblue arc-gtk-theme papirus-icon-theme faenza-green-icon-theme faience-icon-theme
-		wget https://aur.archlinux.org/cgit/aur.git/snapshot/obsidian-icon-theme.tar.gz && tar -xzf obsidian-icon-theme.tar.gz && sudo mv obsidian-icon-theme /usr/share/icons
-
+		sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme numix-themes-archblue arc-gtk-theme papirus-icon-theme faenza-green-icon-theme
 	;;
 		17)
 		echo "This installs screenfetch"
