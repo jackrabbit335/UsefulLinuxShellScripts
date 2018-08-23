@@ -57,7 +57,7 @@ cat <<_EOF_
 Ping requests from unknown sources could mean that people are trying to
 locate/attack your network. If you need this functionality, you can comment
 this line out, however, this shouldn't impact normal users. If you blocked ICMP traffic
-in Iptables, you really don't need this here.
+in Iptables or UFW, you really don't need this here.
 _EOF_
     echo "Block icmp ping requests?(Y/n)"
     read answer
@@ -156,7 +156,7 @@ _EOF_
 	checkNetwork
 	
 	#This tries to update and rate mirrors if it fails it refreshes the keys
-	distribution=$(lsb_release -a | grep "Distributor ID:" | awk -F: '{print $2}')
+	distribution=$(cat /etc/issue | awk '{print $1}')
 	for n in $distribution;
 	do
 		if [[ $distribution == Manjaro ]];
@@ -222,7 +222,7 @@ Update() {
 Systeminfo() {
 	#This gives some useful information for later troubleshooting 
 	host=$(hostname)
-	distribution=$(lsb_release -a | grep "Distributor ID:" | awk -F: '{print $2}')
+	distribution=$(lsb_release -a | grep "Description:" | awk -F: '{print $2}')
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INFORMATION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
@@ -326,7 +326,7 @@ Systeminfo() {
 	echo "LAST LOGIN ATTEMPTS" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	lastlog >> $host-sysinfo.txt
-	echo "" >> host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "INSTALLED PACKAGES" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
@@ -1137,6 +1137,22 @@ HostsfileSelect() {
 	Greeting
 }
 
+Uninstall() {
+	#This allows the user to remove unwanted shite
+	echo "Would you like to remove any other unwanted junk?(Y/n)"
+	read answer 
+	while [ $answer == Y ];
+	do
+		echo "Please enter the name of any software you wish to remove"
+		read software
+		sudo pacman -Rs --noconfirm $software
+		break
+	done
+	
+	clear
+	Greeting
+}
+
 cleanup() {
 	#This will clean the cache
 	sudo rm -r .cache/*
@@ -1171,17 +1187,6 @@ cleanup() {
 
 	#This will remove orphan packages from pacman 
 	sudo pacman -Rsn --noconfirm $(pacman -Qqdt)
-
-	#This allows the user to remove unwanted shite
-	echo "Would you like to remove any other unwanted junk?(Y/n)"
-	read answer 
-	while [ $answer == Y ];
-	do
-		echo "Please enter the name of any software you wish to remove"
-		read software
-		sudo pacman -Rs --noconfirm $software
-		break
-	done
 
 	#Optional This will remove the pamac cached applications and older versions
 	cat <<_EOF_
@@ -1339,7 +1344,7 @@ SystemMaintenance() {
 	checkNetwork
 	
 	#This attempts to rank mirrors and update your system
-	distribution=$(lsb_release -a | grep "Distributor ID:" | awk -F: '{print $2}')
+	distribution=$(cat /etc/issue | awk '{print $1}')
 	if [[ $distribution == Manjaro ]];
 	then
 		sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu --noconfirm
@@ -1615,18 +1620,19 @@ Greeting() {
 	echo "1 - Setup your system"
 	echo "2 - Add/Remove user accounts"
 	echo "3 - Install software"
-	echo "4 - Setup a hosts file"
-	echo "5 - Backup your important files and photos"
-	echo "6 - Restore your important files and photos"
-	echo "7 - Manage system services"
-	echo "8 - Install or uninstall kernels"
-	echo "9 - Collect system information"
-	echo "10 - Cleanup"
-	echo "11 - System Maintenance"
-	echo "12 - Browser Repair"
-	echo "13 - Update"
-	echo "14 - Help"
-	echo "15 - exit"
+	echo "4 - Uninstall software"
+	echo "5 - Setup a hosts file"
+	echo "6 - Backup your important files and photos"
+	echo "7 - Restore your important files and photos"
+	echo "8 - Manage system services"
+	echo "9 - Install or uninstall kernels"
+	echo "10 - Collect system information"
+	echo "11 - Cleanup"
+	echo "12 - System Maintenance"
+	echo "13 - Browser Repair"
+	echo "14 - Update"
+	echo "15 - Help"
+	echo "16 - exit"
 	
 	read selection;
 	
@@ -1641,39 +1647,42 @@ Greeting() {
 		InstallAndConquer
 	;;
 		4)
-		HostsfileSelect
+		Uninstall
 	;;
 		5)
-		Backup
+		HostsfileSelect
 	;;
 		6)
-		Restore
+		Backup
 	;;
 		7)
-		ServiceManager
+		Restore
 	;;
 		8)
-		KernelManager
+		ServiceManager
 	;;
 		9)
-		Systeminfo
+		KernelManager
 	;;
 		10)
-		cleanup
+		Systeminfo
 	;;
 		11)
-		SystemMaintenance
+		cleanup
 	;;
 		12)
-		BrowserRepair
+		SystemMaintenance
 	;;
 		13)
-		Update
+		BrowserRepair
 	;;
 		14)
-		Help
+		Update
 	;;
 		15)
+		Help
+	;;
+		16)
 		echo "Thank you for using Arch-Toolbox... Goodbye!"
 		sleep 1
 		exit
