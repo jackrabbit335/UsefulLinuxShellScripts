@@ -47,7 +47,7 @@ then
 	rm hphosts-partial.txt cameleonhosts coinblocker
 elif [[ $package == 4 ]];
 then 
-	#Sources include Steven Black's Hosts with hphosts and cameleon
+	#Sources include Steven Blacks Hosts with hphosts and cameleon
 	wget https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts && sort -u hosts > /tmp/hosts.new && mv /tmp/hosts.new hosts
 	wget http://hosts-file.malwareteks.com/hosts.txt -O hphosts && sort -u hphosts > /tmp/hphosts.new && mv /tmp/hphosts.new hphosts
 	wget https://hosts-file.net/hphosts-partial.txt && sort -u hphosts-partial.txt > /tmp/hphosts-partial.new && mv /tmp/hphosts-partial.new hphosts-partial.txt
