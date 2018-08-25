@@ -176,7 +176,7 @@ then
 	rm Trackinglist Adslist Malvertisinglist Malwarehosts Malwarelist emd.txt fsa.txt psh.txt ad_servers.txt
 elif [[ $package == 10 ]];
 then
-	#Steven Black's hosts with fully updated sources and with hosts-file.net ads servers added.
+	#Steven Blacks hosts with fully updated sources and with hosts-file.net ads servers added.
 	wget https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts -O adservers.txt && sort -u adservers.txt > /tmp/adservers.new && mv /tmp/adservers.new adservers.txt
 	wget http://winhelp2002.mvps.org/hosts.txt -O MVPShosts && sort -u MVPShosts > /tmp/MVPShosts.new && mv /tmp/MVPShosts.new MVPShosts
 	wget someonewhocares.org/hosts/hosts && sort -u hosts > /tmp/hosts.new && mv /tmp/hosts.new hosts
@@ -250,7 +250,7 @@ do
 break
 done
 
-echo "This hosts file also doesn't update everyday, however, it does block some third-parties that others do not."
+echo "This hosts file also does not update everyday, however, it does block some third-parties that others do not."
 echo "Would you like to add My own hosts list?(Y/n)"
 read answer
 while [ $answer == Y ];
@@ -277,7 +277,7 @@ do
 
 done
 
-#This ensures that we are using All 0's for pointing back to home
+#This ensures that we are using All zeros for pointing back to home
 sed -i 's/127.0.0.1/0.0.0.0/g' hosts
 
 #This merges hosts with /etc/hosts then removes hosts
