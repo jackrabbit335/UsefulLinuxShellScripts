@@ -219,6 +219,11 @@ Systeminfo() {
 	cat /proc/loadavg >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
+	echo "DISK SECTOR INFORMATION" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	sudo fdisk -l >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
 	echo "DISK SPACE" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	df -h >> $host-sysinfo.txt
@@ -972,6 +977,9 @@ cleanup() {
 		sudo apt-get remove --purge $OldKernels
 	break
 	done
+	
+	#This removes the apt list
+	sudo rm /var/lib/apt/lists/*
 
 	#This clears the cache and thumbnails and other junk
 	sudo rm -r .cache/*
