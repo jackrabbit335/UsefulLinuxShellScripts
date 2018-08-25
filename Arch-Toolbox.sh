@@ -1563,22 +1563,53 @@ _EOF_
 
 Backup() {
 	#This backsups the system assuming you have your external drive mounted to /mnt
-	host=$(hostname)
-	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
-	if [[ $Mountpoint != /run/media/$USER/* ]];
-	then
-		read -p "Please insert a drive and hit enter"
-		echo $(lsblk | awk '{print $1}')
-		sleep 1 
-		echo "Please select the device you wish to use"
-		read device
-		sudo mount $device /mnt
-		sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*"."*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups
-	elif [[ $Mountpoint == /run/media/$USER/* ]];
-	then
-		read -p "Found a block device at designated coordinates...
-		If this is the preferred drive, unmount it, leave it plugged in, and run this again. Press enter to continue..."
-	fi
+	echo "What would you like to do?(Y/n)"
+	echo "1 - Backup home folder and user files"
+	echo "2 - Backup entire drive and root partition"
+
+	read operation;
+
+	case $operation in
+		1)
+		host=$(hostname)
+		Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
+		if [[ $Mountpoint != /run/media/$USER/* ]];
+		then
+			read -p "Please insert a drive and hit enter"
+			echo $(lsblk | awk '{print $1}')
+			sleep 1
+			echo "Please select the device you wish to use"
+			read device
+			sudo mount $device /mnt
+			sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*","*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups
+		elif [[ $Mountpoint == /run/media/$USER/* ]];
+		then
+			read -p "Found a block device at designated coordinates...
+			if this is the preferred drive, unmount it, leave it plugged in, and run this again. Press enter to continue..."
+		fi
+	;;
+		2) 
+		host=$(hostname)
+		Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
+		if [[ $Mountpoint != /run/media/$USER/* ]];
+		then
+			read -p "Please insert a drive and hit enter"
+			echo $(lsblk | awk '{print $1}')
+			sleep 1
+			echo "Please select the device you wish to use"
+			read device
+			sudo mount $device /mnt
+			sudo rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /mnt/$host-backups
+		elif [[ $Mountpoint == /run/media/$USER/* ]];
+		then
+			echo "Found a block device at designated coordinates...
+			if this is the preferred drive, unmount it, leave it plugged in, and then run this again. Press enter to continue..."
+		fi 
+	;;
+		*)
+		echo "This is an invalid entry, please try again"
+	;;
+	esac
 	
 	clear
 	Greeting
@@ -1612,6 +1643,9 @@ _EOF_
 		read -p "Found a block device at designated coordinates... If this is the preferred
 		drive, try unmounting the device, leaving it plugged in, and running this again. Press enter to continue..."
 	fi 
+	
+	clear
+	Greeting
 }
 
 Greeting() {
