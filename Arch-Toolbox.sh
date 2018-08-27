@@ -1635,7 +1635,7 @@ _EOF_
 		echo "Please select the device from the list"
 		read device
 		sudo mount $device /mnt 
-		sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*"."*/.local/share/Trash/*"}  /mnt/$host-backups/* /home
+		sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*"."*/.local/share/Trash/*"}  /mnt/$host-backups/* /home/$USER
 		sudo sync 
 		Restart
 	elif [[ $Mountpoint == /run/media/$USER/* ]];
