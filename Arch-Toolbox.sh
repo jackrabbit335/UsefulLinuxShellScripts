@@ -229,6 +229,11 @@ Systeminfo() {
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
+	echo "DATE&TIME"  >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	date >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
 	echo "USER" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo $USER >> $host-sysinfo.txt
@@ -284,9 +289,19 @@ Systeminfo() {
 	cat /proc/loadavg >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
+	echo "DISK SECTOR INFORMATION" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	sudo fdisk -l >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
 	echo "DISK SPACE" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	df -h >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "DIRECTORY USAGE" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	du -h >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "MEMORY USAGE" >> $host-sysinfo.txt
@@ -377,6 +392,11 @@ Systeminfo() {
 	echo "YET STILL MORE HARDWARE INFORMATION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	lscpu >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "MEMORY INFOMRATION" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	cat /proc/meminfo >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "TLP STATS" >> $host-sysinfo.txt
@@ -1635,7 +1655,7 @@ _EOF_
 		echo "Please select the device from the list"
 		read device
 		sudo mount $device /mnt 
-		sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*"."*/.local/share/Trash/*"}  /mnt/$host-backups/* /home/$USER
+		sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*"."*/.local/share/Trash/*"}  /mnt/$host-backups/* /home
 		sudo sync 
 		Restart
 	elif [[ $Mountpoint == /run/media/$USER/* ]];

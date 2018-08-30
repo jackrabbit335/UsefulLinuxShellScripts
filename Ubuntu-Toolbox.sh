@@ -169,6 +169,11 @@ Systeminfo() {
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
+	echo "DATE&TIME" >> $host-sysinfo.txt
+	echo"###############################################################" >> $host-sysinfo.txt
+	date >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
 	echo "USER" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo $USER >> $host-sysinfo.txt
@@ -227,6 +232,11 @@ Systeminfo() {
 	echo "DISK SPACE" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	df -h >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-syinfo.txt
+	echo "DIRECTORY USAGE" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt\
+	du -h >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "MEMORY USAGE" >> $host-sysinfo.txt
@@ -312,6 +322,11 @@ Systeminfo() {
 	echo "YET STILL MORE HARDWARE INFORMATION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	lscpu >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "MEMORY INFORMATION" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	cat /proc/meminfo >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "TLP STATS" >> $host-sysinfo.txt
@@ -581,10 +596,11 @@ InstallAndConquer() {
 			echo "6 - Pale Moon"
 			echo "7 - Vivaldi"
 			echo "8 - Vivaldi-snapshot"
-			echo "9 - Lynx"
-			echo "10 - Dillo"
-			echo "11 - Waterfox"
-			echo "12 - Basilisk"
+			echo "9 - Opera"
+			echo "10 - Lynx"
+			echo "11 - Dillo"
+			echo "12 - Waterfox"
+			echo "13 - Basilisk"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -624,17 +640,22 @@ InstallAndConquer() {
 				sudo apt install -f
 			elif [[ $browser == 9 ]];
 			then
-				sudo apt install lynx
+				sudo sh -c 'echo "deb http://deb.opera.com/opera/ stable non-free" >> /etc/apt/sources.list.d/opera.list'
+				sudo sh -c 'wget -O - http://deb.opera.com/archive.key | apt-key add -'
+				sudo apt update && sudo apt install -y opera
 			elif [[ $browser == 10 ]];
 			then
-				sudo apt install dillo
+				sudo apt install lynx
 			elif [[ $browser == 11 ]];
+			then
+				sudo apt install dillo
+			elif [[ $browser == 12 ]];
 			then
 				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.2.en-US.linux-x86_64.tar.bz2
 				tar -xvf waterfox-56.2.2.en-US.linux-x86_64.tar.bz2
 				./waterfox/waterfox #To import any user data you'd like to import first run.
 				sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox #Now just type waterfox in a terminal and it should open
-			elif [[ $browser == 12 ]];
+			elif [[ $browser == 13 ]];
 			then
 				wget us.basilisk-browser.org/release/basilisk-latest.linux64.tar.bz2
 				tar -xvf basilisk-latest.linux64.tar.bz2
