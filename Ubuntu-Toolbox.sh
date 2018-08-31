@@ -893,7 +893,7 @@ Uninstall() {
 	do
 		echo "Please enter the name of the software you wish to remove"
         read software
-		sudo apt -y remove --purge $software
+		sudo apt remove --purge -yy $software 
 	break
 	done
 	
