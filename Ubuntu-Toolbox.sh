@@ -170,7 +170,7 @@ Systeminfo() {
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "DATE&TIME" >> $host-sysinfo.txt
-	echo"###############################################################" >> $host-sysinfo.txt
+	echo "###############################################################" >> $host-sysinfo.txt
 	date >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
@@ -233,9 +233,9 @@ Systeminfo() {
 	echo "##############################################################" >> $host-sysinfo.txt
 	df -h >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-syinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
 	echo "DIRECTORY USAGE" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt\
+	echo "##############################################################" >> $host-sysinfo.txt
 	du -h >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
@@ -622,10 +622,23 @@ InstallAndConquer() {
 				sudo apt install -f 
 			elif [[ $browser == 6 ]];
 			then
-				cd Downloads
-				wget http://linux.palemoon.org/datastore/release/pminstaller-0.2.4.tar.bz2
-				tar -xvjf pminstaller-0.2.3.tar.bz2
-				./pminstaller.sh
+				wget http://linux.palemoon.org/datastore/release/palemoon-28.0.1.linux-x86_64.tar.bz2
+				tar -xvf palemoon-28.0.1.linux-x86_64.tar.bz2
+				./palemoon/palemoon
+				sudo mv palemoon /opt
+				sudo ln -s /opt/palemoon/palemoon /usr/bin/palemoon
+				sudo touch /usr/share/applications/palemoon.desktop
+				echo "[Desktop Entry]" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "Name=Palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "GenericName=Palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "Exec=/opt/palemoon/palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "Terminal=false" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "Icon=/opt/palemoon/browser/icons/moz128.png" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "Type=Application" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "Categories=Application;Network;X-Developer;" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "Comment=Browse the World Wide Web" | sudo tee -a /usr/share/applications/palemoon.desktop
+				sudo update-alternatives --install /usr/bin/gnome-www-browser gnome-www-browser /usr/bin/palemoon 100
+				sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/palemoon 100
 			elif [[ $browser == 7 ]];
 			then
 				cd /tmp
