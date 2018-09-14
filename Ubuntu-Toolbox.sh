@@ -514,7 +514,7 @@ InstallAndConquer() {
 		echo "9 - video and audio editing"
 		echo "10 - preload"
 		echo "11 - Webcam application"
-		echo "12 - bleachbit cleaning software"
+		echo "12 - bleachbit cleaning software and gtkorphan"
 		echo "13 - proprietary fonts"
 		echo "14 - THEMES"
 		echo "15 - GAMES"
@@ -563,7 +563,7 @@ InstallAndConquer() {
 			fi
 		;;
 			3)
-			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute gnome-disk-utility  htop iotop inxi xsensors lm-sensors gufw gparted smartmontools
+			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute gnome-disk-utility htop iotop atop inxi xsensors lm-sensors gufw gparted smartmontools
 		;;
 			4)
 			echo "1 - deja-dup"
@@ -748,7 +748,7 @@ InstallAndConquer() {
 			sudo apt install -y guvcview
 		;;
 			12)
-			sudo apt install -y bleachbit
+			sudo apt install -y bleachbit gtkorphan
 		;;
 			13)
 			sudo apt install -y ttf-mscorefonts-installer
@@ -1026,7 +1026,7 @@ cleanup() {
 	done
 	
 	#This removes the apt list
-	sudo rm /var/lib/apt/lists/*
+	sudo rm -r /var/lib/apt/lists/*
 
 	#This clears the cache and thumbnails and other junk
 	sudo rm -r .cache/*
