@@ -309,7 +309,7 @@ then
 	fi
 fi
 
-#Searches for logs fold to determine if we need to create it
+#Searches for logs folder to determine if we need to create it
 find $house/logs/ 
 while [ $? -eq 1 ];
 do
