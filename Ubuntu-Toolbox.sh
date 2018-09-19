@@ -1014,14 +1014,19 @@ cleanup() {
 	sudo apt remove --purge $OLDCONF
 	
 	#This optionally removes old kernels
+cat <<_EOF_
+It is encouraged that you leave at least one older kernel on your system
+_EOF_
 	OldKernels=$(dpkg -l | tail -n +6 | grep -E 'linux-image-[0-9]+' | grep -Fv $(uname -r))
-	echo $Kernels
+	echo $OldKernels
 	sleep 1
 	echo "Would you like to remove older kernels to save disk space?(Y/n)"
 	read answer
 	while [ $answer == Y ];
 	do
-		sudo apt-get remove --purge $OldKernels
+		echo "Please enter the Image you wish to remove"
+		read Image
+		sudo apt-get remove --purge $Image
 	break
 	done
 	
@@ -1349,7 +1354,7 @@ Backup() {
 	#This tries to backup your system
 	echo "What would you like to do?(Y/n)"
 	echo "1 - Backup home folder and user files"
-	echo "2 - Backup entire drive and root partition"
+	echo "2 - Backup entire drive and root partition(skipping unnecessary items)"
 
 	read operation;
 
