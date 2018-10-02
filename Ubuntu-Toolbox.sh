@@ -169,7 +169,7 @@ Systeminfo() {
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
-	echo "DATE&TIME" >> $host-sysinfo.txt
+	echo "DATE" >> $host-sysinfo.txt
 	echo "###############################################################" >> $host-sysinfo.txt
 	date >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
@@ -192,11 +192,6 @@ Systeminfo() {
 	echo "SYSTEM INITIALIZATION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	ps -p1 | awk 'NR!=1{print $4}' >> $host-sysinfo.txt
-	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
-	echo "DATE" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
-	date >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "KERNEL AND OPERATING SYSTEM INFORMATION" >> $host-sysinfo.txt
@@ -395,14 +390,14 @@ Many others...
 ########################################################################
 WELCOME AND RAMBLE WITH LICENSING
 ########################################################################
-Welcome to Arch-Toolbox. This is a useful little utility that 
+Welcome to Ubuntu-Toolbox. This is a useful little utility that 
 tries to setup, maintain, and keep up to date with the latest 
-software on your system. Arch-Toolbox is delivered as is and thus, 
+software on your system. Ubuntu-Toolbox is delivered as is and thus, 
 I can't be held accountable if something goes wrong. This software is 
 freely given under the GPL license and is distributable and changeable 
 as you see fit, I only ask that you give the author the credit for the 
 original work. Arch-Toolbox has been tested and should work on your 
-device assuming that you are running an arch-based system. 
+device assuming that you are running an Ubuntu-based system. 
 A cronjob is any task or script that you place in the crontab file to be 
 ran at a certain time.To not go to deep into it, the basic syntax is 
 this:
@@ -425,6 +420,12 @@ Hoever, if you wish to run them as cron jobs then you can tweak the
 cleaning routines as follows."sudo rm -r ./cache/*" should be changed to 
 "rm -r /home/$USER/.cache/*" and etc. The setup script should only be 
 ran once to set the system up. 
+Some good reference sites are:
+https://usn.ubuntu.com/
+https://ubuntuforums.org/
+https://forums.linuxmint.com/
+https://wiki.ubuntu.com/ 
+Please copy and paste these in a browser then hit enter.
 
 ########################################################################
 KERNELS AND SERVICES
@@ -457,6 +458,21 @@ usable and safe one and ensure that you have it ready when making
 reparations. So far, the only available option is to Backup the home 
 directory, but that might soon change. Please also note that backing up
 the home directory can save some user settings as well.
+
+########################################################################
+Recent Changes with Installing certain apps and things
+########################################################################
+Since Pale Moon 28.x there have been some changes as to how we install
+the browser. Pale Moon's lead Developer states how to install the browser 
+in Linux systems via this page: http://linux.palemoon.org/help/installation/
+I have still added a basic set up of palemoon that will extract the browser 
+and send it to the opt directory while allowing the user to
+set up a symbolic link to the usr bin directory. This will 
+allow you to use the browser by typing the name into a terminal
+much like any other application. For more tips and details
+see his website. Also, due to recently working with a friend on her
+laptop, I have found the need for Wine and so I added a simple command 
+way to install wine on newer systems. Will work on this further.
 
 ########################################################################
 HOSTS FILE MANIPULATION
@@ -878,6 +894,9 @@ InstallAndConquer() {
 			elif [[ $DESKTOP_SESSION == cinnamon ]];
 			then
 				sudo apt install -y ubuntu-restricted-extras gnome-tweak-tool
+			elif [[ $DESKTOP_SESSION == ubuntu ]];
+			then
+				sudo apt install -y ubuntu-restricted-extras gnome-tweak-tool gnome-shell-extensions
 			else
 				echo "You're running some other window manager I haven't tested yet."
 				sleep 1
