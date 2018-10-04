@@ -229,7 +229,7 @@ Systeminfo() {
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
-	echo "DATE&TIME"  >> $host-sysinfo.txt
+	echo "DATE"  >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	date >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
@@ -252,11 +252,6 @@ Systeminfo() {
 	echo "SYSTEM INITIALIZATION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	ps -p1 | awk 'NR!=1{print $4}' >> $host-sysinfo.txt
-	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
-	echo "DATE" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
-	date >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "UPDATE CHANNEL" >> $host-sysinfo.txt
