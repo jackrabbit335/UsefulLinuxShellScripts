@@ -309,6 +309,18 @@ then
 	fi
 fi
 
+find /etc/solus-release > /dev/null
+if [ $? -eq 0 ];
+then
+	Networkmanager=$(find /usr/bin/wicd)
+	if [ $? -eq 0 ];
+	then
+		sudo systemctl restart wicd
+	else
+		sudo systemctl restart NetworkManager
+	fi
+fi
+
 #Searches for logs folder to determine if we need to create it
 find $house/logs/ 
 while [ $? -eq 1 ];
