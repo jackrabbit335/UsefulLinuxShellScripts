@@ -47,7 +47,7 @@ Setup() {
 	sudo touch /etc/sysctl.d/50-dmesg-restrict.conf
 	sudo touch /etc/sysctl.d/50-kptr-restrict.conf
 	sudo touch /etc/sysctl.d/99-sysctl.conf
-    	sudo touch /etc/syctl.d/60-network-hardening.conf
+    sudo touch /etc/syctl.d/60-network-hardening.conf
 	echo "kernel.dmesg_restrict = 1" | sudo tee -a /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "kernel.kptr_restrict = 1" | sudo tee -a /etc/sysctl.d/50-kptr-restrict.conf
 	echo "vm.swappiness = 5" | sudo tee -a /etc/sysctl.d/99-sysctl.conf #lowers swap value
@@ -139,9 +139,9 @@ _EOF_
 	echo "Aliases are shortcuts for commonly used commands."
 	echo "Would you like to add some commonly used aliases?(Y/n)"
 	read answer
-
 	if [[ $answer == Y ]];
 	then 
+		sudo cp ~/.bashrc ~/.bashrc.bak
 		echo "#Alias to edit fstab" >> ~/.bashrc
 		echo 'alias fstab="sudo nano /etc/fstab"' >> ~/.bashrc
 		echo "#Alias to edit grub" >> ~/.bashrc
@@ -992,7 +992,11 @@ It is recommended that you do not run these without being present.
 Hoever, if you wish to run them as cron jobs then you can tweak the 
 cleaning routines as follows."sudo rm -r ./cache/*" should be changed to 
 "rm -r /home/$USER/.cache/*" and etc. The setup script should only be 
-ran once to set the system up. 
+ran once to set the system up.
+Some good reference sites are: 
+https://wiki.manjaro.org/index.php?title=Main_Page
+https://wiki.archlinux.org
+https://forum.manjaro.org
 
 ########################################################################
 KERNELS AND SERVICES
@@ -1650,7 +1654,7 @@ _EOF_
 		echo "Please select the device from the list"
 		read device
 		sudo mount $device /mnt 
-		sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*"."*/.local/share/Trash/*"}  /mnt/$host-backups/* /home
+		sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*"."*/.local/share/Trash/*"}  /mnt/$host-$date-backups/* /home
 		sudo sync 
 		Restart
 	elif [[ $Mountpoint == /run/media/$USER/* ]];
