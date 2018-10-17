@@ -1423,7 +1423,7 @@ Backup() {
 }
 
 Restore() { 
-		#This tries to restore the home folder
+#This tries to restore the home folder
 cat <<_EOF_
 This tries to restore the home folder and nothing else, if you want to 
 restore the entire system,  you will have to do that in a live environment.
@@ -1442,7 +1442,7 @@ _EOF_
 		echo "Please select the device from the list"
 		read device
 		sudo mount $device /mnt 
-		sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*"."*/.local/share/Trash/*"} /mnt/$host-$date-backups/* /home/$USER
+		sudo rsync -aAXv --delete /mnt/$host-$date-backups/* /home/$USER
 		sudo sync
 		Restart
 	elif [[ $Mountpoint == /run/media/$USER/* ]];
