@@ -1289,11 +1289,12 @@ _EOF_
 }
 
 BrowserRepair() {
-cat << _EOF_
+cat <<_EOF_
 This can fix a lot of the usual issues with a few of the bigger browsers. 
 These can include performance hitting issues. If your browser needs a tuneup,
 it is probably best to do it in the browser itself, but when you just want something
 fast, this can do it for you. More browsers and options are coming.
+This can also clean away undesired toolbars.
 _EOF_
 
 	#Look for the following browsers
