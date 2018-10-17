@@ -21,12 +21,10 @@ Setup() {
     if [ $? -eq 0 ];
    	then 
         sudo systemctl enable ufw
-        sudo systemctl start ufw
         sudo ufw enable
     else
         sudo pacman -S --noconfirm ufw 
         sudo systemctl enable ufw
-        sudo systemctl start ufw
         sudo ufw enable
     fi
     echo "Would you like to deny ssh and telnet for security?(Y/n)"
@@ -106,7 +104,7 @@ _EOF_
 				sudo systemctl enable fstrim.service
 				sudo systemctl start fstrim.service
 				sudo systemctl enable fstrim.timer
-				sudo systemctl start fstrim.service
+				sudo systemctl start fstrim.timer
 			break
 			done
 		fi
@@ -194,6 +192,19 @@ _EOF_
 				sudo pacman -Sc --noconfirm 
 				sudo pacman -Syyu --noconfirm
 			fi
+		fi
+	done
+
+#This fixes gufw not opening in kde plasma desktop
+cat <<_EOF_
+This will attempt to determine your desktop and resolve the kde gufw not opening issue.
+This is only a plasma issue as far as I know.
+_EOF_
+	for env in $DESKTOP_SESSION;
+	do
+		if [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]];
+		then
+			echo "kdesu python3 /usr/lib/python3.7/site-packages/gufw/gufw.py" | sudo tee -a /bin/gufw
 		fi
 	done
 	
@@ -449,30 +460,30 @@ InstallAndConquer() {
 		echo "2 - IDE or text/code editor"
 		echo "3 - Download managers"
 		echo "4 - Torrent clients"
-		echo "5 - Web browser from a list"
-		echo "6 - Media/home theater software"
-		echo "7 - Virtual machine client"
-		echo "8 - Wine and play on linux"
-		echo "9 - quvcview"
-		echo "10 - Manipulate config files and switch between versions of software"
-		echo "11 - GAMES!!!!!!!!!"
-		echo "12 - Video editing/encoding"
-		echo "13 - Plank"
-		echo "14 - Yaourt package manager/AUR helper"
-		echo "15 - Backup"
-		echo "16 - THEMES!!!!!!!!"
-		echo "17 - screenfetch"
-		echo "18 - Security checkers/scanners"
-		echo "19 - Stellarium constellation and space observation"
-		echo "20 - exit out of this menu"
+		echo "5 - AUR Helpers"
+		echo "6 - Web browser from a list"
+		echo "7 - Media/home theater software"
+		echo "8 - Virtual machine client"
+		echo "9 - Wine and play on linux"
+		echo "10 - quvcview"
+		echo "11 - Manipulate config files and switch between versions of software"
+		echo "12 - GAMES!!!!!!!!!"
+		echo "13 - Video editing/encoding"
+		echo "14 - Plank"
+		echo "15 - Yaourt package manager/AUR helper"
+		echo "16 - Backup"
+		echo "17 - THEMES!!!!!!!!"
+		echo "18 - screenfetch"
+		echo "19 - Security checkers/scanners"
+		echo "20 - Stellarium constellation and space observation"
+		echo "21 - exit out of this menu"
 
 	read software;
 
 	case $software in
 		1)
-		echo "This installs a choice of utility software"
+		echo "This installs a series of utility software"
 		sudo pacman -S --noconfirm dnsutils net-tools traceroute hardinfo lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools xsensors hddtemp htop iotop inxi gufw
-	
 	;;
 		2)
 		echo "This installs a light weight editor(text/code editor/IDE)"
@@ -481,7 +492,7 @@ InstallAndConquer() {
 		echo "3 - bluefish"
 		echo "4 - atom"
 		echo "5 - gedit"
-		echo "6 - kate"
+		echo "6 - kate/kwrite"
 		read package
 		if [[ $package == 1 ]];
 		then
@@ -503,7 +514,17 @@ InstallAndConquer() {
 			sudo pacman -S --noconfirm gedit
 		elif [[ $package == 6 ]];
 		then
-			sudo pacman -S --noconfirm kate
+			echo "1 - Kate"
+			echo "2 - Kwrite"
+			echo "Enter the editor you wish to install"
+			read $editor
+			if [[ $editor == 1 ]];
+			then
+				sudo pacman -S --noconfirm kate
+			elif [[ $editor == 2 ]];
+			then
+				sudo pacman -S --noconfirm kwrite
+			fi
 		else
 			echo "You've entered an invalid number"
 		fi
@@ -548,6 +569,30 @@ InstallAndConquer() {
 		fi
 	;;
 		5)
+cat <<_EOF_
+It is important to note that while you can install many of the listed
+applications through pamac or octopi, you will not be able to utilize the aur
+for future updates of some of the software installed via tarballs without one of these... 
+You have been warned.
+_EOF_
+		echo "1 - pacaur"
+		echo "2 - yaourt"
+		echo "3 - trizen"
+		read helper
+		if [[ $helper == 1 ]];
+		then
+			sudo pacman -S --noconfirm pacaur
+		elif [[ $helper == 2 ]];
+		then
+			sudo pacman -S --noconfirm yaourt
+		elif [[ $helper == 3 ]];
+		then
+			sudo pacman -S --noconfirm trizen
+		else 
+			echo "You have entered an invalid number"
+		fi
+	;;
+		6)
 		echo "This installs your choice in browsers"
 		echo "1 - chromium"
 		echo "2 - epiphany"
@@ -645,7 +690,7 @@ InstallAndConquer() {
 		fi
 	
 	;;
-		6)
+		7)
 		echo "This installs a choice in media players"
 		echo "1 - xplayer"
 		echo "2 - parole"
@@ -712,12 +757,12 @@ InstallAndConquer() {
 		fi
 	
 	;;
-		7)
+		8)
 		echo "This installs a virtualbox client"
 		sudo pacman -S --noconfirm virtualbox
 	
 	;;
-		8)
+		9)
 		echo "This installs Wine or Windows emulation software"
 		echo "1 - Wine"
 		echo "2 - playonlinux"
@@ -734,12 +779,12 @@ InstallAndConquer() {
 		esac
 
 	;;
-		9)
+		10)
 		echo "This installs a webcam application for laptops"
 		sudo pacman -S --noconfirm guvcview
 
 	;;
-		10)
+		11)
 		echo "This installs etc-update"
 		echo "etc-update can help you manage pacnew files and other configuration files after system updates."
 		sleep 2
@@ -759,7 +804,7 @@ InstallAndConquer() {
 		done
 
 	;;
-		11)
+		12)
 		echo "This installs a choice in small games"
 		echo "1 - supertuxkart"
 		echo "2 - gnome-mahjongg"
@@ -803,7 +848,7 @@ InstallAndConquer() {
 		fi
 
 	;;
-		12)
+		13)
 		echo "This installs video/audio decoding/reencoding software"
 		sudo pacman -S --noconfirm kdenlive audacity
 		echo "Would you also like obs-studio?(Y/n)"
@@ -815,15 +860,15 @@ InstallAndConquer() {
 		done
 
 	;;
-		13)
+		14)
 		echo "This installs a dock application"
 		sudo pacman -S --noconfirm plank
 	;;
-		14)
+		15)
 		echo "This installs yaourt a package manager for AUR"
 		sudo pacman -S --noconfirm yaourt
 	;;
-		15)
+		16)
 		echo "This installs your backup software"
 		echo "1 - deja-dup"
 		echo "2 - grsync"
@@ -843,15 +888,15 @@ InstallAndConquer() {
 		fi
 
 	;;
-		16)
+		17)
 		echo "This installs a few common themes"
 		sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme numix-themes-archblue arc-gtk-theme papirus-icon-theme faenza-green-icon-theme
 	;;
-		17)
+		18)
 		echo "This installs screenfetch"
 		sudo pacman -S --noconfirm screenfetch
 	;;
-		18)
+		19)
 		echo "This installs possible security software and virus checker if you wish"
 		echo "1 - rkhunter"
 		echo "2 - clamav"
@@ -871,11 +916,11 @@ InstallAndConquer() {
 		esac
 
 	;;
-		19)
+		20)
 		echo "This installs stellarium incase you are a night sky observer"
 		sudo pacman -S --noconfirm stellarium
 	;;
-		20)
+		21)
 		echo "Ok, well, I'm here if you change your mind"
 		break
 	;;
