@@ -470,13 +470,12 @@ InstallAndConquer() {
 		echo "12 - GAMES!!!!!!!!!"
 		echo "13 - Video editing/encoding"
 		echo "14 - Plank"
-		echo "15 - Yaourt package manager/AUR helper"
-		echo "16 - Backup"
-		echo "17 - THEMES!!!!!!!!"
-		echo "18 - screenfetch"
-		echo "19 - Security checkers/scanners"
-		echo "20 - Stellarium constellation and space observation"
-		echo "21 - exit out of this menu"
+		echo "15 - Backup"
+		echo "16 - THEMES!!!!!!!!"
+		echo "17 - screenfetch"
+		echo "18 - Security checkers/scanners"
+		echo "19 - Stellarium constellation and space observation"
+		echo "20 - exit out of this menu"
 
 	read software;
 
@@ -865,10 +864,6 @@ _EOF_
 		sudo pacman -S --noconfirm plank
 	;;
 		15)
-		echo "This installs yaourt a package manager for AUR"
-		sudo pacman -S --noconfirm yaourt
-	;;
-		16)
 		echo "This installs your backup software"
 		echo "1 - deja-dup"
 		echo "2 - grsync"
@@ -888,15 +883,15 @@ _EOF_
 		fi
 
 	;;
-		17)
+		16)
 		echo "This installs a few common themes"
 		sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme numix-themes-archblue arc-gtk-theme papirus-icon-theme faenza-green-icon-theme
 	;;
-		18)
+		17)
 		echo "This installs screenfetch"
 		sudo pacman -S --noconfirm screenfetch
 	;;
-		19)
+		18)
 		echo "This installs possible security software and virus checker if you wish"
 		echo "1 - rkhunter"
 		echo "2 - clamav"
@@ -916,11 +911,11 @@ _EOF_
 		esac
 
 	;;
-		20)
+		19)
 		echo "This installs stellarium incase you are a night sky observer"
 		sudo pacman -S --noconfirm stellarium
 	;;
-		21)
+		20)
 		echo "Ok, well, I'm here if you change your mind"
 		break
 	;;
