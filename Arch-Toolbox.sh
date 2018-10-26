@@ -1434,7 +1434,7 @@ SystemMaintenance() {
 	sudo ufw reload
 
 	#This refreshes index cache
-	sudo mandb && balooctl check
+	sudo updatedb && sudo mandb
 	
 	#Checks for pacnew files and other extra configuration file updates
 	sudo etc-update
