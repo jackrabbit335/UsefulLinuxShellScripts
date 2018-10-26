@@ -872,9 +872,10 @@ InstallAndConquer() {
 			then
 				sudo apt install -y xubuntu-restricted-extras
 				sudo apt install -y xfce4-goodies
-			elif [[ $DESKTOP_SESSION == kde ]];
+			elif [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]];
 			then
 				sudo apt install -y kubuntu-restricted-extras
+				echo "kdesu python3 /usr/lib/python3.7/site-packages/gufw/gufw.py" | sudo tee -a /bin/gufw
 			elif [[ $DESKTOP_SESSION == lxde ]];
 			then 
 				sudo apt install -y lubuntu-restricted-extras
@@ -1102,6 +1103,9 @@ _EOF_
 	browser5="$(find /usr/bin/chromium-browser)"
 	browser6="$(find /usr/bin/opera)"
 	browser7="$(find /usr/bin/waterfox)"
+	browser8="$(find /usr/bin/qupzilla)"
+	browser9="$(find /usr/bin/epiphany)"
+	browser10="$(find /usr/bin/midori)"
 
 	echo $browser1
 	echo $browser2
@@ -1110,6 +1114,9 @@ _EOF_
 	echo $browser5
 	echo $browser6
 	echo $browser7
+	echo $browser8
+	echo $browser9
+	echo $browser10
 
 	sleep 1
 
@@ -1122,6 +1129,9 @@ _EOF_
 	echo "6 - Opera"
 	echo "7 - Vivaldi-snapshot"
 	echo "8 - Waterfox"
+	echo "9 - Midori"
+	echo "10 - Qupzilla"
+	echo "11 - Epiphany"
 
 	read operation;
 
@@ -1171,6 +1181,24 @@ _EOF_
 		8)
 		sudo cp -r ~/.waterfox ~/.waterfox-old
 		sudo rm -r ~/.waterfox/*
+		echo "Your browser has now been reset"
+		sleep 1
+	;;
+		9)
+		sudo cp -r ~/.config/midori ~/.config/midori-old
+		sudo rm -r ~/.config/midori/*
+		echo "Your browser has now been reset"
+		sleep 1
+	;;
+		10)
+		sudo cp -r ~/.config/qupzilla ~/.config/qupzilla-old
+		sudo rm -r ~/.config/qupzilla/*
+		echo "Your browser has now been reset"
+		sleep 1
+	;;
+		11)
+		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old
+		sudo rm -r ~/.config/epiphany/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
@@ -1532,7 +1560,18 @@ Greeting() {
 	esac
 }
 
-echo "Hello!"
+cat <<_EOF_
+Hello! Thank you for using Arch Toolbox. Within this script is a multitude of potential solutions for every day tasks such as maintenance, 
+all the way to setting up a new system. This script is meant for new users, 
+but anyone can read, change and use this script to their liking.
+This script is to be placed under the GPLv3 and is to be redistributable, however, if you are distributing, I'd appreciate it if
+you gave the credit back to the original author. I should also add that I have a few blog articles which may or may not be
+of benefit for newbies on occasion. The link will be placed here. In the blog I write about typical scenarios that I face on a day to day basis
+as well as add commentary and my opinions about software and technology. 
+You may copy and paste the following link into your browser:
+https://techiegeek123.blogspot.com/
+Again, Thank you!
+_EOF_
 Greeting
 
 

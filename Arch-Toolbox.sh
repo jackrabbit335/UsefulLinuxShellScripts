@@ -23,7 +23,7 @@ Setup() {
         sudo systemctl enable ufw
         sudo ufw enable
     else
-        sudo pacman -S --noconfirm ufw 
+        sudo pacman -S --noconfirm gufw 
         sudo systemctl enable ufw
         sudo ufw enable
     fi
@@ -90,8 +90,6 @@ _EOF_
 			read answer 
 			while [ $answer == Y ];
 			do 
-				echo "Enter the device you'd like to enable this on."
-				read device
 				sudo hdparm -W 1 $device
 			break
 			done
@@ -102,7 +100,6 @@ _EOF_
 			while [ $answer == Y ];
 			do 
 				sudo systemctl enable fstrim.service
-				sudo systemctl start fstrim.service
 				sudo systemctl enable fstrim.timer
 				sudo systemctl start fstrim.timer
 			break
@@ -147,9 +144,17 @@ _EOF_
 		echo "#Alias to update grub" >> ~/.bashrc
 		echo 'alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"' >> ~/.bashrc
 		echo "#Alias to update the system" >> ~/.bashrc
-		echo 'alias pacup="sudo pacman -Syu"' >> ~/.bashrc
+		echo 'alias update="sudo pacman -Syu"' >> ~/.bashrc
 		echo "#Alias to update the mirrors" >> ~/.bashrc
 		echo 'alias mirrors="sudo pacman-mirrors -f 5 && sudo pacman -Syy"' >> ~/.bashrc
+		echo "#Alias to clean pacman cache" >> ~/.bashrc
+		echo 'alias clean="sudo pacman -Scc"' >> ~/.bashrc
+		echo "#Alias to clean all but the latest three versions of packages in cache" >> ~/.bashrc
+		echo 'alias cut="sudo paccache -rk3"' >> ~/.bashrc
+		echo "#Alias to remove uninstalled packages from the cache" >> ~/.bashrc
+		echo 'alias purge="sudo paccache -ruk0"' >> ~/.bashrc
+		echo "#Alias to remove orphaned packages" >> ~/.bashrc
+		echo 'alias orphan="sudo pacman -Rsn $(pacman -Qqdt)"' >> ~/.bashrc
 	fi
 
 	checkNetwork
@@ -197,7 +202,7 @@ _EOF_
 
 #This fixes gufw not opening in kde plasma desktop
 cat <<_EOF_
-This will attempt to determine your desktop and resolve the kde gufw not opening issue.
+This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue.
 This is only a plasma issue as far as I know.
 _EOF_
 	for env in $DESKTOP_SESSION;
@@ -307,7 +312,7 @@ Systeminfo() {
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "DIRECTORY USAGE" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
-	du -h >> $host-sysinfo.txt
+	du -sh >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "MEMORY USAGE" >> $host-sysinfo.txt
@@ -482,7 +487,7 @@ InstallAndConquer() {
 	case $software in
 		1)
 		echo "This installs a series of utility software"
-		sudo pacman -S --noconfirm dnsutils net-tools traceroute hardinfo lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools xsensors hddtemp htop iotop inxi gufw
+		sudo pacman -S --noconfirm dnsutils net-tools traceroute hardinfo lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools xsensors hddtemp htop iotop inxi gufw atop ntop
 	;;
 		2)
 		echo "This installs a light weight editor(text/code editor/IDE)"
@@ -1197,7 +1202,7 @@ HostsfileSelect() {
 
 Uninstall() {
 	#This allows the user to remove unwanted shite
-	echo "Would you like to remove any other unwanted junk?(Y/n)"
+	echo "Would you like to remove any unwanted applications?(Y/n)"
 	read answer 
 	while [ $answer == Y ];
 	do
@@ -1246,7 +1251,7 @@ cleanup() {
 	#This will remove orphan packages from pacman 
 	sudo pacman -Rsn --noconfirm $(pacman -Qqdt)
 
-	#Optional This will remove the pamac cached applications and older versions
+	#Optional This will remove the pacman cached applications and older versions
 	cat <<_EOF_
 	It's probably not a great idea to be cleaning this part of the system
 	all willy nilly, but here is a way to free up some space before doing
@@ -1293,8 +1298,8 @@ cat <<_EOF_
 This can fix a lot of the usual issues with a few of the bigger browsers. 
 These can include performance hitting issues. If your browser needs a tuneup,
 it is probably best to do it in the browser itself, but when you just want something
-fast, this can do it for you. More browsers and options are coming.
-This can also clean away undesired toolbars.
+fast, this can do it for you. More browsers and options are coming. This can also 
+clean undesired toolbars.
 _EOF_
 
 	#Look for the following browsers
@@ -1305,6 +1310,7 @@ _EOF_
 	browser5="$(find /usr/bin/chromium)"
 	browser6="$(find /usr/bin/opera)"
 	browser7="$(find /usr/bin/waterfox)"
+	browser8="$(find /usr/bin/falkon)"
 
 	echo $browser1
 	echo $browser2
@@ -1313,6 +1319,7 @@ _EOF_
 	echo $browser5
 	echo $browser6
 	echo $browser7
+	echo $browser8
 
 	sleep 1
 
@@ -1325,6 +1332,7 @@ _EOF_
 	echo "6 - Opera"
 	echo "7 - Vivaldi-snapshot"
 	echo "8 - Waterfox"
+	echo "9 - Falkon"
 
 	read operation;
 
@@ -1377,6 +1385,12 @@ _EOF_
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
+		9)
+		sudo cp -r ~/.config/falkon ~/.config/falkon-old
+		sudo rm -r ~/.config/falkon/*
+		echo "Your browser has now been reset"
+		sleep 1
+	;;
 		*)
 		echo "No browser for that entry exists, please try again!"
 		sleep 1 
@@ -1420,7 +1434,7 @@ SystemMaintenance() {
 	sudo ufw reload
 
 	#This refreshes index cache
-	sudo updatedb && sudo mandb 
+	sudo mandb && balooctl check
 	
 	#Checks for pacnew files and other extra configuration file updates
 	sudo etc-update
@@ -1546,7 +1560,7 @@ cat <<_EOF_
 Kernels are an essential part of the operating system. Failure to use precaution
 could inadvertently screw up system functions. The kernel is the main engine behind
 the scenes making everything operate within normal parameters, changing kernel settings 
-or installing/uninstall a bad updated version could give undesirable results. It should
+or installing/uninstalling a bad updated version could give undesirable results. It should
 also be noted that this works in Manjaro, but probably won't work in any other Arch-based operating system
 at this time. 
 _EOF_
@@ -1789,5 +1803,16 @@ Greeting() {
 	esac
 }
 
-echo "Hello!"
+cat <<_EOF_
+Hello! Thank you for using Arch Toolbox. Within this script is a multitude of potential solutions for every day tasks such as maintenance, 
+all the way to setting up a new system. This script is meant for new users, 
+but anyone can read, change and use this script to their liking.
+This script is to be placed under the GPLv3 and is to be redistributable, however, if you are distributing, I'd appreciate it if
+you gave the credit back to the original author. I should also add that I have a few blog articles which may or may not be
+of benefit for newbies on occasion. The link will be placed here. In the blog I write about typical scenarios that I face on a day to day basis
+as well as add commentary and my opinions about software and technology. 
+You may copy and paste the following link into your browser:
+https://techiegeek123.blogspot.com/
+Again, Thank you!
+_EOF_
 Greeting
