@@ -1561,7 +1561,7 @@ Greeting() {
 }
 
 cat <<_EOF_
-Hello! Thank you for using Arch Toolbox. Within this script is a multitude of potential solutions for every day tasks such as maintenance, 
+Hello! Thank you for using Ubuntu Toolbox. Within this script is a multitude of potential solutions for every day tasks such as maintenance, 
 all the way to setting up a new system. This script is meant for new users, 
 but anyone can read, change and use this script to their liking.
 This script is to be placed under the GPLv3 and is to be redistributable, however, if you are distributing, I'd appreciate it if
