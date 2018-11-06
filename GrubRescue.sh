@@ -39,5 +39,48 @@ _EOF_
 	sudo umount --bind dev /mnt/dev
 	sudo umount /mnt
 	sudo systemctl reboot
+
+	clear
+	Greeting
 }
 	
+SYSTEM_RESTORE(){
+		Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
+	if [[ $Mountpoint != /run/media/$USER/* ]];
+	then
+		read -p "Please insert the backup drive and hit enter..."
+		echo $(lsblk | awk '{print $1}')
+		sleep 1
+		echo "Please select the device from the list"
+		read device
+		sudo mount $device /mnt 
+		sudo rsync -aAXv --delete /mnt/$host-backups/* /
+		sudo sync 
+		Restart
+	elif [[ $Mountpoint == /run/media/$USER/* ]];
+	then
+		read -p "Found a block device at designated coordinates... If this is the preferred
+		drive, try unmounting the device, leaving it plugged in, and running this again. Press enter to continue..."
+	fi 
+
+	clear
+	Greeting
+}
+
+Greeting(){
+	echo "1 - SYSTEM RESTORE"
+	echo "2 - Grub Rescue"
+
+	read selection;
+
+	case $selection in
+		1)
+		SYSTEM_RESTORE
+	;;
+		2)
+		GrubRescue
+	;;
+esac
+}
+
+Greeting
