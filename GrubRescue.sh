@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GrubRescue() {
+GrubRescue(){
 cat << _EOF_
 This along with all other functions in this work are products of my
 imagination, a bit of RUM, a lot of research following countless other
@@ -12,10 +12,11 @@ _EOF_
 
 	#This lists the available drives and gets the chosen root partition from user
 	sudo fdisk -l 
-	sleep 2
+	sleep 1
 	echo "Please enter the device that has the root partition on it."
 	read device
-	sudo mount $device /mnt
+	sudo mkdir /mnt/system
+	sudo mount $device /mnt/system
 	sudo mount --bind dev /mnt/dev
 	sudo mount --bind proc /mnt/proc
 	sudo mount --bind sys /mnt/sys
@@ -37,7 +38,7 @@ _EOF_
 	sudo umount --bind sys /mnt/sys
 	sudo umount --bind proc /mnt/proc
 	sudo umount --bind dev /mnt/dev
-	sudo umount /mnt
+	sudo umount /mnt/system
 	sudo systemctl reboot
 
 	clear
@@ -45,7 +46,11 @@ _EOF_
 }
 	
 SYSTEM_RESTORE(){
-		Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
+	sudo fdisk -l 
+	sleep 1
+	sudo mkdir /mnt/system
+	sudo mkdir /mnt/backups
+	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
 	if [[ $Mountpoint != /run/media/$USER/* ]];
 	then
 		read -p "Please insert the backup drive and hit enter..."
@@ -53,8 +58,11 @@ SYSTEM_RESTORE(){
 		sleep 1
 		echo "Please select the device from the list"
 		read device
-		sudo mount $device /mnt 
-		sudo rsync -aAXv --delete /mnt/$host-backups/* /
+		sudo mount $device /mnt/backups
+		echo "Please enter the destination to be restored"
+		read destination
+		sudo mount $destination /mnt/system
+		sudo rsync -aAXv --delete --eclude="lost+found" /mnt/backups/$host-backups/* /mnt/system
 		sudo sync 
 		Restart
 	elif [[ $Mountpoint == /run/media/$USER/* ]];
