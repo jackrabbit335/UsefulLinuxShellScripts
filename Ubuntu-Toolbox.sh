@@ -5,9 +5,7 @@ Setup() {
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
 
 	#This activates the firewall
-	sudo systemctl enable ufw
-	sudo systemctl start ufw
-	sudo ufw enable
+	sudo systemctl enable ufw; sudo ufw enable
 	echo "Would you like to deny ssh and telnet for security purposes?(Y/n)"
 	read answer
 	if [[ $answer == Y ]];
@@ -39,6 +37,12 @@ Setup() {
 		echo 'alias update="sudo apt update && sudo apt dist-upgrade -yy"' >> ~/.bashrc
 		echo "#Alias to clean the apt cache" >> ~/.bashrc
 		echo 'alias clean="sudo apt autoremove && sudo apt autoclean && sudo apt clean"' >> ~/.bashrc
+		echo "#Alias to free up RAM" >> ~/.bashrc
+		echo 'alias boost="sudo sh -c 'sync; echo 3 > /proc/sys/vm/drop_caches'"' >> ~/.bashrc
+		echo "#Alias to trim down journal size" >> ~/.bashrc
+		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
+		echo "#Alias to fix broken packages" >> ~/.bashrc
+		echo 'alias fix="sudo dpkg --configure -a && sudo apt install -f"' >> ~/.bashrc
 	fi
 
 	#System tweaks
@@ -132,9 +136,7 @@ _EOF_
 	CheckNetwork
 	
 	#Updates the system
-	sudo apt update
-	sudo apt upgrade -yy
-	sudo apt dist-upgrade -yy
+	sudo apt update; sudo apt upgrade -yy; sudo apt dist-upgrade -yy
 	
 	#Optional
 	echo "Would you like to restart?(Y/n)"
@@ -286,6 +288,16 @@ Systeminfo() {
 	echo "Inxi" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	inxi -F >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "HD TEMP" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	sudo hddtemp /dev/sda >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "DISK READ SPEED" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	sudo hdparm -tT /dev/sda >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo " DRIVER INFO" >> $host-sysinfo.txt
@@ -827,7 +839,7 @@ InstallAndConquer() {
 			sudo apt update && sudo apt install wine playonlinux -yy
 		;;
 			17)
-			echo "Alright den!"
+			echo "Alrighty then!"
 			break
 		;;
 		esac

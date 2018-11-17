@@ -11,29 +11,18 @@ Setup() {
 	do 
 	    echo "Enter your preferred timezone"
 		read timezone
-		sudo timedatectl set-ntp true 
-		sudo timedatectl set-timezone $timezone
+		sudo timedatectl set-ntp true; sudo timedatectl set-timezone $timezone
 	break
 	done
 
 	#This starts your firewall
-    find /usr/sbin/ufw 
-    if [ $? -eq 0 ];
-   	then 
-        sudo systemctl enable ufw
-        sudo ufw enable
-    else
-        sudo pacman -S --noconfirm gufw 
-        sudo systemctl enable ufw
-        sudo ufw enable
-    fi
+	pacman -Q | grep ufw || sudo pacman -S --noconfirm ufw
+	sudo systemctl enable ufw; sudo ufw enable
     echo "Would you like to deny ssh and telnet for security?(Y/n)"
     read answer 
     while [ $answer == Y ]
     do
-      sudo ufw deny ssh
-      sudo ufw deny telnet
-      sudo ufw reload
+      sudo ufw deny ssh; sudo ufw deny telnet; sudo ufw reload
     break
     done
 
@@ -45,13 +34,12 @@ Setup() {
 	sudo touch /etc/sysctl.d/50-dmesg-restrict.conf
 	sudo touch /etc/sysctl.d/50-kptr-restrict.conf
 	sudo touch /etc/sysctl.d/99-sysctl.conf
-    sudo touch /etc/syctl.d/60-network-hardening.conf
 	echo "kernel.dmesg_restrict = 1" | sudo tee -a /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "kernel.kptr_restrict = 1" | sudo tee -a /etc/sysctl.d/50-kptr-restrict.conf
 	echo "vm.swappiness = 5" | sudo tee -a /etc/sysctl.d/99-sysctl.conf #lowers swap value
 	sudo sysctl -p
 
-    #WE can block ICMP requests from the kernel if you'd like
+#WE can block ICMP requests from the kernel if you'd like
 cat <<_EOF_
 Ping requests from unknown sources could mean that people are trying to
 locate/attack your network. If you need this functionality, you can comment
@@ -99,7 +87,6 @@ _EOF_
 			read answer 
 			while [ $answer == Y ];
 			do 
-				sudo systemctl enable fstrim.service
 				sudo systemctl enable fstrim.timer
 				sudo systemctl start fstrim.timer
 			break
@@ -155,6 +142,10 @@ _EOF_
 		echo 'alias purge="sudo paccache -ruk0"' >> ~/.bashrc
 		echo "#Alias to remove orphaned packages" >> ~/.bashrc
 		echo 'alias orphan="sudo pacman -Rsn $(pacman -Qqdt)"' >> ~/.bashrc
+		echo "#Alias to free up RAM" >> ~/.bashrc
+		echo 'alias boost="sudo sh -c 'sync; echo 3 > /proc/sys/vm/drop_caches'"' >> ~/.bashrc
+		echo "#Alias to trim journal size" >> ~/.bashrc
+		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
 	fi
 
 	checkNetwork
@@ -312,7 +303,7 @@ Systeminfo() {
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "DIRECTORY USAGE" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
-	du -sh >> $host-sysinfo.txt
+	sudo du -sh >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "MEMORY USAGE" >> $host-sysinfo.txt
@@ -373,6 +364,11 @@ Systeminfo() {
 	echo "HD TEMP" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	sudo hddtemp /dev/sda >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "DISK READ SPEED"
+	echo "##############################################################" >> $host-sysinfo.txt
+	sudo hdparm -tT /dev/sda >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo " DRIVER INFO" >> $host-sysinfo.txt
@@ -463,24 +459,26 @@ InstallAndConquer() {
 	do
 		echo "1 - Utility suite/Monitoring Software"
 		echo "2 - IDE or text/code editor"
-		echo "3 - Download managers"
-		echo "4 - Torrent clients"
-		echo "5 - AUR Helpers"
-		echo "6 - Web browser from a list"
-		echo "7 - Media/home theater software"
-		echo "8 - Virtual machine client"
-		echo "9 - Wine and play on linux"
-		echo "10 - quvcview"
-		echo "11 - Manipulate config files and switch between versions of software"
-		echo "12 - GAMES!!!!!!!!!"
-		echo "13 - Video editing/encoding"
-		echo "14 - Plank"
-		echo "15 - Backup"
-		echo "16 - THEMES!!!!!!!!"
-		echo "17 - screenfetch"
-		echo "18 - Security checkers/scanners"
-		echo "19 - Stellarium constellation and space observation"
-		echo "20 - exit out of this menu"
+		echo "3 - Cleaning software"
+		echo "4 - prelauncher"
+		echo "5 - Download managers"
+		echo "6 - Torrent clients"
+		echo "7 - AUR Helpers"
+		echo "8 - Web browser from a list"
+		echo "9 - Media/home theater software"
+		echo "10 - Virtual machine client"
+		echo "11 - Wine and play on linux"
+		echo "12 - quvcview"
+		echo "13 - Manipulate config files and switch between versions of software"
+		echo "14 - GAMES!!!!!!!!!"
+		echo "15 - Video editing/encoding"
+		echo "16 - Plank"
+		echo "17 - Backup"
+		echo "18 - THEMES!!!!!!!!"
+		echo "19 - screenfetch"
+		echo "20 - Security checkers/scanners"
+		echo "21 - Stellarium constellation and space observation"
+		echo "22 - exit out of this menu"
 
 	read software;
 
@@ -532,9 +530,16 @@ InstallAndConquer() {
 		else
 			echo "You've entered an invalid number"
 		fi
-	
 	;;
 		3)
+		echo "This installs cleaning software for Arch Linux Systems"
+		sudo pacman -S --noconfirm bleachbit rmlint
+	;;
+		4)
+		echo "This installs a prelauncher"
+		sudo pacman -S --noconfirm preload
+	;;
+		5)
 		echo "This installs a choice in download managers"
 		echo "1 - wget"
 		echo "2 - uget" 
@@ -553,7 +558,7 @@ InstallAndConquer() {
 			echo "You have entered an invalid number"
 		fi
 	;;
-		4)
+		6)
 		echo "This installs your choice of torrent clients"
 		echo "1 - transmission-gtk"
 		echo "2 - deluge"
@@ -572,7 +577,7 @@ InstallAndConquer() {
 			echo "You have entered an invalid number"
 		fi
 	;;
-		5)
+		7)
 cat <<_EOF_
 It is important to note that while you can install many of the listed
 applications through pamac or octopi, you will not be able to utilize the aur
@@ -596,7 +601,7 @@ _EOF_
 			echo "You have entered an invalid number"
 		fi
 	;;
-		6)
+		8)
 		echo "This installs your choice in browsers"
 		echo "1 - chromium"
 		echo "2 - epiphany"
@@ -694,7 +699,7 @@ _EOF_
 		fi
 	
 	;;
-		7)
+		9)
 		echo "This installs a choice in media players"
 		echo "1 - xplayer"
 		echo "2 - parole"
@@ -761,12 +766,12 @@ _EOF_
 		fi
 	
 	;;
-		8)
+		10)
 		echo "This installs a virtualbox client"
 		sudo pacman -S --noconfirm virtualbox
 	
 	;;
-		9)
+		11)
 		echo "This installs Wine or Windows emulation software"
 		echo "1 - Wine"
 		echo "2 - playonlinux"
@@ -783,12 +788,12 @@ _EOF_
 		esac
 
 	;;
-		10)
+		12)
 		echo "This installs a webcam application for laptops"
 		sudo pacman -S --noconfirm guvcview
 
 	;;
-		11)
+		13)
 		echo "This installs etc-update"
 		echo "etc-update can help you manage pacnew files and other configuration files after system updates."
 		sleep 2
@@ -808,7 +813,7 @@ _EOF_
 		done
 
 	;;
-		12)
+		14)
 		echo "This installs a choice in small games"
 		echo "1 - supertuxkart"
 		echo "2 - gnome-mahjongg"
@@ -852,7 +857,7 @@ _EOF_
 		fi
 
 	;;
-		13)
+		15)
 		echo "This installs video/audio decoding/reencoding software"
 		sudo pacman -S --noconfirm kdenlive audacity
 		echo "Would you also like obs-studio?(Y/n)"
@@ -864,11 +869,11 @@ _EOF_
 		done
 
 	;;
-		14)
+		16)
 		echo "This installs a dock application"
 		sudo pacman -S --noconfirm plank
 	;;
-		15)
+		17)
 		echo "This installs your backup software"
 		echo "1 - deja-dup"
 		echo "2 - grsync"
@@ -888,15 +893,15 @@ _EOF_
 		fi
 
 	;;
-		16)
+		18)
 		echo "This installs a few common themes"
 		sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme numix-themes-archblue arc-gtk-theme papirus-icon-theme faenza-green-icon-theme
 	;;
-		17)
+		19)
 		echo "This installs screenfetch"
 		sudo pacman -S --noconfirm screenfetch
 	;;
-		18)
+		20)
 		echo "This installs possible security software and virus checker if you wish"
 		echo "1 - rkhunter"
 		echo "2 - clamav"
@@ -916,34 +921,15 @@ _EOF_
 		esac
 
 	;;
-		19)
+		21)
 		echo "This installs stellarium incase you are a night sky observer"
 		sudo pacman -S --noconfirm stellarium
 	;;
-		20)
+		22)
 		echo "Ok, well, I'm here if you change your mind"
 		break
 	;;
 	esac
-	done
-	
-
-	read -p "Please press enter to continue..."	
-	
-	#This offers to install preload for storing apps in memory
-cat <<_EOF_
-Preload is as the name implies, a preloader. This nifty tool can shadow 
-your uses of the desktop and store bits of applications into memory for
-faster future use. This does have its drawbacks though as preload does
-take up its own cache of memory. This is debatably better on low end 
-devices.
-_EOF_
-	echo "Would you like to install preload?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		sudo pacman -S --noconfirm preload && sudo systemctl enable preload && sudo systemctl start preload
-	break
 	done
 	
 	read -p "Please press enter to continue..."
@@ -1311,6 +1297,8 @@ _EOF_
 	browser6="$(find /usr/bin/opera)"
 	browser7="$(find /usr/bin/waterfox)"
 	browser8="$(find /usr/bin/falkon)"
+	browser9="$(find /usr/bin/epiphany)"
+	browser10="$(find /usr/bin/midori)"
 
 	echo $browser1
 	echo $browser2
@@ -1320,6 +1308,8 @@ _EOF_
 	echo $browser6
 	echo $browser7
 	echo $browser8
+	echo $browser9
+	echo $browser10
 
 	sleep 1
 
@@ -1333,6 +1323,8 @@ _EOF_
 	echo "7 - Vivaldi-snapshot"
 	echo "8 - Waterfox"
 	echo "9 - Falkon"
+	echo "10 - Epiphany"
+	echo "11 - Midori"
 
 	read operation;
 
@@ -1391,6 +1383,18 @@ _EOF_
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
+		10)
+		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old
+		sudo rm -r ~/.config/epiphany/*
+		echo "Your browser has now been reset"
+		sleep 1 
+	;;
+		11)
+		sudo cp -r ~/.config/midori ~/.config/midori-old
+		sudo rm -r ~/.config/midori/*
+		echo "Your browser has now been reset"
+		sleep 1
+	;;
 		*)
 		echo "No browser for that entry exists, please try again!"
 		sleep 1 
@@ -1437,7 +1441,11 @@ SystemMaintenance() {
 	sudo updatedb && sudo mandb
 	
 	#Checks for pacnew files and other extra configuration file updates
-	sudo etc-update
+	find /usr/bin/etc-update
+	if [ $? -eq 0 ];
+	then
+		sudo etc-update
+	fi
 
 	#update the grub 
 	sudo grub-mkconfig -o /boot/grub/grub.cfg
