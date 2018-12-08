@@ -143,7 +143,7 @@ _EOF_
 		echo "#Alias to remove orphaned packages" >> ~/.bashrc
 		echo 'alias orphan="sudo pacman -Rsn $(pacman -Qqdt)"' >> ~/.bashrc
 		echo "#Alias to free up RAM" >> ~/.bashrc
-		echo 'alias boost="sudo sh -c 'sync; echo 3 > /proc/sys/vm/drop_caches'"' >> ~/.bashrc
+		echo 'alias boost="sudo sync; echo 3 > /proc/sys/vm/drop_caches"' >> ~/.bashrc
 		echo "#Alias to trim journal size" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
 	fi

@@ -10,8 +10,7 @@ Setup() {
 	read answer
 	if [[ $answer == Y ]];
 	then
-		sudo ufw deny telnet && sudo ufw deny ssh
-		sudo ufw reload
+		sudo ufw deny telnet; sudo ufw deny ssh; sudo ufw reload
 	fi
 	
 	#This disables ipv6
@@ -38,7 +37,7 @@ Setup() {
 		echo "#Alias to clean the apt cache" >> ~/.bashrc
 		echo 'alias clean="sudo apt autoremove && sudo apt autoclean && sudo apt clean"' >> ~/.bashrc
 		echo "#Alias to free up RAM" >> ~/.bashrc
-		echo 'alias boost="sudo sh -c 'sync; echo 3 > /proc/sys/vm/drop_caches'"' >> ~/.bashrc
+		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
 		echo "#Alias to trim down journal size" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
 		echo "#Alias to fix broken packages" >> ~/.bashrc
