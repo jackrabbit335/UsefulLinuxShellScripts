@@ -5,6 +5,7 @@ Setup() {
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
 
 	#This activates the firewall
+	dpkg --list | grep ufw || sudo apt install -y gufw
 	sudo systemctl enable ufw; sudo ufw enable
 	echo "Would you like to deny ssh and telnet for security purposes?(Y/n)"
 	read answer
@@ -69,7 +70,7 @@ you can always comment this line out later. Chances are, this won't affect norma
 _EOF_
     echo "Block ping requests from foreign systems?(Y/n)"
     read answer 
-    if [ $answer == Y ]];
+    if [[ $answer == Y ]];
     then
         echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.conf
         sudo sysctl -p
@@ -103,7 +104,7 @@ _EOF_
 	    echo "Proceeding"
     fi
 
-	#This determines what type of drive you have, then offers to enable trim or write-back caching
+	#This determines what type of drive you have, then offers to run trim or enable write-back caching
 	drive=$(cat /sys/block/sda/queue/rotational)
 	for rota in $drive;
 	do
@@ -153,7 +154,7 @@ _EOF_
 Update() {
 	CheckNetwork
 	
-	sudo apt update && sudo apt dist-upgrade -yy
+	sudo apt update; sudo apt upgrade -yy
 	
 	clear
 	Greeting
@@ -544,8 +545,9 @@ InstallAndConquer() {
 		echo "13 - proprietary fonts"
 		echo "14 - THEMES"
 		echo "15 - GAMES"
-		echo "16 - Wine and or PlayonLinux"
-		echo "17 - get out of this menu"
+		echo "16 - Virtualbox"
+		echo "17 - Wine and or PlayonLinux"
+		echo "18 - get out of this menu"
 
 		read software;
 	
@@ -648,8 +650,8 @@ InstallAndConquer() {
 				sudo apt install -f 
 			elif [[ $browser == 6 ]];
 			then
-				wget http://linux.palemoon.org/datastore/release/palemoon-28.0.1.linux-x86_64.tar.bz2
-				tar -xvf palemoon-28.0.1.linux-x86_64.tar.bz2
+				wget http://linux.palemoon.org/datastore/release/palemoon-28.2.2.linux-x86_64.tar.bz2
+				tar -xvf palemoon-28.2.2.linux-x86_64.tar.bz2
 				./palemoon/palemoon
 				sudo mv palemoon /opt
 				sudo ln -s /opt/palemoon/palemoon /usr/bin/palemoon
@@ -684,10 +686,10 @@ InstallAndConquer() {
 				sudo apt update && sudo apt install -y opera
 			elif [[ $browser == 10 ]];
 			then
-				sudo apt install lynx
+				sudo apt install -y lynx
 			elif [[ $browser == 11 ]];
 			then
-				sudo apt install dillo
+				sudo apt install -y dillo
 			elif [[ $browser == 12 ]];
 			then
 				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.2.en-US.linux-x86_64.tar.bz2
@@ -730,18 +732,18 @@ InstallAndConquer() {
 				sudo apt install -y clementine
 			elif [[ $player == 6 ]];
 			then
-				sudo apt-get -y install mplayer
+				sudo apt install -y mplayer
 			elif [[ $player == 7 ]];
 			then
 				sudo add-apt-repository ppa:rvm/smplayer
 				sudo apt update
-				sudo apt install smplayer smplayer-themes smplayer-skins
+				sudo apt install -y smplayer smplayer-themes smplayer-skins
 			elif [[ $player == 8 ]];
 			then
-				sudo apt-get install software-properties-common
+				sudo apt install -y software-properties-common
 				sudo add-apt-repository ppa:team-xbmc/ppa
-				sudo apt-get update
-				sudo apt-get -y install kodi
+				sudo apt update
+				sudo apt install -y kodi
 			fi
 		;;
 			7)
@@ -752,13 +754,13 @@ InstallAndConquer() {
 			read client
 			if [[ $client == 1 ]];
 			then
-				sudo apt-get -y install transmission-gtk
+				sudo apt install-y transmission-gtk
 			elif [[ $client == 2 ]];
 			then
-				sudo apt-get -y install deluge
+				sudo apt install -y deluge
 			elif [[ $client == 3 ]];
 			then
-				sudo apt-get -y install qbittorrent
+				sudo apt install -y qbittorrent
 			fi
 		;;
 			8)
@@ -834,10 +836,14 @@ InstallAndConquer() {
 			fi
 		;;
 			16)
-			echo "Wine and Play On Linux"
-			sudo apt update && sudo apt install wine playonlinux -yy
+			echo "Virtualbox"
+			sudo apt update && sudo apt install -y virtualbox
 		;;
 			17)
+			echo "Wine and Play On Linux"
+			sudo apt update && sudo apt install -y wine playonlinux
+		;;
+			18)
 			echo "Alrighty then!"
 			break
 		;;
@@ -1094,6 +1100,15 @@ _EOF_
 	#This trims the journal logs
 	sudo journalctl --vacuum-size=25M #For newer systemd releases
 	
+	#This restarts system
+	echo "Would you like to restart the system to complete changes?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		Restart
+	break
+	done
+	
 	clear
 	Greeting
 }
@@ -1241,12 +1256,14 @@ SystemMaintenance() {
 	CheckNetwork
 	
 	#This updates your system
-	sudo dpkg --configure -a
-	sudo apt install  -f
-	sudo apt update && sudo apt dist-upgrade -yy
+	sudo dpkg --configure -a; sudo apt install -f; sudo apt update; sudo apt upgrade -yy
 
 	#It is recommended that your firewall is enabled
-	sudo ufw reload
+	systemctl is-enabled ufw.service
+	if [[ $? -eq 1 ]];
+	then
+		sudo systemctl enable ufw; sudo ufw enable
+	fi
 	
 	#This restarts systemd daemon. This can be useful for different reasons.
 	sudo systemctl daemon-reload #For systemd releases
@@ -1279,7 +1296,7 @@ SystemMaintenance() {
 			read answer
 			while [ $answer == Y ];
 			do
-				sudo fstrim -v --all
+				sudo fstrim -v /
 			break
 			done
 		fi 
@@ -1404,7 +1421,7 @@ _EOF_
 }
 
 Restart() { 
-	sudo sync && sudo systemctl reboot
+	sudo sync; sudo systemctl reboot
 }
 
 Backup() { 
