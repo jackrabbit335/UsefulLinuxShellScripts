@@ -125,13 +125,13 @@ _EOF_
 	then 
 		sudo cp ~/.bashrc ~/.bashrc.bak
 		echo "#Alias to edit fstab" >> ~/.bashrc
-		echo 'alias fstab="sudo nano /etc/fstab"' >> ~/.bashrc
+		echo 'alias fstabed="sudo nano /etc/fstab"' >> ~/.bashrc
 		echo "#Alias to edit grub" >> ~/.bashrc
-		echo 'alias grub="sudo nano /etc/default/grub"' >> ~/.bashrc
+		echo 'alias grubed="sudo nano /etc/default/grub"' >> ~/.bashrc
 		echo "#Alias to update grub" >> ~/.bashrc
 		echo 'alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"' >> ~/.bashrc
 		echo "#Alias to update the system" >> ~/.bashrc
-		echo 'alias update="sudo pacman -Syu"' >> ~/.bashrc
+		echo 'alias update="sudo pacman -Syu --noconfirm"' >> ~/.bashrc
 		echo "#Alias to update the mirrors" >> ~/.bashrc
 		echo 'alias mirrors="sudo pacman-mirrors -f 5 && sudo pacman -Syy"' >> ~/.bashrc
 		echo "#Alias to clean pacman cache" >> ~/.bashrc
@@ -173,8 +173,8 @@ _EOF_
 			fi
 		elif [[ $distribution == Antergos ]];
 		then
-			sudo pacman rankmirrors /etc/pacman.d/antergos-mirrorlist
-			sudo pacman -Syyu --noconfirm
+			sudo pacman -Sy --noconfirm reflector
+			sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
 			if [[ $? -eq 0 ]]; 
 			then 
 				echo "update successful"
@@ -199,6 +199,9 @@ _EOF_
 	for env in $DESKTOP_SESSION;
 	do
 		if [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]];
+		then
+			echo "kdesu python3 /usr/lib/python3.7/site-packages/gufw/gufw.py" | sudo tee -a /bin/gufw
+		elif [[ $DESKTOP_SESSION == plasma ]];
 		then
 			echo "kdesu python3 /usr/lib/python3.7/site-packages/gufw/gufw.py" | sudo tee -a /bin/gufw
 		fi
@@ -230,7 +233,7 @@ Update() {
 Systeminfo() {
 	#This gives some useful information for later troubleshooting 
 	host=$(hostname)
-	distribution=$(lsb_release -a | grep "Description:" | awk -F: '{print $2}')
+	distribution=$(cat /etc/arch-release)
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INFORMATION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
@@ -476,9 +479,10 @@ InstallAndConquer() {
 		echo "17 - Backup"
 		echo "18 - THEMES!!!!!!!!"
 		echo "19 - screenfetch"
-		echo "20 - Security checkers/scanners"
-		echo "21 - Stellarium constellation and space observation"
-		echo "22 - exit out of this menu"
+		echo "20 - Proprietary Fonts"
+		echo "21 - Security checkers/scanners"
+		echo "22 - Stellarium constellation and space observation"
+		echo "23 - exit out of this menu"
 
 	read software;
 
@@ -644,7 +648,11 @@ _EOF_
 			makepkg -si
 		elif [[ $browser == 7 ]];
 		then
-			sudo pacman -S --noconfirm palemoon-bin
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/palemoon-bin.tar.gz
+			gunzip palemoon-bin.tar.gz
+			tar -xvf palemoon-bin.tar
+			cd palemoon-bin
+			makepkg -si
 		elif [[ $browser == 8 ]];
 		then
 			sudo pacman -S --noconfirm seamonkey
@@ -902,6 +910,17 @@ _EOF_
 		sudo pacman -S --noconfirm screenfetch
 	;;
 		20)
+		wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz
+		wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gz
+		gunzip ttf-ms-fonts.tar.gz
+		gunzip ttf-mac-fonts.tar.gz
+		tar -xvf ttf-ms-fonts.tar
+		tar -xvf ttf-mac-fonts.tar
+		cd ttf-ms-fonts; makepkg -si
+		pushd ttf-mac-fonts; makepkg -si
+		cd
+	;;
+		21)
 		echo "This installs possible security software and virus checker if you wish"
 		echo "1 - rkhunter"
 		echo "2 - clamav"
@@ -921,11 +940,11 @@ _EOF_
 		esac
 
 	;;
-		21)
+		22)
 		echo "This installs stellarium incase you are a night sky observer"
 		sudo pacman -S --noconfirm stellarium
 	;;
-		22)
+		23)
 		echo "Ok, well, I'm here if you change your mind"
 		break
 	;;
@@ -1426,19 +1445,18 @@ SystemMaintenance() {
 	then
 		sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu --noconfirm
 	else
-		sudo reflector -l 50 -f 20 --save /tmp/mirrorlist.new && rankmirrors -n 0 /tmp/mirrorlist.new > /tmp/mirrorlist && sudo cp /tmp/mirrorlist /etc/pacman.d
-		sudo rankmirrors -n 0 /etc/pacman.d/antergos-mirrorlist > /tmp/antergos-mirrorlist && sudo cp /tmp/antergos-mirrorlist /etc/pacman.d
-		sudo pacman -Syyu --noconfirm
+		sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
 	fi
 
 	#This refreshes systemd in case of failed or changed units
 	sudo systemctl daemon-reload
 	
-	#This will reload the firewall to ensure it's enabled
-	sudo ufw reload
+	#This will ensure the firewall is enabled
+	sudo systemctl enable ufw; sudo ufw enable
 
 	#This refreshes index cache
-	sudo updatedb && sudo mandb
+	sudo balooctl check
+	sudo mandb
 	
 	#Checks for pacnew files and other extra configuration file updates
 	find /usr/bin/etc-update
