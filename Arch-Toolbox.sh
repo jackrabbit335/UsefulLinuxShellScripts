@@ -1476,7 +1476,7 @@ SystemMaintenance() {
 	sudo systemctl enable ufw; sudo ufw enable
 
 	#This refreshes index cache
-	sudo balooctl check; sudo updatedb; sudo mandb
+	sudo updatedb; sudo mandb
 	
 	#Checks for pacnew files and other extra configuration file updates
 	find /usr/bin/etc-update
