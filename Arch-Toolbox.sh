@@ -1,6 +1,7 @@
 #!/bin/bash
 
 Setup() {
+	
 	#Sets default editor to nano in bashrc
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
 
@@ -132,8 +133,8 @@ _EOF_
 		echo 'alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"' >> ~/.bashrc
 		echo "#Alias to update the system" >> ~/.bashrc
 		echo 'alias update="sudo pacman -Syu --noconfirm"' >> ~/.bashrc
-		echo "#Alias to update the mirrors" >> ~/.bashrc
-		echo 'alias mirrors="sudo pacman-mirrors -f 5 && sudo pacman -Syy"' >> ~/.bashrc
+		#echo "#Alias to update the mirrors" >> ~/.bashrc
+		#echo 'alias mirrors="sudo pacman-mirrors -f 5 && sudo pacman -Syy"' >> ~/.bashrc ##For Manjaro only
 		echo "#Alias to clean pacman cache" >> ~/.bashrc
 		echo 'alias clean="sudo pacman -Scc"' >> ~/.bashrc
 		echo "#Alias to clean all but the latest three versions of packages in cache" >> ~/.bashrc
@@ -164,7 +165,7 @@ _EOF_
 				sudo rm -f /var/lib/pacman/sync/*
 				sudo rm /var/lib/pacman/db.lck 
 				sudo rm -r /etc/pacman.d/gnupg 
-				sudo pacman -Sy gnupg archlinux-keyring manjaro-keyring
+				sudo pacman -Sy --noconfirm gnupg archlinux-keyring manjaro-keyring
 				sudo pacman-key --init 
 				sudo pacman-key --populate archlinux manjaro 
 				sudo pacman-key --refresh-keys 
@@ -231,7 +232,9 @@ Update() {
 }
 
 Systeminfo() {
+	
 	#This gives some useful information for later troubleshooting 
+	pacman -Q | grep lsb-release || sudo pacman -S --noconfirm lsb-release
 	host=$(hostname)
 	distribution=$(cat /etc/arch-release)
 	echo "##############################################################" >> $host-sysinfo.txt
@@ -489,7 +492,8 @@ InstallAndConquer() {
 	case $software in
 		1)
 		echo "This installs a series of utility software"
-		sudo pacman -S --noconfirm dnsutils net-tools traceroute hardinfo lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools xsensors hddtemp htop iotop inxi gufw atop ntop
+		sudo pacman -S --noconfirm dnsutils net-tools traceroute hardinfo lshw hdparm gparted gnome-disk-utility ncdu 
+		sudo pacman -S --noconfirm hddtemp htop iotop atop ntop nmap smartmontools xsensors 
 	;;
 		2)
 		echo "This installs a light weight editor(text/code editor/IDE)"
@@ -506,8 +510,8 @@ InstallAndConquer() {
 		elif [[ $package == 2 ]];
 		then
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/sublime-text2.tar.gz
-			gunzip sublime-text2.tar.gz && tar -xvf sublime-text2.tar
-			cd /sublime-text2
+			gunzip sublime-text2.tar.gz; tar -xvf sublime-text2.tar
+			cd sublime-text2
 			makepkg -si
 		elif [[ $package == 3 ]];
 		then
@@ -648,11 +652,20 @@ _EOF_
 			makepkg -si
 		elif [[ $browser == 7 ]];
 		then
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/palemoon-bin.tar.gz
-			gunzip palemoon-bin.tar.gz
-			tar -xvf palemoon-bin.tar
-			cd palemoon-bin
-			makepkg -si
+			wget linux.palemoon.org/datastore/release/palemoon-28.2.2.linux-x86_64.tar.bz2
+			tar -xvjf
+			~/palemoon/palemoon
+			sudo mv palemoon /opt
+			sudo touch /usr/share/applications/palemoon.desktop
+			echo "[Desktop Entry]" | sudo tee -a /usr/share/applications/palemoon.desktop
+			echo "Name=Palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
+			echo "GenericName=Palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
+			echo "Exec=/opt/palemoon/palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
+			echo "Terminal=false" | sudo tee -a /usr/share/applications/palemoon.desktop
+			echo "Icon=/opt/palemoon/browser/icons/mozicon128.png" | sudo tee -a /usr/share/applications/palemoon.desktop
+			echo "Type=Application" | sudo tee -a /usr/share/applications/palemoon.desktop
+			echo "Categories=Application; Network: X-Developer;" | sudo tee -a /usr/share/applications/palemoon.desktop
+			echo "Comment=Browse The World Wide Web" | sudo tee -a /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 8 ]];
 		then
 			sudo pacman -S --noconfirm seamonkey
@@ -1117,6 +1130,8 @@ _EOF_
 }
 
 AccountSettings() {
+	
+	#Setup and remove user accounts
 cat <<_EOF_
 This is a completely untested and experimental utility at best. 
 Use this function "Account Settings" at your own risk. 
@@ -1171,6 +1186,7 @@ _EOF_
 }
 
 checkNetwork() {
+	
 	#This will try to ensure you have a strong network connection
 	for c in computer;
 	do 
@@ -1191,6 +1207,7 @@ checkNetwork() {
 }
 
 HostsfileSelect() {
+	
 	#I can prepare a simple hosts file
 	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
@@ -1206,6 +1223,7 @@ HostsfileSelect() {
 }
 
 Uninstall() {
+	
 	#This allows the user to remove unwanted shite
 	echo "Would you like to remove any unwanted applications?(Y/n)"
 	read answer 
@@ -1222,6 +1240,7 @@ Uninstall() {
 }
 
 cleanup() {
+	
 	#This will clean the cache
 	sudo rm -r .cache/*
 	sudo rm -r .thumbnails/*
@@ -1299,6 +1318,8 @@ _EOF_
 }
 
 BrowserRepair() {
+	
+	#This backs up and removes old/corrupted browser configurations
 cat <<_EOF_
 This can fix a lot of the usual issues with a few of the bigger browsers. 
 These can include performance hitting issues. If your browser needs a tuneup,
@@ -1455,7 +1476,7 @@ SystemMaintenance() {
 	sudo systemctl enable ufw; sudo ufw enable
 
 	#This refreshes index cache
-	sudo mandb
+	sudo balooctl check; sudo updatedb; sudo mandb
 	
 	#Checks for pacnew files and other extra configuration file updates
 	find /usr/bin/etc-update
@@ -1508,6 +1529,7 @@ SystemMaintenance() {
 }
 
 ServiceManager() {
+	
 	#This is for service management Prolly not a great idea, but...
 cat <<_EOF_
 This is usually better off left undone, only disable services you know 
@@ -1580,6 +1602,7 @@ Restart() {
 }
 
 KernelManager() {
+	
 	#This gives a list of available kernels and offers to both install and uninstall them
 cat <<_EOF_
 Kernels are an essential part of the operating system. Failure to use precaution
@@ -1661,6 +1684,7 @@ _EOF_
 }
 
 Backup() {
+	
 	#This backsups the system assuming you have your external drive mounted to /mnt
 	echo "What would you like to do?(Y/n)"
 	echo "1 - Backup home folder and user files"
@@ -1748,6 +1772,7 @@ _EOF_
 }
 
 Greeting() {
+	
 	echo "Enter a selection from the following list"
 	echo "1 - Setup your system"
 	echo "2 - Add/Remove user accounts"
