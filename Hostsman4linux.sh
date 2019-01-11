@@ -18,7 +18,7 @@ read username
 house=/home/$username
 cd $house
 
-echo "Select your package 1 2 3 4 5 6 7 8 9 10"
+echo "Select your package 1 2 3 4 5 6 7 8 9"
 read package
 
 if [[ $package == 1 ]];
@@ -113,18 +113,6 @@ then
 	rm KADhosts.txt MVPShosts lightswitch05list coinblocker Malwarehosts Malwarehosts2 add.Spam add.Dead add.Risk add.2o7Net Badd-Boyz tyzbit adservers.txt hphosts-partial.txt hphosts cameleonhosts unchecky spamhosts Stevenhosts Pron Pron2 Gamblinglist fakenews
 elif [[ $package == 6 ]];
 then
-	#Introducing Joey Lane's hosts
-	echo "This could block sites that you need, you've been warned."
-	sleep 1
-	wget hosts-file.net/ad_servers.txt && sort -u ad_servers.txt > /tmp/ad_servers.new && mv /tmp/ad_servers.new ad_servers.txt
-	wget raw.githubusercontent.com/ZeroDot1/CoinBlockerLists/master/hosts -O coinblocker && sort -u coinblocker > /tmp/coinblocker.new && mv /tmp/coinblocker.new coinblocker
-	wget https://raw.githubusercontent.com/joeylane/hosts/master/hosts && sort -u hosts > /tmp/hosts.new && mv /tmp/hosts.new hosts # Does block google
-	cat ad_servers.txt >> hosts
-	cat coinblocker >> hosts
-	rm ad_servers.txt coinblocker
-	#grep -v "Google.com" hosts > /tmp/hosts.new && mv /tmp/hosts.new hosts #This unblocks google.com outright
-elif [[ $package == 7 ]];
-then
 	#Really large hosts file
 	wget https://github.com/mitchellkrogza/Ultimate.Hosts.Blacklist/blob/master/hosts.zip?raw=true
 	unzip 'hosts.zip?raw=true'
@@ -132,7 +120,7 @@ then
 	wget raw.githubusercontent.com/ZeroDot1/CoinBlockerLists/master/hosts -O coinblocker && sort -u coinblocker > /tmp/coinblocker.new && mv /tmp/coinblocker.new coinblocker
 	cat coinblocker >> hosts
 	rm'hosts.zip?raw=true' coinblocker
-elif [[ $package == 8 ]];
+elif [[ $package == 7 ]];
 then
 	#Umatrix style formula with some extras
 	wget hosts-file.net/ad_servers.txt && sort -u ad_servers.txt > /tmp/ad_servers.new && mv /tmp/ad_servers.new ad_servers.txt
@@ -153,7 +141,7 @@ then
 	cat Spamhosts >> hosts
 	cat coinblocker >> hosts
 	rm ad_servers.txt Petersadslist coinblocker Malwarehosts Malware2 Spamhosts MVPShosts cameleonhosts
-elif [[ $package == 9 ]];
+elif [[ $package == 8 ]];
 then
 	#Borrowed from Hblock on github, hphosts and a number of other sources
 	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/disconnect.me-ad/list.txt -O Adslist && sed -i -e 's/^/0.0.0.0 /' Adslist && sed -i '1,4d' Adslist && sort -u Adslist > /tmp/Adslist.new && mv /tmp/Adslist.new Adslist
@@ -174,7 +162,7 @@ then
 	cat MVPShosts >> hosts
 	cat Malwarehosts >> hosts
 	rm Trackinglist Adslist Malvertisinglist Malwarehosts Malwarelist emd.txt fsa.txt psh.txt ad_servers.txt
-elif [[ $package == 10 ]];
+elif [[ $package == 9 ]];
 then
 	#Steven Blacks hosts with fully updated sources and with hosts-file.net ads servers added.
 	wget https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts -O adservers.txt && sort -u adservers.txt > /tmp/adservers.new && mv /tmp/adservers.new adservers.txt
@@ -222,7 +210,7 @@ then
 	cat Spamhosts >> hosts
 	cat cameleonhosts >> hosts
 	cat Malwarehosts2 >> hosts
-	rm KADhosts.txt MVPShosts ad_servers.txt lightswitch05list coinblocker Malwarehosts Malwarehosts2 add.Spam add.Dead add.Risk add.2o7Net Badd-Boyz tyzbit adservers.txt cameleonhosts unchecky Spamhosts Stevenhosts Pron Pron2 Gamblinglist fakenews
+	rm KADhosts.txt MVPShosts ad_servers.txt lightswitch05list coinblocker Malwarehosts add.Spam add.Dead add.Risk add.2o7Net Badd-Boyz tyzbit adservers.txt cameleonhosts unchecky Stevenhosts Pron Pron2 Gamblinglist fakenews Spamhosts Malwarehosts2
 else 
 	echo "Run again and pick a valid number."
 	exit

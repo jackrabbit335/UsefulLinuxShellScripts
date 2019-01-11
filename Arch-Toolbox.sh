@@ -133,8 +133,6 @@ _EOF_
 		echo 'alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"' >> ~/.bashrc
 		echo "#Alias to update the system" >> ~/.bashrc
 		echo 'alias update="sudo pacman -Syu --noconfirm"' >> ~/.bashrc
-		#echo "#Alias to update the mirrors" >> ~/.bashrc
-		#echo 'alias mirrors="sudo pacman-mirrors -f 5 && sudo pacman -Syy"' >> ~/.bashrc ##For Manjaro only
 		echo "#Alias to clean pacman cache" >> ~/.bashrc
 		echo 'alias clean="sudo pacman -Scc"' >> ~/.bashrc
 		echo "#Alias to clean all but the latest three versions of packages in cache" >> ~/.bashrc
@@ -147,6 +145,19 @@ _EOF_
 		echo 'alias boost="sudo sync; echo 3 > /proc/sys/vm/drop_caches"' >> ~/.bashrc
 		echo "#Alias to trim journal size" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
+		
+		#Determines your os in order to apply correct alias
+		distribution=$(cat /etc/issue | awk '{print $1}')
+		if [[ $distribution == Manjaro ]];
+		then
+			echo "#Alias to update the mirrors" >> ~/.bashrc
+			echo 'alias mirrors="sudo pacman-mirrors -f 5 && sudo pacman -Syy"' >> ~/.bashrc
+		elif [[ $distribution == Antergos ]];
+		then
+			echo "#Alias to update the mirrors" >> ~/.bashrc
+			echo 'alias mirrors="sudo reflector-antergos --verbose -l 50 -f 20 --save /etc/pacman.d/antergos-mirrorlist; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syy"' >> ~/.bashrc
+		fi
+		
 	fi
 
 	checkNetwork
@@ -482,18 +493,21 @@ InstallAndConquer() {
 		echo "17 - Backup"
 		echo "18 - THEMES!!!!!!!!"
 		echo "19 - screenfetch"
-		echo "20 - Proprietary Fonts"
-		echo "21 - Security checkers/scanners"
-		echo "22 - Stellarium constellation and space observation"
-		echo "23 - exit out of this menu"
+		echo "20 - office software"
+		echo "21 - Proprietary Fonts"
+		echo "22 - Security checkers/scanners"
+		echo "23 - Stellarium constellation and space observation"
+		echo "24 - exit out of this menu"
 
 	read software;
 
 	case $software in
 		1)
 		echo "This installs a series of utility software"
-		sudo pacman -S --noconfirm dnsutils net-tools traceroute hardinfo lshw hdparm gparted gnome-disk-utility ncdu 
-		sudo pacman -S --noconfirm hddtemp htop iotop atop ntop nmap smartmontools xsensors 
+		sudo pacman -S --noconfirm dnsutils net-tools traceroute hardinfo 
+		sudo pacman -S --noconfirmlshw hdparm gparted gnome-disk-utility  
+		sudo pacman -S --noconfirm hddtemp htop iotop atop ntop smartmontools 
+		sudo pacman -S --noconfirm xsensors devede nmap ncdu
 	;;
 		2)
 		echo "This installs a light weight editor(text/code editor/IDE)"
@@ -646,17 +660,12 @@ _EOF_
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi-snapshot.tar.gz
-			gunzip vivaldi-snapshot.tar.gz
-			tar -xvf vivaldi-snapshot.tar
-			cd vivaldi-snapshot
-			makepkg -si
+			gunzip vivaldi-snapshot.tar.gz; tar -xvf vivaldi-snapshot.tar
+			cd vivaldi-snapshot && makepkg -si
 		elif [[ $browser == 7 ]];
 		then
-			wget linux.palemoon.org/datastore/release/palemoon-28.2.2.linux-x86_64.tar.bz2
-			tar -xvjf
-			~/palemoon/palemoon
-			sudo mv palemoon /opt
-			sudo touch /usr/share/applications/palemoon.desktop
+			wget linux.palemoon.org/datastore/release/palemoon-28.2.2.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.2.2.linux-x86_64.tar.bz2
+			sudo mv palemoon /opt; sudo touch /usr/share/applications/palemoon.desktop
 			echo "[Desktop Entry]" | sudo tee -a /usr/share/applications/palemoon.desktop
 			echo "Name=Palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
 			echo "GenericName=Palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
@@ -679,42 +688,32 @@ _EOF_
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz
-			gunzip vivaldi.tar.gz
-			tar -xvf vivaldi.tar
-			cd vivaldi
-			makepkg -si
+			gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar
+			cd vivaldi && makepkg -si
 		elif [[ $browser == 12 ]];
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz
-			gunzip google-chrome.tar.gz
-			tar -xvf google-chrome.tar
-			cd google-chrome
-			makepkg -si
+			gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar
+			cd google-chrome && makepkg -si
 		elif [[ $browser == 13 ]];
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/waterfox-bin.tar.gz
-			gunzip waterfox-bin.tar.gz
-			tar -xvf waterfox-bin.tar
-			cd waterfox-bin
-			makepkg -si 
+			gunzip waterfox-bin.tar.gz; tar -xvf waterfox-bin.tar
+			cd waterfox-bin && makepkg -si 
 		elif [[ $browser == 14 ]];
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/basilisk-bin.tar.gz
-			gunzip basilisk-bin.tar.gz
-			tar -xvf basilisk-bin.tar
-			cd basilisk-bin
-			makepkg -si 
+			gunzip basilisk-bin.tar.gz; tar -xvf basilisk-bin.tar
+			cd basilisk-bin && makepkg -si 
 		elif [[ $browser == 15 ]];
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/slimjet.tar.gz
-			gunzip slimjet.tar.gz
-			tar -xvf slimjet.tar
-			cd slimjet
-			makepkg -si 
+			gunzip slimjet.tar.gz; tar -xvf slimjet.tar
+			cd slimjet && makepkg -si 
 		else
 			echo "You have entered an invalid number"
 		fi
@@ -751,10 +750,8 @@ _EOF_
 		then	
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/spotify.tar.gz
-			gunzip spotify.tar.gz
-			tar -xvf spotify.tar
-			cd spotify
-			makepkg -si
+			gunzip spotify.tar.gz; tar -xvf spotify.tar
+			cd spotify && makepkg -si
 		elif [[ $player == 6 ]];
 		then
 			sudo pacman -S --noconfirm rhythmbox
@@ -818,13 +815,10 @@ _EOF_
 		echo "This installs etc-update"
 		echo "etc-update can help you manage pacnew files and other configuration files after system updates."
 		sleep 2
-		cd /tmp
 		sudo pacman -S --needed base-devel 
 		wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz
 		gunzip etc-update.tar.gz && tar -xvf etc-update.tar
-		cd etc-update
-		makepkg -si
-		
+		cd etc-update && makepkg -si
 		echo "Would you also like to install downgrade?(Y/n)"
 		read answer
 		while [ $answer ==  Y ];
@@ -923,17 +917,17 @@ _EOF_
 		sudo pacman -S --noconfirm screenfetch
 	;;
 		20)
-		wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz
-		wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gz
-		gunzip ttf-ms-fonts.tar.gz
-		gunzip ttf-mac-fonts.tar.gz
-		tar -xvf ttf-ms-fonts.tar
-		tar -xvf ttf-mac-fonts.tar
-		cd ttf-ms-fonts; makepkg -si
-		pushd ttf-mac-fonts; makepkg -si
-		cd
+		echo "This installs office software"
+		sudo pacman -S --noconfirm libreoffice-fresh
 	;;
 		21)
+		wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz; wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gz
+		gunzip ttf-ms-fonts.tar.gz; gunzip ttf-mac-fonts.tar.gz
+		tar -xvf ttf-ms-fonts.tar; tar -xvf ttf-mac-fonts.tar
+		cd ttf-ms-fonts; makepkg -si
+		pushd ttf-mac-fonts; makepkg -si; cd
+	;;
+		22)
 		echo "This installs possible security software and virus checker if you wish"
 		echo "1 - rkhunter"
 		echo "2 - clamav"
@@ -953,11 +947,11 @@ _EOF_
 		esac
 
 	;;
-		22)
+		23)
 		echo "This installs stellarium incase you are a night sky observer"
 		sudo pacman -S --noconfirm stellarium
 	;;
-		23)
+		24)
 		echo "Ok, well, I'm here if you change your mind"
 		break
 	;;
@@ -1131,7 +1125,7 @@ _EOF_
 
 AccountSettings() {
 	
-	#Setup and remove user accounts
+#Setup and remove user accounts
 cat <<_EOF_
 This is a completely untested and experimental utility at best. 
 Use this function "Account Settings" at your own risk. 
@@ -1312,9 +1306,8 @@ _EOF_
 		echo "NICE!"
 		;;
 	esac
-
-	clear
-	Greeting
+	
+	Restart
 }
 
 BrowserRepair() {
@@ -1476,7 +1469,7 @@ SystemMaintenance() {
 	sudo systemctl enable ufw; sudo ufw enable
 
 	#This refreshes index cache
-	sudo updatedb; sudo mandb
+	sudo balooctl check; sudo updatedb; sudo mandb
 	
 	#Checks for pacnew files and other extra configuration file updates
 	find /usr/bin/etc-update
@@ -1773,7 +1766,7 @@ _EOF_
 
 Greeting() {
 	
-	echo "Enter a selection from the following list"
+	echo "Enter a selection from the following list:"
 	echo "1 - Setup your system"
 	echo "2 - Add/Remove user accounts"
 	echo "3 - Install software"
@@ -1854,15 +1847,21 @@ Greeting() {
 }
 
 cat <<_EOF_
-Hello! Thank you for using Arch Toolbox. Within this script is a multitude of potential solutions for every day tasks such as maintenance, 
-all the way to setting up a new system. This script is meant for new users, 
-but anyone can read, change and use this script to their liking.
-This script is to be placed under the GPLv3 and is to be redistributable, however, if you are distributing, I'd appreciate it if
-you gave the credit back to the original author. I should also add that I have a few blog articles which may or may not be
-of benefit for newbies on occasion. The link will be placed here. In the blog I write about typical scenarios that I face on a day to day basis
+########################################################################
+Hello! Thank you for using Arch Toolbox. Within this script is a multitu-
+de of potential solutions for every day tasks as trivial as maintenance, 
+all the way to as important as setting up a new system. 
+This script is meant for new users, but anyone can read, change and use 
+this script to their liking. This script is to be placed under the GPLv3 
+and is to be redistributable, however, if you are distributing, 
+I'd appreciate it if you gave the credit back to the original author. I 
+should also add that I have a few blog articles which may or may not be
+of benefit for newbies on occasion. The link will be placed here. In the 
+blog I write about typical scenarios that I face on a day to day basis
 as well as add commentary and my opinions about software and technology. 
 You may copy and paste the following link into your browser:
 https://techiegeek123.blogspot.com/
 Again, Thank you!
+########################################################################
 _EOF_
 Greeting
