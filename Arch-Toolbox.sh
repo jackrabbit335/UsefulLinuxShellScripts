@@ -504,10 +504,8 @@ InstallAndConquer() {
 	case $software in
 		1)
 		echo "This installs a series of utility software"
-		sudo pacman -S --noconfirm dnsutils net-tools traceroute hardinfo 
-		sudo pacman -S --noconfirmlshw hdparm gparted gnome-disk-utility  
-		sudo pacman -S --noconfirm hddtemp htop iotop atop ntop smartmontools 
-		sudo pacman -S --noconfirm xsensors devede nmap ncdu
+		sudo pacman -S --noconfirm dnsutils net-tools traceroute hardinfo lshw hdparm gparted gnome-disk-utility ncdu 
+		sudo pacman -S --noconfirm hddtemp htop iotop atop ntop nmap smartmontools xsensors 
 	;;
 		2)
 		echo "This installs a light weight editor(text/code editor/IDE)"
@@ -673,7 +671,7 @@ _EOF_
 			echo "Terminal=false" | sudo tee -a /usr/share/applications/palemoon.desktop
 			echo "Icon=/opt/palemoon/browser/icons/mozicon128.png" | sudo tee -a /usr/share/applications/palemoon.desktop
 			echo "Type=Application" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Categories=Application; Network: X-Developer;" | sudo tee -a /usr/share/applications/palemoon.desktop
+			echo "Categories=Application;Network;WebBrowser;X-Developer;" | sudo tee -a /usr/share/applications/palemoon.desktop
 			echo "Comment=Browse The World Wide Web" | sudo tee -a /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 8 ]];
 		then
@@ -1306,8 +1304,9 @@ _EOF_
 		echo "NICE!"
 		;;
 	esac
-	
-	Restart
+
+	clear
+	Greeting
 }
 
 BrowserRepair() {
