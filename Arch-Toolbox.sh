@@ -183,8 +183,7 @@ _EOF_
 				sudo pacman -Sc
 				sudo pacman -Syyu --noconfirm
 			fi
-		elif [[ $distribution == Antergos ]];
-		then
+		else
 			sudo pacman -Sy --noconfirm reflector
 			sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
 			if [[ $? -eq 0 ]]; 
@@ -316,6 +315,11 @@ Systeminfo() {
 	echo "DISK SPACE" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	df -h >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "SMART DATA" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	sudo smartctl -A /dev/sda >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "DIRECTORY USAGE" >> $host-sysinfo.txt
@@ -504,8 +508,10 @@ InstallAndConquer() {
 	case $software in
 		1)
 		echo "This installs a series of utility software"
-		sudo pacman -S --noconfirm dnsutils net-tools traceroute hardinfo lshw hdparm gparted gnome-disk-utility ncdu 
-		sudo pacman -S --noconfirm hddtemp htop iotop atop ntop nmap smartmontools xsensors 
+		sudo pacman -S --noconfirm dnsutils traceroute hdparm gparted smartmontools
+		sudo pacman -S --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu 
+		sudo pacman -S --noconfirm gnome-disk-utility hardinfo lshw net-tools
+		sudo pacman -S --noconfirm pacman-contrib yaourt grsync
 	;;
 		2)
 		echo "This installs a light weight editor(text/code editor/IDE)"
@@ -889,16 +895,12 @@ _EOF_
 		17)
 		echo "This installs your backup software"
 		echo "1 - deja-dup"
-		echo "2 - grsync"
-		echo "3 - timeshift"
+		echo "2 - timeshift"
 		read package
 		if [[ $package == 1 ]];
 		then
 			sudo pacman -S --noconfirm deja-dup
 		elif [[ $package == 2 ]];
-		then
-			sudo pacman -S --noconfirm grsync
-		elif [[ $package == 3 ]];
 		then
 			sudo pacman -S --noconfirm timeshift
 		else
@@ -1457,6 +1459,10 @@ SystemMaintenance() {
 	if [[ $distribution == Manjaro ]];
 	then
 		sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu --noconfirm
+	elif [[ $distribution == Antergos ]];
+	then
+		pacman -Q | grep reflector-antergos || sudo pacman -S --noconfirm reflector-antergos
+		sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo reflector-antergos --verbose -l 50 -f 20 --save /etc/pacman.d/antergos-mirrorlist; sudo pacman -Syyu --noconfirm
 	else
 		sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
 	fi
