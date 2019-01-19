@@ -1271,7 +1271,7 @@ SystemMaintenance() {
 	sudo systemctl daemon-reload #For systemd releases
 	
 	#This runs update db for index cache and cleans the manual database
-	sudo mandb
+	sudo updatedb; sudo mandb
 	
 	#This updates grub
 	sudo update-grub2 
