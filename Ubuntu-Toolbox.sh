@@ -62,7 +62,7 @@ Setup() {
 	echo "net.ipv4.tcp_challenge_ack_limit = 999999999" | sudo tee -a /etc/sysctl.conf
 	sudo sysctl -p
 
-    #Block ICMP requests or Ping from foreign systems
+	#Block ICMP requests or Ping from foreign systems
 cat <<_EOF_
 We can also block ping requests. Ping requests coming from unknown sources can mean that people are 
 potentially trying to locate/attack your network. If you need this functionality
@@ -228,6 +228,11 @@ Systeminfo() {
 	echo "DISK SPACE" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	df -h >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "SMART DATA" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	sudo smartctl -A /dev/sda >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "DIRECTORY USAGE" >> $host-sysinfo.txt
@@ -591,7 +596,9 @@ InstallAndConquer() {
 			fi
 		;;
 			3)
-			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute gnome-disk-utility htop iotop atop inxi xsensors lm-sensors gufw gparted smartmontools
+			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute 
+			sudo apt install -y gnome-disk-utility htop iotop atop inxi grsync
+			sudo apt install -yxsensors lm-sensors gufw gparted smartmontools
 		;;
 			4)
 			echo "1 - deja-dup"
@@ -661,9 +668,9 @@ InstallAndConquer() {
 				echo "GenericName=Palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
 				echo "Exec=/opt/palemoon/palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
 				echo "Terminal=false" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "Icon=/opt/palemoon/browser/icons/moz128.png" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "Icon=/opt/palemoon/browser/icons/mozicon128.png" | sudo tee -a /usr/share/applications/palemoon.desktop
 				echo "Type=Application" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "Categories=Application;Network;X-Developer;" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "Categories=Application;Network;WebBrowser;X-Developer;" | sudo tee -a /usr/share/applications/palemoon.desktop
 				echo "Comment=Browse the World Wide Web" | sudo tee -a /usr/share/applications/palemoon.desktop
 				sudo update-alternatives --install /usr/bin/gnome-www-browser gnome-www-browser /usr/bin/palemoon 100
 				sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/palemoon 100
@@ -790,7 +797,7 @@ InstallAndConquer() {
 			sudo add-apt-repository ppa:papirus/papirus
 			sudo add-apt-repository ppa:moka/daily
 			sudo apt-get update
-			sudo apt-get install -y mate-themes faenza-icon-theme obsidian-1-icons dalisha-icons shadow-icon-theme moka-icon-theme papirus-icon-theme
+			sudo apt install -y mate-themes faenza-icon-theme obsidian-1-icons dalisha-icons shadow-icon-theme moka-icon-theme papirus-icon-theme
 		;;
 			15)
 			echo "Installs your choice in linux games"
@@ -806,31 +813,31 @@ InstallAndConquer() {
 			read package
 			if [[ package == 1 ]];
 			then
-				sudo apt-get -y install supertuxkart
+				sudo apt install -y supertuxkart
 			elif [[ $package == 2 ]];
 			then
-				sudo apt-get -y install gnome-mahjongg
+				sudo apt install -y gnome-mahjongg
 			elif [[ $package == 3 ]];
 			then
-				sudo apt-get -y install aisleriot
+				sudo apt install -y aisleriot
 			elif [[ $package == 4 ]];
 			then
-				sudo apt-get -y install ace-of-penguins
+				sudo apt install -y ace-of-penguins
 			elif [[ $package == 5 ]];
 			then
-				sudo apt-get -y install gnome-sudoku
+				sudo apt install -y gnome-sudoku
 			elif [[ $package == 6 ]];
 			then
-				sudo apt-get -y install gnome-mines
+				sudo apt install -y gnome-mines
 			elif [[ $package == 7 ]];
 			then
-				sudo apt-get -y install chromium-bsu
+				sudo apt install -y chromium-bsu
 			elif [[ $package == 8 ]];
 			then
-				sudo apt-get -y install supertux
+				sudo apt install -y supertux
 			elif [[ $package == 9 ]];
 			then
-				sudo apt-get install -y supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux steam
+				sudo apt install -y supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux steam
 			else 
 				echo "You have entered an invalid number, please come back later and try again."
 			fi
@@ -1109,8 +1116,7 @@ _EOF_
 	break
 	done
 	
-	clear
-	Greeting
+	Restart
 }
 
 BrowserRepair() {
@@ -1259,17 +1265,13 @@ SystemMaintenance() {
 	sudo dpkg --configure -a; sudo apt install -f; sudo apt update; sudo apt upgrade -yy
 
 	#It is recommended that your firewall is enabled
-	systemctl is-enabled ufw.service
-	if [[ $? -eq 1 ]];
-	then
-		sudo systemctl enable ufw; sudo ufw enable
-	fi
+	sudo systemctl enable ufw; sudo ufw enable
 	
 	#This restarts systemd daemon. This can be useful for different reasons.
 	sudo systemctl daemon-reload #For systemd releases
 	
 	#This runs update db for index cache and cleans the manual database
-	sudo updatedb && sudo mandb
+	sudo mandb
 	
 	#This updates grub
 	sudo update-grub2 
@@ -1296,7 +1298,7 @@ SystemMaintenance() {
 			read answer
 			while [ $answer == Y ];
 			do
-				sudo fstrim -v /
+				sudo fstrim -v --all
 			break
 			done
 		fi 
@@ -1589,16 +1591,21 @@ Greeting() {
 }
 
 cat <<_EOF_
-Hello! Thank you for using Ubuntu Toolbox. Within this script is a multitude of potential solutions for every day tasks such as maintenance, 
-all the way to setting up a new system. This script is meant for new users, 
-but anyone can read, change and use this script to their liking.
-This script is to be placed under the GPLv3 and is to be redistributable, however, if you are distributing, I'd appreciate it if
-you gave the credit back to the original author. I should also add that I have a few blog articles which may or may not be
-of benefit for newbies on occasion. The link will be placed here. In the blog I write about typical scenarios that I face on a day to day basis
-as well as add commentary and my opinions about software and technology. 
-You may copy and paste the following link into your browser:
-https://techiegeek123.blogspot.com/
+########################################################################
+Hello! Thank you for using Ubuntu Toolbox. Within this script is a multi-
+tude of potential solutions for every day tasks such as maintenance, 
+all the way to setting up a new system. This script is meant for new 
+users, but anyone can read, change and use this script to their liking.
+This script is to be placed under the GPLv3 and is to be redistributable, 
+however, if you are distributing, I'd appreciate it if you gave the 
+credit back to the original author. I should also add that I have a few 
+blog articles which may or may not be of benefit for newbies on occasion. 
+The link will be placed here. In the blog I write about typical scenarios 
+that I face on a day to day basis as well as add commentary and my 
+opinions about software and technology. You may copy and paste the 
+following link into your browser: https://techiegeek123.blogspot.com/
 Again, Thank you!
+########################################################################
 _EOF_
 Greeting
 
