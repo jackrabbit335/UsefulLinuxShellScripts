@@ -668,7 +668,7 @@ _EOF_
 			cd vivaldi-snapshot && makepkg -si
 		elif [[ $browser == 7 ]];
 		then
-			wget linux.palemoon.org/datastore/release/palemoon-28.2.2.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.2.2.linux-x86_64.tar.bz2
+			wget linux.palemoon.org/datastore/release/palemoon-28.3.0.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.3.0.linux-x86_64.tar.bz2
 			sudo mv palemoon /opt; sudo touch /usr/share/applications/palemoon.desktop
 			echo "[Desktop Entry]" | sudo tee -a /usr/share/applications/palemoon.desktop
 			echo "Name=Palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
@@ -1262,6 +1262,15 @@ cleanup() {
 
 	#clean some unneccessary files leftover by applications in home directory
 	find $HOME -type f -name "*~" -print -exec rm {} \;
+	
+	#cleans old kernel crash logs
+	echo "Would you like to remove kernel crash logs?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		sudo find /var -type f -name "core" -print -exec rm {} \;
+	break
+	done
 	 
 	#This helps get rid of old archived log entries
 	sudo journalctl --vacuum-size=25M
@@ -1333,6 +1342,7 @@ _EOF_
 	browser8="$(find /usr/bin/falkon)"
 	browser9="$(find /usr/bin/epiphany)"
 	browser10="$(find /usr/bin/midori)"
+	browser11="$(find /usr/bin/basilisk)"
 
 	echo $browser1
 	echo $browser2
@@ -1344,6 +1354,7 @@ _EOF_
 	echo $browser8
 	echo $browser9
 	echo $browser10
+	echo $browser11
 
 	sleep 1
 
@@ -1359,13 +1370,14 @@ _EOF_
 	echo "9 - Falkon"
 	echo "10 - Epiphany"
 	echo "11 - Midori"
+	echo "12 - Basilisk"
 
 	read operation;
 
 	case $operation in
 		1)
 		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old
-		sudo rm -r ~/.mozilla/firefox/profile.ini 
+		sudo rm -r ~/.mozilla/firefox/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
@@ -1377,7 +1389,7 @@ _EOF_
 	;;
 		3)
 		sudo cp -r ~/'.moonchild productions'/'pale moon' ~/'.moonchild productions'/'pale moon'-old
-		sudo rm -r ~/'.moonchild productions'/'pale moon'/profile.ini 
+		sudo rm -r ~/'.moonchild productions'/'pale moon'/* 
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
@@ -1426,6 +1438,12 @@ _EOF_
 		11)
 		sudo cp -r ~/.config/midori ~/.config/midori-old
 		sudo rm -r ~/.config/midori/*
+		echo "Your browser has now been reset"
+		sleep 1
+	;;
+		12)
+		sudo cp -r ~/'.moonchild productions'/'basilisk' ~/'.moonchild productions'/'basilisk'-old
+		sudo rm -rf ~/'.moonchild productions'/'basilisk'/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;

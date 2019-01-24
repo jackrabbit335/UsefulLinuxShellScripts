@@ -121,15 +121,31 @@ _EOF_
 			done
 		elif [[ $drive == 0 ]];
 		then
-			echo "Trim is already enabled on Ubuntu-based systems\
-			however, you can still run it manually if you'd like."
-			echo "Would you like to run Trim?(Y/n)"
-			read answer 
-			while [ $answer == Y ];
-			do 
-				sudo fstrim -v --all
+			cat <<_EOF_
+			Trim is enabled already on most Ubuntu systems, however, it is not 
+			enabled on Debian. That said, enabling Trim is easy.
+_EOF_
+			distribution=$(cat /etc/issue | awk '{print $1}')
+			while [ $distribution == Debian ];
+			do
+				touch fstrim 
+				cat > fstrim <<EOF
+				#!/bin/sh
+				sudo fstrim /
+EOF
+				sudo mv fstrim /etc/cron.weekly
+				sudo chmod +x /etc/cron.weekly/fstrim
 			break
 			done
+			
+			echo "Alternatively you can run fstrim manually(Y/n)"
+			read answer
+			while [ $answer == Y ];
+			do
+				sudo fstrim -v /
+			break
+			done
+			
 		fi
 	done
 	
@@ -598,7 +614,7 @@ InstallAndConquer() {
 			3)
 			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute 
 			sudo apt install -y gnome-disk-utility htop iotop atop inxi grsync
-			sudo apt install -yxsensors lm-sensors gufw gparted smartmontools
+			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools
 		;;
 			4)
 			echo "1 - deja-dup"
@@ -1070,6 +1086,15 @@ _EOF_
 		echo "Please enter the Image you wish to remove"
 		read Image
 		sudo apt-get remove --purge $Image
+	break
+	done
+	
+	#cleans old kernel crash logs
+	echo "Would you like to remove kernel crash logs?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		sudo find /var -type f -name "core" -print -exec rm {} \;
 	break
 	done
 	
