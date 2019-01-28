@@ -31,21 +31,25 @@ then
 	echo "You've opted for the Medium Package, this blocks some ads as 
 	\\ well as known malicious"
 	wget http://winhelp2002.mvps.org/hosts.txt -O hosts
+	wget https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt -O Adaway
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
 	cat Malwarehosts >> hosts
-	rm Malwarehosts
+	cat Adaway >> hosts
+	rm Malwarehosts Adaway
 	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 elif [[ $package == 3 ]];
 then
-	echo "You've opted for High, this blocks all known ads, spyware, tracking, malicious"
+	echo "You've opted for High, this blocks all known ads, spyware, tracking and malicious"
 	wget http://winhelp2002.mvps.org/hosts.txt -O MVPShosts
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
 	wget https://someonewhocares.org/hosts/zero/hosts
+	wget https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt -O Adaway
 	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/pgl.yoyo.org/list.txt -O Petersadslist && sed -i -e 's/^/127.0.0.1 /' Petersadslist
 	cat MVPShosts >> hosts
 	cat Malwarehosts >> hosts
+	cat Adaway >> hosts
 	cat Petersadslist >> hosts
-	rm Malwarehosts MVPShosts Petersadslist
+	rm Malwarehosts MVPShosts Petersadslist Adaway
 	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 elif [[ $package == 4 ]];
 then
@@ -55,15 +59,25 @@ then
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
 	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/pgl.yoyo.org/list.txt -O Petersadslist && sed -i -e 's/^/127.0.0.1 /' Petersadslist
 	wget https://hosts-file.net/ad_servers.txt
-	wget raw.githubusercontent.com/ZeroDot1/CoinBlockerLists/master/hosts -O coinblocker
+	wget https://hosts-file.net/psh.txt
+	wget https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt -O Adaway
+	wget https://raw.githubusercontent.com/Clefspeare13/pornhosts/master/0.0.0.0/hosts -O Pron
+	wget https://raw.githubusercontent.com/azet12/KADhosts/master/KADhosts.txt
+	wget https://raw.githubusercontent.com/lightswitch05/hosts/master/ads-and-tracking-extended.txt -O lightswitch05
+	wget https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser -O nocoin
 	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/adguard-simplified/list.txt -O Adguardlist && sed -i -e 's/^/127.0.0.1 /' Adguardlist 
 	cat Adguardlist >> hosts
 	cat MVPShosts >> hosts
 	cat Malwarehosts >> hosts
 	cat ad_servers.txt >> hosts
-	cat coinblocker >> hosts
+	cat lightswitch05 >> hosts
+	cat KADhosts.txt >> hosts
+	cat psh.txt >> hosts
+	cat Pron >> hosts
+	cat nocoin >> hosts
+	cat Adaway >> hosts
 	cat Petersadslist >> hosts
-	rm Malwarehosts MVPShosts Adguardlist ad_servers.txt Petersadslist coinblocker
+	rm Malwarehosts MVPShosts Adguardlist ad_servers.txt Pron Adaway nocoin Petersadslist psh.txt KADhosts.txt lightswitch05
 	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 fi
 
@@ -88,7 +102,7 @@ sed -i 's/127.0.0.1/0.0.0.0/g' hosts
 
 #Remove comments
 sed -e '/#.*/d' hosts > /tmp/hosts.new && mv /tmp/hosts.new hosts
-sed -e '/^$/d' > /tmp/hosts.new && mv /tmp/hosts.new hosts
+#sed -e '/^$/d' > /tmp/hosts.new && mv /tmp/hosts.new hosts
 
 #This merges hosts with /etc/hosts then removes hosts
 sudo cat hosts >> /etc/hosts
