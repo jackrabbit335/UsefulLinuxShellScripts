@@ -1112,7 +1112,7 @@ _EOF_
 	sudo rm -r ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/*
 	find ~/Downloads/* -mtime +3 -exec rm {} \; 
-	history -cw && cat /dev/null/ > ~/.bash_history
+	history -c && rm ~/.bash_history
 	
 	#This clears the cached RAM 
 	read -p "This will free up cached RAM. Press enter to continue..."
