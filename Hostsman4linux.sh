@@ -24,12 +24,15 @@ read package
 
 if [[ $package == 1 ]];
 then
-	echo "You've opted for the basic package, this blocks typical ad and spyware"
+	echo "##############################################################"
+	echo "BASIC!"
+	echo "##############################################################"
 	wget http://winhelp2002.mvps.org/hosts.txt -O hosts
 elif [[ $package == 2 ]];
 then
-	echo "You've opted for the Medium Package, this blocks some ads as 
-	\\ well as known malicious"
+	echo "##############################################################"
+	echo "MIDLEVEL!"
+	echo "##############################################################"
 	wget http://winhelp2002.mvps.org/hosts.txt -O hosts
 	wget https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt -O Adaway
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
@@ -39,7 +42,9 @@ then
 	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 elif [[ $package == 3 ]];
 then
-	echo "You've opted for High, this blocks all known ads, spyware, tracking and malicious"
+	echo "##############################################################"
+	echo "ADVANCED!"
+	echo "##############################################################"
 	wget http://winhelp2002.mvps.org/hosts.txt -O MVPShosts
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
 	wget https://someonewhocares.org/hosts/zero/hosts
@@ -53,7 +58,9 @@ then
 	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 elif [[ $package == 4 ]];
 then
-	echo "You've opted for all the bells and whistles. The Paranoia package"
+	echo "##############################################################" 
+	echo "ULTIMATE!"
+	echo "##############################################################"
 	wget http://winhelp2002.mvps.org/hosts.txt -O MVPShosts
 	wget https://someonewhocares.org/hosts/zero/hosts
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
@@ -67,6 +74,9 @@ then
 	wget https://raw.githubusercontent.com/azet12/KADhosts/master/KADhosts.txt
 	wget https://raw.githubusercontent.com/lightswitch05/hosts/master/ads-and-tracking-extended.txt -O lightswitch05
 	wget https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser -O nocoin
+	wget http://sysctl.org/cameleon/hosts -O cameleonhosts
+	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/spam404.com/list.txt -O Spamhosts && sed -i -e 's/^/0.0.0.0  /' Spamhosts
+	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/malwaredomains.com-justdomains/list.txt -O Malwarehosts2 && sed -i 's/^/0.0.0.0  /' Malwarehosts2
 	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/adguard-simplified/list.txt -O Adguardlist && sed -i -e 's/^/127.0.0.1 /' Adguardlist 
 	cat Adguardlist >> hosts
 	cat MVPShosts >> hosts
@@ -75,13 +85,16 @@ then
 	cat lightswitch05 >> hosts
 	cat KADhosts.txt >> hosts
 	cat Pron >> hosts
+	cat Malwarehosts2 >> hosts
+	cat Spamhosts >> hosts
 	cat Badd-Boyz >> hosts
 	cat Gamblinglist >> hosts
+	cat cameleonhosts >> hosts
 	cat tyzbit >> hosts
 	cat nocoin >> hosts
 	cat Adaway >> hosts
 	cat Petersadslist >> hosts
-	rm Malwarehosts MVPShosts Adguardlist ad_servers.txt Pron Adaway nocoin tyzbit Petersadslist Gamblinglist KADhosts.txt lightswitch05 Badd-Boyz
+	rm Malwarehosts MVPShosts Adguardlist cameleonhosts Malwarehosts2 Spamhosts ad_servers.txt Pron Adaway nocoin tyzbit Petersadslist Gamblinglist KADhosts.txt lightswitch05 Badd-Boyz
 	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 fi
 
