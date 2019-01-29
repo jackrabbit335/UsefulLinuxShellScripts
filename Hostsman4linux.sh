@@ -59,7 +59,9 @@ then
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
 	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/pgl.yoyo.org/list.txt -O Petersadslist && sed -i -e 's/^/127.0.0.1 /' Petersadslist
 	wget https://hosts-file.net/ad_servers.txt
-	wget https://hosts-file.net/psh.txt
+	wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/hosts -O tyzbit
+	wget https://raw.githubusercontent.com/Sinfonietta/hostfiles/master/gambling-hosts -O Gamblinglist
+	wget https://raw.githubusercontent.com/mitchellkrogza/Badd-Boyz-Hosts/master/hosts -O Badd-Boyz
 	wget https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt -O Adaway
 	wget https://raw.githubusercontent.com/Clefspeare13/pornhosts/master/0.0.0.0/hosts -O Pron
 	wget https://raw.githubusercontent.com/azet12/KADhosts/master/KADhosts.txt
@@ -72,12 +74,14 @@ then
 	cat ad_servers.txt >> hosts
 	cat lightswitch05 >> hosts
 	cat KADhosts.txt >> hosts
-	cat psh.txt >> hosts
 	cat Pron >> hosts
+	cat Badd-Boyz >> hosts
+	cat Gamblinglist >> hosts
+	cat tyzbit >> hosts
 	cat nocoin >> hosts
 	cat Adaway >> hosts
 	cat Petersadslist >> hosts
-	rm Malwarehosts MVPShosts Adguardlist ad_servers.txt Pron Adaway nocoin Petersadslist psh.txt KADhosts.txt lightswitch05
+	rm Malwarehosts MVPShosts Adguardlist ad_servers.txt Pron Adaway nocoin tyzbit Petersadslist Gamblinglist KADhosts.txt lightswitch05 Badd-Boyz
 	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 fi
 
@@ -102,7 +106,7 @@ sed -i 's/127.0.0.1/0.0.0.0/g' hosts
 
 #Remove comments
 sed -e '/#.*/d' hosts > /tmp/hosts.new && mv /tmp/hosts.new hosts
-#sed -e '/^$/d' > /tmp/hosts.new && mv /tmp/hosts.new hosts
+sed -e '/^$/d' hosts > /tmp/hosts.new && mv /tmp/hosts.new hosts
 
 #This merges hosts with /etc/hosts then removes hosts
 sudo cat hosts >> /etc/hosts
