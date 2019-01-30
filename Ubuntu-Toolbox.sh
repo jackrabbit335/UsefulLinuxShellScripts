@@ -673,9 +673,7 @@ InstallAndConquer() {
 				sudo apt install -f 
 			elif [[ $browser == 6 ]];
 			then
-				wget http://linux.palemoon.org/datastore/release/palemoon-28.2.2.linux-x86_64.tar.bz2
-				tar -xvf palemoon-28.2.2.linux-x86_64.tar.bz2
-				./palemoon/palemoon
+				wget http://linux.palemoon.org/datastore/release/palemoon-28.3.1.linux-x86_64.tar.bz2; tar -xvf palemoon-28.3.1.linux-x86_64.tar.bz2
 				sudo mv palemoon /opt
 				sudo ln -s /opt/palemoon/palemoon /usr/bin/palemoon
 				sudo touch /usr/share/applications/palemoon.desktop

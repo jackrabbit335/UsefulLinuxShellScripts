@@ -668,7 +668,7 @@ _EOF_
 			cd vivaldi-snapshot && makepkg -si
 		elif [[ $browser == 7 ]];
 		then
-			wget linux.palemoon.org/datastore/release/palemoon-28.3.0.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.3.0.linux-x86_64.tar.bz2
+			wget linux.palemoon.org/datastore/release/palemoon-28.3.1.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.3.1.linux-x86_64.tar.bz2
 			sudo mv palemoon /opt; sudo touch /usr/share/applications/palemoon.desktop
 			echo "[Desktop Entry]" | sudo tee -a /usr/share/applications/palemoon.desktop
 			echo "Name=Palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
