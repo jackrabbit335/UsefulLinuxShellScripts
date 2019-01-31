@@ -25,46 +25,49 @@ read package
 if [[ $package == 1 ]];
 then
 	echo "##############################################################"
-	echo "BASIC!"
+	echo "BASIC PROTECTION!"
 	echo "##############################################################"
 	wget http://winhelp2002.mvps.org/hosts.txt -O hosts
 elif [[ $package == 2 ]];
 then
 	echo "##############################################################"
-	echo "MIDLEVEL!"
+	echo "INTERMEDIATE PROTECTION!"
 	echo "##############################################################"
 	wget http://winhelp2002.mvps.org/hosts.txt -O hosts
-	wget https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt -O Adaway
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
+	wget https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser -O nocoin
 	cat Malwarehosts >> hosts
-	cat Adaway >> hosts
-	rm Malwarehosts Adaway
+	cat nocoin >> hosts
+	rm Malwarehosts nocoin
 	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 elif [[ $package == 3 ]];
 then
 	echo "##############################################################"
-	echo "ADVANCED!"
+	echo "Full PROTECTION!"
 	echo "##############################################################"
 	wget http://winhelp2002.mvps.org/hosts.txt -O MVPShosts
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
 	wget https://someonewhocares.org/hosts/zero/hosts
+	wget https://hosts-file.net/ad_servers.txt
+	wget https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser -O nocoin
 	wget https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt -O Adaway
 	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/pgl.yoyo.org/list.txt -O Petersadslist && sed -i -e 's/^/127.0.0.1 /' Petersadslist
 	cat MVPShosts >> hosts
 	cat Malwarehosts >> hosts
+	cat nocoin >> hosts
+	cat ad_servers.txt >> hosts
 	cat Adaway >> hosts
 	cat Petersadslist >> hosts
-	rm Malwarehosts MVPShosts Petersadslist Adaway
+	rm Malwarehosts MVPShosts Petersadslist Adaway nocoin ad_servers.txt
 	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 elif [[ $package == 4 ]];
 then
 	echo "##############################################################" 
-	echo "ULTIMATE!"
+	echo "ULTIMATE PROTECTION!"
 	echo "##############################################################"
 	wget http://winhelp2002.mvps.org/hosts.txt -O MVPShosts
 	wget https://someonewhocares.org/hosts/zero/hosts
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
-	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/pgl.yoyo.org/list.txt -O Petersadslist && sed -i -e 's/^/127.0.0.1 /' Petersadslist
 	wget https://hosts-file.net/ad_servers.txt
 	wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/hosts -O tyzbit
 	wget https://raw.githubusercontent.com/Sinfonietta/hostfiles/master/gambling-hosts -O Gamblinglist
@@ -75,6 +78,7 @@ then
 	wget https://raw.githubusercontent.com/lightswitch05/hosts/master/ads-and-tracking-extended.txt -O lightswitch05
 	wget https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser -O nocoin
 	wget http://sysctl.org/cameleon/hosts -O cameleonhosts
+	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/eth-phishing-detect/list.txt -O phishing
 	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/spam404.com/list.txt -O Spamhosts && sed -i -e 's/^/0.0.0.0  /' Spamhosts
 	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/malwaredomains.com-justdomains/list.txt -O Malwarehosts2 && sed -i 's/^/0.0.0.0  /' Malwarehosts2
 	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/adguard-simplified/list.txt -O Adguardlist && sed -i -e 's/^/127.0.0.1 /' Adguardlist 
@@ -87,14 +91,14 @@ then
 	cat Pron >> hosts
 	cat Malwarehosts2 >> hosts
 	cat Spamhosts >> hosts
+	cat phishing >> hosts
 	cat Badd-Boyz >> hosts
 	cat Gamblinglist >> hosts
 	cat cameleonhosts >> hosts
 	cat tyzbit >> hosts
 	cat nocoin >> hosts
 	cat Adaway >> hosts
-	cat Petersadslist >> hosts
-	rm Malwarehosts MVPShosts Adguardlist cameleonhosts Malwarehosts2 Spamhosts ad_servers.txt Pron Adaway nocoin tyzbit Petersadslist Gamblinglist KADhosts.txt lightswitch05 Badd-Boyz
+	rm Malwarehosts MVPShosts Adguardlist phishing cameleonhosts Malwarehosts2 Spamhosts ad_servers.txt Pron Adaway nocoin tyzbit Gamblinglist KADhosts.txt lightswitch05 Badd-Boyz
 	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 fi
 
