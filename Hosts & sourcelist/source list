@@ -2,8 +2,5 @@ https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts
 https://raw.githubusercontent.com/StevenBlack/hosts/master/data/StevenBlack/hosts
 https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/hosts.txt
 https://switchedtolinux.com/wp-content/uploads/2017/12/stlblock.txt.zip
-https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
-https://s3.amazonaws.com/lists.disconnect.me/simple_malware.txt
-https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
-https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt
+https://pgl.yoyo.org/as/serverlist.php?hostformat=hosts
 http://hostsfile.org/Downloads/BadHosts.msw.zip
