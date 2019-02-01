@@ -78,6 +78,7 @@ then
 	wget https://raw.githubusercontent.com/lightswitch05/hosts/master/ads-and-tracking-extended.txt -O lightswitch05
 	wget https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser -O nocoin
 	wget http://sysctl.org/cameleon/hosts -O cameleonhosts
+	wget http://hostsfile.mine.nu/Hosts.txt
 	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/eth-phishing-detect/list.txt -O phishing
 	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/spam404.com/list.txt -O Spamhosts && sed -i -e 's/^/0.0.0.0  /' Spamhosts
 	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/malwaredomains.com-justdomains/list.txt -O Malwarehosts2 && sed -i 's/^/0.0.0.0  /' Malwarehosts2
