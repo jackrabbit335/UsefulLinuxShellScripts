@@ -88,6 +88,7 @@ then
 	cat Malwarehosts >> hosts
 	cat ad_servers.txt >> hosts
 	cat lightswitch05 >> hosts
+	cat Hosts.txt >> hosts
 	cat KADhosts.txt >> hosts
 	cat Pron >> hosts
 	cat Malwarehosts2 >> hosts
@@ -99,7 +100,7 @@ then
 	cat tyzbit >> hosts
 	cat nocoin >> hosts
 	cat Adaway >> hosts
-	rm Malwarehosts MVPShosts Adguardlist phishing cameleonhosts Malwarehosts2 Spamhosts ad_servers.txt Pron Adaway nocoin tyzbit Gamblinglist KADhosts.txt lightswitch05 Badd-Boyz
+	rm Malwarehosts MVPShosts Adguardlist Hosts.txt phishing cameleonhosts Malwarehosts2 Spamhosts ad_servers.txt Pron Adaway nocoin tyzbit Gamblinglist KADhosts.txt lightswitch05 Badd-Boyz
 	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 fi
 
