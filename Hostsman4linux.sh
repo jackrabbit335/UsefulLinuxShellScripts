@@ -19,7 +19,7 @@ read username
 house=/home/$username
 cd $house
 
-echo "Select your package 1 2 3 4"
+echo "Select your package 1 2 3 4 5"
 read package
 
 if [[ $package == 1 ]];
@@ -49,16 +49,18 @@ then
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
 	wget https://someonewhocares.org/hosts/zero/hosts
 	wget https://hosts-file.net/ad_servers.txt
+	wget http://hostsfile.mine.nu/Hosts.txt
 	wget https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser -O nocoin
 	wget https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt -O Adaway
 	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/pgl.yoyo.org/list.txt -O Petersadslist && sed -i -e 's/^/127.0.0.1 /' Petersadslist
 	cat MVPShosts >> hosts
 	cat Malwarehosts >> hosts
 	cat nocoin >> hosts
+	cat Hosts.txt >> hosts
 	cat ad_servers.txt >> hosts
 	cat Adaway >> hosts
 	cat Petersadslist >> hosts
-	rm Malwarehosts MVPShosts Petersadslist Adaway nocoin ad_servers.txt
+	rm Malwarehosts MVPShosts Petersadslist Adaway nocoin ad_servers.txt Hosts.txt
 	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 elif [[ $package == 4 ]];
 then
@@ -102,6 +104,15 @@ then
 	cat Adaway >> hosts
 	rm Malwarehosts MVPShosts Adguardlist Hosts.txt phishing cameleonhosts Malwarehosts2 Spamhosts ad_servers.txt Pron Adaway nocoin tyzbit Gamblinglist KADhosts.txt lightswitch05 Badd-Boyz
 	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
+elif [[ $package == 5 ]];
+then
+	echo "##############################################################"
+	echo "HPHOSTS"
+	echo "##############################################################"
+	wget http://hosts-file.malwareteks.com/hosts.txt -O hosts
+	wget wget https://hosts-file.net/hphosts-partial.txt
+	cat hphosts-partial.txt >> hosts
+	rm hphosts-partial.txt
 fi
 
 #Excludes domains to give you access to your favorite sites
