@@ -33,12 +33,16 @@ then
 	echo "##############################################################"
 	echo "INTERMEDIATE PROTECTION!"
 	echo "##############################################################"
-	wget http://winhelp2002.mvps.org/hosts.txt -O hosts
+	wget http://winhelp2002.mvps.org/hosts.txt -O MVPShosts
+	wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
+	wget https://someonewhocares.org/hosts/zero/hosts
 	wget https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser -O nocoin
 	cat Malwarehosts >> hosts
+	cat MVPShosts >> hosts
+	cat Peteradslist >> hosts
 	cat nocoin >> hosts
-	rm Malwarehosts nocoin
+	rm Malwarehosts nocoin Peteradslist MVPShosts
 	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 elif [[ $package == 3 ]];
 then
@@ -50,17 +54,19 @@ then
 	wget https://someonewhocares.org/hosts/zero/hosts
 	wget https://hosts-file.net/ad_servers.txt
 	wget http://hostsfile.mine.nu/Hosts.txt
+	wget https://raw.githubusercontent.com/Clefspeare13/pornhosts/master/0.0.0.0/hosts -O Pron
 	wget https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser -O nocoin
 	wget https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt -O Adaway
-	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/pgl.yoyo.org/list.txt -O Petersadslist && sed -i -e 's/^/127.0.0.1 /' Petersadslist
+	wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
 	cat MVPShosts >> hosts
 	cat Malwarehosts >> hosts
+	cat Pron >> hosts
 	cat nocoin >> hosts
 	cat Hosts.txt >> hosts
 	cat ad_servers.txt >> hosts
 	cat Adaway >> hosts
-	cat Petersadslist >> hosts
-	rm Malwarehosts MVPShosts Petersadslist Adaway nocoin ad_servers.txt Hosts.txt
+	cat Peteradslist >> hosts
+	rm Malwarehosts MVPShosts Peteradslist Adaway nocoin ad_servers.txt Hosts.txt Pron
 	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 elif [[ $package == 4 ]];
 then
