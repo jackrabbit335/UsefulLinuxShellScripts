@@ -19,7 +19,7 @@ read username
 house=/home/$username
 cd $house
 
-echo "Select your package 1 2 3 4 5"
+echo "Select your package 1 2 3 4 5 6"
 read package
 
 if [[ $package == 1 ]];
@@ -43,7 +43,7 @@ then
 	cat Peteradslist >> hosts
 	cat nocoin >> hosts
 	rm Malwarehosts nocoin Peteradslist MVPShosts
-	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
+	sort hosts | uniq -u | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 elif [[ $package == 3 ]];
 then
 	echo "##############################################################"
@@ -67,7 +67,7 @@ then
 	cat Adaway >> hosts
 	cat Peteradslist >> hosts
 	rm Malwarehosts MVPShosts Peteradslist Adaway nocoin ad_servers.txt Hosts.txt Pron
-	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
+	sort hosts | uniq -u | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 elif [[ $package == 4 ]];
 then
 	echo "##############################################################" 
@@ -86,12 +86,7 @@ then
 	wget https://raw.githubusercontent.com/lightswitch05/hosts/master/ads-and-tracking-extended.txt -O lightswitch05
 	wget https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser -O nocoin
 	wget http://sysctl.org/cameleon/hosts -O cameleonhosts
-	wget http://hostsfile.mine.nu/Hosts.txt
-	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/eth-phishing-detect/list.txt -O phishing
-	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/spam404.com/list.txt -O Spamhosts && sed -i -e 's/^/0.0.0.0  /' Spamhosts
-	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/malwaredomains.com-justdomains/list.txt -O Malwarehosts2 && sed -i 's/^/0.0.0.0  /' Malwarehosts2
-	wget https://raw.githubusercontent.com/hectorm/hmirror/master/data/adguard-simplified/list.txt -O Adguardlist && sed -i -e 's/^/127.0.0.1 /' Adguardlist 
-	cat Adguardlist >> hosts
+	wget http://hostsfile.mine.nu/Hosts.txt 
 	cat MVPShosts >> hosts
 	cat Malwarehosts >> hosts
 	cat ad_servers.txt >> hosts
@@ -99,26 +94,35 @@ then
 	cat Hosts.txt >> hosts
 	cat KADhosts.txt >> hosts
 	cat Pron >> hosts
-	cat Malwarehosts2 >> hosts
-	cat Spamhosts >> hosts
-	cat phishing >> hosts
 	cat Badd-Boyz >> hosts
 	cat Gamblinglist >> hosts
 	cat cameleonhosts >> hosts
 	cat tyzbit >> hosts
 	cat nocoin >> hosts
 	cat Adaway >> hosts
-	rm Malwarehosts MVPShosts Adguardlist Hosts.txt phishing cameleonhosts Malwarehosts2 Spamhosts ad_servers.txt Pron Adaway nocoin tyzbit Gamblinglist KADhosts.txt lightswitch05 Badd-Boyz
-	sort hosts | uniq | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
+	rm Malwarehosts MVPShosts Hosts.txt cameleonhosts ad_servers.txt Pron Adaway nocoin tyzbit Gamblinglist KADhosts.txt lightswitch05 Badd-Boyz
+	sort hosts | uniq -u | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 elif [[ $package == 5 ]];
 then
 	echo "##############################################################"
 	echo "HPHOSTS"
 	echo "##############################################################"
 	wget http://hosts-file.malwareteks.com/hosts.txt -O hosts
-	wget wget https://hosts-file.net/hphosts-partial.txt
+	wget https://hosts-file.net/hphosts-partial.txt
 	cat hphosts-partial.txt >> hosts
 	rm hphosts-partial.txt
+elif [[ $package == 6 ]];
+then
+	echo "#############################################################"
+	echo "HPHOSTS PLUS"
+	echo "#############################################################"
+	wget http://hosts-file.malwareteks.com/hosts.txt -O hosts
+	wget https://hosts-file.net/hphosts-partial.txt
+	wget http://winhelp2002.mvps.org/hosts.txt -O MVPShosts
+	cat hphosts-partial.txt >> hosts
+	cat MVPShosts >> hosts
+	rm hphosts-partial.txt MVPShosts
+	sort hosts | uniq -u | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 fi
 
 #Excludes domains to give you access to your favorite sites
