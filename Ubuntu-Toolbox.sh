@@ -216,6 +216,11 @@ Systeminfo() {
 	uname -a >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
+	echo "OS/MACHINE INFO" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	hostnamectl >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
 	echo "OPERATING SYSTEM RELEASE INFORMATION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	lsb_release -a >> $host-sysinfo.txt
@@ -281,6 +286,11 @@ Systeminfo() {
 	ss -tulpn >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
+	echo "DNS INFO" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	dig | grep SERVER >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
 	echo "FIREWALL STATUS" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	sudo ufw status verbose >> $host-sysinfo.txt
@@ -299,6 +309,16 @@ Systeminfo() {
 	echo "INSTALLED PACKAGES" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	sudo apt list --installed >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "DEB PACKAGE MANAGER HISTORY" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	cat /var/log/dpkg.log
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "APT PACKAGE MANAGER HISTORY" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	cat /var/log/apt/history.log >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "APPARMOR" >> $host-sysinfo.txt
@@ -984,7 +1004,8 @@ _EOF_
 	echo "2 - Delete user account(s)"
 	echo "3 - Lock pesky user accounts"
 	echo "4 - Look for empty password users on the system"
-	echo "5 - skip this menu"
+	echo "5 - See a list of accounts and groups on the system"
+	echo "6 - skip this menu"
 	
 	read operation;
 	
@@ -1016,6 +1037,12 @@ _EOF_
 		cat /etc/passwd | awk -F: '{print $1}' >> ~/accounts.txt
 	;;
 		5)
+		echo "##########################################################" >> Accounts.txt
+		echo "USERS AND GROUPS" >> Accounts.txt
+		echo "##########################################################" >> Accounts.txt
+		cat /etc/passwd >> Accounts.txt
+	;;
+		6)
 		echo "We can do this later"
 	;;
 		*)

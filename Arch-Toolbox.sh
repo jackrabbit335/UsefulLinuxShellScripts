@@ -287,6 +287,11 @@ Systeminfo() {
 	uname -a >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
+	echo "OS/MACHINE INFO" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	hostnamectl >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
 	echo "OPERATING SYSTEM RELEASE INFORMATION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	lsb_release -a >> $host-sysinfo.txt
@@ -370,6 +375,11 @@ Systeminfo() {
 	echo "INSTALLED PACKAGES" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	sudo pacman -Q >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "PACKAGE MANAGER HISTORY" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	cat /var/log/pacman.log >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "Inxi" >> $host-sysinfo.txt
@@ -1136,7 +1146,8 @@ _EOF_
 	echo "2 - Delete user account(s)"
 	echo "3 - Lock pesky user accounts"
 	echo "4 - Look for empty password users on the system"
-	echo "5 - Skip this menu"
+	echo "5 - See a list of accounts and groups on the system"
+	echo "6 - Skip this menu"
 	
 	read operation;
 	
@@ -1167,7 +1178,13 @@ _EOF_
 		sudo cat /etc/shadow | awk -F: '($2==""){print $1}' >> ~/accounts.txt
 		cat /etc/passwd | awk -F: '{print $1}' >> ~/accounts.txt
 	;;
-		5)
+		5) 
+		echo "##########################################################" >> Accounts.txt
+		echo "USERS AND GROUPS" >> Accounts.txt
+		echo "##########################################################" >> Accounts.txt
+		cat /etc/passwd >> Accounts.txt
+	;;
+		6)
 		echo "We can do this later"
 	;;
 		*)

@@ -170,7 +170,7 @@ _EOF_
 	checkNetwork
 	
 	#This tries to update repositories and upgrade the system 
-	sudo eopkg rebuild-db; sudo eopkg update-repo; sudo eopkg upgrade
+	sudo eopkg rebuild db; sudo eopkg update-repo; sudo eopkg upgrade
 	
 	#Optional
 	echo "Do you wish to reboot(Y/n)"
@@ -232,6 +232,11 @@ Systeminfo() {
 	echo "KERNEL AND OPERATING SYSTEM INFORMATION" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	uname -a >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "OS/MACHINE INFO" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	hostnamectl >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "OPERATING SYSTEM RELEASE INFORMATION" >> $host-sysinfo.txt
@@ -299,6 +304,11 @@ Systeminfo() {
 	ss -tulpn >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
+	echo "DNS INFO" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	dig | grep SERVER >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
 	echo "FIREWALL STATUS" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	sudo ufw status verbose >> $host-sysinfo.txt
@@ -322,6 +332,16 @@ Systeminfo() {
 	echo "CHECK FOR BROKEN PACKAGES" >>  $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg it --reinstall >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "PACKAGE MANAGER HISTORY" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	cat /var/log/eopkg.log >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	echo "APPARMOR" >> $host-sysinfo.txt
+	echo "##############################################################" >> $host-sysinfo.txt
+	sudo apparmor_status >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "Inxi" >> $host-sysinfo.txt
@@ -412,7 +432,6 @@ Systeminfo() {
 	echo "END OF FILE" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 
-
 	clear 
 	Greeting
 }
@@ -430,27 +449,27 @@ InstallAndConquer() {
 		echo "3 - Download managers"
 		echo "4 - Torrent clients"
 		echo "5 - Chat" 
-		echo "6 - Web browser from a list"
-		echo "7 - Media/home theater software"
-		echo "8 - Virtual machine client"
-		echo "9 - Wine and play on linux"
-		echo "10 - quvcview"
-		echo "11 - GAMES!!!!!!!!!"
-		echo "12 - Video editing/encoding"
-		echo "13 - Plank"
-		echo "14 - Proprietary Fonts"
-		echo "15 - Backup"
-		echo "16 - THEMES!!!!!!!!"
-		echo "17 - screenfetch"
-		echo "18 - Stellarium constellation and space observation"
-		echo "19 - exit out of this menu"
+		echo "5 - Web browser from a list"
+		echo "6 - Media/home theater software"
+		echo "7 - Virtual machine client"
+		echo "8 - Wine and play on linux"
+		echo "9 - quvcview"
+		echo "10 - GAMES!!!!!!!!!"
+		echo "11 - Video editing/encoding"
+		echo "12 - Plank"
+		echo "13 - Proprietary Fonts"
+		echo "14 - Backup"
+		echo "15 - THEMES!!!!!!!!"
+		echo "16 - screenfetch"
+		echo "17 - Stellarium constellation and space observation"
+		echo "18 - exit out of this menu"
 
 	read software;
 
 	case $software in
 		1)
 		echo "This installs a choice of utility software"
-		sudo eopkg install mtr lshw hdparm ncdu nmap smartmontools htop
+		sudo eopkg install mtr lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools htop iotop ntop inxi gufw
 	;;
 		2)
 		echo "This installs a light weight editor(text/code editor/IDE)"
@@ -553,7 +572,9 @@ InstallAndConquer() {
 			sudo eopkg install opera-stable
 		elif [[ $browser == 5 ]];
 		then
-			sudo eopkg install vivaldi-snapshot
+			wget https://downloads.vivaldi.com/snapshot/install-vivaldi.sh
+			chmod +x install-vivaldi.sh
+			./install-vivaldi.sh
 		elif [[ $browser == 6 ]];
 		then
 			sudo eopkg install lynx
@@ -769,7 +790,6 @@ InstallAndConquer() {
 	esac
 	done
 	
-
 	read -p "Please press enter to continue..."	
 	
 	#This offers to install preload for storing apps in memory
@@ -947,7 +967,8 @@ _EOF_
 	echo "2 - Delete user account(s)"
 	echo "3 - Lock pesky user accounts"
 	echo "4 - Look for empty password users on the system"
-	echo "5 - Skip this menu"
+	echo "5 - See a list of accounts and groups on the system"
+	echo "6 - Skip this menu"
 	
 	read operation;
 	
@@ -979,6 +1000,12 @@ _EOF_
 		cat /etc/passwd | awk -F: '{print $1}' >> ~/accounts.txt
 	;;
 		5)
+		echo "##########################################################" >> Accounts.txt
+		echo "USERS AND GROUPS" >> Accounts.txt
+		echo "##########################################################" >> Accounts.txt
+		cat /etc/passwd >> Accounts.txt
+	;;
+		6)
 		echo "We can do this later"
 	;;
 		*)
@@ -1349,7 +1376,6 @@ read operation;
 	;;
 	esac
 	
-
 	clear
 	Greeting
 }
@@ -1455,7 +1481,7 @@ Greeting() {
 	echo "6 - Backup your important files and photos"
 	echo "7 - Restore your important files and photos"
 	echo "8 - Manage system services"
-	echo "9 - Collect system information"
+	echo "9 - Collect system information for troubleshooting"
 	echo "10 - Cleanup"
 	echo "11 - System Maintenance"
 	echo "12 - Browser Repair"
