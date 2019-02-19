@@ -170,7 +170,7 @@ _EOF_
 	checkNetwork
 	
 	#This tries to update repositories and upgrade the system 
-	sudo eopkg rebuild db; sudo eopkg update-repo; sudo eopkg upgrade
+	sudo eopkg rebuild-db; sudo eopkg update-repo; sudo eopkg upgrade
 	
 	#Optional
 	echo "Do you wish to reboot(Y/n)"
