@@ -37,17 +37,17 @@ then
 	wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
 	wget https://someonewhocares.org/hosts/zero/hosts
-	wget https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser -O nocoin
+	wget http://hostsfile.mine.nu/Hosts.txt
 	cat Malwarehosts >> hosts
 	cat MVPShosts >> hosts
 	cat Peteradslist >> hosts
-	cat nocoin >> hosts
+	cat Hosts.txt >> hosts
 	rm Malwarehosts nocoin Peteradslist MVPShosts
 	sort hosts | uniq -u | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 elif [[ $package == 3 ]];
 then
 	echo "##############################################################"
-	echo "Full PROTECTION!"
+	echo "Full PROTECTION!(Includes porn filter)"
 	echo "##############################################################"
 	wget http://winhelp2002.mvps.org/hosts.txt -O MVPShosts
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
@@ -71,7 +71,7 @@ then
 elif [[ $package == 4 ]];
 then
 	echo "##############################################################" 
-	echo "ULTIMATE PROTECTION!"
+	echo "ULTIMATE PROTECTION!(Includes porn filter)"
 	echo "##############################################################"
 	wget http://winhelp2002.mvps.org/hosts.txt -O MVPShosts
 	wget https://someonewhocares.org/hosts/zero/hosts
@@ -119,9 +119,17 @@ then
 	wget http://hosts-file.malwareteks.com/hosts.txt -O hosts
 	wget https://hosts-file.net/hphosts-partial.txt
 	wget http://winhelp2002.mvps.org/hosts.txt -O MVPShosts
+	wget https://someonewhocares.org/hosts/zero/hosts -O Danhosts
+	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
+	wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
+	wget http://hostsfile.mine.nu/Hosts.txt
 	cat hphosts-partial.txt >> hosts
 	cat MVPShosts >> hosts
-	rm hphosts-partial.txt MVPShosts
+	cat Danhosts >> hosts
+	cat Malwarehosts >> hosts
+	cat Peteradslist >> hosts
+	cat Hosts.txt >> hosts
+	rm hphosts-partial.txt MVPShosts Peteradslist Malwarehosts Danhosts Hosts.txt
 	sort hosts | uniq -u | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 fi
 
