@@ -1535,7 +1535,7 @@ Greeting() {
 		Help
 	;;
 		15)
-		echo "Thank you for using Arch-Toolbox... Goodbye!"
+		echo "Thank you for using Solus-Toolbox... Goodbye!"
 		sleep 1
 		exit
 	;;
