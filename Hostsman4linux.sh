@@ -14,10 +14,7 @@ done
 
 sudo cp /etc/hosts.bak /etc/hosts
 
-echo "Please enter your username."
-read username
-house=/home/$username
-cd $house
+cd /tmp
 
 echo "Select your package 1 2 3 4 5 6"
 read package
@@ -197,11 +194,5 @@ then
 	fi
 fi
 
-#Searches for logs folder to determine if we need to create it
-find $house/logs/ 
-while [ $? -eq 1 ];
-do
-	mkdir $house/logs/
-break
-done
-cat /etc/hosts > $house/logs/hosts.log
+#Show what we did
+sudo geany /etc/hosts
