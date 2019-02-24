@@ -156,13 +156,15 @@ _EOF_
 		echo "#Alias to clear package cache" >> ~/.bashrc
 		echo 'alias cleanse="sudo eopkg delete-cache"' >> ~/.bashrc
 		echo "#Alias to remove orphaned packages" >> ~/.bashrc
-		echo 'alias rmo="sudo eopkg remove-orphaned"' >> ~/.bashrc
+		echo 'alias orphaned="sudo eopkg remove-orphaned"' >> ~/.bashrc
 		echo "#Alias to check installation integrity of software" >> ~/.bashrc
 		echo 'alias convey="sudo eopkg check"' >> ~/.bashrc
 		echo "#Alias to rebuild the database" >> ~/.bashrc
 		echo 'alias rebuild="sudo eopkg rebuild-db"' >> ~/.bashrc
-		echo "#Alias to free up RAM" >> ~/.bashrc
-		echo 'alias boost="sudo sync; echo 3 > /proc/sys/vm/drop_caches"' >> ~/.bashrc
+		echo "#Alias to check package integrity" >> ~/.bashrc
+		echo 'alias check="sudo eopkg check"' >> ~/.bashrc
+		echo "#Alias to free RAM cache" >> ~/.bashrc
+		echo 'alias boost="sudo sh -c 'sync; echo 3 > /proc/sys/vm/drop_caches'"' >> ~/.bashrc
 		echo "#Alias to trim journal size" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
 	fi
@@ -276,7 +278,7 @@ Systeminfo() {
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "DIRECTORY USAGE" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
-	du -h >> $host-sysinfo.txt
+	du -sh >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "MEMORY USAGE" >> $host-sysinfo.txt
@@ -331,7 +333,7 @@ Systeminfo() {
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "CHECK FOR BROKEN PACKAGES" >>  $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
-	sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg it --reinstall >> $host-sysinfo.txt
+	sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg install --reinstall >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "PACKAGE MANAGER HISTORY" >> $host-sysinfo.txt
@@ -602,7 +604,7 @@ InstallAndConquer() {
 			sudo mv basilisk /opt && sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
 		elif [[ $browser == 12 ]];
 		then
-			wget http://linux.palemoon.org/datastore/release/palemoon-28.3.1.linux-x86_64.tar.bz2; tar -xvf palemoon-28.3.1.linux-x86_64.tar.bz2
+			wget http://linux.palemoon.org/datastore/release/palemoon-28.4.0.linux-x86_64.tar.bz2; tar -xvf palemoon-28.4.0.linux-x86_64.tar.bz2
 			sudo mv palemoon /opt
 			sudo ln -s /opt/palemoon/palemoon /usr/bin/palemoon
 			sudo touch /usr/share/applications/palemoon.desktop
