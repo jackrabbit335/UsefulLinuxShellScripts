@@ -1630,6 +1630,24 @@ read operation;
 	Greeting
 }
 
+MakeSwap() {
+	
+	#This attempts to create a swap file in the event the system doesn't have swap
+	grep -q "swap" /etc/fstab
+	if [ $? -eq 0 ];
+	then
+		sudo fallocate --length 2GiB /mnt/swapfile
+		chmod 600 /mnt/swapfile
+		mkswap /mnt/swapfile
+		swapon /mnt/swapfile
+		echo "/mnt/swapfile swap swap defaults 0 0" >> /etc/fstab
+	else 
+		echo "Swap was already there so there is nothing to do"
+	fi
+	cat /proc/swaps >> swaplog.txt
+	free -h >> swaplog.txt
+}
+
 Restart() {
 	sudo sync && sudo systemctl reboot
 }
@@ -1817,12 +1835,13 @@ Greeting() {
 	echo "8 - Manage system services"
 	echo "9 - Install or uninstall kernels"
 	echo "10 - Collect system information"
-	echo "11 - Cleanup"
-	echo "12 - System Maintenance"
-	echo "13 - Browser Repair"
-	echo "14 - Update"
-	echo "15 - Help"
-	echo "16 - exit"
+	echo "11 - Create Swap File"
+	echo "12 - Cleanup"
+	echo "13 - System Maintenance"
+	echo "14 - Browser Repair"
+	echo "15 - Update"
+	echo "16 - Help"
+	echo "17 - exit"
 	
 	read selection;
 	
@@ -1858,21 +1877,24 @@ Greeting() {
 		Systeminfo
 	;;
 		11)
-		cleanup
+		MakeSwap
 	;;
 		12)
-		SystemMaintenance
+		cleanup
 	;;
 		13)
-		BrowserRepair
+		SystemMaintenance
 	;;
 		14)
-		Update
+		BrowserRepair
 	;;
 		15)
-		Help
+		Update
 	;;
 		16)
+		Help
+	;;
+		17)
 		echo "Thank you for using Arch-Toolbox... Goodbye!"
 		sleep 1
 		exit
