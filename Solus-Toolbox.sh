@@ -331,11 +331,6 @@ Systeminfo() {
 	eopkg list-installed >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
-	echo "CHECK FOR BROKEN PACKAGES" >>  $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
-	sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg install --reinstall >> $host-sysinfo.txt
-	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
 	echo "PACKAGE MANAGER HISTORY" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	cat /var/log/eopkg.log >> $host-sysinfo.txt
@@ -945,6 +940,20 @@ to find my blog just go to: https://techiegeek123.blogspot.com/ in a
 browser.
 
 ########################################################################
+SWAP FILES
+########################################################################
+Swap files are an important asset to any Linux system. Swap files are 
+responsible for storing temporary data when there is no available memory 
+left on the device. Swap is also useful for storing system contents 
+during hibernation etc. These scripts will eventually all have the ability 
+to create one in the event that your system doesn't currently have 
+one. The blog article about this issue can be found here: 
+https://techiegeek123.blogspot.com/2019/02/swap-files-in-linux.html. 
+Please  email me at jackharkness444@protonmail.com for more info about
+these scripts or any problems you have with Linux. I'll be more than
+happy to help.
+
+########################################################################
 CONTACT ME
 ########################################################################
 For sending me hate mail, for inquiring assistance, and for sending me 
@@ -1070,7 +1079,7 @@ Uninstall() {
 		else
 			sudo eopkg remove $software
 		fi
-		break
+	break
 	done
 	
 	clear
@@ -1122,8 +1131,7 @@ cleanup() {
 	sudo eopkg remove-orphans
 
 	#Optional This will remove the eopkg cached applications, cleans stale blocks, etc.
-	sudo eopkg delete-cache
-	sudo eopkg clean 
+	sudo eopkg delete-cache; sudo eopkg clean 
 
 	clear
 	Greeting
@@ -1262,6 +1270,9 @@ SystemMaintenance() {
 	
 	#This attempts to fix databases and update your system
 	sudo eopkg rebuild-db; sudo eopkg update-repo; sudo eopkg upgrade
+
+	#This checks for broken packages
+	sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg install --reinstall
 
 	#This refreshes systemd in case of failed or changed units
 	sudo systemctl daemon-reload
