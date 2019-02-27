@@ -424,11 +424,12 @@ MakeSwap() {
 	grep -q "swap" /etc/fstab
 	if [ $? -eq 0 ];
 	then
-		sudo fallocate --length 2GiB /mnt/swapfile
-		chmod 600 /mnt/swapfile
-		mkswap /mnt/swapfile
-		swapon /mnt/swapfile
-		echo "/mnt/swapfile swap swap defaults 0 0" >> /etc/fstab
+		sudo cp /etc/fstab /etc/fstab.old
+		sudo fallocate --length 2G /swapfile
+		chmod 600 /swapfile
+		mkswap /swapfile
+		swapon /swapfile
+		echo "/mnt/swapfile swap swap sw 0 0" >> /etc/fstab
 	else 
 		echo "Swap was already there so there is nothing to do"
 	fi
