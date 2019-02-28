@@ -1245,67 +1245,67 @@ _EOF_
 	case $operation in
 		1)
 		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old
-		sudo rm -r ~/.mozilla/firefox/profile.ini 
+		sudo rm -rf ~/.mozilla/firefox/* 
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
 		2)
 		sudo cp -r ~/.config/vivaldi/ ~/.config/vivaldi-old
-		sudo rm -r ~/.config/vivaldi/* 
+		sudo rm -rf ~/.config/vivaldi/* 
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
 		3)
 		sudo cp -r ~/'.moonchild productions'/'pale moon' ~/'.moonchild productions'/'pale moon'-old
-		sudo rm -r ~/'.moonchild productions'/'pale moon'/profile.ini 
+		sudo rm -rf ~/'.moonchild productions'/'pale moon'/profile.ini 
 		echo "Your browser has now been reset"
 		sleep 1
 	;;	
 		4)
 		sudo cp -r ~/.config/google-chrome ~/.config/google-chrome-old
-		sudo rm -r ~/.config/google-chrome/*
+		sudo rm -rf ~/.config/google-chrome/*
 		echo "Your browser has now been reset"
 		sleep 1 
 	;;
 		5)
 		sudo cp -r ~/.config/chromium ~/.config/chromium-old
-		sudo rm -r ~/.config/chromium/*
+		sudo rm -rf ~/.config/chromium/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
 		6)
 		sudo cp -r ~/.config/opera ~/.config/opera-old
-		sudo rm -r ~/.config/opera/* 
+		sudo rm -rf ~/.config/opera/* 
 		echo "Your browser has now been reset"
 		sleep 1
 	;;	
 		7)
 		sudo cp -r ~/.config/vivaldi-snapshot ~/.config/vivaldi-snapshot-old
-		sudo rm -r ~/.config/vivaldi-snapshot/*
+		sudo rm -rf ~/.config/vivaldi-snapshot/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
 		8)
 		sudo cp -r ~/.waterfox ~/.waterfox-old
-		sudo rm -r ~/.waterfox/*
+		sudo rm -rf ~/.waterfox/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
 		9)
 		sudo cp -r ~/.config/midori ~/.config/midori-old
-		sudo rm -r ~/.config/midori/*
+		sudo rm -rf ~/.config/midori/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
 		10)
 		sudo cp -r ~/.config/qupzilla ~/.config/qupzilla-old
-		sudo rm -r ~/.config/qupzilla/*
+		sudo rm -rf ~/.config/qupzilla/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
 		11)
 		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old
-		sudo rm -r ~/.config/epiphany/*
+		sudo rm -rf ~/.config/epiphany/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
