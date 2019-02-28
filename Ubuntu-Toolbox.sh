@@ -1190,16 +1190,8 @@ _EOF_
 	#This trims the journal logs
 	sudo journalctl --vacuum-size=25M #For newer systemd releases
 	
-	#This restarts system
-	echo "Would you like to restart the system to complete changes?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		Restart
-	break
-	done
-	
-	Restart
+	#This uninstalls unwanted apps
+	Uninstall
 }
 
 BrowserRepair() {
@@ -1613,7 +1605,8 @@ Greeting() {
 	echo "13 - System Maintenance"
 	echo "14 - Browser Repair"
 	echo "15 - Update"
-	echo "16 - exit"
+	echo "16 - Restart"
+	echo "17 - exit"
 	
 	read selection;
 	
@@ -1664,6 +1657,9 @@ Greeting() {
 		Update
 	;;
 		16)
+		Restart
+	;;
+		17)
 		echo "Thank you for using Ubuntu-Toolbox... Goodbye!"
 		sleep 1
 		exit

@@ -1,7 +1,6 @@
 #!/bin/bash
 
 Setup() {
-	
 	#Sets default editor to nano in bashrc
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
 
@@ -1347,8 +1346,8 @@ _EOF_
 		;;
 	esac
 
-	clear
-	Greeting
+	#This removes unwanted apps
+	Uninstall
 }
 
 BrowserRepair() {
@@ -1856,7 +1855,8 @@ Greeting() {
 	echo "14 - Browser Repair"
 	echo "15 - Update"
 	echo "16 - Help"
-	echo "17 - exit"
+	echo "17 - Restart"
+	echo "18 - exit"
 	
 	read selection;
 	
@@ -1910,6 +1910,9 @@ Greeting() {
 		Help
 	;;
 		17)
+		Restart
+	;;
+		18)
 		echo "Thank you for using Arch-Toolbox... Goodbye!"
 		sleep 1
 		exit

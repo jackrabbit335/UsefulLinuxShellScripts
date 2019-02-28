@@ -1129,12 +1129,12 @@ cleanup() {
 
 	#This will remove orphan packages from eopkg
 	sudo eopkg remove-orphans
-
+	
 	#Optional This will remove the eopkg cached applications, cleans stale blocks, etc.
 	sudo eopkg delete-cache; sudo eopkg clean 
-
-	clear
-	Greeting
+	
+	#This will also remove unwanted programs
+	Uninstall
 }
 
 BrowserRepair() {
@@ -1233,7 +1233,7 @@ _EOF_
 	;;
 		9)
 		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old
-		sudo rm rf ~/.config/epiphany/*
+		sudo rm -rf ~/.config/epiphany/*
 		echo "Your browser has now been reset"
 		sleep 1 
 	;;
@@ -1500,7 +1500,8 @@ Greeting() {
 	echo "12 - Browser Repair"
 	echo "13 - Update"
 	echo "14 - Help"
-	echo "15 - exit"
+	echo "15 - Restart"
+	echo "16 - exit"
 	
 	read selection;
 	
@@ -1548,6 +1549,9 @@ Greeting() {
 		Help
 	;;
 		15)
+		Restart
+	;;
+		16)
 		echo "Thank you for using Solus-Toolbox... Goodbye!"
 		sleep 1
 		exit
