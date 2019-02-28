@@ -726,7 +726,7 @@ InstallAndConquer() {
 				sudo apt install -f 
 			elif [[ $browser == 6 ]];
 			then
-				wget http://linux.palemoon.org/datastore/release/palemoon-28.3.1.linux-x86_64.tar.bz2; tar -xvf palemoon-28.3.1.linux-x86_64.tar.bz2
+				wget http://linux.palemoon.org/datastore/release/palemoon-28.4.0.linux-x86_64.tar.bz2; tar -xvf palemoon-28.4.0.linux-x86_64.tar.bz2
 				sudo mv palemoon /opt
 				sudo ln -s /opt/palemoon/palemoon /usr/bin/palemoon
 				sudo touch /usr/share/applications/palemoon.desktop
@@ -744,13 +744,13 @@ InstallAndConquer() {
 			elif [[ $browser == 7 ]];
 			then
 				cd /tmp
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_1.15.1147.36-1_amd64.deb
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.3.1440.57-1_amd64.deb
 				sudo dpkg -i *.deb
 				sudo apt install -f
 			elif [[ $browser == 8 ]];
 			then
 				cd /tmp
-				wget https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_1.16.1246.7-1_amd64.deb
+				wget https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_2.4.1468.4-1_amd64.deb
 				sudo dpkg -i *.deb
 				sudo apt install -f
 			elif [[ $browser == 9 ]];
@@ -828,7 +828,7 @@ InstallAndConquer() {
 			read client
 			if [[ $client == 1 ]];
 			then
-				sudo apt install-y transmission-gtk
+				sudo apt install -y transmission-gtk
 			elif [[ $client == 2 ]];
 			then
 				sudo apt install -y deluge
