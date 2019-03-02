@@ -1,0 +1,61 @@
+#Block Session Replay
+127.0.0.1 clicktale.net
+127.0.0.1 www.clicktale.net
+127.0.0.1 conductor.clicktale.net
+127.0.0.1 www.conductor.clicktale.net
+127.0.0.1 ing-district.clicktale.net
+127.0.0.1 www.ing-district.clicktale.net
+127.0.0.1 cdnssl.clicktale.net
+127.0.0.1 www.cdnssl.clicktale.net
+127.0.0.1 cdn.clicktale.net
+127.0.0.1 www.cdn.clicktale.net
+127.0.0.1 static.hotjar.com
+127.0.0.1 www.static.hotjar.com
+127.0.0.1 script.hotjar.com
+127.0.0.1 www.script.hotjar.com
+127.0.0.1 mc.yandex.ru
+127.0.0.1 www.mc.yandex.ru
+127.0.0.1 cdn.decibelinsight.net
+127.0.0.1 www.cdn.decibelinsight.net
+127.0.0.1 ws.sessioncam.com
+127.0.0.1 www.ws.sessioncam.com
+127.0.0.1 d2oh4tlt9mrke9.cloudfront.net
+127.0.0.1 www.d2oh4tlt9mrke9.cloudfront.net
+127.0.0.1 api.iperceptions.com
+127.0.0.1 www.api.iperceptions.com
+127.0.0.1 bskyb.demdex.net
+127.0.0.1 www.bskyb.demdex.net
+127.0.0.1 dpm.demdex.net             #Some demdex also has a site-specific auth code.  IP to block is 54.210.118.128
+127.0.0.1 www.dpm.demdex.net
+127.0.0.1 col.eum-appdynamics.com
+127.0.0.1 www.col.eum-appdynamics.com
+127.0.0.1 cdn.mouseflow.com
+127.0.0.1 www.cdn.mouseflow.com
+127.0.0.1 cdn.inspectlet.com
+127.0.0.1 www.cdn.inspectlet.com
+127.0.0.1 hn.inspectlet.com
+127.0.0.1 www.hn.inspectlet.com
+127.0.0.1 wu-app.quantummetric.com
+127.0.0.1 www.wu-app.quantummetric.com
+127.0.0.1 cdn.quantummetric.com
+127.0.0.1 www.cdn.quantummetric.com
+127.0.0.1 neimans-app.quantummetric.com        #quantumnum uses an app name, so you need to block this in the firewall: IP to block is 104.197.114.177
+127.0.0.1 www.neimans-app.quantummetric.com
+127.0.0.1 frontier-app.quantummetric.com
+127.0.0.1 www.frontier-app.quantummetric.com
+127.0.0.1 d10lpsik1i8c69.cloudfront.net      # luckyorange.com
+127.0.0.1 www.d10lpsik1i8c69.cloudfront.net    # luckyorange.com
+127.0.0.1 rs.fullstory.com
+127.0.0.1 www.rs.fullstory.com
+127.0.0.1 bizographics.com
+127.0.0.1 www.bizographics.com
+127.0.0.1 rec.smartlook.com
+127.0.0.1 www.rec.smartlook.com
+127.0.0.1 sb.scorecardresearch.com
+127.0.0.1 www.sb.scorecardresearch.com
+127.0.0.1 cdn.userreplay.net
+127.0.0.1 www.cdn.userreplay.net
+127.0.0.1 onaudience.com
+127.0.0.1 www.onaudience.com
+127.0.0.1 pixel.onaudience.com
+127.0.0.1 www.pixel.onaudience.com
