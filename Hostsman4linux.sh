@@ -120,13 +120,15 @@ then
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
 	wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
 	wget http://hostsfile.mine.nu/Hosts.txt
+	wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/scripts.txt -O Sess-Replayhosts
 	cat hphosts-partial.txt >> hosts
 	cat MVPShosts >> hosts
+	cat Sess-Replayhosts >> hosts
 	cat Danhosts >> hosts
 	cat Malwarehosts >> hosts
 	cat Peteradslist >> hosts
 	cat Hosts.txt >> hosts
-	rm hphosts-partial.txt MVPShosts Peteradslist Malwarehosts Danhosts Hosts.txt
+	rm hphosts-partial.txt MVPShosts Peteradslist Malwarehosts Sess-Replayhosts Danhosts Hosts.txt
 	sort hosts | uniq -u | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 fi
 
