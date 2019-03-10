@@ -418,8 +418,40 @@ Systeminfo() {
 	Greeting
 }
 
+Reset() {
+#This resets the desktop
+if [[ $DESKTOP_SESSION == cinnamon ]];
+then
+	echo "########################################################################"
+	echo "This resets and restarts Cinnamon"
+	echo "########################################################################"
+	gsettings reset-recursively org.cinnamon
+	cinnamon --replace
+	cinnamon --reset
+elif [[ $DESKTOP_SESSION == gnome ]];
+then
+	echo "########################################################################"
+	echo "This resets Gnome Shell" 
+	echo "########################################################################"
+	dconf dump /org/gnome/ > gnome-desktop-backup; dconf reset -f /org/gnome
+elif [[ $DESKTOP_SESSION == xfce ]];
+then
+	echo "########################################################################"
+	echo "This resets XFCE"
+	echo "########################################################################"
+	mv ~/.config/xfce4 ~/.config/xfce4.bak
+elif [[ $DESKTOP_SESSION == mate ]];
+then
+	echo "#######################################################################"
+	echo "This resets MATE"
+	echo "#######################################################################"
+	dconf dump /org/mate/ > mate-desktop-backup; dconf reset -f /org/mate
+else
+	echo "You're running a desktop/Window Manager that we do not yet support... Come back later."
+fi
+}
+
 MakeSwap() {
-	
 	#This attempts to create a swap file in the event the system doesn't have swap
 	grep -q "swap" /etc/fstab
 	if [ $? -eq 0 ];
@@ -731,14 +763,18 @@ InstallAndConquer() {
 				sudo ln -s /opt/palemoon/palemoon /usr/bin/palemoon
 				sudo touch /usr/share/applications/palemoon.desktop
 				echo "[Desktop Entry]" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "Version=1.0" | sudo tee -a /usr/share/applications/palemoon.desktop
 				echo "Name=Palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "GenericName=Palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "Exec=/opt/palemoon/palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "Comment=Browse The World Wide Web" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "Keywords=Internet;WWW;Browser;Web;Explorer" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "Exec=palemoon %u" | sudo tee -a /usr/share/applications/palemoon.desktop
 				echo "Terminal=false" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "Icon=/opt/palemoon/browser/icons/mozicon128.png" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "X-MultipleArgs=false" | sudo tee -a /usr/share/applications/palemoon.desktop
 				echo "Type=Application" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "Categories=Application;Network;WebBrowser;X-Developer;" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "Comment=Browse the World Wide Web" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "Icon=palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "Categories=Application;Network;WebBrowser;Internet" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;" | sudo tee -a /usr/share/applications/palemoon.desktop
+				echo "StartupNotify=true" | sudo tee -a /usr/share/applications/palemoon.desktop
 				sudo update-alternatives --install /usr/bin/gnome-www-browser gnome-www-browser /usr/bin/palemoon 100
 				sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/palemoon 100
 			elif [[ $browser == 7 ]];
@@ -1606,7 +1642,8 @@ Greeting() {
 	echo "14 - Browser Repair"
 	echo "15 - Update"
 	echo "16 - Restart"
-	echo "17 - exit"
+	echo "17 - Reset the desktop"
+	echo "18 - exit"
 	
 	read selection;
 	
@@ -1660,6 +1697,9 @@ Greeting() {
 		Restart
 	;;
 		17)
+		Reset
+	;;
+		18)
 		echo "Thank you for using Ubuntu-Toolbox... Goodbye!"
 		sleep 1
 		exit
