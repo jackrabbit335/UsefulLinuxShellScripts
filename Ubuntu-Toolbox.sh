@@ -807,15 +807,13 @@ InstallAndConquer() {
 			elif [[ $browser == 12 ]];
 			then
 				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.2.en-US.linux-x86_64.tar.bz2
-				tar -xvf waterfox-56.2.2.en-US.linux-x86_64.tar.bz2
-				./waterfox/waterfox #To import any user data you'd like to import first run.
-				sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox #Now just type waterfox in a terminal and it should open
+				tar -xvf waterfox-56.2.2.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox 
+				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 13 ]];
 			then
 				wget us.basilisk-browser.org/release/basilisk-latest.linux64.tar.bz2
-				tar -xvf basilisk-latest.linux64.tar.bz2
-				./basilisk/basilisk #To import any user data you'd like to import first run
-				sudo mv basilisk /opt && sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk #Now just type basilisk in a terminal and it should open
+				tar -xvf basilisk-latest.linux64.tar.bz2; sudo mv basilisk /opt && sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
+				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
 			fi
 		;;
 			6)

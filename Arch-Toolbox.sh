@@ -677,6 +677,7 @@ _EOF_
 			cd vivaldi-snapshot && makepkg -si
 		elif [[ $browser == 7 ]];
 		then
+		Home=$(/home/whoami)
 			wget linux.palemoon.org/datastore/release/palemoon-28.4.0.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.4.0.linux-x86_64.tar.bz2
 			sudo touch /usr/share/applications/palemoon.desktop
 			echo "[Desktop Entry]" | sudo tee -a /usr/share/applications/palemoon.desktop
@@ -688,7 +689,7 @@ _EOF_
 			echo "Terminal=false" | sudo tee -a /usr/share/applications/palemoon.desktop
 			echo "X-MultipleArgs=false" | sudo tee -a /usr/share/applications/palemoon.desktop
 			echo "Type=Application" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Icon=palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
+			echo "Icon=$Home/palemoon/browser/icons/mozicon128.png" | sudo tee -a /usr/share/applications/palemoon.desktop
 			echo "Categories=Application;Network;WebBrowser;Internet" | sudo tee -a /usr/share/applications/palemoon.desktop
 			echo "MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;" | sudo tee -a /usr/share/applications/palemoon.desktop
 			echo "StartupNotify=true" | sudo tee -a /usr/share/applications/palemoon.desktop
@@ -721,10 +722,9 @@ _EOF_
 			cd waterfox-bin && makepkg -si 
 		elif [[ $browser == 14 ]];
 		then
-			cd /tmp
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/basilisk-bin.tar.gz
-			gunzip basilisk-bin.tar.gz; tar -xvf basilisk-bin.tar
-			cd basilisk-bin && makepkg -si 
+			wget http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.bz2; tar -xvjf basilisk-latest.linux64.tar.bz2
+			sudo mv basilisk /opt; sudo touch /usr/share/applications/basilisk.desktop; sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
+			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
 		elif [[ $browser == 15 ]];
 		then
 			cd /tmp
