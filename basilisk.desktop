@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Basilisk
+GenericName=Basilisk
+Exec=/opt/basilisk/basilisk
+Terminal=false
+Icon=/opt/basilisk/browser/icons/mozicon128.png
+Type=Application
+Categories=Application;Network;Internet;WebBrowser;
+Comment=Browse The World Wide Web

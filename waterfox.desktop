@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Waterfox
+GenericName=Waterfox
+Exec=/opt/waterfox/waterfox
+Terminal=false
+Icon=/opt/waterfox/browser/icons/mozicon128.png
+Type=Application
+Categories=Application;Network;Internet;WebBrowser;
+Comment=Browse The World Wide Web
