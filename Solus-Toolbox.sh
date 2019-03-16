@@ -199,14 +199,12 @@ Update() {
 
 Reset() {
 #This resets the desktop
-if [[ $DESKTOP_SESSION == cinnamon ]];
+if [[ $DESKTOP_SESSION == budgie ]];
 then
 	echo "########################################################################"
-	echo "This resets and restarts Cinnamon"
+	echo "This resets Budgie"
 	echo "########################################################################"
-	gsettings reset-recursively org.cinnamon
-	cinnamon --replace
-	cinnamon --reset
+	dconf dump /org/budgie/ > budgie-desktop-backup; dconf reset -f /org/budgie
 elif [[ $DESKTOP_SESSION == gnome ]];
 then
 	echo "########################################################################"

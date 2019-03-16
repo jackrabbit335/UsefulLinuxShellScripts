@@ -423,17 +423,21 @@ Reset() {
 if [[ $DESKTOP_SESSION == cinnamon ]];
 then
 	echo "########################################################################"
-	echo "This resets and restarts Cinnamon"
+	echo "This resets Cinnamon"
 	echo "########################################################################"
-	gsettings reset-recursively org.cinnamon
-	cinnamon --replace
-	cinnamon --reset
+	dconf dump /org/cinnamon/ > cinnamon-desktop-backup; dconf reset -f /org/cinnamon
 elif [[ $DESKTOP_SESSION == gnome ]];
 then
 	echo "########################################################################"
 	echo "This resets Gnome Shell" 
 	echo "########################################################################"
 	dconf dump /org/gnome/ > gnome-desktop-backup; dconf reset -f /org/gnome
+elif [[ $DESKTOP_SESSION == budgie ]];
+then
+	echo "########################################################################"
+	echo "This resets Budgie"
+	echo "########################################################################"
+	dconf dump /org/budgie/ > /budgie-desktop-backup; dconf reset -f /org/budgie
 elif [[ $DESKTOP_SESSION == xfce ]];
 then
 	echo "########################################################################"
