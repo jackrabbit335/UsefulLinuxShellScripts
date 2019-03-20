@@ -491,7 +491,7 @@ InstallAndConquer() {
 	case $software in
 		1)
 		echo "This installs a choice of utility software"
-		sudo eopkg install --reinstall mtr lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools htop iotop ntop inxi gufw
+		sudo eopkg install --reinstall mtr lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw
 	;;
 		2)
 		echo "This installs a light weight editor(text/code editor/IDE)"
@@ -618,7 +618,7 @@ InstallAndConquer() {
 		elif [[ $browser == 11 ]];
 		then
 			wget us.basilisk-browser.org/release/basilisk-latest.linux64.tar.bz2
-			tar -xvf basilisk-latest.linux64.tar.bz2; sudo mv basilisk /opt && sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
+			tar -xvf basilisk-latest.linux64.tar.bz2; sudo ln -s ~/basilisk/basilisk /usr/bin/basilisk
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
 		elif [[ $browser == 12 ]];
 		then
