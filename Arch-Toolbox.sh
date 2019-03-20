@@ -677,22 +677,8 @@ _EOF_
 			cd vivaldi-snapshot && makepkg -si
 		elif [[ $browser == 7 ]];
 		then
-		Home=$(/home/whoami)
-			wget linux.palemoon.org/datastore/release/palemoon-28.4.0.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.4.0.linux-x86_64.tar.bz2
-			sudo touch /usr/share/applications/palemoon.desktop
-			echo "[Desktop Entry]" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Version=1.0" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Name=Palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Comment=Browse The World Wide Web" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Keywords=Internet;WWW;Browser;Web;Explorer" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Exec=palemoon %u" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Terminal=false" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "X-MultipleArgs=false" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Type=Application" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Icon=$Home/palemoon/browser/icons/mozicon128.png" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Categories=Application;Network;WebBrowser;Internet" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "StartupNotify=true" | sudo tee -a /usr/share/applications/palemoon.desktop
+			wget linux.palemoon.org/datastore/release/palemoon-28.4.0.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.4.0.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 8 ]];
 		then
 			sudo pacman -S --noconfirm seamonkey
@@ -716,10 +702,9 @@ _EOF_
 			cd google-chrome && makepkg -si
 		elif [[ $browser == 13 ]];
 		then
-			cd /tmp
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/waterfox-bin.tar.gz
-			gunzip waterfox-bin.tar.gz; tar -xvf waterfox-bin.tar
-			cd waterfox-bin && makepkg -si 
+			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.8.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.8.en-US.linux-x86_64.tar.bz2
+			sudo mv waterfox /opt; sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 		elif [[ $browser == 14 ]];
 		then
 			wget http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.bz2; tar -xvjf basilisk-latest.linux64.tar.bz2

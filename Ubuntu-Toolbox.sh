@@ -762,25 +762,9 @@ InstallAndConquer() {
 				sudo apt install -f 
 			elif [[ $browser == 6 ]];
 			then
-				wget http://linux.palemoon.org/datastore/release/palemoon-28.4.0.linux-x86_64.tar.bz2; tar -xvf palemoon-28.4.0.linux-x86_64.tar.bz2
-				sudo mv palemoon /opt
-				sudo ln -s /opt/palemoon/palemoon /usr/bin/palemoon
-				sudo touch /usr/share/applications/palemoon.desktop
-				echo "[Desktop Entry]" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "Version=1.0" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "Name=Palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "Comment=Browse The World Wide Web" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "Keywords=Internet;WWW;Browser;Web;Explorer" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "Exec=palemoon %u" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "Terminal=false" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "X-MultipleArgs=false" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "Type=Application" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "Icon=palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "Categories=Application;Network;WebBrowser;Internet" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;" | sudo tee -a /usr/share/applications/palemoon.desktop
-				echo "StartupNotify=true" | sudo tee -a /usr/share/applications/palemoon.desktop
-				sudo update-alternatives --install /usr/bin/gnome-www-browser gnome-www-browser /usr/bin/palemoon 100
-				sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/palemoon 100
+				wget http://linux.palemoon.org/datastore/release/palemoon-28.4.0.linux-x86_64.tar.bz2; tar -xvf palemoon-28.4.0.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
+				sudo update-alternatives --install /usr/bin/gnome-www-browser gnome-www-browser /usr/bin/palemoon 100; sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/palemoon 100
 			elif [[ $browser == 7 ]];
 			then
 				cd /tmp
