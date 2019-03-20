@@ -34,12 +34,10 @@ then
 	wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
 	wget https://someonewhocares.org/hosts/zero/hosts
-	wget http://hostsfile.mine.nu/Hosts.txt
 	cat Malwarehosts >> hosts
 	cat MVPShosts >> hosts
 	cat Peteradslist >> hosts
-	cat Hosts.txt >> hosts
-	rm Malwarehosts nocoin Peteradslist MVPShosts
+	rm Malwarehosts Peteradslist MVPShosts
 	sort hosts | uniq -u | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 elif [[ $package == 3 ]];
 then
@@ -50,20 +48,14 @@ then
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
 	wget https://someonewhocares.org/hosts/zero/hosts
 	wget https://hosts-file.net/ad_servers.txt
-	wget http://hostsfile.mine.nu/Hosts.txt
-	wget https://raw.githubusercontent.com/Clefspeare13/pornhosts/master/0.0.0.0/hosts -O Pron
-	wget https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser -O nocoin
 	wget https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt -O Adaway
 	wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
 	cat MVPShosts >> hosts
 	cat Malwarehosts >> hosts
-	cat Pron >> hosts
-	cat nocoin >> hosts
-	cat Hosts.txt >> hosts
 	cat ad_servers.txt >> hosts
 	cat Adaway >> hosts
 	cat Peteradslist >> hosts
-	rm Malwarehosts MVPShosts Peteradslist Adaway nocoin ad_servers.txt Hosts.txt Pron
+	rm Malwarehosts MVPShosts Peteradslist Adaway ad_servers.txt
 	sort hosts | uniq -u | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 elif [[ $package == 4 ]];
 then
@@ -82,13 +74,11 @@ then
 	wget https://raw.githubusercontent.com/azet12/KADhosts/master/KADhosts.txt
 	wget https://raw.githubusercontent.com/lightswitch05/hosts/master/ads-and-tracking-extended.txt -O lightswitch05
 	wget https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser -O nocoin
-	wget http://sysctl.org/cameleon/hosts -O cameleonhosts
-	wget http://hostsfile.mine.nu/Hosts.txt 
+	wget http://sysctl.org/cameleon/hosts -O cameleonhosts 
 	cat MVPShosts >> hosts
 	cat Malwarehosts >> hosts
 	cat ad_servers.txt >> hosts
 	cat lightswitch05 >> hosts
-	cat Hosts.txt >> hosts
 	cat KADhosts.txt >> hosts
 	cat Pron >> hosts
 	cat Badd-Boyz >> hosts
@@ -97,7 +87,7 @@ then
 	cat tyzbit >> hosts
 	cat nocoin >> hosts
 	cat Adaway >> hosts
-	rm Malwarehosts MVPShosts Hosts.txt cameleonhosts ad_servers.txt Pron Adaway nocoin tyzbit Gamblinglist KADhosts.txt lightswitch05 Badd-Boyz
+	rm Malwarehosts MVPShosts cameleonhosts ad_servers.txt Pron Adaway nocoin tyzbit Gamblinglist KADhosts.txt lightswitch05 Badd-Boyz
 	sort hosts | uniq -u | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 elif [[ $package == 5 ]];
 then
@@ -119,7 +109,6 @@ then
 	wget https://someonewhocares.org/hosts/zero/hosts -O Danhosts
 	wget http://www.malwaredomainlist.com/hostslist/hosts.txt -O Malwarehosts
 	wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
-	wget http://hostsfile.mine.nu/Hosts.txt
 	wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/scripts.txt -O Sess-Replayhosts
 	cat hphosts-partial.txt >> hosts
 	cat MVPShosts >> hosts
@@ -127,8 +116,7 @@ then
 	cat Danhosts >> hosts
 	cat Malwarehosts >> hosts
 	cat Peteradslist >> hosts
-	cat Hosts.txt >> hosts
-	rm hphosts-partial.txt MVPShosts Peteradslist Malwarehosts Sess-Replayhosts Danhosts Hosts.txt
+	rm hphosts-partial.txt MVPShosts Peteradslist Malwarehosts Sess-Replayhosts Danhosts
 	sort hosts | uniq -u | sort -r > /tmp/hosts.new && mv /tmp/hosts.new hosts
 fi
 
