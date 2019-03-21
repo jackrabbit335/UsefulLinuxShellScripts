@@ -133,8 +133,7 @@ _EOF_
 				#!/bin/sh
 				sudo fstrim /
 EOF
-				sudo mv fstrim /etc/cron.weekly
-				sudo chmod +x /etc/cron.weekly/fstrim
+				sudo mv fstrim /etc/cron.weekly; sudo chmod +x /etc/cron.weekly/fstrim
 			break
 			done
 

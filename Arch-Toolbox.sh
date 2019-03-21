@@ -1252,7 +1252,6 @@ cleanup() {
 	sudo rm -r ~/.esd_auth #Best I can tell cookie for pulse audio
 	sudo rm -r ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/*
-	find ~/Downloads/* -mtime +3 -exec rm {} \;
 	history -c && rm ~/.bash_history
 
 	#This clears the cached RAM
@@ -1261,6 +1260,7 @@ cleanup() {
 
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/
+	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
 	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
 	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
