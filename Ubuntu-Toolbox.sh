@@ -1188,9 +1188,9 @@ _EOF_
 
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/
-	find ~/Downloads/* -mtime +3 -exec mv {} $TRASHCAN \;
+	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
 	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-  find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#search and remove broken symlinks
 	find -xtype l -delete
@@ -1503,6 +1503,7 @@ _EOF_
 			echo "You might be running an init system I haven't tested yet"
 		fi
 	done
+	
 	clear
 	Greeting
 }
