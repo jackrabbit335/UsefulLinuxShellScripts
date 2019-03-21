@@ -13,10 +13,10 @@ Setup() {
 	then
 		sudo ufw deny telnet; sudo ufw deny ssh; sudo ufw reload
 	fi
-	
+
 	#This disables ipv6
 	echo "Sometimes ipv6 can cause network issues. Would you like to disable it?(Y/n)"
-	read answer 
+	read answer
 	if [[ $answer == Y ]];
 	then
 		sudo cp /etc/default/grub /etc/default/grub.bak
@@ -29,9 +29,9 @@ Setup() {
 	#This adds a few aliases to bashrc
 	echo "Aliases are shortcuts to commonly used commands."
 	echo "would you like to add some aliases?(Y/n)"
-	read answer 
+	read answer
 	if [[ $answer == Y ]];
-	then 
+	then
 		sudo cp ~/.bashrc ~/.bashrc.bak
 		echo "#Alias to update the system" >> ~/.bashrc
 		echo 'alias update="sudo apt update && sudo apt dist-upgrade -yy"' >> ~/.bashrc
@@ -64,18 +64,18 @@ Setup() {
 
 	#Block ICMP requests or Ping from foreign systems
 cat <<_EOF_
-We can also block ping requests. Ping requests coming from unknown sources can mean that people are 
+We can also block ping requests. Ping requests coming from unknown sources can mean that people are
 potentially trying to locate/attack your network. If you need this functionality
-you can always comment this line out later. Chances are, this won't affect normal users.
+you can always comment this line out later. Chances are, this will not affect normal users.
 _EOF_
     echo "Block ping requests from foreign systems?(Y/n)"
-    read answer 
+    read answer
     if [[ $answer == Y ]];
     then
         echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.conf
         sudo sysctl -p
     fi
-	
+
 	#This attempts to place noatime at the end of your drive entry in fstab
 	echo "This can potentially make your drive unbootable, use with caution"
 	echo "Would you like to improve hard drive performance with noatime?(Y/n)"
@@ -86,16 +86,16 @@ _EOF_
 		sudo sed -i 's/errors=remount-ro 0       1/errors=remount-ro,noatime 0        1/g ' /etc/fstab
 	break
 	done
-	
+
 	#This locks down ssh
 	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 	sudo sed -i -e '/#PermitRootLogin/c\PermitRootLogin no ' /etc/ssh/sshd_config
-	
+
     #This removes that retarded gnome-keyring unlock error you get with    chrome
     echo "Killing this might make your passwords less secure on chrome."
     sleep 1
     echo "Do you wish to kill gnome-keyring? (Y/n)"
-    read answer 
+    read answer
     if [[ $answer == Y ]];
     then
 	    sudo mv /usr/bin/gnome-keyring-daemon /usr/bin/gnome-keyring-daemon-old
@@ -111,9 +111,9 @@ _EOF_
 		if [[ $drive == 1 ]];
 		then
 			echo "Would you like to enable write back caching?(Y/n)"
-			read answer 
+			read answer
 			while [ $answer == Y ];
-			do 
+			do
 				echo "Enter the device you'd like to enable this on."
 				read device
 				sudo hdparm -W 1 $device
@@ -122,13 +122,13 @@ _EOF_
 		elif [[ $drive == 0 ]];
 		then
 			cat <<_EOF_
-			Trim is enabled already on most Ubuntu systems, however, it is not 
+			Trim is enabled already on most Ubuntu systems, however, it is not
 			enabled on Debian. That said, enabling Trim is easy.
 _EOF_
 			distribution=$(cat /etc/issue | awk '{print $1}')
 			while [ $distribution == Debian ];
 			do
-				touch fstrim 
+				touch fstrim
 				cat > fstrim <<EOF
 				#!/bin/sh
 				sudo fstrim /
@@ -137,7 +137,7 @@ EOF
 				sudo chmod +x /etc/cron.weekly/fstrim
 			break
 			done
-			
+
 			echo "Alternatively you can run fstrim manually(Y/n)"
 			read answer
 			while [ $answer == Y ];
@@ -145,18 +145,18 @@ EOF
 				sudo fstrim -v /
 			break
 			done
-			
+
 		fi
 	done
-	
+
 	CheckNetwork
-	
+
 	#Updates the system
 	sudo apt update; sudo apt upgrade -yy; sudo apt dist-upgrade -yy
-	
+
 	#Optional
 	echo "Would you like to restart?(Y/n)"
-	read answer 
+	read answer
 	if [ $answer == Y ];
 	then
 		Restart
@@ -169,16 +169,16 @@ EOF
 
 Update() {
 	CheckNetwork
-	
+
 	sudo apt update; sudo apt upgrade -yy
-	
+
 	clear
 	Greeting
-	
+
 }
 
 Systeminfo() {
-	#This gives some useful information for later troubleshooting 
+	#This gives some useful information for later troubleshooting
 	host=$(hostname)
 	distribution=$(lsb_release -a | grep "Description:" | awk -F: '{print $2}')
 	echo "##############################################################" >> $host-sysinfo.txt
@@ -266,7 +266,7 @@ Systeminfo() {
 	free -h >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
-	echo "LISTS ALL BLOCK DEVICES WITH SIZE" >> $host-sysinfo.txt 
+	echo "LISTS ALL BLOCK DEVICES WITH SIZE" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	lsblk -o NAME,SIZE >> $host-sysinfo.txt
 	echo"" >> $host-sysinfo.txt
@@ -414,7 +414,7 @@ Systeminfo() {
 	echo "END OF FILE" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 
-	clear 
+	clear
 	Greeting
 }
 
@@ -429,7 +429,7 @@ then
 elif [[ $DESKTOP_SESSION == gnome ]];
 then
 	echo "########################################################################"
-	echo "This resets Gnome Shell" 
+	echo "This resets Gnome Shell"
 	echo "########################################################################"
 	dconf dump /org/gnome/ > gnome-desktop-backup; dconf reset -f /org/gnome
 elif [[ $DESKTOP_SESSION == budgie ]];
@@ -460,13 +460,9 @@ MakeSwap() {
 	grep -q "swap" /etc/fstab
 	if [ $? -eq 0 ];
 	then
-		sudo cp /etc/fstab /etc/fstab.old
-		sudo fallocate --length 2G /swapfile
-		chmod 600 /swapfile
-		mkswap /swapfile
-		swapon /swapfile
-		echo "/mnt/swapfile swap swap sw 0 0" >> /etc/fstab
-	else 
+		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 2G /swapfile; chmod 600 /swapfile
+		mkswap /swapfile; swapon /swapfile; echo "/mnt/swapfile swap swap sw 0 0" >> /etc/fstab
+	else
 		echo "Swap was already there so there is nothing to do"
 	fi
 	cat /proc/swaps >> swaplog.txt
@@ -481,32 +477,32 @@ Press "q" to quit
 ########################################################################
 ACKNOWLEDGEMENTS
 ########################################################################
-I wrote these scripts and of course, I had to learn to 
+I wrote these scripts and of course, I had to learn to
 do some of the things in this work. Many of the ideas came from me
-but the information came from various other linux users. Without their 
-massive contributions to the community, this project of mine would not 
+but the information came from various other linux users. Without their
+massive contributions to the community, this project of mine would not
 be possible. A list of acknowledgements below:
 Joe Collins
 Quidsup
 SwitchedtoLinux
 Matthew Moore
 Steven Black
-The creator of the other hosts lists I utilize on my own machines. 
-Many others... 
+The creator of the other hosts lists I utilize on my own machines.
+Many others...
 
 ########################################################################
 WELCOME AND RAMBLE WITH LICENSING
 ########################################################################
-Welcome to Ubuntu-Toolbox. This is a useful little utility that 
-tries to setup, maintain, and keep up to date with the latest 
-software on your system. Ubuntu-Toolbox is delivered as is and thus, 
-I can't be held accountable if something goes wrong. This software is 
-freely given under the GPL license and is distributable and changeable 
-as you see fit, I only ask that you give the author the credit for the 
-original work. Arch-Toolbox has been tested and should work on your 
-device assuming that you are running an Ubuntu-based system. 
-A cronjob is any task or script that you place in the crontab file to be 
-ran at a certain time.To not go to deep into it, the basic syntax is 
+Welcome to Ubuntu-Toolbox. This is a useful little utility that
+tries to setup, maintain, and keep up to date with the latest
+software on your system. Ubuntu-Toolbox is delivered as is and thus,
+I can not be held accountable if something goes wrong. This software is
+freely given under the GPL license and is distributable and changeable
+as you see fit, I only ask that you give the author the credit for the
+original work. Arch-Toolbox has been tested and should work on your
+device assuming that you are running an Ubuntu-based system.
+A cronjob is any task or script that you place in the crontab file to be
+ran at a certain time.To not go to deep into it, the basic syntax is
 this:
 *     *     *   *    *        command to be executed
 -     -     -   -    -
@@ -515,54 +511,54 @@ this:
 |     |     |   +------- month (1 - 12)
 |     |     +--------- day of        month (1 - 31)
 |     +----------- hour (0 - 23)
-+------------- min (0 - 59) source: 
++------------- min (0 - 59) source:
 http://www.adminschoice.com/crontab-quick-reference
 What I normally do is set the hosts updater to run at 8 every night ex.
-00 20 * * * /bin/sh /home/$USER/hostsupdater.sh. 
-I set it up under the root account by typing su followed by my password 
+00 20 * * * /bin/sh /home/$USER/hostsupdater.sh.
+I set it up under the root account by typing su followed by my password
 in manjaro, sudo -i in Ubuntu systems and then typing crontab -e.
-The maintenance scripts are ok to run manually each month. 
+The maintenance scripts are ok to run manually each month.
 It is recommended that you do not run these without being present.
-Hoever, if you wish to run them as cron jobs then you can tweak the 
-cleaning routines as follows."sudo rm -r ./cache/*" should be changed to 
-"rm -r /home/$USER/.cache/*" and etc. The setup script should only be 
-ran once to set the system up. 
+Hoever, if you wish to run them as cron jobs then you can tweak the
+cleaning routines as follows."sudo rm -r ./cache/*" should be changed to
+"rm -r /home/$USER/.cache/*" and etc. The setup script should only be
+ran once to set the system up.
 Some good reference sites are:
 https://usn.ubuntu.com/
 https://ubuntuforums.org/
 https://forums.linuxmint.com/
-https://wiki.ubuntu.com/ 
+https://wiki.ubuntu.com/
 Please copy and paste these in a browser then hit enter.
 
 ########################################################################
 KERNELS AND SERVICES
 ########################################################################
-Kernels, as mentioned in the manager, are an important and integral part 
+Kernels, as mentioned in the manager, are an important and integral part
 of the system. For your system to work, it needs to run a certain kernel
-I'd suggest the LTS that is recommended or preconfigured by your OS. 
-Assuming that you have that kernel installed, testing out newer kernels 
+I wouldd suggest the LTS that is recommended or preconfigured by your OS.
+Assuming that you have that kernel installed, testing out newer kernels
 for specific hardware and or security functionality is not a bad idea
-just use caution. Disabling services is generally a bad idea, however, 
-if you know you do not need it, if it is something like Bluetooth or 
+just use caution. Disabling services is generally a bad idea, however,
+if you know you do not need it, if it is something like Bluetooth or
 some app that you installed personally and the service is not required
 by your system, disabling that service could potentially help speed up
-your system. However, I'd advise against disabling system critical 
+your system. However, I would advise against disabling system critical
 services.
 
 ########################################################################
 BACKUP AND RESTORE
 ########################################################################
-Backup and Restore functions are there to provide a quick and painless 
+Backup and Restore functions are there to provide a quick and painless
 service. The backup will be sent to an alternate drive by your request.
 This was designed that way as the working drive could infact become com-
-promised and as such, should not be relied on to store important user 
+promised and as such, should not be relied on to store important user
 data in the event of an unlikely hack or malware attack, nor under the
-event of hardware failure. Having these files on a separate and less 
-often used drive is important for security and redundancy. Restore will 
-attempt to place that information back on the old drive or a new one if 
-or when misfortune should befall you. Just ensure that the drive is a 
-usable and safe one and ensure that you have it ready when making 
-reparations. So far, the only available option is to Backup the home 
+event of hardware failure. Having these files on a separate and less
+often used drive is important for security and redundancy. Restore will
+attempt to place that information back on the old drive or a new one if
+or when misfortune should befall you. Just ensure that the drive is a
+usable and safe one and ensure that you have it ready when making
+reparations. So far, the only available option is to Backup the home
 directory, but that might soon change. Please also note that backing up
 the home directory can save some user settings as well.
 
@@ -570,59 +566,59 @@ the home directory can save some user settings as well.
 Recent Changes with Installing certain apps and things
 ########################################################################
 Since Pale Moon 28.x there have been some changes as to how we install
-the browser. Pale Moon's lead Developer states how to install the browser 
+the browser. Pale Moons lead Developer states how to install the browser
 in Linux systems via this page: http://linux.palemoon.org/help/installation/
-I have still added a basic set up of palemoon that will extract the browser 
+I have still added a basic set up of palemoon that will extract the browser
 and send it to the opt directory while allowing the user to
-set up a symbolic link to the usr bin directory. This will 
+set up a symbolic link to the usr bin directory. This will
 allow you to use the browser by typing the name into a terminal
 much like any other application. For more tips and details
 see his website. Also, due to recently working with a friend on her
-laptop, I have found the need for Wine and so I added a simple command 
+laptop, I have found the need for Wine and so I added a simple command
 way to install wine on newer systems. Will work on this further.
 
 ########################################################################
 HOSTS FILE MANIPULATION
 ########################################################################
 Setting up a custom hosts file can be selectively simple with the script
-Hostsman4linux and the corresponding function HostsfileSelect Both have 
+Hostsman4linux and the corresponding function HostsfileSelect Both have
 the ability to compile and sort one central file out of multiple source
 third party hosts files. These can be a great extra layer to your system
-security regimen or can be a helpful adblocking tool allowing your 
-browser to be fast and clean from extensions. Running the main script 
+security regimen or can be a helpful adblocking tool allowing your
+browser to be fast and clean from extensions. Running the main script
 yourself is fine, but you have to run it as root. There is no other way
 as of yet that I have found to give it proper clearance to manipulate
 a secure system file like that without running sudo ./Hostsman4linux.sh.
 I am thinking of making the Hostsman4linux script a bit more cron-
 friendly in the future. Allowing users to use flags would give users the
 ability to make this script run on a schedule and it would always give
-them the desired hosts file. Alternatively, if you wish to run this 
+them the desired hosts file. Alternatively, if you wish to run this
 script from a menu as a regular user, chmoding the file to 755 might
-help before storing it in the /usr/local/bin directory and creating a 
-desktop file for it. I'll write a blog article for that later.
-to find my blog just go to: https://techiegeek123.blogspot.com/ in a 
+help before storing it in the /usr/local/bin directory and creating a
+desktop file for it. I will write a blog article for that later.
+to find my blog just go to: https://techiegeek123.blogspot.com/ in a
 browser.
 
 ########################################################################
 SWAP FILES
 ########################################################################
-Swap files are an important asset to any Linux system. Swap files are 
-responsible for storing temporary data when there is no available memory 
-left on the device. Swap is also useful for storing system contents 
-during hibernation etc. These scripts will eventually all have the ability 
-to create one in the event that your system doesn't currently have 
-one. The blog article about this issue can be found here: 
-https://techiegeek123.blogspot.com/2019/02/swap-files-in-linux.html. 
+Swap files are an important asset to any Linux system. Swap files are
+responsible for storing temporary data when there is no available memory
+left on the device. Swap is also useful for storing system contents
+during hibernation etc. These scripts will eventually all have the ability
+to create one in the event that your system does not currently have
+one. The blog article about this issue can be found here:
+https://techiegeek123.blogspot.com/2019/02/swap-files-in-linux.html.
 Please  email me at jackharkness444@protonmail.com for more info about
-these scripts or any problems you have with Linux. I'll be more than
+these scripts or any problems you have with Linux. I will be more than
 happy to help.
 
 ########################################################################
 CONTACT ME
 ########################################################################
-For sending me hate mail, for inquiring assistance, and for sending me 
+For sending me hate mail, for inquiring assistance, and for sending me
 feedback and suggestions, email me at jackharkness444@protonmail.com
-or js185r@gmail.com Send your inquiries and suggestions with a 
+or js185r@gmail.com Send your inquiries and suggestions with a
 corresponding subject line.
 _EOF_
 
@@ -634,7 +630,7 @@ _EOF_
 InstallAndConquer() {
 	#This checks network connectivity
 	CheckNetwork
-	
+
 	#This installs other software that I've found to be useful
 	echo "Would you like to install some useful apps?(Y/n)"
 	read answer
@@ -660,7 +656,7 @@ InstallAndConquer() {
 		echo "18 - get out of this menu"
 
 		read software;
-	
+
 		case $software in
 			1)
 			echo "1 - Geany"
@@ -701,7 +697,7 @@ InstallAndConquer() {
 			fi
 		;;
 			3)
-			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute 
+			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute
 			sudo apt install -y gnome-disk-utility htop iotop atop inxi grsync
 			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools
 		;;
@@ -724,7 +720,7 @@ InstallAndConquer() {
 			then
 				sudo apt install timeshift
 			fi
-			
+
 		;;
 			5)
 			echo "This installs your choice of browser"
@@ -759,7 +755,7 @@ InstallAndConquer() {
 				cd /tmp
 				wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 				sudo dpkg -i *.deb
-				sudo apt install -f 
+				sudo apt install -f
 			elif [[ $browser == 6 ]];
 			then
 				wget http://linux.palemoon.org/datastore/release/palemoon-28.4.0.linux-x86_64.tar.bz2; tar -xvf palemoon-28.4.0.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
@@ -769,18 +765,15 @@ InstallAndConquer() {
 			then
 				cd /tmp
 				wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.3.1440.57-1_amd64.deb
-				sudo dpkg -i *.deb
-				sudo apt install -f
+				sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 8 ]];
 			then
 				cd /tmp
 				wget https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_2.4.1468.4-1_amd64.deb
-				sudo dpkg -i *.deb
-				sudo apt install -f
+				sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 9 ]];
 			then
-				sudo sh -c 'echo "deb http://deb.opera.com/opera/ stable non-free" >> /etc/apt/sources.list.d/opera.list'
-				sudo sh -c 'wget -O - http://deb.opera.com/archive.key | apt-key add -'
+				sudo sh -c 'echo "deb http://deb.opera.com/opera/ stable non-free" >> /etc/apt/sources.list.d/opera.list'; sudo sh -c 'wget -O - http://deb.opera.com/archive.key | apt-key add -'
 				sudo apt update && sudo apt install -y opera
 			elif [[ $browser == 10 ]];
 			then
@@ -791,7 +784,7 @@ InstallAndConquer() {
 			elif [[ $browser == 12 ]];
 			then
 				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.2.en-US.linux-x86_64.tar.bz2
-				tar -xvf waterfox-56.2.2.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox 
+				tar -xvf waterfox-56.2.2.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 13 ]];
 			then
@@ -877,7 +870,7 @@ InstallAndConquer() {
 			13)
 			sudo apt install -y ttf-mscorefonts-installer
 		;;
-			
+
 			14)
 			echo "THEMES"
 			sudo add-apt-repository ppa:noobslab/icons
@@ -927,7 +920,7 @@ InstallAndConquer() {
 			elif [[ $package == 9 ]];
 			then
 				sudo apt install -y supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux steam
-			else 
+			else
 				echo "You have entered an invalid number, please come back later and try again."
 			fi
 		;;
@@ -945,7 +938,7 @@ InstallAndConquer() {
 		;;
 		esac
 	done
-	
+
 	#This can install screenfetch
 	echo "Would you like to install screenfetch?(Y/n)"
 	read answer
@@ -955,14 +948,14 @@ InstallAndConquer() {
 		echo "screenfetch" | sudo tee -a ~/.bashrc
 	break
 	done
-	
+
 	#This installs software we might have missed
 	echo "If you'd like to contribute to the previous list of software,
-	contact me: jackharkness444@protonmail.com"	
+	contact me: jackharkness444@protonmail.com"
 	echo "Is there any other software you'd like to install?(Y/n)"
-	read answer 
+	read answer
 	while [ $answer == Y ];
-	do 
+	do
 		echo "Enter the name of the software you wish to install"
 		read software
 		sudo apt install -y $software
@@ -970,7 +963,7 @@ InstallAndConquer() {
 	done
 
 	#This tries to install codecs
-	echo "This will install codecs." 
+	echo "This will install codecs."
 	echo "These depend upon your environment."
 	echo "Would you like me to continue?(Y/n)"
 	read answer
@@ -990,7 +983,7 @@ InstallAndConquer() {
 				sudo apt install -y kubuntu-restricted-extras
 				echo "kdesu python3 /usr/lib/python3.7/site-packages/gufw/gufw.py" | sudo tee -a /bin/gufw
 			elif [[ $DESKTOP_SESSION == lxde ]];
-			then 
+			then
 				sudo apt install -y lubuntu-restricted-extras
 			elif [[ $DESKTOP_SESSION == mate ]];
 			then
@@ -1015,7 +1008,7 @@ InstallAndConquer() {
 				sleep 1
 			fi
 		done
-		
+
 		echo "If you're running Mint, it's a good idea to install the mint meta package"
 		distribution=$(cat /etc/issue | awk '{print $2}')
 		if [[ $distribution == Mint ]];
@@ -1023,47 +1016,47 @@ InstallAndConquer() {
 			sudo apt install -y mint-meta-codecs
 		fi
 	break
-	done 
-	
+	done
+
 	clear
 	Greeting
-	
+
 }
 
 Uninstall() {
 	#This allows you to remove unwanted junk
 	echo "Are there any other applications you wish to remove(Y/n)"
-	read answer 
+	read answer
 	while [ $answer ==  Y ];
 	do
 		echo "Please enter the name of the software you wish to remove"
-        read software
-		sudo apt remove --purge -yy $software 
+  		read software
+		sudo apt remove --purge -yy $software
 	break
 	done
-	
+
 	clear
 	Greeting
-	
+
 }
 
 AccountSettings() {
 cat <<_EOF_
-This is a completely untested and experimental utility at best. 
-Use this function "Account Settings" at your own risk. 
+This is a completely untested and experimental utility at best.
+Use this function "Account Settings" at your own risk.
 _EOF_
 	#This can create and remove user accounts
 	echo "This is experimental(untested). Use at  your own risk."
 	echo "What would you like to do today?"
-	echo "1 - Create user account(s)" 
+	echo "1 - Create user account(s)"
 	echo "2 - Delete user account(s)"
 	echo "3 - Lock pesky user accounts"
 	echo "4 - Look for empty password users on the system"
 	echo "5 - See a list of accounts and groups on the system"
 	echo "6 - skip this menu"
-	
+
 	read operation;
-	
+
 	case $operation in
 		1)
 		echo $(cat /etc/group | awk -F: '{print $1}')
@@ -1104,24 +1097,22 @@ _EOF_
 		echo "This is an invaldi selection, please run this function again and try another."
 	;;
 	esac
-	
+
 	clear
 	Greeting
 }
 
 CheckNetwork() {
-	for c in computer; 
-	do 
+	for c in computer;
+	do
 		ping -c4 google.com > /dev/null
 		if [[ $? -eq 0 ]];
-		then 
+		then
 			echo "Connection successful!"
 		else
 			interface=$(ip -o -4 route show to default | awk '{print $5}')
-			sudo dhclient -v -r && sudo dhclient
-			sudo mmcli nm enable false 
-			sudo nmcli nm enable true
-			sudo /etc/init.d/ network-manager restart
+			sudo dhclient -v -r && sudo dhclient; sudo mmcli nm enable false
+			sudo nmcli nm enable true; sudo /etc/init.d/ network-manager restart
 			sudo ip link set $interface up #Refer to networkconfig.log
 		fi
 	done
@@ -1132,12 +1123,11 @@ HostsfileSelect() {
 	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
 	do
-		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh
-		chmod +x Hostsman4linux.sh
+		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh; chmod +x Hostsman4linux.sh
 	break
 	done
 	sudo ./Hostsman4linux.sh
-	
+
 	clear
 	Greeting
 }
@@ -1147,11 +1137,11 @@ cleanup() {
 	sudo apt autoremove -y
 	sudo apt autoclean -y
 	sudo apt clean -y
-	
+
 	#This removes older config files left by no longer installed applications
 	OLDCONF=$(dpkg -l | grep '^rc' | awk '{print $2}')
 	sudo apt remove --purge $OLDCONF
-	
+
 	#This optionally removes old kernels
 cat <<_EOF_
 It is encouraged that you leave at least one older kernel on your system
@@ -1168,7 +1158,7 @@ _EOF_
 		sudo apt-get remove --purge $Image
 	break
 	done
-	
+
 	#cleans old kernel crash logs
 	echo "Would you like to remove kernel crash logs?(Y/n)"
 	read answer
@@ -1177,7 +1167,7 @@ _EOF_
 		sudo find /var -type f -name "core" -print -exec rm {} \;
 	break
 	done
-	
+
 	#This removes the apt list
 	sudo rm -r /var/lib/apt/lists/*
 
@@ -1191,34 +1181,34 @@ _EOF_
 	sudo rm -r ~/.esd_auth #Best I can tell cookie for pulse audio
 	sudo rm -r ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/*
-	find ~/Downloads/* -mtime +3 -exec rm {} \; 
 	history -c && rm ~/.bash_history
-	
-	#This clears the cached RAM 
+
+	#This clears the cached RAM
 	read -p "This will free up cached RAM. Press enter to continue..."
-	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
+	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches; swapoff -a && swapon -a"
 
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/
-	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \; 
-	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	find ~/Downloads/* -mtime +3 -exec mv {} $TRASHCAN \;
+	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
+  find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
-	#check for and remove broken symlinks
+	#search and remove broken symlinks
 	find -xtype l -delete
 
-	#clean some unneccessary files leftover by applications in home directory
+	#clean some unneccessary files leftover by applications at home directory
 	find $HOME -type f -name "*~" -print -exec rm {} \;
- 
+
 	#This trims the journal logs
-	sudo journalctl --vacuum-size=25M #For newer systemd releases
-	
+	sudo journalctl --vacuum-size=25M
+
 	#This uninstalls unwanted apps
 	Uninstall
 }
 
 BrowserRepair() {
 cat <<_EOF_
-This can fix a lot of the usual issues with a few of the bigger browsers. 
+This can fix a lot of the usual issues with a few of the bigger browsers.
 These can include performance hitting issues. If your browser needs a tuneup,
 it is probably best to do it in the browser itself, but when you just want something
 fast, this can do it for you. More browsers and options are coming.
@@ -1251,7 +1241,7 @@ _EOF_
 
 	echo "choose the browser you wish to reset"
 	echo "1 - Firefox"
-	echo "2 - Vivaldi" 
+	echo "2 - Vivaldi"
 	echo "3 - Pale Moon"
 	echo "4 - Chrome"
 	echo "5 - Chromium"
@@ -1267,27 +1257,27 @@ _EOF_
 	case $operation in
 		1)
 		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old
-		sudo rm -rf ~/.mozilla/firefox/* 
+		sudo rm -rf ~/.mozilla/firefox/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
 		2)
 		sudo cp -r ~/.config/vivaldi/ ~/.config/vivaldi-old
-		sudo rm -rf ~/.config/vivaldi/* 
+		sudo rm -rf ~/.config/vivaldi/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
 		3)
 		sudo cp -r ~/'.moonchild productions'/'pale moon' ~/'.moonchild productions'/'pale moon'-old
-		sudo rm -rf ~/'.moonchild productions'/'pale moon'/profile.ini 
+		sudo rm -rf ~/'.moonchild productions'/'pale moon'/profile.ini
 		echo "Your browser has now been reset"
 		sleep 1
-	;;	
+	;;
 		4)
 		sudo cp -r ~/.config/google-chrome ~/.config/google-chrome-old
 		sudo rm -rf ~/.config/google-chrome/*
 		echo "Your browser has now been reset"
-		sleep 1 
+		sleep 1
 	;;
 		5)
 		sudo cp -r ~/.config/chromium ~/.config/chromium-old
@@ -1297,10 +1287,10 @@ _EOF_
 	;;
 		6)
 		sudo cp -r ~/.config/opera ~/.config/opera-old
-		sudo rm -rf ~/.config/opera/* 
+		sudo rm -rf ~/.config/opera/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;	
+	;;
 		7)
 		sudo cp -r ~/.config/vivaldi-snapshot ~/.config/vivaldi-snapshot-old
 		sudo rm -rf ~/.config/vivaldi-snapshot/*
@@ -1338,7 +1328,7 @@ _EOF_
 		Greeting
 	;;
 	esac
-	
+
 	#Change the default browser
 	echo "Would you like to change your default browser also?(Y/n)"
 	read answer
@@ -1357,25 +1347,25 @@ _EOF_
 
 SystemMaintenance() {
 	CheckNetwork
-	
+
 	#This updates your system
 	sudo dpkg --configure -a; sudo apt install -f; sudo apt update; sudo apt upgrade -yy
 
 	#It is recommended that your firewall is enabled
 	sudo systemctl enable ufw; sudo ufw enable
-	
+
 	#This restarts systemd daemon. This can be useful for different reasons.
 	sudo systemctl daemon-reload #For systemd releases
-	
+
 	#This runs update db for index cache and cleans the manual database
 	sudo updatedb; sudo mandb
-	
+
 	#This updates grub
-	sudo update-grub2 
+	sudo update-grub2
 
 	#Checks disk for errors
 	sudo touch /forcefsck
-	
+
 	#Optional and prolly not needed
 	drive=$(cat /sys/block/sda/queue/rotational)
 	for rota in drive;
@@ -1383,10 +1373,10 @@ SystemMaintenance() {
 		if [[ $drive == 1 ]];
 		then
 			echo "Would you like to check fragmentation levels?(Y/n)"
-			read answer 
+			read answer
 			while [ $answer == Y ];
 			do
-				sudo e4defrag / -c > fragmentation.log 
+				sudo e4defrag / -c > fragmentation.log
 			break
 			done
 		elif [[ $drive == 0 ]];
@@ -1398,9 +1388,9 @@ SystemMaintenance() {
 				sudo fstrim -v --all
 			break
 			done
-		fi 
+		fi
 	done
-	
+
 	#Optional
 	echo "Would you like to run cleanup?(Y/n)"
 	read answer
@@ -1414,13 +1404,13 @@ SystemMaintenance() {
 }
 
 ServiceManager() {
-	#This is for service management. Prolly not a good idea but...
+#This is for service management. Prolly not a good idea but...
 cat <<_EOF_
-This is usually better off left undone, only disable services you know 
-you will not need or miss. I can not be held responsible if you brick 
-your system. Handle with caution. Also, may only take effect once you 
-reboot your machine. Services can be turned back on with a good backup 
-and possibly by chrooting into the device via live cd and reversing the 
+This is usually better off left undone, only disable services you know
+you will not need or miss. I can not be held responsible if you brick
+your system. Handle with caution. Also, may only take effect once you
+reboot your machine. Services can be turned back on with a good backup
+and possibly by chrooting into the device via live cd and reversing the
 process by running this again and reenabling the service.
 _EOF_
 
@@ -1440,7 +1430,7 @@ _EOF_
 			read operation;
 
 			case $operation in
-				1) 
+				1)
 				echo "Enter the name of the service you wish to enable"
 				read service
 				sudo /etc/init.d/$service start
@@ -1448,7 +1438,7 @@ _EOF_
 				2)
 				echo "Enter the name of the service you wish to disable"
 				read service
-				sudo /etc/init.d/$service stop 
+				sudo /etc/init.d/$service stop
 				echo "Optionally we can create an override which will keep this setting"
 				echo "Would you like to retain this setting after reboot?(Y/n)"
 				read answer
@@ -1514,16 +1504,15 @@ _EOF_
 			echo "You might be running an init system I haven't tested yet"
 		fi
 	done
-
 	clear
 	Greeting
 }
 
-Restart() { 
+Restart() {
 	sudo sync; sudo systemctl reboot
 }
 
-Backup() { 
+Backup() {
 	#This tries to backup your system
 	echo "What would you like to do?(Y/n)"
 	echo "1 - Backup home folder and user files"
@@ -1550,7 +1539,7 @@ Backup() {
 			if this is the preferred drive, unmount it, leave it plugged in, and run this again. Press enter to continue..."
 		fi
 	;;
-		2) 
+		2)
 		host=$(hostname)
 		Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
 		if [[ $Mountpoint != /run/media/$USER/* ]];
@@ -1566,26 +1555,26 @@ Backup() {
 		then
 			echo "Found a block device at designated coordinates...
 			if this is the preferred drive, unmount it, leave it plugged in, and then run this again. Press enter to continue..."
-		fi 
-	;;	
+		fi
+	;;
 		*)
 		echo "This is an invalid entry, please try again"
 	;;
 	esac
-	
+
 	clear
 	Greeting
 }
 
-Restore() { 
+Restore() {
 #This tries to restore the home folder
 cat <<_EOF_
-This tries to restore the home folder and nothing else, if you want to 
+This tries to restore the home folder and nothing else, if you want to
 restore the entire system,  you will have to do that in a live environment.
 This can, however, help in circumstances where you have family photos and
 school work stored in the home directory. This also assumes that your home
-directory is on the drive in question. This can also restore browser settings 
-including unwanted toolbars so be warned. 
+directory is on the drive in question. This can also restore browser settings
+including unwanted toolbars so be warned.
 _EOF_
 
 	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
@@ -1596,7 +1585,7 @@ _EOF_
 		sleep 1
 		echo "Please select the device from the list"
 		read device
-		sudo mount $device /mnt 
+		sudo mount $device /mnt
 		sudo rsync -aAXv --delete /mnt/$host-$date-backups/* /home/$USER
 		sudo sync
 		Restart
@@ -1607,7 +1596,7 @@ _EOF_
 	fi
 
 	clear
-	Greeting 
+	Greeting
 }
 
 Greeting() {
@@ -1630,9 +1619,9 @@ Greeting() {
 	echo "16 - Restart"
 	echo "17 - Reset the desktop"
 	echo "18 - exit"
-	
+
 	read selection;
-	
+
 	case $selection in
 		1)
 		Setup
@@ -1693,7 +1682,7 @@ Greeting() {
 		*)
 		echo "This is an invalid number, please try again."
 		sleep 1
-		clear 
+		clear
 		Greeting
 	;;
 	esac
@@ -1702,20 +1691,18 @@ Greeting() {
 cat <<_EOF_
 ########################################################################
 Hello! Thank you for using Ubuntu Toolbox. Within this script is a multi-
-tude of potential solutions for every day tasks such as maintenance, 
-all the way to setting up a new system. This script is meant for new 
+tude of potential solutions for every day tasks such as maintenance,
+all the way to setting up a new system. This script is meant for new
 users, but anyone can read, change and use this script to their liking.
-This script is to be placed under the GPLv3 and is to be redistributable, 
-however, if you are distributing, I'd appreciate it if you gave the 
-credit back to the original author. I should also add that I have a few 
-blog articles which may or may not be of benefit for newbies on occasion. 
-The link will be placed here. In the blog I write about typical scenarios 
-that I face on a day to day basis as well as add commentary and my 
-opinions about software and technology. You may copy and paste the 
+This script is to be placed under the GPLv3 and is to be redistributable,
+however, if you are distributing, I'd appreciate it if you gave the
+credit back to the original author. I should also add that I have a few
+blog articles which may or may not be of benefit for newbies on occasion.
+The link will be placed here. In the blog I write about typical scenarios
+that I face on a day to day basis as well as add commentary and my
+opinions about software and technology. You may copy and paste the
 following link into your browser: https://techiegeek123.blogspot.com/
 Again, Thank you!
 ########################################################################
 _EOF_
 Greeting
-
-

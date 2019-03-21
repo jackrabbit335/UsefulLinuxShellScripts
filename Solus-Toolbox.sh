@@ -11,8 +11,7 @@ Setup() {
 	do
 	    echo "Enter your preferred timezone"
 		read timezone
-		sudo timedatectl set-ntp true
-		sudo timedatectl set-timezone $timezone
+		sudo timedatectl set-ntp true; sudo timedatectl set-timezone $timezone
 	break
 	done
 
@@ -132,8 +131,7 @@ _EOF_
 	read answer
 	if [[ $answer == Y ]];
 	then
-		sudo mv /usr/bin/gnome-keyring-daemon /usr/bin/gnome-keyring-daemon-old
-		sudo killall gnome-keyring-daemon
+		sudo mv /usr/bin/gnome-keyring-daemon /usr/bin/gnome-keyring-daemon-old; sudo killall gnome-keyring-daemon
 	else
 		echo "Proceeding"
 	fi
@@ -496,12 +494,11 @@ InstallAndConquer() {
 	;;
 		2)
 		echo "This installs a light weight editor(text/code editor/IDE)"
-		echo "1 - Geany"
-		echo "2 - Bluefish"
-		echo "3 - Atom"
-		echo "4 - Kate"
+		echo "1 - geany"
+		echo "2 - bluefish"
+		echo "3 - atom"
+		echo "4 - kate"
 		echo "5 - Sublime-text"
-		echo "6 - Brackets"
 		read package
 		if [[ $package == 1 ]];
 		then
@@ -517,11 +514,7 @@ InstallAndConquer() {
 			sudo eopkg install kate
 		elif [[ $package == 5 ]];
 		then
-			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/programming/sublime-text-3/pspec.xml
-			sudo eopkg it webstorm*.eopkg;sudo rm webstorm*.eopkg
-		elif [[ $package == 6 ]];
-		then
-			sudo eopkg install brackets 
+			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/programming/sublime-text-3/pspec.xml; sudo eopkg it webstorm*.eopkg;sudo rm webstorm*.eopkg
 		else
 			echo "You've entered an invalid number"
 		fi
@@ -570,8 +563,7 @@ InstallAndConquer() {
 			sudo eopkg install hexchat
 		elif [[ $package == 2 ]];
 		then
-			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/im/skype/pspec.xml
-			sudo eopkg it skype*.eopkg;sudo rm *.eopkg
+			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/im/skype/pspec.xml; sudo eopkg it skype*.eopkg;sudo rm *.eopkg
 		fi
 	;;
 		6)
@@ -604,8 +596,7 @@ InstallAndConquer() {
 			sudo eopkg install opera-stable
 		elif [[ $browser == 5 ]];
 		then
-			wget https://downloads.vivaldi.com/snapshot/install-vivaldi.sh
-			chmod +x install-vivaldi.sh
+			wget https://downloads.vivaldi.com/snapshot/install-vivaldi.sh; chmod +x install-vivaldi.sh
 			./install-vivaldi.sh
 		elif [[ $browser == 6 ]];
 		then
@@ -635,22 +626,7 @@ InstallAndConquer() {
 			user=$(whoami)
 			wget http://linux.palemoon.org/datastore/release/palemoon-28.4.0.linux-x86_64.tar.bz2; tar -xvf palemoon-28.4.0.linux-x86_64.tar.bz2
 			sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
-			sudo touch /usr/share/applications/palemoon.desktop
-			echo "[Desktop Entry]" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Version=1.0" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Name=Palemoon" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Comment=Browse The World Wide Web" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Keywords=Internet;WWW;Browser;Web;Explorer" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Exec=palemoon %u" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Terminal=false" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "X-MultipleArgs=false" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Type=Application" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Icon=/home/$user/palemoon/browser/icons/mozicon128.png" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "Categories=Application;Network;WebBrowser;Internet;" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;" | sudo tee -a /usr/share/applications/palemoon.desktop
-			echo "StartupNotify=true" | sudo tee -a /usr/share/applications/palemoon.desktop
-			sudo update-alternatives --install /usr/bin/gnome-www-browser gnome-www-browser /usr/bin/palemoon 100
-			sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/palemoon 100
+			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 13 ]];
 		then
 			sudo eopkg install firefox
@@ -674,8 +650,7 @@ InstallAndConquer() {
 			sudo eopkg install kodi
 		elif [[ $player == 2 ]];
 		then
-			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/multimedia/music/spotify/pspec.xml
-			sudo eopkg it spotify*.eopkg;sudo rm spotify*.eopkg
+			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/multimedia/music/spotify/pspec.xml; sudo eopkg it spotify*.eopkg;sudo rm spotify*.eopkg
 		elif [[ $player == 3 ]];
 		then
 			sudo eopkg install rhythmbox
@@ -889,7 +864,7 @@ WELCOME AND RAMBLE WITH LICENSING
 Welcome to Arch-Toolbox. This is a useful little utility that
 tries to setup, maintain, and keep up to date with the latest
 software on your system. Arch-Toolbox is delivered as is and thus,
-I can't be held accountable if something goes wrong. This software is
+I can not be held accountable if something goes wrong. This software is
 freely given under the GPL license and is distributable and changeable
 as you see fit, I only ask that you give the author the credit for the
 original work. Arch-Toolbox has been tested and should work on your
@@ -927,14 +902,14 @@ KERNELS AND SERVICES
 ########################################################################
 Kernels, as mentioned in the manager, are an important and integral part
 of the system. For your system to work, it needs to run a certain kernel
-I'd suggest the LTS that is recommended or preconfigured by your OS.
+I would suggest the LTS that is recommended or preconfigured by your OS.
 Assuming that you have that kernel installed, testing out newer kernels
 for specific hardware and or security functionality is not a bad idea
 just use caution. Disabling services is generally a bad idea, however,
 if you know you do not need it, if it is something like Bluetooth or
 some app that you installed personally and the service is not required
 by your system, disabling that service could potentially help speed up
-your system. However, I'd advise against disabling system critical
+your system. However, I would advise against disabling system critical
 services.
 
 ########################################################################
@@ -972,7 +947,7 @@ ability to make this script run on a schedule and it would always give
 them the desired hosts file. Alternatively, if you wish to run this
 script from a menu as a regular user, chmoding the file to 755 might
 help before storing it in the /usr/local/bin directory and creating a
-desktop file for it. I'll write a blog article for that later.
+desktop file for it. I will write a blog article for that later.
 to find my blog just go to: https://techiegeek123.blogspot.com/ in a
 browser.
 
@@ -983,11 +958,11 @@ Swap files are an important asset to any Linux system. Swap files are
 responsible for storing temporary data when there is no available memory
 left on the device. Swap is also useful for storing system contents
 during hibernation etc. These scripts will eventually all have the ability
-to create one in the event that your system doesn't currently have
+to create one in the event that your system does not currently have
 one. The blog article about this issue can be found here:
 https://techiegeek123.blogspot.com/2019/02/swap-files-in-linux.html.
 Please  email me at jackharkness444@protonmail.com for more info about
-these scripts or any problems you have with Linux. I'll be more than
+these scripts or any problems you have with Linux. I will be more than
 happy to help.
 
 ########################################################################
@@ -1075,12 +1050,9 @@ checkNetwork() {
 			echo "Connection successful"
 		else
 			interface=$(ip -o -4 route show to default | awk '{print $5}')
-			sudo dhclient -v -r && sudo dhclient
-			sudo systemctl stop NetworkManager.service
-			sudo systemctl disable NetworkManager.service
-			sudo systemctl enable NetworkManager.service
-			sudo systemctl start NetworkManager.service
-			sudo ip link set $interface up #Refer to networkconfig.log
+			sudo dhclient -v -r && sudo dhclient; sudo systemctl stop NetworkManager.service
+			sudo systemctl disable NetworkManager.service; sudo systemctl enable NetworkManager.service
+			sudo systemctl start NetworkManager.service; sudo ip link set $interface up #Refer to networkconfig.log
 		fi
 	done
 }
@@ -1090,8 +1062,7 @@ HostsfileSelect() {
 	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
 	do
-		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh
-		chmod +x Hostsman4linux.sh
+		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh; chmod +x Hostsman4linux.sh
 	break
 	done
 	sudo ./Hostsman4linux.sh
@@ -1610,7 +1581,7 @@ all the way to as important as setting up a new system.
 This script is meant for new users, but anyone can read, change and use
 this script to their liking. This script is to be placed under the GPLv3
 and is to be redistributable, however, if you are distributing,
-I'd appreciate it if you gave the credit back to the original author. I
+I would appreciate it if you gave the credit back to the original author. I
 should also add that I have a few blog articles which may or may not be
 of benefit for newbies on occasion. The link will be placed here. In the
 blog I write about typical scenarios that I face on a day to day basis
