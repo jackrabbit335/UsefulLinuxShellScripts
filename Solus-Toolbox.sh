@@ -154,13 +154,11 @@ _EOF_
 		echo "#Alias to clear package cache" >> ~/.bashrc
 		echo 'alias cleanse="sudo eopkg delete-cache"' >> ~/.bashrc
 		echo "#Alias to remove orphaned packages" >> ~/.bashrc
-		echo 'alias orphaned="sudo eopkg remove-orphaned"' >> ~/.bashrc
+		echo 'alias orphaned="sudo eopkg remove-orphans"' >> ~/.bashrc
 		echo "#Alias to check installation integrity of software" >> ~/.bashrc
 		echo 'alias convey="sudo eopkg check"' >> ~/.bashrc
 		echo "#Alias to rebuild the database" >> ~/.bashrc
 		echo 'alias rebuild="sudo eopkg rebuild-db"' >> ~/.bashrc
-		echo "#Alias to check package integrity" >> ~/.bashrc
-		echo 'alias check="sudo eopkg check"' >> ~/.bashrc
 		echo "#Alias to free RAM cache" >> ~/.bashrc
 		echo 'alias boost="sudo sync; echo 3 > /proc/sys/vm/drop_caches; sudo swapoff -a && sudo swapon -a"' >> ~/.bashrc
 		echo "#Alias to trim journal size" >> ~/.bashrc
