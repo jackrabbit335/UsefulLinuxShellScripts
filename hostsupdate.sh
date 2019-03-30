@@ -17,7 +17,7 @@ sudo cp /etc/hosts.bak /etc/hosts
 cd /tmp
 
 str1=http://winhelp2002.mvps.org/hosts.txt
-str2=https://someonewhocares.org/hosts/zero/hosts
+str2=https://someonewhocares.org/hosts/hosts
 str3=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
 str4=http://www.malwaredomainlist.com/hostslist/hosts.txt
 str5=http://hostsfile.mine.nu/Hosts.txt
@@ -49,8 +49,8 @@ if [[ $# -gt 1 ]]; then
 	sort adblock | uniq -u | sort -r > adblock.new && mv adblock.new adblock 
 fi
 
-#This ensures that we are using All zeros for pointing back to home
-sed -i 's/127.0.0.1/0.0.0.0/g' adblock
+#This ensures that we are using All 127.x for pointing back to home
+sed -i 's/0.0.0.0/127.0.0.1/g' adblock
 
 #Remove comments
 sed -e '/#.*/d' adblock > adblock.new && mv adblock.new adblock
