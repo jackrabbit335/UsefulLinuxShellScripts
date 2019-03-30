@@ -441,7 +441,6 @@
 127.0.0.1 adserver1.mindshare.de
 127.0.0.1 adserver1.ogilvy-interactive.de
 127.0.0.1 adserver2.mindshare.de
-127.0.0.1 adserver.43plc.com
 127.0.0.1 adserver.71i.de
 127.0.0.1 adserver.adultfriendfinder.com
 127.0.0.1 adserver.aidameter.com
@@ -661,7 +660,6 @@
 127.0.0.1 ads.redlightcenter.com
 127.0.0.1 ads.redtube.com
 127.0.0.1 ads.resoom.de
-127.0.0.1 adsrevenue.net
 127.0.0.1 adsrv.deviantart.com
 127.0.0.1 adsrv.eacdn.com
 127.0.0.1 adsrv.iol.co.za
@@ -909,7 +907,6 @@
 127.0.0.1 analytics.adpost.org
 127.0.0.1 analytics.google.com
 127.0.0.1 analytics.live.com
-127.0.0.1 analytics.newsinc.com
 127.0.0.1 analytics.yahoo.com
 127.0.0.1 anm.intelli-direct.com
 127.0.0.1 annonser.dagbladet.no
@@ -1168,6 +1165,7 @@
 127.0.0.1 casinopays.com
 127.0.0.1 casinorewards.com
 127.0.0.1 casinotraffic.com
+127.0.0.1 casterist.info
 127.0.0.1 cbanners.virtuagirlhd.com
 127.0.0.1 c.bigmir.net
 127.0.0.1 cbsi.com
@@ -1465,6 +1463,7 @@
 127.0.0.1 elitetoplist.com
 127.0.0.1 elthamely.com
 127.0.0.1 emarketer.com
+127.0.0.1 emebo.com
 127.0.0.1 emediate.dk
 127.0.0.1 emediate.eu
 127.0.0.1 emerse.com
@@ -1542,6 +1541,7 @@
 127.0.0.1 fc.webmasterpro.de
 127.0.0.1 feebleshock.com
 127.0.0.1 feedbackresearch.com
+127.0.0.1 feedjit.com
 127.0.0.1 ffxcam.fairfax.com.au
 127.0.0.1 fimserve.com
 127.0.0.1 findcommerce.com
@@ -1765,7 +1765,6 @@
 127.0.0.1 intergi.com
 127.0.0.1 internetfuel.com
 127.0.0.1 interreklame.de
-127.0.0.1 interstat.hu
 127.0.0.1 inventionpassenger.com
 127.0.0.1 inviterabbits.com
 127.0.0.1 invitesugar.com
@@ -1934,6 +1933,7 @@
 127.0.0.1 medleyads.com
 127.0.0.1 medyanetads.com
 127.0.0.1 megacash.de
+127.0.0.1 megapu.sh
 127.0.0.1 megastats.com
 127.0.0.1 megawerbung.de
 127.0.0.1 mellowads.com
@@ -2019,7 +2019,6 @@
 127.0.0.1 navrcholu.cz
 127.0.0.1 nbjmp.com
 127.0.0.1 ncaudienceexchange.com
-127.0.0.1 ndnops.com
 127.0.0.1 ndparking.com
 127.0.0.1 nedstatbasic.net
 127.0.0.1 nedstat.com
@@ -2194,6 +2193,7 @@
 127.0.0.1 pixel.digitru.st
 127.0.0.1 pixel.sojern.com
 127.0.0.1 pixel.watch
+127.0.0.1 pix.spot.im
 127.0.0.1 play4traffic.com
 127.0.0.1 playhaven.com
 127.0.0.1 playmobileads.com
@@ -2268,6 +2268,7 @@
 127.0.0.1 pushazer.com
 127.0.0.1 pushengage.com
 127.0.0.1 puzzlingfall.com
+127.0.0.1 px.ads.linkedin.com
 127.0.0.1 px.dynamicyield.com
 127.0.0.1 q.azcentral.com
 127.0.0.1 qctop.com
@@ -2384,6 +2385,7 @@
 127.0.0.1 rtbpop.com
 127.0.0.1 rtbpopd.com
 127.0.0.1 rtmark.net
+127.0.0.1 rtxplatform.com
 127.0.0.1 ru4.com
 127.0.0.1 rubiconproject.com
 127.0.0.1 rulerabbit.com
@@ -2796,7 +2798,6 @@
 127.0.0.1 vericlick.com
 127.0.0.1 vertadnet.com
 127.0.0.1 verticalmass.com
-127.0.0.1 veruta.com
 127.0.0.1 vervewireless.com
 127.0.0.1 vibrantmedia.com
 127.0.0.1 videoadex.com
@@ -2946,3 +2947,4 @@
 127.0.0.1 zmedia.com
 127.0.0.1 zqtk.net
 127.0.0.1 zy16eoat1w.com
+127.0.0.1 zzhc.vnet.cn
