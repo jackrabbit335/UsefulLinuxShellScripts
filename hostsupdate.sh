@@ -7,7 +7,7 @@ echo "WARNING! USE OF THESE HOSTS COULD CAUSE MANY OF YOUR FAVORITE SITES TO CEA
 echo "searching for /etc/hosts.bak and then creating hosts file to block tracking"
 find /etc/hosts.bak
 while [ $? -gt 0 ]
-do  
+do
 	sudo cp /etc/hosts /etc/hosts.bak
 break
 done
@@ -23,8 +23,9 @@ str4=http://www.malwaredomainlist.com/hostslist/hosts.txt
 str5=http://hostsfile.mine.nu/Hosts.txt
 str6=https://hosts-file.net/ad_servers.txt
 str7=https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt
+str8=http://sysctl.org/cameleon/hosts
 
-while getopts :ABCDEFG option; do
+while getopts :ABCDEFGH option; do
 	case $option in
 		A) wget $str1 && cat hosts.txt >> adblock && rm hosts.txt
 		;;
@@ -40,13 +41,15 @@ while getopts :ABCDEFG option; do
 		;;
 		G) wget $str7 && cat hosts.txt >> adblock && rm hosts.txt
 		;;
+		H) wget $str8 && cat hosts >> adblock && rm hosts
+		;;
 		*)
 	esac
 done
 
 #This tries to deduplicate if multiple files were used.
 if [[ $# -gt 1 ]]; then
-	sort adblock | uniq -u | sort -r > adblock.new && mv adblock.new adblock 
+	sort adblock | uniq -u | sort -r > adblock.new && mv adblock.new adblock
 fi
 
 #This ensures that we are using All 127.x for pointing back to home
