@@ -16,8 +16,7 @@ Setup() {
 	done
 
 	#This starts your firewall
-    eopkg list-installed | grep gufw || sudo eopkg install gufw
-	sudo systemctl enable ufw; sudo ufw enable
+    eopkg list-installed | grep gufw || sudo eopkg install gufw; sudo systemctl enable ufw; sudo ufw enable
     echo "Would you also like to deny ssh and telnet for security?(Y/n)"
     read answer
     while [ $answer == Y ]
@@ -52,8 +51,7 @@ _EOF_
     while [ $answer == Y ];
     do
         sudo touch /etc/syctl.d/60-network-hardening.conf
-        echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.d/60-network-hardening.conf
-        sudo sysctl -p
+        echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.d/60-network-hardening.conf; sudo sysctl -p
     break
     done
 
@@ -63,8 +61,7 @@ _EOF_
 	if [[ $answer == Y ]];
 	then
 		sudo cp /etc/default/grub /etc/default/grub.bak
-		sudo sed -i -e 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/g' /etc/default/grub
-		sudo update-grub
+		sudo sed -i -e 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/g' /etc/default/grub; sudo update-grub
 	else
 		echo "OKAY!"
 	fi
@@ -154,11 +151,13 @@ _EOF_
 		echo "#Alias to clear package cache" >> ~/.bashrc
 		echo 'alias cleanse="sudo eopkg delete-cache"' >> ~/.bashrc
 		echo "#Alias to remove orphaned packages" >> ~/.bashrc
-		echo 'alias orphaned="sudo eopkg remove-orphans"' >> ~/.bashrc
+		echo 'alias orphaned="sudo eopkg remove-orphaned"' >> ~/.bashrc
 		echo "#Alias to check installation integrity of software" >> ~/.bashrc
 		echo 'alias convey="sudo eopkg check"' >> ~/.bashrc
 		echo "#Alias to rebuild the database" >> ~/.bashrc
 		echo 'alias rebuild="sudo eopkg rebuild-db"' >> ~/.bashrc
+		echo "#Alias to check package integrity" >> ~/.bashrc
+		echo 'alias check="sudo eopkg check"' >> ~/.bashrc
 		echo "#Alias to free RAM cache" >> ~/.bashrc
 		echo 'alias boost="sudo sync; echo 3 > /proc/sys/vm/drop_caches; sudo swapoff -a && sudo swapon -a"' >> ~/.bashrc
 		echo "#Alias to trim journal size" >> ~/.bashrc
@@ -622,7 +621,7 @@ InstallAndConquer() {
 		elif [[ $browser == 12 ]];
 		then
 			user=$(whoami)
-			wget http://linux.palemoon.org/datastore/release/palemoon-28.4.0.linux-x86_64.tar.bz2; tar -xvf palemoon-28.4.0.linux-x86_64.tar.bz2
+			wget http://linux.palemoon.org/datastore/release/palemoon-28.4.1.linux-x86_64.tar.bz2; tar -xvf palemoon-28.4.1.linux-x86_64.tar.bz2
 			sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 13 ]];
@@ -1060,10 +1059,10 @@ HostsfileSelect() {
 	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
 	do
-		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh; chmod +x Hostsman4linux.sh
+		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Advert-Blocker.sh; chmod +x Advert-Blocker.sh
 	break
 	done
-	sudo ./Hostsman4linux.sh
+	sudo ./Advert-Blocker.sh -ABC
 
 	clear
 	Greeting

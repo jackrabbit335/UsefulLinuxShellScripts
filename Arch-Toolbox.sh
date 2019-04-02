@@ -15,8 +15,7 @@ Setup() {
 	done
 
 	#This starts your firewall
-	pacman -Q | grep ufw || sudo pacman -S --noconfirm ufw
-	sudo systemctl enable ufw; sudo ufw enable
+	pacman -Q | grep ufw || sudo pacman -S --noconfirm ufw; sudo systemctl enable ufw; sudo ufw enable
     echo "Would you like to deny ssh and telnet for security?(Y/n)"
     read answer
     while [ $answer == Y ]
@@ -50,8 +49,7 @@ _EOF_
     while [ $answer == Y ];
     do
         sudo touch /etc/syctl.d/60-network-hardening.conf
-        echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.d/60-network-hardening.conf
-        sudo sysctl -p
+        echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.d/60-network-hardening.conf; sudo sysctl -p
     break
     done
 
@@ -61,8 +59,7 @@ _EOF_
 	if [[ $answer == Y ]];
 	then
 		sudo cp /etc/default/grub /etc/default/grub.bak
-		sudo sed -i -e 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/g' /etc/default/grub
-		sudo grub-mkconfig -o /boot/grub/grub.cfg
+		sudo sed -i -e 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/g' /etc/default/grub; sudo grub-mkconfig -o /boot/grub/grub.cfg
 	else
 		echo "OKAY!"
 	fi
@@ -1210,11 +1207,10 @@ HostsfileSelect() {
 	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
 	do
-		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh
-		chmod +x Hostsman4linux.sh
+		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Advert-Blocker.sh; chmod +x Advert-Blocker.sh
 	break
 	done
-	sudo ./Hostsman4linux.sh
+	sudo ./Advert-Blocker.sh -ABC
 
 	clear
 	Greeting

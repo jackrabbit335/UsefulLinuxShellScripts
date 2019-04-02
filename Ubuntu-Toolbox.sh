@@ -5,8 +5,7 @@ Setup() {
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
 
 	#This activates the firewall
-	dpkg --list | grep ufw || sudo apt install -y gufw
-	sudo systemctl enable ufw; sudo ufw enable
+	dpkg --list | grep ufw || sudo apt install -y gufw; sudo systemctl enable ufw; sudo ufw enable
 	echo "Would you like to deny ssh and telnet for security purposes?(Y/n)"
 	read answer
 	if [[ $answer == Y ]];
@@ -20,8 +19,7 @@ Setup() {
 	if [[ $answer == Y ]];
 	then
 		sudo cp /etc/default/grub /etc/default/grub.bak
-		sudo sed -i -e 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/g' /etc/default/grub
-		sudo update-grub2
+		sudo sed -i -e 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/g' /etc/default/grub; sudo update-grub2
 	else
 		echo "Okay!"
 	fi
@@ -47,8 +45,7 @@ Setup() {
 
 	#System tweaks
 	sudo cp /etc/default/grub /etc/default/grub.bak
-	sudo sed -i -e '/GRUB_TIMEOUT=10/c\GRUB_TIMEOUT=3 ' /etc/default/grub
-	sudo update-grub2
+	sudo sed -i -e '/GRUB_TIMEOUT=10/c\GRUB_TIMEOUT=3 ' /etc/default/grub; sudo update-grub2
 
 	#Tweaks the sysctl config file
 	sudo cp /etc/sysctl.conf /etc/sysctl.conf.bak
@@ -82,8 +79,7 @@ _EOF_
 	read answer
 	while [ $answer == Y ];
 	do
-		sudo cp /etc/fstab /etc/fstab.bak
-		sudo sed -i 's/errors=remount-ro 0       1/errors=remount-ro,noatime 0        1/g ' /etc/fstab
+		sudo cp /etc/fstab /etc/fstab.bak; sudo sed -i 's/errors=remount-ro 0       1/errors=remount-ro,noatime 0        1/g ' /etc/fstab
 	break
 	done
 
@@ -98,8 +94,7 @@ _EOF_
     read answer
     if [[ $answer == Y ]];
     then
-	    sudo mv /usr/bin/gnome-keyring-daemon /usr/bin/gnome-keyring-daemon-old
-	    sudo killall gnome-keyring-daemon
+	    sudo mv /usr/bin/gnome-keyring-daemon /usr/bin/gnome-keyring-daemon-old; sudo killall gnome-keyring-daemon
     else
 	    echo "Proceeding"
     fi
@@ -823,15 +818,12 @@ InstallAndConquer() {
 				sudo apt install -y mplayer
 			elif [[ $player == 7 ]];
 			then
-				sudo add-apt-repository ppa:rvm/smplayer
-				sudo apt update
+				sudo add-apt-repository ppa:rvm/smplayer; sudo apt update
 				sudo apt install -y smplayer smplayer-themes smplayer-skins
 			elif [[ $player == 8 ]];
 			then
-				sudo apt install -y software-properties-common
-				sudo add-apt-repository ppa:team-xbmc/ppa
-				sudo apt update
-				sudo apt install -y kodi
+				sudo apt install -y software-properties-common; sudo add-apt-repository ppa:team-xbmc/ppa
+				sudo apt update; sudo apt install -y kodi
 			fi
 		;;
 			7)
@@ -872,12 +864,9 @@ InstallAndConquer() {
 
 			14)
 			echo "THEMES"
-			sudo add-apt-repository ppa:noobslab/icons
-			sudo add-apt-repository ppa:noobslab/icons
-			sudo add-apt-repository ppa:noobslab/icons
-			sudo add-apt-repository ppa:papirus/papirus
-			sudo add-apt-repository ppa:moka/daily
-			sudo apt-get update
+			sudo add-apt-repository ppa:noobslab/icons; sudo add-apt-repository ppa:noobslab/icons
+			sudo add-apt-repository ppa:noobslab/icons; sudo add-apt-repository ppa:papirus/papirus
+			sudo add-apt-repository ppa:moka/daily; sudo apt-get update
 			sudo apt install -y mate-themes faenza-icon-theme obsidian-1-icons dalisha-icons shadow-icon-theme moka-icon-theme papirus-icon-theme
 		;;
 			15)
@@ -1122,10 +1111,10 @@ HostsfileSelect() {
 	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
 	do
-		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh; chmod +x Hostsman4linux.sh
+		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Advert-Blocker.sh; chmod +x Advert-Blocker.sh
 	break
 	done
-	sudo ./Hostsman4linux.sh
+	sudo ./Advert-Blocker.sh -ABC
 
 	clear
 	Greeting
