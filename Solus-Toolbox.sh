@@ -487,7 +487,7 @@ InstallAndConquer() {
 		1)
 		echo "This installs a choice of utility software"
 		eopkg list-installed | grep intel-microcode || sudo eopkg install intel-microcode && sudo grub-mkconfig -o /boot/grub/grub.cfg
-		sudo eopkg install --reinstall mtr lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw
+		sudo eopkg install --reinstall mtr lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw grsync
 		sudo snap install youtube-dl
 	;;
 		2)
