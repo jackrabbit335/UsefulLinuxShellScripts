@@ -502,6 +502,7 @@ InstallAndConquer() {
 	case $software in
 		1)
 		echo "This installs a series of utility software"
+		pacman -Q | grep intel-microcode || sudo pacman -Sy --noconfirm intel-microcode && sudo grub-mkconfig -o /boot/grub/grub.cfg
 		sudo pacman -S --noconfirm dnsutils traceroute hdparm gparted smartmontools
 		sudo pacman -S --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu
 		sudo pacman -S --noconfirm gnome-disk-utility hardinfo lshw net-tools
@@ -1196,7 +1197,7 @@ checkNetwork() {
 			interface=$(ip -o -4 route show to default | awk '{print $5}')
 			sudo dhclient -v -r && sudo dhclient; sudo systemctl stop NetworkManager.service
 			sudo systemctl disable NetworkManager.service; sudo systemctl enable NetworkManager.service
-			sudo systemctl start NetworkManager.service; sudo ip link set $interface up 
+			sudo systemctl start NetworkManager.service; sudo ip link set $interface up
 		fi
 	done
 }
@@ -1917,7 +1918,7 @@ Greeting() {
 		Restart
 	;;
 		18)
-
+		Reset 
 	;;
 		19)
 		echo "Thank you for using Arch-Toolbox... Goodbye!"

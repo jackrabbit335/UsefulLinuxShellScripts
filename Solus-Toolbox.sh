@@ -206,7 +206,7 @@ then
 	echo "This resets Gnome Shell"
 	echo "########################################################################"
 	dconf dump /org/gnome/ > gnome-desktop-backup; dconf reset -f /org/gnome
-elif [[ $DESKTOP_SESSION == xfce ]];
+elif [[ $DESKTOP_SESSION == mate ]];
 then
 	echo "#######################################################################"
 	echo "This resets MATE"
@@ -486,6 +486,7 @@ InstallAndConquer() {
 	case $software in
 		1)
 		echo "This installs a choice of utility software"
+		eopkg list-installed | grep intel-microcode || sudo eopkg install intel-microcode && sudo grub-mkconfig -o /boot/grub/grub.cfg
 		sudo eopkg install --reinstall mtr lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw
 		sudo snap install youtube-dl
 	;;
@@ -1506,7 +1507,8 @@ Greeting() {
 	echo "13 - Update"
 	echo "14 - Help"
 	echo "15 - Restart"
-	echo "16 - exit"
+	echo "16 - Reset the desktop"
+	echo "17 - exit"
 
 	read selection;
 
@@ -1557,6 +1559,9 @@ Greeting() {
 		Restart
 	;;
 		16)
+		Reset
+	;;
+		17)
 		echo "Thank you for using Solus-Toolbox... Goodbye!"
 		sleep 1
 		exit
