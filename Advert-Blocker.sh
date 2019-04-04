@@ -15,6 +15,7 @@ done
 sudo cp /etc/hosts.bak /etc/hosts
 
 cd /tmp
+touch adblock && echo "----------------AdvertBlocker-------------" >> adblock
 
 str1=http://winhelp2002.mvps.org/hosts.txt
 str2=https://someonewhocares.org/hosts/hosts
@@ -47,15 +48,19 @@ while getopts :ABCDEFGH option; do
 	esac
 done
 
+echo "----------------AdvertBlocker-------------" >> adblock
+
 #This tries to deduplicate if multiple files were used.
 if [[ $# -gt 1 ]]; then
 	sort adblock | uniq -u | sort -r > adblock.new && mv adblock.new adblock
 fi
 
 #This ensures that we are using All 127.x for pointing back to home
-sed -i 's/0.0.0.0/127.0.0.1/g' adblock
+sed -i 's/0.0.0.0/127.0.0.1 /g' adblock
 
 #Remove comments
+sed -e 's/[[:blank:]]//g' adblock > adblock.new && mv adblock.new adblock
+sed -e 's/127.0.0.1/127.0.0.1 /g' adblock > adblock.new && mv adblock.new adblock
 sed -e '/#.*/d' adblock > adblock.new && mv adblock.new adblock
 sed -e '/^$/d' adblock > adblock.new && mv adblock.new adblock
 
