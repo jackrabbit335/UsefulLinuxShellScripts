@@ -59,10 +59,11 @@ fi
 sed -i 's/0.0.0.0/127.0.0.1 /g' adblock
 
 #Remove comments
+sed -e '/^[[:space:]]*$/d' adblock > adblock.new && mv adblock.new adblock
 sed -e 's/[[:blank:]]//g' adblock > adblock.new && mv adblock.new adblock
 sed -e 's/127.0.0.1/127.0.0.1 /g' adblock > adblock.new && mv adblock.new adblock
 sed -e '/#.*/d' adblock > adblock.new && mv adblock.new adblock
-sed -e '/^$/d' adblock > adblock.new && mv adblock.new adblock
+sed -e '/^*$/d' adblock > adblock.new && mv adblock.new adblock
 
 #This merges hosts with /etc/hosts then removes hosts
 sudo cat adblock >> /etc/hosts
