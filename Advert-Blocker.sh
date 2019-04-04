@@ -15,7 +15,7 @@ done
 sudo cp /etc/hosts.bak /etc/hosts
 
 cd /tmp
-touch adblock && echo "----------------AdvertBlocker-------------" >> adblock
+touch adblock && echo "----------------AdvertBlocker--------------" >> adblock
 
 str1=http://winhelp2002.mvps.org/hosts.txt
 str2=https://someonewhocares.org/hosts/hosts
@@ -48,7 +48,7 @@ while getopts :ABCDEFGH option; do
 	esac
 done
 
-echo "----------------AdvertBlocker-------------" >> adblock
+echo "----------------AdvertBlocker--------------" >> adblock
 
 #This tries to deduplicate if multiple files were used.
 if [[ $# -gt 1 ]]; then
