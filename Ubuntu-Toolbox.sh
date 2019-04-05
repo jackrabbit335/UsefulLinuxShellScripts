@@ -481,6 +481,7 @@ Quidsup
 SwitchedtoLinux
 Matthew Moore
 Steven Black
+Joshua Strobl of the Solus project
 The creator of the other hosts lists I utilize on my own machines.
 Many others...
 
@@ -622,9 +623,7 @@ _EOF_
 }
 
 InstallAndConquer() {
-	#This checks network connectivity
 	CheckNetwork
-
 	#This installs other software that I've found to be useful
 	echo "Would you like to install some useful apps?(Y/n)"
 	read answer
@@ -1029,10 +1028,6 @@ Uninstall() {
 }
 
 AccountSettings() {
-cat <<_EOF_
-This is a completely untested and experimental utility at best.
-Use this function "Account Settings" at your own risk.
-_EOF_
 	#This can create and remove user accounts
 	echo "This is experimental(untested). Use at  your own risk."
 	echo "What would you like to do today?"
@@ -1108,7 +1103,7 @@ CheckNetwork() {
 }
 
 HostsfileSelect() {
-	find Hostsman4linux.sh
+	find Advert-Blocker.sh
 	while [ $? -eq 1 ];
 	do
 		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Advert-Blocker.sh; chmod +x Advert-Blocker.sh
@@ -1492,7 +1487,7 @@ _EOF_
 			echo "You might be running an init system I haven't tested yet"
 		fi
 	done
-	
+
 	clear
 	Greeting
 }

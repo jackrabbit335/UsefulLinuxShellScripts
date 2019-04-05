@@ -466,7 +466,6 @@ Systeminfo() {
 
 InstallAndConquer() {
 	checkNetwork
-
 	#This installs extra software
 	echo "Would you like to install software?(Y/n)"
 	read answer
@@ -998,6 +997,7 @@ Quidsup
 SwitchedtoLinux
 Matthew Moore
 Steven Black
+Joshua Strobl of the Solus project
 The creator of the other hosts lists I utilize on my own machines.
 Many others...
 
@@ -1007,7 +1007,7 @@ WELCOME AND RAMBLE WITH LICENSING
 Welcome to Arch-Toolbox. This is a useful little utility that
 tries to setup, maintain, and keep up to date with the latest
 software on your system. Arch-Toolbox is delivered as is and thus,
-I can't be held accountable if something goes wrong. This software is
+I can not be held accountable if something goes wrong. This software is
 freely given under the GPL license and is distributable and changeable
 as you see fit, I only ask that you give the author the credit for the
 original work. Arch-Toolbox has been tested and should work on your
@@ -1044,14 +1044,14 @@ KERNELS AND SERVICES
 ########################################################################
 Kernels, as mentioned in the manager, are an important and integral part
 of the system. For your system to work, it needs to run a certain kernel
-I'd suggest the LTS that is recommended or preconfigured by your OS.
+I would suggest the LTS that is recommended or preconfigured by your OS.
 Assuming that you have that kernel installed, testing out newer kernels
 for specific hardware and or security functionality is not a bad idea
 just use caution. Disabling services is generally a bad idea, however,
 if you know you do not need it, if it is something like Bluetooth or
 some app that you installed personally and the service is not required
 by your system, disabling that service could potentially help speed up
-your system. However, I'd advise against disabling system critical
+your system. However, I would advise against disabling system critical
 services.
 
 ########################################################################
@@ -1089,7 +1089,7 @@ ability to make this script run on a schedule and it would always give
 them the desired hosts file. Alternatively, if you wish to run this
 script from a menu as a regular user, chmoding the file to 755 might
 help before storing it in the /usr/local/bin directory and creating a
-desktop file for it. I'll write a blog article for that later.
+desktop file for it. I will write a blog article for that later.
 to find my blog just go to: https://techiegeek123.blogspot.com/ in a
 browser.
 
@@ -1122,12 +1122,7 @@ _EOF_
 }
 
 AccountSettings() {
-
 #Setup and remove user accounts
-cat <<_EOF_
-This is a completely untested and experimental utility at best.
-Use this function "Account Settings" at your own risk.
-_EOF_
 	#This can create and remove user accounts
 	echo "What would you like to do?"
 	echo "1 - Create user account(s)"
@@ -1205,7 +1200,7 @@ checkNetwork() {
 HostsfileSelect() {
 
 	#I can prepare a simple hosts file
-	find Hostsman4linux.sh
+	find Advert-Blocker.sh
 	while [ $? -eq 1 ];
 	do
 		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Advert-Blocker.sh; chmod +x Advert-Blocker.sh
@@ -1918,7 +1913,7 @@ Greeting() {
 		Restart
 	;;
 		18)
-		Reset 
+		Reset
 	;;
 		19)
 		echo "Thank you for using Arch-Toolbox... Goodbye!"
