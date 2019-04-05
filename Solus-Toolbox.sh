@@ -455,7 +455,6 @@ Systeminfo() {
 
 InstallAndConquer() {
 	checkNetwork
-
 	#This installs extra software
 	echo "Would you like to install software?(Y/n)"
 	read answer
@@ -853,20 +852,21 @@ Quidsup
 SwitchedtoLinux
 Matthew Moore
 Steven Black
+Joshua Strobl of the Solus project
 The creator of the other hosts lists I utilize on my own machines.
 Many others...
 
 ########################################################################
 WELCOME AND RAMBLE WITH LICENSING
 ########################################################################
-Welcome to Arch-Toolbox. This is a useful little utility that
+Welcome to Solus-Toolbox. This is a useful little utility that
 tries to setup, maintain, and keep up to date with the latest
-software on your system. Arch-Toolbox is delivered as is and thus,
+software on your system. Solus-Toolbox is delivered as is and thus,
 I can not be held accountable if something goes wrong. This software is
 freely given under the GPL license and is distributable and changeable
 as you see fit, I only ask that you give the author the credit for the
-original work. Arch-Toolbox has been tested and should work on your
-device assuming that you are running an arch-based system.
+original work. Solus-Toolbox has been tested and should work on your
+device assuming that you are running an Solus-based system.
 A cronjob is any task or script that you place in the crontab file to be
 ran at a certain time.To not go to deep into it, the basic syntax is
 this:
