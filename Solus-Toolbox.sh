@@ -591,8 +591,7 @@ InstallAndConquer() {
 			sudo eopkg install opera-stable
 		elif [[ $browser == 5 ]];
 		then
-			wget https://downloads.vivaldi.com/snapshot/install-vivaldi.sh; chmod +x install-vivaldi.sh
-			./install-vivaldi.sh
+		sudo eopkg install vivaldi-snapshot
 		elif [[ $browser == 6 ]];
 		then
 			sudo eopkg install lynx
