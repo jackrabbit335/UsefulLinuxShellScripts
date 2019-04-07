@@ -1,2 +1,5 @@
 ## If you fancy helping out the project, please add your own annoyances and ads on the net to this file.
 127.0.0.1 browsergames2019.com
+127.0.0.1 www.browsergames2019.com
+127.0.0.1 www.americascardroom.eu
+127.0.0.1 americascardroom.eu
