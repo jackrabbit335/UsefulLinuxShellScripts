@@ -151,7 +151,7 @@ _EOF_
 		echo "#Alias to clear package cache" >> ~/.bashrc
 		echo 'alias cleanse="sudo eopkg delete-cache"' >> ~/.bashrc
 		echo "#Alias to remove orphaned packages" >> ~/.bashrc
-		echo 'alias orphaned="sudo eopkg remove-orphans"' >> ~/.bashrc
+		echo 'alias orphaned="sudo eopkg remove-orphaned"' >> ~/.bashrc
 		echo "#Alias to check installation integrity of software" >> ~/.bashrc
 		echo 'alias convey="sudo eopkg check"' >> ~/.bashrc
 		echo "#Alias to rebuild the database" >> ~/.bashrc
@@ -1057,10 +1057,10 @@ HostsfileSelect() {
 	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
 	do
-		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Advert-Blocker.sh; chmod +x Advert-Blocker.sh
+		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh; chmod +x Hostsman4linux.sh
 	break
 	done
-	sudo ./Advert-Blocker.sh -ABC
+	sudo ./Hostsman4linux.sh -ABC
 
 	clear
 	Greeting

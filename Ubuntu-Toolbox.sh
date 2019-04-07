@@ -1103,13 +1103,13 @@ CheckNetwork() {
 }
 
 HostsfileSelect() {
-	find Advert-Blocker.sh
+	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
 	do
-		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Advert-Blocker.sh; chmod +x Advert-Blocker.sh
+		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh; chmod +x Hostsman4linux.sh
 	break
 	done
-	sudo ./Advert-Blocker.sh -ABC
+	sudo ./Hostsman4linux.sh -ABC
 
 	clear
 	Greeting
