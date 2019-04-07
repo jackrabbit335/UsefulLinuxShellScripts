@@ -145,7 +145,7 @@ _EOF_
 		echo "#Alias to edit grub" >> ~/.bashrc
 		echo 'alias grub="sudo nano /etc/default/grub"' >> ~/.bashrc
 		echo "#Alias to update grub" >> ~/.bashrc
-		echo 'alias grubup="sudo update-grub"' >> ~/.bashrc
+		echo 'alias grubup="sudo clr-boot-manager update"' >> ~/.bashrc
 		echo "#Alias to update the system" >> ~/.bashrc
 		echo 'alias update="sudo eopkg upgrade"' >> ~/.bashrc
 		echo "#Alias to clear package cache" >> ~/.bashrc
@@ -483,7 +483,6 @@ InstallAndConquer() {
 	case $software in
 		1)
 		echo "This installs a choice of utility software"
-		eopkg list-installed | grep intel-microcode || sudo eopkg install intel-microcode && sudo grub-mkconfig -o /boot/grub/grub.cfg
 		sudo eopkg install --reinstall mtr lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw grsync
 		sudo snap install youtube-dl
 	;;
@@ -1287,7 +1286,7 @@ SystemMaintenance() {
 	sudo updatedb && sudo mandb
 
 	#update the grub
-	sudo update-grub
+	sudo clr-boot-manager update
 
 	#This runs a disk checkup and attempts to fix filesystem
 	sudo touch /forcefsck

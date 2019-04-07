@@ -501,7 +501,6 @@ InstallAndConquer() {
 	case $software in
 		1)
 		echo "This installs a series of utility software"
-		pacman -Q | grep intel-microcode || sudo pacman -Sy --noconfirm intel-microcode && sudo grub-mkconfig -o /boot/grub/grub.cfg
 		sudo pacman -S --noconfirm dnsutils traceroute hdparm gparted smartmontools
 		sudo pacman -S --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu
 		sudo pacman -S --noconfirm gnome-disk-utility hardinfo lshw net-tools
