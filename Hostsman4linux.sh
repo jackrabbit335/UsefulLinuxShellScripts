@@ -27,7 +27,7 @@ str7=https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt
 str8=http://sysctl.org/cameleon/hosts
 str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/main
 
-while getopts :ABCDEFGH option; do
+while getopts :ABCDEFGHI option; do
 	case $option in
 		A) wget $str1 && cat hosts.txt >> adblock && rm hosts.txt
 		;;
