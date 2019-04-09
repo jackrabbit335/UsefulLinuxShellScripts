@@ -43,8 +43,8 @@ Setup() {
 cat <<_EOF_
 Ping requests from unknown sources could mean that people are trying to
 locate/attack your network. If you need this functionality, you can comment
-this line out, however, this shouldn't impact normal users. If you blocked ICMP traffic
-in Iptables or UFW, you really don't need this here.
+this line out, however, this should not impact normal users. If you blocked ICMP traffic
+in Iptables or UFW, you really do not need this here.
 _EOF_
     echo "Block icmp ping requests?(Y/n)"
     read answer
