@@ -995,8 +995,8 @@ Joe Collins
 Quidsup
 SwitchedtoLinux
 Matthew Moore
-Steven Black
 Joshua Strobl of the Solus project
+Steven Black,
 The creator of the other hosts lists I utilize on my own machines.
 Many others...
 
@@ -1051,7 +1051,12 @@ if you know you do not need it, if it is something like Bluetooth or
 some app that you installed personally and the service is not required
 by your system, disabling that service could potentially help speed up
 your system. However, I would advise against disabling system critical
-services.
+services. Manjaro specifically has their own tool for managing Kernels 
+and drivers. This tool helps immensely and is what I utilize in this 
+script's kernel manager. This tool will not be in other Arch-based
+distributions. Read the documentation for your distribution before
+attempting to install or uninstall other kernels. The Arch wiki is a 
+valuable resource.
 
 ########################################################################
 BACKUP AND RESTORE
@@ -1068,7 +1073,10 @@ or when misfortune should befall you. Just ensure that the drive is a
 usable and safe one and ensure that you have it ready when making
 reparations. So far, the only available option is to Backup the home
 directory, but that might soon change. Please also note that backing up
-the home directory can save some user settings as well.
+the home directory can save some user settings as well. 
+Update: There is now an ability to backup the entire system using rsync.
+With this new ability, in time there should be a way to restore the
+system in the event of a catastrophic issue.
 
 ########################################################################
 HOSTS FILE MANIPULATION
@@ -1090,7 +1098,11 @@ script from a menu as a regular user, chmoding the file to 755 might
 help before storing it in the /usr/local/bin directory and creating a
 desktop file for it. I will write a blog article for that later.
 to find my blog just go to: https://techiegeek123.blogspot.com/ in a
-browser.
+browser. Update: I have finally created the perfect script for automation.
+Now users are able to create the perfect hosts file for them Without
+being bothered to answer questions. The defaults I have chosen
+cover a broad spectrum of Ads, Trackers and Malware, for your
+convenience.
 
 ########################################################################
 SWAP FILES
@@ -1104,7 +1116,9 @@ one. The blog article about this issue can be found here:
 https://techiegeek123.blogspot.com/2019/02/swap-files-in-linux.html.
 Please  email me at jackharkness444@protonmail.com for more info about
 these scripts or any problems you have with Linux. I will be more than
-happy to help.
+happy to help. One further notice, the Swap file size is configurable
+for users who are somewhat advanced enough to go into the code and
+change the size from 2G to whatever they desire.
 
 ########################################################################
 CONTACT ME
@@ -1205,7 +1219,7 @@ HostsfileSelect() {
 		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh; chmod +x Hostsman4linux.sh
 	break
 	done
-	sudo ./Hostsman4linux.sh -ABC
+	sudo ./Hostsman4linux.sh -ABCD
 
 	clear
 	Greeting

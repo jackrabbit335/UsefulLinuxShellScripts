@@ -847,8 +847,8 @@ Joe Collins
 Quidsup
 SwitchedtoLinux
 Matthew Moore
-Steven Black
 Joshua Strobl of the Solus project
+Steven Black,
 The creator of the other hosts lists I utilize on my own machines.
 Many others...
 
@@ -864,7 +864,10 @@ as you see fit, I only ask that you give the author the credit for the
 original work. Solus-Toolbox has been tested and should work on your
 device assuming that you are running an Solus-based system.
 A cronjob is any task or script that you place in the crontab file to be
-ran at a certain time.To not go to deep into it, the basic syntax is
+ran at a certain time. It should be noted that Solus has
+taken a slightly different approach to dealing with task scheduling.
+Solus prefers to rely on Systemd. To not go to deep into it,
+the basic syntax is
 this:
 *     *     *   *    *        command to be executed
 -     -     -   -    -
@@ -904,7 +907,9 @@ if you know you do not need it, if it is something like Bluetooth or
 some app that you installed personally and the service is not required
 by your system, disabling that service could potentially help speed up
 your system. However, I would advise against disabling system critical
-services.
+services. It should be noted that in Solus, the default kernel package
+is the linux-current package. Users can still use this script during
+setup to install the LTS if they so choose.
 
 ########################################################################
 BACKUP AND RESTORE
@@ -922,6 +927,9 @@ usable and safe one and ensure that you have it ready when making
 reparations. So far, the only available option is to Backup the home
 directory, but that might soon change. Please also note that backing up
 the home directory can save some user settings as well.
+Update: There is now an ability to backup the entire system using rsync.
+With this new ability, in time there should be a way to restore the
+system in the event of a catastrophic issue.
 
 ########################################################################
 HOSTS FILE MANIPULATION
@@ -943,7 +951,11 @@ script from a menu as a regular user, chmoding the file to 755 might
 help before storing it in the /usr/local/bin directory and creating a
 desktop file for it. I will write a blog article for that later.
 to find my blog just go to: https://techiegeek123.blogspot.com/ in a
-browser.
+browser. Update: I have finally created the perfect script for automation.
+Now users are able to create the perfect hosts file for them Without
+being bothered to answer questions. The defaults I have chosen
+cover a broad spectrum of Ads, Trackers and Malware, for your
+convenience.
 
 ########################################################################
 SWAP FILES
@@ -957,7 +969,9 @@ one. The blog article about this issue can be found here:
 https://techiegeek123.blogspot.com/2019/02/swap-files-in-linux.html.
 Please  email me at jackharkness444@protonmail.com for more info about
 these scripts or any problems you have with Linux. I will be more than
-happy to help.
+happy to help. One further notice, the Swap file size is configurable
+for users who are somewhat advanced enough to go into the code and
+change the size from 2G to whatever they desire.
 
 ########################################################################
 CONTACT ME
@@ -1059,7 +1073,7 @@ HostsfileSelect() {
 		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh; chmod +x Hostsman4linux.sh
 	break
 	done
-	sudo ./Hostsman4linux.sh -ABC
+	sudo ./Hostsman4linux.sh -ABCD
 
 	clear
 	Greeting

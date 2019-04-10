@@ -480,8 +480,8 @@ Joe Collins
 Quidsup
 SwitchedtoLinux
 Matthew Moore
-Steven Black
 Joshua Strobl of the Solus project
+Steven Black,
 The creator of the other hosts lists I utilize on my own machines.
 Many others...
 
@@ -494,7 +494,7 @@ software on your system. Ubuntu-Toolbox is delivered as is and thus,
 I can not be held accountable if something goes wrong. This software is
 freely given under the GPL license and is distributable and changeable
 as you see fit, I only ask that you give the author the credit for the
-original work. Arch-Toolbox has been tested and should work on your
+original work. Ubuntu-Toolbox has been tested and should work on your
 device assuming that you are running an Ubuntu-based system.
 A cronjob is any task or script that you place in the crontab file to be
 ran at a certain time.To not go to deep into it, the basic syntax is
@@ -556,6 +556,9 @@ usable and safe one and ensure that you have it ready when making
 reparations. So far, the only available option is to Backup the home
 directory, but that might soon change. Please also note that backing up
 the home directory can save some user settings as well.
+Update: There is now an ability to backup the entire system using rsync.
+With this new ability, in time there should be a way to restore the
+system in the event of a catastrophic issue.
 
 ########################################################################
 Recent Changes with Installing certain apps and things
@@ -576,7 +579,7 @@ way to install wine on newer systems. Will work on this further.
 HOSTS FILE MANIPULATION
 ########################################################################
 Setting up a custom hosts file can be selectively simple with the script
-Hostsman4linux and the corresponding function HostsfileSelect Both have
+Hostsman4linux and the corresponding function HostsFileSelect Both have
 the ability to compile and sort one central file out of multiple source
 third party hosts files. These can be a great extra layer to your system
 security regimen or can be a helpful adblocking tool allowing your
@@ -592,7 +595,11 @@ script from a menu as a regular user, chmoding the file to 755 might
 help before storing it in the /usr/local/bin directory and creating a
 desktop file for it. I will write a blog article for that later.
 to find my blog just go to: https://techiegeek123.blogspot.com/ in a
-browser.
+browser. Update: I have finally created the perfect script for automation.
+Now users are able to create the perfect hosts file for them Without
+being bothered to answer questions. The defaults I have chosen
+cover a broad spectrum of Ads, Trackers and Malware, for your
+convenience.
 
 ########################################################################
 SWAP FILES
@@ -606,7 +613,9 @@ one. The blog article about this issue can be found here:
 https://techiegeek123.blogspot.com/2019/02/swap-files-in-linux.html.
 Please  email me at jackharkness444@protonmail.com for more info about
 these scripts or any problems you have with Linux. I will be more than
-happy to help.
+happy to help. One further notice, the Swap file size is configurable
+for users who are somewhat advanced enough to go into the code and
+change the size from 2G to whatever they desire.
 
 ########################################################################
 CONTACT ME
@@ -1109,7 +1118,7 @@ HostsfileSelect() {
 		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh; chmod +x Hostsman4linux.sh
 	break
 	done
-	sudo ./Hostsman4linux.sh -ABC
+	sudo ./Hostsman4linux.sh -ABCD
 
 	clear
 	Greeting
