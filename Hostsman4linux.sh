@@ -26,8 +26,9 @@ str6=https://hosts-file.net/ad_servers.txt
 str7=https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt
 str8=http://sysctl.org/cameleon/hosts
 str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/main
+str10=https://raw.githubusercontent.com/azet12/KADhosts/master/KADhosts.txt
 
-while getopts :ABCDEFGHI option; do
+while getopts :ABCDEFGHIJ option; do
 	case $option in
 		A) wget $str1 && cat hosts.txt >> adblock && rm hosts.txt
 		;;
@@ -46,6 +47,8 @@ while getopts :ABCDEFGHI option; do
 		H) wget $str8 && cat hosts >> adblock && rm hosts
 		;;
 		I) wget $str9 && cat main >> adblock && rm main
+		;;
+		J) wget $str10 && cat KADhosts.txt >> adblock && rm KADhosts.txt
 		;;
 		*)
 	esac
