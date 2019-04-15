@@ -526,6 +526,69 @@ https://wiki.ubuntu.com/
 Please copy and paste these in a browser then hit enter.
 
 ########################################################################
+APT/DPKG AND PACKAGE MANAGERS IN GENERAL
+########################################################################
+Aptitude has been around in one form or another since Ubuntu and Ubuntu-
+based systems began. Apt covers a wide range of applications, however,
+the applications in Ubuntu repositories can sometimes be outdated or
+scarce. Enter DPKG. DPKG handles files in a .deb format which can package
+multiple files together in a tighter and smaller sized bundle. This bundle
+can then be unarchived and assembled easily by a Debian-based system.
+Ubuntu is built on Debian code, so this being carried over was only
+natural. .deb packages still do not handle dependencies very well, This
+is one of the reasons for some applications moving to Snap. Snap is yet
+another package management system that is coming installed into newer
+Ubuntu systems along with Flatpak. Between these two, the idea is that
+dependency issues and more updated software would come faster and easier
+to the user and developers with just one package. It would be easier to
+maintain a Linux system or any other system if they were all using the
+same package across multiple platforms and distributions getting the same
+version updates at the same time. While a step in the right direction, it
+will be a while before they fully catch on. 
+
+########################################################################
+ClEANING AND ROUTINE MAINTENANCE
+########################################################################
+Within this and the other two scripts is a section devoted to cleaning
+and maintaining the system. Cleaning is not as necessary as in
+Windows, however, it is something to consider doing when things
+are not working right or when disk space is becoming sparse. Maintenance
+is another function that this script will provide. Maintainence in this
+script is classified as anything to promote the continued level of
+security and optimization necessary for smooth running of the system.
+Maintenace can be done anytime that you wish and will include things like
+basic checking of the network and ensuring the firewall is enabled.
+offering to run trim on ssd hardware and offering to check fragmentation
+on mechanical hard drives. Updating the system and fixing minor updating
+issues are also included in this function. Man pages get updated while
+older ones get purged from the system as well as file databases are
+ammended as needed. The grub configurations get updated incase of changes
+made and not accounted for since last boot, there is also a flag file
+created to force fsck to run and fix any file system corruption it finds
+on next boot. The user is then asked if the user would like to run clean up
+as well. Cleaning handles things like removing all cache and thumbnails
+from the system as well as freeing memory taken up and clearing tmp which
+does get cleared on boot. Cleaning also clears broken symbolic links and
+remnant cloned files and left over application files in the home folder.
+It also does the standard and cleans the bash history and removes old
+update cache and orphaned packages among other things. When ran together,
+these items can make a significant and noticeable difference in the
+smooth and secure feeling of your distribution.
+
+########################################################################
+SYSTEM INFORMATION
+########################################################################
+This script has the ability to help with troubleshooting as well. It can
+collect hardware and software information for troubleshooting issues
+online as well as for reinstalling fresh in the future. This script
+tries to make things as clear to read as possible by separating the
+different information into categories. Each category pertains to things
+such as hardware, software, login attempts and many more things. This
+data will be saved to one rather large text file in the home folder of
+the user who executes the script. Many of this will be useless to a new
+user, so there are online forums for help.
+
+########################################################################
 KERNELS AND SERVICES
 ########################################################################
 Kernels, as mentioned in the manager, are an important and integral part

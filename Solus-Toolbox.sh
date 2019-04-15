@@ -351,7 +351,7 @@ Systeminfo() {
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "PACKAGE MANAGER HISTORY" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
-	cat /var/log/eopkg.log >> $host-sysinfo.txt
+	sudo eopkg history >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "APPARMOR" >> $host-sysinfo.txt
@@ -819,7 +819,7 @@ _EOF_
 	read answer
 	while [ $answer == Y ];
 	do
-		echo "Enter the name of any software you'd like to install"
+		echo "Enter the name of any software you would like to install"
 		read software
 		sleep 0.5
 		sudo eopkg install $software
@@ -848,8 +848,8 @@ Quidsup
 SwitchedtoLinux
 Matthew Moore
 Joshua Strobl of the Solus project
-Steven Black,
-The creator of the other hosts lists I utilize on my own machines.
+Steven Black, the creator of the other hosts lists
+I utilize on my own machines.
 Many others...
 
 ########################################################################
@@ -864,7 +864,7 @@ as you see fit, I only ask that you give the author the credit for the
 original work. Solus-Toolbox has been tested and should work on your
 device assuming that you are running an Solus-based system.
 A cronjob is any task or script that you place in the crontab file to be
-ran at a certain time. It should be noted that Solus has
+ran at a certain time.It should be noted that Solus has
 taken a slightly different approach to dealing with task scheduling.
 Solus prefers to rely on Systemd. To not go to deep into it,
 the basic syntax is
@@ -893,6 +893,73 @@ https://wiki.manjaro.org/index.php?title=Main_Page
 https://wiki.archlinux.org
 https://forum.manjaro.org
 https://getsol.us/help-center/home/
+
+########################################################################
+EOPKG AND PACKAGE MANAGERS IN GENERAL
+########################################################################
+EOPKG is a package manager forked from Pisi. It is unlike any other pack-
+age manager software as it does not use deb or rpm package formats by
+default. EOPKG is meant to be used with Solus OS and is therefore the
+work of its developers. Solus is kinda low on Software titles at the
+moment, however, it is quickly growing. EOPKG uses third party repos
+as well as its own repo to give users a more robust range of software.
+The third party repository fetches software from remote servers and
+installs the software on the system using the EOPKG standard technique
+of software management. Solus also ships with snapd by default. This
+allows the user access to even more software, some even platform
+agnosticated packages like Notepad Plus Plus. Snap also offers Chromium
+as the standard repository does not, at this time, ship it. The
+differences in package management is among the multitude of things that
+make Solus different. Developing working scripts for the three major OS-
+es required a deal of research and trial and error. This is not the only
+reason, but it is a big one as to why there are three toolbox scripts
+rather than just one. Upgrading is simple with this one though and
+learning a few key commands should get you by. All the main commands
+will be used in this script so enjoy. Sudo eopkg up will update the sys-
+tem, while sudo eopkg remove $name will remove an application. To install
+an application in the standard repo simply type sudo eopkg install $name.
+
+########################################################################
+ClEANING AND ROUTINE MAINTENANCE
+########################################################################
+Within this and the other two scripts is a section devoted to cleaning
+and maintaining the system. Cleaning is not as necessary as in
+Windows, however, it is something to consider doing when things
+are not working right or when disk space is becoming sparse. Maintenance
+is another function that this script will provide. Maintainence in this
+script is classified as anything to promote the continued level of
+security and optimization necessary for smooth running of the system.
+Maintenace can be done anytime that you wish and will include things like
+basic checking of the network and ensuring the firewall is enabled.
+offering to run trim on ssd hardware and offering to check fragmentation
+on mechanical hard drives. Updating the system and fixing minor updating
+issues are also included in this function. Man pages get updated while
+older ones get purged from the system as well as file databases are
+ammended as needed. The grub configurations get updated incase of changes
+made and not accounted for since last boot, there is also a flag file
+created to force fsck to run and fix any file system corruption it finds
+on next boot. The user is then asked if the user would like to run clean up
+as well. Cleaning handles things like removing all cache and thumbnails
+from the system as well as freeing memory taken up and clearing tmp which
+does get cleared on boot. Cleaning also clears broken symbolic links and
+remnant cloned files and left over application files in the home folder.
+It also does the standard and cleans the bash history and removes old
+update cache and orphaned packages among other things. When ran together,
+these items can make a significant and noticeable difference in the
+smooth and secure feeling of your distribution.
+
+########################################################################
+SYSTEM INFORMATION
+########################################################################
+This script has the ability to help with troubleshooting as well. It can
+collect hardware and software information for troubleshooting issues
+online as well as for reinstalling fresh in the future. This script
+tries to make things as clear to read as possible by separating the
+different information into categories. Each category pertains to things
+such as hardware, software, login attempts and many more things. This
+data will be saved to one rather large text file in the home folder of
+the user who executes the script. Many of this will be useless to a new
+user, so there are online forums for help.
 
 ########################################################################
 KERNELS AND SERVICES

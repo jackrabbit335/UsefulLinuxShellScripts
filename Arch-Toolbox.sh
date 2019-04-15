@@ -1039,6 +1039,74 @@ https://wiki.archlinux.org
 https://forum.manjaro.org
 
 ########################################################################
+PACMAN/OCTOPI AND PACKAGE MANAGERS IN GENERAL
+########################################################################
+There are two big points that set Arch Linux and its package management
+apart and those are the support for AUR or Arch User Repository and
+control over individual mirrors. Pamac or Pacman has many ways to
+interact with the AUR and to control the mirrors or servers that it
+uses to download updated software. Most are third party tools, however,
+recently, pamac received an update which better supported the AUR in
+its own backend. The further improves the manager overall and limits
+the necessity to using third party tools to octopi. Another big point,
+the mirrors control is usually handled by reflector or another script
+held within pacman-contrib dependent on the distribution. If you don not
+have pacman-contrib package or another load of scripts on your device,
+it is easy in Manjaro to run sudo pacman -Sy --noconfirm pacman-contrib.
+Octopi is, in my opinion, a better and more straight forward package
+manager which utilizes pamac at its core, however, it does not handle
+the AUR very well graphically, for this, using a tool such as Trizen
+becomes a necessity. Having access to the AUR grants the user access to
+all kinds of software previously unavailable. Arch can run more Software
+that can also be ran on Windows than any other Linux system without using
+Wine. For all this, it is as simple as running a few short commands which
+are covered in this script. To learn them, just read the script and study
+it. It is a simpler method than Apt and Debian package management
+as these are so separated with several commands each. 
+
+########################################################################
+ClEANING AND ROUTINE MAINTENANCE
+########################################################################
+Within this and the other two scripts is a section devoted to cleaning
+and maintaining the system. Cleaning is not as necessary as in
+Windows, however, it is something to consider doing when things
+are not working right or when disk space is becoming sparse. Maintenance
+is another function that this script will provide. Maintainence in this
+script is classified as anything to promote the continued level of
+security and optimization necessary for smooth running of the system.
+Maintenace can be done anytime that you wish and will include things like
+basic checking of the network and ensuring the firewall is enabled.
+offering to run trim on ssd hardware and offering to check fragmentation
+on mechanical hard drives. Updating the system and fixing minor updating
+issues are also included in this function. Man pages get updated while
+older ones get purged from the system as well as file databases are
+ammended as needed. The grub configurations get updated incase of changes
+made and not accounted for since last boot, there is also a flag file
+created to force fsck to run and fix any file system corruption it finds
+on next boot. The user is then asked if the user would like to run clean up
+as well. Cleaning handles things like removing all cache and thumbnails
+from the system as well as freeing memory taken up and clearing tmp which
+does get cleared on boot. Cleaning also clears broken symbolic links and
+remnant cloned files and left over application files in the home folder.
+It also does the standard and cleans the bash history and removes old
+update cache and orphaned packages among other things. When ran together,
+these items can make a significant and noticeable difference in the
+smooth and secure feeling of your distribution.
+
+########################################################################
+SYSTEM INFORMATION
+########################################################################
+This script has the ability to help with troubleshooting as well. It can
+collect hardware and software information for troubleshooting issues
+online as well as for reinstalling fresh in the future. This script
+tries to make things as clear to read as possible by separating the
+different information into categories. Each category pertains to things
+such as hardware, software, login attempts and many more things. This
+data will be saved to one rather large text file in the home folder of
+the user who executes the script. Many of this will be useless to a new
+user, so there are online forums for help.
+
+########################################################################
 KERNELS AND SERVICES
 ########################################################################
 Kernels, as mentioned in the manager, are an important and integral part
@@ -1051,11 +1119,11 @@ if you know you do not need it, if it is something like Bluetooth or
 some app that you installed personally and the service is not required
 by your system, disabling that service could potentially help speed up
 your system. However, I would advise against disabling system critical
-services. Manjaro specifically has their own tool for managing Kernels 
-and drivers. This tool helps immensely and is what I utilize in this 
+services. Manjaro specifically has their own tool for managing Kernels
+and drivers. This tool helps immensely and is what I utilize in this
 script's kernel manager. This tool will not be in other Arch-based
 distributions. Read the documentation for your distribution before
-attempting to install or uninstall other kernels. The Arch wiki is a 
+attempting to install or uninstall other kernels. The Arch wiki is a
 valuable resource.
 
 ########################################################################
@@ -1073,7 +1141,7 @@ or when misfortune should befall you. Just ensure that the drive is a
 usable and safe one and ensure that you have it ready when making
 reparations. So far, the only available option is to Backup the home
 directory, but that might soon change. Please also note that backing up
-the home directory can save some user settings as well. 
+the home directory can save some user settings as well.
 Update: There is now an ability to backup the entire system using rsync.
 With this new ability, in time there should be a way to restore the
 system in the event of a catastrophic issue.
