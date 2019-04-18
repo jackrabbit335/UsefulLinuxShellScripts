@@ -575,6 +575,7 @@ InstallAndConquer() {
 		echo "11 - basilisk"
 		echo "12 - palemoon"
 		echo "13 - firefox"
+		echo "14 - brave"
 		read browser
 		if [[ $browser == 1 ]];
 		then
@@ -623,6 +624,8 @@ InstallAndConquer() {
 		elif [[ $browser == 13 ]];
 		then
 			sudo eopkg install firefox
+		elif [[ $browser == 14 ]];
+			sudo eopkg install brave
 		else
 			echo "You have entered an invalid number"
 		fi
