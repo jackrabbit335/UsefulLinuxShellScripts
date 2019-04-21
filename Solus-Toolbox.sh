@@ -1,6 +1,6 @@
 #!/bin/bash
 
-Setup() {
+Setup(){
 	#Sets default editor to nano in bashrc
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
 
@@ -39,7 +39,7 @@ Setup() {
 	echo "vm.swappiness = 5" | sudo tee -a /etc/sysctl.d/99-sysctl.conf #lowers swap value
 	sudo sysctl -p
 
-    #WE can block ICMP requests from the kernel if you'd like
+	#WE can block ICMP requests from the kernel if you'd like
 cat <<_EOF_
 Ping requests from unknown sources could mean that people are trying to
 locate/attack your network. If you need this functionality, you can comment
@@ -180,7 +180,7 @@ _EOF_
 
 }
 
-Update() {
+Update(){
 	checkNetwork
 
 	sudo eopkg upgrade
@@ -190,7 +190,7 @@ Update() {
 
 }
 
-Reset() {
+Reset(){
 #This resets the desktop
 if [[ $DESKTOP_SESSION == budgie ]];
 then
@@ -215,8 +215,7 @@ else
 fi
 }
 
-Systeminfo() {
-	#This gives some useful information for later troubleshooting
+Systeminfo(){
 	host=$(hostname)
 	distribution=$(lsb_release -a | grep "Description:" | awk -F: '{print $2}')
 	echo "##############################################################" >> $host-sysinfo.txt
@@ -451,9 +450,9 @@ Systeminfo() {
 	Greeting
 }
 
-InstallAndConquer() {
+InstallAndConquer(){
 	checkNetwork
-	#This installs extra software
+
 	echo "Would you like to install software?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -797,7 +796,7 @@ InstallAndConquer() {
 
 	read -p "Please press enter to continue..."
 
-	#This offers to install preload for storing apps in memory
+#This installs preload for faster load of apps	
 cat <<_EOF_
 Preload is as the name implies, a preloader. This nifty tool can shadow
 your uses of the desktop and store bits of applications into memory for
@@ -833,7 +832,7 @@ _EOF_
 	Greeting
 }
 
-Help() {
+Help(){
 less <<_EOF_
 
 Press "q" to quit
@@ -1057,7 +1056,7 @@ _EOF_
 
 }
 
-AccountSettings() {
+AccountSettings(){
 cat <<_EOF_
 This is a completely untested and experimental utility at best.
 Use this function "Account Settings" at your own risk.
@@ -1118,7 +1117,7 @@ _EOF_
 	Greeting
 }
 
-checkNetwork() {
+checkNetwork(){
 	#This will try to ensure you have a strong network connection
 	for c in computer;
 	do
@@ -1135,7 +1134,7 @@ checkNetwork() {
 	done
 }
 
-HostsfileSelect() {
+HostsfileSelect(){
 	#I can prepare a simple hosts file
 	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
@@ -1149,8 +1148,7 @@ HostsfileSelect() {
 	Greeting
 }
 
-Uninstall() {
-	#This allows the user to remove unwanted shite
+Uninstall(){
 	echo "Would you like to remove any other unwanted junk?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -1172,7 +1170,7 @@ Uninstall() {
 	Greeting
 }
 
-cleanup() {
+cleanup(){
 	#This will clean the cache
 	sudo rm -rf .cache/*
 	sudo rm -rf .thumbnails/*
@@ -1223,7 +1221,7 @@ cleanup() {
 	Uninstall
 }
 
-BrowserRepair() {
+BrowserRepair(){
 cat << _EOF_
 This can fix a lot of the usual issues with a few of the bigger browsers.
 These can include performance hitting issues. If your browser needs a tuneup,
@@ -1231,7 +1229,6 @@ it is probably best to do it in the browser itself, but when you just want somet
 fast, this can do it for you. More browsers and options are coming.
 _EOF_
 
-	#Look for the following browsers
 	browser1="$(find /usr/bin/firefox)"
 	browser2="$(find /usr/bin/vivaldi*)"
 	browser3="$(find /usr/bin/palemoon)"
@@ -1241,6 +1238,7 @@ _EOF_
 	browser7="$(find /usr/bin/basilisk)"
 	browser8="$(find /usr/bin/epiphany)"
 	browser9="$(find /usr/bin/midori)"
+	browser10="$(find /usr/bin/brave-browser)"
 
 	echo $browser1
 	echo $browser2
@@ -1251,6 +1249,7 @@ _EOF_
 	echo $browser7
 	echo $browser8
 	echo $browser9
+	echo $browser10
 
 	sleep 1
 
@@ -1265,6 +1264,7 @@ _EOF_
 	echo "8 - Basilisk"
 	echo "9 - Epiphany"
 	echo "10 - Midori"
+	echo "11 - Brave"
 
 	read operation;
 
@@ -1329,6 +1329,12 @@ _EOF_
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
+		11)
+		sudo cp -r ~/.config/BraveSoftware ~/.config/BraveSoftware-old
+		sudo rm -rf ~/.config/BraveSoftware/*
+		echo "Your browser has now been reset"
+		sleep 1
+	;;
 		*)
 		echo "No browser for that entry exists, please try again!"
 		sleep 1
@@ -1351,7 +1357,7 @@ _EOF_
 	Greeting
 }
 
-SystemMaintenance() {
+SystemMaintenance(){
 	checkNetwork
 
 	#This attempts to fix databases and update your system
@@ -1412,8 +1418,7 @@ SystemMaintenance() {
 	fi
 }
 
-ServiceManager() {
-	#This is for service management Prolly not a great idea, but...
+ServiceManager(){
 cat <<_EOF_
 This is usually better off left undone, only disable services you know
 you will not need or miss. I can not be held responsible if you brick
@@ -1479,11 +1484,11 @@ read operation;
 	Greeting
 }
 
-Restart() {
+Restart(){
 	sudo sync && sudo systemctl reboot
 }
 
-Backup() {
+Backup(){
 	#This backsups the system assuming you have your external drive mounted to /mnt
 	echo "What would you like to do?(Y/n)"
 	echo "1 - Backup home folder and user files"
@@ -1537,8 +1542,7 @@ Backup() {
 	Greeting
 }
 
-Restore() {
-	#This tries to restore the home folder
+Restore(){
 cat <<_EOF_
 This tries to restore the home folder and nothing else, if you want to
 restore the entire system,  you will have to do that in a live environment.
@@ -1570,7 +1574,7 @@ _EOF_
 	Greeting
 }
 
-Greeting() {
+Greeting(){
 	echo "Enter a selection from the following list"
 	echo "1 - Setup your system"
 	echo "2 - Add/Remove user accounts"

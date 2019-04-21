@@ -1,6 +1,6 @@
 #!/bin/bash
 
-Setup() {
+Setup(){
 	#Sets default editor to nano in bashrc
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
 
@@ -215,7 +215,7 @@ _EOF_
 
 }
 
-Update() {
+Update(){
 	checkNetwork
 
 	sudo pacman -Syyu --noconfirm
@@ -225,9 +225,7 @@ Update() {
 
 }
 
-Systeminfo() {
-
-	#This gives some useful information for later troubleshooting
+Systeminfo(){
 	pacman -Q | grep lsb-release || sudo pacman -S --noconfirm lsb-release
 	host=$(hostname)
 	distribution=$(cat /etc/arch-release)
@@ -464,9 +462,9 @@ Systeminfo() {
 	Greeting
 }
 
-InstallAndConquer() {
+InstallAndConquer(){
 	checkNetwork
-	#This installs extra software
+	
 	echo "Would you like to install software?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -978,7 +976,7 @@ _EOF_
 	Greeting
 }
 
-Help() {
+Help(){
 less <<_EOF_
 
 Press "q" to quit
@@ -1202,9 +1200,7 @@ _EOF_
 
 }
 
-AccountSettings() {
-#Setup and remove user accounts
-	#This can create and remove user accounts
+AccountSettings(){
 	echo "What would you like to do?"
 	echo "1 - Create user account(s)"
 	echo "2 - Delete user account(s)"
@@ -1260,7 +1256,7 @@ AccountSettings() {
 	Greeting
 }
 
-checkNetwork() {
+checkNetwork(){
 
 	#This will try to ensure you have a strong network connection
 	for c in computer;
@@ -1278,9 +1274,7 @@ checkNetwork() {
 	done
 }
 
-HostsfileSelect() {
-
-	#I can prepare a simple hosts file
+HostsfileSelect(){
 	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
 	do
@@ -1293,9 +1287,7 @@ HostsfileSelect() {
 	Greeting
 }
 
-Uninstall() {
-
-	#This allows the user to remove unwanted shite
+Uninstall(){
 	echo "Would you like to remove any unwanted applications?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -1310,8 +1302,7 @@ Uninstall() {
 	Greeting
 }
 
-cleanup() {
-
+cleanup(){
 	#This will clean the cache
 	sudo rm -r .cache/*
 	sudo rm -r .thumbnails/*
@@ -1397,9 +1388,7 @@ _EOF_
 	Uninstall
 }
 
-BrowserRepair() {
-
-	#This backs up and removes old/corrupted browser configurations
+BrowserRepair(){
 cat <<_EOF_
 This can fix a lot of the usual issues with a few of the bigger browsers.
 These can include performance hitting issues. If your browser needs a tuneup,
@@ -1546,9 +1535,9 @@ _EOF_
 	Greeting
 }
 
-SystemMaintenance() {
+SystemMaintenance(){
 	checkNetwork
-
+	
 	#This attempts to rank mirrors and update your system
 	distribution=$(cat /etc/issue | awk '{print $1}')
 	if [[ $distribution == Manjaro ]];
@@ -1620,9 +1609,7 @@ SystemMaintenance() {
 	fi
 }
 
-ServiceManager() {
-
-	#This is for service management Prolly not a great idea, but...
+ServiceManager(){
 cat <<_EOF_
 This is usually better off left undone, only disable services you know
 you will not need or miss. I can not be held responsible if you brick
@@ -1689,7 +1676,7 @@ read operation;
 	Greeting
 }
 
-Reset() {
+Reset(){
 #This resets the desktop
 if [[ $DESKTOP_SESSION == cinnamon ]];
 then
@@ -1726,8 +1713,7 @@ else
 fi
 }
 
-MakeSwap() {
-
+MakeSwap(){
 	#This attempts to create a swap file in the event the system doesn't have swap
 	grep -q "swap" /etc/fstab
 	if [ $? -eq 0 ];
@@ -1742,13 +1728,11 @@ MakeSwap() {
 	free -h >> swaplog.txt
 }
 
-Restart() {
+Restart(){
 	sudo sync && sudo systemctl reboot
 }
 
-KernelManager() {
-
-	#This gives a list of available kernels and offers to both install and uninstall them
+KernelManager(){
 cat <<_EOF_
 Kernels are an essential part of the operating system. Failure to use precaution
 could inadvertently screw up system functions. The kernel is the main engine behind
@@ -1828,9 +1812,7 @@ _EOF_
 	Greeting
 }
 
-Backup() {
-
-	#This backsups the system assuming you have your external drive mounted to /mnt
+Backup(){
 	echo "What would you like to do?(Y/n)"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition"
@@ -1883,8 +1865,7 @@ Backup() {
 	Greeting
 }
 
-Restore() {
-	#This tries to restore the home folder
+Restore(){
 cat <<_EOF_
 This tries to restore the home folder and nothing else, if you want to
 restore the entire system,  you will have to do that in a live environment.
@@ -1916,8 +1897,7 @@ _EOF_
 	Greeting
 }
 
-Greeting() {
-
+Greeting(){
 	echo "Enter a selection from the following list:"
 	echo "1 - Setup your system"
 	echo "2 - Add/Remove user accounts"

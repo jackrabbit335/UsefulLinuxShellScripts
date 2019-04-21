@@ -1,6 +1,6 @@
 #!/bin/bash
 
-Setup() {
+Setup(){
 	#This sets your default editor in bashrc
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
 
@@ -161,7 +161,7 @@ EOF
 
 }
 
-Update() {
+Update(){
 	CheckNetwork
 
 	sudo apt update; sudo apt upgrade -yy
@@ -171,8 +171,7 @@ Update() {
 
 }
 
-Systeminfo() {
-	#This gives some useful information for later troubleshooting
+Systeminfo(){
 	host=$(hostname)
 	distribution=$(lsb_release -a | grep "Description:" | awk -F: '{print $2}')
 	echo "##############################################################" >> $host-sysinfo.txt
@@ -412,7 +411,7 @@ Systeminfo() {
 	Greeting
 }
 
-Reset() {
+Reset(){
 #This resets the desktop
 if [[ $DESKTOP_SESSION == cinnamon ]];
 then
@@ -449,7 +448,7 @@ else
 fi
 }
 
-MakeSwap() {
+MakeSwap(){
 	#This attempts to create a swap file in the event the system doesn't have swap
 	grep -q "swap" /etc/fstab
 	if [ $? -eq 0 ];
@@ -463,7 +462,7 @@ MakeSwap() {
 	free -h >> swaplog.txt
 }
 
-HELP() {
+HELP(){
 less <<_EOF_
 
 Press "q" to quit
@@ -694,9 +693,9 @@ _EOF_
 
 }
 
-InstallAndConquer() {
+InstallAndConquer(){
 	CheckNetwork
-	#This installs other software that I've found to be useful
+	
 	echo "Would you like to install some useful apps?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -1082,8 +1081,7 @@ InstallAndConquer() {
 
 }
 
-Uninstall() {
-	#This allows you to remove unwanted junk
+Uninstall(){
 	echo "Are there any other applications you wish to remove(Y/n)"
 	read answer
 	while [ $answer ==  Y ];
@@ -1099,8 +1097,7 @@ Uninstall() {
 
 }
 
-AccountSettings() {
-	#This can create and remove user accounts
+AccountSettings(){
 	echo "This is experimental(untested). Use at  your own risk."
 	echo "What would you like to do today?"
 	echo "1 - Create user account(s)"
@@ -1157,7 +1154,7 @@ AccountSettings() {
 	Greeting
 }
 
-CheckNetwork() {
+CheckNetwork(){
 	for c in computer;
 	do
 		ping -c4 google.com > /dev/null
@@ -1174,7 +1171,7 @@ CheckNetwork() {
 
 }
 
-HostsfileSelect() {
+HostsfileSelect(){
 	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
 	do
@@ -1187,7 +1184,7 @@ HostsfileSelect() {
 	Greeting
 }
 
-cleanup() {
+cleanup(){
 	#This flushes apt cache
 	sudo apt autoremove -y
 	sudo apt autoclean -y
@@ -1261,7 +1258,7 @@ _EOF_
 	Uninstall
 }
 
-BrowserRepair() {
+BrowserRepair(){
 cat <<_EOF_
 This can fix a lot of the usual issues with a few of the bigger browsers.
 These can include performance hitting issues. If your browser needs a tuneup,
@@ -1400,7 +1397,7 @@ _EOF_
 
 }
 
-SystemMaintenance() {
+SystemMaintenance(){
 	CheckNetwork
 
 	#This updates your system
@@ -1458,7 +1455,7 @@ SystemMaintenance() {
 	fi
 }
 
-ServiceManager() {
+ServiceManager(){
 #This is for service management. Prolly not a good idea but...
 cat <<_EOF_
 This is usually better off left undone, only disable services you know
@@ -1564,11 +1561,11 @@ _EOF_
 	Greeting
 }
 
-Restart() {
+Restart(){
 	sudo sync; sudo systemctl reboot
 }
 
-Backup() {
+Backup(){
 	#This tries to backup your system
 	echo "What would you like to do?(Y/n)"
 	echo "1 - Backup home folder and user files"
@@ -1622,7 +1619,7 @@ Backup() {
 	Greeting
 }
 
-Restore() {
+Restore(){
 #This tries to restore the home folder
 cat <<_EOF_
 This tries to restore the home folder and nothing else, if you want to
@@ -1655,7 +1652,7 @@ _EOF_
 	Greeting
 }
 
-Greeting() {
+Greeting(){
 	echo "Enter a selection from the following list"
 	echo "1 - Setup your system"
 	echo "2 - Add/Remove user accounts"
