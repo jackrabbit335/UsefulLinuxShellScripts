@@ -21,15 +21,13 @@ str1=http://winhelp2002.mvps.org/hosts.txt
 str2=https://someonewhocares.org/hosts/hosts
 str3=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
 str4=http://www.malwaredomainlist.com/hostslist/hosts.txt
-str5=http://hostsfile.mine.nu/Hosts.txt
-str6=https://hosts-file.net/ad_servers.txt
-str7=https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt
-str8=http://sysctl.org/cameleon/hosts
-str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/main
-str10=https://raw.githubusercontent.com/azet12/KADhosts/master/KADhosts.txt
-str11=https://www.github.developerdan.com/hosts/lists/ads-and-tracking-extended.txt
+str5=https://hosts-file.net/ad_servers.txt
+str6=https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt
+str7=http://sysctl.org/cameleon/hosts
+str8=http://hosts-file.malwareteks.com/hosts.txt
+str9=https://hosts-file.net/hphosts-partial.txt
 
-while getopts :ABCDEFGHIJK option; do
+while getopts :ABCDEFGHI option; do
 	case $option in
 		A) wget $str1 && cat hosts.txt >> adblock && rm hosts.txt
 		;;
@@ -39,19 +37,15 @@ while getopts :ABCDEFGHIJK option; do
 		;;
 		D) wget $str4 && cat hosts.txt >> adblock && rm hosts.txt
 		;;
-		E) wget $str5 && cat Hosts.txt >> adblock && rm Hosts.txt
+		E) wget $str5 && cat ad_servers.txt >> adblock && rm ad_servers.txt
 		;;
-		F) wget $str6 && cat ad_servers.txt >> adblock && rm ad_servers.txt
+		F) wget $str6 && cat hosts.txt >> adblock && rm hosts.txt
 		;;
-		G) wget $str7 && cat hosts.txt >> adblock && rm hosts.txt
+		G) wget $str7 && cat hosts >> adblock && rm hosts
 		;;
-		H) wget $str8 && cat hosts >> adblock && rm hosts
+		H) wget $str8 && cat hosts.txt >> adblock && rm hosts.txt
 		;;
-		I) wget $str9 && cat main >> adblock && rm main
-		;;
-		J) wget $str10 && cat KADhosts.txt >> adblock && rm KADhosts.txt
-		;;
-		K) wget $str11 && cat ads-and-tracking-extended.txt >> adblock && rm ads-and-tracking-extended.txt
+		I) wget $str9 && cat hphosts-partial.txt >> adblock && rm hphosts-partial.txt
 		;;
 		*)
 	esac
@@ -67,14 +61,14 @@ fi
 #This ensures that we are using All 127.x for pointing back to home
 sed -i 's/0.0.0.0/127.0.0.1 /g' adblock
 
-#Remove comments
+#Remove comments and spaces
 sed -e '/^[[:space:]]*$/d' adblock > adblock.new && mv adblock.new adblock
 sed -e 's/[[:blank:]]//g' adblock > adblock.new && mv adblock.new adblock
 sed -e 's/127.0.0.1/127.0.0.1 /g' adblock > adblock.new && mv adblock.new adblock
 sed -e '/#.*/d' adblock > adblock.new && mv adblock.new adblock
 sed -e '/^*$/d' adblock > adblock.new && mv adblock.new adblock
 
-#This merges hosts with /etc/hosts then removes hosts
+#This merges adblock with /etc/hosts then removes hosts
 sudo cat adblock >> /etc/hosts
 rm adblock
 
