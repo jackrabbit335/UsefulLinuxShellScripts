@@ -24,10 +24,8 @@ str4=http://www.malwaredomainlist.com/hostslist/hosts.txt
 str5=https://hosts-file.net/ad_servers.txt
 str6=https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt
 str7=http://sysctl.org/cameleon/hosts
-str8=http://hosts-file.malwareteks.com/hosts.txt
-str9=https://hosts-file.net/hphosts-partial.txt
 
-while getopts :ABCDEFGHI option; do
+while getopts :ABCDEFG option; do
 	case $option in
 		A) wget $str1 && cat hosts.txt >> adblock && rm hosts.txt
 		;;
@@ -42,10 +40,6 @@ while getopts :ABCDEFGHI option; do
 		F) wget $str6 && cat hosts.txt >> adblock && rm hosts.txt
 		;;
 		G) wget $str7 && cat hosts >> adblock && rm hosts
-		;;
-		H) wget $str8 && cat hosts.txt >> adblock && rm hosts.txt
-		;;
-		I) wget $str9 && cat hphosts-partial.txt >> adblock && rm hphosts-partial.txt
 		;;
 		*)
 	esac
