@@ -3,3 +3,5 @@
 127.0.0.1 www.browsergames2019.com
 127.0.0.1 www.americascardroom.eu
 127.0.0.1 americascardroom.eu
+127.0.0.1 sex-and-flirt.com
+127.0.0.1 www.sex-and-flirt.com
