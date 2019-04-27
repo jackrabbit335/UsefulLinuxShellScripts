@@ -8,3 +8,7 @@
 127.0.0.1 trackersimulator.org
 127.0.0.1 eviltracker.net
 127.0.0.1 do-not-tracker.org
+127.0.0.1 www.moatads.com
+127.0.0.1 moatads.com
+127.0.0.1 www.doubleverify.com
+127.0.0.1 doubleverify.com
