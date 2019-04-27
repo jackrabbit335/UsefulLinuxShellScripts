@@ -5,3 +5,6 @@
 127.0.0.1 americascardroom.eu
 127.0.0.1 sex-and-flirt.com
 127.0.0.1 www.sex-and-flirt.com
+127.0.0.1 trackersimulator.org
+127.0.0.1 eviltracker.net
+127.0.0.1 do-not-tracker.org
