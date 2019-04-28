@@ -24,8 +24,9 @@ str4=http://www.malwaredomainlist.com/hostslist/hosts.txt
 str5=https://hosts-file.net/ad_servers.txt
 str6=https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt
 str7=http://sysctl.org/cameleon/hosts
+str8=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/StevenBlackhosts
 
-while getopts :ABCDEFG option; do
+while getopts :ABCDEFGH option; do
 	case $option in
 		A) wget $str1 && cat hosts.txt >> adblock && rm hosts.txt
 		;;
@@ -41,6 +42,8 @@ while getopts :ABCDEFG option; do
 		;;
 		G) wget $str7 && cat hosts >> adblock && rm hosts
 		;;
+		H) wget $str8 && cat StevenBlackhosts >> adblock && rm StevenBlackhosts
+		;;
 		*)
 	esac
 done
@@ -49,7 +52,7 @@ echo "----------------Hostsman4linux--------------" >> adblock
 
 #This tries to deduplicate if multiple files were used.
 if [[ $# -gt 1 ]]; then
-	sort adblock | uniq -u | sort -r > adblock.new && mv adblock.new adblock
+	sort adblock | uniq | sort -r > adblock.new && mv adblock.new adblock
 fi
 
 #This ensures that we are using All 127.x for pointing back to home

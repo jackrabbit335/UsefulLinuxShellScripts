@@ -469,8 +469,8 @@ InstallAndConquer(){
 		echo "10 - quvcview"
 		echo "11 - GAMES!!!!!!!!!"
 		echo "12 - Video editing/encoding"
-		echo "13 - Plank"
-		echo "14 - Proprietary Fonts"
+		echo "13 - Proprietary fonts"
+		echo "14 - Plank"
 		echo "15 - Backup"
 		echo "16 - THEMES!!!!!!!!"
 		echo "17 - screenfetch"
@@ -507,7 +507,8 @@ InstallAndConquer(){
 			sudo eopkg install kate
 		elif [[ $package == 5 ]];
 		then
-			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/programming/sublime-text-3/pspec.xml; sudo eopkg it webstorm*.eopkg;sudo rm webstorm*.eopkg
+			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/programming/sublime-text-3/pspec.xml
+			sudo eopkg it webstorm*.eopkg;sudo rm webstorm*.eopkg
 		else
 			echo "You've entered an invalid number"
 		fi
@@ -556,7 +557,8 @@ InstallAndConquer(){
 			sudo eopkg install hexchat
 		elif [[ $package == 2 ]];
 		then
-			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/im/skype/pspec.xml; sudo eopkg it skype*.eopkg;sudo rm *.eopkg
+			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/im/skype/pspec.xml
+			sudo eopkg it skype*.eopkg;sudo rm *.eopkg
 		fi
 	;;
 		6)
@@ -624,6 +626,7 @@ InstallAndConquer(){
 		then
 			sudo eopkg install firefox
 		elif [[ $browser == 14 ]];
+		then
 			sudo eopkg install brave
 		else
 			echo "You have entered an invalid number"
@@ -1178,8 +1181,8 @@ cleanup(){
 	sudo rm -rf ~/.nv/*
 	sudo rm -rf ~/.npm/*
 	sudo rm -rf ~/.w3m/*
-	sudo rm -rf ~/.esd_auth #Best I can tell cookie for pulse audio
-	sudo rm -rf ~/.local/share/recently-used.xbel
+	sudo rm ~/.esd_auth #Best I can tell cookie for pulse audio
+	sudo rm ~/.local/share/recently-used.xbel
 	sudo rm -rf /tmp/*
 	history -c && rm ~/.bash_history
 
@@ -1489,7 +1492,6 @@ Restart(){
 }
 
 Backup(){
-	#This backsups the system assuming you have your external drive mounted to /mnt
 	echo "What would you like to do?(Y/n)"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition"
