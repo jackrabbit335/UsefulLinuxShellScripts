@@ -32,7 +32,7 @@ str4=http://www.malwaredomainlist.com/hostslist/hosts.txt
 str5=https://hosts-file.net/ad_servers.txt
 str6=https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt
 str7=http://sysctl.org/cameleon/hosts
-str8=https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+str8=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/extrahosts
 
 while getopts :ABCDEFGH option; do
 	case $option in
@@ -50,7 +50,7 @@ while getopts :ABCDEFGH option; do
 		;;
 		G) wget $str7 && cat hosts >> adblock && rm hosts
 		;;
-		H) wget $str8 && cat hosts >> adblock && rm hosts
+		H) wget $str8 && cat extrahosts >> adblock && rm extrahosts
 		;;
 		*)
 	esac
