@@ -822,18 +822,18 @@ InstallAndConquer(){
 				sudo apt install -f
 			elif [[ $browser == 6 ]];
 			then
-				wget http://linux.palemoon.org/datastore/release/palemoon-28.4.0.linux-x86_64.tar.bz2; tar -xvf palemoon-28.4.0.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget http://linux.palemoon.org/datastore/release/palemoon-28.5.0.linux-x86_64.tar.bz2; tar -xvf palemoon-28.5.0.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 				sudo update-alternatives --install /usr/bin/gnome-www-browser gnome-www-browser /usr/bin/palemoon 100; sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/palemoon 100
 			elif [[ $browser == 7 ]];
 			then
 				cd /tmp
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.3.1440.57-1_amd64.deb
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.4.1488.40-1_amd64.deb
 				sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 8 ]];
 			then
 				cd /tmp
-				wget https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_2.4.1468.4-1_amd64.deb
+				wget https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_2.5.1525.30-1_amd64.deb
 				sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 9 ]];
 			then
@@ -847,8 +847,8 @@ InstallAndConquer(){
 				sudo apt install -y dillo
 			elif [[ $browser == 12 ]];
 			then
-				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.8.en-US.linux-x86_64.tar.bz2
-				tar -xvf waterfox-56.2.8.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.9.en-US.linux-x86_64.tar.bz2
+				tar -xvf waterfox-56.2.9.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 13 ]];
 			then

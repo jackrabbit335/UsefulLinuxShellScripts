@@ -608,8 +608,8 @@ InstallAndConquer(){
 			sudo snap install chromium
 		elif [[ $browser == 10 ]];
 		then
-			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.8.en-US.linux-x86_64.tar.bz2
-			tar -xvjf waterfox-56.2.8.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.9.en-US.linux-x86_64.tar.bz2
+			tar -xvjf waterfox-56.2.9.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 		elif [[ $browser == 11 ]];
 		then
@@ -618,8 +618,7 @@ InstallAndConquer(){
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
 		elif [[ $browser == 12 ]];
 		then
-			user=$(whoami)
-			wget http://linux.palemoon.org/datastore/release/palemoon-28.4.1.linux-x86_64.tar.bz2; tar -xvf palemoon-28.4.1.linux-x86_64.tar.bz2
+			wget http://linux.palemoon.org/datastore/release/palemoon-28.5.0.linux-x86_64.tar.bz2; tar -xvf palemoon-28.5.0.linux-x86_64.tar.bz2
 			sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 13 ]];
@@ -1064,7 +1063,6 @@ cat <<_EOF_
 This is a completely untested and experimental utility at best.
 Use this function "Account Settings" at your own risk.
 _EOF_
-	#This can create and remove user accounts
 	echo "What would you like to do?"
 	echo "1 - Create user account(s)"
 	echo "2 - Delete user account(s)"
@@ -1121,7 +1119,6 @@ _EOF_
 }
 
 checkNetwork(){
-	#This will try to ensure you have a strong network connection
 	for c in computer;
 	do
 		ping -c4 google.com
@@ -1138,7 +1135,6 @@ checkNetwork(){
 }
 
 HostsfileSelect(){
-	#I can prepare a simple hosts file
 	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
 	do

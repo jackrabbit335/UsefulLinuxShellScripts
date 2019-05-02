@@ -626,15 +626,16 @@ _EOF_
 		echo "4 - midori"
 		echo "5 - opera"
 		echo "6 - vivaldi-snapshot"
-		echo "7 - Pale Moon"
-		echo "8 - seamonkey"
-		echo "9 - dillo"
-		echo "10 - lynx"
-		echo "11 - vivaldi"
-		echo "12 - google-chrome"
-		echo "13 - waterfox"
-		echo "14 - basilisk"
-		echo "15 - slimjet"
+		echo "7 - vivaldi"
+		echo "8 - Pale Moon"
+		echo "9 - seamonkey"
+		echo "10 - dillo"
+		echo "11 - lynx"
+		echo "12 - vivaldi"
+		echo "13 - google-chrome"
+		echo "14 - waterfox"
+		echo "15 - basilisk"
+		echo "16 - slimjet"
 		read browser
 		if [[ $browser == 1 ]];
 		then
@@ -659,40 +660,46 @@ _EOF_
 			cd vivaldi-snapshot && makepkg -si
 		elif [[ $browser == 7 ]];
 		then
-			wget linux.palemoon.org/datastore/release/palemoon-28.4.0.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.4.0.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
-			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
+			cd /tmp
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz
+			gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar
+			cd vivaldi && makepkg -si
 		elif [[ $browser == 8 ]];
 		then
-			sudo pacman -S --noconfirm seamonkey
+			wget linux.palemoon.org/datastore/release/palemoon-28.5.0.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.5.0.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 9 ]];
 		then
-			sudo pacman -S --noconfirm dillo
+			sudo pacman -S --noconfirm seamonkey
 		elif [[ $browser == 10 ]];
 		then
-			sudo pacman -S --noconfirm lynx
+			sudo pacman -S --noconfirm dillo
 		elif [[ $browser == 11 ]];
+		then
+			sudo pacman -S --noconfirm lynx
+		elif [[ $browser == 12 ]];
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz
 			gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar
 			cd vivaldi && makepkg -si
-		elif [[ $browser == 12 ]];
+		elif [[ $browser == 13 ]];
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz
 			gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar
 			cd google-chrome && makepkg -si
-		elif [[ $browser == 13 ]];
+		elif [[ $browser == 14 ]];
 		then
-			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.8.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.8.en-US.linux-x86_64.tar.bz2
+			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.9.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.9.en-US.linux-x86_64.tar.bz2
 			sudo mv waterfox /opt; sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
-		elif [[ $browser == 14 ]];
+		elif [[ $browser == 15 ]];
 		then
 			wget http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.bz2; tar -xvjf basilisk-latest.linux64.tar.bz2
 			sudo mv basilisk /opt; sudo touch /usr/share/applications/basilisk.desktop; sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
-		elif [[ $browser == 15 ]];
+		elif [[ $browser == 16 ]];
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/slimjet.tar.gz

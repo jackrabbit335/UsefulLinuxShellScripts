@@ -1,5 +1,13 @@
 #!/bin/bash
 
+cat <<_EOF_
+This file has the ability to download and compile hosts files from multiple sources. As such, this file should be
+used with relative caution as failure to do so could result in pages no longer functioning properly. I'd suggest that
+unless you absolutely needed it, using more than the first hosts file and maybe peter lowe's adservers list is
+kinda redundant or probably not wise. Still if you wish to block most ads, I'd suggest the first four and adaway
+to be sure.
+_EOF_
+
 #This updates the hosts file
 
 echo "WARNING! USE OF THESE HOSTS COULD CAUSE MANY OF YOUR FAVORITE SITES TO CEASE FUNCTIONING. PROCEED WITH CAUTION."
@@ -52,7 +60,7 @@ echo "----------------Hostsman4linux--------------" >> adblock
 
 #This tries to deduplicate if multiple files were used.
 if [[ $# -gt 1 ]]; then
-	sort adblock | uniq | sort -r > adblock.new && mv adblock.new adblock
+	sort adblock | uniq -u | sort -r > adblock.new && mv adblock.new adblock
 fi
 
 #This ensures that we are using All 127.x for pointing back to home
