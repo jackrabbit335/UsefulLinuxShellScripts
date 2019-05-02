@@ -460,6 +460,8 @@ MakeSwap(){
 	fi
 	cat /proc/swaps >> swaplog.txt
 	free -h >> swaplog.txt
+
+	Restart
 }
 
 HELP(){

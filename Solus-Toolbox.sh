@@ -1147,6 +1147,22 @@ HostsfileSelect(){
 	Greeting
 }
 
+MakeSwap(){
+	#This attempts to create a swap file in the event the system doesn't have swap
+	grep -q "swap" /etc/fstab
+	if [ $? -eq 0 ];
+	then
+		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 2G /swapfile; chmod 600 /swapfile
+		mkswap /swapfile; swapon /swapfile; echo "/mnt/swapfile swap swap sw 0 0" >> /etc/fstab
+	else
+		echo "Swap was already there so there is nothing to do"
+	fi
+	cat /proc/swaps >> swaplog.txt
+	free -h >> swaplog.txt
+
+	Restart
+}
+
 Uninstall(){
 	echo "Would you like to remove any other unwanted junk?(Y/n)"
 	read answer

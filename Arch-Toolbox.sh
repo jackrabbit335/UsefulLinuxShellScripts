@@ -1264,8 +1264,6 @@ AccountSettings(){
 }
 
 checkNetwork(){
-
-	#This will try to ensure you have a strong network connection
 	for c in computer;
 	do
 		ping -c4 google.com
@@ -1733,6 +1731,8 @@ MakeSwap(){
 	fi
 	cat /proc/swaps >> swaplog.txt
 	free -h >> swaplog.txt
+
+	Restart
 }
 
 Restart(){
