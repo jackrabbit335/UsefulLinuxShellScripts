@@ -35,7 +35,7 @@ str7=http://sysctl.org/cameleon/hosts
 str8=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/StevenBlackhosts
 str9=http://www.hostsfile.org/Downloads/hosts.txt
 
-while getopts :ABCDEFGH option; do
+while getopts :ABCDEFGHI option; do
 	case $option in
 		A) wget $str1 && cat hosts.txt >> adblock && rm hosts.txt
 		;;
