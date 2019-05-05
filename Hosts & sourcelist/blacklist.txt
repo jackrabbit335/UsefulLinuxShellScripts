@@ -12,3 +12,20 @@
 127.0.0.1 moatads.com
 127.0.0.1 www.doubleverify.com
 127.0.0.1 doubleverify.com
+##############################################################################################################################
+THESE ARE FROM NOTRACK BY QUIDSUP
+##############################################################################################################################
+127.0.0.1 zhongzishenqi.com
+127.0.0.1 zhongzifuli.com
+127.0.0.1 znaptag.com
+127.0.0.1 www.zhongzifuli.com
+127.0.0.1 www.zhongzishenqi.com
+127.0.0.1 www.znaptag.com
+127.0.0.1 yourofferplace.com
+127.0.0.1 yourtopoffers.com
+127.0.0.1 yourbestoffers.click
+127.0.0.1 yrdrtzmsmt.com
+127.0.0.1 www.yourtopoffers.com
+127.0.0.1 www.yourofferplace.com
+127.0.0.1 www.yourbestoffers.click
+127.0.0.1 www.yrdrtzmsmt.com
