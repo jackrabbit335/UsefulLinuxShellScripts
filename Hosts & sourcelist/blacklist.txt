@@ -15,3 +15,9 @@
 127.0.0.1 bidder.criteo.com
 127.0.0.1 cdn.connatix.com
 127.0.0.1 eus.rubiconproject.com
+127.0.0.1 summerhamster.com
+127.0.0.1 www.summerhamster.com
+127.0.0.1 static.criteo.com
+127.0.0.1 assets.adobedtm.com
+127.0.0.1 www.medtargetsystem.com
+127.0.0.1 medtargetsystem.com
