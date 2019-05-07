@@ -91,6 +91,7 @@
 127.0.0.1 adapt.tv
 127.0.0.1 adap.tv
 127.0.0.1 ad.auditude.com
+127.0.0.1 adback.co
 127.0.0.1 ad-balancer.at
 127.0.0.1 ad-balancer.net
 127.0.0.1 adbard.net
@@ -2286,7 +2287,6 @@
 127.0.0.1 qnsr.com
 127.0.0.1 quacksquirrel.com
 127.0.0.1 quaintcan.com
-127.0.0.1 qualtrics.com
 127.0.0.1 quantcast.com
 127.0.0.1 quantcast.mgr.consensu.org
 127.0.0.1 quantserve.com
@@ -2439,6 +2439,7 @@
 127.0.0.1 selectionsugar.com
 127.0.0.1 selectivesummer.com
 127.0.0.1 sendmepixel.com
+127.0.0.1 sendpulse.com
 127.0.0.1 sensismediasmart.com.au
 127.0.0.1 separatesilver.com
 127.0.0.1 serv0.com
@@ -2481,6 +2482,7 @@
 127.0.0.1 sinoa.com
 127.0.0.1 sitedataprocessing.com
 127.0.0.1 siteimproveanalytics.com
+127.0.0.1 siteintercept.qualtrics.com
 127.0.0.1 sitemeter.com
 127.0.0.1 sitestat.com
 127.0.0.1 sixscissors.com
