@@ -27,3 +27,10 @@
 127.0.0.1 udc.yahoo.com
 127.0.0.1 www.ask.com
 127.0.0.1 ask.com
+127.0.0.1 inter1ads.com
+127.0.0.1 www.inter1ads.com
+127.0.0.1 stremanp.com
+127.0.0.1 www.stremanp.com
+127.0.0.1 tharbadir.com
+127.0.0.1 www.tharbadir.com
+127.0.0.1 my.rtmark.net
