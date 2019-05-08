@@ -34,3 +34,5 @@
 127.0.0.1 tharbadir.com
 127.0.0.1 www.tharbadir.com
 127.0.0.1 my.rtmark.net
+127.0.0.1 nexus.ensighten.com
+127.0.0.1 app.link
