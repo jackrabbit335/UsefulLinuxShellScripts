@@ -12,7 +12,7 @@
 127.0.0.1 moatads.com
 127.0.0.1 www.doubleverify.com
 127.0.0.1 doubleverify.com
-127.0.0.1 bidder.criteo.com #Not sure what these do, but might be a good idea to block them anyway
+127.0.0.1 bidder.criteo.com #Privacy Badger recognizes them as possible trackers
 127.0.0.1 cdn.connatix.com
 127.0.0.1 eus.rubiconproject.com
 127.0.0.1 summerhamster.com
@@ -25,3 +25,5 @@
 127.0.0.1 cdn.vidible.tv
 127.0.0.1 ganon.yahoo.com
 127.0.0.1 udc.yahoo.com
+127.0.0.1 www.ask.com
+127.0.0.1 ask.com
