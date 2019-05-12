@@ -12569,7 +12569,6 @@
 127.0.0.1 oclaserver.com
 127.0.0.1 oclasrv.com #Advertising Unknown
 127.0.0.1 octonet.com
-127.0.0.1 oem.twimg.com #Twitter possible Windows spying
 127.0.0.1 offerfactory.click #msales
 127.0.0.1 offerhaus.link #msales
 127.0.0.1 offerland.info #msales
@@ -12703,7 +12702,6 @@
 127.0.0.1 persoo.cz #Persoo
 127.0.0.1 petametrics.com #Petametrics
 127.0.0.1 petrous.cn #Advertising
-127.0.0.1 phicdn.net #Verizon
 127.0.0.1 phluant.com #Phluant
 127.0.0.1 phluantmobile.net #Phluant
 127.0.0.1 phone.igexin.com #Igexin Spyware
@@ -13641,6 +13639,7 @@
 127.0.0.1 tribalfusion.com
 127.0.0.1 triggit.com
 127.0.0.1 trk.i0.cz #centrum.cz
+127.0.0.1 trk.justanswer.com #justanswer.com
 127.0.0.1 trkme.net
 127.0.0.1 trkmob1.com #RevenueHits
 127.0.0.1 trkthatpaper.org #Advertising Unknown
@@ -14027,6 +14026,7 @@
 127.0.0.1 baidu.om #Fake Site
 127.0.0.1 best2018games.com #Popups
 127.0.0.1 bestadbid.com #Malvertising
+127.0.0.1 bestupdatemeta.com #Adware
 127.0.0.1 biosagentplus.com #Scam
 127.0.0.1 bitleyco.cc #Phishing
 127.0.0.1 booe.pro #Malvertising
@@ -14038,6 +14038,7 @@
 127.0.0.1 cybergateway.net #Phishing
 127.0.0.1 digitaloptout.com #Ad Injector
 127.0.0.1 donation-tools.org #Ad Injector
+127.0.0.1 drivethelife.com #PUA
 127.0.0.1 easy-download.co #Malware
 127.0.0.1 edatasales.com #Malicious Site
 127.0.0.1 epicunitscan.info #Malicious Site
@@ -14082,6 +14083,7 @@
 127.0.0.1 onclickbright.com #Malvertising
 127.0.0.1 onlineformfinder.com #PUA - Mindspark
 127.0.0.1 onlinesurveydaily.com #Annoying
+127.0.0.1 prosoftsolution.in #Phishing
 127.0.0.1 prugskh.com #Ragentek Rootkit
 127.0.0.1 prugskh.net #Ragentek Rootkit
 127.0.0.1 push-signals.online #Popups
