@@ -36,3 +36,5 @@
 127.0.0.1 my.rtmark.net
 127.0.0.1 nexus.ensighten.com
 127.0.0.1 app.link
+127.0.0.1 www.bfmio.com
+127.0.0.1 bfmio.com
