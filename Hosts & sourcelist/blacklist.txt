@@ -12,7 +12,10 @@
 127.0.0.1 moatads.com
 127.0.0.1 www.doubleverify.com
 127.0.0.1 doubleverify.com
-127.0.0.1 bidder.criteo.com #Privacy Badger recognizes them as possible trackers
+####################################################
+Privacy Badger recognizes them as possible trackers
+####################################################
+127.0.0.1 bidder.criteo.com
 127.0.0.1 cdn.connatix.com
 127.0.0.1 eus.rubiconproject.com
 127.0.0.1 summerhamster.com
