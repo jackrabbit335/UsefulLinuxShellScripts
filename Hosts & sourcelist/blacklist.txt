@@ -38,3 +38,5 @@
 127.0.0.1 app.link
 127.0.0.1 www.bfmio.com
 127.0.0.1 bfmio.com
+1127.0.0.1 bestfileconverter.com
+127.0.0.1 www.bestfileconverter.com 
