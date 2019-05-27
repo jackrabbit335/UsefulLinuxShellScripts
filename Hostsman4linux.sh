@@ -31,7 +31,7 @@ str3=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/mas
 str4=http://www.malwaredomainlist.com/hostslist/hosts.txt
 str5=https://hosts-file.net/ad_servers.txt
 str6=https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt
-str7=http://sysctl.org/cameleon/hosts
+str7=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Tracking
 str8=https://github.com/jackrabbit335/UsefulLinuxShellScripts/blob/master/Hosts%20%26%20sourcelist/justdomains
 str9=https://github.com/jackrabbit335/UsefulLinuxShellScripts/blob/master/Hosts%20%26%20sourcelist/blacklist.txt
 
@@ -49,7 +49,7 @@ while getopts :ABCDEFGHI option; do
 		;;
 		F) wget $str6 && cat hosts.txt >> adblock && rm hosts.txt
 		;;
-		G) wget $str7 && cat hosts >> adblock && rm hosts
+		G) wget $str7 && cat Tracking >> adblock && rm Tracking
 		;;
 		H) wget $str8 && cat justdomains >> adblock && rm justdomains
 		;;
