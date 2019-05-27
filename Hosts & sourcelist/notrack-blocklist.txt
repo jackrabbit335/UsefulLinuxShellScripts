@@ -1,3 +1,5 @@
+127.0.0.1 1-cl0ud.com #Lead Forensics
+127.0.0.1 1-creative-1.com #Lead Forensics
 127.0.0.1 1000mercis.com #Numberly
 127.0.0.1 1010data.com #1010data
 127.0.0.1 103bees.com #Tracker Unknown
@@ -14009,6 +14011,15 @@
 127.0.0.1 zylpfood.com
 127.0.0.1 zzhengre.com #Advertising
 127.0.0.1 zzword.com #Adobe
+127.0.0.1 #Title: NoTrack Malware Blocklist
+127.0.0.1 #Description: Malware Domains Block List from quidsup.net
+127.0.0.1 #Author: QuidsUp
+127.0.0.1 #License: GNU General Public License v3.0
+127.0.0.1 #Home: https://quidsup.net/notrack/blocklist.php
+127.0.0.1 #@ GitHub : https://raw.githubusercontent.com/quidsup/notrack/master/trackers.txt
+127.0.0.1 #Updated: 07 May 2019
+127.0.0.1 #LatestVersion 0.8.10
+127.0.0.1 #---------------------
 127.0.0.1 1kdailyprofit.biz #Scam
 127.0.0.1 1kdailyprofit.co #Scam
 127.0.0.1 abcd7777.com #Chinese Scammer
