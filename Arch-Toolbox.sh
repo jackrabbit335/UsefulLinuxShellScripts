@@ -631,11 +631,10 @@ _EOF_
 		echo "9 - seamonkey"
 		echo "10 - dillo"
 		echo "11 - lynx"
-		echo "12 - vivaldi"
-		echo "13 - google-chrome"
-		echo "14 - waterfox"
-		echo "15 - basilisk"
-		echo "16 - slimjet"
+		echo "12 - google-chrome"
+		echo "13 - waterfox"
+		echo "14 - basilisk"
+		echo "15 - slimjet"
 		read browser
 		if [[ $browser == 1 ]];
 		then
@@ -666,7 +665,7 @@ _EOF_
 			cd vivaldi && makepkg -si
 		elif [[ $browser == 8 ]];
 		then
-			wget linux.palemoon.org/datastore/release/palemoon-28.5.0.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.5.0.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+			wget linux.palemoon.org/datastore/release/palemoon-28.5.2.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.5.2.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 9 ]];
 		then
@@ -680,26 +679,20 @@ _EOF_
 		elif [[ $browser == 12 ]];
 		then
 			cd /tmp
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz
-			gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar
-			cd vivaldi && makepkg -si
-		elif [[ $browser == 13 ]];
-		then
-			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz
 			gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar
 			cd google-chrome && makepkg -si
-		elif [[ $browser == 14 ]];
+		elif [[ $browser == 13 ]];
 		then
-			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.9.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.9.en-US.linux-x86_64.tar.bz2
+			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.10.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.10.en-US.linux-x86_64.tar.bz2
 			sudo mv waterfox /opt; sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
-		elif [[ $browser == 15 ]];
+		elif [[ $browser == 14 ]];
 		then
 			wget http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.bz2; tar -xvjf basilisk-latest.linux64.tar.bz2
 			sudo mv basilisk /opt; sudo touch /usr/share/applications/basilisk.desktop; sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
-		elif [[ $browser == 16 ]];
+		elif [[ $browser == 15 ]];
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/slimjet.tar.gz
