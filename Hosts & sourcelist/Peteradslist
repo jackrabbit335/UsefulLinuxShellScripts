@@ -989,7 +989,6 @@
 127.0.0.1 banner.elisa.net
 127.0.0.1 banner.eurogrand.com
 127.0.0.1 banner-exchange-24.de
-127.0.0.1 bannerflow.com
 127.0.0.1 banner.goldenpalace.com
 127.0.0.1 bannergrabber.internet.gr
 127.0.0.1 bannerhost.com
@@ -1170,6 +1169,7 @@
 127.0.0.1 cbanners.virtuagirlhd.com
 127.0.0.1 c.bigmir.net
 127.0.0.1 cbsi.com
+127.0.0.1 cdn.bannerflow.com
 127.0.0.1 cdn.freefarcy.com
 127.0.0.1 cdn.heapanalytics.com
 127.0.0.1 cdn.onesignal.com
@@ -2197,6 +2197,7 @@
 127.0.0.1 personagraph.com
 127.0.0.1 petiteumbrella.com
 127.0.0.1 pgl.example0101
+127.0.0.1 pgltestinghere
 127.0.0.1 pgmediaserve.com
 127.0.0.1 pgpartner.com
 127.0.0.1 pheedo.com
@@ -2729,6 +2730,7 @@
 127.0.0.1 track.contently.com
 127.0.0.1 trackedlink.net
 127.0.0.1 trackedweb.net
+127.0.0.1 tracker.bannerflow.com
 127.0.0.1 tracker.icerocket.com
 127.0.0.1 tracker.marinsm.com
 127.0.0.1 tracker-pm2.spilleren.com
