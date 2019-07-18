@@ -608,7 +608,7 @@ InstallAndConquer(){
 			sudo snap install chromium
 		elif [[ $browser == 10 ]];
 		then
-			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.10.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.10.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.12.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.12.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 		elif [[ $browser == 11 ]];
 		then
@@ -617,7 +617,7 @@ InstallAndConquer(){
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
 		elif [[ $browser == 12 ]];
 		then
-			wget http://linux.palemoon.org/datastore/release/palemoon-28.5.2.linux-x86_64.tar.bz2; tar -xvf palemoon-28.5.2.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+			wget http://linux.palemoon.org/datastore/release/palemoon-28.6.0.1.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.6.0.1.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 13 ]];
 		then
@@ -1601,10 +1601,11 @@ Greeting(){
 	echo "11 - System Maintenance"
 	echo "12 - Browser Repair"
 	echo "13 - Update"
-	echo "14 - Help"
-	echo "15 - Restart"
-	echo "16 - Reset the desktop"
-	echo "17 - exit"
+	echo "14 - MakeSwap"
+	echo "15 - Help"
+	echo "16 - Restart"
+	echo "17 - Reset the desktop"
+	echo "18 - exit"
 
 	read selection;
 
@@ -1649,15 +1650,18 @@ Greeting(){
 		Update
 	;;
 		14)
-		Help
+		MakeSwap
 	;;
 		15)
-		Restart
+		Help
 	;;
 		16)
-		Reset
+		Restart
 	;;
 		17)
+		Reset
+	;;
+		18)
 		echo "Thank you for using Solus-Toolbox... Goodbye!"
 		sleep 1
 		exit
@@ -1679,8 +1683,8 @@ all the way to as important as setting up a new system.
 This script is meant for new users, but anyone can read, change and use
 this script to their liking. This script is to be placed under the GPLv3
 and is to be redistributable, however, if you are distributing,
-I would appreciate it if you gave the credit back to the original author. I
-should also add that I have a few blog articles which may or may not be
+I would appreciate it if you gave the credit back to the original author. 
+I should also add that I have a few blog articles which may or may not be
 of benefit for newbies on occasion. The link will be placed here. In the
 blog I write about typical scenarios that I face on a day to day basis
 as well as add commentary and my opinions about software and technology.

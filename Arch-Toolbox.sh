@@ -665,7 +665,7 @@ _EOF_
 			cd vivaldi && makepkg -si
 		elif [[ $browser == 8 ]];
 		then
-			wget linux.palemoon.org/datastore/release/palemoon-28.5.2.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.5.2.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+			wget linux.palemoon.org/datastore/release/palemoon-28.6.0.1.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.6.0.1.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 9 ]];
 		then
@@ -684,7 +684,7 @@ _EOF_
 			cd google-chrome && makepkg -si
 		elif [[ $browser == 13 ]];
 		then
-			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.10.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.10.en-US.linux-x86_64.tar.bz2
+			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.12.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.12.en-US.linux-x86_64.tar.bz2
 			sudo mv waterfox /opt; sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 		elif [[ $browser == 14 ]];
