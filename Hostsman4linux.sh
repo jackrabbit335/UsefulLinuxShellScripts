@@ -3,7 +3,7 @@
 cat <<_EOF_
 This file has the ability to download and compile hosts files from multiple sources. As such, this file should be
 used with relative caution as failure to do so could result in pages no longer functioning properly. I'd suggest that
-unless you absolutely needed it, using more than the first hosts file and maybe peter lowe's adservers list is
+unless you absolutely needed it, using more than the first hosts file and maybe peter lowes adservers list is
 kinda redundant or probably not wise. Still if you wish to block most ads, I'd suggest the first four and adaway
 to be sure.
 _EOF_
@@ -23,19 +23,19 @@ done
 sudo cp /etc/hosts.bak /etc/hosts
 
 cd /tmp
-touch adblock && echo "----------------Hostsman4linux--------------" >> adblock
+echo "----------------Hostsman4linux--------------" >> adblock
 
 str1=http://winhelp2002.mvps.org/hosts.txt
 str2=https://someonewhocares.org/hosts/hosts
 str3=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
 str4=http://www.malwaredomainlist.com/hostslist/hosts.txt
 str5=https://hosts-file.net/ad_servers.txt
-str6=https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt
-str7=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Tracking
-str8=https://github.com/jackrabbit335/UsefulLinuxShellScripts/blob/master/Hosts%20%26%20sourcelist/justdomains
-str9=https://github.com/jackrabbit335/UsefulLinuxShellScripts/blob/master/Hosts%20%26%20sourcelist/blacklist.txt
+str6=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/AdAway
+str7=https://github.com/jackrabbit335/UsefulLinuxShellScripts/blob/master/Hosts%20%26%20sourcelist/blacklist.txt
+str8=http://www.sysctl.org/cameleon/hosts
 
-while getopts :ABCDEFGHI option; do
+
+while getopts :ABCDEFG option; do
 	case $option in
 		A) wget $str1 && cat hosts.txt >> adblock && rm hosts.txt
 		;;
@@ -47,13 +47,11 @@ while getopts :ABCDEFGHI option; do
 		;;
 		E) wget $str5 && cat ad_servers.txt >> adblock && rm ad_servers.txt
 		;;
-		F) wget $str6 && cat hosts.txt >> adblock && rm hosts.txt
+		F) wget $str6 && cat AdAway >> adblock && rm AdAway
 		;;
-		G) wget $str7 && cat Tracking >> adblock && rm Tracking
+		G) wget $str7 && cat blacklist.txt >> adblock && rm blacklist.txt
 		;;
-		H) wget $str8 && cat justdomains >> adblock && rm justdomains
-		;;
-		I) wget $str9 && cat blacklist.txt >> adblock && rm blacklist.txt
+		H) wget $str8 && cat hosts >> adblock && rm hosts
 		;;
 		*)
 	esac
@@ -67,16 +65,17 @@ if [[ $# -gt 1 ]]; then
 fi
 
 #This ensures that we are using All 127.x for pointing back to home
-sed -i 's/0.0.0.0/127.0.0.1 /g' adblock
+sed -i 's/127.0.0.1/0.0.0.0 /g' adblock
 
 #Remove comments and spaces
 sed -e '/^[[:space:]]*$/d' adblock > adblock.new && mv adblock.new adblock
 sed -e 's/[[:blank:]]//g' adblock > adblock.new && mv adblock.new adblock
-sed -e 's/127.0.0.1/127.0.0.1 /g' adblock > adblock.new && mv adblock.new adblock
+sed -e 's/0.0.0.0/0.0.0.0 /g' adblock > adblock.new && mv adblock.new adblock
 sed -e '/#.*/d' adblock > adblock.new && mv adblock.new adblock
 sed -e '/^*$/d' adblock > adblock.new && mv adblock.new adblock
 
 #This merges adblock with /etc/hosts then removes hosts
+echo "" | sudo tee -a /etc/hosts
 sudo cat adblock >> /etc/hosts
 rm adblock
 
