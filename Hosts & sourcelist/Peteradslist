@@ -966,6 +966,7 @@
 127.0.0.1 audience2media.com
 127.0.0.1 audienceinsights.com
 127.0.0.1 audit.median.hu
+127.0.0.1 audit.quantcast.mgr.consensu.org
 127.0.0.1 audit.webinform.hu
 127.0.0.1 augur.io
 127.0.0.1 auto-bannertausch.de
@@ -2327,7 +2328,6 @@
 127.0.0.1 quacksquirrel.com
 127.0.0.1 quaintcan.com
 127.0.0.1 quantcast.com
-127.0.0.1 quantcast.mgr.consensu.org
 127.0.0.1 quantserve.com
 127.0.0.1 quantummetric.com
 127.0.0.1 quarterbean.com
