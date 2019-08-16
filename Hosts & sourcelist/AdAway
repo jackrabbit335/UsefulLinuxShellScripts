@@ -1,3 +1,5 @@
+127.0.0.1  localhost
+::1  localhost
 127.0.0.1 lb.usemaxserver.de
 127.0.0.1 tracking.klickthru.com
 127.0.0.1 gsmtop.net
