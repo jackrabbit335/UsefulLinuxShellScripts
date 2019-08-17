@@ -502,7 +502,7 @@ InstallAndConquer(){
 		sudo pacman -S --noconfirm dnsutils traceroute hdparm gparted smartmontools
 		sudo pacman -S --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu
 		sudo pacman -S --noconfirm gnome-disk-utility hardinfo lshw net-tools
-		sudo pacman -S --noconfirm pacman-contrib yaourt grsync
+		sudo pacman -S --noconfirm pacman-contrib yaourt grsync tlp powertop
 	;;
 		2)
 		echo "This installs a light weight editor(text/code editor/IDE)"

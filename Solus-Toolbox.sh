@@ -61,7 +61,7 @@ _EOF_
 	if [[ $answer == Y ]];
 	then
 		sudo cp /etc/default/grub /etc/default/grub.bak
-		sudo sed -i -e 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/g' /etc/default/grub; sudo update-grub
+		sudo sed -i -e 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/g' /etc/default/grub; sudo clr-boot-manager update
 	else
 		echo "OKAY!"
 	fi
@@ -482,7 +482,7 @@ InstallAndConquer(){
 	case $software in
 		1)
 		echo "This installs a choice of utility software"
-		sudo eopkg install --reinstall mtr lshw hdparm gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw grsync
+		sudo eopkg install --reinstall mtr lshw hdparm lm-sensors tlp gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw grsync
 		sudo snap install youtube-dl
 	;;
 		2)
