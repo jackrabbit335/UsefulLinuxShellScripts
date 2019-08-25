@@ -43,3 +43,7 @@
 127.0.0.1 gsafe.getawesome1.com
 127.0.0.1 thinkdream.com #Blocks traffic to Thinkdream.com, a known domain behind the new linux trojan, Hidden Wasp
 127.0.0.1 www.thinkdream.com
+127.0.0.1 www.adwallet.com
+127.0.0.1 adwallet.com
+127.0.0.1 app.adwallet.com
+127.0.0.1 www.app.adwallet.com
