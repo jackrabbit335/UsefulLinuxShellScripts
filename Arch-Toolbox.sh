@@ -599,7 +599,7 @@ cat <<_EOF_
 It is important to note that while you can install many of the listed
 applications through pamac or octopi, you will not be able to utilize the aur
 for future updates of some of the software installed via tarballs without one of these...
-You have been warned.
+You have been warned. These also might not work on EndeavourOS.
 _EOF_
 		echo "1 - pacaur"
 		echo "2 - yaourt"
@@ -665,7 +665,7 @@ _EOF_
 			cd vivaldi && makepkg -si
 		elif [[ $browser == 8 ]];
 		then
-			wget linux.palemoon.org/datastore/release/palemoon-28.6.1.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.6.1.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+			wget linux.palemoon.org/datastore/release/palemoon-28.6.1.linux-x86_64.tar.bz2; tar -xvf palemoon-28.6.1.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 9 ]];
 		then
@@ -752,7 +752,7 @@ _EOF_
 			then
 				sudo pacman -Rs --noconfirm vlc && sudo pacman -S vlc-nightly clementine
 			else
-				sudo pacman -S --noconfirm vlc-nightly
+				sudo pacman -S --noconfirm vlc
 			fi
 		elif [[ $player == 10 ]];
 		then
@@ -1716,9 +1716,9 @@ MakeSwap(){
 	grep -q "swap" /etc/fstab
 	if [ $? -eq 0 ];
 	then
-		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 2G /swapfile
-		chmod 600 /swapfile; mkswap /swapfile; swapon /swapfile
-		echo "/mnt/swapfile swap swap sw 0 0" >> /etc/fstab
+		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 2G /swapfile; sudo chmod 600 /swapfile; 
+		sudo mkswap /swapfile; sudo swapon /swapfile
+		echo "/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
 	else
 		echo "Swap was already there so there is nothing to do"
 	fi
@@ -1813,7 +1813,7 @@ _EOF_
 }
 
 Backup(){
-	echo "What would you like to do?(Y/n)"
+	echo "What would you like to do?"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition"
 
