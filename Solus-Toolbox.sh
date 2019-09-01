@@ -25,6 +25,10 @@ Setup(){
     break
     done
 
+	#This lowers grub delay
+	sudo cp /etc/default/grub /etc/default/grub.bak
+	sudo sed -i -e '/GRUB_TIMEOUT=5/c\GRUB_TIMEOUT=3 ' /etc/default/grub; sudo update-grub
+
 	#This restricts coredumps to prevent attackers from getting info
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
 	sudo sed -i -e '/#Storage=external/c\Storage=none ' /etc/systemd/coredump.conf
@@ -40,12 +44,6 @@ Setup(){
 	sudo sysctl -p
 
 	#WE can block ICMP requests from the kernel if you'd like
-cat <<_EOF_
-Ping requests from unknown sources could mean that people are trying to
-locate/attack your network. If you need this functionality, you can comment
-this line out, however, this should not impact normal users. If you blocked ICMP traffic
-in Iptables or UFW, you really do not need this here.
-_EOF_
     echo "Block icmp ping requests?(Y/n)"
     read answer
     while [ $answer == Y ];
@@ -61,7 +59,7 @@ _EOF_
 	if [[ $answer == Y ]];
 	then
 		sudo cp /etc/default/grub /etc/default/grub.bak
-		sudo sed -i -e 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/g' /etc/default/grub; sudo clr-boot-manager update
+		sudo sed -i -e 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/g' /etc/default/grub; sudo update-grub
 	else
 		echo "OKAY!"
 	fi
@@ -295,7 +293,7 @@ Systeminfo(){
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "DIRECTORY USAGE" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
-	du -sh >> $host-sysinfo.txt
+	sudo du -sh >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "MEMORY USAGE" >> $host-sysinfo.txt
@@ -608,7 +606,7 @@ InstallAndConquer(){
 			sudo snap install chromium
 		elif [[ $browser == 10 ]];
 		then
-			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.12.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.12.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.13.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.13.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 		elif [[ $browser == 11 ]];
 		then
@@ -1147,11 +1145,11 @@ HostsfileSelect(){
 
 MakeSwap(){
 	#This attempts to create a swap file in the event the system doesn't have swap
-	grep -q "swap" /etc/fstab
+	cat /etc/fstab | grep "swap"
 	if [ $? -eq 0 ];
 	then
 		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 2G /swapfile; chmod 600 /swapfile
-		mkswap /swapfile; swapon /swapfile; echo "/mnt/swapfile swap swap sw 0 0" >> /etc/fstab
+		sudo mkswap /swapfile; sudo swapon /swapfile; echo "/mnt/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
 	else
 		echo "Swap was already there so there is nothing to do"
 	fi
@@ -1502,7 +1500,7 @@ Restart(){
 }
 
 Backup(){
-	echo "What would you like to do?(Y/n)"
+	echo "What would you like to do?"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition"
 

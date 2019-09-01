@@ -251,7 +251,7 @@ Systeminfo(){
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "DIRECTORY USAGE" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
-	du -h >> $host-sysinfo.txt
+	sudo du -h >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "##############################################################" >> $host-sysinfo.txt
 	echo "MEMORY USAGE" >> $host-sysinfo.txt
@@ -450,11 +450,11 @@ fi
 
 MakeSwap(){
 	#This attempts to create a swap file in the event the system doesn't have swap
-	grep -q "swap" /etc/fstab
+	cat /etc/fstab | grep "swap"
 	if [ $? -eq 0 ];
 	then
 		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 2G /swapfile; chmod 600 /swapfile
-		mkswap /swapfile; swapon /swapfile; echo "/mnt/swapfile swap swap sw 0 0" >> /etc/fstab
+		sudo mkswap /swapfile; sudo swapon /swapfile; echo "/mnt/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
 	else
 		echo "Swap was already there so there is nothing to do"
 	fi
@@ -829,10 +829,10 @@ InstallAndConquer(){
 				sudo update-alternatives --install /usr/bin/gnome-www-browser gnome-www-browser /usr/bin/palemoon 100; sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/palemoon 100
 			elif [[ $browser == 7 ]];
 			then
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.6.1566.51-1_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.7.1628.30-1_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 8 ]];
 			then
-				wget https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_2.7.1628.26-1_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
+				wget https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_2.8.1650.3-1_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 9 ]];
 			then
 				sudo sh -c 'echo "deb http://deb.opera.com/opera/ stable non-free" >> /etc/apt/sources.list.d/opera.list'; sudo sh -c 'wget -O - http://deb.opera.com/archive.key | apt-key add -'
@@ -845,7 +845,7 @@ InstallAndConquer(){
 				sudo apt install -y dillo
 			elif [[ $browser == 12 ]];
 			then
-				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.12.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-56.2.12.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.13.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-56.2.13.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 13 ]];
 			then
@@ -1564,7 +1564,7 @@ Restart(){
 
 Backup(){
 	#This tries to backup your system
-	echo "What would you like to do?(Y/n)"
+	echo "What would you like to do?"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition(skipping unnecessary items)"
 
