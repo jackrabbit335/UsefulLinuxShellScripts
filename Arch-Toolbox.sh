@@ -179,7 +179,7 @@ _EOF_
 				echo "update successful"
 			else
 				sudo rm -f /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg
-				sudo pacman -Sy --noconfirm gnupg archlinux-keyring antergos-keyring; sudo pacman-key --init
+				sudo pacman-key --init
 				sudo pacman-key --populate archlinux antergos; sudo pacman -Sc --noconfirm
 				sudo pacman -Syyu --noconfirm
 			fi
@@ -684,7 +684,7 @@ _EOF_
 			cd google-chrome && makepkg -si
 		elif [[ $browser == 13 ]];
 		then
-			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.13.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.13.en-US.linux-x86_64.tar.bz2
+			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.12.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.12.en-US.linux-x86_64.tar.bz2
 			sudo mv waterfox /opt; sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 		elif [[ $browser == 14 ]];
@@ -1541,11 +1541,9 @@ SystemMaintenance(){
 	if [[ $distribution == Manjaro ]];
 	then
 		sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu --noconfirm
-	elif [[ $distribution == Antergos ]];
+	elif [[ $distribution == Arch ]];
 	then
-		pacman -Q | grep reflector-antergos || sudo pacman -S --noconfirm reflector-antergos; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo reflector-antergos --verbose -l 50 -f 20 --save /etc/pacman.d/antergos-mirrorlist; sudo pacman -Syyu --noconfirm
-	else
-		sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
+		pacman -Q | grep reflector || sudo pacman -S --noconfirm reflector; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
 	fi
 
 	#This refreshes systemd in case of failed or changed units
@@ -1713,12 +1711,12 @@ fi
 
 MakeSwap(){
 	#This attempts to create a swap file in the event the system doesn't have swap
-	cat /etc/fstab | grep "swap"
+	grep -q "swap" /etc/fstab
 	if [ $? -eq 0 ];
 	then
-		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 2G /swapfile
-		sudo chmod 600 /swapfile; sudo mkswap /swapfile; sudo swapon /swapfile
-		echo "/mnt/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
+		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 2G /swapfile; sudo chmod 600 /swapfile; 
+		sudo mkswap /swapfile; sudo swapon /swapfile
+		echo "/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
 	else
 		echo "Swap was already there so there is nothing to do"
 	fi
