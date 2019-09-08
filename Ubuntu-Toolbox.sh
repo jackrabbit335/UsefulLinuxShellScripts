@@ -1498,14 +1498,14 @@ _EOF_
 				done
 			;;
 				3)
-				echo "##################################################" >> services.txt
+				echo "################################################################" >> services.txt
 				echo "SERVICE MANAGER" >> services.txt
-				echo "##################################################" >> services.txt
+				echo "################################################################" >> services.txt
 				service --status-all >> services.txt
 				systemctl list-unit-files --type=service >> services.txt
-				echo "##################################################" >> services.txt
+				echo "################################################################" >> services.txt
 				echo "END OF FILE" >> services.txt
-				echo "##################################################" >> services.txt
+				echo "################################################################" >> services.txt
 			;;
 				4)
 				echo "Great choice"

@@ -1620,8 +1620,9 @@ _EOF_
 	echo "What would you like to do?"
 	echo "1 - enable service"
 	echo "2 - disable service"
-	echo "3 - save a copy of all the services on your system to a text file"
-	echo "4 - Exit without doing anything"
+	echo "3 - mask service"
+	echo "4 - save a copy of all the services on your system to a text file"
+	echo "5 - Exit without doing anything"
 
 read operation;
 
@@ -1651,17 +1652,29 @@ read operation;
 		done
 	;;
 		3)
-		echo "##########################################################" >> services.txt
+		echo "Please enter the name of a service to mask"
+		read service
+		sudo systemctl mask $service
+		echo "Would you like to reboot?(Y/n)"
+		read answer
+		while [ $answer == Y ];
+		do
+			Restart
+		break
+		done
+	;;
+		4)
+		echo "########################################################################" >> services.txt
 		echo "SERVICES MANAGER" >> services.txt
-		echo "##########################################################" >> services.txt
+		echo "########################################################################" >> services.txt
 		systemctl list-unit-files --type=service >> services.txt
-		echo "##########################################################" >> services.txt
+		echo "########################################################################" >> services.txt
 		echo "END OF FILE" >> services.txt
-		echo "##########################################################" >> services.txt
+		echo "########################################################################" >> services.txt
 		echo "Thank you for your patience"
 		sleep 1
 	;;
-		4)
+		5)
 		echo "Smart choice."
 		sleep 2
 	;;
