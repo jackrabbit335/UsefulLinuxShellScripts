@@ -229,233 +229,233 @@ Systeminfo(){
 	pacman -Q | grep lsb-release || sudo pacman -S --noconfirm lsb-release
 	host=$(hostname)
 	distribution=$(cat /etc/arch-release)
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INFORMATION" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DATE"  >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	date >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "USER" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo $USER >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DISTRIBUTION" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo $distribution >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DESKTOP" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo $DESKTOP_SESSION >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INITIALIZATION" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	ps -p1 | awk 'NR!=1{print $4}' >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "UPDATE CHANNEL" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	cat /etc/pacman-mirrors.conf | grep "Branch" >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "KERNEL AND OPERATING SYSTEM INFORMATION" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	uname -a >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "OS/MACHINE INFO" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	hostnamectl >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "OPERATING SYSTEM RELEASE INFORMATION" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	lsb_release -a >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "HOSTNAME" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	hostname >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "UPTIME" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	uptime -p >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "LOAD AVERAGE" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	cat /proc/loadavg >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DISK SECTOR INFORMATION" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	sudo fdisk -l >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DISK SPACE" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	df -h >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SMART DATA" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	sudo smartctl -A /dev/sda >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DIRECTORY USAGE" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	sudo du -sh >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "MEMORY USAGE" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	free -h >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "LISTS ALL BLOCK DEVICES WITH SIZE" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	lsblk -o NAME,SIZE >> $host-sysinfo.txt
 	echo"" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "BLOCK DEVICE ID " >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	sudo blkid >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "NETWORK CONFIGURATION" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	ip addr >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "NETWORK STATS" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	ss -tulpn >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "FIREWALL STATUS" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	sudo ufw status verbose >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "PROCESS LIST" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	ps -aux >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "LAST LOGIN ATTEMPTS" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	lastlog >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "INSTALLED PACKAGES" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	sudo pacman -Q >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "PACKAGE MANAGER HISTORY" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	cat /var/log/pacman.log >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "Inxi" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	inxi -F >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "CPU TEMP" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	sensors >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "HD TEMP" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	sudo hddtemp /dev/sda >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DISK READ SPEED"
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	sudo hdparm -tT /dev/sda >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo " DRIVER INFO" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	sudo lsmod >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "USB INFORMATION" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	lsusb >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "HARDWARE INFORMATION" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	lspci >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "MORE HARDWARE INFORMATION" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	sudo lshw >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "EVEN MORE HARDWARE INFORMATION" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	sudo dmidecode >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "YET STILL MORE HARDWARE INFORMATION" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	lscpu >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "MEMORY INFOMRATION" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	cat /proc/meminfo >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "TLP STATS" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	sudo tlp-stat >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "LOGS" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	sudo dmesg >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "MORE LOGS" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	journalctl >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEMD BOOT INFORMATION" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	systemd-analyze >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "MORE SYSTEMD BOOT INFORMATION" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	systemd-analyze blame >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEMD STATUS" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	systemctl status | less >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEMD'S FAILED LIST" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	systemctl --failed >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "END OF FILE" >> $host-sysinfo.txt
-	echo "##############################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 
 
 	clear
@@ -470,29 +470,30 @@ InstallAndConquer(){
 	while [ $answer == Y ];
 	do
 		echo "1 - Utility suite/Monitoring Software"
-		echo "2 - IDE or text/code editor"
-		echo "3 - Cleaning software"
-		echo "4 - prelauncher"
-		echo "5 - Download managers"
-		echo "6 - Torrent clients"
-		echo "7 - AUR Helpers"
-		echo "8 - Web browser from a list"
-		echo "9 - Media/home theater software"
-		echo "10 - Virtual machine client"
-		echo "11 - Wine and play on linux"
-		echo "12 - quvcview"
-		echo "13 - Manipulate config files and switch between versions of software"
-		echo "14 - GAMES!!!!!!!!!"
-		echo "15 - Video editing/encoding"
-		echo "16 - Plank"
-		echo "17 - Backup"
-		echo "18 - THEMES!!!!!!!!"
-		echo "19 - screenfetch"
-		echo "20 - office software"
-		echo "21 - Proprietary Fonts"
-		echo "22 - Security checkers/scanners"
-		echo "23 - Stellarium constellation and space observation"
-		echo "24 - exit out of this menu"
+		echo "2 - Terminals"
+		echo "3 - IDE or text/code editor"
+		echo "4 - Cleaning software"
+		echo "5 - prelauncher"
+		echo "6 - Download managers"
+		echo "7 - Torrent clients"
+		echo "8 - AUR Helpers"
+		echo "9 - Web browser from a list"
+		echo "10 - Media/home theater software"
+		echo "11 - Virtual machine client"
+		echo "12 - Wine and play on linux"
+		echo "13 - quvcview"
+		echo "14 - Manipulate config files and switch between versions of software"
+		echo "15 - GAMES!!!!!!!!!"
+		echo "16 - Video editing/encoding"
+		echo "17 - Plank"
+		echo "18 - Backup"
+		echo "19 - THEMES!!!!!!!!"
+		echo "20 - screenfetch"
+		echo "21 - office software"
+		echo "22 - Proprietary Fonts"
+		echo "23 - Security checkers/scanners"
+		echo "24 - Stellarium constellation and space observation"
+		echo "25 - exit out of this menu"
 
 	read software;
 
@@ -501,10 +502,33 @@ InstallAndConquer(){
 		echo "This installs a series of utility software"
 		sudo pacman -S --noconfirm dnsutils traceroute hdparm gparted smartmontools
 		sudo pacman -S --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu
-		sudo pacman -S --noconfirm gnome-disk-utility hardinfo lshw net-tools
+		sudo pacman -S --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit
 		sudo pacman -S --noconfirm pacman-contrib yaourt grsync tlp powertop
 	;;
 		2)
+		echo "This installs your choice of terminals If you already have one, don't worry"
+		echo "1 - terminator"
+		echo "2 - termite"
+		echo "3 - lxterminal"
+		echo "4 - xterm"
+		read package
+		if [[ $package == 1 ]];
+		then
+			sudo pacman -S --noconfirm terminator
+		elif [[ $package == 2 ]];
+		then
+			sudo pacman -S --noconfirm termite
+		elif [[ $package == lxterminal ]];
+		then
+			sudo pacman -S --noconfirm lxterminal
+		elif [[ $package == 4 ]];
+		then
+			sudo pacman -S --noconfirm xterm
+		else
+			echo "You've entered an invalid number"
+		fi
+	;;
+		3)
 		echo "This installs a light weight editor(text/code editor/IDE)"
 		echo "1 - geany"
 		echo "2 - sublime text editor"
@@ -548,15 +572,15 @@ InstallAndConquer(){
 			echo "You've entered an invalid number"
 		fi
 	;;
-		3)
+		4)
 		echo "This installs cleaning software for Arch Linux Systems"
 		sudo pacman -S --noconfirm bleachbit rmlint
 	;;
-		4)
+		5)
 		echo "This installs a prelauncher"
 		sudo pacman -S --noconfirm preload
 	;;
-		5)
+		6)
 		echo "This installs a choice in download managers"
 		echo "1 - wget"
 		echo "2 - uget"
@@ -575,7 +599,7 @@ InstallAndConquer(){
 			echo "You have entered an invalid number"
 		fi
 	;;
-		6)
+		7)
 		echo "This installs your choice of torrent clients"
 		echo "1 - transmission-gtk"
 		echo "2 - deluge"
@@ -594,7 +618,7 @@ InstallAndConquer(){
 			echo "You have entered an invalid number"
 		fi
 	;;
-		7)
+		8)
 cat <<_EOF_
 It is important to note that while you can install many of the listed
 applications through pamac or octopi, you will not be able to utilize the aur
@@ -618,7 +642,7 @@ _EOF_
 			echo "You have entered an invalid number"
 		fi
 	;;
-		8)
+		9)
 		echo "This installs your choice in browsers"
 		echo "1 - chromium"
 		echo "2 - epiphany"
@@ -701,9 +725,8 @@ _EOF_
 		else
 			echo "You have entered an invalid number"
 		fi
-
 	;;
-		9)
+		10)
 		echo "This installs a choice in media players"
 		echo "1 - xplayer"
 		echo "2 - parole"
@@ -766,14 +789,12 @@ _EOF_
 		else
 			echo "You have entered an invalid number"
 		fi
-
-	;;
-		10)
-		echo "This installs a virtualbox client"
-		sudo pacman -S --noconfirm virtualbox
-
 	;;
 		11)
+		echo "This installs a virtualbox client"
+		sudo pacman -S --noconfirm virtualbox
+	;;
+		12)
 		echo "This installs Wine or Windows emulation software"
 		echo "1 - Wine"
 		echo "2 - playonlinux"
@@ -788,14 +809,12 @@ _EOF_
 			*)
 			echo "You have entered an invalid number" ;;
 		esac
-
-	;;
-		12)
-		echo "This installs a webcam application for laptops"
-		sudo pacman -S --noconfirm guvcview
-
 	;;
 		13)
+		echo "This installs a webcam application for laptops"
+		sudo pacman -S --noconfirm guvcview
+	;;
+		14)
 		echo "This installs etc-update"
 		echo "etc-update can help you manage pacnew files and other configuration files after system updates."
 		sleep 2
@@ -810,9 +829,8 @@ _EOF_
 			sudo pacman -S --noconfirm downgrade
 		break
 		done
-
 	;;
-		14)
+		15)
 		echo "This installs a choice in small games"
 		echo "1 - supertuxkart"
 		echo "2 - gnome-mahjongg"
@@ -856,7 +874,7 @@ _EOF_
 		fi
 
 	;;
-		15)
+		16)
 		echo "This installs video/audio decoding/reencoding software"
 		sudo pacman -S --noconfirm kdenlive audacity
 		echo "Would you also like obs-studio?(Y/n)"
@@ -866,13 +884,12 @@ _EOF_
 			sudo pacman -S --noconfirm obs-studio
 		break
 		done
-
 	;;
-		16)
+		17)
 		echo "This installs a dock application"
 		sudo pacman -S --noconfirm plank
 	;;
-		17)
+		18)
 		echo "This installs your backup software"
 		echo "1 - deja-dup"
 		echo "2 - timeshift"
@@ -886,28 +903,27 @@ _EOF_
 		else
 			echo "You have entered an invalid number"
 		fi
-
 	;;
-		18)
+		19)
 		echo "This installs a few common themes"
 		sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme arc-gtk-theme papirus-icon-theme materia-gtk-theme paper-icon-theme
 	;;
-		19)
+		20)
 		echo "This installs screenfetch"
 		sudo pacman -S --noconfirm screenfetch
 	;;
-		20)
+		21)
 		echo "This installs office software"
 		sudo pacman -S --noconfirm libreoffice-fresh
 	;;
-		21)
+		22)
 		wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz; wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gz
 		gunzip ttf-ms-fonts.tar.gz; gunzip ttf-mac-fonts.tar.gz
 		tar -xvf ttf-ms-fonts.tar; tar -xvf ttf-mac-fonts.tar
 		cd ttf-ms-fonts; makepkg -si
 		pushd ttf-mac-fonts; makepkg -si; cd
 	;;
-		22)
+		23)
 		echo "This installs possible security software and virus checker if you wish"
 		echo "1 - rkhunter"
 		echo "2 - clamav"
@@ -925,13 +941,12 @@ _EOF_
 			*)
 			echo "You have entered an invalid number" ;;
 		esac
-
 	;;
-		23)
+		24)
 		echo "This installs stellarium incase you are a night sky observer"
 		sudo pacman -S --noconfirm stellarium
 	;;
-		24)
+		25)
 		echo "Ok, well, I'm here if you change your mind"
 		break
 	;;
@@ -1239,9 +1254,9 @@ AccountSettings(){
 		cat /etc/passwd | awk -F: '{print $1}' >> ~/accounts.txt
 	;;
 		5)
-		echo "##########################################################" >> Accounts.txt
+		echo "########################################################################" >> Accounts.txt
 		echo "USERS AND GROUPS" >> Accounts.txt
-		echo "##########################################################" >> Accounts.txt
+		echo "########################################################################" >> Accounts.txt
 		cat /etc/passwd >> Accounts.txt
 	;;
 		6)
@@ -1689,33 +1704,33 @@ Reset(){
 #This resets the desktop
 if [[ $DESKTOP_SESSION == cinnamon ]];
 then
-	echo "########################################################################"
+	echo "############################################################################"
 	echo "This resets Cinnamon"
-	echo "########################################################################"
+	echo "############################################################################"
 	dconf dump /org/cinnamon/ > cinnamon-desktop-backup; dconf reset -f /org/cinnamon
 elif [[ $DESKTOP_SESSION == gnome ]];
 then
-	echo "########################################################################"
+	echo "############################################################################"
 	echo "This resets Gnome Shell"
-	echo "########################################################################"
+	echo "############################################################################"
 	dconf dump /org/gnome/ > gnome-desktop-backup; dconf reset -f /org/gnome
 elif [[ $DESKTOP_SESSION == budgie ]];
 then
-	echo "########################################################################"
+	echo "############################################################################"
 	echo "This resets Budgie"
-	echo "########################################################################"
+	echo "############################################################################"
 	dconf dump /org/budgie/ > /budgie-desktop-backup; dconf reset -f /org/budgie
 elif [[ $DESKTOP_SESSION == xfce ]];
 then
-	echo "########################################################################"
+	echo "############################################################################"
 	echo "This resets XFCE"
-	echo "########################################################################"
+	echo "############################################################################"
 	mv ~/.config/xfce4 ~/.config/xfce4.bak
 elif [[ $DESKTOP_SESSION == mate ]];
 then
-	echo "#######################################################################"
+	echo "############################################################################"
 	echo "This resets MATE"
-	echo "#######################################################################"
+	echo "############################################################################"
 	dconf dump /org/mate/ > mate-desktop-backup; dconf reset -f /org/mate
 else
 	echo "You're running a desktop/Window Manager that we do not yet support... Come back later."
@@ -1803,15 +1818,15 @@ _EOF_
 		done
 	;;
 		3)
-		echo "##########################################################" >> kernels.txt
+		echo "############################################################################" >> kernels.txt
 		echo "WELCOME TO THE ALL NEW MANJARO KERNEL MANAGER" >> kernels.txt
-		echo "##########################################################" >> kernels.txt
+		echo "############################################################################" >> kernels.txt
 		sudo mhwd-kernel -l >> kernels.txt
-		echo "**********************************************************" >> kernels.txt
+		echo "****************************************************************************" >> kernels.txt
 		sudo mhwd-kernel -li >> kernels.txt
-		echo "##########################################################" >> kernels.txt
+		echo "############################################################################" >> kernels.txt
 		echo "END OF FILE" >> kernels.txt
-		echo "##########################################################" >> kernels.txt
+		echo "############################################################################" >> kernels.txt
 	;;
 		4)
 		echo "Skipping"
