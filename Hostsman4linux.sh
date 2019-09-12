@@ -70,7 +70,7 @@ sed -i 's/127.0.0.1/0.0.0.0 /g' adblock
 #Remove comments and spaces
 sed -e '/^[[:space:]]*$/d' adblock > adblock.new && mv adblock.new adblock
 sed -e 's/[[:blank:]]//g' adblock > adblock.new && mv adblock.new adblock
-sed -e 's/0.0.0.0/0.0.0.0 /g' adblock > adblock.new && mv adblock.new adblock
+sed -e 's/0.0.0.0/0.0.0.0  /g' adblock > adblock.new && mv adblock.new adblock
 sed -e '/#.*/d' adblock > adblock.new && mv adblock.new adblock
 sed -e '/^*$/d' adblock > adblock.new && mv adblock.new adblock
 
