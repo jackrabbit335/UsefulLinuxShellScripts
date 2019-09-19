@@ -1,3 +1,4 @@
+##Fancy helping out the project, list your own tracking and or ad servers below.
 0.0.0.0   browsergames2019.com
 0.0.0.0   www.browsergames2019.com
 0.0.0.0   www.americascardroom.eu
