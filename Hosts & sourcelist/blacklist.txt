@@ -37,7 +37,7 @@
 0.0.0.0   app.link
 0.0.0.0   www.bfmio.com
 0.0.0.0   bfmio.com
-10.0.0.0   bestfileconverter.com
+0.0.0.0   bestfileconverter.com
 0.0.0.0   www.bestfileconverter.com 
 0.0.0.0   gsafe.getawesome1.com
 0.0.0.0   thinkdream.com #Blocks traffic to Thinkdream.com, a known domain behind the new linux trojan, Hidden Wasp
