@@ -46,3 +46,4 @@
 0.0.0.0   adwallet.com
 0.0.0.0   app.adwallet.com
 0.0.0.0   www.app.adwallet.com
+0.0.0.0   search.localstack.com
