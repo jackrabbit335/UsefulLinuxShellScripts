@@ -14,7 +14,7 @@ echo "searching for /etc/hosts.bak and then creating hosts file to block trackin
 find /etc/hosts.bak
 if [ $? -gt 0 ]
 then
-	sudo cp /etc/hosts /etc/hosts.bak
+	sudo cp /etc/hosts /etc/hosts.bak && sudo cp /etc/hosts.bak /etc/hosts
 else
 	sudo cp /etc/hosts.bak /etc/hosts
 fi
