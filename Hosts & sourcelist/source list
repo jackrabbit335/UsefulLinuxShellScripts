@@ -1,8 +1,11 @@
+##Fancy supporting the project? Add your own tracking and or adblocking domains to blacklist.txt##
+
 https://pgl.yoyo.org/as/serverlist.php?hostformat=hosts
-Hostsfile.mine.nu
-hosts-file.net
+http://winhelp2002.mvps.org/hosts.txt
 someonewhocares.org
 malwaredomainlist.com
-https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-blocklist.txt
-https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt
-http://www.malware-domains.com/files/justdomains.zip
+https://adaway.org/hosts.txt
+https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser
+http://sysctl.org/cameleon/hosts
+https://raw.githubusercontent.com/bjornstar/hosts/master/hosts
+My own custom blacklist domains.
