@@ -52,7 +52,7 @@ Setup(){
 	sudo touch /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "kernel.dmesg_restrict = 1" | sudo tee -a /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "# Reduces the swap" | sudo tee -a /etc/sysctl.conf
-	echo "vm.swappiness = 5" | sudo tee -a /etc/sysctl.conf
+	echo "vm.swappiness = 10" | sudo tee -a /etc/sysctl.conf
 	echo "# Improve cache management" | sudo tee -a /etc/sysctl.conf
 	echo "vm.vfs_cache_pressure = 50" | sudo tee -a /etc/sysctl.conf
 	echo "#tcp flaw workaround" | sudo tee -a /etc/sysctl.conf
@@ -824,15 +824,15 @@ InstallAndConquer(){
 				sudo apt install -f
 			elif [[ $browser == 6 ]];
 			then
-				wget http://linux.palemoon.org/datastore/release/palemoon-28.6.1.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.6.1.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget http://linux.palemoon.org/datastore/release/palemoon-28.7.1.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.6.1.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 				sudo update-alternatives --install /usr/bin/gnome-www-browser gnome-www-browser /usr/bin/palemoon 100; sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/palemoon 100
 			elif [[ $browser == 7 ]];
 			then
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.7.1628.30-1_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.8.1664.35-1_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 8 ]];
 			then
-				wget https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_2.8.1650.3-1_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
+				wget https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_2.8.1664.32-1_amd64.deb; sudo apt install -f
 			elif [[ $browser == 9 ]];
 			then
 				sudo sh -c 'echo "deb http://deb.opera.com/opera/ stable non-free" >> /etc/apt/sources.list.d/opera.list'; sudo sh -c 'wget -O - http://deb.opera.com/archive.key | apt-key add -'
@@ -845,7 +845,7 @@ InstallAndConquer(){
 				sudo apt install -y dillo
 			elif [[ $browser == 12 ]];
 			then
-				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.13.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-56.2.13.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.14.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-56.2.13.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 13 ]];
 			then

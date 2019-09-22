@@ -40,7 +40,7 @@ Setup(){
     sudo touch /etc/syctl.d/60-network-hardening.conf
 	echo "kernel.dmesg_restrict = 1" | sudo tee -a /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "kernel.kptr_restrict = 1" | sudo tee -a /etc/sysctl.d/50-kptr-restrict.conf
-	echo "vm.swappiness = 5" | sudo tee -a /etc/sysctl.d/99-sysctl.conf #lowers swap value
+	echo "vm.swappiness = 10" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
 	sudo sysctl -p
 
 	#WE can block ICMP requests from the kernel if you'd like
@@ -154,8 +154,8 @@ _EOF_
 		echo 'alias convey="sudo eopkg check"' >> ~/.bashrc
 		echo "#Alias to rebuild the database" >> ~/.bashrc
 		echo 'alias rebuild="sudo eopkg rebuild-db"' >> ~/.bashrc
-		echo "#Alias to free RAM cache" >> ~/.bashrc
-		echo 'alias boost="sudo sync; echo 3 > /proc/sys/vm/drop_caches; sudo swapoff -a && sudo swapon -a"' >> ~/.bashrc
+		echo "#Alias to Free up RAM" >> ~/.bashrc
+		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
 		echo "#Alias to trim journal size" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
 	fi
@@ -606,7 +606,7 @@ InstallAndConquer(){
 			sudo snap install chromium
 		elif [[ $browser == 10 ]];
 		then
-			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.13.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.13.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.14.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.13.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 		elif [[ $browser == 11 ]];
 		then
@@ -615,7 +615,7 @@ InstallAndConquer(){
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
 		elif [[ $browser == 12 ]];
 		then
-			wget http://linux.palemoon.org/datastore/release/palemoon-28.6.1.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.6.1.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+			wget http://linux.palemoon.org/datastore/release/palemoon-28.7.1.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.6.1.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 13 ]];
 		then
