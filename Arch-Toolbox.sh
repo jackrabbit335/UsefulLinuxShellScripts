@@ -434,6 +434,11 @@ Systeminfo(){
 	journalctl >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SYSTEMD SERVICES(ALSO FOUND IN SERVICE MANAGER)" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	systemctl list-unit-files --type=service >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEMD BOOT INFORMATION" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	systemd-analyze >> $host-sysinfo.txt
