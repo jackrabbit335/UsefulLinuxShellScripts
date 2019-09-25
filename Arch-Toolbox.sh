@@ -694,7 +694,7 @@ _EOF_
 			cd vivaldi && makepkg -si
 		elif [[ $browser == 8 ]];
 		then
-			wget linux.palemoon.org/datastore/release/palemoon-28.7.1.linux-x86_64.tar.bz2; tar -xvf palemoon-28.6.1.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+			wget linux.palemoon.org/datastore/release/palemoon-28.7.1.linux-x86_64.tar.bz2; tar -xvf palemoon-28.7.1.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 9 ]];
 		then
