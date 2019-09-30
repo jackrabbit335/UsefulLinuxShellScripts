@@ -40,7 +40,7 @@
 0.0.0.0   bestfileconverter.com
 0.0.0.0   www.bestfileconverter.com 
 0.0.0.0   gsafe.getawesome1.com
-0.0.0.0   thinkdream.com #Blocks traffic to Thinkdream.com, a known domain behind the new linux trojan, Hidden Wasp
+0.0.0.0   thinkdream.com #linux trojan, Hidden Wasp
 0.0.0.0   www.thinkdream.com
 0.0.0.0   www.adwallet.com
 0.0.0.0   adwallet.com
@@ -51,6 +51,6 @@
 0.0.0.0   hbopenbid.pubmatic.com
 0.0.0.0   alz-d.openx.net
 0.0.0.0   accuweather-d.openx.net
-0.0.0.0   fundingchoicesmessages.google.com
-0.0.0.0   contributor.google.com
-0.0.0.0   www.google-analytics.com
+#0.0.0.0   fundingchoicesmessages.google.com
+#0.0.0.0   contributor.google.com
+#0.0.0.0   www.google-analytics.com
