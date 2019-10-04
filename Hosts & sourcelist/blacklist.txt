@@ -55,3 +55,5 @@
 #0.0.0.0   fundingchoicesmessages.google.com
 #0.0.0.0   contributor.google.com
 #0.0.0.0   www.google-analytics.com
+0.0.0.0    pdfpoof.com
+0.0.0.0    www.pdfpoof.com
