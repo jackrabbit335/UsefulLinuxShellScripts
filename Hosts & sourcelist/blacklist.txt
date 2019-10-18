@@ -58,3 +58,5 @@
 0.0.0.0    pdfpoof.com
 0.0.0.0    www.pdfpoof.com
 0.0.0.0    a.pub.network
+0.0.0.0    trigtent.com
+0.0.0.0    www.trigtent.com
