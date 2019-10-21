@@ -61,3 +61,6 @@
 0.0.0.0    trigtent.com
 0.0.0.0    www.trigtent.com
 0.0.0.0    searchberry.co
+0.0.0.0    c.aaxads.com
+0.0.0.0    id.rlcdn.com
+0.0.0.0    ecdn.firstimpressions.io
