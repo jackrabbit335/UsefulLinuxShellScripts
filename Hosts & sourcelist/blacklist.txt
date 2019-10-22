@@ -64,3 +64,5 @@
 0.0.0.0    c.aaxads.com
 0.0.0.0    id.rlcdn.com
 0.0.0.0    ecdn.firstimpressions.io
+0.0.0.0    www.lightboxcdn.com
+0.0.0.0    6moxhf9rmm.com
