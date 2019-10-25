@@ -1356,6 +1356,8 @@
 0.0.0.0    ads.radar.bg
 0.0.0.0    ads.radioactive.se
 0.0.0.0    stats2.radiocompanion.com
+0.0.0.0    s-bid.rmp.rakuten.com
+0.0.0.0    s-imp.rmp.rakuten.com
 0.0.0.0    www.ranking-charts.de
 0.0.0.0    srv1.rapidstats.de
 0.0.0.0    ads.recoletos.es
@@ -2580,6 +2582,7 @@
 0.0.0.0    graphics.streamray.com
 0.0.0.0    cdn.turn.com
 0.0.0.0    ad.flux.com
+0.0.0.0    c.channeltraffic.net
 0.0.0.0    cnzz.mmstat.com
 0.0.0.0    acookie.alimama.com
 0.0.0.0    hz.mmstat.com
@@ -5275,6 +5278,7 @@
 0.0.0.0    ade.googlesyndication.com
 0.0.0.0    www3.webhostingtalk.com
 0.0.0.0    analytics.inform.com
+0.0.0.0    track.searchiq.co
 0.0.0.0    adexchangedirect.com
 0.0.0.0    cleardexchange.com
 0.0.0.0    stats.directexpose.com
