@@ -611,7 +611,7 @@ InstallAndConquer(){
 			sudo snap install chromium
 		elif [[ $browser == 10 ]];
 		then
-			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.14.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.14.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2019.10.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2019.10.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 		elif [[ $browser == 11 ]];
 		then
@@ -1196,11 +1196,10 @@ cleanup(){
 	sudo rm -rf ~/.w3m/*
 	sudo rm ~/.esd_auth #Best I can tell cookie for pulse audio
 	sudo rm ~/.local/share/recently-used.xbel
-	sudo rm -rf /tmp/*
+	#sudo rm -rf /tmp/*
 	history -c && rm ~/.bash_history
 
 	#This clears the cached RAM
-	read -p "This will free up cached RAM. Press enter to continue..."
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
 
 	#This could clean your Video folder and Picture folder based on a set time

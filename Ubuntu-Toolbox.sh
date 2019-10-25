@@ -763,13 +763,12 @@ InstallAndConquer(){
 			elif [[ $package == 4 ]];
 			then
 				sudo apt install -y rkhunter && sudo rkhunter --propupd && sudo rkhunter --update
-				sudo apt install -y clamav && sudo freshclam
-				sudo apt install -y chkrootkit
+				sudo apt install -y clamav && sudo freshclam; sudo apt install -y chkrootkit
 			fi
 		;;
 			3)
-			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp
-			sudo apt install -y gnome-disk-utility htop iotop atop inxi grsync powertop
+			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync
+			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop
 			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools
 		;;
 			4)
@@ -834,10 +833,10 @@ InstallAndConquer(){
 				sudo update-alternatives --install /usr/bin/gnome-www-browser gnome-www-browser /usr/bin/palemoon 100; sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/palemoon 100
 			elif [[ $browser == 7 ]];
 			then
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.8.1664.35-1_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.8.1664.44-1_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 8 ]];
 			then
-				wget https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_2.8.1664.32-1_amd64.deb; sudo apt install -f
+				wget https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_2.9.1705.4-1_amd64.deb; sudo apt install -f
 			elif [[ $browser == 9 ]];
 			then
 				sudo sh -c 'echo "deb http://deb.opera.com/opera/ stable non-free" >> /etc/apt/sources.list.d/opera.list'; sudo sh -c 'wget -O - http://deb.opera.com/archive.key | apt-key add -'
@@ -850,7 +849,7 @@ InstallAndConquer(){
 				sudo apt install -y dillo
 			elif [[ $browser == 12 ]];
 			then
-				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.14.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-56.2.14.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2019.10.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-classic-2019.10.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 13 ]];
 			then
@@ -1246,11 +1245,10 @@ _EOF_
 	sudo rm -r ~/.w3m/*
 	sudo rm -r ~/.esd_auth #Best I can tell cookie for pulse audio
 	sudo rm -r ~/.local/share/recently-used.xbel
-	sudo rm -r /tmp/*
+	#sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
 
 	#This clears the cached RAM
-	read -p "This will free up cached RAM. Press enter to continue..."
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches; swapoff -a && swapon -a"
 
 	#This could clean your Video folder and Picture folder based on a set time

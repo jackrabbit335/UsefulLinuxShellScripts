@@ -684,14 +684,12 @@ _EOF_
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi-snapshot.tar.gz
-			gunzip vivaldi-snapshot.tar.gz; tar -xvf vivaldi-snapshot.tar
-			cd vivaldi-snapshot && makepkg -si
+			gunzip vivaldi-snapshot.tar.gz; tar -xvf vivaldi-snapshot.tar; cd vivaldi-snapshot && makepkg -si
 		elif [[ $browser == 7 ]];
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz
-			gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar
-			cd vivaldi && makepkg -si
+			gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar; cd vivaldi && makepkg -si
 		elif [[ $browser == 8 ]];
 		then
 			wget linux.palemoon.org/datastore/release/palemoon-28.7.1.linux-x86_64.tar.bz2; tar -xvf palemoon-28.7.1.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
@@ -709,11 +707,10 @@ _EOF_
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz
-			gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar
-			cd google-chrome && makepkg -si
+			gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
 		elif [[ $browser == 13 ]];
 		then
-			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.14.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-56.2.14.en-US.linux-x86_64.tar.bz2
+			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2019.10.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2019.10.en-US.linux-x86_64.tar.bz2
 			sudo mv waterfox /opt; sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 		elif [[ $browser == 14 ]];
@@ -725,8 +722,7 @@ _EOF_
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/slimjet.tar.gz
-			gunzip slimjet.tar.gz; tar -xvf slimjet.tar
-			cd slimjet && makepkg -si
+			gunzip slimjet.tar.gz; tar -xvf slimjet.tar; cd slimjet && makepkg -si
 		else
 			echo "You have entered an invalid number"
 		fi
@@ -762,8 +758,7 @@ _EOF_
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/spotify.tar.gz
-			gunzip spotify.tar.gz; tar -xvf spotify.tar
-			cd spotify && makepkg -si
+			gunzip spotify.tar.gz; tar -xvf spotify.tar; cd spotify && makepkg -si
 		elif [[ $player == 6 ]];
 		then
 			sudo pacman -S --noconfirm rhythmbox
@@ -825,8 +820,7 @@ _EOF_
 		sleep 2
 		sudo pacman -S --needed base-devel
 		wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz
-		gunzip etc-update.tar.gz && tar -xvf etc-update.tar
-		cd etc-update && makepkg -si
+		gunzip etc-update.tar.gz && tar -xvf etc-update.tar; cd etc-update && makepkg -si
 		echo "Would you also like to install downgrade?(Y/n)"
 		read answer
 		while [ $answer ==  Y ];
@@ -923,10 +917,8 @@ _EOF_
 	;;
 		22)
 		wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz; wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gz
-		gunzip ttf-ms-fonts.tar.gz; gunzip ttf-mac-fonts.tar.gz
-		tar -xvf ttf-ms-fonts.tar; tar -xvf ttf-mac-fonts.tar
-		cd ttf-ms-fonts; makepkg -si
-		pushd ttf-mac-fonts; makepkg -si; cd
+		gunzip ttf-ms-fonts.tar.gz; gunzip ttf-mac-fonts.tar.gz; tar -xvf ttf-ms-fonts.tar; tar -xvf ttf-mac-fonts.tar
+		cd ttf-ms-fonts; makepkg -si; pushd ttf-mac-fonts; makepkg -si; cd
 	;;
 		23)
 		echo "This installs possible security software and virus checker if you wish"
@@ -1330,11 +1322,10 @@ cleanup(){
 	sudo rm -r ~/.w3m/*
 	sudo rm -r ~/.esd_auth #Best I can tell cookie for pulse audio
 	sudo rm -r ~/.local/share/recently-used.xbel
-	sudo rm -r /tmp/*
+	#sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
 
 	#This clears the cached RAM
-	read -p "This will free up cached RAM. Press enter to continue..."
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
 
 	#This could clean your Video folder and Picture folder based on a set time
