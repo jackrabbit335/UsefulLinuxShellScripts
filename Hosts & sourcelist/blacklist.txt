@@ -69,3 +69,5 @@
 #0.0.0.0    hookers.nl
 0.0.0.0    engine.phn.doublepimp.com
 0.0.0.0    sofia.trustx.org
+#0.0.0.0    tag.researchnow.com
+0.0.0.0    cdn.b0e8.com
