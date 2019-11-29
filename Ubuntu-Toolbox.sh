@@ -923,7 +923,7 @@ InstallAndConquer(){
 			elif [[ $package == 2 ]];
 			then
 				sudo apt install -y Terminator
-			elif [[ $package == 3 ]];
+			elif [[ $package ==3 ]];
 			then
 				sudo apt install -y Guake Terminator
 			fi
