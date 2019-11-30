@@ -9,7 +9,6 @@
 0.0.0.0    247media.com
 0.0.0.0    24log.com
 0.0.0.0    24log.de
-0.0.0.0    24pm-affiliation.com
 0.0.0.0    2mdn.net
 0.0.0.0    2o7.net
 0.0.0.0    2znp09oa.com
@@ -42,6 +41,7 @@
 0.0.0.0    a135.wftv.com
 0.0.0.0    aaddzz.com
 0.0.0.0    aaxads.com
+0.0.0.0    aaxdetect.com
 0.0.0.0    abacho.net
 0.0.0.0    abackchain.com
 0.0.0.0    abandonedaction.com
@@ -163,7 +163,6 @@
 0.0.0.0    ad.zanox.com
 0.0.0.0    ad0.bigmir.net
 0.0.0.0    ad01.mediacorpsingapore.com
-0.0.0.0    ad1.emediate.dk
 0.0.0.0    ad1.emule-project.org
 0.0.0.0    ad1.kde.cz
 0.0.0.0    ad1.pamedia.com.au
@@ -411,7 +410,6 @@
 0.0.0.0    ads.contextweb.com
 0.0.0.0    ads.crakmedia.com
 0.0.0.0    ads.creative-serving.com
-0.0.0.0    ads.creativematch.com
 0.0.0.0    ads.cricbuzz.com
 0.0.0.0    ads.cybersales.cz
 0.0.0.0    ads.dada.it
@@ -757,6 +755,7 @@
 0.0.0.0    adserver2.mindshare.de
 0.0.0.0    adservern2.host
 0.0.0.0    adserverplus.com
+0.0.0.0    adserverpub.com
 0.0.0.0    adserversolutions.com
 0.0.0.0    adservice.google.com
 0.0.0.0    adservice.google.com.mt
@@ -781,6 +780,7 @@
 0.0.0.0    adspeed.net
 0.0.0.0    adspirit.de
 0.0.0.0    adsponse.de
+0.0.0.0    adspsp.com
 0.0.0.0    adsrv.deviantart.com
 0.0.0.0    adsrv.eacdn.com
 0.0.0.0    adsrv.iol.co.za
@@ -1084,7 +1084,6 @@
 0.0.0.0    banners.czi.cz
 0.0.0.0    banners.dine.com
 0.0.0.0    banners.direction-x.com
-0.0.0.0    banners.directnic.com
 0.0.0.0    banners.freett.com
 0.0.0.0    banners.friendfinder.com
 0.0.0.0    banners.getiton.com
@@ -1491,7 +1490,6 @@
 0.0.0.0    dmtracker.com
 0.0.0.0    dmtracking.alibaba.com
 0.0.0.0    dmtracking2.alibaba.com
-0.0.0.0    dnads.directnic.com
 0.0.0.0    do-global.com
 0.0.0.0    docksalmon.com
 0.0.0.0    domaining.in
@@ -1555,7 +1553,6 @@
 0.0.0.0    emarketer.com
 0.0.0.0    emebo.com
 0.0.0.0    emebo.io
-0.0.0.0    emediate.dk
 0.0.0.0    emediate.eu
 0.0.0.0    emerse.com
 0.0.0.0    emetriq.de
@@ -1933,7 +1930,6 @@
 0.0.0.0    jungroup.com
 0.0.0.0    justicejudo.com
 0.0.0.0    justpremium.com
-0.0.0.0    justrelevant.com
 0.0.0.0    justuno.com
 0.0.0.0    k.iinfo.cz
 0.0.0.0    kanoodle.com
@@ -2798,7 +2794,6 @@
 0.0.0.0    statistik-gallup.net
 0.0.0.0    statm.the-adult-company.com
 0.0.0.0    stats.blogger.com
-0.0.0.0    stats.directnic.com
 0.0.0.0    stats.hyperinzerce.cz
 0.0.0.0    stats.merriam-webster.com
 0.0.0.0    stats.mirrorfootball.co.uk
