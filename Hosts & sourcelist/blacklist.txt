@@ -72,3 +72,5 @@
 #0.0.0.0    tag.researchnow.com
 0.0.0.0    cdn.b0e8.com
 #0.0.0.0    smartlock.google.com
+0.0.0.0    sp.analytics.yahoo.com
+
