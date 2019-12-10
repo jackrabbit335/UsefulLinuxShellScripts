@@ -832,10 +832,10 @@ InstallAndConquer(){
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.9.1705.31-1_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.9.1705.41-1_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 8 ]];
 			then
-				wget https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_2.9.1705.30-1_amd64.deb; sudo apt install -f
+				wget https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_2.9.1745.22-1_amd64.deb; sudo apt install -f
 			elif [[ $browser == 9 ]];
 			then
 				sudo sh -c 'echo "deb http://deb.opera.com/opera/ stable non-free" >> /etc/apt/sources.list.d/opera.list'; sudo sh -c 'wget -O - http://deb.opera.com/archive.key | apt-key add -'
@@ -848,7 +848,7 @@ InstallAndConquer(){
 				sudo apt install -y dillo
 			elif [[ $browser == 12 ]];
 			then
-				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2019.10.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-classic-2019.10.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2019.12.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-classic-2019.12.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 13 ]];
 			then
