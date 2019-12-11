@@ -126,7 +126,7 @@ _EOF_
 				touch fstrim
 				cat > fstrim <<EOF
 				#!/bin/sh
-				sudo fstrim /
+				sudo fstrim --all
 EOF
 				sudo mv fstrim /etc/cron.weekly; sudo chmod +x /etc/cron.weekly/fstrim
 			break
@@ -136,7 +136,7 @@ EOF
 			read answer
 			while [ $answer == Y ];
 			do
-				sudo fstrim -v /
+				sudo fstrim -v --all
 			break
 			done
 
@@ -828,7 +828,7 @@ InstallAndConquer(){
 				sudo apt install -f
 			elif [[ $browser == 6 ]];
 			then
-				wget http://linux.palemoon.org/datastore/release/palemoon-28.7.2.linux-x86_64.tar.bz2; tar -xvjf palemoon-28.7.2.linux-x86_64.tar.bz2; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget http://linux.palemoon.org/datastore/release/palemoon-28.8.0.linux-x86_64.tar.xz; tar -xvjf palemoon-28.8.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
@@ -1332,7 +1332,7 @@ _EOF_
 	;;
 		3)
 		sudo cp -r ~/'.moonchild productions'/'pale moon' ~/'.moonchild productions'/'pale moon'-old
-		sudo rm -rf ~/'.moonchild productions'/'pale moon'/profile.ini
+		sudo rm -rf ~/'.moonchild productions'/'pale moon'/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
