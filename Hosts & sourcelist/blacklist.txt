@@ -72,5 +72,7 @@
 0.0.0.0    tag.researchnow.com
 0.0.0.0    cdn.b0e8.com
 0.0.0.0    smartlock.google.com
+0.0.0.0    s.go-mpulse.net
+0.0.0.0    revjet.com
 0.0.0.0    sp.analytics.yahoo.com
 
