@@ -54,7 +54,7 @@
 0.0.0.0   clickio.mgr.consensu.org
 #0.0.0.0   fundingchoicesmessages.google.com
 #0.0.0.0   contributor.google.com
-#0.0.0.0   www.google-analytics.com
+0.0.0.0   www.google-analytics.com
 0.0.0.0    pdfpoof.com
 0.0.0.0    www.pdfpoof.com
 0.0.0.0    a.pub.network
@@ -69,8 +69,8 @@
 #0.0.0.0    hookers.nl
 0.0.0.0    engine.phn.doublepimp.com
 0.0.0.0    sofia.trustx.org
-#0.0.0.0    tag.researchnow.com
+0.0.0.0    tag.researchnow.com
 0.0.0.0    cdn.b0e8.com
-#0.0.0.0    smartlock.google.com
+0.0.0.0    smartlock.google.com
 0.0.0.0    sp.analytics.yahoo.com
 
