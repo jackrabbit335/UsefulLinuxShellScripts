@@ -32,6 +32,7 @@ str7=https://github.com/jackrabbit335/UsefulLinuxShellScripts/blob/master/Hosts%
 str8=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Sysctlhosts
 str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/blacklist.txt
 str10=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/bjornhosts
+str11=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts %26 sourcelist/StevenBlacks
 
 
 while getopts :ABCDEFG option; do
@@ -55,6 +56,8 @@ while getopts :ABCDEFG option; do
 		I) wget $str9 && cat blacklist.txt >> adblock && rm blacklist.txt
 		;;
 		J) wget $str10 && cat bjornhosts >> adblock && rm bjornhosts
+		;;
+		K) wget $str11 && cat StevenBlacks >> adblock && rm StevenBlacks
 		;;
 		*)
 	esac
