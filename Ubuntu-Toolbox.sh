@@ -796,17 +796,16 @@ InstallAndConquer(){
 			echo "This installs your choice of browser"
 			echo "1 - Chromium"
 			echo "2 - Epiphany"
-			echo "3 - Qupzilla"
+			echo "3 - Falkon"
 			echo "4 - Midori"
 			echo "5 - Google-Chrome"
 			echo "6 - Pale Moon"
 			echo "7 - Vivaldi"
-			echo "8 - Vivaldi-snapshot"
-			echo "9 - Opera"
-			echo "10 - Lynx"
-			echo "11 - Dillo"
-			echo "12 - Waterfox"
-			echo "13 - Basilisk"
+			echo "8 - Opera"
+			echo "9 - Lynx"
+			echo "10 - Dillo"
+			echo "11 - Waterfox"
+			echo "12 - Basilisk"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -816,7 +815,7 @@ InstallAndConquer(){
 				sudo apt install -y epiphany
 			elif [[ $browser == 3 ]];
 			then
-				sudo apt install -y qupzilla
+				sudo apt install -y falkon
 			elif [[ $browser == 4 ]];
 			then
 				sudo apt install -y midori
@@ -832,25 +831,22 @@ InstallAndConquer(){
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.9.1705.41-1_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.10.1745.23-1_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 8 ]];
-			then
-				wget https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_2.9.1745.22-1_amd64.deb; sudo apt install -f
-			elif [[ $browser == 9 ]];
 			then
 				sudo sh -c 'echo "deb http://deb.opera.com/opera/ stable non-free" >> /etc/apt/sources.list.d/opera.list'; sudo sh -c 'wget -O - http://deb.opera.com/archive.key | apt-key add -'
 				sudo apt update && sudo apt install -y opera
-			elif [[ $browser == 10 ]];
+			elif [[ $browser == 9 ]];
 			then
 				sudo apt install -y lynx
-			elif [[ $browser == 11 ]];
+			elif [[ $browser == 10 ]];
 			then
 				sudo apt install -y dillo
-			elif [[ $browser == 12 ]];
+			elif [[ $browser == 11 ]];
 			then
 				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2019.12.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-classic-2019.12.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
-			elif [[ $browser == 13 ]];
+			elif [[ $browser == 12 ]];
 			then
 				wget us.basilisk-browser.org/release/basilisk-latest.linux64.tar.bz2
 				tar -xvf basilisk-latest.linux64.tar.bz2; sudo mv basilisk /opt && sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
@@ -1238,23 +1234,23 @@ _EOF_
 	#This clears the cache and thumbnails and other junk
 	sudo rm -r .cache/*
 	sudo rm -r .thumbnails/*
-	sudo rm -r ~/.local/share/Trash
+	sudo rm -r ~/.local/share/Trash/*
 	sudo rm -r ~/.nv/*
 	sudo rm -r ~/.npm/*
 	sudo rm -r ~/.w3m/*
 	sudo rm -r ~/.esd_auth #Best I can tell cookie for pulse audio
 	sudo rm -r ~/.local/share/recently-used.xbel
-	#sudo rm -r /tmp/*
+	sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
 
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches; swapoff -a && swapon -a"
 
 	#This could clean your Video folder and Picture folder based on a set time
-	TRASHCAN=~/.local/share/Trash/
+	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#search and remove broken symlinks
 	find -xtype l -delete
@@ -1285,7 +1281,7 @@ _EOF_
 	browser5="$(find /usr/bin/chromium-browser)"
 	browser6="$(find /usr/bin/opera)"
 	browser7="$(find /usr/bin/waterfox)"
-	browser8="$(find /usr/bin/qupzilla)"
+	browser8="$(find /usr/bin/falkon)"
 	browser9="$(find /usr/bin/epiphany)"
 	browser10="$(find /usr/bin/midori)"
 
@@ -1312,7 +1308,7 @@ _EOF_
 	echo "7 - Vivaldi-snapshot"
 	echo "8 - Waterfox"
 	echo "9 - Midori"
-	echo "10 - Qupzilla"
+	echo "10 - Falkon"
 	echo "11 - Epiphany"
 
 	read operation;
@@ -1373,8 +1369,8 @@ _EOF_
 		sleep 1
 	;;
 		10)
-		sudo cp -r ~/.config/qupzilla ~/.config/qupzilla-old
-		sudo rm -rf ~/.config/qupzilla/*
+		sudo cp -r ~/.config/falkon ~/.config/falkon-old
+		sudo rm -rf ~/.config/falkon/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;

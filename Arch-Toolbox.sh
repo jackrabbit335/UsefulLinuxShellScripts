@@ -654,16 +654,15 @@ _EOF_
 		echo "3 - falkon"
 		echo "4 - midori"
 		echo "5 - opera"
-		echo "6 - vivaldi-snapshot"
-		echo "7 - vivaldi"
-		echo "8 - Pale Moon"
-		echo "9 - seamonkey"
-		echo "10 - dillo"
-		echo "11 - lynx"
-		echo "12 - google-chrome"
-		echo "13 - waterfox"
-		echo "14 - basilisk"
-		echo "15 - slimjet"
+		echo "6 - vivaldi"
+		echo "7 - Pale Moon"
+		echo "8 - seamonkey"
+		echo "9 - dillo"
+		echo "10 - lynx"
+		echo "11 - google-chrome"
+		echo "12 - waterfox"
+		echo "13 - basilisk"
+		echo "14 - slimjet"
 		read browser
 		if [[ $browser == 1 ]];
 		then
@@ -683,42 +682,37 @@ _EOF_
 		elif [[ $browser == 6 ]];
 		then
 			cd /tmp
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi-snapshot.tar.gz
-			gunzip vivaldi-snapshot.tar.gz; tar -xvf vivaldi-snapshot.tar; cd vivaldi-snapshot && makepkg -si
-		elif [[ $browser == 7 ]];
-		then
-			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz
 			gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar; cd vivaldi && makepkg -si
-		elif [[ $browser == 8 ]];
+		elif [[ $browser == 7 ]];
 		then
 			wget linux.palemoon.org/datastore/release/palemoon-28.8.0.linux-x86_64.tar.xz; tar -xf palemoon-28.8.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
-		elif [[ $browser == 9 ]];
+		elif [[ $browser == 8 ]];
 		then
 			sudo pacman -S --noconfirm seamonkey
-		elif [[ $browser == 10 ]];
+		elif [[ $browser == 9 ]];
 		then
 			sudo pacman -S --noconfirm dillo
-		elif [[ $browser == 11 ]];
+		elif [[ $browser == 10 ]];
 		then
 			sudo pacman -S --noconfirm lynx
-		elif [[ $browser == 12 ]];
+		elif [[ $browser == 11 ]];
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz
 			gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
-		elif [[ $browser == 13 ]];
+		elif [[ $browser == 12 ]];
 		then
 			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2019.12.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2019.12.en-US.linux-x86_64.tar.bz2
 			sudo mv waterfox /opt; sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
-		elif [[ $browser == 14 ]];
+		elif [[ $browser == 13 ]];
 		then
 			wget http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.bz2; tar -xvjf basilisk-latest.linux64.tar.bz2
 			sudo mv basilisk /opt; sudo touch /usr/share/applications/basilisk.desktop; sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
-		elif [[ $browser == 15 ]];
+		elif [[ $browser == 14 ]];
 		then
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/slimjet.tar.gz
@@ -1322,17 +1316,17 @@ cleanup(){
 	sudo rm -r ~/.w3m/*
 	sudo rm -r ~/.esd_auth #Best I can tell cookie for pulse audio
 	sudo rm -r ~/.local/share/recently-used.xbel
-	#sudo rm -r /tmp/*
+	sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
 
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
 
 	#This could clean your Video folder and Picture folder based on a set time
-	TRASHCAN=~/.local/share/Trash/
+	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
@@ -1440,12 +1434,11 @@ _EOF_
 	echo "4 - Chrome"
 	echo "5 - Chromium"
 	echo "6 - Opera"
-	echo "7 - Vivaldi-snapshot"
-	echo "8 - Waterfox"
-	echo "9 - Falkon"
-	echo "10 - Epiphany"
-	echo "11 - Midori"
-	echo "12 - Basilisk"
+	echo "7 - Waterfox"
+	echo "8 - Falkon"
+	echo "9 - Epiphany"
+	echo "10 - Midori"
+	echo "11 - Basilisk"
 
 	read operation;
 
@@ -1487,36 +1480,30 @@ _EOF_
 		sleep 1
 	;;
 		7)
-		sudo cp -r ~/.config/vivaldi-snapshot ~/.config/vivaldi-snapshot-old
-		sudo rm -rf ~/.config/vivaldi-snapshot/*
-		echo "Your browser has now been reset"
-		sleep 1
-	;;
-		8)
 		sudo cp -r ~/.waterfox ~/.waterfox-old
 		sudo rm -rf ~/.waterfox/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
-		9)
+		8)
 		sudo cp -r ~/.config/falkon ~/.config/falkon-old
 		sudo rm -rf ~/.config/falkon/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
-		10)
+		9)
 		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old
 		sudo rm -rf ~/.config/epiphany/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
-		11)
+		10)
 		sudo cp -r ~/.config/midori ~/.config/midori-old
 		sudo rm -rf ~/.config/midori/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
-		12)
+		11)
 		sudo cp -r ~/'.moonchild productions'/'basilisk' ~/'.moonchild productions'/'basilisk'-old
 		sudo rm -rf ~/'.moonchild productions'/'basilisk'/*
 		echo "Your browser has now been reset"

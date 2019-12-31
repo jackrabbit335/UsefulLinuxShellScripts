@@ -570,16 +570,15 @@ InstallAndConquer(){
 		echo "2 - falkon"
 		echo "3 - midori"
 		echo "4 - opera"
-		echo "5 - vivaldi-snapshot"
-		echo "6 - lynx"
-		echo "7 - vivaldi"
-		echo "8 - google-chrome"
-		echo "9 - chromium"
-		echo "10 - waterfox"
-		echo "11 - basilisk"
-		echo "12 - palemoon"
-		echo "13 - firefox"
-		echo "14 - brave"
+		echo "5 - lynx"
+		echo "6 - vivaldi"
+		echo "7 - google-chrome"
+		echo "8 - chromium"
+		echo "9 - waterfox"
+		echo "10 - basilisk"
+		echo "11 - palemoon"
+		echo "12 - firefox"
+		echo "13 - brave"
 		read browser
 		if [[ $browser == 1 ]];
 		then
@@ -595,37 +594,34 @@ InstallAndConquer(){
 			sudo eopkg install opera-stable
 		elif [[ $browser == 5 ]];
 		then
-		sudo eopkg install vivaldi-snapshot
+			sudo eopkg install lynx
 		elif [[ $browser == 6 ]];
 		then
-			sudo eopkg install lynx
-		elif [[ $browser == 7 ]];
-		then
 			sudo eopkg install vivaldi-stable
-		elif [[ $browser == 8 ]];
+		elif [[ $browser == 7 ]];
 		then
 			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/web/browser/google-chrome-stable/pspec.xml
 			sudo eopkg it google-chrome-*.eopkg;sudo rm google-chrome-*.eopkg
-		elif [[ $browser == 9 ]];
+		elif [[ $browser == 8 ]];
 		then
 			sudo snap install chromium
-		elif [[ $browser == 10 ]];
+		elif [[ $browser == 9 ]];
 		then
 			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2019.12.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2019.12.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
-		elif [[ $browser == 11 ]];
+		elif [[ $browser == 10 ]];
 		then
 			wget us.basilisk-browser.org/release/basilisk-latest.linux64.tar.bz2
 			tar -xvf basilisk-latest.linux64.tar.bz2; sudo mv basilisk /opt && sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
-		elif [[ $browser == 12 ]];
+		elif [[ $browser == 11 ]];
 		then
 			wget http://linux.palemoon.org/datastore/release/palemoon-28.8.0.linux-x86_64.tar.xz; tar -xf palemoon-28.8.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
-		elif [[ $browser == 13 ]];
+		elif [[ $browser == 12 ]];
 		then
 			sudo eopkg install firefox
-		elif [[ $browser == 14 ]];
+		elif [[ $browser == 13 ]];
 		then
 			sudo eopkg install brave
 		else
@@ -1196,17 +1192,17 @@ cleanup(){
 	sudo rm -rf ~/.w3m/*
 	sudo rm ~/.esd_auth #Best I can tell cookie for pulse audio
 	sudo rm ~/.local/share/recently-used.xbel
-	#sudo rm -rf /tmp/*
+	sudo rm -rf /tmp/*
 	history -c && rm ~/.bash_history
 
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
 
 	#This could clean your Video folder and Picture folder based on a set time
-	TRASHCAN=~/.local/share/Trash/
+	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
@@ -1254,6 +1250,7 @@ _EOF_
 	browser8="$(find /usr/bin/epiphany)"
 	browser9="$(find /usr/bin/midori)"
 	browser10="$(find /usr/bin/brave-browser)"
+	browser11="$(find /usr/bin/falkon)"
 
 	echo $browser1
 	echo $browser2
@@ -1265,6 +1262,7 @@ _EOF_
 	echo $browser8
 	echo $browser9
 	echo $browser10
+	echo $browser11
 
 	sleep 1
 
@@ -1280,6 +1278,7 @@ _EOF_
 	echo "9 - Epiphany"
 	echo "10 - Midori"
 	echo "11 - Brave"
+	echo "12 - Falkon"
 
 	read operation;
 
@@ -1347,6 +1346,12 @@ _EOF_
 		11)
 		sudo cp -r ~/.config/BraveSoftware ~/.config/BraveSoftware-old
 		sudo rm -rf ~/.config/BraveSoftware/*
+		echo "Your browser has now been reset"
+		sleep 1
+	;;
+		12)
+		sudo cp -r ~/.config/falkon ~/.config/falkon-old
+		sudo rm -rf ~/.config/falkon/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
