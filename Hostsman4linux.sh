@@ -26,16 +26,17 @@ str1=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/mas
 str2=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Someonewhocares
 str3=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
 str4=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Malwarehosts
-str5=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Coinblock
-str6=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/AdAway
-str7=https://github.com/jackrabbit335/UsefulLinuxShellScripts/blob/master/Hosts%20%26%20sourcelist/blacklist.txt
-str8=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Sysctlhosts
-str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/blacklist.txt
-str10=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/bjornhosts
-str11=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts %26 sourcelist/StevenBlacks
+str5=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts %26 sourcelist/Malwarehosts2
+str6=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Coinblock
+str7=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/AdAway
+str8=https://github.com/jackrabbit335/UsefulLinuxShellScripts/blob/master/Hosts%20%26%20sourcelist/blacklist.txt
+str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Sysctlhosts
+str10=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/blacklist.txt
+str11=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/bjornhosts
+str12=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts %26 sourcelist/StevenBlacks
 
 
-while getopts :ABCDEFG option; do
+while getopts :ABCDEFGHIJKL option; do
 	case $option in
 		A) wget $str1 && cat MVPShosts >> adblock && rm MVPShosts
 		;;
@@ -45,19 +46,21 @@ while getopts :ABCDEFG option; do
 		;;
 		D) wget $str4 && cat Malwarehosts >> adblock && rm Malwarehosts
 		;;
-		E) wget $str5 && cat Coinblock >> adblock && rm Coinblock
+		E) wget $str5 && cat Malwarehosts2 >> adblock && rm Malwarehosts2
 		;;
-		F) wget $str6 && cat AdAway >> adblock && rm AdAway
+		F) wget $str6 && cat Coinblock >> adblock && rm Coinblock
 		;;
-		G) wget $str7 && cat blacklist.txt >> adblock && rm blacklist.txt
+		G) wget $str7 && cat AdAway >> adblock && rm AdAway
 		;;
-		H) wget $str8 && cat Sysctlhosts >> adblock && rm Sysctlhosts
+		H) wget $str8 && cat blacklist.txt >> adblock && rm blacklist.txt
 		;;
-		I) wget $str9 && cat blacklist.txt >> adblock && rm blacklist.txt
+		I) wget $str9 && cat Sysctlhosts >> adblock && rm Sysctlhosts
 		;;
-		J) wget $str10 && cat bjornhosts >> adblock && rm bjornhosts
+		J) wget $str10 && cat blacklist.txt >> adblock && rm blacklist.txt
 		;;
-		K) wget $str11 && cat StevenBlacks >> adblock && rm StevenBlacks
+		K) wget $str11 && cat bjornhosts >> adblock && rm bjornhosts
+		;;
+		L) wget $str12 && cat StevenBlacks >> adblock && rm StevenBlacks
 		;;
 		*)
 	esac
