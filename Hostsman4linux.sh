@@ -27,7 +27,7 @@ str2=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/mas
 str3=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
 str4=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Malwarehosts
 str5=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts %26 sourcelist/Malwarehosts2
-str6=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Coinblock
+str6=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts %26 sourcelist/noCoin
 str7=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/AdAway
 str8=https://github.com/jackrabbit335/UsefulLinuxShellScripts/blob/master/Hosts%20%26%20sourcelist/blacklist.txt
 str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Sysctlhosts
@@ -48,7 +48,7 @@ while getopts :ABCDEFGHIJKL option; do
 		;;
 		E) wget $str5 && cat Malwarehosts2 >> adblock && rm Malwarehosts2
 		;;
-		F) wget $str6 && cat Coinblock >> adblock && rm Coinblock
+		F) wget $str6 && cat noCoin >> adblock && rm noCoin
 		;;
 		G) wget $str7 && cat AdAway >> adblock && rm AdAway
 		;;
