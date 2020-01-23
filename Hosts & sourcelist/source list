@@ -4,7 +4,7 @@ http://winhelp2002.mvps.org/hosts.txt
 someonewhocares.org
 malwaredomainlist.com
 https://adaway.org/hosts.txt
-noCoin 
+https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser
 http://sysctl.org/cameleon/hosts
 https://raw.githubusercontent.com/bjornstar/hosts/master/hosts
 My own custom blacklist domains.
