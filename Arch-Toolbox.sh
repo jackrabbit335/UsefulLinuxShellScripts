@@ -687,7 +687,7 @@ _EOF_
 			gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar; cd vivaldi && makepkg -si
 		elif [[ $browser == 7 ]];
 		then
-			wget linux.palemoon.org/datastore/release/palemoon-28.8.1.linux-x86_64.tar.xz; tar -xf palemoon-28.8.1.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+			wget linux.palemoon.org/datastore/release/palemoon-28.8.2.linux-x86_64.tar.xz; tar -xf palemoon-28.8.2.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 8 ]];
 		then
