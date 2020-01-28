@@ -720,7 +720,6 @@ _EOF_
 			gunzip slimjet.tar.gz; tar -xvf slimjet.tar; cd slimjet && makepkg -si
 		elif [[ $browser == 15 ]];
 		then
-			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/brave-bin.tar.gz
 			gunzip brave-bin.tar.gz; tar -xvf brave-bin.tar; sudo mv brave-bin /opt
 			sudo touch /usr/share/applications/brave-browser.desktop; sudo ln -s /opt/brave-bin/brave-bin.sh /usr/bin/brave
