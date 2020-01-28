@@ -649,20 +649,21 @@ _EOF_
 	;;
 		9)
 		echo "This installs your choice in browsers"
-		echo "1 - chromium"
-		echo "2 - epiphany"
-		echo "3 - falkon"
-		echo "4 - midori"
-		echo "5 - opera"
-		echo "6 - vivaldi"
+		echo "1 - Chromium"
+		echo "2 - Epiphany"
+		echo "3 - Falkon"
+		echo "4 - Midori"
+		echo "5 - Opera"
+		echo "6 - Vivaldi"
 		echo "7 - Pale Moon"
-		echo "8 - seamonkey"
-		echo "9 - dillo"
-		echo "10 - lynx"
-		echo "11 - google-chrome"
-		echo "12 - waterfox"
-		echo "13 - basilisk"
-		echo "14 - slimjet"
+		echo "8 - Seamonkey"
+		echo "9 - Dillo"
+		echo "10 - Lynx"
+		echo "11 - Google-chrome"
+		echo "12 - Waterfox"
+		echo "13 - Basilisk"
+		echo "14 - Slimjet"
+		echo "15 - Brave"
 		read browser
 		if [[ $browser == 1 ]];
 		then
@@ -686,7 +687,7 @@ _EOF_
 			gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar; cd vivaldi && makepkg -si
 		elif [[ $browser == 7 ]];
 		then
-			wget linux.palemoon.org/datastore/release/palemoon-28.8.0.linux-x86_64.tar.xz; tar -xf palemoon-28.8.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+			wget linux.palemoon.org/datastore/release/palemoon-28.8.1.linux-x86_64.tar.xz; tar -xf palemoon-28.8.1.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 8 ]];
 		then
@@ -704,7 +705,7 @@ _EOF_
 			gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
 		elif [[ $browser == 12 ]];
 		then
-			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2019.12.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2019.12.en-US.linux-x86_64.tar.bz2
+			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.01.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.01.en-US.linux-x86_64.tar.bz2
 			sudo mv waterfox /opt; sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 		elif [[ $browser == 13 ]];
@@ -717,6 +718,13 @@ _EOF_
 			cd /tmp
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/slimjet.tar.gz
 			gunzip slimjet.tar.gz; tar -xvf slimjet.tar; cd slimjet && makepkg -si
+		elif [[ $browser == 15 ]];
+		then
+			cd /tmp
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/brave-bin.tar.gz
+			gunzip brave-bin.tar.gz; tar -xvf brave-bin.tar; sudo mv brave-bin /opt
+			sudo touch /usr/share/applications/brave-browser.desktop; sudo ln -s /opt/brave-bin/brave-bin.sh /usr/bin/brave
+			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/brave-browser.desktop; sudo mv brave-browser.desktop/usr/share/applications/brave-browser.desktop
 		else
 			echo "You have entered an invalid number"
 		fi
@@ -1310,7 +1318,7 @@ cleanup(){
 	#This will clean the cache
 	sudo rm -r .cache/*
 	sudo rm -r .thumbnails/*
-	sudo rm -r ~/.local/share/Trash/*
+	sudo rm -r ~/.local/share/Trash/files/*
 	sudo rm -r ~/.nv/*
 	sudo rm -r ~/.npm/*
 	sudo rm -r ~/.w3m/*
@@ -1325,8 +1333,8 @@ cleanup(){
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
-	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
+	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
@@ -1412,6 +1420,7 @@ _EOF_
 	browser9="$(find /usr/bin/epiphany)"
 	browser10="$(find /usr/bin/midori)"
 	browser11="$(find /usr/bin/basilisk)"
+	browser12="$(find /usr/bin/brave)"
 
 	echo $browser1
 	echo $browser2
@@ -1424,6 +1433,7 @@ _EOF_
 	echo $browser9
 	echo $browser10
 	echo $browser11
+	echo $browser12
 
 	sleep 1
 
@@ -1439,6 +1449,7 @@ _EOF_
 	echo "9 - Epiphany"
 	echo "10 - Midori"
 	echo "11 - Basilisk"
+	echo "12 - Brave"
 
 	read operation;
 
@@ -1509,6 +1520,12 @@ _EOF_
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
+		12)
+		sudo cp -r ~/.config/BraveSoftware ~/.config/BraveSoftware-old
+		sudo rm -rf ~/.config/BraveSoftware/*
+		echo "Your browser has now been reset"
+		sleep 1
+	;;
 		*)
 		echo "No browser for that entry exists, please try again!"
 		sleep 1
@@ -1551,7 +1568,7 @@ SystemMaintenance(){
 	sudo systemctl enable ufw; sudo ufw enable
 
 	#This refreshes index cache
-	sudo balooctl check; sudo updatedb; sudo mandb
+	sudo updatedb; sudo mandb
 
 	#Checks for pacnew files and other extra configuration file updates
 	find /usr/bin/etc-update
@@ -1708,7 +1725,7 @@ then
 	echo "############################################################################"
 	echo "This resets XFCE"
 	echo "############################################################################"
-	mv ~/.config/xfce4 ~/.config/xfce4.bak
+	mv ~/.config/xfce4 ~/.config/xfce4-bak
 elif [[ $DESKTOP_SESSION == mate ]];
 then
 	echo "############################################################################"
@@ -1841,6 +1858,7 @@ Backup(){
 			read device
 			sudo mount $device /mnt
 			sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*","*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups
+			sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
 			read -p "Found a block device at designated coordinates...
@@ -1859,6 +1877,7 @@ Backup(){
 			read device
 			sudo mount $device /mnt
 			sudo rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /mnt/$host-backups
+			sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
 			echo "Found a block device at designated coordinates...
