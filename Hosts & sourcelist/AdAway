@@ -430,6 +430,7 @@
 0.0.0.0    adsdk.adfarm1.adition.com
 0.0.0.0    dspcluster.adfarm1.adition.com
 0.0.0.0    mobile.adfarm1.adition.com
+0.0.0.0    static.adfarm1.adition.com
 0.0.0.0    cd.adition.com
 0.0.0.0    dbt.adition.com
 0.0.0.0    imagesrv.adition.com
@@ -1802,7 +1803,6 @@
 0.0.0.0    chartiq-client-prod.s3.amazonaws.com
 0.0.0.0    clickwallads.s3.amazonaws.com
 0.0.0.0    digital-ads.s3.amazonaws.com
-0.0.0.0    distributions-crashlytics-com.s3.amazonaws.com
 0.0.0.0    iacpromotion.s3.amazonaws.com
 0.0.0.0    ignifyecom.s3.amazonaws.com
 0.0.0.0    incoming-data-sense360.s3.amazonaws.com
@@ -4862,7 +4862,6 @@
 0.0.0.0    interstitial.fyber.com
 0.0.0.0    aws.interstitial-broker.fyber.com
 0.0.0.0    latency.interstitial-broker.fyber.com
-0.0.0.0    investors.fyber.com
 0.0.0.0    ios.fyber.com
 0.0.0.0    lbservices2.fyber.com
 0.0.0.0    mbe-cdn.fyber.com
@@ -6012,7 +6011,6 @@
 0.0.0.0    finlogs.joyeggs.com
 0.0.0.0    payback.joyeggs.com
 0.0.0.0    stats.jpush.cn
-0.0.0.0    jscount.com
 0.0.0.0    c.jsrdn.com
 0.0.0.0    s.jsrdn.com
 0.0.0.0    juiceadv.com
@@ -6048,7 +6046,6 @@
 0.0.0.0    emea-v3.tracking.justpremium.com
 0.0.0.0    us-v3.tracking.justpremium.com
 0.0.0.0    bmedia.justservingfiles.net
-0.0.0.0    justwebads.com
 0.0.0.0    entitlements.jwplayer.com
 0.0.0.0    g.jwpsrv.com
 0.0.0.0    kadam.net
@@ -6150,9 +6147,6 @@
 0.0.0.0    et.kissmetrics.com
 0.0.0.0    trc.kissmetrics.com
 0.0.0.0    trk.kissmetrics.com
-0.0.0.0    alpha.kite.com
-0.0.0.0    release.kite.com
-0.0.0.0    windows.kite.com
 0.0.0.0    kixer.com
 0.0.0.0    fast.a.klaviyo.com
 0.0.0.0    telemetrics.klaviyo.com
@@ -6296,10 +6290,6 @@
 0.0.0.0    pub.lavanetwork.net
 0.0.0.0    slv1.lavanetwork.net
 0.0.0.0    wc-tracking.lavasoft.com
-0.0.0.0    api.layer.com
-0.0.0.0    cdn.layer.com
-0.0.0.0    trunkclub-api.layer.com
-0.0.0.0    trunkclub-websockets.layer.com
 0.0.0.0    cc.lbesec.com
 0.0.0.0    pb.lbesec.com
 0.0.0.0    events.lbesecapi.com
@@ -6564,14 +6554,7 @@
 0.0.0.0    webanalytics.localytics.com
 0.0.0.0    www.localytics.com
 0.0.0.0    logs.locarta.co
-0.0.0.0    rest.locategy.com
 0.0.0.0    api.locately.com
-0.0.0.0    tile0.locatienet.com
-0.0.0.0    tile1.locatienet.com
-0.0.0.0    tile2.locatienet.com
-0.0.0.0    tile3.locatienet.com
-0.0.0.0    maps.locationiq.com
-0.0.0.0    us1.locationiq.com
 0.0.0.0    sparkle.locationlabs.com
 0.0.0.0    api.locuslabs.com
 0.0.0.0    assets.locuslabs.com
@@ -7887,7 +7870,6 @@
 0.0.0.0    sdk.stat.foreign.nearme.com.cn
 0.0.0.0    nend.net
 0.0.0.0    neoban.su
-0.0.0.0    nervoussummer.com
 0.0.0.0    admanager.netadclick.com
 0.0.0.0    elonezet.netadclick.com
 0.0.0.0    static.netadclick.com
@@ -8949,7 +8931,6 @@
 0.0.0.0    poptm.com
 0.0.0.0    popunderz.com
 0.0.0.0    serve.popupads.net
-0.0.0.0    popwebfun.com
 0.0.0.0    postitial.com
 0.0.0.0    cdn-cf.postitial.com
 0.0.0.0    jadserve.postrelease.com
@@ -11132,10 +11113,6 @@
 0.0.0.0    prebid-analytics.tracker.network
 0.0.0.0    trackimpression.com
 0.0.0.0    log.trackingio.com
-0.0.0.0    capture.trackjs.com
-0.0.0.0    cdn.trackjs.com
-0.0.0.0    my.trackjs.com
-0.0.0.0    usage.trackjs.com
 0.0.0.0    trademob.com
 0.0.0.0    ads.traffichaus.com
 0.0.0.0    ads.traffichunt.com
@@ -11949,7 +11926,6 @@
 0.0.0.0    mc.yandex.ru
 0.0.0.0    metrica.yandex.ru
 0.0.0.0    metrika.yandex.ru
-0.0.0.0    mx.yandex.ru
 0.0.0.0    click.sender.yandex.ru
 0.0.0.0    share.yandex.ru
 0.0.0.0    yandexadexchange.net
