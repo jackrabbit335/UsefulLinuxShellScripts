@@ -73,7 +73,7 @@ if [[ $# -gt 1 ]]; then
 	sort adblock | uniq -u | sort -r > adblock.new && mv adblock.new adblock
 fi
 
-#This merges adblock with /etc/hosts then removes hosts
+#This merges adblock with /etc/hosts then removes adblock
 echo "" | sudo tee -a /etc/hosts
 sudo cat adblock >> /etc/hosts
 rm adblock
