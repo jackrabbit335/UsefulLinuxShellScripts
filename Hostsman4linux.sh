@@ -26,14 +26,14 @@ str1=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/mas
 str2=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Someonewhocares
 str3=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
 str4=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Malwarehosts
-str5=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts %26 sourcelist/Malwarehosts2
-str6=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts %26 sourcelist/noCoin
+str5=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Malwarehosts2
+str6=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/noCoin
 str7=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/AdAway
 str8=https://github.com/jackrabbit335/UsefulLinuxShellScripts/blob/master/Hosts%20%26%20sourcelist/blacklist.txt
 str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Sysctlhosts
 str10=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/blacklist.txt
 str11=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/bjornhosts
-str12=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts %26 sourcelist/StevenBlacks
+str12=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/StevenHosts
 
 
 while getopts :ABCDEFGHIJKL option; do
