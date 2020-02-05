@@ -442,6 +442,7 @@
 0.0.0.0    adjuggler.net
 0.0.0.0    adjust.com
 0.0.0.0    app.adjust.com
+0.0.0.0    app.adjust.com
 0.0.0.0    atom.adjust.com
 0.0.0.0    events.adjust.com
 0.0.0.0    s2s.adjust.com
@@ -1371,6 +1372,7 @@
 0.0.0.0    glb-ads.legacy.adtechus.com
 0.0.0.0    glb-ads.nejm.adtechus.com
 0.0.0.0    ums.adtechus.com
+0.0.0.0    sync.adtelligent.com
 0.0.0.0    adtheorent.com
 0.0.0.0    ads.adtheorent.com
 0.0.0.0    cdn.adtheorent.com
@@ -2238,6 +2240,7 @@
 0.0.0.0    attr.appsflyer.com
 0.0.0.0    cdn.appsflyer.com
 0.0.0.0    cdnappicons.appsflyer.com
+0.0.0.0    conversions.appsflyer.com
 0.0.0.0    events.appsflyer.com
 0.0.0.0    fvalid.appsflyer.com
 0.0.0.0    global.appsflyer.com
@@ -2720,6 +2723,7 @@
 0.0.0.0    bestadmedia.com
 0.0.0.0    metrics.bestbuy.com
 0.0.0.0    smetrics.bestbuy.com
+0.0.0.0    c.betrad.com
 0.0.0.0    ads.betweendigital.com
 0.0.0.0    crid.bfmio.com
 0.0.0.0    display.bfmio.com
@@ -2968,6 +2972,7 @@
 0.0.0.0    sec-citi.bridgetrack.com
 0.0.0.0    metrics.brightcove.com
 0.0.0.0    brightroll.com
+0.0.0.0    events.browsiprod.com
 0.0.0.0    yield-manager.browsiprod.com
 0.0.0.0    notify1.brucelead.com
 0.0.0.0    tr4ck.brucelead.com
@@ -4527,6 +4532,7 @@
 0.0.0.0    pinkaanalytics.eu-2.evennode.com
 0.0.0.0    everestads.net
 0.0.0.0    everesttech.net
+0.0.0.0    c.evidon.com
 0.0.0.0    tp-emea.exactag.com
 0.0.0.0    bounce.exacttarget.com
 0.0.0.0    bounce-mx.exacttarget.com
@@ -4811,6 +4817,7 @@
 0.0.0.0    node432.fractionalmedia.com
 0.0.0.0    telim.fractionalmedia.com
 0.0.0.0    freegeoip.com
+0.0.0.0    freegeoip.net
 0.0.0.0    tags.fulllab.com.br
 0.0.0.0    connect.fullstory.com
 0.0.0.0    go.fullstory.com
@@ -4854,6 +4861,7 @@
 0.0.0.0    bs-creatives.fyber.com
 0.0.0.0    crowd.fyber.com
 0.0.0.0    dataroom.fyber.com
+0.0.0.0    dau.fyber.com
 0.0.0.0    engine.fyber.com
 0.0.0.0    engine-dsa.fyber.com
 0.0.0.0    fyber-marketplace.fyber.com
@@ -4867,6 +4875,7 @@
 0.0.0.0    mbe-cdn.fyber.com
 0.0.0.0    mbe-cdn-staging.fyber.com
 0.0.0.0    mbe-monitoring.fyber.com
+0.0.0.0    mediation.fyber.com
 0.0.0.0    offer.fyber.com
 0.0.0.0    ofw-client-cdn.fyber.com
 0.0.0.0    otrs.fyber.com
@@ -4959,6 +4968,7 @@
 0.0.0.0    js.genieessp.com
 0.0.0.0    static.genieessp.com
 0.0.0.0    mobile.ib.sin1.geoadnxs.com
+0.0.0.0    rumcdn.geoedge.be
 0.0.0.0    geoplugin.net
 0.0.0.0    www.geoplugin.net
 0.0.0.0    sdk.open.talk.gepush.com
@@ -5152,7 +5162,6 @@
 0.0.0.0    guile.jp
 0.0.0.0    gumgum.com
 0.0.0.0    rtb.gumgum.com
-0.0.0.0    gumtree.com
 0.0.0.0    gunggo.com
 0.0.0.0    guohead.com
 0.0.0.0    guomob.com
@@ -5441,6 +5450,8 @@
 0.0.0.0    imimobile.com
 0.0.0.0    immob.cn
 0.0.0.0    immobi.com
+0.0.0.0    ads.immobilienscout24.de
+0.0.0.0    tracking.immobilienscout24.de
 0.0.0.0    ap.immomo.com
 0.0.0.0    api.immomo.com
 0.0.0.0    api-log.immomo.com
@@ -5850,6 +5861,7 @@
 0.0.0.0    ci-first.iovation.com
 0.0.0.0    ci-mpsnare.iovation.com
 0.0.0.0    first.iovation.com
+0.0.0.0    ip-api.com
 0.0.0.0    logservices.ipass.com
 0.0.0.0    om-datacollector.ipass.com
 0.0.0.0    4q.iperceptions.com
@@ -7937,6 +7949,7 @@
 0.0.0.0    collector-010.newrelic.com
 0.0.0.0    collector-pool.newrelic.com
 0.0.0.0    insights-collector.newrelic.com
+0.0.0.0    js-agent.newrelic.com
 0.0.0.0    marketing-contents.newrelic.com
 0.0.0.0    mobile-collector.newrelic.com
 0.0.0.0    mobile-crash.newrelic.com
@@ -8156,6 +8169,7 @@
 0.0.0.0    agero-sdkapi.onereach.com
 0.0.0.0    agero-sdkapi-west.onereach.com
 0.0.0.0    trueblue-sdkapi.onereach.com
+0.0.0.0    onesignal.com
 0.0.0.0    px.onespot.com
 0.0.0.0    onewaylinkexchange.net
 0.0.0.0    display.online-adnetwork.com
@@ -8930,10 +8944,6 @@
 0.0.0.0    cdn-cf.postitial.com
 0.0.0.0    jadserve.postrelease.com
 0.0.0.0    analytics.posttv.com
-0.0.0.0    akamai.poxo.com
-0.0.0.0    amazon.poxo.com
-0.0.0.0    imgcdn.poxo.com
-0.0.0.0    imgcdn1.poxo.com
 0.0.0.0    patriot.cs.pp.cn
 0.0.0.0    pr-ten.de
 0.0.0.0    currency.prebid.org
@@ -9320,6 +9330,8 @@
 0.0.0.0    eu-pulsepoint-rtb.quantserve.com
 0.0.0.0    exch.quantserve.com
 0.0.0.0    flash.quantserve.com
+0.0.0.0    m.quantserve.com
+0.0.0.0    pixel.quantserve.com
 0.0.0.0    global.px.quantserve.com
 0.0.0.0    qcx.quantserve.com
 0.0.0.0    secure.quantserve.com
@@ -9398,6 +9410,7 @@
 0.0.0.0    remox.com
 0.0.0.0    reporo.net
 0.0.0.0    netdna.reporo.net
+0.0.0.0    sync.republer.com
 0.0.0.0    tag.researchnow.com
 0.0.0.0    ds.reson8.com
 0.0.0.0    idsync.reson8.com
@@ -9891,6 +9904,9 @@
 0.0.0.0    sistacked.com
 0.0.0.0    sitemaji.com
 0.0.0.0    sitescout.com
+0.0.0.0    p.skimresources.com
+0.0.0.0    r.skimresources.com
+0.0.0.0    t.skimresources.com
 0.0.0.0    analytics.slashdotmedia.com
 0.0.0.0    slickaffiliate.com
 0.0.0.0    slicktext.com
@@ -9903,6 +9919,8 @@
 0.0.0.0    sdk.ad.smaato.net
 0.0.0.0    sdk-android.ad.smaato.net
 0.0.0.0    sdk-ios.ad.smaato.net
+0.0.0.0    hbsdk-config.log.smaato.net
+0.0.0.0    sdk-hb-cfg.smaato.net
 0.0.0.0    soma.smaato.net
 0.0.0.0    ets-eu-west-1.track.smaato.net
 0.0.0.0    smaclick.com
@@ -10124,6 +10142,7 @@
 0.0.0.0    cdn.spotscenered.info
 0.0.0.0    engine.spotscenered.info
 0.0.0.0    cdn.spotxcdn.com
+0.0.0.0    sync.search.spotxchange.com
 0.0.0.0    cdn.springserve.com
 0.0.0.0    datplus.springserve.com
 0.0.0.0    t.update.morgdog.springserve.com
@@ -10401,6 +10420,7 @@
 0.0.0.0    3087.api.swrve.com
 0.0.0.0    30912.api.swrve.com
 0.0.0.0    30913.api.swrve.com
+0.0.0.0    31026.api.swrve.com
 0.0.0.0    3193.api.swrve.com
 0.0.0.0    3204.api.swrve.com
 0.0.0.0    3255.api.swrve.com
@@ -10575,6 +10595,7 @@
 0.0.0.0    3087.content.swrve.com
 0.0.0.0    30912.content.swrve.com
 0.0.0.0    30913.content.swrve.com
+0.0.0.0    31026.content.swrve.com
 0.0.0.0    3204.content.swrve.com
 0.0.0.0    3255.content.swrve.com
 0.0.0.0    3272.content.swrve.com
@@ -11113,6 +11134,7 @@
 0.0.0.0    ads.traffichunt.com
 0.0.0.0    ads.trafficjunky.net
 0.0.0.0    media.trafficjunky.net
+0.0.0.0    t.trafmag.com
 0.0.0.0    traktum.com
 0.0.0.0    transpera.com
 0.0.0.0    tremorhub.com
@@ -11321,6 +11343,7 @@
 0.0.0.0    cdn-creatives-highwinds-prd.unityads.unity3d.com
 0.0.0.0    cdn-highwinds.unityads.unity3d.com
 0.0.0.0    cdn-store-icons-highwinds-prd.unityads.unity3d.com
+0.0.0.0    cdn-webview-pge.unityads.unity3d.com
 0.0.0.0    china-cdn3.unityads.unity3d.com
 0.0.0.0    config.unityads.unity3d.com
 0.0.0.0    geocdn.unityads.unity3d.com
@@ -11417,8 +11440,6 @@
 0.0.0.0    userator.ru
 0.0.0.0    usergrid.com
 0.0.0.0    api.usersnap.com
-0.0.0.0    uservoice.com
-0.0.0.0    by.uservoice.com
 0.0.0.0    utarget.co.uk
 0.0.0.0    utarget.ru
 0.0.0.0    usercollector.uwinltd.com
@@ -11598,6 +11619,8 @@
 0.0.0.0    addelivery-engine-api.voodoo-ads.io
 0.0.0.0    engine.voodoo-ads.io
 0.0.0.0    front-logs.voodoo-ads.io
+0.0.0.0    splash-screen.voodoo-ads.io
+0.0.0.0    trackers.voodoo-analytics.io
 0.0.0.0    api-gdpr.voodoo-tech.io
 0.0.0.0    crosspromo.voodoo.io
 0.0.0.0    m.vpadn.com
@@ -11689,8 +11712,6 @@
 0.0.0.0    api.ad.wazzapps.org
 0.0.0.0    stat.ad.wazzapps.org
 0.0.0.0    wbn.su
-0.0.0.0    proximity-a.wbx2.com
-0.0.0.0    proximity-one-static.wbx2.com
 0.0.0.0    ads.wcond.site
 0.0.0.0    wda.com
 0.0.0.0    trk.wdacashtrk.com
@@ -11727,6 +11748,7 @@
 0.0.0.0    sdk.wesdk.co
 0.0.0.0    track.wesdk.co
 0.0.0.0    track.wesell.co.il
+0.0.0.0    bot.whatismyipaddress.com
 0.0.0.0    crashlogs.whatsapp.net
 0.0.0.0    whereapps.com
 0.0.0.0    logs.which.co.uk
