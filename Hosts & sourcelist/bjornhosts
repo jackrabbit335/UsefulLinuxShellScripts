@@ -53,11 +53,15 @@
 #0.0.0.0	images.ctfassets.net
 # Credit Card Processing for Toho Cinemas
 #0.0.0.0	api.veritrans.co.jp
+# Let's see how quickly we block brightcove again
+#0.0.0.0	players.brightcove.net
+#0.0.0.0	edge.api.brightcove.com
 
 0.0.0.0	api.content.ad
 0.0.0.0	yts.ag
 0.0.0.0	secure.rebel.ai
 0.0.0.0	sportzone.do.am
+0.0.0.0	beacon.tru.am
 0.0.0.0	wejkrkje.blogspot.com.ar
 0.0.0.0	ad-m.asia
 0.0.0.0	www.chinawomendating.asia
@@ -192,6 +196,7 @@
 0.0.0.0	static.districtm.ca
 0.0.0.0	assist.shaw.ca
 0.0.0.0	search.assist.shaw.ca
+0.0.0.0	logger.yp.ca
 0.0.0.0	img9.1133.cc
 0.0.0.0	u.1133.cc
 0.0.0.0	code1.2bj.cc
@@ -516,6 +521,7 @@
 0.0.0.0	st.acstnst.com
 0.0.0.0	c.actiondesk.com
 0.0.0.0	xml.active8ads.com
+0.0.0.0	techfocus.activehosted.com
 0.0.0.0	acuityplatform.com
 0.0.0.0	ad.ad-arata.com
 0.0.0.0	ads.ad-center.com
@@ -533,6 +539,7 @@
 0.0.0.0	oascentral.adage.com
 0.0.0.0	ads.adamoads.com
 0.0.0.0	app.adanzhuo.com
+0.0.0.0	rs.adapf.com
 0.0.0.0	adbidgo.com
 0.0.0.0	staticd.cdn.adblade.com
 0.0.0.0	pixel.adblade.com
@@ -579,6 +586,7 @@
 0.0.0.0	cdn1.adexprt.com
 0.0.0.0	cdn2.adexprt.com
 0.0.0.0	cdn3.adexprt.com
+0.0.0.0	traffic.adexprtz.com
 0.0.0.0	www.adexten.com
 0.0.0.0	cache.adfeedstrk.com
 0.0.0.0	adforati.com
@@ -841,6 +849,7 @@
 0.0.0.0	aggregateknowledge.com
 0.0.0.0	aa.agkn.com
 0.0.0.0	d.agkn.com
+0.0.0.0	js.agkn.com
 0.0.0.0	agomwefq.com
 0.0.0.0	ahumant.com
 0.0.0.0	f1.aidaicn.com
@@ -878,6 +887,7 @@
 0.0.0.0	s.click.aliexpress.com
 0.0.0.0	my.aliexpress.com
 0.0.0.0	pcookie.aliexpress.com
+0.0.0.0	tags.aljazeera.com
 0.0.0.0	www.allanalpass.com
 0.0.0.0	cdn.allegedmedia.com
 0.0.0.0	allmygoodlife.com
@@ -985,6 +995,8 @@
 0.0.0.0	mp.apmebf.com
 0.0.0.0	www.apmebf.com
 0.0.0.0	analytics.apnewsregistry.com
+0.0.0.0	diffuser-cdn.app-us1.com
+0.0.0.0	prism.app-us1.com
 0.0.0.0	apparede.com
 0.0.0.0	js.appboycdn.com
 0.0.0.0	fast.appcues.com
@@ -1292,7 +1304,6 @@
 0.0.0.0	edba.brealtime.com
 0.0.0.0	optimizedby.brealtime.com
 0.0.0.0	admin.brightcove.com
-0.0.0.0	edge.api.brightcove.com
 0.0.0.0	c.brightcove.com
 0.0.0.0	goku.brightcove.com
 0.0.0.0	metrics.brightcove.com
@@ -1396,11 +1407,15 @@
 0.0.0.0	www.cbsfcpciitwcky.com
 0.0.0.0	dw.cbsi.com
 0.0.0.0	i.i.cbsi.com
+0.0.0.0	production-cmp.isgprivacy.cbsi.com
 0.0.0.0	om.cbsi.com
+0.0.0.0	saa.cbsi.com
 0.0.0.0	offers-service.cbsinteractive.com
+0.0.0.0	bidbarrel.cbsnews.com
 0.0.0.0	bwp.cbsnews.com
 0.0.0.0	mads.cbsnews.com
 0.0.0.0	ocp.cbsnews.com
+0.0.0.0	tealium.cbsnews.com
 0.0.0.0	cbsnews9.com
 0.0.0.0	ttshow.cciuop.com
 0.0.0.0	five.cdn-image.com
@@ -2011,6 +2026,9 @@
 0.0.0.0	facefunn.com
 0.0.0.0	facemoods.com
 0.0.0.0	top.fadama.com
+0.0.0.0	fadsatz.com
+0.0.0.0	fadsips.com
+0.0.0.0	fadsoks.com
 0.0.0.0	www.fallingfalcon.com
 0.0.0.0	welcome.faptitans.com
 0.0.0.0	cdn.welcome.faptitans.com
@@ -2207,6 +2225,7 @@
 0.0.0.0	geoloc5.geovisite.com
 0.0.0.0	banners.germanfriendfinder.com
 0.0.0.0	s.get-msn-chats.com
+0.0.0.0	api.getcandid.com
 0.0.0.0	in.getclicky.com
 0.0.0.0	static.getclicky.com
 0.0.0.0	tag.getdrip.com
@@ -2283,6 +2302,7 @@
 0.0.0.0	www.gonowg.com
 0.0.0.0	adservice.google.com
 0.0.0.0	linkhelp.clients.google.com
+0.0.0.0	fundingchoices.google.com
 0.0.0.0	id.google.com
 0.0.0.0	smartlock.google.com
 0.0.0.0	plus.url.google.com
@@ -2333,6 +2353,7 @@
 0.0.0.0	rs.gwallet.com
 0.0.0.0	affiliate.gwmtracker.com
 0.0.0.0	gwquuagkjxbq.com
+0.0.0.0	geo.gyazo.com
 0.0.0.0	gyhujxbptum.com
 0.0.0.0	www.gyhujxbptum.com
 0.0.0.0	gzmlvrvkven.com
@@ -2511,6 +2532,8 @@
 0.0.0.0	adn.impactradius.com
 0.0.0.0	impactserving.com
 0.0.0.0	cdn.impactserving.com
+0.0.0.0	impactslam.com
+0.0.0.0	cdn.impactslam.com
 0.0.0.0	impore.com
 0.0.0.0	gad.impresionesweb.com
 0.0.0.0	impressionaffiliate.com
@@ -3207,6 +3230,7 @@
 0.0.0.0	mirror.nbstatic.com
 0.0.0.0	geoip.nekudo.com
 0.0.0.0	vom.sitescout.netdna-cdn.com
+0.0.0.0	content-getcandid.netdna-ssl.com
 0.0.0.0	fullcache-neodevlda.netdna-ssl.com
 0.0.0.0	chico.netmng.com
 0.0.0.0	eyeota2waycm.netmng.com
@@ -3217,6 +3241,7 @@
 0.0.0.0	beacon-1.newrelic.com
 0.0.0.0	beacon-3.newrelic.com
 0.0.0.0	js-agent.newrelic.com
+0.0.0.0	metric-api.newrelic.com
 0.0.0.0	rpm-images.newrelic.com
 0.0.0.0	analytics.newsinc.com
 0.0.0.0	dmeserv.newsinc.com
@@ -3333,6 +3358,7 @@
 0.0.0.0	ads.onemodelplace.com
 0.0.0.0	cdn.onesignal.com
 0.0.0.0	www.onestopdownloads.com
+0.0.0.0	geolocation.onetrust.com
 0.0.0.0	go.oneund.com
 0.0.0.0	www.online-casinos-today.com
 0.0.0.0	www.onlinefilmsclub.com
@@ -3727,6 +3753,7 @@
 0.0.0.0	cm.qtmojo.com
 0.0.0.0	geo.api.qualaroo.com
 0.0.0.0	geo.qualaroo.com
+0.0.0.0	siteintercept.qualtrics.com
 0.0.0.0	www.quantcast.com
 0.0.0.0	rules.quantcount.com
 0.0.0.0	quantserve.com
@@ -3824,6 +3851,7 @@
 0.0.0.0	trends.revcontent.com
 0.0.0.0	cdn1.revdepo.com
 0.0.0.0	cache.reverbnation.com
+0.0.0.0	pix.revjet.com
 0.0.0.0	jc.revolvermaps.com
 0.0.0.0	je.revolvermaps.com
 0.0.0.0	jj.revolvermaps.com
@@ -5047,6 +5075,7 @@
 0.0.0.0	zbecpoboc.com
 0.0.0.0	zbqblhqlrm.com
 0.0.0.0	www.zbqblhqlrm.com
+0.0.0.0	zdukhhodnglp.com
 0.0.0.0	code.ze5.com
 0.0.0.0	img.ze5.com
 0.0.0.0	media.ze5.com
@@ -5142,6 +5171,7 @@
 0.0.0.0	prm.mumbai-invest.email
 0.0.0.0	secure.gaug.es
 0.0.0.0	jav.55888.eu
+0.0.0.0	cloud-miner.eu
 0.0.0.0	eas.apm.emediate.eu
 0.0.0.0	toplist.eu
 0.0.0.0	u-on.eu
@@ -5468,6 +5498,7 @@
 0.0.0.0	match.prod.bidr.io
 0.0.0.0	api.branch.io
 0.0.0.0	cdn.branch.io
+0.0.0.0	analytics.candid.io
 0.0.0.0	stats.cloudwp.io
 0.0.0.0	codefund.io
 0.0.0.0	apps3.cointraffic.io
@@ -5577,6 +5608,7 @@
 0.0.0.0	b90.yahoo.co.jp
 0.0.0.0	b91.yahoo.co.jp
 0.0.0.0	b92.yahoo.co.jp
+0.0.0.0	b97.yahoo.co.jp
 0.0.0.0	logql.yahoo.co.jp
 0.0.0.0	yads.yahoo.co.jp
 0.0.0.0	yeas.yahoo.co.jp
@@ -5917,7 +5949,6 @@
 0.0.0.0	blatsnarf.net
 0.0.0.0	js1.bloggerads.net
 0.0.0.0	mint.boingboing.net
-0.0.0.0	players.brightcove.net
 0.0.0.0	cdn4.buysellads.net
 0.0.0.0	js.buzzcity.net
 0.0.0.0	show.buzzcity.net
@@ -6011,6 +6042,7 @@
 0.0.0.0	admonkey.dapper.net
 0.0.0.0	clickserve.dartsearch.net
 0.0.0.0	connect.decknetwork.net
+0.0.0.0	cbsi.demdex.net
 0.0.0.0	cdn.demdex.net
 0.0.0.0	condenast.demdex.net
 0.0.0.0	fast.condenast.demdex.net
@@ -6271,6 +6303,7 @@
 0.0.0.0	rum.ngenix.net
 0.0.0.0	s.ngenix.net
 0.0.0.0	nitrodownloads.net
+0.0.0.0	go.nordvpn.net
 0.0.0.0	bam.nr-data.net
 0.0.0.0	cdn.nsimg.net
 0.0.0.0	m1.nsimg.net
@@ -6418,6 +6451,7 @@
 0.0.0.0	tacoda.net
 0.0.0.0	an.tacoda.net
 0.0.0.0	anrtx.tacoda.net
+0.0.0.0	techfocusmedia.net
 0.0.0.0	cs.tekblue.net
 0.0.0.0	s149.thesearchagency.net
 0.0.0.0	theson.net
@@ -6429,6 +6463,7 @@
 0.0.0.0	links.torrentreactor.net
 0.0.0.0	ads.torrpedo.net
 0.0.0.0	trackadvertising.net
+0.0.0.0	trackcmp.net
 0.0.0.0	r2.trackedweb.net
 0.0.0.0	static.trackedweb.net
 0.0.0.0	trackingoffer.net
@@ -6575,6 +6610,7 @@
 0.0.0.0	quantcast.mgr.consensu.org
 0.0.0.0	static.quantcast.mgr.consensu.org
 0.0.0.0	c.sharethis.mgr.consensu.org
+0.0.0.0	cdn.cookielaw.org
 0.0.0.0	coolina.org
 0.0.0.0	haitao.dadang.org
 0.0.0.0	data-vocabulary.org
@@ -6595,6 +6631,7 @@
 0.0.0.0	wadogo.go2cloud.org
 0.0.0.0	wehasoffers.go2cloud.org
 0.0.0.0	nam.go2jump.org
+0.0.0.0	media.go2speed.org
 0.0.0.0	hi5images.org
 0.0.0.0	ads.imgtiger.org
 0.0.0.0	members.internetdefenseleague.org
@@ -6616,6 +6653,7 @@
 0.0.0.0	ads.plos.org
 0.0.0.0	pr0x.org
 0.0.0.0	currency.prebid.org
+0.0.0.0	track.qcri.org
 0.0.0.0	t05.rbnt.org
 0.0.0.0	s0ftpedia.org
 0.0.0.0	sharecash.org
@@ -6647,8 +6685,10 @@
 0.0.0.0	1zlyetcck7klyuy9.pro
 0.0.0.0	abrts.pro
 0.0.0.0	a4p.adpartner.pro
+0.0.0.0	ainess.pro
 0.0.0.0	asdfg.pro
 0.0.0.0	ca.clcknads.pro
+0.0.0.0	cogeyssignify.pro
 0.0.0.0	helpdesk.com-supportfasthelpproblem.pro
 0.0.0.0	europerty.pro
 0.0.0.0	fileplace.pro
