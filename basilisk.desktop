@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=Basilisk
 GenericName=Basilisk
-Exec=~/basilisk/basilisk
+Exec=basilisk %u
 Terminal=false
-Icon=~/basilisk/browser/icons/mozicon128.png
+Icon=basilisk
 Type=Application
 Categories=Application;Network;Internet;WebBrowser;
 Comment=Browse The World Wide Web
