@@ -1630,6 +1630,7 @@
 0.0.0.0    adztec.com
 0.0.0.0    ads.aerserv.com
 0.0.0.0    alpha-events.aerserv.com
+0.0.0.0    debug.aerserv.com
 0.0.0.0    dmp.aerserv.com
 0.0.0.0    events.aerserv.com
 0.0.0.0    track.afcpatrk.com
@@ -1770,6 +1771,8 @@
 0.0.0.0    s.amazon-adsystem.com
 0.0.0.0    device-metrics-us.amazon.com
 0.0.0.0    device-metrics-us-2.amazon.com
+0.0.0.0    fls-na.amazon.com
+0.0.0.0    mads.amazon.com
 0.0.0.0    appsflyer-web-4-962407740.eu-west-1.elb.amazonaws.com
 0.0.0.0    rpc-tapjoy-com-lb-1378811527.us-east-1.elb.amazonaws.com
 0.0.0.0    tapjoy-com-lb-vpc-332546193.us-east-1.elb.amazonaws.com
@@ -1976,6 +1979,7 @@
 0.0.0.0    x.appbaqend.com
 0.0.0.0    x-us.appbaqend.com
 0.0.0.0    rtb.appbid.com
+0.0.0.0    appboy-images.com
 0.0.0.0    appboy.com
 0.0.0.0    ci.appboy.com
 0.0.0.0    crypt2.appboy.com
@@ -2794,6 +2798,7 @@
 0.0.0.0    us.bksn.se
 0.0.0.0    mopub-win-us-east.bkswin.com
 0.0.0.0    black6adv.com
+0.0.0.0    licensing.blinkreceipt.com
 0.0.0.0    tr.blismedia.com
 0.0.0.0    stats.bluebillywig.com
 0.0.0.0    vms.bluebillywig.com
@@ -3104,8 +3109,6 @@
 0.0.0.0    geo.celtra.com
 0.0.0.0    track.celtra.com
 0.0.0.0    centerpointmedia.com
-0.0.0.0    ceppartner.com
-0.0.0.0    edge1.certona.net
 0.0.0.0    chango.com
 0.0.0.0    as.chango.com
 0.0.0.0    blackhole.chango.com
@@ -3356,6 +3359,7 @@
 0.0.0.0    trac-app.com.com
 0.0.0.0    comboapp.com
 0.0.0.0    track.comboapp.com
+0.0.0.0    privacy.commander1.com
 0.0.0.0    company-target.com
 0.0.0.0    segments.company-target.com
 0.0.0.0    api.comscore.com
@@ -3386,6 +3390,7 @@
 0.0.0.0    api.connecto.io
 0.0.0.0    noclick.connexity.com
 0.0.0.0    a.consensad.com
+0.0.0.0    vendorlist.consensu.org
 0.0.0.0    sdk.consoliads.com
 0.0.0.0    files.constantcontact.com
 0.0.0.0    imgssl.constantcontact.com
@@ -3456,6 +3461,7 @@
 0.0.0.0    reports.crashlytics.com
 0.0.0.0    settings.crashlytics.com
 0.0.0.0    craveandlamb.com
+0.0.0.0    sample-api-v2.crazyegg.com
 0.0.0.0    script.crazyegg.com
 0.0.0.0    crazypopups.com
 0.0.0.0    v.lvlt.crcdn.net
@@ -3673,6 +3679,7 @@
 0.0.0.0    tracker.databrain.com
 0.0.0.0    ads.databrainz.com
 0.0.0.0    static.databrainz.com
+0.0.0.0    api.datadoghq.com
 0.0.0.0    brands.datahc.com
 0.0.0.0    redirect.datahc.com
 0.0.0.0    cloud.datapipe.com
@@ -3767,6 +3774,7 @@
 0.0.0.0    collect13365dngnh.deltadna.net
 0.0.0.0    collect13443hxbzz.deltadna.net
 0.0.0.0    collect13446fpcqz.deltadna.net
+0.0.0.0    collect13494dvntr.deltadna.net
 0.0.0.0    collect13566brrtb.deltadna.net
 0.0.0.0    collect13650lmrck.deltadna.net
 0.0.0.0    collect13800frdyt.deltadna.net
@@ -3877,6 +3885,7 @@
 0.0.0.0    fast.mtvn.demdex.net
 0.0.0.0    nbcu.demdex.net
 0.0.0.0    pepsico.demdex.net
+0.0.0.0    pythagore.demdex.net
 0.0.0.0    reuters.demdex.net
 0.0.0.0    fast.sears.demdex.net
 0.0.0.0    swa.demdex.net
@@ -4395,6 +4404,9 @@
 0.0.0.0    beacon.clickequations.net.edgekey.net
 0.0.0.0    cdn.adswizz.com.edgesuite.net
 0.0.0.0    ads.edipresse.pl
+0.0.0.0    collector.effectivemeasure.net
+0.0.0.0    s.effectivemeasure.net
+0.0.0.0    t.effectivemeasure.net
 0.0.0.0    hosting.effiliation.com
 0.0.0.0    mastertag.effiliation.com
 0.0.0.0    track.effiliation.com
@@ -4517,6 +4529,7 @@
 0.0.0.0    um2.eqads.com
 0.0.0.0    eqworks.com
 0.0.0.0    esellerate.net
+0.0.0.0    log.espn.com
 0.0.0.0    as00.estara.com
 0.0.0.0    v3dev.estream.com
 0.0.0.0    et-code.ru
@@ -4696,6 +4709,7 @@
 0.0.0.0    admanagerplus.flurry.com
 0.0.0.0    ads.flurry.com
 0.0.0.0    api.flurry.com
+0.0.0.0    cdn.flurry.com
 0.0.0.0    cfg.flurry.com
 0.0.0.0    data.flurry.com
 0.0.0.0    data-ipv6.flurry.com
@@ -4704,6 +4718,7 @@
 0.0.0.0    adbsdk.flyermobi.com
 0.0.0.0    api.sdk.fmobi.cn
 0.0.0.0    fmpub.net
+0.0.0.0    auth.follow-apps.com
 0.0.0.0    sdk.follow-apps.com
 0.0.0.0    sor-sdk.follow-apps.com
 0.0.0.0    analytics.foresee.com
@@ -4738,6 +4753,7 @@
 0.0.0.0    geoip.fotoable.net
 0.0.0.0    mobile.foundationsoft.com
 0.0.0.0    api.foursquare.com
+0.0.0.0    sdk.foursquare.com
 0.0.0.0    fout.jp
 0.0.0.0    ad.fout.jp
 0.0.0.0    click.fout.jp
@@ -4751,6 +4767,7 @@
 0.0.0.0    logger.foxitcloud.com
 0.0.0.0    assets.foxmetrics.com
 0.0.0.0    dc0-ue1.foxmetrics.com
+0.0.0.0    smetrics.foxnews.com
 0.0.0.0    push1.foxpush.com
 0.0.0.0    pushaction.foxpush.com
 0.0.0.0    fptad.com
@@ -4988,6 +5005,8 @@
 0.0.0.0    ssl.gft2.de
 0.0.0.0    sdkstat.ggsafe.com
 0.0.0.0    gigazine.asia
+0.0.0.0    socialize.eu1.gigya.com
+0.0.0.0    socialize.us1.gigya.com
 0.0.0.0    analytics-server.gimbal.com
 0.0.0.0    api.gimbal.com
 0.0.0.0    android.api.gimbal.com
@@ -5039,6 +5058,7 @@
 0.0.0.0    c.go-mpulse.net
 0.0.0.0    s.go-mpulse.net
 0.0.0.0    s2.go-mpulse.net
+0.0.0.0    log.go.com
 0.0.0.0    api.ads.watchabc.go.com
 0.0.0.0    tapjoy.go2cloud.org
 0.0.0.0    kissmyads.go2jump.org
@@ -5508,6 +5528,7 @@
 0.0.0.0    priv-policy.imrworldwide.com
 0.0.0.0    rc-au.imrworldwide.com
 0.0.0.0    safe-es.imrworldwide.com
+0.0.0.0    sdk.imrworldwide.com
 0.0.0.0    seccdn-gl.imrworldwide.com
 0.0.0.0    secure.imrworldwide.com
 0.0.0.0    secure-asia.imrworldwide.com
@@ -6017,7 +6038,10 @@
 0.0.0.0    ad.jorte.com
 0.0.0.0    finlogs.joyeggs.com
 0.0.0.0    payback.joyeggs.com
+0.0.0.0    im64.jpush.cn
+0.0.0.0    s.jpush.cn
 0.0.0.0    stats.jpush.cn
+0.0.0.0    sis.jpush.io
 0.0.0.0    c.jsrdn.com
 0.0.0.0    s.jsrdn.com
 0.0.0.0    juiceadv.com
@@ -6511,6 +6535,7 @@
 0.0.0.0    engine.liveintercept.com
 0.0.0.0    static.liveintercept.com
 0.0.0.0    server.iad.liveperson.net
+0.0.0.0    sds.livesegmentservice.com
 0.0.0.0    livesmi.com
 0.0.0.0    ad.lkqd.net
 0.0.0.0    creative.lkqd.net
@@ -6545,6 +6570,7 @@
 0.0.0.0    analytics.localytics.com
 0.0.0.0    api.localytics.com
 0.0.0.0    cold.localytics.com
+0.0.0.0    dashboard.localytics.com
 0.0.0.0    ebooks.localytics.com
 0.0.0.0    eng.localytics.com
 0.0.0.0    go.localytics.com
@@ -7534,6 +7560,7 @@
 0.0.0.0    ad.mobilike.com
 0.0.0.0    ads.mobilityware.com
 0.0.0.0    apps.mobilityware.com
+0.0.0.0    cross-promo.mwx.ext.mobilityware.com
 0.0.0.0    events.mobilizeamerica.io
 0.0.0.0    canvas.mobiloud.com
 0.0.0.0    mobimagic.com
@@ -8137,6 +8164,7 @@
 0.0.0.0    sc5-css-1.omniture.com
 0.0.0.0    testandtarget.omniture.com
 0.0.0.0    omtrdc.net
+0.0.0.0    espn.hb.omtrdc.net
 0.0.0.0    foxnews.hb.omtrdc.net
 0.0.0.0    gannett.hb.omtrdc.net
 0.0.0.0    hulu.hb.omtrdc.net
@@ -8591,6 +8619,7 @@
 0.0.0.0    latest.app.optimizely.com
 0.0.0.0    rc.app.optimizely.com
 0.0.0.0    stable.app.optimizely.com
+0.0.0.0    cdn.optimizely.com
 0.0.0.0    cdn-a2-ncl.optimizely.com
 0.0.0.0    cdn-edgecast.optimizely.com
 0.0.0.0    cdn-pci.optimizely.com
@@ -8684,7 +8713,9 @@
 0.0.0.0    mcdp-chidc2.outbrain.com
 0.0.0.0    mcdp-nydc1.outbrain.com
 0.0.0.0    mcdp-sadc1.outbrain.com
+0.0.0.0    mv.outbrain.com
 0.0.0.0    ny.outbrain.com
+0.0.0.0    odb.outbrain.com
 0.0.0.0    recommend.outbrain.com
 0.0.0.0    revee.outbrain.com
 0.0.0.0    rva.outbrain.com
@@ -8695,6 +8726,8 @@
 0.0.0.0    videoevents.outbrain.com
 0.0.0.0    widgets.outbrain.com
 0.0.0.0    log.outbrain.org
+0.0.0.0    images.outbrainimg.com
+0.0.0.0    log.outbrainimg.com
 0.0.0.0    apps.outfit7.com
 0.0.0.0    apps-ext.outfit7.com
 0.0.0.0    apps2.outfit7.com
@@ -8872,6 +8905,8 @@
 0.0.0.0    planetactive.com
 0.0.0.0    1cef.playfabapi.com
 0.0.0.0    65c6.playfabapi.com
+0.0.0.0    b343.playfabapi.com
+0.0.0.0    ca87.playfabapi.com
 0.0.0.0    playhaven.com
 0.0.0.0    playnomics.net
 0.0.0.0    sdkweb.playstove.com
@@ -9093,6 +9128,7 @@
 0.0.0.0    tools.pubmatic.com
 0.0.0.0    track.pubmatic.com
 0.0.0.0    s.pubmine.com
+0.0.0.0    pubnative.info
 0.0.0.0    pubnative.net
 0.0.0.0    api.pubnative.net
 0.0.0.0    rebtelsdk.pubnub.com
@@ -9691,6 +9727,7 @@
 0.0.0.0    searchfeast.com
 0.0.0.0    analytics.seattleclouds.com
 0.0.0.0    ads.seccionamarilla.com.mx
+0.0.0.0    wish.securedtouch.com
 0.0.0.0    seed.by
 0.0.0.0    cdn.seevolution.com
 0.0.0.0    recorder.seevolution.com
@@ -10816,6 +10853,7 @@
 0.0.0.0    analytics.tactilews.com
 0.0.0.0    analytics-eu.tactilews.com
 0.0.0.0    analytics-staging.tactilews.com
+0.0.0.0    cdn.tagcommander.com
 0.0.0.0    log.taggstar.com
 0.0.0.0    s.tagsrvcs.com
 0.0.0.0    analytics.tagular.com
@@ -10955,6 +10993,7 @@
 0.0.0.0    ssp.api.tappx.com
 0.0.0.0    track.tappx.com
 0.0.0.0    static.tapreason.com
+0.0.0.0    www.tapresearch.com
 0.0.0.0    api.taps.io
 0.0.0.0    tapsense.com
 0.0.0.0    tapstat.ru
@@ -11050,6 +11089,7 @@
 0.0.0.0    theirsvendor.com
 0.0.0.0    ads.themoneytizer.com
 0.0.0.0    theoremreach.com
+0.0.0.0    analytics-tracker.thescore.com
 0.0.0.0    thetrafficstat.net
 0.0.0.0    seen-on-screen.thewhizmarketing.com
 0.0.0.0    thinknear.com
@@ -11137,6 +11177,7 @@
 0.0.0.0    t.trafmag.com
 0.0.0.0    traktum.com
 0.0.0.0    transpera.com
+0.0.0.0    in.treasuredata.com
 0.0.0.0    tremorhub.com
 0.0.0.0    adelphic-partners.tremorhub.com
 0.0.0.0    ads.tremorhub.com
@@ -11217,6 +11258,7 @@
 0.0.0.0    analytics.twitter.com
 0.0.0.0    scribe.twitter.com
 0.0.0.0    u-ad.info
+0.0.0.0    lightstep-collector.api.ua.com
 0.0.0.0    uauniverse.com
 0.0.0.0    ads.ubee.in
 0.0.0.0    ad-sdk-platform.ubeejoy.com
@@ -11433,6 +11475,7 @@
 0.0.0.0    sdk.out.usbla.net
 0.0.0.0    analytics.usdm.net
 0.0.0.0    use-application-dns.net
+0.0.0.0    api.usebutton.com
 0.0.0.0    segment.api.useinsider.com
 0.0.0.0    mobileanalytics.useinsider.com
 0.0.0.0    usekahuna.com
@@ -11716,6 +11759,7 @@
 0.0.0.0    wda.com
 0.0.0.0    trk.wdacashtrk.com
 0.0.0.0    adstest.weather.com
+0.0.0.0    and-ads.pulse.weatherbug.net
 0.0.0.0    stats.web1tv.de
 0.0.0.0    analytics.webads.eu
 0.0.0.0    scripts.webcontentassessor.com
@@ -11853,7 +11897,9 @@
 0.0.0.0    ad.test.ximalaya.com
 0.0.0.0    xdcs-collector.ximalaya.com
 0.0.0.0    xiti.com
+0.0.0.0    logc169.xiti.com
 0.0.0.0    logs.xiti.com
+0.0.0.0    logs1202.xiti.com
 0.0.0.0    xius.com
 0.0.0.0    ads.xlxtra.com
 0.0.0.0    ads.xmlwizard.com
