@@ -354,6 +354,16 @@ Systeminfo(){
 	lastlog >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "PERMISSIONS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	ls -larS / >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "USER AND GROUPS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	cat /etc/passwd | awk '{print $1}' >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "INSTALLED PACKAGES" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	sudo pacman -Q >> $host-sysinfo.txt
@@ -541,6 +551,7 @@ InstallAndConquer(){
 		echo "4 - atom"
 		echo "5 - gedit"
 		echo "6 - kate/kwrite"
+		echo "7 - leafpad"
 		read package
 		if [[ $package == 1 ]];
 		then
@@ -564,8 +575,7 @@ InstallAndConquer(){
 		then
 			echo "1 - Kate"
 			echo "2 - Kwrite"
-			echo "Enter the editor you wish to install"
-			read $editor
+			read editor
 			if [[ $editor == 1 ]];
 			then
 				sudo pacman -S --noconfirm kate
@@ -573,6 +583,9 @@ InstallAndConquer(){
 			then
 				sudo pacman -S --noconfirm kwrite
 			fi
+		elif [[ $editor == 7 ]];
+		then
+			sudo pacman -S --noconfirm leafpad
 		else
 			echo "You've entered an invalid number"
 		fi
@@ -633,6 +646,7 @@ _EOF_
 		echo "1 - pacaur"
 		echo "2 - yaourt"
 		echo "3 - trizen"
+		echo "4 - yay"
 		read helper
 		if [[ $helper == 1 ]];
 		then
@@ -643,6 +657,9 @@ _EOF_
 		elif [[ $helper == 3 ]];
 		then
 			sudo pacman -S --noconfirm trizen
+		elif [[ $helper == 4 ]];
+		then
+			sudo pacman -S --noconfirm yay
 		else
 			echo "You have entered an invalid number"
 		fi
@@ -687,7 +704,7 @@ _EOF_
 			gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar; cd vivaldi && makepkg -si
 		elif [[ $browser == 7 ]];
 		then
-			wget linux.palemoon.org/datastore/release/palemoon-28.8.2.linux-x86_64.tar.xz; tar -xf palemoon-28.8.2.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+			wget linux.palemoon.org/datastore/release/palemoon-28.8.2.1.linux-x86_64.tar.xz; tar -xf palemoon-28.8.2.1.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 8 ]];
 		then
@@ -706,7 +723,7 @@ _EOF_
 		elif [[ $browser == 12 ]];
 		then
 			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.01.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.01.en-US.linux-x86_64.tar.bz2
-			sudo mv waterfox /opt; sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+			sudo ln -s ~/waterfox-classic/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 		elif [[ $browser == 13 ]];
 		then
@@ -816,7 +833,6 @@ _EOF_
 		sudo pacman -S --noconfirm guvcview
 	;;
 		14)
-		echo "This installs etc-update"
 		echo "etc-update can help you manage pacnew files and other configuration files after system updates."
 		sleep 2
 		sudo pacman -S --needed base-devel
@@ -914,7 +930,22 @@ _EOF_
 	;;
 		21)
 		echo "This installs office software"
-		sudo pacman -S --noconfirm libreoffice-fresh
+		echo "1 - Libreoffice"
+		echo "2 - Libreoffice-fresh"
+		echo "3 - Abiword/Gnumeric"
+		read software
+		if [[ $software == 1 ]];
+		then
+			sudo pacman -S --noconfirm libreoffice
+		elif [[ $software == 2 ]];
+		then
+			pacman -Q | grep libreoffice || sudo pacman -S --noconfirm libreoffice-fresh
+		elif [[ $software == 3 ]];
+		then
+			sudo pacman -S --noconfirm abiword gnumeric
+		else 
+			echo "You've entered an invalid number"
+		fi
 	;;
 		22)
 		wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz; wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gz
@@ -950,27 +981,11 @@ _EOF_
 	;;
 	esac
 	done
-
-	read -p "Please press enter to continue..."
-
-	#This allows you to install any software you might know of that is not on the list
-	echo "If you would like to contribute software titles to this script,
-	contact me: jackharkness444@protonmail.com"
-	echo "Would you like to install any additional software?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		echo "Enter the name of any software you'd like to install"
-		read software
-		sleep 0.5
-		sudo pacman -S --noconfirm $software
-	break
-	done
-
+	
 	read -p "Press enter to continue..."
 
 	#This installs xfce4-goodies package on xfce versions of Manjaro
-	for env in $DESKTOP_SESSION
+	for env in $DESKTOP_SESSION;
 	do
 		if [[ $DESKTOP_SESSION == xfce ]];
 		then
@@ -982,6 +997,20 @@ _EOF_
 				sudo pacman -S --noconfirm xfce4-goodies
 			break
 			done
+		fi
+	done
+	
+	read -p "Press enter to continue..."
+	
+	#This installs intel or amd microcode assuming it isn't installed already
+	cpu=$(cat /proc/cpuinfo | grep "vendor_id" | awk '{print $3}')
+	for c in $cpu; 
+	do
+		if [[ $cpu == GenuineIntel ]];
+		then
+			sudo pacman -Q | grep intel-ucode || sudo pacman -S --noconfirm intel-ucode
+		else
+			sudo pacman -Q | grep amd-ucode || sudo pacman -S --noconfirm amd-ucode
 		fi
 	done
 
