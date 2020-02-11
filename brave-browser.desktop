@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Brave
+GenericName=Brave
+Exec=brave %u
+Terminal=false
+Icon=brave
+Type=Application
+Categories=Network: WebBrowser;
+Comment=Access The Internet
