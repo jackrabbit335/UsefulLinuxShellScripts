@@ -2294,11 +2294,9 @@
 0.0.0.0    bugsense.appspot.com
 0.0.0.0    alt.bugsense.appspot.com
 0.0.0.0    caspionlog.appspot.com
-0.0.0.0    chrome-devtools-frontend.appspot.com
 0.0.0.0    chtatic.appspot.com
 0.0.0.0    crwscdn.appspot.com
 0.0.0.0    crwscdn9.appspot.com
-0.0.0.0    csp-collector.appspot.com
 0.0.0.0    8.dramafeverw2.appspot.com
 0.0.0.0    echofonads.appspot.com
 0.0.0.0    eqs-redserver.appspot.com
@@ -8172,9 +8170,11 @@
 0.0.0.0    audible.sc.omtrdc.net
 0.0.0.0    dsg.sc.omtrdc.net
 0.0.0.0    southwestairlines.sc.omtrdc.net
+0.0.0.0    allstate.tt.omtrdc.net
 0.0.0.0    audible.tt.omtrdc.net
 0.0.0.0    fcanafta.tt.omtrdc.net
 0.0.0.0    mboxedge17.tt.omtrdc.net
+0.0.0.0    mboxedge28.tt.omtrdc.net
 0.0.0.0    southwestairlines.tt.omtrdc.net
 0.0.0.0    on-mobi.com
 0.0.0.0    pixel.onaudience.com
@@ -11065,6 +11065,8 @@
 0.0.0.0    api.videometrics.ted.com
 0.0.0.0    telemetryverification.net
 0.0.0.0    beacon.sparta.mig.tencent-cloud.net
+0.0.0.0    tend.io
+0.0.0.0    track.tend.io
 0.0.0.0    track.tenjin.com
 0.0.0.0    track.tenjin.io
 0.0.0.0    teracreative.com
@@ -11287,6 +11289,7 @@
 0.0.0.0    dispatcher.upmc.uc.cn
 0.0.0.0    woodpecker.uc.cn
 0.0.0.0    app3.prd.telematics.uconnectcar.com
+0.0.0.0    app4.prd.telematics.uconnectcar.com
 0.0.0.0    gjtrack.ucweb.com
 0.0.0.0    insight.ucweb.com
 0.0.0.0    adn.insight.ucweb.com
@@ -11447,6 +11450,7 @@
 0.0.0.0    sdk.upush.co
 0.0.0.0    analyze.urbanairship.com
 0.0.0.0    boxoffice.urbanairship.com
+0.0.0.0    c00162-dl.urbanairship.com
 0.0.0.0    combine.urbanairship.com
 0.0.0.0    connect.urbanairship.com
 0.0.0.0    connect-testing.urbanairship.com
