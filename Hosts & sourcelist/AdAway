@@ -2890,6 +2890,7 @@
 0.0.0.0    andromeda.iad-01.braze.com
 0.0.0.0    ibilisk.iad-01.braze.com
 0.0.0.0    indus.iad-01.braze.com
+0.0.0.0    muliphein.iad-01.braze.com
 0.0.0.0    rest.iad-01.braze.com
 0.0.0.0    sagittarius.iad-01.braze.com
 0.0.0.0    sdk.iad-01.braze.com
@@ -4732,10 +4733,6 @@
 0.0.0.0    events.foreseeresults.com
 0.0.0.0    replay.foreseeresults.com
 0.0.0.0    cdn-static.formisimo.com
-0.0.0.0    a.fortumo.com
-0.0.0.0    api.fortumo.com
-0.0.0.0    assets.fortumo.com
-0.0.0.0    wutlar.fortumo.com
 0.0.0.0    analytics.fosrv.com
 0.0.0.0    ads.fotoable.com
 0.0.0.0    cdn.api.fotoable.com
@@ -4749,9 +4746,6 @@
 0.0.0.0    cdn.ads.fotoable.net
 0.0.0.0    analytics.fotoable.net
 0.0.0.0    geoip.fotoable.net
-0.0.0.0    mobile.foundationsoft.com
-0.0.0.0    api.foursquare.com
-0.0.0.0    sdk.foursquare.com
 0.0.0.0    fout.jp
 0.0.0.0    ad.fout.jp
 0.0.0.0    click.fout.jp
@@ -5505,7 +5499,6 @@
 0.0.0.0    customtraffic.impactradius.com
 0.0.0.0    goto-target-com.customtraffic.impactradius.com
 0.0.0.0    partners-hotwire-com.impactradius.com
-0.0.0.0    mobile.impacttestonline.com
 0.0.0.0    cp.impdesk.com
 0.0.0.0    abc.imrworldwide.com
 0.0.0.0    cdn-gl.imrworldwide.com
@@ -6268,17 +6261,10 @@
 0.0.0.0    track.ktplay.com
 0.0.0.0    c.ktxtr.com
 0.0.0.0    t.ktxtr.com
-0.0.0.0    cache.kuaidi100.com
-0.0.0.0    cdn.kuaidi100.com
-0.0.0.0    p.kuaidi100.com
 0.0.0.0    kukuplay.com
 0.0.0.0    adx.kul.vn
 0.0.0.0    events.kumulos.com
 0.0.0.0    stats.kumulos.com
-0.0.0.0    api.kurioapps.com
-0.0.0.0    fira-api.kurioapps.com
-0.0.0.0    kurio-img.kurioapps.com
-0.0.0.0    trx.kurioapps.com
 0.0.0.0    kurlichan.com
 0.0.0.0    g.kuwo.cn
 0.0.0.0    log.kuwo.cn
@@ -7826,8 +7812,6 @@
 0.0.0.0    mtburn.com
 0.0.0.0    mtrcss.com
 0.0.0.0    mucu.jp
-0.0.0.0    analytics-ingest.anypoint.mulesoft.com
-0.0.0.0    cdn.anypoint.mulesoft.com
 0.0.0.0    api.muneris.io
 0.0.0.0    ad.mwork.vn
 0.0.0.0    adv.mxmcdn.net
