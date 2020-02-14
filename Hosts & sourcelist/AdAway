@@ -4851,13 +4851,9 @@
 0.0.0.0    fwmrm.net
 0.0.0.0    adm.fwmrm.net
 0.0.0.0    fxclix.com
-0.0.0.0    account.fyber.com
 0.0.0.0    acp.fyber.com
 0.0.0.0    adproxy.fyber.com
 0.0.0.0    advertiser.fyber.com
-0.0.0.0    air.fyber.com
-0.0.0.0    ams.fyber.com
-0.0.0.0    ams-aws-stg.fyber.com
 0.0.0.0    android.fyber.com
 0.0.0.0    api.fyber.com
 0.0.0.0    api-rewarded-video.fyber.com
@@ -4873,7 +4869,6 @@
 0.0.0.0    dau.fyber.com
 0.0.0.0    engine.fyber.com
 0.0.0.0    engine-dsa.fyber.com
-0.0.0.0    fyber-marketplace.fyber.com
 0.0.0.0    iframe.fyber.com
 0.0.0.0    iframe-dsa.fyber.com
 0.0.0.0    interstitial.fyber.com
@@ -4887,7 +4882,6 @@
 0.0.0.0    mediation.fyber.com
 0.0.0.0    offer.fyber.com
 0.0.0.0    ofw-client-cdn.fyber.com
-0.0.0.0    otrs.fyber.com
 0.0.0.0    pixie.fyber.com
 0.0.0.0    publisher-reporting-api.fyber.com
 0.0.0.0    reference.fyber.com
@@ -4902,9 +4896,6 @@
 0.0.0.0    staging-tracker.fyber.com
 0.0.0.0    staging-video.fyber.com
 0.0.0.0    broker.staging-video-v2.fyber.com
-0.0.0.0    test-tickets.fyber.com
-0.0.0.0    test-wiki.fyber.com
-0.0.0.0    tickets.fyber.com
 0.0.0.0    track.fyber.com
 0.0.0.0    tracker.fyber.com
 0.0.0.0    tracking.fyber.com
@@ -6995,8 +6986,6 @@
 0.0.0.0    mediamind.com
 0.0.0.0    medianetworks.ru
 0.0.0.0    upfile16.mediaphim.com
-0.0.0.0    enabler.datalake.mediaset.it
-0.0.0.0    hbbtv.mediaset.net
 0.0.0.0    webtrekk.mediaset.net
 0.0.0.0    mediashakers.com
 0.0.0.0    ads.mediasmart.es
