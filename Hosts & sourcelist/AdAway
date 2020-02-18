@@ -4352,7 +4352,6 @@
 0.0.0.0    ma312-r.analytics.edgekey.net
 0.0.0.0    ma322-r.analytics.edgekey.net
 0.0.0.0    ma343-r.analytics.edgekey.net
-0.0.0.0    ma345-r.analytics.edgekey.net
 0.0.0.0    ma479-r.analytics.edgekey.net
 0.0.0.0    ma512-r.analytics.edgekey.net
 0.0.0.0    ma562-r.analytics.edgekey.net
@@ -11258,8 +11257,6 @@
 0.0.0.0    ru.track.uc.cn
 0.0.0.0    dispatcher.upmc.uc.cn
 0.0.0.0    woodpecker.uc.cn
-0.0.0.0    app3.prd.telematics.uconnectcar.com
-0.0.0.0    app4.prd.telematics.uconnectcar.com
 0.0.0.0    gjtrack.ucweb.com
 0.0.0.0    insight.ucweb.com
 0.0.0.0    adn.insight.ucweb.com
