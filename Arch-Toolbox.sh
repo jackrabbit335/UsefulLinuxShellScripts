@@ -1161,7 +1161,7 @@ by your system, disabling that service could potentially help speed up
 your system. However, I would advise against disabling system critical
 services. Manjaro specifically has their own tool for managing Kernels
 and drivers. This tool helps immensely and is what I utilize in this
-script's kernel manager. This tool will not be in other Arch-based
+scripts kernel manager. This tool will not be in other Arch-based
 distributions. Read the documentation for your distribution before
 attempting to install or uninstall other kernels. The Arch wiki is a
 valuable resource.
@@ -1354,6 +1354,7 @@ cleanup(){
 	sudo rm -r ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
+	#sudo rm -r /var/tmp/*
 
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
@@ -1361,8 +1362,8 @@ cleanup(){
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
