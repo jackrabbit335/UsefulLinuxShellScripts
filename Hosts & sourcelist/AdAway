@@ -5211,7 +5211,6 @@
 0.0.0.0    beaconapi.helpscout.net
 0.0.0.0    mobilityware.helpshift.com
 0.0.0.0    bannerwall.herewetest.com
-0.0.0.0    api.metrics.heroku.com
 0.0.0.0    adstage-analytics.herokuapp.com
 0.0.0.0    bundle-geoip.herokuapp.com
 0.0.0.0    collection-endpoint-prod.herokuapp.com
