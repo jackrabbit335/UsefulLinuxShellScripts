@@ -2672,7 +2672,6 @@
 0.0.0.0    w.x.baidu.com
 0.0.0.0    baidustatic.com
 0.0.0.0    ubmcmm.baidustatic.com
-0.0.0.0    api.band.us
 0.0.0.0    bango.net
 0.0.0.0    bannerads.co.in
 0.0.0.0    bannerbank.ru
@@ -4315,14 +4314,6 @@
 0.0.0.0    static.earnify.com
 0.0.0.0    track-ipv4.earnify.com
 0.0.0.0    earth-111.com
-0.0.0.0    acsdk.gameyw.easebar.com
-0.0.0.0    optsdk.gameyw.easebar.com
-0.0.0.0    mgbsdknaeast.matrix.easebar.com
-0.0.0.0    mgbsdksgtest.matrix.easebar.com
-0.0.0.0    qr.mpsdk.easebar.com
-0.0.0.0    sdk-os.mpsdk.easebar.com
-0.0.0.0    update.unisdk.easebar.com
-0.0.0.0    unisdk.update.easebar.com
 0.0.0.0    ads.easy-ads.com
 0.0.0.0    easyads.bg
 0.0.0.0    easydownloadnow.com
@@ -5123,7 +5114,6 @@
 0.0.0.0    sdk.gplayspace.com
 0.0.0.0    instlikesdk.gpowers.net
 0.0.0.0    sdk.gpowers.net
-0.0.0.0    sypi.gpshopper.com
 0.0.0.0    grabify.link
 0.0.0.0    grafstat.ro
 0.0.0.0    dmgt.grapeshot.co.uk
