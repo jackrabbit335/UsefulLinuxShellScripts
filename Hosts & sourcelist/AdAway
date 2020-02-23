@@ -9353,6 +9353,7 @@
 0.0.0.0    analytics.rayjump.com
 0.0.0.0    cdn-adn.rayjump.com
 0.0.0.0    cdn-adn-foreign.rayjump.com
+0.0.0.0    cdn-adn-https-baidu.rayjump.com
 0.0.0.0    de.rayjump.com
 0.0.0.0    de01.rayjump.com
 0.0.0.0    detect.rayjump.com
@@ -9370,6 +9371,7 @@
 0.0.0.0    sg01.rayjump.com
 0.0.0.0    tknet.rayjump.com
 0.0.0.0    us01.rayjump.com
+0.0.0.0    vg-hb.rayjump.com
 0.0.0.0    vg-k8s-setting.rayjump.com
 0.0.0.0    vg-setting.rayjump.com
 0.0.0.0    rbnt.org
