@@ -1,4 +1,4 @@
- #!/bin/bash
+#!/bin/bash
 
 Setup(){
 	#Sets default editor to nano in bashrc
