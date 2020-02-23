@@ -1,4 +1,4 @@
-#!/bin/bash
+ #!/bin/bash
 
 Setup(){
 	#Sets default editor to nano in bashrc
@@ -37,7 +37,6 @@ Setup(){
 	sudo touch /etc/sysctl.d/50-dmesg-restrict.conf
 	sudo touch /etc/sysctl.d/50-kptr-restrict.conf
 	sudo touch /etc/sysctl.d/99-sysctl.conf
-    sudo touch /etc/syctl.d/60-network-hardening.conf
 	echo "kernel.dmesg_restrict = 1" | sudo tee -a /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "kernel.kptr_restrict = 1" | sudo tee -a /etc/sysctl.d/50-kptr-restrict.conf
 	echo "vm.swappiness = 10" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
@@ -341,6 +340,16 @@ Systeminfo(){
 	lastlog >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "PERMISSIONS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	ls -larS / >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "USER AND GROUPS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	cat /etc/passwd | awk '{print $1}' >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "INSTALLED PACKAGES" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	eopkg list-installed >> $host-sysinfo.txt
@@ -485,7 +494,7 @@ InstallAndConquer(){
 	case $software in
 		1)
 		echo "This installs a choice of utility software"
-		sudo eopkg install --reinstall mtr lshw hdparm lm-sensors tlp gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw grsync
+		sudo eopkg install --reinstall mtr lshw hdparm tlp gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw grsync
 		sudo snap install youtube-dl
 	;;
 		2)
@@ -616,7 +625,7 @@ InstallAndConquer(){
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
 		elif [[ $browser == 11 ]];
 		then
-			wget http://linux.palemoon.org/datastore/release/palemoon-28.8.2.linux-x86_64.tar.xz; tar -xf palemoon-28.8.2.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+			wget http://linux.palemoon.org/datastore/release/palemoon-28.8.3.linux-x86_64.tar.xz; tar -xf palemoon-28.8.3.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 12 ]];
 		then
@@ -795,7 +804,7 @@ InstallAndConquer(){
 
 	read -p "Please press enter to continue..."
 
-#This installs preload for faster load of apps	
+#This installs preload for faster load of apps
 cat <<_EOF_
 Preload is as the name implies, a preloader. This nifty tool can shadow
 your uses of the desktop and store bits of applications into memory for
@@ -813,19 +822,15 @@ _EOF_
 
 	read -p "Please press enter to continue..."
 
-	#This allows you to install any software you might know of that is not on the list
-	echo "If you would like to contribute software titles to this script,
-	contact me: jackharkness444@protonmail.com"
-	echo "Would you like to install any additional software?(Y/n)"
-	read answer
-	while [ $answer == Y ];
+	#This installs microcode
+	cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
+	for i in cpu;
 	do
-		echo "Enter the name of any software you would like to install"
-		read software
-		sleep 0.5
-		sudo eopkg install $software
-	break
-	done
+			if [[ $cpu == GenuineIntel ]];
+			then
+				sudo eopkg li | grep intel-microcode || sudo eopkg install intel-microcode
+			fi
+ done
 
 	clear
 	Greeting
@@ -1486,7 +1491,7 @@ read operation;
 	;;
 		3)
 		echo "Please enter the name of a service to mask"
-		read service 
+		read service
 		sudo systemctl mask $service
 		echo "Would you like to reboot?(Y/n)"
 		read answer
@@ -1703,7 +1708,7 @@ all the way to as important as setting up a new system.
 This script is meant for new users, but anyone can read, change and use
 this script to their liking. This script is to be placed under the GPLv3
 and is to be redistributable, however, if you are distributing,
-I would appreciate it if you gave the credit back to the original author. 
+I would appreciate it if you gave the credit back to the original author.
 I should also add that I have a few blog articles which may or may not be
 of benefit for newbies on occasion. The link will be placed here. In the
 blog I write about typical scenarios that I face on a day to day basis
