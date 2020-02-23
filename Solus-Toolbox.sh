@@ -1154,8 +1154,7 @@ MakeSwap(){
 	cat /etc/fstab | grep "swap"
 	if [ $? -eq 0 ];
 	then
-		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 2G /swapfile; chmod 600 /swapfile
-		sudo mkswap /swapfile; sudo swapon /swapfile; echo "/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
+		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 4G /swapfile; sudo chmod 600 /swapfile; sudo mkswap /swapfile; sudo swapon /swapfile; echo "/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
 	else
 		echo "Swap was already there so there is nothing to do"
 	fi
