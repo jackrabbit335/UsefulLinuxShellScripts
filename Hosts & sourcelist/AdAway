@@ -1767,6 +1767,7 @@
 0.0.0.0    am15.net
 0.0.0.0    amazemobilemedia.com
 0.0.0.0    aax-us-east.amazon-adsystem.com
+0.0.0.0    c.amazon-adsystem.com
 0.0.0.0    mads.amazon-adsystem.com
 0.0.0.0    s.amazon-adsystem.com
 0.0.0.0    device-metrics-us.amazon.com
@@ -2718,6 +2719,7 @@
 0.0.0.0    bead-ad.com
 0.0.0.0    t.beanstalkdata.com
 0.0.0.0    t2.beanstalkdata.com
+0.0.0.0    api.bee7.com
 0.0.0.0    behaviad.net
 0.0.0.0    bepolite.eu
 0.0.0.0    besguses.pro
@@ -3586,6 +3588,7 @@
 0.0.0.0    5-9-1-ios.userflows.ingest.crittercism.com
 0.0.0.0    crossboardmobile.com
 0.0.0.0    img.crossinstall.com
+0.0.0.0    rtb-east-wins.crossinstall.com
 0.0.0.0    creative-analytics.crossinstall.io
 0.0.0.0    creatives.crossinstall.io
 0.0.0.0    step-service.crossinstall.io
@@ -4617,7 +4620,10 @@
 0.0.0.0    load.sjc1.exelator.com
 0.0.0.0    loadus.tm.ssl.exelator.com
 0.0.0.0    vdna.exelator.com
+0.0.0.0    ns.exitgames.com
 0.0.0.0    tags.experian.co.uk
+0.0.0.0    smetrics1.experian.com
+0.0.0.0    extreme-ip-lookup.com
 0.0.0.0    beacons.extremereach.io
 0.0.0.0    mcs.eyereturn.com
 0.0.0.0    orion.eyereturn.com
@@ -4991,6 +4997,8 @@
 0.0.0.0    sightings.gimbal.com
 0.0.0.0    cdn.gimbal.tech
 0.0.0.0    stats.gioneemobile.net
+0.0.0.0    cdn-prod-defaulting-gamedev-ads.gismart.xyz
+0.0.0.0    prod-defaulting-subscriptiontool.gismart.xyz
 0.0.0.0    sidecar.gitter.im
 0.0.0.0    cdn.gladly.com
 0.0.0.0    production1.gladly.com
@@ -5199,6 +5207,8 @@
 0.0.0.0    beaconapi.helpscout.net
 0.0.0.0    mobilityware.helpshift.com
 0.0.0.0    bannerwall.herewetest.com
+0.0.0.0    adv.herocraft.com
+0.0.0.0    gamestats.herocraft.com
 0.0.0.0    adstage-analytics.herokuapp.com
 0.0.0.0    bundle-geoip.herokuapp.com
 0.0.0.0    collection-endpoint-prod.herokuapp.com
@@ -5251,6 +5261,7 @@
 0.0.0.0    hexagon-analytics.com
 0.0.0.0    sdk.hexia.io
 0.0.0.0    heywire.com
+0.0.0.0    ads.heyzap.com
 0.0.0.0    fyc.heyzap.com
 0.0.0.0    med.heyzap.com
 0.0.0.0    hfc195b.com
@@ -5863,6 +5874,7 @@
 0.0.0.0    post.iperceptions.com
 0.0.0.0    sd.iperceptions.com
 0.0.0.0    universal.iperceptions.com
+0.0.0.0    api.ipify.org
 0.0.0.0    ipinyou.com
 0.0.0.0    cm.ipinyou.com
 0.0.0.0    fm.ipinyou.com
@@ -5965,6 +5977,8 @@
 0.0.0.0    sw.izooto.com
 0.0.0.0    i.mxplayer.j2inter.com
 0.0.0.0    analytics.jabong.com
+0.0.0.0    analytics-sdk.jamcity.com
+0.0.0.0    tongue.jamcity.com
 0.0.0.0    jaminfinity.tk
 0.0.0.0    jampp.com
 0.0.0.0    cdn.jampp.com
@@ -6467,6 +6481,7 @@
 0.0.0.0    res.limei.com
 0.0.0.0    ads.linkedin.com
 0.0.0.0    analytics.pointdrive.linkedin.com
+0.0.0.0    prod.linkitox.com
 0.0.0.0    ad.linkprice.com
 0.0.0.0    linkshighway.net
 0.0.0.0    ad.linksynergy.com
@@ -8128,9 +8143,11 @@
 0.0.0.0    allstate.sc.omtrdc.net
 0.0.0.0    audible.sc.omtrdc.net
 0.0.0.0    dsg.sc.omtrdc.net
+0.0.0.0    equifaxps.sc.omtrdc.net
 0.0.0.0    southwestairlines.sc.omtrdc.net
 0.0.0.0    allstate.tt.omtrdc.net
 0.0.0.0    audible.tt.omtrdc.net
+0.0.0.0    consumerinfo.tt.omtrdc.net
 0.0.0.0    fcanafta.tt.omtrdc.net
 0.0.0.0    mboxedge17.tt.omtrdc.net
 0.0.0.0    mboxedge28.tt.omtrdc.net
@@ -8693,6 +8710,7 @@
 0.0.0.0    cdn.outfit7.com
 0.0.0.0    cdn-o7.outfit7.com
 0.0.0.0    cdn-safe.outfit7.com
+0.0.0.0    events-api.outfit7.com
 0.0.0.0    match7-as-s1.outfit7.com
 0.0.0.0    match7-eu-w1.outfit7.com
 0.0.0.0    match7-so-e1.outfit7.com
@@ -8757,6 +8775,7 @@
 0.0.0.0    collector-a.perimeterx.net
 0.0.0.0    collector-px8fcgygk4.perimeterx.net
 0.0.0.0    collector-pxhyx10rg3.perimeterx.net
+0.0.0.0    collector-pxuarm9b04.perimeterx.net
 0.0.0.0    px-conf.perimeterx.net
 0.0.0.0    ad.period-calendar.com
 0.0.0.0    permutive.com
@@ -8863,7 +8882,9 @@
 0.0.0.0    conf.placer.io
 0.0.0.0    planetactive.com
 0.0.0.0    1cef.playfabapi.com
+0.0.0.0    4d83.playfabapi.com
 0.0.0.0    65c6.playfabapi.com
+0.0.0.0    96b6.playfabapi.com
 0.0.0.0    b343.playfabapi.com
 0.0.0.0    ca87.playfabapi.com
 0.0.0.0    playhaven.com
@@ -9810,6 +9831,8 @@
 0.0.0.0    sessionm.com
 0.0.0.0    sezwho.com
 0.0.0.0    track.sgdmobile.com
+0.0.0.0    crm.sgn.com
+0.0.0.0    invenio.sgn.com
 0.0.0.0    analytics.shareaholic.com
 0.0.0.0    apps.shareaholic.com
 0.0.0.0    clickcdn.shareaholic.com
@@ -10021,6 +10044,7 @@
 0.0.0.0    snap.snapmobile.asia
 0.0.0.0    static.snapmobile.asia
 0.0.0.0    vast.snapmobile.asia
+0.0.0.0    stats.snowtrial.co
 0.0.0.0    ca-lapresse-main.collector.snplow.net
 0.0.0.0    com-bvaauctions-main.collector.snplow.net
 0.0.0.0    com-codecombat-main.collector.snplow.net
@@ -10087,6 +10111,7 @@
 0.0.0.0    xcp.go.sonobi.com
 0.0.0.0    sharepoint.sonobi.com
 0.0.0.0    assets.soom.la
+0.0.0.0    highway2.soom.la
 0.0.0.0    teleport.soom.la
 0.0.0.0    lead.soperson.com
 0.0.0.0    yun-static.soperson.com
@@ -10113,6 +10138,7 @@
 0.0.0.0    us6.splicky.com
 0.0.0.0    us7.splicky.com
 0.0.0.0    us8.splicky.com
+0.0.0.0    events.split.io
 0.0.0.0    sdk.split.io
 0.0.0.0    29627a66.api.splkmobile.com
 0.0.0.0    959cad30.api.splkmobile.com
@@ -11211,6 +11237,7 @@
 0.0.0.0    asdkd.tutuapp.com
 0.0.0.0    log.tutuapp.com
 0.0.0.0    appwall.tv2phone.cn
+0.0.0.0    collector-6271.tvsquared.com
 0.0.0.0    sdkgw.us1.twilio.com
 0.0.0.0    gts-ads.twistbox.com
 0.0.0.0    deviceidshare.twitch.tv
@@ -11718,6 +11745,9 @@
 0.0.0.0    ads.wcond.site
 0.0.0.0    wda.com
 0.0.0.0    trk.wdacashtrk.com
+0.0.0.0    bcdn-god.we-stats.com
+0.0.0.0    cfr.us.v2.we-stats.com
+0.0.0.0    log-dbff2e04.us.v2.we-stats.com
 0.0.0.0    adstest.weather.com
 0.0.0.0    and-ads.pulse.weatherbug.net
 0.0.0.0    stats.web1tv.de
