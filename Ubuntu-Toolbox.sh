@@ -298,7 +298,7 @@ Systeminfo(){
 	echo "############################################################################" >> $host-sysinfo.txt
 	lastlog >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-    echo "############################################################################" >> $host-sysinfo.txt
+    	echo "############################################################################" >> $host-sysinfo.txt
 	echo "PERMISSIONS" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	ls -larS / >> $host-sysinfo.txt
@@ -1024,18 +1024,18 @@ InstallAndConquer(){
 	break
 	done
 
-    #Microcode installer
-    cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
-    for c in $cpu 
-    do
-        if [[ $cpu == GenuineIntel ]];
-        then
-            sudo pacman -Q | grep intel-ucode || sudo pacman -S --noconfirm intel-ucode
-        elif [[ $cpu == AuthenticAMD ]];
-        then
-            sudo pacman -Q | grep amd-ucode || sudo pacman -S --noconfirm amd-ucode
-        fi
-    done
+    	#Microcode installer
+    	cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
+    	for c in $cpu 
+    	do
+        	if [[ $cpu == GenuineIntel ]];
+        	then
+            	sudo pacman -Q | grep intel-ucode || sudo pacman -S --noconfirm intel-ucode
+        	elif [[ $cpu == AuthenticAMD ]];
+        	then
+            	sudo pacman -Q | grep amd-ucode || sudo pacman -S --noconfirm amd-ucode
+        	fi
+    	done
 
 	#This tries to install codecs
 	echo "This will install codecs."
