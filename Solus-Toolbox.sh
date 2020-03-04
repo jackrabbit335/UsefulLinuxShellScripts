@@ -826,11 +826,11 @@ _EOF_
 	cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
 	for i in cpu;
 	do
-			if [[ $cpu == GenuineIntel ]];
-			then
-				sudo eopkg li | grep intel-microcode || sudo eopkg install intel-microcode
-			fi
- done
+		if [[ $cpu == GenuineIntel ]];
+		then
+			sudo eopkg li | grep intel-microcode || sudo eopkg install intel-microcode
+		fi
+ 	done
 
 	clear
 	Greeting
