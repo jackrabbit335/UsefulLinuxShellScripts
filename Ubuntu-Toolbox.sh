@@ -1026,7 +1026,7 @@ InstallAndConquer(){
 
     	#Microcode installer
     	cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
-    	for c in $cpu 
+    	for c in $cpu; 
     	do
         	if [[ $cpu == GenuineIntel ]];
         	then
