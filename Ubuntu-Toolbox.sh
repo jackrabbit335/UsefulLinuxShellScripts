@@ -298,6 +298,16 @@ Systeminfo(){
 	echo "############################################################################" >> $host-sysinfo.txt
 	lastlog >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
+    echo "############################################################################" >> $host-sysinfo.txt
+	echo "PERMISSIONS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	ls -larS / >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "USER AND GROUPS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	cat /etc/passwd | awk '{print $1}' >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "INSTALLED PACKAGES" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
@@ -1014,18 +1024,18 @@ InstallAndConquer(){
 	break
 	done
 
-	#This installs software we might have missed
-	echo "If you'd like to contribute to the previous list of software,
-	contact me: jackharkness444@protonmail.com"
-	echo "Is there any other software you'd like to install?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		echo "Enter the name of the software you wish to install"
-		read software
-		sudo apt install -y $software
-	break
-	done
+    #Microcode installer
+    cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
+    for c in $cpu 
+    do
+        if [[ $cpu == GenuineIntel ]];
+        then
+            sudo pacman -Q | grep intel-ucode || sudo pacman -S --noconfirm intel-ucode
+        elif [[ $cpu == AuthenticAMD ]];
+        then
+            sudo pacman -Q | grep amd-ucode || sudo pacman -S --noconfirm amd-ucode
+        fi
+    done
 
 	#This tries to install codecs
 	echo "This will install codecs."
