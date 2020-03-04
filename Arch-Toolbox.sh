@@ -1003,7 +1003,7 @@ _EOF_
 	read -p "Press enter to continue..."
 	
 	#This installs intel or amd microcode assuming it isn't installed already
-	cpu=$(cat /proc/cpuinfo | grep "vendor_id" | awk '{print $3}')
+	cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
 	for c in $cpu; 
 	do
 		if [[ $cpu == GenuineIntel ]];
