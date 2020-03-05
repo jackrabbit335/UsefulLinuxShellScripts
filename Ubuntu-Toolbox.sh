@@ -289,7 +289,7 @@ Systeminfo(){
 	sudo ufw status verbose >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	echo "PROCESS LIST" >> $host-sysinfo.txt
+	echo "PROCESS TABLE" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	ps -aux >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
