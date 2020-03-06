@@ -738,9 +738,7 @@ _EOF_
 		elif [[ $browser == 15 ]];
 		then
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/brave-bin.tar.gz
-			gunzip brave-bin.tar.gz; tar -xvf brave-bin.tar; sudo mv brave-bin /opt
-			sudo ln -s /opt/brave-bin/brave-bin.sh /usr/bin/brave
-			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/brave-browser.desktop; sudo mv brave-browser.desktop/usr/share/applications/brave-browser.desktop
+			gunzip brave-bin.tar.gz; tar -xvf brave-bin.tar; cd brave-bin; makepkg -si
 		else
 			echo "You have entered an invalid number"
 		fi
