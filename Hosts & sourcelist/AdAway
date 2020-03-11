@@ -6541,14 +6541,11 @@
 0.0.0.0    analytics.localytics.com
 0.0.0.0    api.localytics.com
 0.0.0.0    cold.localytics.com
-0.0.0.0    dashboard.localytics.com
-0.0.0.0    ebooks.localytics.com
 0.0.0.0    eng.localytics.com
 0.0.0.0    go.localytics.com
 0.0.0.0    lyssh.gw.localytics.com
 0.0.0.0    two-ply.gw.localytics.com
 0.0.0.0    two-ply-dev.gw.localytics.com
-0.0.0.0    info.localytics.com
 0.0.0.0    manifest.localytics.com
 0.0.0.0    profile.localytics.com
 0.0.0.0    profileview.localytics.com
@@ -9443,7 +9440,6 @@
 0.0.0.0    cm.revcontent.com
 0.0.0.0    cm-s1.revcontent.com
 0.0.0.0    code.revcontent.com
-0.0.0.0    faq.revcontent.com
 0.0.0.0    files.revcontent.com
 0.0.0.0    img.revcontent.com
 0.0.0.0    internal.revcontent.com
@@ -11812,7 +11808,6 @@
 0.0.0.0    cdn.wootric.com
 0.0.0.0    cxi-api.wootric.com
 0.0.0.0    eligibility.wootric.com
-0.0.0.0    engineering.wootric.com
 0.0.0.0    info.wootric.com
 0.0.0.0    intercom-assets.wootric.com
 0.0.0.0    production.wootric.com
