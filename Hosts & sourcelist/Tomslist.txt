@@ -54,3 +54,7 @@
 0.0.0.0    www.onaudience.com
 0.0.0.0    pixel.onaudience.com
 0.0.0.0    www.pixel.onaudience.com
+0.0.0.0    www.coinhive.com
+0.0.0.0    coinhive.com
+0.0.0.0    authedmine.com
+0.0.0.0    www.authedmine.com
