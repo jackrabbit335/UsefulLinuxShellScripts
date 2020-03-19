@@ -4411,7 +4411,6 @@
 0.0.0.0    bejeweled-skies-prod.elasticbeanstalk.com
 0.0.0.0    bugsee-api-prod.elasticbeanstalk.com
 0.0.0.0    ad2games-adserver-production.eu-west-1.elasticbeanstalk.com
-0.0.0.0    heatmaprestapi-production.eu-west-1.elasticbeanstalk.com
 0.0.0.0    tp-rtb-adserver-eu.eu-west-1.elasticbeanstalk.com
 0.0.0.0    fusion-iad-dev-clogs-eqbrmmvphc.elasticbeanstalk.com
 0.0.0.0    houseads-prod.elasticbeanstalk.com
