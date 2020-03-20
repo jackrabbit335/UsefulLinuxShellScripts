@@ -26,16 +26,19 @@ str1=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/mas
 str2=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Someonewhocares
 str3=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
 str4=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Malwarehosts
-str5=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Malwarehosts2
+str5=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/ATS
 str6=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/noCoin
 str7=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/AdAway
 str8=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Sysctlhosts
 str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/blacklist.txt
 str10=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/bjornhosts
 str11=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/StevenHosts
+str12=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Badd-Boyz
+str13=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Tomslist.txt
+str14=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/BadHosts
 
 
-while getopts :ABCDEFGHIJK option; do
+while getopts :ABCDEFGHIJKLMN option; do
 	case $option in
 		A) wget $str1 && cat MVPShosts >> adblock && rm MVPShosts
 		;;
@@ -45,7 +48,7 @@ while getopts :ABCDEFGHIJK option; do
 		;;
 		D) wget $str4 && cat Malwarehosts >> adblock && rm Malwarehosts
 		;;
-		E) wget $str5 && cat Malwarehosts2 >> adblock && rm Malwarehosts2
+		E) wget $str5 && cat ATS >> adblock && rm ATS
 		;;
 		F) wget $str6 && cat noCoin >> adblock && rm noCoin
 		;;
@@ -58,6 +61,12 @@ while getopts :ABCDEFGHIJK option; do
 		J) wget $str10 && cat bjornhosts >> adblock && rm bjornhosts
 		;;
 		K) wget $str11 && cat StevenBlacks >> adblock && rm StevenBlacks
+		;;
+		L) wget $str12 && cat Badd-Boyz >> adblock && rm Badd-Boyz
+		;;
+		M) wget $str13 && cat Tomslist.txt >> adblock && rm Tomslist.txt
+		;;
+		N) wget $str14 && cat BadHosts >> adblock && rm BadHosts
 		;;
 		*)
 	esac
