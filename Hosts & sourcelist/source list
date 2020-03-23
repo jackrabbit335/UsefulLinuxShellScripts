@@ -1,6 +1,7 @@
 ##Fancy supporting the project? Add your own tracking and or adblocking domains to blacklist.txt##
 https://pgl.yoyo.org/as/serverlist.php?hostformat=hosts
 http://winhelp2002.mvps.org/hosts.txt
+https://raw.githubusercontent.com/StevenBlack/hosts/master/extensions/gambling/hosts #Steven Black's hosts gambling extension
 https://hosts-file.net/ad_servers.txt
 someonewhocares.org
 malwaredomainlist.com
