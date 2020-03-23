@@ -36,6 +36,7 @@ str11=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/ma
 str12=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Badd-Boyz
 str13=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Tomslist.txt
 str14=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/BadHosts
+str15=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Casino
 
 
 while getopts :ABCDEFGHIJKLMN option; do
@@ -67,6 +68,8 @@ while getopts :ABCDEFGHIJKLMN option; do
 		M) wget $str13 && cat Tomslist.txt >> adblock && rm Tomslist.txt
 		;;
 		N) wget $str14 && cat BadHosts >> adblock && rm BadHosts
+		;;
+        O) wget $str15 && cat Casino >> adblock && rm Casino
 		;;
 		*)
 	esac
