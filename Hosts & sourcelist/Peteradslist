@@ -1243,6 +1243,7 @@
 0.0.0.0    cdn.branch.io
 0.0.0.0    cdn.freefarcy.com
 0.0.0.0    cdn.heapanalytics.com
+0.0.0.0    cdn.keywee.co
 0.0.0.0    cdn.onesignal.com
 0.0.0.0    cdn.segment.com
 0.0.0.0    cecash.com
@@ -1946,7 +1947,6 @@
 0.0.0.0    karisimbi.net
 0.0.0.0    karonty.com
 0.0.0.0    keymedia.hu
-0.0.0.0    keywee.co
 0.0.0.0    kindads.com
 0.0.0.0    kissmetrics.com
 0.0.0.0    klclick.com
@@ -2405,6 +2405,7 @@
 0.0.0.0    pixel.adsafeprotected.com
 0.0.0.0    pixel.condenastdigital.com
 0.0.0.0    pixel.digitru.st
+0.0.0.0    pixel.keywee.co
 0.0.0.0    pixel.mtrcs.samba.tv
 0.0.0.0    pixel.sojern.com
 0.0.0.0    pixel.watch
