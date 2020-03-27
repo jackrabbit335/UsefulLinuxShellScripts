@@ -56,6 +56,8 @@
 # Let's see how quickly we block brightcove again
 #0.0.0.0	players.brightcove.net
 #0.0.0.0	edge.api.brightcove.com
+# https://github.com/bjornstar/hosts/issues/12
+#0.0.0.0	fast.wistia.com
 
 0.0.0.0	api.content.ad
 0.0.0.0	yts.ag
@@ -3287,6 +3289,7 @@
 0.0.0.0	p.nexac.com
 0.0.0.0	tmp3.nexac.com
 0.0.0.0	ads.nexage.com
+0.0.0.0	prod-m-node-2112.nexage.com
 0.0.0.0	wdc5.nexage.com
 0.0.0.0	tw.adx.nextmedia.com
 0.0.0.0	nfkd2ug8d9.com
@@ -4908,7 +4911,6 @@
 0.0.0.0	b.wishabi.com
 0.0.0.0	distillery.wistia.com
 0.0.0.0	embed.wistia.com
-0.0.0.0	fast.wistia.com
 0.0.0.0	pipedream.wistia.com
 0.0.0.0	witalfieldt.com
 0.0.0.0	withbinaryoptions.com
@@ -5032,6 +5034,7 @@
 0.0.0.0	cookiex.ngd.yahoo.com
 0.0.0.0	geo.query.yahoo.com
 0.0.0.0	lh.secure.yahoo.com
+0.0.0.0	c2shb.ssp.yahoo.com
 0.0.0.0	syndication.streamads.yahoo.com
 0.0.0.0	tw.rc.webmaster.yahoo.com
 0.0.0.0	ads.yap.yahoo.com
