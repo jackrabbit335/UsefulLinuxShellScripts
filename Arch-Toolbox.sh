@@ -515,10 +515,10 @@ InstallAndConquer(){
 	case $software in
 		1)
 		echo "This installs a series of utility software"
-		sudo pacman -S --noconfirm dnsutils traceroute hdparm gparted smartmontools
-		sudo pacman -S --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu
-		sudo pacman -S --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit
-		sudo pacman -S --noconfirm pacman-contrib yaourt grsync tlp powertop
+		sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools
+		sudo pacman -S --needed --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu
+		sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit
+		sudo pacman -S --needed --noconfirm pacman-contrib yaourt grsync tlp powertop
 	;;
 		2)
 		echo "This installs your choice of terminals If you already have one, don't worry"
@@ -558,9 +558,8 @@ InstallAndConquer(){
 			sudo pacman -S --noconfirm geany
 		elif [[ $package == 2 ]];
 		then
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/sublime-text2.tar.gz
-			gunzip sublime-text2.tar.gz; tar -xvf sublime-text2.tar
-			cd sublime-text2
+			wget https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2; tar -xvf sublime_text_3_build_3211_x64.tar.bz2
+			cd sublime_text_3; makepkg -si
 			makepkg -si
 		elif [[ $package == 3 ]];
 		then
@@ -704,7 +703,7 @@ _EOF_
 			gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar; cd vivaldi && makepkg -si
 		elif [[ $browser == 7 ]];
 		then
-			wget linux.palemoon.org/datastore/release/palemoon-28.8.4.linux-x86_64.tar.xz; tar -xf palemoon-28.8.4.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+			wget linux.palemoon.org/datastore/release/palemoon-28.9.0.2.linux-x86_64.tar.xz; tar -xf palemoon-28.9.0.2.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 8 ]];
 		then
@@ -722,7 +721,7 @@ _EOF_
 			gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
 		elif [[ $browser == 12 ]];
 		then
-			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.02.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.02.en-US.linux-x86_64.tar.bz2
+			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.03.1.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.03.1.en-US.linux-x86_64.tar.bz2
 			sudo ln -s ~/waterfox-classic/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 		elif [[ $browser == 13 ]];
@@ -738,7 +737,7 @@ _EOF_
 		elif [[ $browser == 15 ]];
 		then
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/brave-bin.tar.gz
-			gunzip brave-bin.tar.gz; tar -xvf brave-bin.tar; cd brave-bin; makepkg -si
+			gunzip brave-bin.tar.gz; tar -xvf brave-bin.tar; cd brave-bin; makepkg -si; rm brave-bin.tar
 		else
 			echo "You have entered an invalid number"
 		fi
@@ -1165,6 +1164,23 @@ attempting to install or uninstall other kernels. The Arch wiki is a
 valuable resource.
 
 ########################################################################
+MICROCODE
+########################################################################
+Microcode is a piece of system language programming that is used in
+giving instructions to the CPU(Brain of the device). Microcode updates
+are not only important for updating the security of the CPU, but also
+for extending the functionality as well. Some systems wont benefit from 
+this, but most will. Microcode helps to lock down certain Spectre 
+vulnerabilities. Modern multi-step and multithreading architectures 
+will make some use of microcode as it can help make some hardware designed 
+for less to do more. In a sense, it can make weaker CPUs seemingly more 
+powerful. Most Linux distributions have begun making this piece of code 
+stock baked into their kernels, however, I have added functionality that 
+tries to install this piece of coding in the event that it wasnt installed 
+and or loaded already. On most systems, Intel microcode is wrapped in the 
+package intel-ucode, while AMDs microcode is wrapped under amd-ucode.
+
+########################################################################
 BACKUP AND RESTORE
 ########################################################################
 Backup and Restore functions are there to provide a quick and painless
@@ -1312,7 +1328,7 @@ checkNetwork(){
 	done
 }
 
-HostsfileSelect(){
+Adblocking(){
 	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
 	do
@@ -1989,7 +2005,7 @@ Greeting(){
 		Uninstall
 	;;
 		5)
-		HostsfileSelect
+		Adblocking
 	;;
 		6)
 		Backup

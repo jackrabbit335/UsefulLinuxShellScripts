@@ -180,7 +180,7 @@ _EOF_
 Update(){
 	checkNetwork
 
-	sudo eopkg upgrade
+	sudo eopkg rebuild-db; sudo eopkg upgrade
 
 	clear
 	Greeting
@@ -214,7 +214,7 @@ fi
 
 Systeminfo(){
 	host=$(hostname)
-	distribution=$(lsb_release -a | grep "Description:" | awk -F: '{print $2}')
+	distribution=$(cat /etc/issue | awk '{print $1,$2}')
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INFORMATION" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
@@ -616,7 +616,7 @@ InstallAndConquer(){
 			sudo snap install chromium
 		elif [[ $browser == 9 ]];
 		then
-			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.02.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.02.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.03.1.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.03.1.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 		elif [[ $browser == 10 ]];
 		then
@@ -625,7 +625,7 @@ InstallAndConquer(){
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
 		elif [[ $browser == 11 ]];
 		then
-			wget http://linux.palemoon.org/datastore/release/palemoon-28.8.4.linux-x86_64.tar.xz; tar -xf palemoon-28.8.4.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+			wget http://linux.palemoon.org/datastore/release/palemoon-28.9.0.2.linux-x86_64.tar.xz; tar -xf palemoon-28.9.0.2.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 		elif [[ $browser == 12 ]];
 		then
@@ -826,11 +826,11 @@ _EOF_
 	cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
 	for i in cpu;
 	do
-		if [[ $cpu == GenuineIntel ]];
-		then
-			sudo eopkg li | grep intel-microcode || sudo eopkg install intel-microcode
-		fi
- 	done
+			if [[ $cpu == GenuineIntel ]];
+			then
+				sudo eopkg li | grep intel-microcode || sudo eopkg install intel-microcode
+			fi
+ done
 
 	clear
 	Greeting
@@ -985,6 +985,23 @@ is the linux-current package. Users can still use this script during
 setup to install the LTS if they so choose.
 
 ########################################################################
+MICROCODE
+########################################################################
+Microcode is a piece of system language programming that is used in
+giving instructions to the CPU(Brain of the device). Microcode updates
+are not only important for updating the security of the CPU, but also
+for extending the functionality as well. Some systems wont benefit from 
+this, but most will. Microcode helps to lock down certain Spectre 
+vulnerabilities. Modern multi-step and multithreading architectures 
+will make some use of microcode as it can help make some hardware designed 
+for less to do more. In a sense, it can make weaker CPUs seemingly more 
+powerful. Most Linux distributions have begun making this piece of code 
+stock baked into their kernels, however, I have added functionality that 
+tries to install this piece of coding in the event that it wasnt installed 
+and or loaded already. On most systems, Intel microcode is wrapped in the 
+package intel-ucode, while AMDs microcode is wrapped under amd-ucode.
+
+########################################################################
 BACKUP AND RESTORE
 ########################################################################
 Backup and Restore functions are there to provide a quick and painless
@@ -1136,7 +1153,7 @@ checkNetwork(){
 	done
 }
 
-HostsfileSelect(){
+Adblocking(){
 	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
 	do
@@ -1154,7 +1171,8 @@ MakeSwap(){
 	cat /etc/fstab | grep "swap"
 	if [ $? -eq 0 ];
 	then
-		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 4G /swapfile; sudo chmod 600 /swapfile; sudo mkswap /swapfile; sudo swapon /swapfile; echo "/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
+		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 4G /swapfile; chmod 600 /swapfile
+		sudo mkswap /swapfile; sudo swapon /swapfile; echo "/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
 	else
 		echo "Swap was already there so there is nothing to do"
 	fi
@@ -1385,7 +1403,7 @@ SystemMaintenance(){
 	checkNetwork
 
 	#This attempts to fix databases and update your system
-	sudo eopkg rebuild-db; sudo eopkg update-repo; sudo eopkg upgrade
+	sudo eopkg delete-cache; sudo eopkg clean; sudo eopkg rebuild-db; sudo eopkg update-repo; sudo eopkg upgrade
 
 	#This checks for broken packages
 	sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg install --reinstall
@@ -1647,7 +1665,7 @@ Greeting(){
 		Uninstall
 	;;
 		5)
-		HostsfileSelect
+		Adblocking
 	;;
 		6)
 		Backup

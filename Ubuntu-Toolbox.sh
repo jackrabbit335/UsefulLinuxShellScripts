@@ -173,7 +173,7 @@ Update(){
 
 Systeminfo(){
 	host=$(hostname)
-	distribution=$(lsb_release -a | grep "Description:" | awk -F: '{print $2}')
+	distribution=$(cat /etc/issue | awk '{print $1,$2}')
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INFORMATION" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
@@ -619,6 +619,23 @@ your system. However, I would advise against disabling system critical
 services.
 
 ########################################################################
+MICROCODE
+########################################################################
+Microcode is a piece of system language programming that is used in
+giving instructions to the CPU(Brain of the device). Microcode updates
+are not only important for updating the security of the CPU, but also
+for extending the functionality as well. Some systems wont benefit from 
+this, but most will. Microcode helps to lock down certain Spectre 
+vulnerabilities. Modern multi-step and multithreading architectures 
+will make some use of microcode as it can help make some hardware designed 
+for less to do more. In a sense, it can make weaker CPUs seemingly more 
+powerful. Most Linux distributions have begun making this piece of code 
+stock baked into their kernels, however, I have added functionality that 
+tries to install this piece of coding in the event that it wasnt installed 
+and or loaded already. On most systems, Intel microcode is wrapped in the 
+package intel-ucode, while AMDs microcode is wrapped under amd-ucode.
+
+########################################################################
 BACKUP AND RESTORE
 ########################################################################
 Backup and Restore functions are there to provide a quick and painless
@@ -836,11 +853,11 @@ InstallAndConquer(){
 				sudo apt install -f
 			elif [[ $browser == 6 ]];
 			then
-				wget http://linux.palemoon.org/datastore/release/palemoon-28.8.4.linux-x86_64.tar.xz; tar -xf palemoon-28.8.4.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget http://linux.palemoon.org/datastore/release/palemoon-28.9.0.2.linux-x86_64.tar.xz; tar -xf palemoon-28.9.0.2.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.11.1811.44-1_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.11.1811.49-1_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 8 ]];
 			then
 				sudo sh -c 'echo "deb http://deb.opera.com/opera/ stable non-free" >> /etc/apt/sources.list.d/opera.list'; sudo sh -c 'wget -O - http://deb.opera.com/archive.key | apt-key add -'
@@ -853,7 +870,7 @@ InstallAndConquer(){
 				sudo apt install -y dillo
 			elif [[ $browser == 11 ]];
 			then
-				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.03.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-classic-2020.02.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.03.1.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-classic-2020.03.1.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 12 ]];
 			then
@@ -1188,7 +1205,7 @@ CheckNetwork(){
 
 }
 
-HostsfileSelect(){
+Adblocking(){
 	find Hostsman4linux.sh
 	while [ $? -eq 1 ];
 	do
@@ -1705,7 +1722,7 @@ Greeting(){
 		Uninstall
 	;;
 		5)
-		HostsfileSelect
+		Adblocking
 	;;
 		6)
 		Backup
