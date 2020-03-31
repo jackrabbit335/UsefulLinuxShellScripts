@@ -799,7 +799,6 @@
 0.0.0.0 hbbtv.mediaset.net
 0.0.0.0 browser.pipe.aria.microsoft.com
 0.0.0.0 mobile.pipe.aria.microsoft.com
-0.0.0.0 v10.events.data.microsoft.com
 0.0.0.0 v10c.events.data.microsoft.com
 0.0.0.0 web.vortex.data.microsoft.com
 0.0.0.0 sqm.telemetry.microsoft.com
@@ -1184,3 +1183,7 @@
 
 # added March 24, 2020
 0.0.0.0 daunteegyptian.pro
+
+# added March 29, 2020
+0.0.0.0 march262020.best
+0.0.0.0 march262020.com
