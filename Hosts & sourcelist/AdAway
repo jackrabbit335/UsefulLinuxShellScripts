@@ -11080,15 +11080,8 @@
 0.0.0.0    api-v3.tinypass.com
 0.0.0.0    buy.tinypass.com
 0.0.0.0    cdn.tinypass.com
-0.0.0.0    code.tinypass.com
-0.0.0.0    experience.tinypass.com
 0.0.0.0    fonts.tinypass.com
 0.0.0.0    id.tinypass.com
-0.0.0.0    play.tinypass.com
-0.0.0.0    publisher.tinypass.com
-0.0.0.0    qa0.tinypass.com
-0.0.0.0    qa1.tinypass.com
-0.0.0.0    sw.tinypass.com
 0.0.0.0    tiqcdn.com
 0.0.0.0    tags.tiqcdn.com
 0.0.0.0    akamai.tags.tiqcdn.com
