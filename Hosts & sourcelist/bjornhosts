@@ -61,6 +61,7 @@
 
 0.0.0.0	api.content.ad
 0.0.0.0	yts.ag
+0.0.0.0	powerad.ai
 0.0.0.0	secure.rebel.ai
 0.0.0.0	static-cdn.spott.ai
 0.0.0.0	vdo.ai
@@ -268,6 +269,7 @@
 0.0.0.0	pptchecker.club
 0.0.0.0	randomfaster.club
 0.0.0.0	api.reon.club
+0.0.0.0	winworker.club
 0.0.0.0	hxrnirtf.cw.cm
 0.0.0.0	nlcuwefk.cw.cm
 0.0.0.0	pzyilmog.cw.cm
@@ -395,6 +397,7 @@
 0.0.0.0	1plus1promo.com
 0.0.0.0	4.1qtv.com
 0.0.0.0	7.1qtv.com
+0.0.0.0	1shownews.com
 0.0.0.0	2000fun.com
 0.0.0.0	www1.2000fun.com
 0.0.0.0	www.2011trust.com
@@ -775,6 +778,8 @@
 0.0.0.0	adserver.adtechus.com
 0.0.0.0	aka-cdn-ns.adtechus.com
 0.0.0.0	ums.adtechus.com
+0.0.0.0	ads.adthrive.com
+0.0.0.0	logger.adthrive.com
 0.0.0.0	a.adtng.com
 0.0.0.0	adtology.com
 0.0.0.0	ad.adtoma.com
@@ -973,6 +978,7 @@
 0.0.0.0	chat.amolatina.com
 0.0.0.0	api.amplitude.com
 0.0.0.0	cdn.amplitude.com
+0.0.0.0	ampugi334f.com
 0.0.0.0	10990-1721547.ampxchange.com
 0.0.0.0	307878505.ame.ampxchange.com
 0.0.0.0	static.ampxchange.com
@@ -1459,6 +1465,7 @@
 0.0.0.0	http.cdnlayer.com
 0.0.0.0	cdn77.cdnplanet.com
 0.0.0.0	a1.cdnprk.com
+0.0.0.0	www.cdnreference.com
 0.0.0.0	b.cdsbnrs.com
 0.0.0.0	probes.cedexis.com
 0.0.0.0	radar.cedexis.com
@@ -1567,6 +1574,7 @@
 0.0.0.0	p220333.clksite.com
 0.0.0.0	p255082.clksite.com
 0.0.0.0	clktag.com
+0.0.0.0	static.cloudflareinsights.com
 0.0.0.0	api.cloudsponge.com
 0.0.0.0	en.clubcooee.com
 0.0.0.0	cdn.cluodlfare.com
@@ -1688,6 +1696,7 @@
 0.0.0.0	livepassd2.conviva.com
 0.0.0.0	livepassdl.conviva.com
 0.0.0.0	livepassdl2.conviva.com
+0.0.0.0	consent.cookiebot.com
 0.0.0.0	cdn.cooladata.com
 0.0.0.0	coolandevencooler.com
 0.0.0.0	banners.coolmirage.com
@@ -1963,6 +1972,7 @@
 0.0.0.0	a.elsanglin.com
 0.0.0.0	www.emjcd.com
 0.0.0.0	emvdlnwph.com
+0.0.0.0	cs.emxdgt.com
 0.0.0.0	e1.emxdgt.com
 0.0.0.0	hb.emxdgt.com
 0.0.0.0	recs.engageya.com
@@ -2060,6 +2070,7 @@
 0.0.0.0	eyinwxkojgkfgs.com
 0.0.0.0	ezhdgoeat.com
 0.0.0.0	www.ezhdgoeat.com
+0.0.0.0	go.ezodn.com
 0.0.0.0	asset.f-tra.com
 0.0.0.0	conf.f-tra.com
 0.0.0.0	log.f-tra.com
@@ -2116,6 +2127,7 @@
 0.0.0.0	trgc.opt.fimserve.com
 0.0.0.0	cache.fimservecdn.com
 0.0.0.0	find-my-great-life.com
+0.0.0.0	findher2date.com
 0.0.0.0	adserver.finditquick.com
 0.0.0.0	finishsales.com
 0.0.0.0	witlee-main.firebaseapp.com
@@ -2173,6 +2185,7 @@
 0.0.0.0	www.flvdirect.com
 0.0.0.0	hj.flxpxl.com
 0.0.0.0	fmuxugcqucuu.com
+0.0.0.0	fnacgbik9v14.com
 0.0.0.0	fnkyyrgraizy.com
 0.0.0.0	www.fnkyyrgraizy.com
 0.0.0.0	fobjoccwkrkv.com
@@ -2205,6 +2218,7 @@
 0.0.0.0	rapid-web-services.webpush.freshchat.com
 0.0.0.0	assets.freshdesk.com
 0.0.0.0	freshlinkx.com
+0.0.0.0	cdn.freshmarketer.com
 0.0.0.0	www.freshwap.com
 0.0.0.0	friendfinder.com
 0.0.0.0	banners.friendfinder.com
@@ -2461,6 +2475,7 @@
 0.0.0.0	js.himediads.com
 0.0.0.0	hipersushiads.com
 0.0.0.0	sender.hipersushiads.com
+0.0.0.0	www.hiprofitnetworks.com
 0.0.0.0	webs.hispavista.com
 0.0.0.0	s10.histats.com
 0.0.0.0	s4.histats.com
@@ -2651,6 +2666,7 @@
 0.0.0.0	inorbitad.com
 0.0.0.0	admin.inorbitad.com
 0.0.0.0	inowdownload.com
+0.0.0.0	inpagepush.com
 0.0.0.0	aggregator.inquisitr.com
 0.0.0.0	ad.insightexpressai.com
 0.0.0.0	core.insightexpressai.com
@@ -3086,6 +3102,11 @@
 0.0.0.0	searchfreecodecs.mediasearch-vv.com
 0.0.0.0	ads2.mediashakers.com
 0.0.0.0	go.mediatrking.com
+0.0.0.0	exchange.mediavine.com
+0.0.0.0	keywords.mediavine.com
+0.0.0.0	pages.mediavine.com
+0.0.0.0	scripts.mediavine.com
+0.0.0.0	video.mediavine.com
 0.0.0.0	cdn.mediavoice.com
 0.0.0.0	plugin.mediavoice.com
 0.0.0.0	medleyads.com
@@ -3293,6 +3314,7 @@
 0.0.0.0	mirror.nbjmp.com
 0.0.0.0	rotator.nbjmp.com
 0.0.0.0	mirror.nbstatic.com
+0.0.0.0	ads.ndtv1.com
 0.0.0.0	geoip.nekudo.com
 0.0.0.0	vom.sitescout.netdna-cdn.com
 0.0.0.0	content-getcandid.netdna-ssl.com
@@ -3383,6 +3405,7 @@
 0.0.0.0	data.oddcast.com
 0.0.0.0	vhss-d.oddcast.com
 0.0.0.0	ododtktl.com
+0.0.0.0	offerimage.com
 0.0.0.0	mbox12.offermatica.com
 0.0.0.0	offerreality.com
 0.0.0.0	rotator.offpageads.com
@@ -3701,6 +3724,7 @@
 0.0.0.0	www.profit-from-home-academy.com
 0.0.0.0	ad-images.profitsdeluxe.com
 0.0.0.0	promo.profitsdeluxe.com
+0.0.0.0	profusesupport.com
 0.0.0.0	ads.program3.com
 0.0.0.0	lead.program3.com
 0.0.0.0	media.b.lead.program3.com
@@ -3957,6 +3981,7 @@
 0.0.0.0	br.rk.com
 0.0.0.0	cache.rk.com
 0.0.0.0	www.rkgznnhikrfphq.com
+0.0.0.0	api.rlcdn.com
 0.0.0.0	idsync.rlcdn.com
 0.0.0.0	rc.rlcdn.com
 0.0.0.0	a.rmgserving.com
@@ -4445,6 +4470,9 @@
 0.0.0.0	temelfizik.com
 0.0.0.0	tenkulike.com
 0.0.0.0	zhapp.tenkulike.com
+0.0.0.0	b-s.tercept.com
+0.0.0.0	cdn.tercept.com
+0.0.0.0	serve.tercept.com
 0.0.0.0	terraclicks.com
 0.0.0.0	www.terraclicks.com
 0.0.0.0	www.terrapops.com
@@ -5103,6 +5131,7 @@
 0.0.0.0	content.yieldmanager.com
 0.0.0.0	content-ssl.yieldmanager.com
 0.0.0.0	rm.yieldmanager.com
+0.0.0.0	ads.yieldmo.com
 0.0.0.0	static.yieldmo.com
 0.0.0.0	yieldoptimizer.com
 0.0.0.0	c.yigouw.com
@@ -5622,6 +5651,7 @@
 0.0.0.0	sentry.ctgroup.io
 0.0.0.0	assets.customer.io
 0.0.0.0	track.customer.io
+0.0.0.0	cdn.districtm.io
 0.0.0.0	dmx.districtm.io
 0.0.0.0	as.ebz.io
 0.0.0.0	www.erq.io
@@ -5890,6 +5920,7 @@
 0.0.0.0	floater.playstream.media
 0.0.0.0	dspfeed.soda.media
 0.0.0.0	stat.media
+0.0.0.0	bid.underdog.media
 0.0.0.0	adultswishvideo.men
 0.0.0.0	partner-net.men
 0.0.0.0	pronlife.men
@@ -6061,6 +6092,7 @@
 0.0.0.0	awesomevitamin.net
 0.0.0.0	247590.r.axf8.net
 0.0.0.0	000001.azureedge.net
+0.0.0.0	adncdnend.azureedge.net
 0.0.0.0	sumo.b-cdn.net
 0.0.0.0	ad.bannerconnect.net
 0.0.0.0	bannerperformance.net
@@ -6270,6 +6302,7 @@
 0.0.0.0	media.fastclick.net
 0.0.0.0	fastincomemaster.net
 0.0.0.0	clarium.global.ssl.fastly.net
+0.0.0.0	confiant-integrations.global.ssl.fastly.net
 0.0.0.0	fastly2.cedexis.fastlylb.net
 0.0.0.0	fastly3.cedexis.fastlylb.net
 0.0.0.0	creative.ak.fbcdn.net
@@ -6305,6 +6338,7 @@
 0.0.0.0	givemepins.net
 0.0.0.0	gloolsee.net
 0.0.0.0	c.go-mpulse.net
+0.0.0.0	s.go-mpulse.net
 0.0.0.0	gorillaserver.net
 0.0.0.0	graucoay.net
 0.0.0.0	static.hk.groupon-content.net
@@ -6455,6 +6489,7 @@
 0.0.0.0	aa.online-metrix.net
 0.0.0.0	at1.opentracker.net
 0.0.0.0	server1.opentracker.net
+0.0.0.0	adnimation-d.openx.net
 0.0.0.0	apester-d.openx.net
 0.0.0.0	bid.openx.net
 0.0.0.0	coinmarketcap-d.openx.net
@@ -6716,6 +6751,8 @@
 0.0.0.0	nmwnmewjk.blogspot.co.nz
 0.0.0.0	aj1198.online
 0.0.0.0	appared.online
+0.0.0.0	grite.online
+0.0.0.0	ot.grite.online
 0.0.0.0	v.linkingoutnow.online
 0.0.0.0	meetthegame.online
 0.0.0.0	mmofreegames.online
@@ -6832,6 +6869,7 @@
 0.0.0.0	cogeyssignify.pro
 0.0.0.0	helpdesk.com-supportfasthelpproblem.pro
 0.0.0.0	criminglynuk.pro
+0.0.0.0	www.defutohy.pro
 0.0.0.0	europerty.pro
 0.0.0.0	fileplace.pro
 0.0.0.0	findbox.pro
@@ -6839,6 +6877,7 @@
 0.0.0.0	greview.pro
 0.0.0.0	helple.pro
 0.0.0.0	herreperolsof.pro
+0.0.0.0	martafatass.pro
 0.0.0.0	nameketathar.pro
 0.0.0.0	ohbayersbur.pro
 0.0.0.0	periouspreparty.pro
@@ -7032,6 +7071,7 @@
 0.0.0.0	s3.flowplayer.space
 0.0.0.0	www.numberlessshame.space
 0.0.0.0	see-work.space
+0.0.0.0	wwopenclick.space
 0.0.0.0	cdn.digitru.st
 0.0.0.0	po.st
 0.0.0.0	i.po.st
