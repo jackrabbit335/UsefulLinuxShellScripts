@@ -1776,9 +1776,7 @@
 0.0.0.0    rpc-tapjoy-com-lb-1378811527.us-east-1.elb.amazonaws.com
 0.0.0.0    tapjoy-com-lb-vpc-332546193.us-east-1.elb.amazonaws.com
 0.0.0.0    iotanalytics.eu-central-1.amazonaws.com
-0.0.0.0    kinesisanalytics.eu-central-1.amazonaws.com
 0.0.0.0    iotanalytics.eu-west-1.amazonaws.com
-0.0.0.0    kinesisanalytics.eu-west-1.amazonaws.com
 0.0.0.0    api.mediatailor.eu-west-1.amazonaws.com
 0.0.0.0    magnify-app.s3.eu-west-2.amazonaws.com
 0.0.0.0    admarvel.s3.amazonaws.com
@@ -1827,7 +1825,6 @@
 0.0.0.0    later-analytics-reports.s3-accelerate.amazonaws.com
 0.0.0.0    marketingkaizen.s3-eu-west-1.amazonaws.com
 0.0.0.0    sm-campaign.s3-us-west-2.amazonaws.com
-0.0.0.0    kinesis.us-east-1.amazonaws.com
 0.0.0.0    mobileanalytics.us-east-1.amazonaws.com
 0.0.0.0    global.cmcs.service.amazonsilk.com
 0.0.0.0    ambient-platform.com
@@ -2540,9 +2537,6 @@
 0.0.0.0    sac.ayads.co
 0.0.0.0    sentry.ayads.co
 0.0.0.0    click.aztracking.net
-0.0.0.0    d365portal-prod-sdk.akstd.azureedge.net
-0.0.0.0    d365portal-prod-sdk.azureedge.net
-0.0.0.0    d365prod-sdk.azureedge.net
 0.0.0.0    masdpanalytics.azureedge.net
 0.0.0.0    ffg-analytics-functionsk3nvxfne4dp4s.azurewebsites.net
 0.0.0.0    gwmserver.b-cdn.net
@@ -2844,9 +2838,6 @@
 0.0.0.0    p.boostads.co
 0.0.0.0    boostads.net
 0.0.0.0    banner.boostbox.com.br
-0.0.0.0    activate.boostmobile.com
-0.0.0.0    aka-apiservices.boostmobile.com
-0.0.0.0    appcontent.boostmobile.com
 0.0.0.0    metrics.boostmobile.com
 0.0.0.0    smetrics.boston.com
 0.0.0.0    api.bounceexchange.com
@@ -5855,8 +5846,6 @@
 0.0.0.0    ci-first.iovation.com
 0.0.0.0    ci-mpsnare.iovation.com
 0.0.0.0    first.iovation.com
-0.0.0.0    logservices.ipass.com
-0.0.0.0    om-datacollector.ipass.com
 0.0.0.0    4q.iperceptions.com
 0.0.0.0    active.iperceptions.com
 0.0.0.0    api.iperceptions.com
@@ -5920,8 +5909,6 @@
 0.0.0.0    i16-tb.isnssdk.com
 0.0.0.0    ichannel.isnssdk.com
 0.0.0.0    ichannel-tb.isnssdk.com
-0.0.0.0    imapi-mu.isnssdk.com
-0.0.0.0    imapi-sg.isnssdk.com
 0.0.0.0    isub.isnssdk.com
 0.0.0.0    isub-tb.isnssdk.com
 0.0.0.0    log.isnssdk.com
@@ -6000,9 +5987,6 @@
 0.0.0.0    wbdds.jeuxvideo.com
 0.0.0.0    ads.jianchiapp.com
 0.0.0.0    update.sdk.jiguang.cn
-0.0.0.0    as-p-e.jitterbit.com
-0.0.0.0    emea-west.jitterbit.com
-0.0.0.0    na-east.jitterbit.com
 0.0.0.0    as.jivox.com
 0.0.0.0    pxl.jivox.com
 0.0.0.0    jiwire.com
@@ -6067,7 +6051,6 @@
 0.0.0.0    images-or.ott.kaltura.com
 0.0.0.0    tvpapi-as.ott.kaltura.com
 0.0.0.0    stats.kaltura.com
-0.0.0.0    sdk.kamcord.com
 0.0.0.0    api-data.kameleoon.com
 0.0.0.0    api-product.kameleoon.com
 0.0.0.0    araman.kameleoon.com
@@ -6433,10 +6416,6 @@
 0.0.0.0    ssl.ligatus.com
 0.0.0.0    static.ligatus.com
 0.0.0.0    lightningcast.net
-0.0.0.0    api-grpc.lightstep.com
-0.0.0.0    collector.lightstep.com
-0.0.0.0    collector-grpc.lightstep.com
-0.0.0.0    collector-medium.lightstep.com
 0.0.0.0    adintegration.lijit.com
 0.0.0.0    ap.lijit.com
 0.0.0.0    apcdn.lijit.com
@@ -7152,8 +7131,6 @@
 0.0.0.0    millennialmedia.com
 0.0.0.0    adserver.mimo.com.ng
 0.0.0.0    mindmemobile.com
-0.0.0.0    anx.mindspark.com
-0.0.0.0    eula.mindspark.com
 0.0.0.0    minimob.com
 0.0.0.0    playable-stats.mintegral.com
 0.0.0.0    mintrace.com
@@ -7199,7 +7176,6 @@
 0.0.0.0    err.mmtro.com
 0.0.0.0    seg.mmtro.com
 0.0.0.0    tgt.mmtro.com
-0.0.0.0    milliyetreklam-p.mncdn.com
 0.0.0.0    ads.mncmedia.co.kr
 0.0.0.0    mnectar.com
 0.0.0.0    mng-ads.com
@@ -7346,8 +7322,6 @@
 0.0.0.0    clickl5.mobile-greeter.com
 0.0.0.0    static.mobile-greeter.com
 0.0.0.0    srv6.mobile-srv.com
-0.0.0.0    arcgis.mobile311.com
-0.0.0.0    esri.mobile311.com
 0.0.0.0    mobile333.com
 0.0.0.0    mobileactive.com
 0.0.0.0    mobilead.vn
@@ -7471,16 +7445,13 @@
 0.0.0.0    d.mobilebanner.ru
 0.0.0.0    p.mobilebanner.ru
 0.0.0.0    api.mobilebridge.com
-0.0.0.0    app.mobilecause.com
 0.0.0.0    mobilecore.com
-0.0.0.0    api.mobileday.com
 0.0.0.0    client.mobilefonex.com
 0.0.0.0    push.mobilefonex.com
 0.0.0.0    mobilefuse.com
 0.0.0.0    ads.mobilefuse.com
 0.0.0.0    i.mobilefuse.com
 0.0.0.0    mobilefuse.net
-0.0.0.0    br.mobilelifeconnect.com
 0.0.0.0    clickl5.mobilemediaking.com
 0.0.0.0    mobilemessenger.com
 0.0.0.0    static.mobilemonkey.com
@@ -7506,9 +7477,6 @@
 0.0.0.0    an-829-metropcs.static.mobileposse.com
 0.0.0.0    an-832-metropcs.static.mobileposse.com
 0.0.0.0    an-834-metropcs.static.mobileposse.com
-0.0.0.0    rest.mobilerealtyapps.com
-0.0.0.0    sessions.mobileroadie.com
-0.0.0.0    skin.mobilesentrix.com
 0.0.0.0    mobilestorm.com
 0.0.0.0    apps.mobilestorm.com
 0.0.0.0    mobiletheory.com
@@ -11679,7 +11647,6 @@
 0.0.0.0    tags.vrvm.com
 0.0.0.0    tags-prod.vrvm.com
 0.0.0.0    vsassets.com
-0.0.0.0    api.vsee.com
 0.0.0.0    vserv.mobi
 0.0.0.0    a.vserv.mobi
 0.0.0.0    ads.vserv.mobi
@@ -11810,7 +11777,6 @@
 0.0.0.0    static.woopra.com
 0.0.0.0    api.wootric.com
 0.0.0.0    app.wootric.com
-0.0.0.0    cdn.wootric.com
 0.0.0.0    cxi-api.wootric.com
 0.0.0.0    eligibility.wootric.com
 0.0.0.0    info.wootric.com
