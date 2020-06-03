@@ -2981,7 +2981,6 @@
 0.0.0.0    bttn.io
 0.0.0.0    api.bttrack.com
 0.0.0.0    bubblesmedia.ru
-0.0.0.0    api.bufferapp.com
 0.0.0.0    api.bugfender.com
 0.0.0.0    app.bugfender.com
 0.0.0.0    collector.bughd.com
@@ -9263,7 +9262,6 @@
 0.0.0.0    w.l.qq.com
 0.0.0.0    logsdk.qq.com
 0.0.0.0    analytics.map.qq.com
-0.0.0.0    vectorsdk.map.qq.com
 0.0.0.0    msdk.qq.com
 0.0.0.0    ssl.msdk.qq.com
 0.0.0.0    a.ssl.msdk.qq.com
