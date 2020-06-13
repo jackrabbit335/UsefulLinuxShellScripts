@@ -3424,7 +3424,6 @@
 0.0.0.0    livepassdl2.conviva.com
 0.0.0.0    vrl.m.conviva.com
 0.0.0.0    pings.conviva.com
-0.0.0.0    cdn.cookielaw.org
 0.0.0.0    coremetrics.com
 0.0.0.0    data.coremetrics.com
 0.0.0.0    coretalk.co
@@ -8085,7 +8084,6 @@
 0.0.0.0    trueblue-sdkapi.onereach.com
 0.0.0.0    onesignal.com
 0.0.0.0    px.onespot.com
-0.0.0.0    geolocation.onetrust.com
 0.0.0.0    onewaylinkexchange.net
 0.0.0.0    display.online-adnetwork.com
 0.0.0.0    online-dn.com
@@ -11105,7 +11103,6 @@
 0.0.0.0    tracking.trnox.com
 0.0.0.0    beacon.tru.am
 0.0.0.0    batchlogging4.truecaller.com
-0.0.0.0    presence-grpc-noneu.truecaller.com
 0.0.0.0    pushid-noneu.truecaller.com
 0.0.0.0    truoctran.com
 0.0.0.0    choices.trustarc.com
