@@ -4284,13 +4284,7 @@
 0.0.0.0    static-was2.dynamicyield.com
 0.0.0.0    beacon.rum.dynapis.info
 0.0.0.0    dlt-beacon.dynatrace-managed.com
-0.0.0.0    dynatrace.com
-0.0.0.0    assets.dynatrace.com
-0.0.0.0    cr01.dynatrace.com
-0.0.0.0    cr02.dynatrace.com
 0.0.0.0    js-cdn.dynatrace.com
-0.0.0.0    mcsvc.dynatrace.com
-0.0.0.0    signin.dynatrace.com
 0.0.0.0    dyntrk.com
 0.0.0.0    eu-level1.dyntrk.com
 0.0.0.0    g.dyntrk.com
