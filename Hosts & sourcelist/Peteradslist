@@ -34,6 +34,7 @@
 0.0.0.0    a.aproductmsg.com
 0.0.0.0    a.consumer.net
 0.0.0.0    a.mktw.net
+0.0.0.0    a.pub.network
 0.0.0.0    a.sakh.com
 0.0.0.0    a.ucoz.net
 0.0.0.0    a.ucoz.ru
@@ -112,6 +113,7 @@
 0.0.0.0    ad.freecity.de
 0.0.0.0    ad.gate24.ch
 0.0.0.0    ad.grafika.cz
+0.0.0.0    ad.gt
 0.0.0.0    ad.hbv.de
 0.0.0.0    ad.hodomobile.com
 0.0.0.0    ad.httpool.com
@@ -350,7 +352,6 @@
 0.0.0.0    ads-click.com
 0.0.0.0    ads-dev.pinterest.com
 0.0.0.0    ads-game-187f4.firebaseapp.com
-0.0.0.0    ads-software.net
 0.0.0.0    ads-trk.vidible.tv
 0.0.0.0    ads-twitter.com
 0.0.0.0    ads.4tube.com
@@ -397,6 +398,7 @@
 0.0.0.0    ads.bumq.com
 0.0.0.0    ads.businessweek.com
 0.0.0.0    ads.canalblog.com
+0.0.0.0    ads.canoe.ca
 0.0.0.0    ads.casinocity.com
 0.0.0.0    ads.casumoaffiliates.com
 0.0.0.0    ads.cbc.ca
@@ -667,6 +669,7 @@
 0.0.0.0    ads.zdnet.com
 0.0.0.0    ads.ztod.com
 0.0.0.0    ads1-adnow.com
+0.0.0.0    ads1.canoe.ca
 0.0.0.0    ads1.mediacapital.pt
 0.0.0.0    ads1.msn.com
 0.0.0.0    ads1.rne.com
@@ -694,6 +697,7 @@
 0.0.0.0    ads4.gamecity.net
 0.0.0.0    ads4.virtual-nights.com
 0.0.0.0    ads4homes.com
+0.0.0.0    ads5.canoe.ca
 0.0.0.0    ads5.virtual-nights.com
 0.0.0.0    ads6.gamecity.net
 0.0.0.0    ads7.gamecity.net
@@ -826,6 +830,7 @@
 0.0.0.0    adtoma.com
 0.0.0.0    adtrace.org
 0.0.0.0    adtrade.net
+0.0.0.0    adtrak.net
 0.0.0.0    adtriplex.com
 0.0.0.0    adultadvertising.com
 0.0.0.0    adv-adserver.com
@@ -1495,6 +1500,7 @@
 0.0.0.0    didtheyreadit.com
 0.0.0.0    digital-ads.s3.amazonaws.com
 0.0.0.0    digitalmerkat.com
+0.0.0.0    direct-events-collector.spot.im
 0.0.0.0    direct-xxx-access.com
 0.0.0.0    directaclick.com
 0.0.0.0    directivepub.com
@@ -1889,6 +1895,7 @@
 0.0.0.0    ilead.itrack.it
 0.0.0.0    illfatedsnail.com
 0.0.0.0    illustriousoatmeal.com
+0.0.0.0    imageads.canoe.ca
 0.0.0.0    imagecash.net
 0.0.0.0    images-pw.secureserver.net
 0.0.0.0    imarketservices.com
@@ -2185,6 +2192,7 @@
 0.0.0.0    metaffiliation.com
 0.0.0.0    metanetwork.com
 0.0.0.0    methodcash.com
+0.0.0.0    metrics-logger.spot.im
 0.0.0.0    metrics.api.drift.com
 0.0.0.0    metrics.cnn.com
 0.0.0.0    metrics.consumerreports.org
@@ -2410,7 +2418,6 @@
 0.0.0.0    pagead.l.google.com
 0.0.0.0    pagefair.com
 0.0.0.0    pagefair.net
-0.0.0.0    pagerank-ranking.de
 0.0.0.0    pagerank4you.com
 0.0.0.0    pageranktop.com
 0.0.0.0    paleleaf.com
@@ -2552,6 +2559,7 @@
 0.0.0.0    pubdirecte.com
 0.0.0.0    publicidad.elmundo.es
 0.0.0.0    publicidees.com
+0.0.0.0    publisher-assets.spot.im
 0.0.0.0    pubmatic.com
 0.0.0.0    pubmine.com
 0.0.0.0    pubnative.net
