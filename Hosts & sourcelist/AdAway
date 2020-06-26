@@ -3379,8 +3379,6 @@
 0.0.0.0    cookies.onetrust.mgr.consensu.org
 0.0.0.0    vendorlist.consensu.org
 0.0.0.0    sdk.consoliads.com
-0.0.0.0    files.constantcontact.com
-0.0.0.0    imgssl.constantcontact.com
 0.0.0.0    constintptr.com
 0.0.0.0    content.ad
 0.0.0.0    api.content.ad
@@ -12018,7 +12016,6 @@
 0.0.0.0    api.sdk.zadn.vn
 0.0.0.0    log.sdk.zadn.vn
 0.0.0.0    zalo-ads-td.zadn.vn
-0.0.0.0    shop.zalo.me
 0.0.0.0    ads.zaloapp.com
 0.0.0.0    log.api.zaloapp.com
 0.0.0.0    events.zaloapp.com
