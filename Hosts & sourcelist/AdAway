@@ -3301,8 +3301,6 @@
 0.0.0.0    mobile-log.cmtelematics.com
 0.0.0.0    mobile-log-dgig.cmtelematics.com
 0.0.0.0    id1.cn.com
-0.0.0.0    fm.cnbc.com
-0.0.0.0    mps.cnbc.com
 0.0.0.0    agility.cnn.com
 0.0.0.0    mms.cnn.com
 0.0.0.0    sdc.cnn.com
@@ -3465,7 +3463,6 @@
 0.0.0.0    pls.crispadvertising.com
 0.0.0.0    trk.crispadvertising.com
 0.0.0.0    crispmedia.com
-0.0.0.0    crispwireless.com
 0.0.0.0    criteo.com
 0.0.0.0    ads.as.criteo.com
 0.0.0.0    cas.as.criteo.com
@@ -3579,8 +3576,6 @@
 0.0.0.0    creative-analytics.crossinstall.io
 0.0.0.0    creatives.crossinstall.io
 0.0.0.0    step-service.crossinstall.io
-0.0.0.0    crossrider.com
-0.0.0.0    api.crowdin.com
 0.0.0.0    api.crowdtangle.com
 0.0.0.0    apps.crowdtangle.com
 0.0.0.0    updater.crowdtangle.com
@@ -3670,8 +3665,6 @@
 0.0.0.0    api.datadoghq.com
 0.0.0.0    brands.datahc.com
 0.0.0.0    redirect.datahc.com
-0.0.0.0    cloud.datapipe.com
-0.0.0.0    one.datapipe.com
 0.0.0.0    cloud.datasphere.com
 0.0.0.0    eventss3.cloud.datasphere.com
 0.0.0.0    imagess.cloud.datasphere.com
