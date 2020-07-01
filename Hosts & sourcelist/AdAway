@@ -3625,7 +3625,6 @@
 0.0.0.0    cszz.ru
 0.0.0.0    mobile-app.cuballama.com
 0.0.0.0    in.cuebiq.com
-0.0.0.0    cdn.curalate.com
 0.0.0.0    track.customer.io
 0.0.0.0    ash-lb2.cxense.com
 0.0.0.0    ash-lb3.cxense.com
@@ -4410,8 +4409,6 @@
 0.0.0.0    cbola-logging-1-t3.us-east-1.elasticbeanstalk.com
 0.0.0.0    cbola-psa.us-east-1.elasticbeanstalk.com
 0.0.0.0    cloud-graphql-live.us-east-1.elasticbeanstalk.com
-0.0.0.0    curalate-api-prod.us-east-1.elasticbeanstalk.com
-0.0.0.0    curalate-like2buy-prod-vpc.us-east-1.elasticbeanstalk.com
 0.0.0.0    ddm-analystic-pro2.us-east-1.elasticbeanstalk.com
 0.0.0.0    dhg-logging.us-east-1.elasticbeanstalk.com
 0.0.0.0    ei-event-collector.us-east-1.elasticbeanstalk.com
@@ -7070,6 +7067,7 @@
 0.0.0.0    miscopy.com
 0.0.0.0    misterbell.com
 0.0.0.0    tracking.intl.miui.com
+0.0.0.0    api.sec.miui.com
 0.0.0.0    logupdate.avlyun.sec.miui.com
 0.0.0.0    tracking.miui.com
 0.0.0.0    fcanr.tracking.miui.com
@@ -11766,6 +11764,7 @@
 0.0.0.0    api.ad.intl.xiaomi.com
 0.0.0.0    sdkconfig.ad.intl.xiaomi.com
 0.0.0.0    zeus.ad.intl.xiaomi.com
+0.0.0.0    api.device.xiaomi.net
 0.0.0.0    ad-sdk.altamob.xiaoying.co
 0.0.0.0    ximad.com
 0.0.0.0    mjp-analytics.ximad.com
