@@ -164,26 +164,27 @@ _EOF_
 			sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu --noconfirm
 			if [[ $? -eq 0 ]];
 			then
-				echo "Update succeeded"
+				echo "Update successful"
 			else
-				sudo rm -f /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg
+				sudo rm -r /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg
 				sudo pacman -Sy --noconfirm gnupg archlinux-keyring manjaro-keyring; sudo pacman-key --init
-				sudo pacman-key --populate archlinux manjaro; sudo pacman-key --refresh-keys; sudo pacman -Sc
+				sudo pacman-key --populate archlinux manjaro; sudo pacman-key --refresh-keys; sudo pacman -Scc
 				sudo pacman -Syyu --noconfirm
 			fi
-		else
+		elif [[ $distribution == Arch ]];
+		then
 			sudo pacman -Sy --noconfirm reflector
 			sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
 			if [[ $? -eq 0 ]];
 			then
 				echo "update successful"
 			else
-				sudo rm -f /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg
-				sudo pacman-key --init
-				sudo pacman-key --populate archlinux antergos; sudo pacman -Sc --noconfirm
+				sudo rm -r /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg
+				sudo pacman -Sy --noconfirm gnupg archlinux-keyring; sudo pacman-key --init
+				sudo pacman-key --populate archlinux; sudo pacman-key --refresh-keys; sudo pacman -Scc
 				sudo pacman -Syyu --noconfirm
-			fi
-		fi
+            fi
+        fi
 	done
 
 #This fixes gufw not opening in kde plasma desktop
@@ -479,7 +480,7 @@ Systeminfo(){
 
 InstallAndConquer(){
 	checkNetwork
-	
+
 	echo "Would you like to install software?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -940,7 +941,7 @@ _EOF_
 		elif [[ $software == 3 ]];
 		then
 			sudo pacman -S --noconfirm abiword gnumeric
-		else 
+		else
 			echo "You've entered an invalid number"
 		fi
 	;;
@@ -978,7 +979,7 @@ _EOF_
 	;;
 	esac
 	done
-	
+
 	read -p "Press enter to continue..."
 
 	#This installs xfce4-goodies package on xfce versions of Manjaro
@@ -996,12 +997,12 @@ _EOF_
 			done
 		fi
 	done
-	
+
 	read -p "Press enter to continue..."
-	
+
 	#This installs intel or amd microcode assuming it isn't installed already
 	cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
-	for c in $cpu; 
+	for c in $cpu;
 	do
 		if [[ $cpu == GenuineIntel ]];
 		then
@@ -1099,7 +1100,7 @@ that can also be ran on Windows than any other Linux system without using
 Wine. For all this, it is as simple as running a few short commands which
 are covered in this script. To learn them, just read the script and study
 it. It is a simpler method than Apt and Debian package management
-as these are so separated with several commands each. 
+as these are so separated with several commands each.
 
 ########################################################################
 ClEANING AND ROUTINE MAINTENANCE
@@ -1169,15 +1170,15 @@ MICROCODE
 Microcode is a piece of system language programming that is used in
 giving instructions to the CPU(Brain of the device). Microcode updates
 are not only important for updating the security of the CPU, but also
-for extending the functionality as well. Some systems wont benefit from 
-this, but most will. Microcode helps to lock down certain Spectre 
-vulnerabilities. Modern multi-step and multithreading architectures 
-will make some use of microcode as it can help make some hardware designed 
-for less to do more. In a sense, it can make weaker CPUs seemingly more 
-powerful. Most Linux distributions have begun making this piece of code 
-stock baked into their kernels, however, I have added functionality that 
-tries to install this piece of coding in the event that it wasnt installed 
-and or loaded already. On most systems, Intel microcode is wrapped in the 
+for extending the functionality as well. Some systems wont benefit from
+this, but most will. Microcode helps to lock down certain Spectre
+vulnerabilities. Modern multi-step and multithreading architectures
+will make some use of microcode as it can help make some hardware designed
+for less to do more. In a sense, it can make weaker CPUs seemingly more
+powerful. Most Linux distributions have begun making this piece of code
+stock baked into their kernels, however, I have added functionality that
+tries to install this piece of coding in the event that it wasnt installed
+and or loaded already. On most systems, Intel microcode is wrapped in the
 package intel-ucode, while AMDs microcode is wrapped under amd-ucode.
 
 ########################################################################
@@ -1368,7 +1369,7 @@ cleanup(){
 	sudo rm -r ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
-	#sudo rm -r /var/tmp/*
+	sudo rm -r /var/tmp/*
 
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
@@ -1426,11 +1427,11 @@ _EOF_
 		sleep 1
 		;;
 		2)
-		sudo pacman -Sc --noconfirm
+		sudo pacman -Sc
 		sleep 1
 		;;
 		3)
-		sudo pacman -Scc --noconfirm
+		sudo pacman -Scc
 		sleep 1
 		;;
 		4)
@@ -1593,7 +1594,7 @@ _EOF_
 
 SystemMaintenance(){
 	checkNetwork
-	
+
 	#This attempts to rank mirrors and update your system
 	distribution=$(cat /etc/issue | awk '{print $1}')
 	if [[ $distribution == Manjaro ]];
@@ -1601,7 +1602,10 @@ SystemMaintenance(){
 		sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu --noconfirm
 	elif [[ $distribution == Arch ]];
 	then
-		pacman -Q | grep reflector || sudo pacman -S --noconfirm reflector; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
+		sudo pacman -Q | grep reflector || sudo pacman -S --noconfirm reflector; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
+    elif [[ $distribution == KaOS ]];
+    then
+        sudo pacman -Syyu --noconfirm
 	fi
 
 	#This refreshes systemd in case of failed or changed units
