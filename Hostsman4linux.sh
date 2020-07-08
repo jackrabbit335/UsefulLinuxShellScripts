@@ -26,20 +26,18 @@ str1=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/mas
 str2=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Someonewhocares
 str3=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
 str4=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Malwarehosts
-str5=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/ATS
-str6=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/noCoin
-str7=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/AdAway
-str8=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Sysctlhosts
-str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/blacklist.txt
-str10=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/bjornhosts
-str11=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/StevenHosts
-str12=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Badd-Boyz
-str13=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Tomslist.txt
-str14=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/BadHosts
-str15=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Casino
+str5=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/noCoin
+str6=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/AdAway
+str7=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/blacklist.txt
+str8=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/bjornhosts
+str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/StevenHosts
+str10=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Badd-Boyz
+str11=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/tomslist
+str12=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/BadHosts
+str13=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Casino
 
 
-while getopts :ABCDEFGHIJKLMN option; do
+while getopts :ABCDEFGHIJKLM option; do
 	case $option in
 		A) wget $str1 && cat MVPShosts >> adblock && rm MVPShosts
 		;;
@@ -49,27 +47,23 @@ while getopts :ABCDEFGHIJKLMN option; do
 		;;
 		D) wget $str4 && cat Malwarehosts >> adblock && rm Malwarehosts
 		;;
-		E) wget $str5 && cat ATS >> adblock && rm ATS
+		E) wget $str5 && cat noCoin >> adblock && rm noCoin
 		;;
-		F) wget $str6 && cat noCoin >> adblock && rm noCoin
+		F) wget $str6 && cat AdAway >> adblock && rm AdAway
 		;;
-		G) wget $str7 && cat AdAway >> adblock && rm AdAway
+		G) wget $str7 && cat blacklist.txt >> adblock && rm blacklist.txt
 		;;
-		H) wget $str8 && cat Sysctlhosts >> adblock && rm Sysctlhosts
+		H) wget $str8 && cat bjornhosts >> adblock && rm bjornhosts
 		;;
-		I) wget $str9 && cat blacklist.txt >> adblock && rm blacklist.txt
+		I) wget $str9 && cat StevenBlacks >> adblock && rm StevenBlacks
 		;;
-		J) wget $str10 && cat bjornhosts >> adblock && rm bjornhosts
+		J) wget $str10 && cat Badd-Boyz >> adblock && rm Badd-Boyz
 		;;
-		K) wget $str11 && cat StevenBlacks >> adblock && rm StevenBlacks
+		K) wget $str11 && cat tomslist >> adblock && rm tomslist
 		;;
-		L) wget $str12 && cat Badd-Boyz >> adblock && rm Badd-Boyz
+		L) wget $str12 && cat BadHosts >> adblock && rm BadHosts
 		;;
-		M) wget $str13 && cat Tomslist.txt >> adblock && rm Tomslist.txt
-		;;
-		N) wget $str14 && cat BadHosts >> adblock && rm BadHosts
-		;;
-        O) wget $str15 && cat Casino >> adblock && rm Casino
+        M) wget $str13 && cat Casino >> adblock && rm Casino
 		;;
 		*)
 	esac
