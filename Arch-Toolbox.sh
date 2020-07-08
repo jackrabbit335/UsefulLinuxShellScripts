@@ -229,7 +229,7 @@ Update(){
 Systeminfo(){
 	pacman -Q | grep lsb-release || sudo pacman -S --noconfirm lsb-release
 	host=$(hostname)
-	distribution=$(cat /etc/arch-release)
+	distribution=$(cat /etc/issue | awk '{print $1}')
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INFORMATION" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
