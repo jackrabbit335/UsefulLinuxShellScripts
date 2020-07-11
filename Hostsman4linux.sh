@@ -26,18 +26,15 @@ str1=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/mas
 str2=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Someonewhocares
 str3=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
 str4=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Malwarehosts
-str5=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/noCoin
+str5=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Trackinghosts
 str6=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/AdAway
 str7=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/blacklist.txt
-str8=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/bjornhosts
-str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/StevenHosts
-str10=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Badd-Boyz
-str11=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/tomslist
-str12=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/BadHosts
-str13=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Casino
+str8=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/StevenHosts
+str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Badd-Boyz
+str10=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Gambling
 
 
-while getopts :ABCDEFGHIJKLM option; do
+while getopts :ABCDEFGHIJ option; do
 	case $option in
 		A) wget $str1 && cat MVPShosts >> adblock && rm MVPShosts
 		;;
@@ -47,23 +44,17 @@ while getopts :ABCDEFGHIJKLM option; do
 		;;
 		D) wget $str4 && cat Malwarehosts >> adblock && rm Malwarehosts
 		;;
-		E) wget $str5 && cat noCoin >> adblock && rm noCoin
+		E) wget $str5 && cat Trackinghosts >> adblock && rm Trackinghosts
 		;;
 		F) wget $str6 && cat AdAway >> adblock && rm AdAway
 		;;
 		G) wget $str7 && cat blacklist.txt >> adblock && rm blacklist.txt
 		;;
-		H) wget $str8 && cat bjornhosts >> adblock && rm bjornhosts
+		H) wget $str8 && cat StevenBlacks >> adblock && rm StevenBlacks
 		;;
-		I) wget $str9 && cat StevenBlacks >> adblock && rm StevenBlacks
+		I) wget $str9 && cat Badd-Boyz >> adblock && rm Badd-Boyz
 		;;
-		J) wget $str10 && cat Badd-Boyz >> adblock && rm Badd-Boyz
-		;;
-		K) wget $str11 && cat tomslist >> adblock && rm tomslist
-		;;
-		L) wget $str12 && cat BadHosts >> adblock && rm BadHosts
-		;;
-        M) wget $str13 && cat Casino >> adblock && rm Casino
+        J) wget $str11 && cat Gambling >> adblock && rm Gambling
 		;;
 		*)
 	esac
@@ -74,6 +65,19 @@ echo "---------------------Hostsman4linux-------------------" >> adblock
 #This tries to deduplicate if multiple files were used.
 if [[ $# -gt 1 ]]; then
 	sort adblock | uniq -u | sort -r > adblock.new && mv adblock.new adblock
+fi
+
+#This tries to exclude or whitelist domains from adblock assuming we downloaded anything
+find adblock 
+if [[ $? -eq 0 ]]; 
+then
+    read -p "Would you like to exclude domains?(Y/n)" answer
+    while [ $answer == Y ];
+    do
+        read -p "Enter the domain you would like to exclude:" domain
+        sed -i "s/$domain/ s/^#*/#/" adblock
+    break
+    done
 fi
 
 #This merges adblock with /etc/hosts then removes adblock
