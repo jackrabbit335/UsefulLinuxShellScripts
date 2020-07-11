@@ -68,8 +68,8 @@ if [[ $# -gt 1 ]]; then
 fi
 
 #This tries to exclude or whitelist domains from adblock assuming we downloaded anything
-find adblock 
-if [[ $? -eq 0 ]]; 
+find adblock
+if [[ $? -eq 0 ]];
 then
     read -p "Would you like to exclude domains?(Y/n)" answer
     while [ $answer == Y ];
