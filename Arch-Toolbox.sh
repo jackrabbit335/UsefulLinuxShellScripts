@@ -305,9 +305,14 @@ Systeminfo(){
 	df -h >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "I/O SCHEDULER INFO" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	cat /sys/block/sda/queue/scheduler >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SMART DATA" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	sudo smartctl -A /dev/sda >> $host-sysinfo.txt
+	sudo smartctl -a /dev/sda >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DIRECTORY USAGE" >> $host-sysinfo.txt
