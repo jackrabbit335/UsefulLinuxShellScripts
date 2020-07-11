@@ -1094,7 +1094,7 @@ InstallAndConquer(){
 				sudo apt install -y ubuntu-restricted-extras gnome-tweak-tool
 			elif [[ $DESKTOP_SESSION == ubuntu ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras gnome-tweak-tool gnome-shell-extensions
+				sudo apt install -y ubuntu-restricted-extras gnome-tweak-tool dconf-editor chrome-gnome-shell gnome-shell-extensions
 			else
 				echo "You're running some other window manager I haven't tested yet."
 				sleep 1
