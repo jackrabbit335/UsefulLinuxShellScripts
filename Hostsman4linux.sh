@@ -54,7 +54,7 @@ while getopts :ABCDEFGHIJ option; do
 		;;
 		I) wget $str9 && cat Badd-Boyz >> adblock && rm Badd-Boyz
 		;;
-        J) wget $str11 && cat Gambling >> adblock && rm Gambling
+       	        J) wget $str10 && cat Gambling >> adblock && rm Gambling
 		;;
 		*)
 	esac
