@@ -39,6 +39,8 @@ Setup(){
 		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
 		echo "#Alias to trim down journal size" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
+        echo "#Alias to trim ssd" >> ~/.bashrc
+        echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
 		echo "#Alias to fix broken packages" >> ~/.bashrc
 		echo 'alias fix="sudo dpkg --configure -a && sudo apt install -f"' >> ~/.bashrc
 	fi
@@ -87,7 +89,7 @@ _EOF_
 	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 	sudo sed -i -e '/#PermitRootLogin/c\PermitRootLogin no ' /etc/ssh/sshd_config
 
-    #This removes that retarded gnome-keyring unlock error you get with    chrome
+    #This removes that stupid gnome-keyring unlock error you get with chrome
     echo "Killing this might make your passwords less secure on chrome."
     sleep 1
     echo "Do you wish to kill gnome-keyring? (Y/n)"
@@ -1336,11 +1338,10 @@ _EOF_
 	echo "4 - Chrome"
 	echo "5 - Chromium"
 	echo "6 - Opera"
-	echo "7 - Vivaldi-snapshot"
-	echo "8 - Waterfox"
-	echo "9 - Midori"
-	echo "10 - Falkon"
-	echo "11 - Epiphany"
+	echo "7 - Waterfox"
+	echo "8 - Midori"
+	echo "9 - Falkon"
+	echo "10 - Epiphany"
 
 	read operation;
 
@@ -1382,30 +1383,24 @@ _EOF_
 		sleep 1
 	;;
 		7)
-		sudo cp -r ~/.config/vivaldi-snapshot ~/.config/vivaldi-snapshot-old
-		sudo rm -rf ~/.config/vivaldi-snapshot/*
-		echo "Your browser has now been reset"
-		sleep 1
-	;;
-		8)
 		sudo cp -r ~/.waterfox ~/.waterfox-old
 		sudo rm -rf ~/.waterfox/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
-		9)
+		8)
 		sudo cp -r ~/.config/midori ~/.config/midori-old
 		sudo rm -rf ~/.config/midori/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
-		10)
+		9)
 		sudo cp -r ~/.config/falkon ~/.config/falkon-old
 		sudo rm -rf ~/.config/falkon/*
 		echo "Your browser has now been reset"
 		sleep 1
 	;;
-		11)
+		10)
 		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old
 		sudo rm -rf ~/.config/epiphany/*
 		echo "Your browser has now been reset"
@@ -1414,7 +1409,10 @@ _EOF_
 		*)
 		echo "No browser for that entry exists, please try again"
 		sleep 1
-		clear
+        
+        BrowserRepair		
+
+        clear
 		Greeting
 	;;
 	esac

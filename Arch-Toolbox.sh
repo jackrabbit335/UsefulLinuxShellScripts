@@ -99,7 +99,7 @@ _EOF_
 		break
 	done
 
-	#This removes that retarded gnome-keyring unlock error you get with chrome
+	#This removes that stupid gnome-keyring unlock error you get with chrome
 	echo "Killing this might make your passwords less secure on chrome."
 	sleep 1
 	echo "Do you wish to kill gnome-keyring? (Y/n)"
@@ -138,6 +138,8 @@ _EOF_
 		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
 		echo "#Alias to trim journal size" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
+		echo "#Alias to trim ssd" >> ~/.bashrc
+		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
 
 		#Determines your os in order to apply correct alias
 		distribution=$(cat /etc/issue | awk '{print $1}')
@@ -1578,6 +1580,9 @@ _EOF_
 		*)
 		echo "No browser for that entry exists, please try again!"
 		sleep 1
+		
+		BrowserRepair
+
 		clear
 		Greeting
 	esac
