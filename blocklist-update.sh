@@ -9,6 +9,7 @@ cd /tmp
 echo "##################################################################"
 echo "Commensing Download And Extraction Sequence Now"
 echo "##################################################################"
+
 wget "http://list.iblocklist.com/?list=gihxqmhyunbxhbmgqrla&fileformat=p2p&archiveformat=gz" -O peerblock1.gz
 wget "http://list.iblocklist.com/?list=dufcxgnbjsdwmwctgfuj&fileformat=p2p&archiveformat=gz" -O peerblock2.gz
 wget "http://list.iblocklist.com/?list=ydxerpxkpcfqjaybcssw&fileformat=p2p&archiveformat=gz" -O peerblock3.gz
@@ -54,5 +55,5 @@ echo "##################################################################"
 echo "Process Complete"
 echo "##################################################################"
 
-sleep 2
+sleep 1
 exit
