@@ -39,8 +39,8 @@ Setup(){
 		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
 		echo "#Alias to trim down journal size" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
-        echo "#Alias to trim ssd" >> ~/.bashrc
-        echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
+        	echo "#Alias to trim ssd" >> ~/.bashrc
+        	echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
 		echo "#Alias to fix broken packages" >> ~/.bashrc
 		echo 'alias fix="sudo dpkg --configure -a && sudo apt install -f"' >> ~/.bashrc
 	fi
@@ -860,7 +860,7 @@ InstallAndConquer(){
 				sudo apt install -f
 			elif [[ $browser == 6 ]];
 			then
-				wget http://linux.palemoon.org/datastore/release/palemoon-28.10.0.linux-x86_64.tar.xz; tar -xf palemoon-28.10.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget http://linux.palemoon.org/datastore/release/palemoon-28.11.0.linux-x86_64.tar.xz; tar -xf palemoon-28.11.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
