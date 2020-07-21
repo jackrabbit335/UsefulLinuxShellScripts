@@ -217,6 +217,7 @@ fi
 
 Systeminfo(){
 	host=$(hostname)
+	drive=$(df -P / | awk '{print $1}' | grep "/dev/")
 	distribution=$(cat /etc/issue | awk '{print $1,$2}')
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INFORMATION" >> $host-sysinfo.txt
@@ -246,6 +247,11 @@ Systeminfo(){
 	echo "SYSTEM INITIALIZATION" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	ps -p1 | awk 'NR!=1{print $4}' >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SYSTEM INSTALL DATE" >>$host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo tune2fs -l $drive | grep 'Filesystem created:' >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "KERNEL AND OPERATING SYSTEM INFORMATION" >> $host-sysinfo.txt
