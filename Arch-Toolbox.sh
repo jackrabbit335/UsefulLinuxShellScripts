@@ -486,7 +486,6 @@ Systeminfo(){
 	echo "END OF FILE" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 
-
 	clear
 	Greeting
 }
