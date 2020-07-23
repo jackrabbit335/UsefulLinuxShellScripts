@@ -144,6 +144,22 @@ EOF
 
 		fi
 	done
+	
+	
+#This fixes gufw not opening in kde plasma desktop
+cat <<_EOF_
+This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue.
+This is only a plasma issue as far as I know.
+_EOF_
+	for env in $DESKTOP_SESSION;
+	do
+		if [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]];
+		then
+			echo "kdesu python3 /usr/lib/python3.7/site-packages/gufw/gufw.py" | sudo tee -a /bin/gufw
+		else
+			echo "You do not need this fix"
+		fi
+	done
 
 	CheckNetwork
 
