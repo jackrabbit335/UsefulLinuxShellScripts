@@ -199,9 +199,8 @@ _EOF_
 		if [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]];
 		then
 			echo "kdesu python3 /usr/lib/python3.7/site-packages/gufw/gufw.py" | sudo tee -a /bin/gufw
-		elif [[ $DESKTOP_SESSION == plasma ]];
-		then
-			echo "kdesu python3 /usr/lib/python3.7/site-packages/gufw/gufw.py" | sudo tee -a /bin/gufw
+		else
+			echo "You do not need this fix"
 		fi
 	done
 
