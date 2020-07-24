@@ -4567,7 +4567,6 @@
 0.0.0.0  tracking.feedmob.com
 0.0.0.0  tracking.feedperfect.com
 0.0.0.0  yes1.feng.com
-0.0.0.0  sdk.fevo.com
 0.0.0.0  ads.fgl.com
 0.0.0.0  enhance-config.fgl.com
 0.0.0.0  illuminati.fgl.com
@@ -8697,8 +8696,6 @@
 0.0.0.0  app.phonalytics.com
 0.0.0.0  phunware.com
 0.0.0.0  analytics-api.phunware.com
-0.0.0.0  piano.io
-0.0.0.0  publisher.piano.io
 0.0.0.0  adsdk.picooapps.com
 0.0.0.0  analytics.picsart.com
 0.0.0.0  ads.pictela.net
@@ -10973,12 +10970,6 @@
 0.0.0.0  metrics.timewarnercable.com
 0.0.0.0  beacon.tingyun.com
 0.0.0.0  rainmaker.tiny.cloud
-0.0.0.0  api.tinypass.com
-0.0.0.0  api-v3.tinypass.com
-0.0.0.0  buy.tinypass.com
-0.0.0.0  cdn.tinypass.com
-0.0.0.0  fonts.tinypass.com
-0.0.0.0  id.tinypass.com
 0.0.0.0  tiqcdn.com
 0.0.0.0  tags.tiqcdn.com
 0.0.0.0  akamai.tags.tiqcdn.com
