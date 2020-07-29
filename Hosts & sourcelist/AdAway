@@ -9552,6 +9552,7 @@
 0.0.0.0  epicycle.aprod.scopely.io
 0.0.0.0  collector.scopely.io
 0.0.0.0  event.collector.scopely.io
+0.0.0.0  489a19fa-d831-4954-858d-46436d5cdb20.event.collector.scopely.io
 0.0.0.0  puck.scopely.io
 0.0.0.0  config.sdk.scopely.io
 0.0.0.0  segments.scopely.io
@@ -11224,7 +11225,9 @@
 0.0.0.0  nginx-auction-prd-gcp.adsx.unityads.unity3d.com
 0.0.0.0  tracking.adsx.unityads.unity3d.com
 0.0.0.0  auction.unityads.unity3d.com
+0.0.0.0  auiopt.unityads.unity3d.com
 0.0.0.0  cdn.unityads.unity3d.com
+0.0.0.0  cdn-creatives-akamai-prd.unityads.unity3d.com
 0.0.0.0  cdn-creatives-highwinds-prd.unityads.unity3d.com
 0.0.0.0  cdn-highwinds.unityads.unity3d.com
 0.0.0.0  cdn-store-icons-highwinds-prd.unityads.unity3d.com
