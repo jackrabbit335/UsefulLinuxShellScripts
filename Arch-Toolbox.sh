@@ -377,6 +377,11 @@ Systeminfo(){
 	cat /etc/passwd | awk '{print $1}' >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "PACMAN REPOSITORY INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	cat /etc/pacman.conf >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "INSTALLED PACKAGES" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	sudo pacman -Q >> $host-sysinfo.txt
