@@ -3218,12 +3218,6 @@
 0.0.0.0  analytics.clickdimensions.com
 0.0.0.0  analytics-au.clickdimensions.com
 0.0.0.0  analytics-eu.clickdimensions.com
-0.0.0.0  app.clickdimensions.com
-0.0.0.0  app-eu.clickdimensions.com
-0.0.0.0  elink.clickdimensions.com
-0.0.0.0  elinkeu.clickdimensions.com
-0.0.0.0  files.clickdimensions.com
-0.0.0.0  files-eu.clickdimensions.com
 0.0.0.0  clickfuse.com
 0.0.0.0  cdn.clickfuse.com
 0.0.0.0  clickhubs.com
