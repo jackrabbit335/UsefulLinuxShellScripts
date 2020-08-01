@@ -258,6 +258,11 @@ Systeminfo(){
 	cat /proc/loadavg >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "APT REPOSITORY INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	cat /etc/apt/sources.list.d/official-package-repositories.list >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DISK SECTOR INFORMATION" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	sudo fdisk -l >> $host-sysinfo.txt
@@ -327,7 +332,7 @@ Systeminfo(){
 	echo "############################################################################" >> $host-sysinfo.txt
 	lastlog >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-    	echo "############################################################################" >> $host-sysinfo.txt
+    echo "############################################################################" >> $host-sysinfo.txt
 	echo "PERMISSIONS" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	ls -larS / >> $host-sysinfo.txt
@@ -882,7 +887,7 @@ InstallAndConquer(){
 				sudo apt install -f
 			elif [[ $browser == 6 ]];
 			then
-				wget http://linux.palemoon.org/datastore/release/palemoon-28.11.0.linux-x86_64.tar.xz; tar -xf palemoon-28.11.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget http://linux.palemoon.org/datastore/release/palemoon-28.11.0.linux-x86_64.tar.xz; tar -xvf palemoon-28.11.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
