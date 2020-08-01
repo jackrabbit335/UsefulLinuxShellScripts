@@ -280,7 +280,7 @@ Systeminfo(){
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DIRECTORY USAGE" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	sudo du -h >> $host-sysinfo.txt
+	sudo du -sh >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "MEMORY USAGE" >> $host-sysinfo.txt
