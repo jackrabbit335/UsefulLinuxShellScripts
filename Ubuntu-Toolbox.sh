@@ -39,8 +39,8 @@ Setup(){
 		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
 		echo "#Alias to trim down journal size" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
-    echo "#Alias to trim ssd" >> ~/.bashrc
-    echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
+		echo "#Alias to trim ssd" >> ~/.bashrc
+		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
 		echo "#Alias to fix broken packages" >> ~/.bashrc
 		echo 'alias fix="sudo dpkg --configure -a && sudo apt install -f"' >> ~/.bashrc
 	fi
@@ -378,7 +378,7 @@ Systeminfo(){
 	sudo hdparm -tT /dev/sda >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	echo " DRIVER INFO" >> $host-sysinfo.txt
+	echo "DRIVER INFO" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	sudo lsmod >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
