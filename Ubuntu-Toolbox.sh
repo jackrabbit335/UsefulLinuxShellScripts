@@ -39,8 +39,8 @@ Setup(){
 		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
 		echo "#Alias to trim down journal size" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
-        	echo "#Alias to trim ssd" >> ~/.bashrc
-        	echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
+    echo "#Alias to trim ssd" >> ~/.bashrc
+    echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
 		echo "#Alias to fix broken packages" >> ~/.bashrc
 		echo 'alias fix="sudo dpkg --configure -a && sudo apt install -f"' >> ~/.bashrc
 	fi
@@ -144,8 +144,8 @@ EOF
 
 		fi
 	done
-	
-	
+
+
 #This fixes gufw not opening in kde plasma desktop
 cat <<_EOF_
 This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue.
@@ -332,7 +332,7 @@ Systeminfo(){
 	echo "############################################################################" >> $host-sysinfo.txt
 	lastlog >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
-    echo "############################################################################" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "PERMISSIONS" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	ls -larS / >> $host-sysinfo.txt
@@ -593,7 +593,7 @@ to the user and developers with just one package. It would be easier to
 maintain a Linux system or any other system if they were all using the
 same package across multiple platforms and distributions getting the same
 version updates at the same time. While a step in the right direction, it
-will be a while before they fully catch on. 
+will be a while before they fully catch on.
 
 ########################################################################
 ClEANING AND ROUTINE MAINTENANCE
@@ -658,15 +658,15 @@ MICROCODE
 Microcode is a piece of system language programming that is used in
 giving instructions to the CPU(Brain of the device). Microcode updates
 are not only important for updating the security of the CPU, but also
-for extending the functionality as well. Some systems wont benefit from 
-this, but most will. Microcode helps to lock down certain Spectre 
-vulnerabilities. Modern multi-step and multithreading architectures 
-will make some use of microcode as it can help make some hardware designed 
-for less to do more. In a sense, it can make weaker CPUs seemingly more 
-powerful. Most Linux distributions have begun making this piece of code 
-stock baked into their kernels, however, I have added functionality that 
-tries to install this piece of coding in the event that it wasnt installed 
-and or loaded already. On most systems, Intel microcode is wrapped in the 
+for extending the functionality as well. Some systems wont benefit from
+this, but most will. Microcode helps to lock down certain Spectre
+vulnerabilities. Modern multi-step and multithreading architectures
+will make some use of microcode as it can help make some hardware designed
+for less to do more. In a sense, it can make weaker CPUs seemingly more
+powerful. Most Linux distributions have begun making this piece of code
+stock baked into their kernels, however, I have added functionality that
+tries to install this piece of coding in the event that it wasnt installed
+and or loaded already. On most systems, Intel microcode is wrapped in the
 package intel-ucode, while AMDs microcode is wrapped under amd-ucode.
 
 ########################################################################
@@ -762,7 +762,7 @@ _EOF_
 
 InstallAndConquer(){
 	CheckNetwork
-	
+
 	echo "Would you like to install some useful apps?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -1076,7 +1076,7 @@ InstallAndConquer(){
 
     	#Microcode installer
     	cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
-    	for c in $cpu; 
+    	for c in $cpu;
     	do
         	if [[ $cpu == GenuineIntel ]];
         	then
@@ -1435,8 +1435,8 @@ _EOF_
 		*)
 		echo "No browser for that entry exists, please try again"
 		sleep 1
-        
-        BrowserRepair		
+
+        BrowserRepair
 
         clear
 		Greeting
