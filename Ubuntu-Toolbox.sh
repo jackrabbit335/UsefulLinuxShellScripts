@@ -904,7 +904,7 @@ InstallAndConquer(){
 				sudo apt install -y dillo
 			elif [[ $browser == 11 ]];
 			then
-				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.07.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-classic-2020.07.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.07.1.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-classic-2020.07.1.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 12 ]];
 			then
