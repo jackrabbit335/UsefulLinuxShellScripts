@@ -32,9 +32,10 @@ str7=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/mas
 str8=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/StevenHosts
 str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Badd-Boyz
 str10=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Gambling
+str11=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Tomslist
 
 
-while getopts :ABCDEFGHIJ option; do
+while getopts :ABCDEFGHIJK option; do
 	case $option in
 		A) wget $str1 && cat MVPShosts >> adblock && rm MVPShosts
 		;;
@@ -55,6 +56,8 @@ while getopts :ABCDEFGHIJ option; do
 		I) wget $str9 && cat Badd-Boyz >> adblock && rm Badd-Boyz
 		;;
 		J) wget $str10 && cat Gambling >> adblock && rm Gambling
+		;;
+		K) wget $str11 && cat Tomslist >> adblock && rm Tomslist
 		;;
 		*)
 	esac
