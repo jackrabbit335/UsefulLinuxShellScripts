@@ -4343,7 +4343,6 @@
 0.0.0.0  tags.msnbc.com.edgekey.net
 0.0.0.0  tags.nationwide.com.edgekey.net
 0.0.0.0  stats.nba.com.edgekey.net
-0.0.0.0  apis.playstove.com.edgekey.net
 0.0.0.0  beacon.securestudies.com.edgekey.net
 0.0.0.0  i16-tb.sgsnssdk.com.edgekey.net
 0.0.0.0  ib.snssdk.com.edgekey.net
@@ -8751,7 +8750,6 @@
 0.0.0.0  ca87.playfabapi.com
 0.0.0.0  playhaven.com
 0.0.0.0  playnomics.net
-0.0.0.0  sdkweb.playstove.com
 0.0.0.0  sdk.playtem.com
 0.0.0.0  playtomic.com
 0.0.0.0  plethoramobile.com
