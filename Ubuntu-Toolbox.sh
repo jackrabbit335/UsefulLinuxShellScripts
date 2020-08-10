@@ -190,6 +190,7 @@ Update(){
 }
 
 Systeminfo(){
+	dpkg --list | grep wmctrl || sudo apt install -y wmctrl
 	host=$(hostname)
 	drive=$(df -P / | awk '{print $1}' | grep "/dev/")
 	distribution=$(cat /etc/issue | awk '{print $1,$2}')
@@ -216,6 +217,16 @@ Systeminfo(){
 	echo "DESKTOP" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo $DESKTOP_SESSION >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "WINDOW MANAGER" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	wmctrl -m >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "DISPLAY MANAGER" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	/usr/s\?bin' /etc/systemd/system/display-manager.service >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INITIALIZATION" >> $host-sysinfo.txt
