@@ -63,6 +63,7 @@ while getopts :ABCDEFGHIJK option; do
 	esac
 done
 
+echo "" >> adblock
 echo "---------------------Hostsman4linux-------------------" >> adblock
 
 #This tries to deduplicate if multiple files were used.
