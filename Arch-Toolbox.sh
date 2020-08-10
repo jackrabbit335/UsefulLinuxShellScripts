@@ -229,6 +229,7 @@ Update(){
 
 Systeminfo(){
 	pacman -Q | grep lsb-release || sudo pacman -S --noconfirm lsb-release
+	pacman -Q | grep wmctrl || sudo pacman -S --noconfirm wmctrl
 	host=$(hostname)
 	drive=$(df -P / | awk '{print $1}' | grep "/dev/")
 	distribution=$(cat /etc/issue | awk '{print $1}')
@@ -255,6 +256,16 @@ Systeminfo(){
 	echo "DESKTOP" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo $DESKTOP_SESSION >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "WINDOW MANAGER" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	wmctrl -m | grep "Name:" | awk '{print $2}' >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "DISPLAY MANAGER" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	grep '/usr/s\?bin' /etc/systemd/system/display-manager.service >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INITIALIZATION" >> $host-sysinfo.txt
@@ -1394,7 +1405,7 @@ cleanup(){
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
 	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
