@@ -3168,13 +3168,8 @@
 0.0.0.0  jp.cinarra.com
 0.0.0.0  p-jp-cci-dps.cinarra.com
 0.0.0.0  p-jp-elb-inmobi.cinarra.com
-0.0.0.0  cint.com
 0.0.0.0  collector.cint.com
-0.0.0.0  loadb.cint.com
 0.0.0.0  qps.cint.com
-0.0.0.0  router.cint.com
-0.0.0.0  sendgrid.cint.com
-0.0.0.0  cintnetworks.com
 0.0.0.0  c.cintnetworks.com
 0.0.0.0  api.circularhub.com
 0.0.0.0  app.cision.com
