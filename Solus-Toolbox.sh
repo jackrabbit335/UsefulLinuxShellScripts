@@ -16,14 +16,14 @@ Setup(){
 	done
 
 	#This starts your firewall
-    eopkg list-installed | grep gufw || sudo eopkg install gufw; sudo systemctl enable ufw; sudo ufw enable
-    echo "Would you also like to deny ssh and telnet for security?(Y/n)"
-    read answer
-    while [ $answer == Y ]
-    do
-      sudo ufw deny ssh; sudo ufw deny telnet; sudo ufw reload
-    break
-    done
+	eopkg list-installed | grep gufw || sudo eopkg install gufw; sudo systemctl enable ufw; sudo ufw enable
+	echo "Would you also like to deny ssh and telnet for security?(Y/n)"
+	read answer
+	while [ $answer == Y ]
+	do
+		sudo ufw deny ssh; sudo ufw deny telnet; sudo ufw reload
+	break
+	done
 
 	#This lowers grub delay
 	sudo cp /etc/default/grub /etc/default/grub.bak
@@ -43,14 +43,14 @@ Setup(){
 	sudo sysctl -p
 
 	#WE can block ICMP requests from the kernel if you'd like
-    echo "Block icmp ping requests?(Y/n)"
-    read answer
-    while [ $answer == Y ];
-    do
-        sudo touch /etc/syctl.d/60-network-hardening.conf
-        echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.d/60-network-hardening.conf; sudo sysctl -p
-    break
-    done
+	echo "Block icmp ping requests?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		sudo touch /etc/syctl.d/60-network-hardening.conf
+		echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.d/60-network-hardening.conf; sudo sysctl -p
+	break
+	done
 
 	#This disables ipv6
 	echo "Sometimes ipv6 can cause network issues. Would you like to disable it?(Y/n)"
@@ -207,28 +207,28 @@ Update(){
 }
 
 Reset(){
-#This resets the desktop
-if [[ $DESKTOP_SESSION == budgie ]];
-then
-	echo "############################################################################"
-	echo "This resets Budgie"
-	echo "############################################################################"
-	dconf dump /org/budgie/ > budgie-desktop-backup; dconf reset -f /org/budgie
-elif [[ $DESKTOP_SESSION == gnome ]];
-then
-	echo "############################################################################"
-	echo "This resets Gnome Shell"
-	echo "############################################################################"
-	dconf dump /org/gnome/ > gnome-desktop-backup; dconf reset -f /org/gnome
-elif [[ $DESKTOP_SESSION == mate ]];
-then
-	echo "############################################################################"
-	echo "This resets MATE"
-	echo "############################################################################"
-	dconf dump /org/mate/ > mate-desktop-backup; dconf reset -f /org/mate
-else
-	echo "You're running a desktop/Window Manager that we do not yet support... Come back later."
-fi
+	#This resets the desktop
+	if [[ $DESKTOP_SESSION == budgie ]];
+	then
+		echo "############################################################################"
+		echo "This resets Budgie"
+		echo "############################################################################"
+		dconf dump /org/budgie/ > budgie-desktop-backup; dconf reset -f /org/budgie
+	elif [[ $DESKTOP_SESSION == gnome ]];
+	then
+		echo "############################################################################"
+		echo "This resets Gnome Shell"
+		echo "############################################################################"
+		dconf dump /org/gnome/ > gnome-desktop-backup; dconf reset -f /org/gnome
+	elif [[ $DESKTOP_SESSION == mate ]];
+	then
+		echo "############################################################################"
+		echo "This resets MATE"
+		echo "############################################################################"
+		dconf dump /org/mate/ > mate-desktop-backup; dconf reset -f /org/mate
+	else
+		echo "You're running a desktop/Window Manager that we do not yet support... Come back later."
+	fi
 }
 
 Systeminfo(){
@@ -333,7 +333,7 @@ Systeminfo(){
 	echo "LISTS ALL BLOCK DEVICES WITH SIZE" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	lsblk -o NAME,SIZE >> $host-sysinfo.txt
-	echo"" >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "BLOCK DEVICE ID " >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
@@ -1409,11 +1409,10 @@ _EOF_
 		*)
 		echo "No browser for that entry exists, please try again!"
 		sleep 1
-        
-        BrowserRepair
-		
-        clear
-		Greeting
+
+	BrowserRepair
+
+	;;
 	esac
 
 	#Change the default browser

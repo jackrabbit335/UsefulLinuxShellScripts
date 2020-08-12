@@ -1405,7 +1405,7 @@ cleanup(){
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
 	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
@@ -1600,11 +1600,10 @@ _EOF_
 		*)
 		echo "No browser for that entry exists, please try again!"
 		sleep 1
-		
-		BrowserRepair
 
-		clear
-		Greeting
+	BrowserRepair
+
+	;;
 	esac
 
 	#Change the default browser
@@ -1633,9 +1632,9 @@ SystemMaintenance(){
 	elif [[ $distribution == Arch ]];
 	then
 		sudo pacman -Q | grep reflector || sudo pacman -S --noconfirm reflector; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
-    elif [[ $distribution == KaOS ]];
-    then
-        sudo pacman -Syyu --noconfirm
+	elif [[ $distribution == KaOS ]];
+	then
+		sudo pacman -Syyu --noconfirm
 	fi
 
 	#This refreshes systemd in case of failed or changed units

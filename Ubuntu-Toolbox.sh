@@ -67,13 +67,13 @@ We can also block ping requests. Ping requests coming from unknown sources can m
 potentially trying to locate/attack your network. If you need this functionality
 you can always comment this line out later. Chances are, this will not affect normal users.
 _EOF_
-    echo "Block ping requests from foreign systems?(Y/n)"
-    read answer
-    if [[ $answer == Y ]];
-    then
-        echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.conf
-        sudo sysctl -p
-    fi
+	echo "Block ping requests from foreign systems?(Y/n)"
+	read answer
+	if [[ $answer == Y ]];
+	then
+		echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.conf
+	sudo sysctl -p
+	fi
 
 	#This attempts to place noatime at the end of your drive entry in fstab
 	echo "This can potentially make your drive unbootable, use with caution"
@@ -89,17 +89,17 @@ _EOF_
 	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 	sudo sed -i -e '/#PermitRootLogin/c\PermitRootLogin no ' /etc/ssh/sshd_config
 
-    #This removes that stupid gnome-keyring unlock error you get with chrome
-    echo "Killing this might make your passwords less secure on chrome."
-    sleep 1
-    echo "Do you wish to kill gnome-keyring? (Y/n)"
-    read answer
-    if [[ $answer == Y ]];
-    then
-	    sudo mv /usr/bin/gnome-keyring-daemon /usr/bin/gnome-keyring-daemon-old; sudo killall gnome-keyring-daemon
-    else
-	    echo "Proceeding"
-    fi
+	#This removes that stupid gnome-keyring unlock error you get with chrome
+	echo "Killing this might make your passwords less secure on chrome."
+	sleep 1
+	echo "Do you wish to kill gnome-keyring? (Y/n)"
+	read answer
+	if [[ $answer == Y ]];
+	then
+		sudo mv /usr/bin/gnome-keyring-daemon /usr/bin/gnome-keyring-daemon-old; sudo killall gnome-keyring-daemon
+	else
+		echo "Proceeding"
+	fi
 
 	#This determines what type of drive you have, then offers to run trim or enable write-back caching
 	drive=$(cat /sys/block/sda/queue/rotational)
@@ -226,7 +226,7 @@ Systeminfo(){
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DISPLAY MANAGER" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	/usr/s\?bin' /etc/systemd/system/display-manager.service >> $host-sysinfo.txt
+	grep'/usr/s\?bin' /etc/systemd/system/display-manager.service >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INITIALIZATION" >> $host-sysinfo.txt
@@ -307,7 +307,7 @@ Systeminfo(){
 	echo "LISTS ALL BLOCK DEVICES WITH SIZE" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	lsblk -o NAME,SIZE >> $host-sysinfo.txt
-	echo"" >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "BLOCK DEVICE ID " >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
@@ -472,40 +472,40 @@ Systeminfo(){
 }
 
 Reset(){
-#This resets the desktop
-if [[ $DESKTOP_SESSION == cinnamon ]];
-then
-	echo "############################################################################"
-	echo "This resets Cinnamon"
-	echo "############################################################################"
-	dconf dump /org/cinnamon/ > cinnamon-desktop-backup; dconf reset -f /org/cinnamon
-elif [[ $DESKTOP_SESSION == gnome ]];
-then
-	echo "############################################################################"
-	echo "This resets Gnome Shell"
-	echo "############################################################################"
-	dconf dump /org/gnome/ > gnome-desktop-backup; dconf reset -f /org/gnome
-elif [[ $DESKTOP_SESSION == budgie ]];
-then
-	echo "############################################################################"
-	echo "This resets Budgie"
-	echo "############################################################################"
-	dconf dump /org/budgie/ > /budgie-desktop-backup; dconf reset -f /org/budgie
-elif [[ $DESKTOP_SESSION == xfce ]];
-then
-	echo "############################################################################"
-	echo "This resets XFCE"
-	echo "############################################################################"
-	mv ~/.config/xfce4 ~/.config/xfce4.bak
-elif [[ $DESKTOP_SESSION == mate ]];
-then
-	echo "############################################################################"
-	echo "This resets MATE"
-	echo "############################################################################"
-	dconf dump /org/mate/ > mate-desktop-backup; dconf reset -f /org/mate
-else
-	echo "You're running a desktop/Window Manager that we do not yet support... Come back later."
-fi
+	#This resets the desktop
+	if [[ $DESKTOP_SESSION == cinnamon ]];
+	then
+		echo "############################################################################"
+		echo "This resets Cinnamon"
+		echo "############################################################################"
+		dconf dump /org/cinnamon/ > cinnamon-desktop-backup; dconf reset -f /org/cinnamon
+	elif [[ $DESKTOP_SESSION == gnome ]];
+	then
+		echo "############################################################################"
+		echo "This resets Gnome Shell"
+		echo "############################################################################"
+		dconf dump /org/gnome/ > gnome-desktop-backup; dconf reset -f /org/gnome
+	elif [[ $DESKTOP_SESSION == budgie ]];
+	then
+		echo "############################################################################"
+		echo "This resets Budgie"
+		echo "############################################################################"
+		dconf dump /org/budgie/ > /budgie-desktop-backup; dconf reset -f /org/budgie
+	elif [[ $DESKTOP_SESSION == xfce ]];
+	then
+		echo "############################################################################"
+		echo "This resets XFCE"
+		echo "############################################################################"
+		mv ~/.config/xfce4 ~/.config/xfce4.bak
+	elif [[ $DESKTOP_SESSION == mate ]];
+	then
+		echo "############################################################################"
+		echo "This resets MATE"
+		echo "############################################################################"
+		dconf dump /org/mate/ > mate-desktop-backup; dconf reset -f /org/mate
+	else
+		echo "You're running a desktop/Window Manager that we do not yet support... Come back later."
+	fi
 }
 
 MakeSwap(){
@@ -1085,18 +1085,18 @@ InstallAndConquer(){
 	break
 	done
 
-    	#Microcode installer
-    	cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
-    	for c in $cpu;
-    	do
-        	if [[ $cpu == GenuineIntel ]];
-        	then
-            	sudo pacman -Q | grep intel-ucode || sudo pacman -S --noconfirm intel-ucode
-        	elif [[ $cpu == AuthenticAMD ]];
-        	then
-            	sudo pacman -Q | grep amd-ucode || sudo pacman -S --noconfirm amd-ucode
-        	fi
-    	done
+	#Microcode installer
+	cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
+	for c in $cpu;
+	do
+		if [[ $cpu == GenuineIntel ]];
+		then
+			sudo pacman -Q | grep intel-ucode || sudo pacman -S --noconfirm intel-ucode
+		elif [[ $cpu == AuthenticAMD ]];
+		then
+			sudo pacman -Q | grep amd-ucode || sudo pacman -S --noconfirm amd-ucode
+		fi
+	done
 
 	#This tries to install codecs
 	echo "This will install codecs."
@@ -1447,10 +1447,8 @@ _EOF_
 		echo "No browser for that entry exists, please try again"
 		sleep 1
 
-        BrowserRepair
+	BrowserRepair
 
-        clear
-		Greeting
 	;;
 	esac
 
