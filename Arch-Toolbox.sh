@@ -16,13 +16,13 @@ Setup(){
 
 	#This starts your firewall
 	pacman -Q | grep ufw || sudo pacman -S --noconfirm ufw; sudo systemctl enable ufw; sudo ufw enable
-    echo "Would you like to deny ssh and telnet for security?(Y/n)"
-    read answer
-    while [ $answer == Y ]
-    do
-      sudo ufw deny ssh; sudo ufw deny telnet; sudo ufw reload
-    break
-    done
+	echo "Would you like to deny ssh and telnet for security?(Y/n)"
+	read answer
+	while [ $answer == Y ]
+	do
+	sudo ufw deny ssh; sudo ufw deny telnet; sudo ufw reload
+	break
+	done
 
 	#This restricts coredumps to prevent attackers from getting info
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
@@ -44,14 +44,14 @@ locate/attack your network. If you need this functionality, you can comment
 this line out, however, this shouldn't impact normal users. If you blocked ICMP traffic
 in Iptables or UFW, you really don't need this here.
 _EOF_
-    echo "Block icmp ping requests?(Y/n)"
-    read answer
-    while [ $answer == Y ];
-    do
-        sudo touch /etc/syctl.d/60-network-hardening.conf
-        echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.d/60-network-hardening.conf; sudo sysctl -p
-    break
-    done
+	echo "Block icmp ping requests?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		sudo touch /etc/syctl.d/60-network-hardening.conf
+		echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.d/60-network-hardening.conf; sudo sysctl -p
+	break
+	done
 
 	#This disables ipv6
 	echo "Sometimes ipv6 can cause network issues. Would you like to disable it?(Y/n)"
@@ -185,8 +185,8 @@ _EOF_
 				sudo pacman -Sy --noconfirm gnupg archlinux-keyring; sudo pacman-key --init
 				sudo pacman-key --populate archlinux; sudo pacman-key --refresh-keys; sudo pacman -Scc
 				sudo pacman -Syyu --noconfirm
-            fi
-        fi
+			fi
+	fi
 	done
 
 #This fixes gufw not opening in kde plasma desktop
@@ -346,7 +346,7 @@ Systeminfo(){
 	echo "LISTS ALL BLOCK DEVICES WITH SIZE" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	lsblk -o NAME,SIZE >> $host-sysinfo.txt
-	echo"" >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "BLOCK DEVICE ID " >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
@@ -1778,40 +1778,40 @@ read operation;
 }
 
 Reset(){
-#This resets the desktop
-if [[ $DESKTOP_SESSION == cinnamon ]];
-then
-	echo "############################################################################"
-	echo "This resets Cinnamon"
-	echo "############################################################################"
-	dconf dump /org/cinnamon/ > cinnamon-desktop-backup; dconf reset -f /org/cinnamon
-elif [[ $DESKTOP_SESSION == gnome ]];
-then
-	echo "############################################################################"
-	echo "This resets Gnome Shell"
-	echo "############################################################################"
-	dconf dump /org/gnome/ > gnome-desktop-backup; dconf reset -f /org/gnome
-elif [[ $DESKTOP_SESSION == budgie ]];
-then
-	echo "############################################################################"
-	echo "This resets Budgie"
-	echo "############################################################################"
-	dconf dump /org/budgie/ > /budgie-desktop-backup; dconf reset -f /org/budgie
-elif [[ $DESKTOP_SESSION == xfce ]];
-then
-	echo "############################################################################"
-	echo "This resets XFCE"
-	echo "############################################################################"
-	mv ~/.config/xfce4 ~/.config/xfce4-bak
-elif [[ $DESKTOP_SESSION == mate ]];
-then
-	echo "############################################################################"
-	echo "This resets MATE"
-	echo "############################################################################"
-	dconf dump /org/mate/ > mate-desktop-backup; dconf reset -f /org/mate
-else
-	echo "You're running a desktop/Window Manager that we do not yet support... Come back later."
-fi
+	#This resets the desktop
+	if [[ $DESKTOP_SESSION == cinnamon ]];
+	then
+		echo "############################################################################"
+		echo "This resets Cinnamon"
+		echo "############################################################################"
+		dconf dump /org/cinnamon/ > cinnamon-desktop-backup; dconf reset -f /org/cinnamon
+	elif [[ $DESKTOP_SESSION == gnome ]];
+	then
+		echo "############################################################################"
+		echo "This resets Gnome Shell"
+		echo "############################################################################"
+		dconf dump /org/gnome/ > gnome-desktop-backup; dconf reset -f /org/gnome
+	elif [[ $DESKTOP_SESSION == budgie ]];
+	then
+		echo "############################################################################"
+		echo "This resets Budgie"
+		echo "############################################################################"
+		dconf dump /org/budgie/ > /budgie-desktop-backup; dconf reset -f /org/budgie
+	elif [[ $DESKTOP_SESSION == xfce ]];
+	then
+		echo "############################################################################"
+		echo "This resets XFCE"
+		echo "############################################################################"
+		mv ~/.config/xfce4 ~/.config/xfce4-bak
+	elif [[ $DESKTOP_SESSION == mate ]];
+	then
+		echo "############################################################################"
+		echo "This resets MATE"
+		echo "############################################################################"
+		dconf dump /org/mate/ > mate-desktop-backup; dconf reset -f /org/mate
+	else
+		echo "You're running a desktop/Window Manager that we do not yet support... Come back later."
+	fi
 }
 
 MakeSwap(){
