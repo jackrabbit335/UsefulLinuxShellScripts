@@ -186,7 +186,7 @@ _EOF_
 				sudo pacman-key --populate archlinux; sudo pacman-key --refresh-keys; sudo pacman -Scc
 				sudo pacman -Syyu --noconfirm
 			fi
-	fi
+		fi
 	done
 
 #This fixes gufw not opening in kde plasma desktop
