@@ -9,7 +9,7 @@ Setup(){
 	read answer
 	while [ $answer == Y ];
 	do
-	    echo "Enter your preferred timezone"
+		echo "Enter your preferred timezone"
 		read timezone; sudo timedatectl set-ntp true; sudo timedatectl set-timezone $timezone
 	break
 	done
