@@ -749,7 +749,7 @@ _EOF_
 			gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
 		elif [[ $browser == 12 ]];
 		then
-			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.07.2.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.07.1.en-US.linux-x86_64.tar.bz2
+			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.07.2.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.07.2.en-US.linux-x86_64.tar.bz2
 			sudo ln -s ~/waterfox-classic/waterfox /usr/bin/waterfox
 			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 		elif [[ $browser == 13 ]];
