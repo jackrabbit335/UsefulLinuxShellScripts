@@ -255,7 +255,7 @@ Systeminfo(){
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DESKTOP" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	echo $DESKTOP_SESSION >> $host-sysinfo.txt
+	echo $XDG_CURRENT_DESKTOP >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "WINDOW MANAGER" >> $host-sysinfo.txt
