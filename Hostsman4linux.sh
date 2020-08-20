@@ -20,7 +20,6 @@ else
 fi
 
 cd /tmp
-echo "---------------------Hostsman4linux-------------------" >> adblock
 
 str1=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/MVPShosts
 str2=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Someonewhocares
@@ -63,13 +62,8 @@ while getopts :ABCDEFGHIJK option; do
 	esac
 done
 
-echo "" >> adblock
-echo "---------------------Hostsman4linux-------------------" >> adblock
-
 #This tries to deduplicate if multiple files were used.
-if [[ $# -gt 1 ]]; then
-	sort adblock | uniq -u | sort -r > adblock.new && mv adblock.new adblock
-fi
+sort -u adblock | sort -r > adblock.new && mv adblock.new adblock
 
 #This tries to exclude or whitelist domains from adblock assuming we downloaded anything
 find adblock
