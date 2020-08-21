@@ -63,7 +63,11 @@ while getopts :ABCDEFGHIJK option; do
 done
 
 #This tries to deduplicate if multiple files were used.
-awk '!dup[$0]++' adblock > adblock.txt && rm adblock
+find adblock
+if [[$? -eq 0 ]];
+then
+	awk '!dup[$0]++' adblock > adblock.txt && rm adblock
+fi
 
 #This tries to exclude or whitelist domains from adblock assuming we downloaded anything
 find adblock.txt
