@@ -63,25 +63,25 @@ while getopts :ABCDEFGHIJK option; do
 done
 
 #This tries to deduplicate if multiple files were used.
-sort -u adblock | sort -r > adblock.new && mv adblock.new adblock
+awk '!dup[$0]++' adblock > adblock.txt && rm adblock
 
 #This tries to exclude or whitelist domains from adblock assuming we downloaded anything
-find adblock
+find adblock.txt
 if [[ $? -eq 0 ]];
 then
     read -p "Would you like to exclude domains?(Y/n)" answer
     while [ $answer == Y ];
     do
         read -p "Enter the domain you would like to exclude:" domain
-        sed -i "s/$domain/ s/^#*/#/" adblock
+        sed -i "s/$domain/ s/^#*/#/" adblock.txt
     break
     done
 fi
 
 #This merges adblock with /etc/hosts then removes adblock
 echo "" | sudo tee -a /etc/hosts
-sudo cat adblock >> /etc/hosts
-rm adblock
+sudo cat adblock.txt >> /etc/hosts
+rm adblock.txt
 
 #Go to /etc/ directory and check for distribution specific directories
 find /etc/pacman.d > /dev/null
