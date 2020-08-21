@@ -73,13 +73,13 @@ fi
 find adblock.txt
 if [[ $? -eq 0 ]];
 then
-    read -p "Would you like to exclude domains?(Y/n)" answer
-    while [ $answer == Y ];
-    do
-        read -p "Enter the domain you would like to exclude:" domain
-        sed -i "s/$domain/ s/^#*/#/" adblock.txt
-    break
-    done
+	read -p "Would you like to exclude domains?(Y/n)" answer
+	while [ $answer == Y ];
+	do
+		read -p "Enter the domain you would like to exclude:" domain
+		sed -i "s/$domain/ s/^#*/#/" adblock.txt
+	break
+	done
 fi
 
 #This merges adblock with /etc/hosts then removes adblock
