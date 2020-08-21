@@ -64,7 +64,7 @@ done
 
 #This tries to deduplicate if multiple files were used.
 find adblock
-if [[$? -eq 0 ]];
+if [[ $? -eq 0 ]];
 then
 	awk '!dup[$0]++' adblock > adblock.txt && rm adblock
 fi
