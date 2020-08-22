@@ -176,7 +176,7 @@ _EOF_
 			fi
 		elif [[ $distribution == Arch ]];
 		then
-			sudo pacman -Sy --noconfirm reflector
+			pacman -Q | grep reflector || sudo pacman -S reflector
 			sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
 			if [[ $? -eq 0 ]];
 			then
