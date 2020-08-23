@@ -123,7 +123,7 @@ _EOF_
 	read answer
 	if [[ $answer == Y ]];
 	then
-		sudo cp ~/.bashrc ~/.bashrc.bak
+		#sudo cp ~/.bashrc ~/.bashrc.bak
 		echo "#Alias to edit fstab" >> ~/.bashrc
 		echo 'alias fstabed="sudo nano /etc/fstab"' >> ~/.bashrc
 		echo "#Alias to edit grub" >> ~/.bashrc
