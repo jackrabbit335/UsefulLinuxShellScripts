@@ -1109,6 +1109,7 @@
 0.0.0.0  c.amazon-adsystem.com
 0.0.0.0  mads.amazon-adsystem.com
 0.0.0.0  s.amazon-adsystem.com
+0.0.0.0  vaes.amazon-adsystem.com
 0.0.0.0  aan.amazon.com
 0.0.0.0  aax-us-iad.amazon.com
 0.0.0.0  device-metrics-us.amazon.com
@@ -7415,6 +7416,8 @@
 0.0.0.0  fu-e01a50651b.upalytics.com
 0.0.0.0  fu-e102f45ad9.upalytics.com
 0.0.0.0  updated.com
+0.0.0.0  upee.online
+0.0.0.0  app.upee.online
 0.0.0.0  ads-sdk.upltv.com
 0.0.0.0  mobilelog.upqzfile.com
 0.0.0.0  api.uprivaladserver.net
