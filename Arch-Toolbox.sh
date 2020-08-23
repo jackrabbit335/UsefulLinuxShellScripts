@@ -3,6 +3,11 @@
 Setup(){
 	#Sets default editor to nano in bashrc
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
+	
+	#This backs up very important system files for your sanity
+	sudo cp -r /etc /etc-old
+	sudo cp -r /boot /boot-old
+	cp .bashrc .bashrc.bak
 
 	#This sets up your system time.
 	echo "Would you like to set ntp to true? (Y/n)"
