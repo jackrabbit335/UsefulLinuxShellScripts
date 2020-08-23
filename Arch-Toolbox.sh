@@ -5,7 +5,13 @@ Setup(){
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
 
 	#This backs up very important system files for your sanity
-	sudo cp -r /etc /etc-old
+	sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
+	sudo cp /etc/default/grub /etc/default/grub.bak
+	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
+	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak 
+	sudo cp /etc/passwd /etc/passwd.bak
+	sudo cp /etc/shadow /etc/shadow.bak
+	sudo cp /etc/fstab /etc/fstab.bak
 	sudo cp -r /boot /boot-old
 	cp .bashrc .bashrc.bak
 
@@ -30,9 +36,7 @@ Setup(){
 	done
 
 	#This restricts coredumps to prevent attackers from getting info
-	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
 	sudo sed -i -e '/#Storage=external/c\Storage=none ' /etc/systemd/coredump.conf
-	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 	sudo sed -i -e '/#PermitRootLogin/c\PermitRootLogin no ' /etc/ssh/sshd_config
 	sudo touch /etc/sysctl.d/50-dmesg-restrict.conf
 	sudo touch /etc/sysctl.d/50-kptr-restrict.conf
@@ -64,7 +68,6 @@ _EOF_
 	read answer
 	if [[ $answer == Y ]];
 	then
-		sudo cp /etc/default/grub /etc/default/grub.bak
 		sudo sed -i -e 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/g' /etc/default/grub; sudo grub-mkconfig -o /boot/grub/grub.cfg
 	else
 		echo "OKAY!"
@@ -100,7 +103,6 @@ _EOF_
 	read answer
 	while [ $answer == Y ];
 	do
-		sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
 		sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
 		break
 	done
@@ -123,7 +125,6 @@ _EOF_
 	read answer
 	if [[ $answer == Y ]];
 	then
-		#sudo cp ~/.bashrc ~/.bashrc.bak
 		echo "#Alias to edit fstab" >> ~/.bashrc
 		echo 'alias fstabed="sudo nano /etc/fstab"' >> ~/.bashrc
 		echo "#Alias to edit grub" >> ~/.bashrc
@@ -1530,9 +1531,9 @@ _EOF_
 	echo "10 - Midori"
 	echo "11 - Basilisk"
 	echo "12 - Brave"
-
+	
 	read operation;
-
+	
 	case $operation in
 		1)
 		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old
@@ -1609,11 +1610,9 @@ _EOF_
 		*)
 		echo "No browser for that entry exists, please try again!"
 		sleep 1
-
-	BrowserRepair
-
+		BrowserRepair
 	;;
-	esac
+esac
 
 	#Change the default browser
 	echo "Would you like to change your default browser also?(Y/n)"
