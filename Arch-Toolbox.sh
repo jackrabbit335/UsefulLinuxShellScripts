@@ -3,7 +3,7 @@
 Setup(){
 	#Sets default editor to nano in bashrc
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
-	
+
 	#This backs up very important system files for your sanity
 	sudo cp -r /etc /etc-old
 	sudo cp -r /boot /boot-old
@@ -543,474 +543,477 @@ InstallAndConquer(){
 		echo "23 - Security checkers/scanners"
 		echo "24 - Stellarium constellation and space observation"
 		echo "25 - exit out of this menu"
-
-	read software;
-
-	case $software in
-		1)
-		echo "This installs a series of utility software"
-		sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools
-		sudo pacman -S --needed --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu
-		sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit
-		sudo pacman -S --needed --noconfirm pacman-contrib yaourt grsync tlp powertop
-	;;
-		2)
-		echo "This installs your choice of terminals If you already have one, don't worry"
-		echo "1 - terminator"
-		echo "2 - termite"
-		echo "3 - lxterminal"
-		echo "4 - xterm"
-		read package
-		if [[ $package == 1 ]];
-		then
-			sudo pacman -S --noconfirm terminator
-		elif [[ $package == 2 ]];
-		then
-			sudo pacman -S --noconfirm termite
-		elif [[ $package == lxterminal ]];
-		then
-			sudo pacman -S --noconfirm lxterminal
-		elif [[ $package == 4 ]];
-		then
-			sudo pacman -S --noconfirm xterm
-		else
-			echo "You've entered an invalid number"
-		fi
-	;;
-		3)
-		echo "This installs a light weight editor(text/code editor/IDE)"
-		echo "1 - geany"
-		echo "2 - sublime text editor"
-		echo "3 - bluefish"
-		echo "4 - atom"
-		echo "5 - gedit"
-		echo "6 - kate/kwrite"
-		echo "7 - leafpad"
-		read package
-		if [[ $package == 1 ]];
-		then
-			sudo pacman -S --noconfirm geany
-		elif [[ $package == 2 ]];
-		then
-			wget https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2; tar -xvf sublime_text_3_build_3211_x64.tar.bz2
-			cd sublime_text_3; makepkg -si
-			makepkg -si
-		elif [[ $package == 3 ]];
-		then
-			sudo pacman -S --noconfirm bluefish
-		elif [[ $package == 4 ]];
-		then
-			sudo pacman -S --noconfirm atom
-		elif [[ $package == 5 ]];
-		then
-			sudo pacman -S --noconfirm gedit
-		elif [[ $package == 6 ]];
-		then
-			echo "1 - Kate"
-			echo "2 - Kwrite"
-			read editor
-			if [[ $editor == 1 ]];
+		read software;
+		case $software in
+			1)
+			echo "This installs a series of utility software"
+			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools
+			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu
+			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit
+			sudo pacman -S --needed --noconfirm pacman-contrib yaourt grsync tlp powertop
+			;;
+			2)
+			echo "This installs your choice of terminals If you already have one, don't worry"
+			echo "1 - terminator"
+			echo "2 - termite"
+			echo "3 - lxterminal"
+			echo "4 - xterm"
+			read package
+			if [[ $package == 1 ]];
 			then
-				sudo pacman -S --noconfirm kate
-			elif [[ $editor == 2 ]];
+				sudo pacman -S --noconfirm terminator
+			elif [[ $package == 2 ]];
 			then
-				sudo pacman -S --noconfirm kwrite
+				sudo pacman -S --noconfirm termite
+			elif [[ $package == lxterminal ]];
+			then
+				sudo pacman -S --noconfirm lxterminal
+			elif [[ $package == 4 ]];
+			then
+				sudo pacman -S --noconfirm xterm
+			else
+				echo "You've entered an invalid number"
+				InstallAndConquer
 			fi
-		elif [[ $editor == 7 ]];
-		then
-			sudo pacman -S --noconfirm leafpad
-		else
-			echo "You've entered an invalid number"
-		fi
-	;;
-		4)
-		echo "This installs cleaning software for Arch Linux Systems"
-		sudo pacman -S --noconfirm bleachbit rmlint
-	;;
-		5)
-		echo "This installs a prelauncher"
-		sudo pacman -S --noconfirm preload
-	;;
-		6)
-		echo "This installs a choice in download managers"
-		echo "1 - wget"
-		echo "2 - uget"
-		echo "3 - aria2"
-		read software
-		if [[ $software == 1 ]];
-		then
-			sudo pacman -S --noconfirm wget
-		elif [[ $software == 2 ]];
-		then
-			sudo pacman -S --noconfirm uget
-		elif [[ $software == 3 ]];
-		then
-			sudo pacman -S --noconfirm aria2
-		else
-			echo "You have entered an invalid number"
-		fi
-	;;
-		7)
-		echo "This installs your choice of torrent clients"
-		echo "1 - transmission-gtk"
-		echo "2 - deluge"
-		echo "3 - qbittorrent"
-		read client
-		if [[ $client == 1 ]];
-		then
-			sudo pacman -S --noconfirm transmission-gtk
-		elif [[ $client == 2 ]];
-		then
-			sudo pacman -S --noconfirm deluge
-		elif [[ $client == 3 ]];
-		then
-			sudo pacman -S --noconfirm qbittorrent
-		else
-			echo "You have entered an invalid number"
-		fi
-	;;
-		8)
+			;;
+			3)
+			echo "This installs a light weight editor(text/code editor/IDE)"
+			echo "1 - geany"
+			echo "2 - sublime text editor"
+			echo "3 - bluefish"
+			echo "4 - atom"
+			echo "5 - gedit"
+			echo "6 - kate/kwrite"
+			echo "7 - leafpad"
+			read package
+			if [[ $package == 1 ]];
+			then
+				sudo pacman -S --noconfirm geany
+			elif [[ $package == 2 ]];
+			then
+				wget https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2; tar -xvf sublime_text_3_build_3211_x64.tar.bz2
+				cd sublime_text_3; makepkg -si
+			elif [[ $package == 3 ]];
+			then
+				sudo pacman -S --noconfirm bluefish
+			elif [[ $package == 4 ]];
+			then
+				sudo pacman -S --noconfirm atom
+			elif [[ $package == 5 ]];
+			then
+				sudo pacman -S --noconfirm gedit
+			elif [[ $package == 6 ]];
+			then
+				echo "1 - Kate"
+				echo "2 - Kwrite"
+				read editor
+				if [[ $editor == 1 ]];
+				then
+					sudo pacman -S --noconfirm kate
+				elif [[ $editor == 2 ]];
+				then
+					sudo pacman -S --noconfirm kwrite
+				fi
+			elif [[ $editor == 7 ]];
+			then
+				sudo pacman -S --noconfirm leafpad
+			else
+				echo "You've entered an invalid number"
+				InstallAndConquer
+			fi
+			;;
+			4)
+			echo "This installs cleaning software for Arch Linux Systems"
+			sudo pacman -S --noconfirm bleachbit rmlint
+			;;
+			5)
+			echo "This installs a prelauncher"
+			sudo pacman -S --noconfirm preload
+			;;
+			6)
+			echo "This installs a choice in download managers"
+			echo "1 - wget"
+			echo "2 - uget"
+			echo "3 - aria2"
+			read software
+			if [[ $software == 1 ]];
+			then
+				sudo pacman -S --noconfirm wget
+			elif [[ $software == 2 ]];
+			then
+				sudo pacman -S --noconfirm uget
+			elif [[ $software == 3 ]];
+			then
+				sudo pacman -S --noconfirm aria2
+			else
+				echo "You have entered an invalid number"
+				InstallAndConquer
+			fi
+			;;
+			7)
+			echo "This installs your choice of torrent clients"
+			echo "1 - transmission-gtk"
+			echo "2 - deluge"
+			echo "3 - qbittorrent"
+			read client
+			if [[ $client == 1 ]];
+			then
+				sudo pacman -S --noconfirm transmission-gtk
+			elif [[ $client == 2 ]];
+			then
+				sudo pacman -S --noconfirm deluge
+			elif [[ $client == 3 ]];
+			then
+				sudo pacman -S --noconfirm qbittorrent
+			else
+				echo "You have entered an invalid number"
+				InstallAndConquer
+			fi
+			;;
+			8)
 cat <<_EOF_
 It is important to note that while you can install many of the listed
 applications through pamac or octopi, you will not be able to utilize the aur
 for future updates of some of the software installed via tarballs without one of these...
 You have been warned. These also might not work on EndeavourOS.
 _EOF_
-		echo "1 - pacaur"
-		echo "2 - yaourt"
-		echo "3 - trizen"
-		echo "4 - yay"
-		read helper
-		if [[ $helper == 1 ]];
-		then
-			sudo pacman -S --noconfirm pacaur
-		elif [[ $helper == 2 ]];
-		then
-			sudo pacman -S --noconfirm yaourt
-		elif [[ $helper == 3 ]];
-		then
-			sudo pacman -S --noconfirm trizen
-		elif [[ $helper == 4 ]];
-		then
-			sudo pacman -S --noconfirm yay
-		else
-			echo "You have entered an invalid number"
-		fi
-	;;
-		9)
-		echo "This installs your choice in browsers"
-		echo "1 - Chromium"
-		echo "2 - Epiphany"
-		echo "3 - Falkon"
-		echo "4 - Midori"
-		echo "5 - Opera"
-		echo "6 - Vivaldi"
-		echo "7 - Pale Moon"
-		echo "8 - Seamonkey"
-		echo "9 - Dillo"
-		echo "10 - Lynx"
-		echo "11 - Google-chrome"
-		echo "12 - Waterfox"
-		echo "13 - Basilisk"
-		echo "14 - Slimjet"
-		echo "15 - Brave"
-		read browser
-		if [[ $browser == 1 ]];
-		then
-			sudo pacman -S --noconfirm chromium
-		elif [[ $browser == 2 ]];
-		then
-			sudo pacman -S --noconfirm epiphany
-		elif [[ $browser == 3 ]];
-		then
-			sudo pacman -S --noconfirm falkon
-		elif [[ $browser == 4 ]];
-		then
-			sudo pacman -S midori
-		elif [[ $browser == 5 ]];
-		then
-			sudo pacman -S --noconfirm opera opera-ffmpeg-codecs
-		elif [[ $browser == 6 ]];
-		then
-			cd /tmp
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz
-			gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar; cd vivaldi && makepkg -si
-		elif [[ $browser == 7 ]];
-		then
-			wget linux.palemoon.org/datastore/release/palemoon-28.12.0.linux-x86_64.tar.xz; tar -xf palemoon-28.12.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
-			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
-		elif [[ $browser == 8 ]];
-		then
-			sudo pacman -S --noconfirm seamonkey
-		elif [[ $browser == 9 ]];
-		then
-			sudo pacman -S --noconfirm dillo
-		elif [[ $browser == 10 ]];
-		then
-			sudo pacman -S --noconfirm lynx
-		elif [[ $browser == 11 ]];
-		then
-			cd /tmp
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz
-			gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
-		elif [[ $browser == 12 ]];
-		then
-			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.07.2.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.07.2.en-US.linux-x86_64.tar.bz2
-			sudo ln -s ~/waterfox-classic/waterfox /usr/bin/waterfox
-			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
-		elif [[ $browser == 13 ]];
-		then
-			wget http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz; tar -xvf basilisk-latest.linux64.tar.xz
-			sudo mv basilisk /opt; sudo touch /usr/share/applications/basilisk.desktop; sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
-			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
-		elif [[ $browser == 14 ]];
-		then
-			cd /tmp
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/slimjet.tar.gz
-			gunzip slimjet.tar.gz; tar -xvf slimjet.tar; cd slimjet && makepkg -si
-		elif [[ $browser == 15 ]];
-		then
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/brave-bin.tar.gz
-			gunzip brave-bin.tar.gz; tar -xvf brave-bin.tar; cd brave-bin; makepkg -si; rm brave-bin.tar
-		else
-			echo "You have entered an invalid number"
-		fi
-	;;
-		10)
-		echo "This installs a choice in media players"
-		echo "1 - xplayer"
-		echo "2 - parole"
-		echo "3 - kodi"
-		echo "4 - Music"
-		echo "5 - spotify"
-		echo "6 - rhythmbox"
-		echo "7 - mpv"
-		echo "8 - smplayer"
-		echo "9 - VLC"
-		echo "10 - totem"
-		echo "11 - pragha"
-		echo "12 - clementine"
-		read player
-		if [[ $player == 1 ]];
-		then
-			sudo pacman -S --noconfirm xplayer
-		elif [[ $player == 2 ]];
-		then
-			sudo pacman -S --noconfirm parole
-		elif [[ $player == 3 ]];
-		then
-			sudo pacman -S --noconfirm kodi
-		elif [[ $player == 4 ]];
-		then
-			sudo pacman -S --noconfirm Music
-		elif [[ $player == 5 ]];
-		then
-			cd /tmp
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/spotify.tar.gz
-			gunzip spotify.tar.gz; tar -xvf spotify.tar; cd spotify && makepkg -si
-		elif [[ $player == 6 ]];
-		then
-			sudo pacman -S --noconfirm rhythmbox
-		elif [[ $player == 7 ]];
-		then
-			sudo pacman -S --noconfirm mpv
-		elif [[ $player == 8 ]];
-		then
-			sudo pacman -S --noconfirm smplayer smplayer-skins
-		elif [[ $player == 9 ]];
-		then
-			distribution=$(cat /etc/issue | awk '{print $1}')
-			if [[ $distribution == manjaro ]];
+			echo "1 - pacaur"
+			echo "2 - yaourt"
+			echo "3 - trizen"
+			echo "4 - yay"
+			read helper
+			if [[ $helper == 1 ]];
 			then
-				sudo pacman -Rs --noconfirm vlc && sudo pacman -S vlc-nightly clementine
+				sudo pacman -S --noconfirm pacaur
+			elif [[ $helper == 2 ]];
+			then
+				sudo pacman -S --noconfirm yaourt
+			elif [[ $helper == 3 ]];
+			then
+				sudo pacman -S --noconfirm trizen
+			elif [[ $helper == 4 ]];
+			then
+				sudo pacman -S --noconfirm yay
 			else
-				sudo pacman -S --noconfirm vlc
+				echo "You have entered an invalid number"
+				InstallAndConquer
 			fi
-		elif [[ $player == 10 ]];
-		then
-			sudo pacman -s --noconfirm totem
-		elif [[ $player == 11 ]];
-		then
-			sudo pacman -S --noconfirm pragha
-		elif [[ $player == 12 ]];
-		then
-			sudo pacman -S --noconfirm clementine
-		else
-			echo "You have entered an invalid number"
-		fi
-	;;
-		11)
-		echo "This installs a virtualbox client"
-		sudo pacman -S --noconfirm virtualbox
-	;;
-		12)
-		echo "This installs Wine or Windows emulation software"
-		echo "1 - Wine"
-		echo "2 - playonlinux"
-
-		read software;
-
-		case $software in
-			1)
-			sudo pacman -S --noconfirm wine ;;
-			2)
-			sudo pacman -S --noconfirm playonlinux ;;
-			*)
-			echo "You have entered an invalid number" ;;
+			;;
+			9)
+			echo "This installs your choice in browsers"
+			echo "1 - Chromium"
+			echo "2 - Epiphany"
+			echo "3 - Falkon"
+			echo "4 - Midori"
+			echo "5 - Opera"
+			echo "6 - Vivaldi"
+			echo "7 - Pale Moon"
+			echo "8 - Seamonkey"
+			echo "9 - Dillo"
+			echo "10 - Lynx"
+			echo "11 - Google-chrome"
+			echo "12 - Waterfox"
+			echo "13 - Basilisk"
+			echo "14 - Slimjet"
+			echo "15 - Brave"
+			echo "16 - qutebrowser"
+			read browser
+			if [[ $browser == 1 ]];
+			then
+				sudo pacman -S --noconfirm chromium
+			elif [[ $browser == 2 ]];
+			then
+				sudo pacman -S --noconfirm epiphany
+			elif [[ $browser == 3 ]];
+			then
+				sudo pacman -S --noconfirm falkon
+			elif [[ $browser == 4 ]];
+			then
+				sudo pacman -S midori
+			elif [[ $browser == 5 ]];
+			then
+				sudo pacman -S --noconfirm opera opera-ffmpeg-codecs
+			elif [[ $browser == 6 ]];
+			then
+				cd /tmp
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz; gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar; cd vivaldi && makepkg -si
+			elif [[ $browser == 7 ]];
+			then
+				wget linux.palemoon.org/datastore/release/palemoon-28.12.0.linux-x86_64.tar.xz; tar -xf palemoon-28.12.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
+			elif [[ $browser == 8 ]];
+			then
+				sudo pacman -S --noconfirm seamonkey
+			elif [[ $browser == 9 ]];
+			then
+				sudo pacman -S --noconfirm dillo
+			elif [[ $browser == 10 ]];
+			then
+				sudo pacman -S --noconfirm lynx
+			elif [[ $browser == 11 ]];
+			then
+				cd /tmp
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz; gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
+			elif [[ $browser == 12 ]];
+			then
+				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.07.2.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.07.2.en-US.linux-x86_64.tar.bz2
+				sudo ln -s ~/waterfox-classic/waterfox /usr/bin/waterfox
+				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
+			elif [[ $browser == 13 ]];
+			then
+				wget http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz; tar -xvf basilisk-latest.linux64.tar.xz; sudo mv basilisk /opt; sudo touch /usr/share/applications/basilisk.desktop; sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
+				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
+			elif [[ $browser == 14 ]];
+			then
+				cd /tmp
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/slimjet.tar.gz; gunzip slimjet.tar.gz; tar -xvf slimjet.tar; cd slimjet && makepkg -si
+			elif [[ $browser == 15 ]];
+			then
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/brave-bin.tar.gz; gunzip brave-bin.tar.gz; tar -xvf brave-bin.tar; cd brave-bin; makepkg -si
+			elif [[ $browser == 16 ]];
+			then
+				sudo pacman -S qutebrowser
+			else
+				echo "You have entered an invalid number"
+				InstallAndConquer
+			fi
+			;;
+			10)
+			echo "This installs a choice in media players"
+			echo "1 - xplayer"
+			echo "2 - parole"
+			echo "3 - kodi"
+			echo "4 - Music"
+			echo "5 - Spotify"
+			echo "6 - rhythmbox"
+			echo "7 - mpv"
+			echo "8 - smplayer"
+			echo "9 - VLC"
+			echo "10 - totem"
+			echo "11 - pragha"
+			echo "12 - clementine"
+			read player
+			if [[ $player == 1 ]];
+			then
+				sudo pacman -S --noconfirm xplayer
+			elif [[ $player == 2 ]];
+			then
+				sudo pacman -S --noconfirm parole
+			elif [[ $player == 3 ]];
+			then
+				sudo pacman -S --noconfirm kodi
+			elif [[ $player == 4 ]];
+			then
+				sudo pacman -S --noconfirm Music
+			elif [[ $player == 5 ]];
+			then
+				cd /tmp
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/spotify.tar.gz; gunzip spotify.tar.gz; tar -xvf spotify.tar; cd spotify && makepkg -si
+			elif [[ $player == 6 ]];
+			then
+				sudo pacman -S --noconfirm rhythmbox
+			elif [[ $player == 7 ]];
+			then
+				sudo pacman -S --noconfirm mpv
+			elif [[ $player == 8 ]];
+			then
+				sudo pacman -S --noconfirm smplayer smplayer-skins
+			elif [[ $player == 9 ]];
+			then
+				distribution=$(cat /etc/issue | awk '{print $1}')
+				if [[ $distribution == manjaro ]];
+				then
+					sudo pacman -Rs --noconfirm vlc && sudo pacman -S vlc-nightly clementine
+				else
+					sudo pacman -S --noconfirm vlc
+				fi
+			elif [[ $player == 10 ]];
+			then
+				sudo pacman -s --noconfirm totem
+			elif [[ $player == 11 ]];
+			then
+				sudo pacman -S --noconfirm pragha
+			elif [[ $player == 12 ]];
+			then
+				sudo pacman -S --noconfirm clementine
+			else
+				echo "You have entered an invalid number"
+				InstallAndConquer
+			fi
+			;;
+			11)
+			echo "This installs a virtualbox client"
+			sudo pacman -S --noconfirm virtualbox
+			;;
+			12)
+			echo "This installs Wine or Windows emulation software"
+			echo "1 - Wine"
+			echo "2 - playonlinux"
+			read software;
+			case $software in
+				1)
+				sudo pacman -S --noconfirm wine ;;
+				2)
+				sudo pacman -S --noconfirm playonlinux ;;
+				*)
+				echo "You have entered an invalid number"
+				InstallAndConquer
+				;;
+			esac
+			;;
+			13)
+			echo "This installs a webcam application for laptops"
+			sudo pacman -S --noconfirm guvcview
+			;;
+			14)
+			echo "etc-update can help you manage pacnew files and other configuration files after system updates."
+			sleep 2
+			sudo pacman -S --needed base-devel
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz; gunzip etc-update.tar.gz && tar -xvf etc-update.tar; cd etc-update && makepkg -si
+			echo "Would you also like to install downgrade?(Y/n)"
+			read answer
+			while [ $answer ==  Y ];
+			do
+				sudo pacman -S --noconfirm downgrade
+				break
+			done
+			;;
+			15)
+			echo "This installs a choice in small games"
+			echo "1 - supertuxkart"
+			echo "2 - gnome-mahjongg"
+			echo "3 - aisleriot"
+			echo "4 - ace-of-penguins"
+			echo "5 - gnome-sudoku"
+			echo "6 - gnome-mines"
+			echo "7 - chromium-bsu"
+			echo "8 - supertux"
+			echo "9 - everything"
+			read package
+			if [[ $package == 1 ]];
+			then
+				sudo pacman -S --noconfirm supertuxkart
+			elif [[ $package == 2 ]];
+			then
+				sudo pacman -S --noconfirm gnome-mahjongg
+			elif [[ $package == 3 ]];
+			then
+				sudo pacman -S --noconfirm aisleriot
+			elif [[ $package == 4 ]];
+			then
+				sudo pacman -S --noconfirm ace-of-penguins
+			elif [[ $package == 5 ]];
+			then
+				sudo pacman -S --noconfirm gnome-sudoku
+			elif [[ $package == 6 ]];
+			then
+				sudo pacman -S --noconfirm gnome-mines
+			elif [[ $package == 7 ]];
+			then
+				sudo pacman -S --noconfirm chromium-bsu
+			elif [[ $package == 8 ]];
+			then
+				sudo pacman -S --noconfirm supertux
+			elif [[ $package == 9 ]];
+			then
+				sudo pacman -S --noconfirm supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux
+			else
+				echo "You have entered an invalid number"
+				InstallAndConquer
+			fi
+			;;
+			16)
+			echo "This installs video/audio decoding/reencoding software"
+			sudo pacman -S --noconfirm kdenlive audacity
+			echo "Would you also like obs-studio?(Y/n)"
+			read answer
+			while [ $answer == Y ];
+			do
+				sudo pacman -S --noconfirm obs-studio
+				break
+			done
+			;;
+			17)
+			echo "This installs a dock application"
+			sudo pacman -S --noconfirm plank
+			;;
+			18)
+			echo "This installs your backup software"
+			echo "1 - deja-dup"
+			echo "2 - timeshift"
+			read package
+			if [[ $package == 1 ]];
+			then
+				sudo pacman -S --noconfirm deja-dup
+			elif [[ $package == 2 ]];
+			then
+				sudo pacman -S --noconfirm timeshift
+			else
+				echo "You have entered an invalid number"
+				InstallAndConquer
+			fi
+			;;
+			19)
+			echo "This installs a few common themes"
+			sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme arc-gtk-theme papirus-icon-theme materia-gtk-theme paper-icon-theme
+			;;
+			20)
+			echo "This installs screenfetch"
+			sudo pacman -S --noconfirm screenfetch
+			;;
+			21)
+			echo "This installs office software"
+			echo "1 - Libreoffice"
+			echo "2 - Libreoffice-fresh"
+			echo "3 - Abiword/Gnumeric"
+			read software
+			if [[ $software == 1 ]];
+			then
+				sudo pacman -S --noconfirm libreoffice
+			elif [[ $software == 2 ]];
+			then
+				pacman -Q | grep libreoffice || sudo pacman -S --noconfirm libreoffice-fresh
+			elif [[ $software == 3 ]];
+			then
+				sudo pacman -S --noconfirm abiword gnumeric
+			else
+				echo "You've entered an invalid number"
+				InstallAndConquer
+			fi
+			;;
+			22)
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz; wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gz
+			gunzip ttf-ms-fonts.tar.gz; gunzip ttf-mac-fonts.tar.gz; tar -xvf ttf-ms-fonts.tar; tar -xvf ttf-mac-fonts.tar
+			cd ttf-ms-fonts; makepkg -si; pushd ttf-mac-fonts; makepkg -si; cd
+			;;
+			23)
+			echo "This installs possible security software and virus checker if you wish"
+			echo "1 - rkhunter"
+			echo "2 - clamav"
+			echo "3 - both"
+			read software;
+			case $software in
+				1)
+				sudo pacman -S --noconfirm rkhunter ;;
+				2)
+				sudo pacman -S --noconfirm clamav ;;
+				3)
+				sudo pacman -S --noconfirm rkhunter clamav ;;
+				*)
+				echo "You have entered an invalid number"
+				InstallAndConquer
+				;;
+			esac
+			;;
+			24)
+			echo "This installs stellarium incase you are a night sky observer"
+			sudo pacman -S --noconfirm stellarium
+			;;
+			25)
+			echo "Ok, well, I'm here if you change your mind"
+			break
+			;;
 		esac
-	;;
-		13)
-		echo "This installs a webcam application for laptops"
-		sudo pacman -S --noconfirm guvcview
-	;;
-		14)
-		echo "etc-update can help you manage pacnew files and other configuration files after system updates."
-		sleep 2
-		sudo pacman -S --needed base-devel
-		wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz
-		gunzip etc-update.tar.gz && tar -xvf etc-update.tar; cd etc-update && makepkg -si
-		echo "Would you also like to install downgrade?(Y/n)"
-		read answer
-		while [ $answer ==  Y ];
-		do
-			sudo pacman -S --noconfirm downgrade
-		break
-		done
-	;;
-		15)
-		echo "This installs a choice in small games"
-		echo "1 - supertuxkart"
-		echo "2 - gnome-mahjongg"
-		echo "3 - aisleriot"
-		echo "4 - ace-of-penguins"
-		echo "5 - gnome-sudoku"
-		echo "6 - gnome-mines"
-		echo "7 - chromium-bsu"
-		echo "8 - supertux"
-		echo "9 - everything"
-		read package
-		if [[ $package == 1 ]];
-		then
-			sudo pacman -S --noconfirm supertuxkart
-		elif [[ $package == 2 ]];
-		then
-			sudo pacman -S --noconfirm gnome-mahjongg
-		elif [[ $package == 3 ]];
-		then
-			sudo pacman -S --noconfirm aisleriot
-		elif [[ $package == 4 ]];
-		then
-			sudo pacman -S --noconfirm ace-of-penguins
-		elif [[ $package == 5 ]];
-		then
-			sudo pacman -S --noconfirm gnome-sudoku
-		elif [[ $package == 6 ]];
-		then
-			sudo pacman -S --noconfirm gnome-mines
-		elif [[ $package == 7 ]];
-		then
-			sudo pacman -S --noconfirm chromium-bsu
-		elif [[ $package == 8 ]];
-		then
-			sudo pacman -S --noconfirm supertux
-		elif [[ $package == 9 ]];
-		then
-			sudo pacman -S --noconfirm supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux
-		else
-			echo "You have entered an invalid number"
-		fi
-
-	;;
-		16)
-		echo "This installs video/audio decoding/reencoding software"
-		sudo pacman -S --noconfirm kdenlive audacity
-		echo "Would you also like obs-studio?(Y/n)"
-		read answer
-		while [ $answer == Y ];
-		do
-			sudo pacman -S --noconfirm obs-studio
-		break
-		done
-	;;
-		17)
-		echo "This installs a dock application"
-		sudo pacman -S --noconfirm plank
-	;;
-		18)
-		echo "This installs your backup software"
-		echo "1 - deja-dup"
-		echo "2 - timeshift"
-		read package
-		if [[ $package == 1 ]];
-		then
-			sudo pacman -S --noconfirm deja-dup
-		elif [[ $package == 2 ]];
-		then
-			sudo pacman -S --noconfirm timeshift
-		else
-			echo "You have entered an invalid number"
-		fi
-	;;
-		19)
-		echo "This installs a few common themes"
-		sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme arc-gtk-theme papirus-icon-theme materia-gtk-theme paper-icon-theme
-	;;
-		20)
-		echo "This installs screenfetch"
-		sudo pacman -S --noconfirm screenfetch
-	;;
-		21)
-		echo "This installs office software"
-		echo "1 - Libreoffice"
-		echo "2 - Libreoffice-fresh"
-		echo "3 - Abiword/Gnumeric"
-		read software
-		if [[ $software == 1 ]];
-		then
-			sudo pacman -S --noconfirm libreoffice
-		elif [[ $software == 2 ]];
-		then
-			pacman -Q | grep libreoffice || sudo pacman -S --noconfirm libreoffice-fresh
-		elif [[ $software == 3 ]];
-		then
-			sudo pacman -S --noconfirm abiword gnumeric
-		else
-			echo "You've entered an invalid number"
-		fi
-	;;
-		22)
-		wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz; wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gz
-		gunzip ttf-ms-fonts.tar.gz; gunzip ttf-mac-fonts.tar.gz; tar -xvf ttf-ms-fonts.tar; tar -xvf ttf-mac-fonts.tar
-		cd ttf-ms-fonts; makepkg -si; pushd ttf-mac-fonts; makepkg -si; cd
-	;;
-		23)
-		echo "This installs possible security software and virus checker if you wish"
-		echo "1 - rkhunter"
-		echo "2 - clamav"
-		echo "3 - both"
-
-		read software;
-
-		case $software in
-			1)
-			sudo pacman -S --noconfirm rkhunter ;;
-			2)
-			sudo pacman -S --noconfirm clamav ;;
-			3)
-			sudo pacman -S --noconfirm rkhunter clamav ;;
-			*)
-			echo "You have entered an invalid number" ;;
-		esac
-	;;
-		24)
-		echo "This installs stellarium incase you are a night sky observer"
-		sudo pacman -S --noconfirm stellarium
-	;;
-		25)
-		echo "Ok, well, I'm here if you change your mind"
-		break
-	;;
-	esac
 	done
 
 	read -p "Press enter to continue..."
