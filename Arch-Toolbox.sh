@@ -8,7 +8,7 @@ Setup(){
 	sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
 	sudo cp /etc/default/grub /etc/default/grub.bak
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
-	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak 
+	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 	sudo cp /etc/passwd /etc/passwd.bak
 	sudo cp /etc/shadow /etc/shadow.bak
 	sudo cp /etc/fstab /etc/fstab.bak
@@ -956,7 +956,8 @@ _EOF_
 			;;
 			19)
 			echo "This installs a few common themes"
-			sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme arc-gtk-theme papirus-icon-theme materia-gtk-theme paper-icon-theme
+			sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme arc-gtk-theme 
+			sudo pacman -S --noconfirm papirus-icon-theme materia-gtk-theme paper-icon-theme
 			;;
 			20)
 			echo "This installs screenfetch"
@@ -991,19 +992,25 @@ _EOF_
 			echo "This installs possible security software and virus checker if you wish"
 			echo "1 - rkhunter"
 			echo "2 - clamav"
-			echo "3 - both"
+			echo "3 - lynis"
+			echo "4 - Arch Audit"
+			echo "5 - both"
 			read software;
+
 			case $software in
 				1)
 				sudo pacman -S --noconfirm rkhunter ;;
 				2)
 				sudo pacman -S --noconfirm clamav ;;
 				3)
+				sudo pacman -S --noconfirm lynis;;
+				4)
+				sudo pacman -S --noconfirm arch-audit;;
+				5)
 				sudo pacman -S --noconfirm rkhunter clamav ;;
 				*)
 				echo "You have entered an invalid number"
-				InstallAndConquer
-				;;
+				InstallAndConquer;;
 			esac
 			;;
 			24)
@@ -1112,6 +1119,23 @@ Some good reference sites are:
 https://wiki.manjaro.org/index.php?title=Main_Page
 https://wiki.archlinux.org
 https://forum.manjaro.org
+
+########################################################################
+BACK UP IMPORTANT SYSTEM FILES
+########################################################################
+It is important to keep a back up copy of certain system files in Arch
+Linux as pacnew files become abundant on the system and these files
+bring with them many changes that can help with the system, but you 
+are tasked with managing them yourself to get these changes. 
+Sometimes these said changes also cause problems to the point that your
+system will be unbootable if your fstab is changed or you might lose admin 
+permissions if you are suddenly taken out of the wheel by the passwd file 
+update. It is also important to look these files over and compare them 
+before applying them to your system. There is a really good program in 
+Linux now that can help you accomplish this. The software I am referring to 
+is Meld. Still, it's good practice when modifying or setting up your Linux
+system to keep a back up copy of many of these and so I've added it in to 
+this script automatically on Setup function.
 
 ########################################################################
 PACMAN/OCTOPI AND PACKAGE MANAGERS IN GENERAL
@@ -1279,6 +1303,24 @@ these scripts or any problems you have with Linux. I will be more than
 happy to help. One further notice, the Swap file size is configurable
 for users who are somewhat advanced enough to go into the code and
 change the size from 2G to whatever they desire.
+
+########################################################################
+LINUX PERMISSIONS
+########################################################################
+Unlike Windows, Linux permissions are a bit different. There is a learning
+curve to implementing specially tailored policies on Linux that are just 
+easier in Windows. Linux uses numbers frequently to determine the read,
+write, and execute permissions of the files on the disk. Sometimes in Arch, 
+these numbers don't always match up after an update. Users and Groups assi-
+gned to each can be found in the etc-passwd or etc-group files. When changing 
+user and groups assigned to a file, the numbers also change. A general rule 
+of thumb is that 4 is equal to read, 1 to execute, and 2 to write. So a series 
+of numbers like 755 would imply that the user and group is probably different 
+from the way in which these attributes were assigned originally on your system 
+by default. It was probably something like 777 or something, but everyone's 
+system is different. It is simple enough to change with either the chown or chmod 
+commands, but I have yet to figure out an easy way to streamline this for new users 
+in these scripts. I will get there though, so please be patient.
 
 ########################################################################
 CONTACT ME
@@ -1531,9 +1573,9 @@ _EOF_
 	echo "10 - Midori"
 	echo "11 - Basilisk"
 	echo "12 - Brave"
-	
+
 	read operation;
-	
+
 	case $operation in
 		1)
 		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old
@@ -1652,7 +1694,7 @@ SystemMaintenance(){
 	sudo systemctl enable ufw; sudo ufw enable
 
 	#This refreshes index cache
-	sudo updatedb; sudo mandb
+	sudo updatedb; sudo mandb; sudo balooctl check
 
 	#Checks for pacnew files and other extra configuration file updates
 	find /usr/bin/etc-update
