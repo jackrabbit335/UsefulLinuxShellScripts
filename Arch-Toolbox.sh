@@ -990,11 +990,11 @@ _EOF_
 			;;
 			23)
 			echo "This installs possible security software and virus checker if you wish"
-			echo "1 - rkhunter"
-			echo "2 - clamav"
-			echo "3 - lynis"
+			echo "1 - Rkhunter"
+			echo "2 - Clamav"
+			echo "3 - Lynis"
 			echo "4 - Arch Audit"
-			echo "5 - both"
+			echo "5 - All"
 			read software;
 
 			case $software in
@@ -1007,7 +1007,7 @@ _EOF_
 				4)
 				sudo pacman -S --noconfirm arch-audit;;
 				5)
-				sudo pacman -S --noconfirm rkhunter clamav ;;
+				sudo pacman -S --noconfirm rkhunter clamav lynis arch-audit ;;
 				*)
 				echo "You have entered an invalid number"
 				InstallAndConquer;;
