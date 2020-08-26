@@ -2780,7 +2780,6 @@
 0.0.0.0  ads.mediaforge.com.edgekey.net
 0.0.0.0  stats.mediaforge.com.edgekey.net
 0.0.0.0  tags.msnbc.com.edgekey.net
-0.0.0.0  stats.nba.com.edgekey.net
 0.0.0.0  beacon.securestudies.com.edgekey.net
 0.0.0.0  i16-tb.sgsnssdk.com.edgekey.net
 0.0.0.0  ib.snssdk.com.edgekey.net
@@ -3226,6 +3225,7 @@
 0.0.0.0  www-googletagmanager.l.google.com
 0.0.0.0  video-stats.video.google.com
 0.0.0.0  adservice.google.com.tr
+0.0.0.0  adservice.google.com.ua
 0.0.0.0  adservice.google.com.vn
 0.0.0.0  adservice.google.de
 0.0.0.0  adservice.google.ie
@@ -4010,6 +4010,7 @@
 0.0.0.0  adsinteractive-794b.kxcdn.com
 0.0.0.0  sumome-140a.kxcdn.com
 0.0.0.0  api.lanistaads.com
+0.0.0.0  ads.latinongroup.com
 0.0.0.0  launch1.co
 0.0.0.0  mobile.launchdarkly.com
 0.0.0.0  lavanetwork.net
