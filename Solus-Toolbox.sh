@@ -4,19 +4,40 @@ Setup(){
 	#Sets default editor to nano in bashrc
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
 
+	#Backs up important system files
+	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredum.conf.bak
+	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+	sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
+	sudo cp /etc/shadow /etc/shadow.bak
+	sudo cp /etc/passwd /etc/passwd.bak
+	sudo cp /etc/profile /etc/profile.bak
+	sudo cp /etc/default/grub /etc/default/grub.bak
+	sudo cp /etc/fstab /etc/fstab.bak
+	sudo cp -r /boot /boot-old
+	cp .bashrc .bashrc.bak
+
+	#Fix screen RESOLUTION
+	echo "Would you like to choose a more accurate screen resolution?(Y/n)"
+	read answer
+	while [ $answer == Y ]; 
+	do
+		ScreenFix
+		break
+	done
+
 	#This sets up your system time.
 	echo "Would you like to set ntp to true? (Y/n)"
 	read answer
 	while [ $answer == Y ];
 	do
-	    echo "Enter your preferred timezone"
+	  echo "Enter your preferred timezone"
 		read timezone
 		sudo timedatectl set-ntp true; sudo timedatectl set-timezone $timezone
 	break
 	done
 
 	#This starts your firewall
-	eopkg list-installed | grep gufw || sudo eopkg install gufw; sudo systemctl enable ufw; sudo ufw enable
+	eopkg list-installed | grep gufw || sudo eopkg rdb; sudo eopkg ur; sudo eopkg install gufw; sudo systemctl enable ufw; sudo ufw enable
 	echo "Would you also like to deny ssh and telnet for security?(Y/n)"
 	read answer
 	while [ $answer == Y ]
@@ -26,13 +47,10 @@ Setup(){
 	done
 
 	#This lowers grub delay
-	sudo cp /etc/default/grub /etc/default/grub.bak
 	sudo sed -i -e '/GRUB_TIMEOUT=5/c\GRUB_TIMEOUT=3 ' /etc/default/grub; sudo update-grub
 
 	#This restricts coredumps to prevent attackers from getting info
-	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
 	sudo sed -i -e '/#Storage=external/c\Storage=none ' /etc/systemd/coredump.conf
-	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 	sudo sed -i -e '/#PermitRootLogin/c\PermitRootLogin no ' /etc/ssh/sshd_config
 	sudo touch /etc/sysctl.d/50-dmesg-restrict.conf
 	sudo touch /etc/sysctl.d/50-kptr-restrict.conf
@@ -40,6 +58,7 @@ Setup(){
 	echo "kernel.dmesg_restrict = 1" | sudo tee -a /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "kernel.kptr_restrict = 1" | sudo tee -a /etc/sysctl.d/50-kptr-restrict.conf
 	echo "vm.swappiness = 10" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
+	sudo sysctl --system
 	sudo sysctl -p
 
 	#WE can block ICMP requests from the kernel if you'd like
@@ -57,7 +76,6 @@ Setup(){
 	read answer
 	if [[ $answer == Y ]];
 	then
-		sudo cp /etc/default/grub /etc/default/grub.bak
 		sudo sed -i -e 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/g' /etc/default/grub; sudo update-grub
 	else
 		echo "OKAY!"
@@ -95,7 +113,6 @@ Setup(){
 	read answer
 	while [ $answer == Y ];
 	do
-		sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
 		sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
 		break
 	done
@@ -136,7 +153,6 @@ _EOF_
 	read answer
 	if [[ $answer == Y ]];
 	then
-		sudo cp ~/.bashrc ~/.bashrc.bak
 		echo "#Alias to edit fstab" >> ~/.bashrc
 		echo 'alias fstab="sudo nano /etc/fstab"' >> ~/.bashrc
 		echo "#Alias to edit grub" >> ~/.bashrc
@@ -161,8 +177,8 @@ _EOF_
 		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
 	fi
-	
-	
+
+
 #This fixes gufw not opening in kde plasma desktop
 cat <<_EOF_
 This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue.
@@ -199,7 +215,7 @@ _EOF_
 Update(){
 	checkNetwork
 
-	sudo eopkg rebuild-db; sudo eopkg upgrade
+	sudo eopkg rebuild-db; sudo eopkg update-repo; sudo eopkg upgrade
 
 	clear
 	Greeting
@@ -234,7 +250,8 @@ Reset(){
 Systeminfo(){
 	host=$(hostname)
 	drive=$(df -P / | awk '{print $1}' | grep "/dev/")
-	distribution=$(cat /etc/issue | awk '{print $1,$2}')
+	DisplayManager=$(ps auxf | awk '{print $11}' | \grep --color -e dm$ -e slim$)
+	distribution=$(cat /etc/solus-release)
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INFORMATION" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
@@ -260,9 +277,19 @@ Systeminfo(){
 	echo $XDG_CURRENT_DESKTOP >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "DISPLAY MANAGER" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo $DisplayManager >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INITIALIZATION" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	ps -p1 | awk 'NR!=1{print $4}' >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SCREEN RESOLUTION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	xrandr >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEM INSTALL DATE" >>$host-sysinfo.txt
@@ -492,6 +519,16 @@ Systeminfo(){
 	Greeting
 }
 
+ScreenFix(){
+	xrandr
+	sleep 1
+	echo "Would you like to choose another screen resolution?(Y/n)"
+	read answer
+	echo "Choose a resolution from the list above"
+	read resolution
+	xrandr -s $resolution 
+}
+
 InstallAndConquer(){
 	checkNetwork
 
@@ -549,8 +586,7 @@ InstallAndConquer(){
 			sudo eopkg install kate
 		elif [[ $package == 5 ]];
 		then
-			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/programming/sublime-text-3/pspec.xml
-			sudo eopkg it webstorm*.eopkg;sudo rm webstorm*.eopkg
+			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/programming/sublime-text-3/pspec.xml; sudo eopkg it sublime*.eopkg;sudo rm sublime*.eopkg
 		else
 			echo "You've entered an invalid number"
 		fi
@@ -599,8 +635,7 @@ InstallAndConquer(){
 			sudo eopkg install hexchat
 		elif [[ $package == 2 ]];
 		then
-			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/im/skype/pspec.xml
-			sudo eopkg it skype*.eopkg;sudo rm *.eopkg
+			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/im/skype/pspec.xml; sudo eopkg it skype*.eopkg;sudo rm *.eopkg
 		fi
 	;;
 		6)
@@ -639,8 +674,7 @@ InstallAndConquer(){
 			sudo eopkg install vivaldi-stable
 		elif [[ $browser == 7 ]];
 		then
-			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/web/browser/google-chrome-stable/pspec.xml
-			sudo eopkg it google-chrome-*.eopkg;sudo rm google-chrome-*.eopkg
+			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/web/browser/google-chrome-stable/pspec.xml; sudo eopkg it google-chrome-*.eopkg;sudo rm google-chrome-*.eopkg
 		elif [[ $browser == 8 ]];
 		then
 			sudo snap install chromium
@@ -790,8 +824,7 @@ InstallAndConquer(){
 	;;
 		13)
 		echo "This installs Microsoft Core Fonts"
-		sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/desktop/font/mscorefonts/pspec.xml
-		sudo eopkg it mscorefonts*.eopkg;sudo rm mscorefonts*.eopkg
+		sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/desktop/font/mscorefonts/pspec.xml; sudo eopkg it mscorefonts*.eopkg;sudo rm mscorefonts*.eopkg
 	;;
 		14)
 		echo "This installs a dock application"
@@ -1019,15 +1052,15 @@ MICROCODE
 Microcode is a piece of system language programming that is used in
 giving instructions to the CPU(Brain of the device). Microcode updates
 are not only important for updating the security of the CPU, but also
-for extending the functionality as well. Some systems wont benefit from 
-this, but most will. Microcode helps to lock down certain Spectre 
-vulnerabilities. Modern multi-step and multithreading architectures 
-will make some use of microcode as it can help make some hardware designed 
-for less to do more. In a sense, it can make weaker CPUs seemingly more 
-powerful. Most Linux distributions have begun making this piece of code 
-stock baked into their kernels, however, I have added functionality that 
-tries to install this piece of coding in the event that it wasnt installed 
-and or loaded already. On most systems, Intel microcode is wrapped in the 
+for extending the functionality as well. Some systems wont benefit from
+this, but most will. Microcode helps to lock down certain Spectre
+vulnerabilities. Modern multi-step and multithreading architectures
+will make some use of microcode as it can help make some hardware designed
+for less to do more. In a sense, it can make weaker CPUs seemingly more
+powerful. Most Linux distributions have begun making this piece of code
+stock baked into their kernels, however, I have added functionality that
+tries to install this piece of coding in the event that it wasnt installed
+and or loaded already. On most systems, Intel microcode is wrapped in the
 package intel-ucode, while AMDs microcode is wrapped under amd-ucode.
 
 ########################################################################
@@ -1253,7 +1286,7 @@ cleanup(){
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
 	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
@@ -1434,7 +1467,7 @@ SystemMaintenance(){
 	checkNetwork
 
 	#This attempts to fix databases and update your system
-	sudo eopkg delete-cache; sudo eopkg clean; sudo eopkg rebuild-db; sudo eopkg update-repo; sudo eopkg upgrade
+	sudo eopkg rebuild-db; sudo eopkg update-repo; sudo eopkg upgrade
 
 	#This checks for broken packages
 	sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg install --reinstall
@@ -1670,15 +1703,16 @@ Greeting(){
 	echo "7 - Restore your important files and photos"
 	echo "8 - Manage system services"
 	echo "9 - Collect system information for troubleshooting"
-	echo "10 - Cleanup"
-	echo "11 - System Maintenance"
-	echo "12 - Browser Repair"
-	echo "13 - Update"
-	echo "14 - MakeSwap"
-	echo "15 - Help"
-	echo "16 - Restart"
-	echo "17 - Reset the desktop"
-	echo "18 - exit"
+	echo "10 - Screen Resolution Switcher"
+	echo "11 - Cleanup"
+	echo "12 - System Maintenance"
+	echo "13 - Browser Repair"
+	echo "14 - Update"
+	echo "15 - MakeSwap"
+	echo "16 - Help"
+	echo "17 - Restart"
+	echo "18 - Reset the desktop"
+	echo "19 - exit"
 
 	read selection;
 
@@ -1711,30 +1745,33 @@ Greeting(){
 		Systeminfo
 	;;
 		10)
-		cleanup
+		ScreenFix
 	;;
 		11)
-		SystemMaintenance
+		cleanup
 	;;
 		12)
-		BrowserRepair
+		SystemMaintenance
 	;;
 		13)
-		Update
+		BrowserRepair
 	;;
 		14)
-		MakeSwap
+		Update
 	;;
 		15)
-		Help
+		MakeSwap
 	;;
 		16)
-		Restart
+		Help
 	;;
 		17)
-		Reset
+		Restart
 	;;
 		18)
+		Reset
+	;;
+		19)
 		echo "Thank you for using Solus-Toolbox... Goodbye!"
 		sleep 1
 		exit
