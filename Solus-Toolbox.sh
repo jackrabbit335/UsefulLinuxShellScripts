@@ -522,8 +522,6 @@ Systeminfo(){
 ScreenFix(){
 	xrandr
 	sleep 1
-	echo "Would you like to choose another screen resolution?(Y/n)"
-	read answer
 	echo "Choose a resolution from the list above"
 	read resolution
 	xrandr -s $resolution 
