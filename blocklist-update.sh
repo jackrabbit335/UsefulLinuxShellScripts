@@ -37,7 +37,7 @@ echo "##################################################################"
 echo "Activating DeDuplication Algorithm"
 echo "##################################################################"
 
-sort blocklist.p2p | uniq | sort -r > blocklist.new && mv blocklist.new blocklist.p2p
+awk '!dup[$0]++' blocklist.p2p > blocklist.new && mv blocklist.new blocklist.p2p
 
 echo "##################################################################"
 echo "Finalizing"
