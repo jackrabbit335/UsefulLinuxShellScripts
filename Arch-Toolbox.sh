@@ -9,6 +9,8 @@ Setup(){
 	sudo cp /etc/default/grub /etc/default/grub.bak
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
 	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+	sudo cp /etc/profile /etc/profile.bak
+	sudo cp /etc/host.conf /etc/host.conf.bak
 	sudo cp /etc/passwd /etc/passwd.bak
 	sudo cp /etc/shadow /etc/shadow.bak
 	sudo cp /etc/fstab /etc/fstab.bak
@@ -197,6 +199,7 @@ _EOF_
 			then
 				echo "update successful"
 			else
+				sudo rankmirrors -v /etc/pacman.d/mirrorlist #This works for KaOS but probably not for Arch itself.
 				sudo rm -r /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg
 				sudo pacman -Sy --noconfirm gnupg archlinux-keyring; sudo pacman-key --init
 				sudo pacman-key --populate archlinux; sudo pacman-key --refresh-keys; sudo pacman -Scc
