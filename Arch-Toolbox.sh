@@ -7,8 +7,6 @@ Setup(){
 	#This backs up very important system files for your sanity
 	sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
 	sudo cp /etc/default/grub /etc/default/grub.bak
-	sudo cp /etc/profile /etc/profile.bak
-	sudo cp /etc/host.conf /etc/host.conf.bak
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
 	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 	sudo cp /etc/passwd /etc/passwd.bak
@@ -16,6 +14,15 @@ Setup(){
 	sudo cp /etc/fstab /etc/fstab.bak
 	sudo cp -r /boot /boot-old
 	cp .bashrc .bashrc.bak
+
+	#This fixes screen Resolution
+	echo "Would you like to choose a more accurate resolution?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		ScreenFix
+		break
+	done
 
 	#This sets up your system time.
 	echo "Would you like to set ntp to true? (Y/n)"
@@ -190,7 +197,6 @@ _EOF_
 			then
 				echo "update successful"
 			else
-				sudo rankmirrors -v /etc/pacman.d/mirrorlist #Supports KaOS but probably won't work on Arch itself
 				sudo rm -r /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg
 				sudo pacman -Sy --noconfirm gnupg archlinux-keyring; sudo pacman-key --init
 				sudo pacman-key --populate archlinux; sudo pacman-key --refresh-keys; sudo pacman -Scc
@@ -513,6 +519,14 @@ Systeminfo(){
 
 	clear
 	Greeting
+}
+
+ScreenFix(){
+	xrandr
+	sleep 1
+	echo "Choose a resolution from the list above"
+	read resolution
+	xrandr -s $resolution
 }
 
 InstallAndConquer(){
@@ -959,7 +973,7 @@ _EOF_
 			;;
 			19)
 			echo "This installs a few common themes"
-			sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme arc-gtk-theme 
+			sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme arc-gtk-theme
 			sudo pacman -S --noconfirm papirus-icon-theme materia-gtk-theme paper-icon-theme
 			;;
 			20)
@@ -1128,16 +1142,16 @@ BACK UP IMPORTANT SYSTEM FILES
 ########################################################################
 It is important to keep a back up copy of certain system files in Arch
 Linux as pacnew files become abundant on the system and these files
-bring with them many changes that can help with the system, but you 
-are tasked with managing them yourself to get these changes. 
+bring with them many changes that can help with the system, but you
+are tasked with managing them yourself to get these changes.
 Sometimes these said changes also cause problems to the point that your
-system will be unbootable if your fstab is changed or you might lose admin 
-permissions if you are suddenly taken out of the wheel by the passwd file 
-update. It is also important to look these files over and compare them 
-before applying them to your system. There is a really good program in 
-Linux now that can help you accomplish this. The software I am referring to 
+system will be unbootable if your fstab is changed or you might lose admin
+permissions if you are suddenly taken out of the wheel by the passwd file
+update. It is also important to look these files over and compare them
+before applying them to your system. There is a really good program in
+Linux now that can help you accomplish this. The software I am referring to
 is Meld. Still, it's good practice when modifying or setting up your Linux
-system to keep a back up copy of many of these and so I've added it in to 
+system to keep a back up copy of many of these and so I've added it in to
 this script automatically on Setup function.
 
 ########################################################################
@@ -1311,18 +1325,18 @@ change the size from 2G to whatever they desire.
 LINUX PERMISSIONS
 ########################################################################
 Unlike Windows, Linux permissions are a bit different. There is a learning
-curve to implementing specially tailored policies on Linux that are just 
+curve to implementing specially tailored policies on Linux that are just
 easier in Windows. Linux uses numbers frequently to determine the read,
-write, and execute permissions of the files on the disk. Sometimes in Arch, 
+write, and execute permissions of the files on the disk. Sometimes in Arch,
 these numbers don't always match up after an update. Users and Groups assi-
-gned to each can be found in the etc-passwd or etc-group files. When changing 
-user and groups assigned to a file, the numbers also change. A general rule 
-of thumb is that 4 is equal to read, 1 to execute, and 2 to write. So a series 
-of numbers like 755 would imply that the user and group is probably different 
-from the way in which these attributes were assigned originally on your system 
-by default. It was probably something like 777 or something, but everyone's 
-system is different. It is simple enough to change with either the chown or chmod 
-commands, but I have yet to figure out an easy way to streamline this for new users 
+gned to each can be found in the etc-passwd or etc-group files. When changing
+user and groups assigned to a file, the numbers also change. A general rule
+of thumb is that 4 is equal to read, 1 to execute, and 2 to write. So a series
+of numbers like 755 would imply that the user and group is probably different
+from the way in which these attributes were assigned originally on your system
+by default. It was probably something like 777 or something, but everyone's
+system is different. It is simple enough to change with either the chown or chmod
+commands, but I have yet to figure out an easy way to streamline this for new users
 in these scripts. I will get there though, so please be patient.
 
 ########################################################################
@@ -1697,7 +1711,7 @@ SystemMaintenance(){
 	sudo systemctl enable ufw; sudo ufw enable
 
 	#This refreshes index cache
-	sudo updatedb; sudo mandb; sudo balooctl check
+	sudo updatedb; sudo mandb
 
 	#Checks for pacnew files and other extra configuration file updates
 	find /usr/bin/etc-update
@@ -2065,15 +2079,16 @@ Greeting(){
 	echo "8 - Manage system services"
 	echo "9 - Install or uninstall kernels"
 	echo "10 - Collect system information"
-	echo "11 - Create Swap File"
-	echo "12 - Cleanup"
-	echo "13 - System Maintenance"
-	echo "14 - Browser Repair"
-	echo "15 - Update"
-	echo "16 - Help"
-	echo "17 - Restart"
-	echo "18 - Reset the desktop"
-	echo "19 - exit"
+	echo "11 - Screen Resolution Fix"
+	echo "12 - Create Swap File"
+	echo "13 - Cleanup"
+	echo "14 - System Maintenance"
+	echo "15 - Browser Repair"
+	echo "16 - Update"
+	echo "17 - Help"
+	echo "18 - Restart"
+	echo "19 - Reset the desktop"
+	echo "20 - exit"
 
 	read selection;
 
@@ -2109,30 +2124,33 @@ Greeting(){
 		Systeminfo
 	;;
 		11)
-		MakeSwap
+		ScreenFix
 	;;
 		12)
-		cleanup
+		MakeSwap
 	;;
 		13)
-		SystemMaintenance
+		cleanup
 	;;
 		14)
-		BrowserRepair
+		SystemMaintenance
 	;;
 		15)
-		Update
+		BrowserRepair
 	;;
 		16)
-		Help
+		Update
 	;;
 		17)
-		Restart
+		Help
 	;;
 		18)
-		Reset
+		Restart
 	;;
 		19)
+		Reset
+	;;
+		20)
 		echo "Thank you for using Arch-Toolbox... Goodbye!"
 		sleep 1
 		exit
