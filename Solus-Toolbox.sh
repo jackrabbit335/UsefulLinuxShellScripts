@@ -215,7 +215,7 @@ _EOF_
 Update(){
 	checkNetwork
 
-	sudo eopkg rebuild-db; sudo eopkg update-repo; sudo eopkg upgrade
+	sudo eopkg update-repo; sudo eopkg upgrade
 
 	clear
 	Greeting
