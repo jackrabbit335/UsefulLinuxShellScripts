@@ -10,6 +10,7 @@ Setup(){
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
 	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 	sudo cp /etc/profile /etc/profile.bak
+	sudo cp /etc/environment /etc/environment.bak
 	sudo cp /etc/host.conf /etc/host.conf.bak
 	sudo cp /etc/passwd /etc/passwd.bak
 	sudo cp /etc/shadow /etc/shadow.bak
