@@ -60,12 +60,12 @@ Setup(){
 	sudo sysctl -p
 
 #WE can block ICMP requests from the kernel if you'd like
-cat <<_EOF_
+cat <<EOF
 Ping requests from unknown sources could mean that people are trying to
 locate/attack your network. If you need this functionality, you can comment
 this line out, however, this shouldn't impact normal users. If you blocked ICMP traffic
 in Iptables or UFW, you really don't need this here.
-_EOF_
+EOF
 	echo "Block icmp ping requests?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -210,10 +210,10 @@ _EOF_
 	done
 
 #This fixes gufw not opening in kde plasma desktop
-cat <<_EOF_
+cat <<EOF
 This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue.
 This is only a plasma issue as far as I know.
-_EOF_
+EOF
 	for env in $DESKTOP_SESSION;
 	do
 		if [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]];
@@ -693,12 +693,12 @@ InstallAndConquer(){
 			fi
 			;;
 			8)
-cat <<_EOF_
+cat <<EOF
 It is important to note that while you can install many of the listed
 applications through pamac or octopi, you will not be able to utilize the aur
 for future updates of some of the software installed via tarballs without one of these...
 You have been warned. These also might not work on EndeavourOS.
-_EOF_
+EOF
 			echo "1 - pacaur"
 			echo "2 - yaourt"
 			echo "3 - trizen"
@@ -1083,7 +1083,7 @@ _EOF_
 }
 
 Help(){
-less <<_EOF_
+less <<EOF
 
 Press "q" to quit
 
@@ -1375,7 +1375,7 @@ For sending me hate mail, for inquiring assistance, and for sending me
 feedback and suggestions, email me at jackharkness444@protonmail.com
 or js185r@gmail.com Send your inquiries and suggestions with a
 corresponding subject line. 
-_EOF_
+EOF
 
 	clear
 	Greeting
@@ -1527,7 +1527,7 @@ cleanup(){
 	sudo pacman -Rsn --noconfirm $(pacman -Qqdt)
 
 	#Optional This will remove the pacman cached applications and older versions
-	cat <<_EOF_
+	cat <<EOF
 	It is probably not a great idea to be cleaning this part of the system
 	all willy nilly, but here is a way to free up some space before doing
 	backups that may cause you to not be able to downgrade, so be careful.
@@ -1536,7 +1536,7 @@ cleanup(){
 	removes all backup versions. You will be given a choice, but it is
 	strongly recommended that you use the simpler option to remove only
 	up to the latest three versions of your software. Thanks!
-_EOF_
+EOF
 
 	echo "What would you like to do?"
 	echo "1 - Remove up to the latest three versions of software"
@@ -1569,13 +1569,13 @@ _EOF_
 }
 
 BrowserRepair(){
-cat <<_EOF_
+cat <<EOF
 This can fix a lot of the usual issues with a few of the bigger browsers.
 These can include performance hitting issues. If your browser needs a tuneup,
 it is probably best to do it in the browser itself, but when you just want something
 fast, this can do it for you. More browsers and options are coming. This can also
 clean undesired toolbars.
-_EOF_
+EOF
 
 	#Look for the following browsers
 	browser1="$(find /usr/bin/firefox)"
@@ -1793,14 +1793,14 @@ SystemMaintenance(){
 }
 
 ServiceManager(){
-cat <<_EOF_
+cat <<EOF
 This is usually better off left undone, only disable services you know
 you will not need or miss. I can not be held responsible if you brick
 your system. Handle with caution. Also, may only take effect once you
 reboot your machine. Services can be turned back on with a good backup
 and possibly by chrooting into the device via live cd and reversing the
 process by running this again and reenabling the service.
-_EOF_
+EOF
 
 	systemctl list-unit-files --type=service
 	read -p "Press enter to continue..."
@@ -1930,14 +1930,14 @@ Restart(){
 }
 
 KernelManager(){
-cat <<_EOF_
+cat <<EOF
 Kernels are an essential part of the operating system. Failure to use precaution
 could inadvertently screw up system functions. The kernel is the main engine behind
 the scenes making everything operate within normal parameters, changing kernel settings
 or installing/uninstalling a bad updated version could give undesirable results. It should
 also be noted that this works in Manjaro, but probably will not work in any other Arch-based operating system
 at this time.
-_EOF_
+EOF
 	sudo mhwd-kernel -l
 	sudo mhwd-kernel -li
 	read -p "Press enter to continue..."
@@ -2065,14 +2065,14 @@ Backup(){
 }
 
 Restore(){
-cat <<_EOF_
+cat <<EOF
 This tries to restore the home folder and nothing else, if you want to
 restore the entire system,  you will have to do that in a live environment.
 This can, however, help in circumstances where you have family photos and
 school work stored in the home directory. This also assumes that your home
 directory is on the drive in question. This can also restore browser settings
 including unwanted toolbars so be warned.
-_EOF_
+EOF
 
 	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
 	if [[ $Mountpoint != /run/media/$USER/* ]];
@@ -2193,7 +2193,7 @@ Greeting(){
 	esac
 }
 
-cat <<_EOF_
+cat <<EOF
 ########################################################################
 Hello! Thank you for using Arch Toolbox. Within this script is a multitu-
 de of potential solutions for every day tasks as trivial as maintenance,
@@ -2210,5 +2210,5 @@ You may copy and paste the following link into your browser:
 https://techiegeek123.blogspot.com/
 Again, Thank you!
 ########################################################################
-_EOF_
+EOF
 Greeting
