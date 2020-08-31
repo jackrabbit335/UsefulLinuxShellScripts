@@ -1011,6 +1011,7 @@ _EOF_
 			;;
 			23)
 			echo "This installs possible security software and virus checker if you wish"
+			echo "KaOS doesn't have these by default(has tomoyo) and clam av can be installed as flatpak"
 			echo "1 - Rkhunter"
 			echo "2 - Clamav"
 			echo "3 - Lynis"
@@ -1140,6 +1141,30 @@ Some good reference sites are:
 https://wiki.manjaro.org/index.php?title=Main_Page
 https://wiki.archlinux.org
 https://forum.manjaro.org
+https://kaosx.us/docs/
+
+########################################################################
+SECURITY IN KAOS WITH TOMOYO AND SOME STUFF WITH UFW
+########################################################################
+UFW is the uncomplicated firewall. Firewalls filter content getting in
+and going out on your local network. UFW is meant to make interfacing
+with iptables on Linux much easier. IPtables is the kernel version of
+the firewall. UFW comes with default deny and allow rules set up for 
+convenience and peace of mind for new users so starting it up is enough
+to implement basic security of a firewall on your system, however, ufw
+doesn't allow user specific ports to be opened on the system so interven-
+tion is required in such a case. UFW also is debatably needed if you have
+a normal desktop usecase behind an already secured router. UFW shows blocks
+in dmesg or kernel coredumps. Tomoyo is a newish security feature similar to
+apparmor and SELinux in Ubuntu and DEP in Windows. This is a feature that
+prevents applications from getting unnecessary permissions and access to 
+unnecessary files on the system. Tomoyo is the preferred method for users
+of KaOS Linux and uses a learning period before it fully effects changes
+on user applications. Tomoyo uses ACLs and MAC style methods of determining
+application access. Tomoyo can be installed in other distributions and
+can be set in the grub commandline for the kernel by using security=tomoyo.
+KaOS has a basic wiki in docs to get you started with setting it up, however,
+if you wish to get more in depth you will be required to go to the tomoyo wiki.
 
 ########################################################################
 BACK UP IMPORTANT SYSTEM FILES
@@ -1469,7 +1494,7 @@ cleanup(){
 	sudo rm -r ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
-	sudo rm -r /var/tmp/*
+	#sudo rm -r /var/tmp/*
 
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
