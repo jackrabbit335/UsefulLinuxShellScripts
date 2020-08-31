@@ -1152,7 +1152,7 @@ with iptables on Linux much easier. IPtables is the kernel version of
 the firewall. UFW comes with default deny and allow rules set up for 
 convenience and peace of mind for new users so starting it up is enough
 to implement basic security of a firewall on your system, however, ufw
-doesn't allow user specific ports to be opened on the system so interven-
+does not allow user specific ports to be opened on the system so interven-
 tion is required in such a case. UFW also is debatably needed if you have
 a normal desktop usecase behind an already secured router. UFW shows blocks
 in dmesg or kernel coredumps. Tomoyo is a newish security feature similar to
@@ -1179,8 +1179,8 @@ permissions if you are suddenly taken out of the wheel by the passwd file
 update. It is also important to look these files over and compare them
 before applying them to your system. There is a really good program in
 Linux now that can help you accomplish this. The software I am referring to
-is Meld. Still, it's good practice when modifying or setting up your Linux
-system to keep a back up copy of many of these and so I've added it in to
+is Meld. Still, it is good practice when modifying or setting up your Linux
+system to keep a back up copy of many of these and so I have added it in to
 this script automatically on Setup function.
 
 ########################################################################
@@ -1357,13 +1357,13 @@ Unlike Windows, Linux permissions are a bit different. There is a learning
 curve to implementing specially tailored policies on Linux that are just
 easier in Windows. Linux uses numbers frequently to determine the read,
 write, and execute permissions of the files on the disk. Sometimes in Arch,
-these numbers don't always match up after an update. Users and Groups assi-
+these numbers do not always match up after an update. Users and Groups assi-
 gned to each can be found in the etc-passwd or etc-group files. When changing
 user and groups assigned to a file, the numbers also change. A general rule
 of thumb is that 4 is equal to read, 1 to execute, and 2 to write. So a series
 of numbers like 755 would imply that the user and group is probably different
 from the way in which these attributes were assigned originally on your system
-by default. It was probably something like 777 or something, but everyone's
+by default. It was probably something like 777 or something, but everyones
 system is different. It is simple enough to change with either the chown or chmod
 commands, but I have yet to figure out an easy way to streamline this for new users
 in these scripts. I will get there though, so please be patient.
@@ -1374,7 +1374,7 @@ CONTACT ME
 For sending me hate mail, for inquiring assistance, and for sending me
 feedback and suggestions, email me at jackharkness444@protonmail.com
 or js185r@gmail.com Send your inquiries and suggestions with a
-corresponding subject line.
+corresponding subject line. 
 _EOF_
 
 	clear
