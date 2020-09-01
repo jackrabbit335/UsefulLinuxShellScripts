@@ -10,8 +10,8 @@ Setup(){
 	sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
 	sudo cp /etc/shadow /etc/shadow.bak
 	sudo cp /etc/passwd /etc/passwd.bak
-	sudo cp /etc/profile /etc/profile.bak
 	sudo cp /etc/environment /etc/environment.bak
+	sudo cp /etc/profile /etc/profile.bak
 	sudo cp /etc/default/grub /etc/default/grub.bak
 	sudo cp /etc/fstab /etc/fstab.bak
 	sudo cp -r /boot /boot-old
@@ -20,7 +20,7 @@ Setup(){
 	#Fix screen RESOLUTION
 	echo "Would you like to choose a more accurate screen resolution?(Y/n)"
 	read answer
-	while [ $answer == Y ]; 
+	while [ $answer == Y ];
 	do
 		ScreenFix
 		break
@@ -62,7 +62,13 @@ Setup(){
 	sudo sysctl --system
 	sudo sysctl -p
 
-	#WE can block ICMP requests from the kernel if you'd like
+#WE can block ICMP requests from the kernel if you'd like
+cat <<EOF
+Ping requests from unknown sources could mean that people are trying to
+locate/attack your network. If you need this functionality, you can comment
+this line out, however, this shouldn't impact normal users. If you blocked ICMP traffic
+in Iptables or UFW, you really don't need this here.
+EOF
 	echo "Block icmp ping requests?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -119,14 +125,14 @@ Setup(){
 	done
 
 	#This allows you to install the latest LTS kernel in Solus
-	cat <<_EOF_
+	cat <<EOF
 	LTS Kernels are those kernels which receive security patches for prolonged periods.
 	Where kernel modules and headers do receive periodic updates, the overall
 	system and user experience remains mostly unaffected. These kernels are
 	handy for older systems or new users who experience driver incompatibilities with the latest
 	kernels. CAUTION: Installing kernels should be done with caution and a back up should
 	be ready should anything go wrong. You have been warned.
-_EOF_
+EOF
 	echo "Would you like to install the latest LTS kernel stack?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -181,10 +187,10 @@ _EOF_
 
 
 #This fixes gufw not opening in kde plasma desktop
-cat <<_EOF_
+cat <<EOF
 This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue.
 This is only a plasma issue as far as I know.
-_EOF_
+EOF
 	for env in $DESKTOP_SESSION;
 	do
 		if [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]];
@@ -525,7 +531,7 @@ ScreenFix(){
 	sleep 1
 	echo "Choose a resolution from the list above"
 	read resolution
-	xrandr -s $resolution 
+	xrandr -s $resolution
 }
 
 InstallAndConquer(){
@@ -866,13 +872,13 @@ InstallAndConquer(){
 	read -p "Please press enter to continue..."
 
 #This installs preload for faster load of apps
-cat <<_EOF_
+cat <<EOF
 Preload is as the name implies, a preloader. This nifty tool can shadow
 your uses of the desktop and store bits of applications into memory for
 faster future use. This does have its drawbacks though as preload does
 take up its own cache of memory. This is debatably better on low end
 devices.
-_EOF_
+EOF
 	echo "Would you like to install preload?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -959,7 +965,47 @@ Some good reference sites are:
 https://wiki.manjaro.org/index.php?title=Main_Page
 https://wiki.archlinux.org
 https://forum.manjaro.org
-https://getsol.us/help-center/home/
+https://kaosx.us/docs/
+
+########################################################################
+SECURITY IN KAOS WITH TOMOYO AND SOME STUFF WITH UFW
+########################################################################
+UFW is the uncomplicated firewall. Firewalls filter content getting in
+and going out on your local network. UFW is meant to make interfacing
+with iptables on Linux much easier. IPtables is the kernel version of
+the firewall. UFW comes with default deny and allow rules set up for 
+convenience and peace of mind for new users so starting it up is enough
+to implement basic security of a firewall on your system, however, ufw
+does not allow user specific ports to be opened on the system so interven-
+tion is required in such a case. UFW also is debatably needed if you have
+a normal desktop usecase behind an already secured router. UFW shows blocks
+in dmesg or kernel coredumps. Tomoyo is a newish security feature similar to
+apparmor and SELinux in Ubuntu and DEP in Windows. This is a feature that
+prevents applications from getting unnecessary permissions and access to 
+unnecessary files on the system. Tomoyo is the preferred method for users
+of KaOS Linux and uses a learning period before it fully effects changes
+on user applications. Tomoyo uses ACLs and MAC style methods of determining
+application access. Tomoyo can be installed in other distributions and
+can be set in the grub commandline for the kernel by using security=tomoyo.
+KaOS has a basic wiki in docs to get you started with setting it up, however,
+if you wish to get more in depth you will be required to go to the tomoyo wiki.
+
+########################################################################
+BACK UP IMPORTANT SYSTEM FILES
+########################################################################
+It is important to keep a back up copy of certain system files in Arch
+Linux as pacnew files become abundant on the system and these files
+bring with them many changes that can help with the system, but you
+are tasked with managing them yourself to get these changes.
+Sometimes these said changes also cause problems to the point that your
+system will be unbootable if your fstab is changed or you might lose admin
+permissions if you are suddenly taken out of the wheel by the passwd file
+update. It is also important to look these files over and compare them
+before applying them to your system. There is a really good program in
+Linux now that can help you accomplish this. The software I am referring to
+is Meld. Still, it is good practice when modifying or setting up your Linux
+system to keep a back up copy of many of these and so I have added it in to
+this script automatically on Setup function.
 
 ########################################################################
 EOPKG AND PACKAGE MANAGERS IN GENERAL
@@ -1125,6 +1171,24 @@ for users who are somewhat advanced enough to go into the code and
 change the size from 2G to whatever they desire.
 
 ########################################################################
+LINUX PERMISSIONS
+########################################################################
+Unlike Windows, Linux permissions are a bit different. There is a learning
+curve to implementing specially tailored policies on Linux that are just
+easier in Windows. Linux uses numbers frequently to determine the read,
+write, and execute permissions of the files on the disk. Sometimes in Arch,
+these numbers do not always match up after an update. Users and Groups assi-
+gned to each can be found in the etc-passwd or etc-group files. When changing
+user and groups assigned to a file, the numbers also change. A general rule
+of thumb is that 4 is equal to read, 1 to execute, and 2 to write. So a series
+of numbers like 755 would imply that the user and group is probably different
+from the way in which these attributes were assigned originally on your system
+by default. It was probably something like 777 or something, but everyones
+system is different. It is simple enough to change with either the chown or chmod
+commands, but I have yet to figure out an easy way to streamline this for new users
+in these scripts. I will get there though, so please be patient.
+
+########################################################################
 CONTACT ME
 ########################################################################
 For sending me hate mail, for inquiring assistance, and for sending me
@@ -1139,10 +1203,10 @@ _EOF_
 }
 
 AccountSettings(){
-cat <<_EOF_
+cat <<EOF
 This is a completely untested and experimental utility at best.
 Use this function "Account Settings" at your own risk.
-_EOF_
+EOF
 	echo "What would you like to do?"
 	echo "1 - Create user account(s)"
 	echo "2 - Delete user account(s)"
@@ -1232,7 +1296,7 @@ MakeSwap(){
 	cat /etc/fstab | grep "swap"
 	if [ $? -eq 0 ];
 	then
-		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 4G /swapfile; chmod 600 /swapfile
+		sudo fallocate --length 4G /swapfile; chmod 600 /swapfile
 		sudo mkswap /swapfile; sudo swapon /swapfile; echo "/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
 	else
 		echo "Swap was already there so there is nothing to do"
@@ -1267,16 +1331,17 @@ Uninstall(){
 
 cleanup(){
 	#This will clean the cache
-	sudo rm -rf .cache/*
-	sudo rm -rf .thumbnails/*
-	sudo rm -rf ~/.local/share/Trash/*
-	sudo rm -rf ~/.nv/*
-	sudo rm -rf ~/.npm/*
-	sudo rm -rf ~/.w3m/*
-	sudo rm ~/.esd_auth #Best I can tell cookie for pulse audio
-	sudo rm ~/.local/share/recently-used.xbel
-	sudo rm -rf /tmp/*
+	sudo rm -r .cache/*
+	sudo rm -r .thumbnails/*
+	sudo rm -r ~/.local/share/Trash/files/*
+	sudo rm -r ~/.nv/*
+	sudo rm -r ~/.npm/*
+	sudo rm -r ~/.w3m/*
+	sudo rm -r ~/.esd_auth #Best I can tell cookie for pulse audio
+	sudo rm -r ~/.local/share/recently-used.xbel
+	sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
+	#sudo rm -r /var/tmp/*
 
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
@@ -1285,7 +1350,7 @@ cleanup(){
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
 	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
@@ -1316,12 +1381,12 @@ cleanup(){
 }
 
 BrowserRepair(){
-cat << _EOF_
+cat <<EOF
 This can fix a lot of the usual issues with a few of the bigger browsers.
 These can include performance hitting issues. If your browser needs a tuneup,
 it is probably best to do it in the browser itself, but when you just want something
 fast, this can do it for you. More browsers and options are coming.
-_EOF_
+EOF
 
 	browser1="$(find /usr/bin/firefox)"
 	browser2="$(find /usr/bin/vivaldi*)"
@@ -1524,14 +1589,14 @@ SystemMaintenance(){
 }
 
 ServiceManager(){
-cat <<_EOF_
+cat <<EOF
 This is usually better off left undone, only disable services you know
 you will not need or miss. I can not be held responsible if you brick
 your system. Handle with caution. Also, may only take effect once you
 reboot your machine. Services can be turned back on with a good backup
 and possibly by chrooting into the device via live cd and reversing the
 process by running this again and reenabling the service.
-_EOF_
+EOF
 
 	systemctl list-unit-files --type=service
 	read -p "Press enter to continue..."
@@ -1660,14 +1725,14 @@ Backup(){
 }
 
 Restore(){
-cat <<_EOF_
+cat <<EOF
 This tries to restore the home folder and nothing else, if you want to
 restore the entire system,  you will have to do that in a live environment.
 This can, however, help in circumstances where you have family photos and
 school work stored in the home directory. This also assumes that your home
 directory is on the drive in question. This can also restore browser settings
 including unwanted toolbars so be warned.
-_EOF_
+EOF
 
 	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
 	if [[ $Mountpoint != /run/media/$USER/* ]];
@@ -1784,7 +1849,7 @@ Greeting(){
 	esac
 }
 
-cat <<_EOF_
+cat <<EOF
 ########################################################################
 Hello! Thank you for using Solus Toolbox. Within this script is a multitu-
 de of potential solutions for every day tasks as trivial as maintenance,
@@ -1801,5 +1866,5 @@ You may copy and paste the following link into your browser:
 https://techiegeek123.blogspot.com/
 Again, Thank you!
 ########################################################################
-_EOF_
+EOF
 Greeting
