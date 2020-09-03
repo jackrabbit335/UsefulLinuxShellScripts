@@ -9,7 +9,6 @@ to be sure.
 EOF
 
 #This updates the hosts file
-
 echo "searching for /etc/hosts.bak and then creating hosts file to block tracking"
 find /etc/hosts.bak
 if [ $? -gt 0 ]
@@ -83,7 +82,7 @@ then
 fi
 
 #This merges adblock with /etc/hosts then removes adblock
-echo "" | sudo tee -a /etc/hosts
+#echo "" | sudo tee -a /etc/hosts
 sudo cat adblock.txt >> /etc/hosts
 rm adblock.txt
 
