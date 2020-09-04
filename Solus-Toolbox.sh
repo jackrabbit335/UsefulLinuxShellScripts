@@ -1503,7 +1503,7 @@ EOF
 		sleep 1
 
 	BrowserRepair
-	::
+	;;
 	esac
 
 	#Change the default browser
