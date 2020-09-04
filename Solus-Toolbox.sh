@@ -560,313 +560,308 @@ InstallAndConquer(){
 		echo "17 - screenfetch"
 		echo "18 - Stellarium constellation and space observation"
 		echo "19 - exit out of this menu"
-
-	read software;
-
-	case $software in
-		1)
-		echo "This installs a choice of utility software"
-		sudo eopkg install --reinstall mtr lshw hdparm tlp gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw grsync
-		sudo snap install youtube-dl
-	;;
-		2)
-		echo "This installs a light weight editor(text/code editor/IDE)"
-		echo "1 - geany"
-		echo "2 - bluefish"
-		echo "3 - atom"
-		echo "4 - kate"
-		echo "5 - Sublime-text"
-		read package
-		if [[ $package == 1 ]];
-		then
-			sudo eopkg install geany
-		elif [[ $package == 2 ]];
-		then
-			sudo eopkg install bluefish
-		elif [[ $package == 3 ]];
-		then
-			sudo eopkg install atom
-		elif [[ $package == 4 ]];
-		then
-			sudo eopkg install kate
-		elif [[ $package == 5 ]];
-		then
-			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/programming/sublime-text-3/pspec.xml; sudo eopkg it sublime*.eopkg;sudo rm sublime*.eopkg
-		else
-			echo "You've entered an invalid number"
-		fi
-	;;
-		3)
-		echo "This installs a choice in download managers"
-		echo "1 - wget"
-		echo "2 - uget"
-		read software
-		if [[ $software == 1 ]];
-		then
-			sudo eopkg install wget #Usually already installed
-		elif [[ $software == 2 ]];
-		then
-			sudo eopkg install uget
-		else
-			echo "You have entered an invalid number"
-		fi
-	;;
-		4)
-		echo "This installs your choice of torrent clients"
-		echo "1 - transmission"
-		echo "2 - deluge"
-		echo "3 - qbittorrent"
-		read client
-		if [[ $client == 1 ]];
-		then
-			sudo eopkg install transmission
-		elif [[ $client == 2 ]];
-		then
-			sudo eopkg install deluge
-		elif [[ $client == 3 ]];
-		then
-			sudo eopkg install qbittorrent
-		else
-			echo "You have entered an invalid number"
-		fi
-	;;
-		5)
-		echo "This installs a chat/face-time program"
-		echo "1 - HexChat"
-		echo "2 - Skype"
-		read package
-		if [[ $package == 1 ]];
-		then
-			sudo eopkg install hexchat
-		elif [[ $package == 2 ]];
-		then
-			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/im/skype/pspec.xml; sudo eopkg it skype*.eopkg;sudo rm *.eopkg
-		fi
-	;;
-		6)
-		echo "This installs your choice in browsers"
-		echo "1 - epiphany"
-		echo "2 - falkon"
-		echo "3 - midori"
-		echo "4 - opera"
-		echo "5 - lynx"
-		echo "6 - vivaldi"
-		echo "7 - google-chrome"
-		echo "8 - chromium"
-		echo "9 - waterfox"
-		echo "10 - basilisk"
-		echo "11 - palemoon"
-		echo "12 - firefox"
-		echo "13 - brave"
-		read browser
-		if [[ $browser == 1 ]];
-		then
-			sudo eopkg install epiphany
-		elif [[ $browser == 2 ]];
-		then
-			sudo eopkg install falkon
-		elif [[ $browser == 3 ]];
-		then
-			sudo eopkg install midori
-		elif [[ $browser == 4 ]];
-		then
-			sudo eopkg install opera-stable
-		elif [[ $browser == 5 ]];
-		then
-			sudo eopkg install lynx
-		elif [[ $browser == 6 ]];
-		then
-			sudo eopkg install vivaldi-stable
-		elif [[ $browser == 7 ]];
-		then
-			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/web/browser/google-chrome-stable/pspec.xml; sudo eopkg it google-chrome-*.eopkg;sudo rm google-chrome-*.eopkg
-		elif [[ $browser == 8 ]];
-		then
-			sudo snap install chromium
-		elif [[ $browser == 9 ]];
-		then
-			wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.08.1.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.08.1.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
-			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
-		elif [[ $browser == 10 ]];
-		then
-			wget http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz; tar -xvf basilisk-latest.linux64.tar.xz; sudo mv basilisk /opt && sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
-			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
-		elif [[ $browser == 11 ]];
-		then
-			wget http://linux.palemoon.org/datastore/release/palemoon-28.12.0.linux-x86_64.tar.xz; tar -xf palemoon-28.12.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
-			wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
-		elif [[ $browser == 12 ]];
-		then
-			sudo eopkg install firefox
-		elif [[ $browser == 13 ]];
-		then
-			sudo eopkg install brave
-		else
-			echo "You have entered an invalid number"
-		fi
-	;;
-		7)
-		echo "This installs a choice in media players"
-		echo "1 - kodi"
-		echo "2 - spotify"
-		echo "3 - rhythmbox"
-		echo "4 - mpv"
-		echo "5 - smplayer"
-		echo "6 - VLC"
-		echo "7 - totem"
-		echo "8 - strawberry"
-		read player
-		if [[ $player == 3 ]];
-		then
-			sudo eopkg install kodi
-		elif [[ $player == 2 ]];
-		then
-			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/multimedia/music/spotify/pspec.xml; sudo eopkg it spotify*.eopkg;sudo rm spotify*.eopkg
-		elif [[ $player == 3 ]];
-		then
-			sudo eopkg install rhythmbox
-		elif [[ $player == 4 ]];
-		then
-			sudo eopkg install mpv
-		elif [[ $player == 5 ]];
-		then
-			sudo eopkg install smplayer
-		elif [[ $player == 6 ]];
-		then
-			sudo eopkg install vlc
-		elif [[ $player == 7 ]];
-		then
-			sudo eopkg install totem
-		elif [[ $player == 8 ]];
-		then
-			sudo eopkg install strawberry
-		else
-			echo "You have entered an invalid number"
-		fi
-	;;
-		8)
-		echo "This installs a virtualbox client"
-		sudo eopkg install virtualbox
-
-	;;
-		9)
-		echo "This installs Wine or Windows emulation software"
-		echo "1 - Wine"
-		echo "2 - playonlinux"
-		echo "3 - Both"
-
 		read software;
 
 		case $software in
 			1)
-			sudo eopkg install wine ;;
+			echo "This installs a choice of utility software"
+			sudo eopkg install --reinstall mtr lshw hdparm tlp gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw grsync
+			sudo snap install youtube-dl
+			;;
 			2)
-			sudo eopkg install playonlinux ;;
+			echo "This installs a light weight editor(text/code editor/IDE)"
+			echo "1 - geany"
+			echo "2 - bluefish"
+			echo "3 - atom"
+			echo "4 - kate"
+			echo "5 - Sublime-text"
+			read package
+			if [[ $package == 1 ]];
+			then
+				sudo eopkg install geany
+			elif [[ $package == 2 ]];
+			then
+				sudo eopkg install bluefish
+			elif [[ $package == 3 ]];
+			then
+				sudo eopkg install atom
+			elif [[ $package == 4 ]];
+			then
+				sudo eopkg install kate
+			elif [[ $package == 5 ]];
+			then
+				sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/programming/sublime-text-3/pspec.xml; sudo eopkg it sublime*.eopkg;sudo rm sublime*.eopkg
+			else
+				echo "You've entered an invalid number"
+			fi
+			;;
 			3)
-			sudo eopkg install wine playonlinux ;;
-			*)
-			echo "You have entered an invalid number" ;;
+			echo "This installs a choice in download managers"
+			echo "1 - wget"
+			echo "2 - uget"
+			read software
+			if [[ $software == 1 ]];
+			then
+				sudo eopkg install wget #Usually already installed
+			elif [[ $software == 2 ]];
+			then
+				sudo eopkg install uget
+			else
+				echo "You have entered an invalid number"
+			fi
+			;;
+			4)
+			echo "This installs your choice of torrent clients"
+			echo "1 - transmission"
+			echo "2 - deluge"
+			echo "3 - qbittorrent"
+			read client
+			if [[ $client == 1 ]];
+			then
+				sudo eopkg install transmission
+			elif [[ $client == 2 ]];
+			then
+				sudo eopkg install deluge
+			elif [[ $client == 3 ]];
+			then
+				sudo eopkg install qbittorrent
+			else
+				echo "You have entered an invalid number"
+			fi
+			;;
+			5)
+			echo "This installs a chat/face-time program"
+			echo "1 - HexChat"
+			echo "2 - Skype"
+			read package
+			if [[ $package == 1 ]];
+			then
+				sudo eopkg install hexchat
+			elif [[ $package == 2 ]];
+			then
+				sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/im/skype/pspec.xml; sudo eopkg it skype*.eopkg;sudo rm *.eopkg
+			fi
+			;;
+			6)
+			echo "This installs your choice in browsers"
+			echo "1 - epiphany"
+			echo "2 - falkon"
+			echo "3 - midori"
+			echo "4 - opera"
+			echo "5 - lynx"
+			echo "6 - vivaldi"
+			echo "7 - vivaldi-snapshot"
+			echo "8 - google-chrome"
+			echo "9 - waterfox"
+			echo "10 - basilisk"
+			echo "11 - palemoon"
+			echo "12 - firefox"
+			echo "13 - brave"
+			read browser
+			if [[ $browser == 1 ]];
+			then
+				sudo eopkg install epiphany
+			elif [[ $browser == 2 ]];
+			then
+				sudo eopkg install falkon
+			elif [[ $browser == 3 ]];
+			then
+				sudo eopkg install midori
+			elif [[ $browser == 4 ]];
+			then
+				sudo eopkg install opera-stable
+			elif [[ $browser == 5 ]];
+			then
+				sudo eopkg install lynx
+			elif [[ $browser == 6 ]];
+			then
+				sudo eopkg install vivaldi-stable
+			elif [[ $browser == 7 ]];
+			then
+				sudo eopkg install vivaldi-snapshot
+			elif [[ $browser == 8 ]];
+			then
+				sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/web/browser/google-chrome-stable/pspec.xml; sudo eopkg it google-chrome-*.eopkg;sudo rm google-chrome-*.eopkg
+			elif [[ $browser == 9 ]];
+			then
+				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.08.1.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.08.1.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
+			elif [[ $browser == 10 ]];
+			then
+				wget http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz; tar -xvf basilisk-latest.linux64.tar.xz; sudo mv basilisk /opt && sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
+				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
+			elif [[ $browser == 11 ]];
+			then
+				wget http://linux.palemoon.org/datastore/release/palemoon-28.12.0.linux-x86_64.tar.xz; tar -xf palemoon-28.12.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
+			elif [[ $browser == 12 ]];
+			then
+				sudo eopkg install firefox
+			elif [[ $browser == 13 ]];
+			then
+				sudo eopkg install brave
+			else
+				echo "You have entered an invalid number"
+			fi
+			;;
+			7)
+			echo "This installs a choice in media players"
+			echo "1 - kodi"
+			echo "2 - spotify"
+			echo "3 - rhythmbox"
+			echo "4 - mpv"
+			echo "5 - smplayer"
+			echo "6 - VLC"
+			echo "7 - totem"
+			echo "8 - strawberry"
+			read player
+			if [[ $player == 3 ]];
+			then
+				sudo eopkg install kodi
+			elif [[ $player == 2 ]];
+			then
+				sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/multimedia/music/spotify/pspec.xml; sudo eopkg it spotify*.eopkg;sudo rm spotify*.eopkg
+			elif [[ $player == 3 ]];
+			then
+				sudo eopkg install rhythmbox
+			elif [[ $player == 4 ]];
+			then
+				sudo eopkg install mpv
+			elif [[ $player == 5 ]];
+			then
+				sudo eopkg install smplayer
+			elif [[ $player == 6 ]];
+			then
+				sudo eopkg install vlc
+			elif [[ $player == 7 ]];
+			then
+				sudo eopkg install totem
+			elif [[ $player == 8 ]];
+			then
+				sudo eopkg install strawberry
+			else
+				echo "You have entered an invalid number"
+			fi
+			;;
+			8)
+			echo "This installs a virtualbox client"
+			sudo eopkg install virtualbox
+			;;
+			9)
+			echo "This installs Wine or Windows emulation software"
+			echo "1 - Wine"
+			echo "2 - playonlinux"
+			echo "3 - Both"
+			read software;
+			case $software in
+				1)
+				sudo eopkg install wine ;;
+				2)
+				sudo eopkg install playonlinux ;;
+				3)
+				sudo eopkg install wine playonlinux ;;
+				*)
+				echo "You have entered an invalid number" ;;
+			esac
+			;;
+			10)
+			echo "This installs a webcam application for laptops"
+			sudo eopkg install guvcview
+			;;
+			11)
+			echo "This installs a choice in small games"
+			echo "1 - supertuxkart"
+			echo "2 - gnome-mahjongg"
+			echo "3 - aisleriot"
+			echo "4 - ace-of-penguins"
+			echo "5 - gnome-sudoku"
+			echo "6 - gnome-mines"
+			echo "7 - chromium-bsu"
+			echo "8 - supertux"
+			echo "9 - everything"
+			read package
+			if [[ $package == 1 ]];
+			then
+				sudo eopkg install supertuxkart
+			elif [[ $package == 2 ]];
+			then
+				sudo eopkg install gnome-mahjongg
+			elif [[ $package == 3 ]];
+			then
+				sudo eopkg install aisleriot
+			elif [[ $package == 4 ]];
+			then
+				sudo eopkg install ace-of-penguins
+			elif [[ $package == 5 ]];
+			then
+				sudo eopkg install gnome-sudoku
+			elif [[ $package == 6 ]];
+			then
+				sudo eopkg install gnome-mines
+			elif [[ $package == 7 ]];
+			then
+				sudo eopkg install chromium-bsu
+			elif [[ $package == 8 ]];
+			then
+				sudo eopkg install supertux
+			elif [[ $package == 9 ]];
+			then
+				sudo eopkg install supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux
+			else
+				echo "You have entered an invalid number"
+			fi
+			;;
+			12)
+			echo "This installs video/audio decoding/reencoding software"
+			sudo eopkg install kdenlive audacity
+			echo "Would you also like obs-studio?(Y/n)"
+			read answer
+			while [ $answer == Y ];
+			do
+				sudo eopkg install obs-studio
+				break
+			done
+			;;
+			13)
+			echo "This installs Microsoft Core Fonts"
+			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/desktop/font/mscorefonts/pspec.xml; sudo eopkg it mscorefonts*.eopkg;sudo rm mscorefonts*.eopkg
+			;;
+			14)
+			echo "This installs a dock application"
+			sudo eopkg install plank
+			;;
+			15)
+			echo "This installs your backup software"
+			echo "1 - deja-dup"
+			echo "2 - grsync"
+			read package
+			if [[ $package == 1 ]];
+			then
+				sudo eopkg install deja-dup
+			elif [[ $package == 2 ]];
+			then
+				sudo eopkg install grsync
+			else
+				echo "You have entered an invalid number"
+			fi
+			;;
+			16)
+			echo "This installs a few common themes"
+			sudo eopkg install adapta-gtk-theme moka-icon-theme faba-icon-theme numix-icon-theme arc-icon-theme evopop-icon-theme numix-gtk-theme vertex-gtk-theme arc-gtk-theme papirus-icon-theme faenza-green-icon-theme
+			;;
+			17)
+			echo "This installs screenfetch"
+			sudo eopkg install screenfetch
+			;;
+			18)
+			echo "This installs stellarium incase you are a night sky observer"
+			sudo eopkg install stellarium
+			;;
+			19)
+			echo "Ok, well, I'm here if you change your mind"
+			break
+			;;
 		esac
-	;;
-		10)
-		echo "This installs a webcam application for laptops"
-		sudo eopkg install guvcview
-
-	;;
-		11)
-		echo "This installs a choice in small games"
-		echo "1 - supertuxkart"
-		echo "2 - gnome-mahjongg"
-		echo "3 - aisleriot"
-		echo "4 - ace-of-penguins"
-		echo "5 - gnome-sudoku"
-		echo "6 - gnome-mines"
-		echo "7 - chromium-bsu"
-		echo "8 - supertux"
-		echo "9 - everything"
-		read package
-		if [[ $package == 1 ]];
-		then
-			sudo eopkg install supertuxkart
-		elif [[ $package == 2 ]];
-		then
-			sudo eopkg install gnome-mahjongg
-		elif [[ $package == 3 ]];
-		then
-			sudo eopkg install aisleriot
-		elif [[ $package == 4 ]];
-		then
-			sudo eopkg install ace-of-penguins
-		elif [[ $package == 5 ]];
-		then
-			sudo eopkg install gnome-sudoku
-		elif [[ $package == 6 ]];
-		then
-			sudo eopkg install gnome-mines
-		elif [[ $package == 7 ]];
-		then
-			sudo eopkg install chromium-bsu
-		elif [[ $package == 8 ]];
-		then
-			sudo eopkg install supertux
-		elif [[ $package == 9 ]];
-		then
-			sudo eopkg install supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux
-		else
-			echo "You have entered an invalid number"
-		fi
-	;;
-		12)
-		echo "This installs video/audio decoding/reencoding software"
-		sudo eopkg install kdenlive audacity
-		echo "Would you also like obs-studio?(Y/n)"
-		read answer
-		while [ $answer == Y ];
-		do
-			sudo eopkg install obs-studio
-		break
-		done
-	;;
-		13)
-		echo "This installs Microsoft Core Fonts"
-		sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/desktop/font/mscorefonts/pspec.xml; sudo eopkg it mscorefonts*.eopkg;sudo rm mscorefonts*.eopkg
-	;;
-		14)
-		echo "This installs a dock application"
-		sudo eopkg install plank
-	;;
-		15)
-		echo "This installs your backup software"
-		echo "1 - deja-dup"
-		echo "2 - grsync"
-		read package
-		if [[ $package == 1 ]];
-		then
-			sudo eopkg install deja-dup
-		elif [[ $package == 2 ]];
-		then
-			sudo eopkg install grsync
-		else
-			echo "You have entered an invalid number"
-		fi
-	;;
-		16)
-		echo "This installs a few common themes"
-		sudo eopkg install adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme numix-themes-archblue arc-gtk-theme papirus-icon-theme faenza-green-icon-theme
-	;;
-		17)
-		echo "This installs screenfetch"
-		sudo eopkg install screenfetch
-	;;
-		18)
-		echo "This installs stellarium incase you are a night sky observer"
-		sudo eopkg install stellarium
-	;;
-		19)
-		echo "Ok, well, I'm here if you change your mind"
-		break
-	;;
-	esac
 	done
 
 	read -p "Please press enter to continue..."
@@ -973,7 +968,7 @@ SECURITY IN KAOS WITH TOMOYO AND SOME STUFF WITH UFW
 UFW is the uncomplicated firewall. Firewalls filter content getting in
 and going out on your local network. UFW is meant to make interfacing
 with iptables on Linux much easier. IPtables is the kernel version of
-the firewall. UFW comes with default deny and allow rules set up for 
+the firewall. UFW comes with default deny and allow rules set up for
 convenience and peace of mind for new users so starting it up is enough
 to implement basic security of a firewall on your system, however, ufw
 does not allow user specific ports to be opened on the system so interven-
@@ -981,7 +976,7 @@ tion is required in such a case. UFW also is debatably needed if you have
 a normal desktop usecase behind an already secured router. UFW shows blocks
 in dmesg or kernel coredumps. Tomoyo is a newish security feature similar to
 apparmor and SELinux in Ubuntu and DEP in Windows. This is a feature that
-prevents applications from getting unnecessary permissions and access to 
+prevents applications from getting unnecessary permissions and access to
 unnecessary files on the system. Tomoyo is the preferred method for users
 of KaOS Linux and uses a learning period before it fully effects changes
 on user applications. Tomoyo uses ACLs and MAC style methods of determining
@@ -1292,7 +1287,7 @@ Adblocking(){
 }
 
 MakeSwap(){
-	#This attempts to create a swap file in the event the system doesn't have swap
+	#This attempts to create a swap file in the event the system does not have swap
 	cat /etc/fstab | grep "swap"
 	if [ $? -eq 0 ];
 	then
@@ -1337,11 +1332,11 @@ cleanup(){
 	sudo rm -r ~/.nv/*
 	sudo rm -r ~/.npm/*
 	sudo rm -r ~/.w3m/*
-	sudo rm -r ~/.esd_auth #Best I can tell cookie for pulse audio
-	sudo rm -r ~/.local/share/recently-used.xbel
+	sudo rm ~/.esd_auth #Best I can tell cookie for pulse audio
+	sudo rm ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
-	#sudo rm -r /var/tmp/*
+	sudo rm -r /var/tmp/*
 
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
@@ -1350,7 +1345,7 @@ cleanup(){
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
 	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
@@ -1508,8 +1503,7 @@ EOF
 		sleep 1
 
 	BrowserRepair
-
-	;;
+	::
 	esac
 
 	#Change the default browser
