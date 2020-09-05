@@ -182,7 +182,14 @@ EOF
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
 		echo "#Alias to trim ssd" >> ~/.bashrc
 		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
-		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
+		echo "#Alias to show relevant sensor information" >> ~/.bashrc
+		echo 'alias temp="watch sensors"' >> ~/.bashrc
+		echo "#Alias to show memory info" >> ~/.bashrc
+		echo 'alias mem="cat /proc/meminfo"' >> ~/.bashrc
+		echo "Alias to show cpu info" >> ~/.bashrc
+		echo 'alias cpu="lscpu"' >> ~/.bashrc
+		echo "#Alias to monitor memory usage in humanly-readable format" >> ~/.bashrc
+		echo 'alias monitor="watch free -lh"' >> ~/.bashrc
 	fi
 
 
