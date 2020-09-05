@@ -5,7 +5,7 @@ Setup(){
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
 
 	#Backs up important system files
-	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredum.conf.bak
+	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
 	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 	sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
 	sudo cp /etc/shadow /etc/shadow.bak
@@ -1438,79 +1438,79 @@ EOF
 		sudo rm -rf ~/.mozilla/firefox/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		2)
 		sudo cp -r ~/.config/vivaldi/ ~/.config/vivaldi-old
 		sudo rm -rf ~/.config/vivaldi/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		3)
 		sudo cp -r ~/'.moonchild productions'/'pale moon' ~/'.moonchild productions'/'pale moon'-old
 		sudo rm -rf ~/'.moonchild productions'/'pale moon'/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		4)
 		sudo cp -r ~/.config/google-chrome ~/.config/google-chrome-old
 		sudo rm -rf ~/.config/google-chrome/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		5)
 		sudo cp -r ~/.config/opera ~/.config/opera-old
 		sudo rm -rf ~/.config/opera/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		6)
 		sudo cp -r ~/.config/vivaldi-snapshot ~/.config/vivaldi-snapshot-old
 		sudo rm -rf ~/.config/vivaldi-snapshot/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		7)
 		sudo cp -r ~/.waterfox ~/.waterfox-old
 		sudo rm -rf ~/.waterfox/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		8)
 		sudo cp -r ~/'.moonchild productions'/'basilisk' ~/'.moonchild productions'/'basilisk'-old
 		sudo rm -rf ~/'.moonchild productions'/'basilisk'/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		9)
 		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old
 		sudo rm -rf ~/.config/epiphany/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		10)
 		sudo cp -r ~/.config/midori ~/.config/midori-old
 		sudo rm -rf ~/.config/midori/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		11)
 		sudo cp -r ~/.config/BraveSoftware ~/.config/BraveSoftware-old
 		sudo rm -rf ~/.config/BraveSoftware/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		12)
 		sudo cp -r ~/.config/falkon ~/.config/falkon-old
 		sudo rm -rf ~/.config/falkon/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		*)
 		echo "No browser for that entry exists, please try again!"
 		sleep 1
-
-	BrowserRepair
-	;;
+		
+		BrowserRepair
+		;;
 	esac
 
 	#Change the default browser
@@ -1692,6 +1692,7 @@ Backup(){
 			read device
 			sudo mount $device /mnt
 			sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*","*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups
+			sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
 			read -p "Found a block device at designated coordinates...
@@ -1710,6 +1711,7 @@ Backup(){
 			read device
 			sudo mount $device /mnt
 			sudo rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /mnt/$host-backups
+			sudo sync 
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
 			echo "Found a block device at designated coordinates...
