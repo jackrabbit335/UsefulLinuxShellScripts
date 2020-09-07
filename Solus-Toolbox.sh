@@ -192,7 +192,6 @@ EOF
 		echo 'alias monitor="watch free -lh"' >> ~/.bashrc
 	fi
 
-
 #This fixes gufw not opening in kde plasma desktop
 cat <<EOF
 This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue.
@@ -906,7 +905,7 @@ EOF
 }
 
 Help(){
-less <<_EOF_
+less <<EOF
 
 Press "q" to quit
 
@@ -1197,7 +1196,7 @@ For sending me hate mail, for inquiring assistance, and for sending me
 feedback and suggestions, email me at jackharkness444@protonmail.com
 or js185r@gmail.com Send your inquiries and suggestions with a
 corresponding subject line.
-_EOF_
+EOF
 
 	clear
 	Greeting
@@ -1230,34 +1229,34 @@ EOF
 		read password
 		sudo useradd $name -m -s /bin/bash -G $group1 $group2 $group3
 		echo $password | passwd --stdin $name
-	;;
+		;;
 		2)
 		echo "Note, this will remove all files related to the account"
 		echo "Please enter the name of the user you wish to delete"
 		read name
 		sudo userdel -rf $name
-	;;
+		;;
 		3)
 		echo "Alternatively, we can lock a specific user account for security"
 		read -p "Enter the account you wish to lock:" $account
 		sudo passwd -l $account
-	;;
+		;;
 		4)
 		sudo cat /etc/shadow | awk -F: '($2==""){print $1}' >> ~/accounts.txt
 		cat /etc/passwd | awk -F: '{print $1}' >> ~/accounts.txt
-	;;
+		;;
 		5)
 		echo "########################################################################" >> Accounts.txt
 		echo "USERS AND GROUPS" >> Accounts.txt
 		echo "########################################################################" >> Accounts.txt
 		cat /etc/passwd >> Accounts.txt
-	;;
+		;;
 		6)
 		echo "We can do this later"
-	;;
+		;;
 		*)
 		echo "This is an invalid selection, please run this function again and try another."
-	;;
+		;;
 	esac
 
 	clear
@@ -1622,7 +1621,7 @@ read operation;
 			Restart
 		break
 		done
-	;;
+		;;
 		2)
 		echo "Please enter the name of a service to disable"
 		read service
@@ -1634,7 +1633,7 @@ read operation;
 			Restart
 		break
 		done
-	;;
+		;;
 		3)
 		echo "Please enter the name of a service to mask"
 		read service
@@ -1646,7 +1645,7 @@ read operation;
 			Restart
 		break
 		done
-	;;
+		;;
 		4)
 		echo "########################################################################" >> services.txt
 		echo "SERVICES MANAGER" >> services.txt
@@ -1657,11 +1656,11 @@ read operation;
 		echo "########################################################################" >> services.txt
 		echo "Thank you for your patience"
 		sleep 1
-	;;
+		;;
 		5)
 		echo "Smart choice."
 		sleep 2
-	;;
+		;;
 	esac
 
 	clear
@@ -1698,7 +1697,7 @@ Backup(){
 			read -p "Found a block device at designated coordinates...
 			if this is the preferred drive, unmount it, leave it plugged in, and run this again. Press enter to continue..."
 		fi
-	;;
+		;;
 		2)
 		host=$(hostname)
 		Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
@@ -1717,10 +1716,10 @@ Backup(){
 			echo "Found a block device at designated coordinates...
 			if this is the preferred drive, unmount it, leave it plugged in, and then run this again. Press enter to continue..."
 		fi
-	;;
+		;;
 		*)
 		echo "This is an invalid entry, please try again"
-	;;
+		;;
 	esac
 
 	clear
@@ -1786,69 +1785,69 @@ Greeting(){
 	case $selection in
 		1)
 		Setup
-	;;
+		;;
 		2)
 		AccountSettings
-	;;
+		;;
 		3)
 		InstallAndConquer
-	;;
+		;;
 		4)
 		Uninstall
-	;;
+		;;
 		5)
 		Adblocking
-	;;
+		;;
 		6)
 		Backup
-	;;
+		;;
 		7)
 		Restore
-	;;
+		;;
 		8)
 		ServiceManager
-	;;
+		;;
 		9)
 		Systeminfo
-	;;
+		;;
 		10)
 		ScreenFix
-	;;
+		;;
 		11)
 		cleanup
-	;;
+		;;
 		12)
 		SystemMaintenance
-	;;
+		;;
 		13)
 		BrowserRepair
-	;;
+		;;
 		14)
 		Update
-	;;
+		;;
 		15)
 		MakeSwap
-	;;
+		;;
 		16)
 		Help
-	;;
+		;;
 		17)
 		Restart
-	;;
+		;;
 		18)
 		Reset
-	;;
+		;;
 		19)
 		echo "Thank you for using Solus-Toolbox... Goodbye!"
 		sleep 1
 		exit
-	;;
+		;;
 		*)
 		echo "This is an invalid number, please try again."
 		sleep 1
 		clear
 		Greeting
-	;;
+		;;
 	esac
 }
 
