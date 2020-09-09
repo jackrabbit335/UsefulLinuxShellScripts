@@ -853,7 +853,7 @@ InstallAndConquer(){
 			;;
 			16)
 			echo "This installs a few common themes"
-			sudo eopkg install adapta-gtk-theme moka-icon-theme faba-icon-theme numix-icon-theme arc-icon-theme evopop-icon-theme numix-gtk-theme vertex-gtk-theme arc-gtk-theme papirus-icon-theme faenza-green-icon-theme
+			sudo eopkg install adapta-gtk-theme moka-icon-theme mate-icon-theme-faenza faba-icon-theme numix-icon-theme arc-icon-theme evopop-icon-theme numix-gtk-theme vertex-gtk-theme arc-gtk-theme papirus-icon-theme faenza-green-icon-theme
 			;;
 			17)
 			echo "This installs screenfetch"
