@@ -1398,7 +1398,6 @@ AccountSettings(){
 	echo "4 - Look for empty password users on the system"
 	echo "5 - See a list of accounts and groups on the system"
 	echo "6 - Skip this menu"
-
 	read operation;
 
 	case $operation in
@@ -1412,34 +1411,34 @@ AccountSettings(){
 		read password
 		sudo useradd $name -m -s /bin/bash -G $group1 $group2 $group3
 		echo $password | passwd --stdin $name
-	;;
+		;;
 		2)
 		echo "Note, this will remove all files related to the account"
 		echo "Please enter the name of the user you wish to delete"
 		read name
 		sudo userdel -rf $name
-	;;
+		;;
 		3)
 		echo "Alternatively, we can lock a specific user account for security"
 		read -p "Enter the account you wish to lock:" $account
 		sudo passwd -l $account
-	;;
+		;;
 		4)
 		sudo cat /etc/shadow | awk -F: '($2==""){print $1}' >> ~/accounts.txt
 		cat /etc/passwd | awk -F: '{print $1}' >> ~/accounts.txt
-	;;
+		;;
 		5)
 		echo "########################################################################" >> Accounts.txt
 		echo "USERS AND GROUPS" >> Accounts.txt
 		echo "########################################################################" >> Accounts.txt
 		cat /etc/passwd >> Accounts.txt
-	;;
+		;;
 		6)
 		echo "We can do this later"
-	;;
+		;;
 		*)
 		echo "This is an invalid selection, please run this function again and try another."
-	;;
+		;;
 	esac
 
 	clear
@@ -1502,7 +1501,7 @@ cleanup(){
 	sudo rm -r ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
-	#sudo rm -r /var/tmp/*
+	sudo rm -r /var/tmp/*
 
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
@@ -1510,8 +1509,8 @@ cleanup(){
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
-	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
+	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
@@ -1551,7 +1550,6 @@ EOF
 	echo "2 - Remove all cache except for the version on your system"
 	echo "3 - Remove all cache from every package and every version"
 	echo "4 - Skip this step"
-
 	read operation;
 
 	case $operation in
@@ -1627,7 +1625,6 @@ EOF
 	echo "10 - Midori"
 	echo "11 - Basilisk"
 	echo "12 - Brave"
-
 	read operation;
 
 	case $operation in
@@ -1636,79 +1633,79 @@ EOF
 		sudo rm -rf ~/.mozilla/firefox/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		2)
 		sudo cp -r ~/.config/vivaldi/ ~/.config/vivaldi-old
 		sudo rm -rf ~/.config/vivaldi/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		3)
 		sudo cp -r ~/'.moonchild productions'/'pale moon' ~/'.moonchild productions'/'pale moon'-old
 		sudo rm -rf ~/'.moonchild productions'/'pale moon'/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		4)
 		sudo cp -r ~/.config/google-chrome ~/.config/google-chrome-old
 		sudo rm -rf ~/.config/google-chrome/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		5)
 		sudo cp -r ~/.config/chromium ~/.config/chromium-old
 		sudo rm -rf ~/.config/chromium/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		6)
 		sudo cp -r ~/.config/opera ~/.config/opera-old
 		sudo rm -rf ~/.config/opera/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		7)
 		sudo cp -r ~/.waterfox ~/.waterfox-old
 		sudo rm -rf ~/.waterfox/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		8)
 		sudo cp -r ~/.config/falkon ~/.config/falkon-old
 		sudo rm -rf ~/.config/falkon/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		9)
 		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old
 		sudo rm -rf ~/.config/epiphany/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		10)
 		sudo cp -r ~/.config/midori ~/.config/midori-old
 		sudo rm -rf ~/.config/midori/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		11)
 		sudo cp -r ~/'.moonchild productions'/'basilisk' ~/'.moonchild productions'/'basilisk'-old
 		sudo rm -rf ~/'.moonchild productions'/'basilisk'/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		12)
 		sudo cp -r ~/.config/BraveSoftware ~/.config/BraveSoftware-old
 		sudo rm -rf ~/.config/BraveSoftware/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		*)
 		echo "No browser for that entry exists, please try again!"
 		sleep 1
 		BrowserRepair
-	;;
-esac
+		;;
+	esac
 
 	#Change the default browser
 	echo "Would you like to change your default browser also?(Y/n)"
@@ -1818,8 +1815,7 @@ EOF
 	echo "3 - mask service"
 	echo "4 - save a copy of all the services on your system to a text file"
 	echo "5 - Exit without doing anything"
-
-read operation;
+	read operation;
 
 	case $operation in
 		1)
@@ -1833,7 +1829,7 @@ read operation;
 			Restart
 		break
 		done
-	;;
+		;;
 		2)
 		echo "Please enter the name of a service to disable"
 		read service
@@ -1845,7 +1841,7 @@ read operation;
 			Restart
 		break
 		done
-	;;
+		;;
 		3)
 		echo "Please enter the name of a service to mask"
 		read service
@@ -1857,7 +1853,7 @@ read operation;
 			Restart
 		break
 		done
-	;;
+		;;
 		4)
 		echo "########################################################################" >> services.txt
 		echo "SERVICES MANAGER" >> services.txt
@@ -1868,11 +1864,11 @@ read operation;
 		echo "########################################################################" >> services.txt
 		echo "Thank you for your patience"
 		sleep 1
-	;;
+		;;
 		5)
 		echo "Smart choice."
 		sleep 2
-	;;
+		;;
 	esac
 
 
@@ -1954,7 +1950,6 @@ EOF
 	echo "2 - Uninstall kernel(s)"
 	echo "3 - save a list of available and installed kernels to a text file"
 	echo "4 - skip"
-
 	read operation;
 
 	case $operation in
@@ -1976,7 +1971,7 @@ EOF
 			Restart
 		break
 		done
-	;;
+		;;
 		2)
 		echo "Are you sure you want to remove a kernel?(Y/n)"
 		read answer
@@ -1995,7 +1990,7 @@ EOF
 			Restart
 		break
 		done
-	;;
+		;;
 		3)
 		echo "############################################################################" >> kernels.txt
 		echo "WELCOME TO THE ALL NEW MANJARO KERNEL MANAGER" >> kernels.txt
@@ -2006,10 +2001,10 @@ EOF
 		echo "############################################################################" >> kernels.txt
 		echo "END OF FILE" >> kernels.txt
 		echo "############################################################################" >> kernels.txt
-	;;
+		;;
 		4)
 		echo "Skipping"
-	;;
+		;;
 	esac
 
 
@@ -2043,7 +2038,7 @@ Backup(){
 			read -p "Found a block device at designated coordinates...
 			if this is the preferred drive, unmount it, leave it plugged in, and run this again. Press enter to continue..."
 		fi
-	;;
+		;;
 		2)
 		host=$(hostname)
 		Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
@@ -2062,10 +2057,10 @@ Backup(){
 			echo "Found a block device at designated coordinates...
 			if this is the preferred drive, unmount it, leave it plugged in, and then run this again. Press enter to continue..."
 		fi
-	;;
+		;;
 		*)
 		echo "This is an invalid entry, please try again"
-	;;
+		;;
 	esac
 
 	clear
@@ -2132,72 +2127,72 @@ Greeting(){
 	case $selection in
 		1)
 		Setup
-	;;
+		;;
 		2)
 		AccountSettings
-	;;
+		;;
 		3)
 		InstallAndConquer
-	;;
+		;;
 		4)
 		Uninstall
-	;;
+		;;
 		5)
 		Adblocking
-	;;
+		;;
 		6)
 		Backup
-	;;
+		;;
 		7)
 		Restore
-	;;
+		;;
 		8)
 		ServiceManager
-	;;
+		;;
 		9)
 		KernelManager
-	;;
+		;;
 		10)
 		Systeminfo
-	;;
+		;;
 		11)
 		ScreenFix
-	;;
+		;;
 		12)
 		MakeSwap
-	;;
+		;;
 		13)
 		cleanup
-	;;
+		;;
 		14)
 		SystemMaintenance
-	;;
+		;;
 		15)
 		BrowserRepair
-	;;
+		;;
 		16)
 		Update
-	;;
+		;;
 		17)
 		Help
-	;;
+		;;
 		18)
 		Restart
-	;;
+		;;
 		19)
 		Reset
-	;;
+		;;
 		20)
 		echo "Thank you for using Arch-Toolbox... Goodbye!"
 		sleep 1
 		exit
-	;;
+		;;
 		*)
 		echo "This is an invalid number, please try again."
 		sleep 1
 		clear
 		Greeting
-	;;
+		;;
 	esac
 }
 
