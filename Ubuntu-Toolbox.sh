@@ -4,6 +4,30 @@ Setup(){
 	#This sets your default editor in bashrc
 	echo "export EDITOR=nano" | sudo tee -a /etc/bash.bashrc
 
+	#This backs up important system files for your convenience
+	sudo cp /etc/sysctl.conf /etc/sysctl.conf.bak
+	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
+	sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
+	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+	sudo cp /etc/environment /etc/environment.bak
+	sudo cp /etc/profile /etc/profile.bak
+	sudo cp /etc/default/grub /etc/default/grub.bak
+	sudo cp /etc/fstab /etc/fstab.bak
+	sudo cp /etc/passwd /etc/passwd.bak
+	sudo cp /etc/shadow /etc/shadow.bak 
+	sudo cp /etc/host.conf /etc/host.conf.bak
+	sudo cp -r /boot /boot-old
+	cp .bashrc .bashrc.bak
+
+	#Fix screen RESOLUTION
+	echo "Would you like to choose a more accurate screen resolution?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		ScreenFix
+		break
+	done
+
 	#This activates the firewall
 	dpkg --list | grep ufw || sudo apt install -y gufw; sudo systemctl enable ufw; sudo ufw enable
 	echo "Would you like to deny ssh and telnet for security purposes?(Y/n)"
@@ -18,7 +42,6 @@ Setup(){
 	read answer
 	if [[ $answer == Y ]];
 	then
-		sudo cp /etc/default/grub /etc/default/grub.bak
 		sudo sed -i -e 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/g' /etc/default/grub; sudo update-grub2
 	else
 		echo "Okay!"
@@ -30,7 +53,6 @@ Setup(){
 	read answer
 	if [[ $answer == Y ]];
 	then
-		sudo cp ~/.bashrc ~/.bashrc.bak
 		echo "#Alias to update the system" >> ~/.bashrc
 		echo 'alias update="sudo apt update && sudo apt dist-upgrade -yy"' >> ~/.bashrc
 		echo "#Alias to clean the apt cache" >> ~/.bashrc
@@ -46,11 +68,9 @@ Setup(){
 	fi
 
 	#System tweaks
-	sudo cp /etc/default/grub /etc/default/grub.bak
 	sudo sed -i -e '/GRUB_TIMEOUT=10/c\GRUB_TIMEOUT=3 ' /etc/default/grub; sudo update-grub2
 
 	#Tweaks the sysctl config file
-	sudo cp /etc/sysctl.conf /etc/sysctl.conf.bak
 	sudo touch /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "kernel.dmesg_restrict = 1" | sudo tee -a /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "# Reduces the swap" | sudo tee -a /etc/sysctl.conf
@@ -62,11 +82,11 @@ Setup(){
 	sudo sysctl -p
 
 	#Block ICMP requests or Ping from foreign systems
-cat <<_EOF_
+cat <<EOF
 We can also block ping requests. Ping requests coming from unknown sources can mean that people are
 potentially trying to locate/attack your network. If you need this functionality
 you can always comment this line out later. Chances are, this will not affect normal users.
-_EOF_
+EOF
 	echo "Block ping requests from foreign systems?(Y/n)"
 	read answer
 	if [[ $answer == Y ]];
@@ -81,12 +101,11 @@ _EOF_
 	read answer
 	while [ $answer == Y ];
 	do
-		sudo cp /etc/fstab /etc/fstab.bak; sudo sed -i 's/errors=remount-ro 0       1/errors=remount-ro,noatime 0        1/g ' /etc/fstab
+		sudo sed -i 's/errors=remount-ro 0       1/errors=remount-ro,noatime 0        1/g ' /etc/fstab
 	break
 	done
 
 	#This locks down ssh
-	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 	sudo sed -i -e '/#PermitRootLogin/c\PermitRootLogin no ' /etc/ssh/sshd_config
 
 	#This removes that stupid gnome-keyring unlock error you get with chrome
@@ -118,10 +137,10 @@ _EOF_
 			done
 		elif [[ $drive == 0 ]];
 		then
-			cat <<_EOF_
+			cat <<EOF
 			Trim is enabled already on most Ubuntu systems, however, it is not
 			enabled on Debian. That said, enabling Trim is easy.
-_EOF_
+EOF
 			distribution=$(cat /etc/issue | awk '{print $1}')
 			while [ $distribution == Debian ];
 			do
@@ -147,10 +166,10 @@ EOF
 
 
 #This fixes gufw not opening in kde plasma desktop
-cat <<_EOF_
+cat <<EOF
 This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue.
 This is only a plasma issue as far as I know.
-_EOF_
+EOF
 	for env in $DESKTOP_SESSION;
 	do
 		if [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]];
@@ -513,7 +532,7 @@ MakeSwap(){
 	cat /etc/fstab | grep "swap"
 	if [ $? -eq 0 ];
 	then
-		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 4G /swapfile; sudo chmod 600 /swapfile; sudo mkswap /swapfile; sudo swapon /swapfile; echo "/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
+		sudo fallocate --length 4G /swapfile; sudo chmod 600 /swapfile; sudo mkswap /swapfile; sudo swapon /swapfile; echo "/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
 	else
 		echo "Swap was already there so there is nothing to do"
 	fi
@@ -524,7 +543,7 @@ MakeSwap(){
 }
 
 HELP(){
-less <<_EOF_
+less <<EOF
 
 Press "q" to quit
 
@@ -583,7 +602,33 @@ https://usn.ubuntu.com/
 https://ubuntuforums.org/
 https://forums.linuxmint.com/
 https://wiki.ubuntu.com/
-Please copy and paste these in a browser then hit enter.
+https://wiki.manjaro.org/index.php?title=Main_Page
+https://wiki.archlinux.org
+https://forum.manjaro.org
+https://kaosx.us/docs/
+
+########################################################################
+SECURITY IN KAOS WITH TOMOYO AND SOME STUFF WITH UFW
+########################################################################
+UFW is the uncomplicated firewall. Firewalls filter content getting in
+and going out on your local network. UFW is meant to make interfacing
+with iptables on Linux much easier. IPtables is the kernel version of
+the firewall. UFW comes with default deny and allow rules set up for
+convenience and peace of mind for new users so starting it up is enough
+to implement basic security of a firewall on your system, however, ufw
+does not allow user specific ports to be opened on the system so interven-
+tion is required in such a case. UFW also is debatably needed if you have
+a normal desktop usecase behind an already secured router. UFW shows blocks
+in dmesg or kernel coredumps. Tomoyo is a newish security feature similar to
+apparmor and SELinux in Ubuntu and DEP in Windows. This is a feature that
+prevents applications from getting unnecessary permissions and access to
+unnecessary files on the system. Tomoyo is the preferred method for users
+of KaOS Linux and uses a learning period before it fully effects changes
+on user applications. Tomoyo uses ACLs and MAC style methods of determining
+application access. Tomoyo can be installed in other distributions and
+can be set in the grub commandline for the kernel by using security=tomoyo.
+KaOS has a basic wiki in docs to get you started with setting it up, however,
+if you wish to get more in depth you will be required to go to the tomoyo wiki.
 
 ########################################################################
 APT/DPKG AND PACKAGE MANAGERS IN GENERAL
@@ -758,17 +803,42 @@ for users who are somewhat advanced enough to go into the code and
 change the size from 2G to whatever they desire.
 
 ########################################################################
+LINUX PERMISSIONS
+########################################################################
+Unlike Windows, Linux permissions are a bit different. There is a learning
+curve to implementing specially tailored policies on Linux that are just
+easier in Windows. Linux uses numbers frequently to determine the read,
+write, and execute permissions of the files on the disk. Sometimes in Arch,
+these numbers do not always match up after an update. Users and Groups assi-
+gned to each can be found in the etc-passwd or etc-group files. When changing
+user and groups assigned to a file, the numbers also change. A general rule
+of thumb is that 4 is equal to read, 1 to execute, and 2 to write. So a series
+of numbers like 755 would imply that the user and group is probably different
+from the way in which these attributes were assigned originally on your system
+by default. It was probably something like 777 or something, but everyones
+system is different. It is simple enough to change with either the chown or chmod
+commands, but I have yet to figure out an easy way to streamline this for new users
+in these scripts. I will get there though, so please be patient.
+
+########################################################################
 CONTACT ME
 ########################################################################
 For sending me hate mail, for inquiring assistance, and for sending me
 feedback and suggestions, email me at jackharkness444@protonmail.com
 or js185r@gmail.com Send your inquiries and suggestions with a
 corresponding subject line.
-_EOF_
+EOF
 
 	clear
 	Greeting
+}
 
+Screenfix(){
+	xrandr
+	sleep 1
+	echo "Choose a resolution from the list above"
+	read resolution
+	xrandr -s $resolution
 }
 
 InstallAndConquer(){
@@ -815,7 +885,7 @@ InstallAndConquer(){
 			then
 				sudo apt install -y geany sublime-text
 			fi
-		;;
+			;;
 			2)
 			echo "1 - rkhunter"
 			echo "2 - clamav"
@@ -836,12 +906,12 @@ InstallAndConquer(){
 				sudo apt install -y rkhunter && sudo rkhunter --propupd && sudo rkhunter --update
 				sudo apt install -y clamav && sudo freshclam; sudo apt install -y chkrootkit
 			fi
-		;;
+			;;
 			3)
 			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync
 			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop
 			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools
-		;;
+			;;
 			4)
 			echo "1 - deja-dup"
 			echo "2 - bacula"
@@ -861,8 +931,7 @@ InstallAndConquer(){
 			then
 				sudo apt install timeshift
 			fi
-
-		;;
+			;;
 			5)
 			echo "This installs your choice of browser"
 			echo "1 - Chromium"
@@ -922,7 +991,7 @@ InstallAndConquer(){
 				wget http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz; tar -xvf basilisk-latest.linux64.tar.xz; sudo mv basilisk /opt && sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
 			fi
-		;;
+			;;
 			6)
 			echo "This installs your choice of media players/music players"
 			echo "1 - VLC"
@@ -961,7 +1030,7 @@ InstallAndConquer(){
 				sudo apt install -y software-properties-common; sudo add-apt-repository ppa:team-xbmc/ppa
 				sudo apt update; sudo apt install -y kodi
 			fi
-		;;
+			;;
 			7)
 			echo "This installs your choice of bittorrent client"
 			echo "1 - transmission-gtk"
@@ -978,7 +1047,7 @@ InstallAndConquer(){
 			then
 				sudo apt install -y qbittorrent
 			fi
-		;;
+			;;
 			8)
 			echo "1 - Guake"
 			echo "2 - Terminator"
@@ -993,30 +1062,29 @@ InstallAndConquer(){
 			then
 				sudo apt install -y Guake Terminator
 			fi
-		;;
+			;;
 			9)
 			sudo apt install -y kdenlive audacity obs-studio
-		;;
+			;;
 			10)
 			sudo apt install -y preload
-		;;
+			;;
 			11)
 			sudo apt install -y guvcview
-		;;
+			;;
 			12)
 			sudo apt install -y bleachbit gtkorphan
-		;;
+			;;
 			13)
 			sudo apt install -y ttf-mscorefonts-installer
-		;;
-
+			;;
 			14)
 			echo "THEMES"
 			sudo add-apt-repository ppa:noobslab/icons; sudo add-apt-repository ppa:noobslab/icons
 			sudo add-apt-repository ppa:noobslab/icons; sudo add-apt-repository ppa:papirus/papirus
 			sudo add-apt-repository ppa:moka/daily; sudo apt-get update
 			sudo apt install -y mate-themes faenza-icon-theme obsidian-1-icons dalisha-icons shadow-icon-theme moka-icon-theme papirus-icon-theme
-		;;
+			;;
 			15)
 			echo "Installs your choice in linux games"
 			echo "1 - supertuxkart"
@@ -1059,19 +1127,19 @@ InstallAndConquer(){
 			else
 				echo "You have entered an invalid number, please come back later and try again."
 			fi
-		;;
+			;;
 			16)
 			echo "Virtualbox"
 			sudo apt update && sudo apt install -y virtualbox
-		;;
+			;;
 			17)
 			echo "Wine and Play On Linux"
 			sudo apt update && sudo apt install -y wine playonlinux
-		;;
+			;;
 			18)
 			echo "Alrighty then!"
 			break
-		;;
+			;;
 		esac
 	done
 
@@ -1156,7 +1224,6 @@ InstallAndConquer(){
 
 	clear
 	Greeting
-
 }
 
 Uninstall(){
@@ -1172,7 +1239,6 @@ Uninstall(){
 
 	clear
 	Greeting
-
 }
 
 AccountSettings(){
@@ -1198,34 +1264,34 @@ AccountSettings(){
 		read password
 		sudo useradd $name -m -s /bin/bash -G $group1 $group2 $group3 $group4 $group5
 		echo $password | passwd --stdin $name
-	;;
+		;;
 		2)
 		echo "Note, this will remove all files related to the account"
 		echo "Please enter the name of the user you wish to delete"
 		read name
 		sudo userdel -rf $name
-	;;
+		;;
 		3)
 		echo "Alternatively, we can lock a specific user account for security"
 		read -p "Enter the account you wish to lock:" $account
 		sudo passwd -l $account
-	;;
+		;;
 		4)
 		sudo cat /etc/shadow | awk -F: '($2==""){print $1}' >> ~/accounts.txt
 		cat /etc/passwd | awk -F: '{print $1}' >> ~/accounts.txt
-	;;
+		;;
 		5)
 		echo "########################################################################" >> Accounts.txt
 		echo "USERS AND GROUPS" >> Accounts.txt
 		echo "########################################################################" >> Accounts.txt
 		cat /etc/passwd >> Accounts.txt
-	;;
+		;;
 		6)
 		echo "We can do this later"
-	;;
+		;;
 		*)
 		echo "This is an invaldi selection, please run this function again and try another."
-	;;
+		;;
 	esac
 
 	clear
@@ -1246,7 +1312,6 @@ CheckNetwork(){
 			sudo ip link set $interface up #Refer to networkconfig.log
 		fi
 	done
-
 }
 
 Adblocking(){
@@ -1320,7 +1385,7 @@ _EOF_
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
 	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#search and remove broken symlinks
 	find -xtype l -delete
@@ -1336,12 +1401,12 @@ _EOF_
 }
 
 BrowserRepair(){
-cat <<_EOF_
+cat <<EOF
 This can fix a lot of the usual issues with a few of the bigger browsers.
 These can include performance hitting issues. If your browser needs a tuneup,
 it is probably best to do it in the browser itself, but when you just want something
 fast, this can do it for you. More browsers and options are coming.
-_EOF_
+EOF
 
 	#Look for the following browsers
 	browser1="$(find /usr/bin/firefox)"
@@ -1379,77 +1444,73 @@ _EOF_
 	echo "8 - Midori"
 	echo "9 - Falkon"
 	echo "10 - Epiphany"
-
 	read operation;
-
 	case $operation in
 		1)
 		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old
 		sudo rm -rf ~/.mozilla/firefox/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		2)
 		sudo cp -r ~/.config/vivaldi/ ~/.config/vivaldi-old
 		sudo rm -rf ~/.config/vivaldi/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		3)
 		sudo cp -r ~/'.moonchild productions'/'pale moon' ~/'.moonchild productions'/'pale moon'-old
 		sudo rm -rf ~/'.moonchild productions'/'pale moon'/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		4)
 		sudo cp -r ~/.config/google-chrome ~/.config/google-chrome-old
 		sudo rm -rf ~/.config/google-chrome/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		5)
 		sudo cp -r ~/.config/chromium ~/.config/chromium-old
 		sudo rm -rf ~/.config/chromium/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		6)
 		sudo cp -r ~/.config/opera ~/.config/opera-old
 		sudo rm -rf ~/.config/opera/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		7)
 		sudo cp -r ~/.waterfox ~/.waterfox-old
 		sudo rm -rf ~/.waterfox/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		8)
 		sudo cp -r ~/.config/midori ~/.config/midori-old
 		sudo rm -rf ~/.config/midori/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		9)
 		sudo cp -r ~/.config/falkon ~/.config/falkon-old
 		sudo rm -rf ~/.config/falkon/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		10)
 		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old
 		sudo rm -rf ~/.config/epiphany/*
 		echo "Your browser has now been reset"
 		sleep 1
-	;;
+		;;
 		*)
 		echo "No browser for that entry exists, please try again"
 		sleep 1
-
-	BrowserRepair
-
-	;;
+		BrowserRepair
+		;;
 	esac
 
 	#Change the default browser
@@ -1465,7 +1526,6 @@ _EOF_
 
 	clear
 	Greeting
-
 }
 
 SystemMaintenance(){
@@ -1528,14 +1588,14 @@ SystemMaintenance(){
 
 ServiceManager(){
 #This is for service management. Prolly not a good idea but...
-cat <<_EOF_
+cat <<EOF
 This is usually better off left undone, only disable services you know
 you will not need or miss. I can not be held responsible if you brick
 your system. Handle with caution. Also, may only take effect once you
 reboot your machine. Services can be turned back on with a good backup
 and possibly by chrooting into the device via live cd and reversing the
 process by running this again and reenabling the service.
-_EOF_
+EOF
 
 	init=$(ps -p1 | awk 'NR!=1{print $4}')
 	for init in $init;
@@ -1557,7 +1617,7 @@ _EOF_
 				echo "Enter the name of the service you wish to enable"
 				read service
 				sudo /etc/init.d/$service start
-			;;
+				;;
 				2)
 				echo "Enter the name of the service you wish to disable"
 				read service
@@ -1570,7 +1630,7 @@ _EOF_
 					echo manual | sudo tee /etc/init/$service.override
 				break
 				done
-			;;
+				;;
 				3)
 				echo "################################################################" >> services.txt
 				echo "SERVICE MANAGER" >> services.txt
@@ -1580,10 +1640,10 @@ _EOF_
 				echo "################################################################" >> services.txt
 				echo "END OF FILE" >> services.txt
 				echo "################################################################" >> services.txt
-			;;
+				;;
 				4)
 				echo "Great choice"
-			;;
+				;;
 			esac
 		elif [[ $init == systemd ]];
 		then
@@ -1603,13 +1663,13 @@ _EOF_
 				read service
 				sudo systemctl enable $service
 				sudo systemctl start $service
-			;;
+				;;
 				2)
 				echo "Enter the name of the service you wish to disable"
 				read service
 				sudo systemctl stop $service
 				sudo systemctl disable $service
-			;;
+				;;
 				3)
 				echo "##################################################" >> services.txt
 				echo "SERVICE MANAGER" >> services.txt
@@ -1618,10 +1678,10 @@ _EOF_
 				echo "##################################################" >> services.txt
 				echo "END OF FILE" >> services.txt
 				echo "##################################################" >> services.txt
-			;;
+				;;
 				4)
 				echo "Nice!!!!!"
-			;;
+				;;
 			esac
 		else
 			echo "You might be running an init system I haven't tested yet"
@@ -1657,12 +1717,13 @@ Backup(){
 			read device
 			sudo mount $device /mnt
 			sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*","*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups
+			sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
 			read -p "Found a block device at designated coordinates...
 			if this is the preferred drive, unmount it, leave it plugged in, and run this again. Press enter to continue..."
 		fi
-	;;
+		;;
 		2)
 		host=$(hostname)
 		Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
@@ -1675,15 +1736,16 @@ Backup(){
 			read device
 			sudo mount $device /mnt
 			sudo rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /mnt/$host-backups
+			sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
 			echo "Found a block device at designated coordinates...
 			if this is the preferred drive, unmount it, leave it plugged in, and then run this again. Press enter to continue..."
 		fi
-	;;
+		;;
 		*)
 		echo "This is an invalid entry, please try again"
-	;;
+		;;
 	esac
 
 	clear
@@ -1692,14 +1754,14 @@ Backup(){
 
 Restore(){
 #This tries to restore the home folder
-cat <<_EOF_
+cat <<EOF
 This tries to restore the home folder and nothing else, if you want to
 restore the entire system,  you will have to do that in a live environment.
 This can, however, help in circumstances where you have family photos and
 school work stored in the home directory. This also assumes that your home
 directory is on the drive in question. This can also restore browser settings
 including unwanted toolbars so be warned.
-_EOF_
+EOF
 
 	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
 	if [[ $Mountpoint != /run/media/$USER/* ]];
@@ -1734,85 +1796,89 @@ Greeting(){
 	echo "7 - Restore your system"
 	echo "8 - Manage system services"
 	echo "9 - Collect System Information"
-	echo "10 - Make Swap"
-	echo "11 - Help"
-	echo "12 - Cleanup"
-	echo "13 - System Maintenance"
-	echo "14 - Browser Repair"
-	echo "15 - Update"
-	echo "16 - Restart"
-	echo "17 - Reset the desktop"
-	echo "18 - exit"
+	echo "10 - Screenfix"
+	echo "11 - Make Swap"
+	echo "12 - Help"
+	echo "13 - Cleanup"
+	echo "14 - System Maintenance"
+	echo "15 - Browser Repair"
+	echo "16 - Update"
+	echo "17 - Restart"
+	echo "18 - Reset the desktop"
+	echo "19 - exit"
 
 	read selection;
 
 	case $selection in
 		1)
 		Setup
-	;;
+		;;
 		2)
 		AccountSettings
-	;;
+		;;
 		3)
 		InstallAndConquer
-	;;
+		;;
 		4)
 		Uninstall
-	;;
+		;;
 		5)
 		Adblocking
-	;;
+		;;
 		6)
 		Backup
-	;;
+		;;
 		7)
 		Restore
-	;;
+		;;
 		8)
 		ServiceManager
-	;;
+		;;
 		9)
 		Systeminfo
-	;;
+		;;
 		10)
-		MakeSwap
-	;;
+		Screenfix
+		;;
 		11)
-		HELP
-	;;
+		MakeSwap
+		;;
 		12)
-		cleanup
-	;;
+		HELP
+		;;
 		13)
-		SystemMaintenance
-	;;
+		cleanup
+		;;
 		14)
-		BrowserRepair
-	;;
+		SystemMaintenance
+		;;
 		15)
-		Update
-	;;
+		BrowserRepair
+		;;
 		16)
-		Restart
-	;;
+		Update
+		;;
 		17)
-		Reset
-	;;
+		Restart
+		;;
 		18)
+		Reset
+		;;
+		19)
 		echo "Thank you for using Ubuntu-Toolbox... Goodbye!"
 		sleep 1
 		exit
-	;;
+		;;
 		*)
 		echo "This is an invalid number, please try again."
 		sleep 1
 		clear
 		Greeting
-	;;
+		;;
 	esac
 }
 
-cat <<_EOF_
+cat <<EOF
 ########################################################################
 Hello! Thank you for using Ubuntu Toolbox. Within this script is a multi-
 tude of potential solutions for every day tasks such as maintenance,
@@ -1828,5 +1894,5 @@ opinions about software and technology. You may copy and paste the
 following link into your browser: https://techiegeek123.blogspot.com/
 Again, Thank you!
 ########################################################################
-_EOF_
+EOF
 Greeting
