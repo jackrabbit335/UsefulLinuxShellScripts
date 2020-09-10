@@ -769,7 +769,7 @@ EOF
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz; gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar; cd vivaldi && makepkg -si
 			elif [[ $browser == 7 ]];
 			then
-				wget linux.palemoon.org/datastore/release/palemoon-28.12.0.linux-x86_64.tar.xz; tar -xf palemoon-28.12.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget linux.palemoon.org/datastore/release/palemoon-28.13.0.linux-x86_64.tar.xz; tar -xf palemoon-28.13.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 8 ]];
 			then
@@ -786,7 +786,7 @@ EOF
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz; gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
 			elif [[ $browser == 12 ]];
 			then
-				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.07.2.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.07.2.en-US.linux-x86_64.tar.bz2
+				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-classic-2020.08.1.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.08.1.en-US.linux-x86_64.tar.bz2
 				sudo ln -s ~/waterfox-classic/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 13 ]];
