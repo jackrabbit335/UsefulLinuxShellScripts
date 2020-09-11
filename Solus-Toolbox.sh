@@ -37,16 +37,6 @@ Setup(){
 	break
 	done
 
-	#This starts your firewall
-	eopkg list-installed | grep gufw || sudo eopkg rdb; sudo eopkg ur; sudo eopkg install gufw; sudo systemctl enable ufw; sudo ufw enable
-	echo "Would you also like to deny ssh and telnet for security?(Y/n)"
-	read answer
-	while [ $answer == Y ]
-	do
-		sudo ufw deny ssh; sudo ufw deny telnet; sudo ufw reload
-	break
-	done
-
 	#This lowers grub delay
 	sudo sed -i -e '/GRUB_TIMEOUT=5/c\GRUB_TIMEOUT=3 ' /etc/default/grub; sudo update-grub
 
@@ -212,6 +202,16 @@ EOF
 	#This tries to update repositories and upgrade the system
 	sudo eopkg rebuild-db; sudo eopkg update-repo; sudo eopkg upgrade
 
+	#This starts your firewall
+	eopkg list-installed | grep gufw || sudo eopkg install gufw; sudo systemctl enable ufw; sudo ufw enable
+	echo "Would you also like to deny ssh and telnet for security?(Y/n)"
+	read answer
+	while [ $answer == Y ]
+	do
+		sudo ufw deny ssh; sudo ufw deny telnet; sudo ufw reload
+	break
+	done
+
 	#Optional
 	echo "Do you wish to reboot(Y/n)"
 	read answer
@@ -237,6 +237,7 @@ Update(){
 
 Reset(){
 	#This resets the desktop
+	eopkg list-installed | grep dconf || sudo eopkg install dconf
 	if [[ $DESKTOP_SESSION == budgie ]];
 	then
 		echo "############################################################################"
@@ -1215,7 +1216,6 @@ EOF
 	echo "4 - Look for empty password users on the system"
 	echo "5 - See a list of accounts and groups on the system"
 	echo "6 - Skip this menu"
-
 	read operation;
 
 	case $operation in
@@ -1350,7 +1350,7 @@ cleanup(){
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
-	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
+	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
 	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
@@ -1428,7 +1428,6 @@ EOF
 	echo "10 - Midori"
 	echo "11 - Brave"
 	echo "12 - Falkon"
-
 	read operation;
 
 	case $operation in
@@ -1606,8 +1605,7 @@ EOF
 	echo "3 - mask service"
 	echo "4 - save a copy of all the services on your system to a text file"
 	echo "5 - Exit without doing anything"
-
-read operation;
+	read operation;
 
 	case $operation in
 		1)
@@ -1779,7 +1777,6 @@ Greeting(){
 	echo "17 - Restart"
 	echo "18 - Reset the desktop"
 	echo "19 - exit"
-
 	read selection;
 
 	case $selection in
