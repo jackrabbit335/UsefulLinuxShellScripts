@@ -202,7 +202,8 @@ EOF
 	checkNetwork
 
 	#This tries to update repositories and upgrade the system
-	sudo eopkg delete-cache; sudo eopkg clean; sudo eopkg rebuild-db; sudo eopkg update-repo; sudo eopkg upgrade
+	#sudo eopkg delete-cache; sudo eopkg clean
+	sudo eopkg rebuild-db; sudo eopkg update-repo; sudo eopkg upgrade
 
 	#This starts your firewall
 	eopkg list-installed | grep gufw || sudo eopkg install gufw; sudo systemctl enable ufw; sudo ufw enable
