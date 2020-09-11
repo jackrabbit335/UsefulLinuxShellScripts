@@ -202,7 +202,7 @@ EOF
 	checkNetwork
 
 	#This tries to update repositories and upgrade the system
-	#sudo eopkg delete-cache; sudo eopkg clean
+	#sudo eopkg delete-cache; sudo eopkg clean 
 	sudo eopkg rebuild-db; sudo eopkg update-repo; sudo eopkg upgrade
 
 	#This starts your firewall
@@ -569,7 +569,8 @@ InstallAndConquer(){
 		echo "16 - THEMES!!!!!!!!"
 		echo "17 - screenfetch"
 		echo "18 - Stellarium constellation and space observation"
-		echo "19 - exit out of this menu"
+		echo "19 - Security software"
+		echo "20 - exit out of this menu"
 		read software;
 
 		case $software in
@@ -868,6 +869,10 @@ InstallAndConquer(){
 			sudo eopkg install stellarium
 			;;
 			19)
+			echo "This installs commonly used security software"
+			sudo eopkg install firejail
+			;;
+			20)
 			echo "Ok, well, I'm here if you change your mind"
 			break
 			;;
