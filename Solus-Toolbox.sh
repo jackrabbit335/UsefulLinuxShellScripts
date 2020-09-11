@@ -870,7 +870,7 @@ InstallAndConquer(){
 			;;
 			19)
 			echo "This installs commonly used security software"
-			sudo eopkg install firejail
+			sudo eopkg install firetools
 			;;
 			20)
 			echo "Ok, well, I'm here if you change your mind"
