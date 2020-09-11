@@ -160,6 +160,8 @@ EOF
 		echo 'alias update="sudo eopkg upgrade"' >> ~/.bashrc
 		echo "#Alias to clear package cache" >> ~/.bashrc
 		echo 'alias cleanse="sudo eopkg delete-cache"' >> ~/.bashrc
+		echo "#Alias to clean stale blocks" >> ~/.bashrc
+		echo 'alias purge="sudo eopkg clean"' >> ~/.bashrc
 		echo "#Alias to remove orphaned packages" >> ~/.bashrc
 		echo 'alias orphaned="sudo eopkg remove-orphans"' >> ~/.bashrc
 		echo "#Alias to check installation integrity of software" >> ~/.bashrc
@@ -200,7 +202,7 @@ EOF
 	checkNetwork
 
 	#This tries to update repositories and upgrade the system
-	sudo eopkg rebuild-db; sudo eopkg update-repo; sudo eopkg upgrade
+	sudo eopkg delete-cache; sudo eopkg clean; sudo eopkg rebuild-db; sudo eopkg update-repo; sudo eopkg upgrade
 
 	#This starts your firewall
 	eopkg list-installed | grep gufw || sudo eopkg install gufw; sudo systemctl enable ufw; sudo ufw enable
@@ -968,6 +970,24 @@ https://wiki.manjaro.org/index.php?title=Main_Page
 https://wiki.archlinux.org
 https://forum.manjaro.org
 https://kaosx.us/docs/
+
+########################################################################
+UPDATE ROLLBACK FEATURE
+########################################################################
+EOPKG in Solus provides its own rollback feature. To use this feature,
+you have to know the number in the historical record of operations
+in EOPKG. EOPKG records every action taken to update repos and the system
+since installation. Using a simple command string like sudo eopkg history 
+will give you a rather lengthy list of these operations in the terminal. 
+To rollback to a previous package state, you only need to issue the comm-
+and sudo eopkg history -t and the number of the state you wish to revert
+to. This will be available in a future release of this script and can be
+quite handy in troubleshooting situations(specifically when booting older-
+kernels doesn't help). More on this can be found here: 
+https://getsol.us/articles/package-management/history-and-rollback/en/
+Of course, this does probably require package cache to be left alone,
+however, in some situations, you can't install updates with invalid or
+corrupted packages in there.
 
 ########################################################################
 SECURITY IN KAOS WITH TOMOYO AND SOME STUFF WITH UFW
