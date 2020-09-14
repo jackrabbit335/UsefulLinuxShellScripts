@@ -6,6 +6,7 @@ Setup(){
 
 	#Backs up important system files
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
+	sudo cp /etc/systemd/system.conf /etc/systemd/system.conf.bak
 	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 	sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
 	sudo cp /etc/shadow /etc/shadow.bak
@@ -157,17 +158,17 @@ EOF
 		echo "#Alias to update grub" >> ~/.bashrc
 		echo 'alias grubup="sudo clr-boot-manager update"' >> ~/.bashrc
 		echo "#Alias to update the system" >> ~/.bashrc
-		echo 'alias update="sudo eopkg upgrade"' >> ~/.bashrc
+		echo 'alias update="sudo eopkg -y upgrade"' >> ~/.bashrc
 		echo "#Alias to clear package cache" >> ~/.bashrc
-		echo 'alias cleanse="sudo eopkg delete-cache"' >> ~/.bashrc
+		echo 'alias cleanse="sudo eopkg -y delete-cache"' >> ~/.bashrc
 		echo "#Alias to clean stale blocks" >> ~/.bashrc
-		echo 'alias purge="sudo eopkg clean"' >> ~/.bashrc
+		echo 'alias purge="sudo eopkg -y clean"' >> ~/.bashrc
 		echo "#Alias to remove orphaned packages" >> ~/.bashrc
-		echo 'alias orphaned="sudo eopkg remove-orphans"' >> ~/.bashrc
+		echo 'alias rmo="sudo eopkg remove-orphans"' >> ~/.bashrc
 		echo "#Alias to check installation integrity of software" >> ~/.bashrc
 		echo 'alias convey="sudo eopkg check"' >> ~/.bashrc
 		echo "#Alias to rebuild the database" >> ~/.bashrc
-		echo 'alias rebuild="sudo eopkg rebuild-db"' >> ~/.bashrc
+		echo 'alias rdb="sudo eopkg -y rebuild-db"' >> ~/.bashrc
 		echo "#Alias to Free up RAM" >> ~/.bashrc
 		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
 		echo "#Alias to trim journal size" >> ~/.bashrc
@@ -184,29 +185,13 @@ EOF
 		echo 'alias monitor="watch free -lh"' >> ~/.bashrc
 	fi
 
-#This fixes gufw not opening in kde plasma desktop
-cat <<EOF
-This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue.
-This is only a plasma issue as far as I know.
-EOF
-	for env in $DESKTOP_SESSION;
-	do
-		if [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]];
-		then
-			echo "kdesu python3 /usr/lib/python3.7/site-packages/gufw/gufw.py" | sudo tee -a /bin/gufw
-		else
-			echo "You do not need this fix"
-		fi
-	done
-
 	checkNetwork
 
 	#This tries to update repositories and upgrade the system
-	#sudo eopkg -y delete-cache; sudo eopkg -y clean 
-	sudo eopkg -y rebuild-db; sudo eopkg -y upgrade
+	sudo eopkg -y delete-cache; sudo eopkg -y clean; sudo eopkg -y rebuild-db; sudo eopkg -y upgrade
 
 	#This starts your firewall
-	eopkg list-installed | grep gufw || sudo eopkg install gufw; sudo systemctl enable ufw; sudo ufw enable
+	eopkg list-installed | grep gufw || sudo eopkg -y install gufw; sudo systemctl enable ufw; sudo ufw enable
 	echo "Would you also like to deny ssh and telnet for security?(Y/n)"
 	read answer
 	while [ $answer == Y ]
@@ -214,6 +199,12 @@ EOF
 		sudo ufw deny ssh; sudo ufw deny telnet; sudo ufw reload
 	break
 	done
+
+	#This fixes  an issue with GUFW on KDE
+	if [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]]; 
+	then
+		echo "kdesu python3 /usr/lib/python3.7/site-packages/gufw/gufw.py" | sudo tee -a /bin/gufw
+	fi
 
 	#Optional
 	echo "Do you wish to reboot(Y/n)"
@@ -870,7 +861,7 @@ InstallAndConquer(){
 			;;
 			19)
 			echo "This installs commonly used security software"
-			sudo eopkg install firetools
+			sudo eopkg install firejail
 			;;
 			20)
 			echo "Ok, well, I'm here if you change your mind"
@@ -1559,7 +1550,7 @@ SystemMaintenance(){
 	sudo eopkg -y rebuild-db; sudo eopkg -y upgrade
 
 	#This checks for broken packages
-	sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg install --reinstall
+	sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg -y install --reinstall
 
 	#This refreshes systemd in case of failed or changed units
 	sudo systemctl daemon-reload
