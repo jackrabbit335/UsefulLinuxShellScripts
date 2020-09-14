@@ -31,19 +31,19 @@ echo "##################################################################"
 echo "Merging lists"
 echo "##################################################################"
 
-cat peerblock* >> blocklist.p2p
+cat peerblock* >> blocklist.bin
 
 echo "##################################################################"
 echo "Activating DeDuplication Algorithm"
 echo "##################################################################"
 
-awk '!dup[$0]++' blocklist.p2p > blocklist.new && mv blocklist.new blocklist.p2p
+awk '!dup[$0]++' blocklist.bin > blocklist.new && mv blocklist.new blocklist.bin
 
 echo "##################################################################"
 echo "Finalizing"
 echo "##################################################################"
 
-mv blocklist.p2p ~/.config/transmission/blocklists/blocklist.bin
+mv blocklist.bin ~/.config/transmission/blocklists/
 
 echo "##################################################################"
 echo "Cleaning Up"
