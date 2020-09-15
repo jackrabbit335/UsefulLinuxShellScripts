@@ -14,7 +14,7 @@ Setup(){
 	sudo cp /etc/default/grub /etc/default/grub.bak
 	sudo cp /etc/fstab /etc/fstab.bak
 	sudo cp /etc/passwd /etc/passwd.bak
-	sudo cp /etc/shadow /etc/shadow.bak 
+	sudo cp /etc/shadow /etc/shadow.bak
 	sudo cp /etc/host.conf /etc/host.conf.bak
 	sudo cp -r /boot /boot-old
 	cp .bashrc .bashrc.bak
@@ -205,7 +205,6 @@ Update(){
 
 	clear
 	Greeting
-
 }
 
 Systeminfo(){
@@ -1384,7 +1383,7 @@ _EOF_
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
-	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
+	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
 	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#search and remove broken symlinks
@@ -1407,8 +1406,7 @@ These can include performance hitting issues. If your browser needs a tuneup,
 it is probably best to do it in the browser itself, but when you just want something
 fast, this can do it for you. More browsers and options are coming.
 EOF
-
-	#Look for the following browsers
+  #Look for the following browsers
 	browser1="$(find /usr/bin/firefox)"
 	browser2="$(find /usr/bin/vivaldi*)"
 	browser3="$(find /usr/bin/palemoon)"
@@ -1445,7 +1443,8 @@ EOF
 	echo "9 - Falkon"
 	echo "10 - Epiphany"
 	read operation;
-	case $operation in
+
+  case $operation in
 		1)
 		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old
 		sudo rm -rf ~/.mozilla/firefox/*
@@ -1596,8 +1595,7 @@ reboot your machine. Services can be turned back on with a good backup
 and possibly by chrooting into the device via live cd and reversing the
 process by running this again and reenabling the service.
 EOF
-
-	init=$(ps -p1 | awk 'NR!=1{print $4}')
+  init=$(ps -p1 | awk 'NR!=1{print $4}')
 	for init in $init;
 	do
 		if [[ $init == upstart ]];
@@ -1609,8 +1607,7 @@ EOF
 			echo "2 - Disable services"
 			echo "3 - create a list of all services running on your system"
 			echo "4 - Nothing just get me out of this menu"
-
-			read operation;
+      read operation;
 
 			case $operation in
 				1)
@@ -1654,8 +1651,7 @@ EOF
 			echo "2 - Disable services"
 			echo "3 - create a list of all services running on your system"
 			echo "4 - Nothing just get me out of this menu"
-
-			read operation;
+      read operation;
 
 			case $operation in
 				1)
@@ -1701,8 +1697,7 @@ Backup(){
 	echo "What would you like to do?"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition(skipping unnecessary items)"
-
-	read operation;
+  read operation;
 
 	case $operation in
 		1)
@@ -1762,8 +1757,7 @@ school work stored in the home directory. This also assumes that your home
 directory is on the drive in question. This can also restore browser settings
 including unwanted toolbars so be warned.
 EOF
-
-	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
+  Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
 	if [[ $Mountpoint != /run/media/$USER/* ]];
 	then
 		read -p "Please insert the backup drive and hit enter..."
@@ -1806,8 +1800,7 @@ Greeting(){
 	echo "17 - Restart"
 	echo "18 - Reset the desktop"
 	echo "19 - exit"
-
-	read selection;
+  read selection;
 
 	case $selection in
 		1)

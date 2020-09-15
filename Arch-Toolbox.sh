@@ -252,7 +252,6 @@ Update(){
 
 	clear
 	Greeting
-
 }
 
 Systeminfo(){
@@ -1157,7 +1156,7 @@ SECURITY IN KAOS WITH TOMOYO AND SOME STUFF WITH UFW
 UFW is the uncomplicated firewall. Firewalls filter content getting in
 and going out on your local network. UFW is meant to make interfacing
 with iptables on Linux much easier. IPtables is the kernel version of
-the firewall. UFW comes with default deny and allow rules set up for 
+the firewall. UFW comes with default deny and allow rules set up for
 convenience and peace of mind for new users so starting it up is enough
 to implement basic security of a firewall on your system, however, ufw
 does not allow user specific ports to be opened on the system so interven-
@@ -1165,7 +1164,7 @@ tion is required in such a case. UFW also is debatably needed if you have
 a normal desktop usecase behind an already secured router. UFW shows blocks
 in dmesg or kernel coredumps. Tomoyo is a newish security feature similar to
 apparmor and SELinux in Ubuntu and DEP in Windows. This is a feature that
-prevents applications from getting unnecessary permissions and access to 
+prevents applications from getting unnecessary permissions and access to
 unnecessary files on the system. Tomoyo is the preferred method for users
 of KaOS Linux and uses a learning period before it fully effects changes
 on user applications. Tomoyo uses ACLs and MAC style methods of determining
@@ -1382,7 +1381,7 @@ CONTACT ME
 For sending me hate mail, for inquiring assistance, and for sending me
 feedback and suggestions, email me at jackharkness444@protonmail.com
 or js185r@gmail.com Send your inquiries and suggestions with a
-corresponding subject line. 
+corresponding subject line.
 EOF
 
 	clear
@@ -1544,8 +1543,7 @@ cleanup(){
 	strongly recommended that you use the simpler option to remove only
 	up to the latest three versions of your software. Thanks!
 EOF
-
-	echo "What would you like to do?"
+  echo "What would you like to do?"
 	echo "1 - Remove up to the latest three versions of software"
 	echo "2 - Remove all cache except for the version on your system"
 	echo "3 - Remove all cache from every package and every version"
@@ -1582,8 +1580,7 @@ it is probably best to do it in the browser itself, but when you just want somet
 fast, this can do it for you. More browsers and options are coming. This can also
 clean undesired toolbars.
 EOF
-
-	#Look for the following browsers
+  #Look for the following browsers
 	browser1="$(find /usr/bin/firefox)"
 	browser2="$(find /usr/bin/vivaldi*)"
 	browser3="$(find /usr/bin/palemoon)"
@@ -1806,8 +1803,7 @@ reboot your machine. Services can be turned back on with a good backup
 and possibly by chrooting into the device via live cd and reversing the
 process by running this again and reenabling the service.
 EOF
-
-	systemctl list-unit-files --type=service
+  systemctl list-unit-files --type=service
 	read -p "Press enter to continue..."
 	echo "What would you like to do?"
 	echo "1 - enable service"
@@ -2016,8 +2012,7 @@ Backup(){
 	echo "What would you like to do?"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition"
-
-	read operation;
+  read operation;
 
 	case $operation in
 		1)
@@ -2076,8 +2071,7 @@ school work stored in the home directory. This also assumes that your home
 directory is on the drive in question. This can also restore browser settings
 including unwanted toolbars so be warned.
 EOF
-
-	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
+  Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
 	if [[ $Mountpoint != /run/media/$USER/* ]];
 	then
 		read -p "Please insert the backup drive and hit enter..."
@@ -2121,8 +2115,7 @@ Greeting(){
 	echo "18 - Restart"
 	echo "19 - Reset the desktop"
 	echo "20 - exit"
-
-	read selection;
+  read selection;
 
 	case $selection in
 		1)
