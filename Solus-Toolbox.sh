@@ -1405,7 +1405,6 @@ These can include performance hitting issues. If your browser needs a tuneup,
 it is probably best to do it in the browser itself, but when you just want something
 fast, this can do it for you. More browsers and options are coming.
 EOF
-
 	browser1="$(find /usr/bin/firefox)"
 	browser2="$(find /usr/bin/vivaldi*)"
 	browser3="$(find /usr/bin/palemoon)"
@@ -1613,7 +1612,6 @@ reboot your machine. Services can be turned back on with a good backup
 and possibly by chrooting into the device via live cd and reversing the
 process by running this again and reenabling the service.
 EOF
-
 	systemctl list-unit-files --type=service
 	read -p "Press enter to continue..."
 	echo "What would you like to do?"
@@ -1690,7 +1688,6 @@ Backup(){
 	echo "What would you like to do?"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition"
-
 	read operation;
 
 	case $operation in
@@ -1750,7 +1747,6 @@ school work stored in the home directory. This also assumes that your home
 directory is on the drive in question. This can also restore browser settings
 including unwanted toolbars so be warned.
 EOF
-
 	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
 	if [[ $Mountpoint != /run/media/$USER/* ]];
 	then
