@@ -32,7 +32,6 @@ str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/mas
 str10=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Gambling
 str11=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Tomslist
 
-
 while getopts :ABCDEFGHIJK option; do
 	case $option in
 		A) wget $str1 && cat MVPShosts >> adblock && rm MVPShosts
