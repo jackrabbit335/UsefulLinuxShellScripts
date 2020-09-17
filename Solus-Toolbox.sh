@@ -967,6 +967,7 @@ https://wiki.manjaro.org/index.php?title=Main_Page
 https://wiki.archlinux.org
 https://forum.manjaro.org
 https://kaosx.us/docs/
+https://getsol.us/help-center/home/
 
 ########################################################################
 UPDATE ROLLBACK FEATURE
