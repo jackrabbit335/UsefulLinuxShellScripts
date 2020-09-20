@@ -185,6 +185,8 @@ EOF
 		echo 'alias cpu="lscpu"' >> ~/.bashrc
 		echo "#Alias to monitor memory usage in humanly-readable format" >> ~/.bashrc
 		echo 'alias monitor="watch free -lh"' >> ~/.bashrc
+		echo "#Alias to list permissions of all files in a directory" >> ~/.bashrc
+		echo 'alias ll="ls -l"' >> ~/.bashrc
 	fi
 
 	checkNetwork
