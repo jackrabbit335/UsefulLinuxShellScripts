@@ -6,6 +6,7 @@ Setup(){
 
 	#This backs up very important system files for your sanity
 	sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
+	sudo cp /etc/systemd/logind.conf /etc/systemd/logind.conf.bak
 	sudo cp /etc/default/grub /etc/default/grub.bak
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
 	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
@@ -1543,7 +1544,7 @@ cleanup(){
 	strongly recommended that you use the simpler option to remove only
 	up to the latest three versions of your software. Thanks!
 EOF
-  echo "What would you like to do?"
+  	echo "What would you like to do?"
 	echo "1 - Remove up to the latest three versions of software"
 	echo "2 - Remove all cache except for the version on your system"
 	echo "3 - Remove all cache from every package and every version"
@@ -1739,7 +1740,7 @@ SystemMaintenance(){
 	sudo systemctl daemon-reload
 
 	#This will ensure the firewall is enabled
-	sudo systemctl enable ufw; sudo ufw enable
+	sudo systemctl restart ufw; sudo ufw enable; sudo ufw reload
 
 	#This refreshes index cache
 	sudo updatedb; sudo mandb
@@ -1803,7 +1804,7 @@ reboot your machine. Services can be turned back on with a good backup
 and possibly by chrooting into the device via live cd and reversing the
 process by running this again and reenabling the service.
 EOF
-  systemctl list-unit-files --type=service
+  	systemctl list-unit-files --type=service
 	read -p "Press enter to continue..."
 	echo "What would you like to do?"
 	echo "1 - enable service"
