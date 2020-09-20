@@ -7,6 +7,8 @@ Setup(){
 	#Backs up important system files
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
 	sudo cp /etc/systemd/system.conf /etc/systemd/system.conf.bak
+	sudo cp /etc/systemd/logind.conf /etc/systemd/logind.conf.bak
+	sudo cp /etc/login.defs /etc/login.defs.bak
 	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 	sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
 	sudo cp /etc/shadow /etc/shadow.bak
@@ -1556,7 +1558,7 @@ SystemMaintenance(){
 	sudo systemctl daemon-reload
 
 	#This will reload the firewall to ensure it's enabled
-	sudo systemctl enable ufw; sudo ufw enable
+	sudo systemctl restart ufw; sudo ufw enable; sudo ufw reload
 
 	#This refreshes file index
 	sudo updatedb && sudo mandb
