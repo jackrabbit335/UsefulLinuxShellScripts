@@ -6,6 +6,7 @@ Setup(){
 
 	#This backs up important system files for your convenience
 	sudo cp /etc/sysctl.conf /etc/sysctl.conf.bak
+	sudo cp /etc/systemd/logind.conf /etc/systemd/logind.conf.bak
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
 	sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
 	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
@@ -1533,12 +1534,12 @@ SystemMaintenance(){
 	#This updates your system
 	sudo dpkg --configure -a; sudo apt install -f; sudo apt update; sudo apt upgrade -yy
 
-	#It is recommended that your firewall is enabled
-	sudo systemctl enable ufw; sudo ufw enable
-
 	#This restarts systemd daemon. This can be useful for different reasons.
 	sudo systemctl daemon-reload #For systemd releases
-
+	
+	#It is recommended that your firewall is enabled
+	sudo systemctl restart ufw; sudo ufw enable; sudo ufw reload
+	
 	#This runs update db for index cache and cleans the manual database
 	sudo updatedb; sudo mandb
 
@@ -1607,7 +1608,7 @@ EOF
 			echo "2 - Disable services"
 			echo "3 - create a list of all services running on your system"
 			echo "4 - Nothing just get me out of this menu"
-      read operation;
+      			read operation;
 
 			case $operation in
 				1)
@@ -1651,7 +1652,7 @@ EOF
 			echo "2 - Disable services"
 			echo "3 - create a list of all services running on your system"
 			echo "4 - Nothing just get me out of this menu"
-      read operation;
+      			read operation;
 
 			case $operation in
 				1)
@@ -1697,7 +1698,7 @@ Backup(){
 	echo "What would you like to do?"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition(skipping unnecessary items)"
-  read operation;
+  	read operation;
 
 	case $operation in
 		1)
@@ -1757,7 +1758,7 @@ school work stored in the home directory. This also assumes that your home
 directory is on the drive in question. This can also restore browser settings
 including unwanted toolbars so be warned.
 EOF
-  Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
+  	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
 	if [[ $Mountpoint != /run/media/$USER/* ]];
 	then
 		read -p "Please insert the backup drive and hit enter..."
@@ -1800,7 +1801,7 @@ Greeting(){
 	echo "17 - Restart"
 	echo "18 - Reset the desktop"
 	echo "19 - exit"
-  read selection;
+  	read selection;
 
 	case $selection in
 		1)
