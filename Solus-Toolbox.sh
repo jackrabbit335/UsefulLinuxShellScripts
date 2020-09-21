@@ -187,6 +187,8 @@ EOF
 		echo 'alias monitor="watch free -lh"' >> ~/.bashrc
 		echo "#Alias to list permissions of all files in a directory" >> ~/.bashrc
 		echo 'alias ll="ls -l"' >> ~/.bashrc
+		echo "#Alias to view swap usage info" >> ~/.bashrc
+		echo 'alias swaps="cat /proc/swaps"' >> ~/.bashrc
 	fi
 
 	checkNetwork
