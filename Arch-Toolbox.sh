@@ -1109,6 +1109,7 @@ Joe Collins
 Quidsup
 SwitchedtoLinux
 Matthew Moore
+Chris Titus
 Joshua Strobl of the Solus project
 Steven Black,
 The creator of the other hosts lists I utilize on my own machines.
