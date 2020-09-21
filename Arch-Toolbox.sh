@@ -1383,8 +1383,8 @@ in these scripts. I will get there though, so please be patient.
 CONTACT ME
 ########################################################################
 For sending me hate mail, for inquiring assistance, and for sending me
-feedback and suggestions, email me at jackharkness444@protonmail.com
-or js185r@gmail.com Send your inquiries and suggestions with a
+feedback and suggestions, email me at VeilofMaya@vivaldi.net
+Send your inquiries and suggestions with a
 corresponding subject line.
 EOF
 
