@@ -161,13 +161,15 @@ EOF
 		echo "#Alias to trim ssd" >> ~/.bashrc
 		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
 		echo "#Alias to show memory info" >> ~/.bashrc
-		echo 'alias mem="cat /proc/meminfo"' >> ~/.bashrc
+		echo 'alias meminfo="cat /proc/meminfo"' >> ~/.bashrc
 		echo "#Alias to show cpu info" >> ~/.bashrc
 		echo 'alias cpu="lscpu"' >> ~/.bashrc
 		echo "#Alias to monitor sensor information" >> ~/.bashrc
 		echo 'alias temp="watch sensors"' >> ~/.bashrc
 		echo "#Alias to monitor live memory usage" >> ~/.bashrc
-		echo 'alias monitor="free -lh"' >> ~/.bashrc
+		echo 'alias mem="watch free -lh"' >> ~/.bashrc
+		echo "#Alias to show swaps info" >> ~/.bashrc
+		echo 'alias swaps="cat /proc/swaps"' >> ~/.bashrc
 
 		#Determines your os in order to apply correct alias
 		distribution=$(cat /etc/issue | awk '{print $1}')
