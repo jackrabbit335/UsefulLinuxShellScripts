@@ -66,6 +66,14 @@ Setup(){
 		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
 		echo "#Alias to fix broken packages" >> ~/.bashrc
 		echo 'alias fix="sudo dpkg --configure -a && sudo apt install -f"' >> ~/.bashrc
+		echo "#Alias to see RAM info" >> ~/.bashrc
+		echo 'alias meminfo="cat /proc/meminfo"' >> ~/.bashrc
+		echo "#Alias to monitor memory usage stats over time" >> ~/.bashrc
+		echo 'alias mem="watch free -lh"' >> ~/.bashrc
+		echo "#Alias to view cpu info" >> ~/.bashrc
+		echo 'alias cpu="lscpu"' >> ~/.bashrc
+		echo "#Alias to view temp readings over time" >> ~/.bashrc
+		echo 'alias temp="watch sensors"' >> ~/.bashrc
 	fi
 
 	#System tweaks
