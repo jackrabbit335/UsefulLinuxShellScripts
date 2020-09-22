@@ -117,24 +117,6 @@ EOF
 		break
 	done
 
-	#This allows you to install the latest LTS kernel in Solus
-	cat <<EOF
-	LTS Kernels are those kernels which receive security patches for prolonged periods.
-	Where kernel modules and headers do receive periodic updates, the overall
-	system and user experience remains mostly unaffected. These kernels are
-	handy for older systems or new users who experience driver incompatibilities with the latest
-	kernels. CAUTION: Installing kernels should be done with caution and a back up should
-	be ready should anything go wrong. You have been warned.
-EOF
-	echo "Would you like to install the latest LTS kernel stack?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		sudo eopkg -y install linux-lts linux-lts-headers
-		echo "This keeps your current kernel in tact"
-	break
-	done
-
 	#This removes that stupid gnome-keyring unlock error you get with chrome
 	echo "Killing this might make your passwords less secure on chrome."
 	sleep 1
@@ -195,7 +177,24 @@ EOF
 
 	#This tries to update repositories and upgrade the system
 	sudo eopkg -y delete-cache; sudo eopkg -y clean; sudo eopkg -y rebuild-db; sudo eopkg -y upgrade
-
+	
+	#This allows you to install the latest LTS kernel in Solus
+	cat <<EOF
+	LTS Kernels are those kernels which receive security patches for prolonged periods.
+	Where kernel modules and headers do receive periodic updates, the overall
+	system and user experience remains mostly unaffected. These kernels are
+	handy for older systems or new users who experience driver incompatibilities with the latest
+	kernels. CAUTION: Installing kernels should be done with caution and a back up should
+	be ready should anything go wrong. You have been warned.
+EOF
+	echo "Would you like to install the latest LTS kernel stack?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		sudo eopkg -y install linux-lts linux-lts-headers
+		echo "This keeps your current kernel in tact"
+	break
+	done
 	#This starts your firewall
 	eopkg list-installed | grep gufw || sudo eopkg -y install gufw; sudo systemctl enable ufw; sudo ufw enable
 	echo "Would you also like to deny ssh and telnet for security?(Y/n)"
