@@ -575,6 +575,7 @@ InstallAndConquer(){
 			echo "This installs a choice of utility software"
 			sudo eopkg install --reinstall mtr lshw hdparm tlp gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw grsync
 			sudo snap install youtube-dl
+			sudo eopkg install -c system.devel linux-current-headers
 			;;
 			2)
 			echo "This installs a light weight editor(text/code editor/IDE)"
@@ -928,6 +929,7 @@ Quidsup
 SwitchedtoLinux
 Matthew Moore
 Chris Titus
+Average Linux User
 Joshua Strobl of the Solus project
 Steven Black, the creator of the other hosts lists
 I utilize on my own machines.
