@@ -130,7 +130,7 @@ EOF
 	read answer
 	while [ $answer == Y ];
 	do
-		sudo eopkg install linux-lts linux-lts-headers
+		sudo eopkg -y install linux-lts linux-lts-headers
 		echo "This keeps your current kernel in tact"
 	break
 	done
