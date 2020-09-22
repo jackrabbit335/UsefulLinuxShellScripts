@@ -976,6 +976,7 @@ https://wiki.archlinux.org
 https://forum.manjaro.org
 https://kaosx.us/docs/
 https://getsol.us/help-center/home/
+https://averagelinuxuser.com/after-installing-solus/
 
 ########################################################################
 UPDATE ROLLBACK FEATURE
