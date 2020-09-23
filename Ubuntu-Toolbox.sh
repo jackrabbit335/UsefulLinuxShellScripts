@@ -568,6 +568,7 @@ Quidsup
 SwitchedtoLinux
 Matthew Moore
 Chris Titus
+Average Linux User
 Joshua Strobl of the Solus project
 Steven Black,
 The creator of the other hosts lists I utilize on my own machines.
@@ -1259,7 +1260,6 @@ AccountSettings(){
 	echo "4 - Look for empty password users on the system"
 	echo "5 - See a list of accounts and groups on the system"
 	echo "6 - skip this menu"
-
 	read operation;
 
 	case $operation in
@@ -1347,9 +1347,9 @@ cleanup(){
 	sudo apt remove --purge $OLDCONF
 
 	#This optionally removes old kernels
-cat <<_EOF_
+cat <<EOF
 It is encouraged that you leave at least one older kernel on your system
-_EOF_
+EOF
 	OldKernels=$(dpkg -l | tail -n +6 | grep -E 'linux-image-[0-9]+' | grep -Fv $(uname -r))
 	echo $OldKernels
 	sleep 1
@@ -1454,7 +1454,7 @@ EOF
 	echo "10 - Epiphany"
 	read operation;
 
-  case $operation in
+	case $operation in
 		1)
 		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old
 		sudo rm -rf ~/.mozilla/firefox/*
@@ -1767,7 +1767,7 @@ school work stored in the home directory. This also assumes that your home
 directory is on the drive in question. This can also restore browser settings
 including unwanted toolbars so be warned.
 EOF
-  	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
+	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
 	if [[ $Mountpoint != /run/media/$USER/* ]];
 	then
 		read -p "Please insert the backup drive and hit enter..."

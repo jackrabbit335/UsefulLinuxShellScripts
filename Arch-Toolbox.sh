@@ -1110,6 +1110,7 @@ Quidsup
 SwitchedtoLinux
 Matthew Moore
 Chris Titus
+Average Linux User
 Joshua Strobl of the Solus project
 Steven Black,
 The creator of the other hosts lists I utilize on my own machines.
