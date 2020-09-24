@@ -150,7 +150,7 @@ EOF
 		echo "#Alias to remove orphaned packages" >> ~/.bashrc
 		echo 'alias rmo="sudo eopkg remove-orphans"' >> ~/.bashrc
 		echo "#Alias to check installation integrity of software" >> ~/.bashrc
-		echo 'alias convey="sudo eopkg check"' >> ~/.bashrc
+		echo 'alias convey="sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg -y install --reinstall"' >> ~/.bashrc
 		echo "#Alias to rebuild the database" >> ~/.bashrc
 		echo 'alias rdb="sudo eopkg -y rebuild-db"' >> ~/.bashrc
 		echo "#Alias to Free up RAM" >> ~/.bashrc
@@ -1298,6 +1298,7 @@ checkNetwork(){
 		then
 			echo "Connection successful"
 		else
+			read -p "Check hardware cable status and press enter..."
 			interface=$(ip -o -4 route show to default | awk '{print $5}')
 			sudo dhclient -v -r && sudo dhclient; sudo systemctl stop NetworkManager.service
 			sudo systemctl disable NetworkManager.service; sudo systemctl enable NetworkManager.service
@@ -1858,7 +1859,7 @@ Greeting(){
 		Reset
 		;;
 		19)
-		echo "Thank you for using Solus-Toolbox... Goodbye!"
+		echo $'\n'$"Thank you for using Solus-Toolbox... Goodbye!"
 		sleep 1
 		exit
 		;;
