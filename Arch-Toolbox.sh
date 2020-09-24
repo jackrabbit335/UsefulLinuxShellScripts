@@ -788,7 +788,7 @@ EOF
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz; gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
 			elif [[ $browser == 12 ]];
 			then
-				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-classic-2020.08.1.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.08.1.en-US.linux-x86_64.tar.bz2
+				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-classic-2020.09.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.09.en-US.linux-x86_64.tar.bz2
 				sudo ln -s ~/waterfox-classic/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 13 ]];
