@@ -1457,6 +1457,7 @@ checkNetwork(){
 		then
 			echo "Connection successful"
 		else
+			read -p "Check hardware cable status and press enter..."
 			interface=$(ip -o -4 route show to default | awk '{print $5}')
 			sudo dhclient -v -r && sudo dhclient; sudo systemctl stop NetworkManager.service
 			sudo systemctl disable NetworkManager.service; sudo systemctl enable NetworkManager.service
@@ -2181,7 +2182,7 @@ Greeting(){
 		Reset
 		;;
 		20)
-		echo "Thank you for using Arch-Toolbox... Goodbye!"
+		echo $'\n'$"Thank you for using Arch-Toolbox... Goodbye!"
 		sleep 1
 		exit
 		;;
