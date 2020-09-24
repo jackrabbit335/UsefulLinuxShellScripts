@@ -1315,6 +1315,7 @@ CheckNetwork(){
 		then
 			echo "Connection successful!"
 		else
+			read -p "Check hardware cable status and press enter..."
 			interface=$(ip -o -4 route show to default | awk '{print $5}')
 			sudo dhclient -v -r && sudo dhclient; sudo mmcli nm enable false
 			sudo nmcli nm enable true; sudo /etc/init.d/ network-manager restart
@@ -1868,7 +1869,7 @@ Greeting(){
 		Reset
 		;;
 		19)
-		echo "Thank you for using Ubuntu-Toolbox... Goodbye!"
+		echo $'\n'"Thank you for using Ubuntu-Toolbox... Goodbye!"
 		sleep 1
 		exit
 		;;
