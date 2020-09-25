@@ -38,16 +38,6 @@ Setup(){
 	break
 	done
 
-	#This starts your firewall
-	pacman -Q | grep ufw || sudo pacman -S --noconfirm ufw; sudo systemctl enable ufw; sudo ufw enable
-	echo "Would you like to deny ssh and telnet for security?(Y/n)"
-	read answer
-	while [ $answer == Y ]
-	do
-	sudo ufw deny ssh; sudo ufw deny telnet; sudo ufw reload
-	break
-	done
-
 	#This restricts coredumps to prevent attackers from getting info
 	sudo sed -i -e '/#Storage=external/c\Storage=none ' /etc/systemd/coredump.conf
 	sudo sed -i -e '/#PermitRootLogin/c\PermitRootLogin no ' /etc/ssh/sshd_config
@@ -218,6 +208,16 @@ EOF
 				sudo pacman -Syyu --noconfirm
 			fi
 		fi
+	done
+	
+	#This starts your firewall
+	pacman -Q | grep ufw || sudo pacman -S --noconfirm ufw; sudo systemctl enable ufw; sudo ufw enable
+	echo "Would you like to deny ssh and telnet for security?(Y/n)"
+	read answer
+	while [ $answer == Y ]
+	do
+	sudo ufw deny ssh; sudo ufw deny telnet; sudo ufw reload
+	break
 	done
 
 #This fixes gufw not opening in kde plasma desktop
