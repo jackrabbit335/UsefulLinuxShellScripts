@@ -41,7 +41,7 @@ Setup(){
 	done
 
 	#This lowers grub delay
-	sudo sed -i -e '/GRUB_TIMEOUT=5/c\GRUB_TIMEOUT=3 ' /etc/default/grub; sudo update-grub
+	sudo sed -i -e '/GRUB_TIMEOUT=5/c\GRUB_TIMEOUT=3 ' /etc/default/grub; sudo clr-boot-manager update
 
 	#This restricts coredumps to prevent attackers from getting info
 	sudo sed -i -e '/#Storage=external/c\Storage=none ' /etc/systemd/coredump.conf
@@ -161,23 +161,23 @@ EOF
 		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
 		echo "#Alias to show relevant sensor information" >> ~/.bashrc
 		echo 'alias temp="watch sensors"' >> ~/.bashrc
-		echo "#Alias to show memory info" >> ~/.bashrc
-		echo 'alias mem="cat /proc/meminfo"' >> ~/.bashrc
+		echo "#Alias to monitor memory usage actively" >> ~/.bashrc
+		echo 'alias mem="watch free -lh"' >> ~/.bashrc
 		echo "Alias to show cpu info" >> ~/.bashrc
 		echo 'alias cpu="lscpu"' >> ~/.bashrc
-		echo "#Alias to monitor memory usage in humanly-readable format" >> ~/.bashrc
-		echo 'alias monitor="watch free -lh"' >> ~/.bashrc
-		echo "#Alias to list permissions of all files in a directory" >> ~/.bashrc
+		echo "#Alias to see meminfo" >> ~/.bashrc
+		echo 'alias meminfo="cat /proc/meminfo"' >> ~/.bashrc
+		echo "#Alias to list permissions of files in directory" >> ~/.bashrc
 		echo 'alias ll="ls -l"' >> ~/.bashrc
-		echo "#Alias to view swap usage info" >> ~/.bashrc
+		echo "#Alias to view swap usage stats" >> ~/.bashrc
 		echo 'alias swaps="cat /proc/swaps"' >> ~/.bashrc
 	fi
 
 	checkNetwork
 
 	#This tries to update repositories and upgrade the system
-	sudo eopkg -y delete-cache; sudo eopkg -y clean; sudo eopkg -y rebuild-db; sudo eopkg -y upgrade
-	
+	sudo eopkg -y delete-cache; sudo eopkg -y clean; sudo eopkg -y rebuild-db; sudo eopkg ur; sudo eopkg -y upgrade
+
 	#This allows you to install the latest LTS kernel in Solus
 	cat <<EOF
 	LTS Kernels are those kernels which receive security patches for prolonged periods.
@@ -191,10 +191,11 @@ EOF
 	read answer
 	while [ $answer == Y ];
 	do
-		sudo eopkg -y install linux-lts linux-lts-headers
+		sudo eopkg install linux-lts linux-lts-headers
 		echo "This keeps your current kernel in tact"
 	break
 	done
+
 	#This starts your firewall
 	eopkg list-installed | grep gufw || sudo eopkg -y install gufw; sudo systemctl enable ufw; sudo ufw enable
 	echo "Would you also like to deny ssh and telnet for security?(Y/n)"
@@ -206,7 +207,7 @@ EOF
 	done
 
 	#This fixes  an issue with GUFW on KDE
-	if [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]]; 
+	if [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]];
 	then
 		echo "kdesu python3 /usr/lib/python3.7/site-packages/gufw/gufw.py" | sudo tee -a /bin/gufw
 	fi
@@ -221,17 +222,15 @@ EOF
 		clear
 		Greeting
 	fi
-
 }
 
 Update(){
 	checkNetwork
 
-	sudo eopkg -y upgrade
+	sudo eopkg ur; sudo eopkg -y upgrade
 
 	clear
 	Greeting
-
 }
 
 Reset(){
@@ -610,7 +609,7 @@ InstallAndConquer(){
 			read software
 			if [[ $software == 1 ]];
 			then
-				sudo eopkg install wget #Usually already installed
+				sudo eopkg install wget
 			elif [[ $software == 2 ]];
 			then
 				sudo eopkg install uget
@@ -900,11 +899,11 @@ EOF
 	cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
 	for i in cpu;
 	do
-			if [[ $cpu == GenuineIntel ]];
-			then
-				sudo eopkg li | grep intel-microcode || sudo eopkg install intel-microcode
-			fi
- done
+		if [[ $cpu == GenuineIntel ]];
+		then
+			sudo eopkg li | grep intel-microcode || sudo eopkg install intel-microcode
+		fi
+	done
 
 	clear
 	Greeting
@@ -966,7 +965,7 @@ I set it up under the root account by typing su followed by my password
 in manjaro, sudo -i in Ubuntu systems and then typing crontab -e.
 The maintenance scripts are ok to run manually each month.
 It is recommended that you do not run these without being present.
-Hoever, if you wish to run them as cron jobs then you can tweak the
+However, if you wish to run them as cron jobs then you can tweak the
 cleaning routines as follows."sudo rm -r ./cache/*" should be changed to
 "rm -r /home/$USER/.cache/*" and etc. The setup script should only be
 ran once to set the system up.
@@ -984,13 +983,13 @@ UPDATE ROLLBACK FEATURE
 EOPKG in Solus provides its own rollback feature. To use this feature,
 you have to know the number in the historical record of operations
 in EOPKG. EOPKG records every action taken to update repos and the system
-since installation. Using a simple command string like sudo eopkg history 
-will give you a rather lengthy list of these operations in the terminal. 
+since installation. Using a simple command string like sudo eopkg history
+will give you a rather lengthy list of these operations in the terminal.
 To rollback to a previous package state, you only need to issue the comm-
 and sudo eopkg history -t and the number of the state you wish to revert
 to. This will be available in a future release of this script and can be
 quite handy in troubleshooting situations(specifically when booting older-
-kernels doesn't help). More on this can be found here: 
+kernels doesn't help). More on this can be found here:
 https://getsol.us/articles/package-management/history-and-rollback/en/
 Of course, this does probably require package cache to be left alone,
 however, in some situations, you can't install updates with invalid or
@@ -1049,17 +1048,18 @@ The third party repository fetches software from remote servers and
 installs the software on the system using the EOPKG standard technique
 of software management. Solus also ships with snapd by default. This
 allows the user access to even more software, some even platform
-agnosticated packages like Notepad Plus Plus. Snap also offers Chromium
-as the standard repository does not, at this time, ship it. The
-differences in package management is among the multitude of things that
-make Solus different. Developing working scripts for the three major OS-
-es required a deal of research and trial and error. This is not the only
-reason, but it is a big one as to why there are three toolbox scripts
-rather than just one. Upgrading is simple with this one though and
-learning a few key commands should get you by. All the main commands
-will be used in this script so enjoy. Sudo eopkg up will update the sys-
-tem, while sudo eopkg remove $name will remove an application. To install
-an application in the standard repo simply type sudo eopkg install $name.
+agnosticated packages like Notepad Plus Plus(Still wont work on linux). 
+Snap also offers Chromium as the standard repository does not, at this 
+time, ship it. The differences in package management is among 
+the multitude of things that make Solus different. Developing working 
+scripts for the three major OSes required a deal of research and trial 
+and error. This is not the only reason, but it is a big one as to why 
+there are three toolbox scripts rather than just one. Upgrading is 
+simple with this one though and learning a few key commands should get you by. 
+All the main commands will be used in this script so enjoy. Sudo eopkg up 
+will update the system, while sudo eopkg remove $name will remove an 
+application. To install an application in the standard repo simply type 
+sudo eopkg install $name.
 
 ########################################################################
 ClEANING AND ROUTINE MAINTENANCE
@@ -1193,7 +1193,7 @@ during hibernation etc. These scripts will eventually all have the ability
 to create one in the event that your system does not currently have
 one. The blog article about this issue can be found here:
 https://techiegeek123.blogspot.com/2019/02/swap-files-in-linux.html.
-Please  email me at jackharkness444@protonmail.com for more info about
+Please  email me at VeilofMaya@vivaldi.net for more info about
 these scripts or any problems you have with Linux. I will be more than
 happy to help. One further notice, the Swap file size is configurable
 for users who are somewhat advanced enough to go into the code and
@@ -1221,14 +1221,13 @@ in these scripts. I will get there though, so please be patient.
 CONTACT ME
 ########################################################################
 For sending me hate mail, for inquiring assistance, and for sending me
-feedback and suggestions, email me at VeilofMaya@vivaldi.net
+feedback and suggestions, email me at VeilofMaya@vivaldi.net 
 Send your inquiries and suggestions with a
 corresponding subject line.
 EOF
 
 	clear
 	Greeting
-
 }
 
 AccountSettings(){
@@ -1298,7 +1297,7 @@ checkNetwork(){
 		then
 			echo "Connection successful"
 		else
-			read -p "Check hardware cable status and press enter..."
+			read -p "Check hardware cable status then press enter..."
 			interface=$(ip -o -4 route show to default | awk '{print $5}')
 			sudo dhclient -v -r && sudo dhclient; sudo systemctl stop NetworkManager.service
 			sudo systemctl disable NetworkManager.service; sudo systemctl enable NetworkManager.service
@@ -1378,8 +1377,8 @@ cleanup(){
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
@@ -1533,7 +1532,7 @@ EOF
 		*)
 		echo "No browser for that entry exists, please try again!"
 		sleep 1
-		
+
 		BrowserRepair
 		;;
 	esac
@@ -1557,7 +1556,7 @@ SystemMaintenance(){
 	checkNetwork
 
 	#This attempts to fix databases and update your system
-	sudo eopkg -y rebuild-db; sudo eopkg -y upgrade
+	sudo eopkg -y rebuild-db; sudo eopkg ur; sudo eopkg -y upgrade
 
 	#This checks for broken packages
 	sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg -y install --reinstall
@@ -1683,7 +1682,7 @@ EOF
 		;;
 		5)
 		echo "Smart choice."
-		sleep 2
+		sleep 1
 		;;
 	esac
 
@@ -1733,7 +1732,7 @@ Backup(){
 			read device
 			sudo mount $device /mnt
 			sudo rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /mnt/$host-backups
-			sudo sync 
+			sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
 			echo "Found a block device at designated coordinates...
