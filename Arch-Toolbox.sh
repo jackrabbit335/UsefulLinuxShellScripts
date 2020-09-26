@@ -1154,6 +1154,7 @@ https://wiki.manjaro.org/index.php?title=Main_Page
 https://wiki.archlinux.org
 https://forum.manjaro.org
 https://kaosx.us/docs/
+https://averagelinuxuser.com/
 
 ########################################################################
 SECURITY IN KAOS WITH TOMOYO AND SOME STUFF WITH UFW
@@ -1356,7 +1357,7 @@ during hibernation etc. These scripts will eventually all have the ability
 to create one in the event that your system doesn not currently have
 one. The blog article about this issue can be found here:
 https://techiegeek123.blogspot.com/2019/02/swap-files-in-linux.html.
-Please  email me at jackharkness444@protonmail.com for more info about
+Please  email me at VeilofMaya@vivaldi.net for more info about
 these scripts or any problems you have with Linux. I will be more than
 happy to help. One further notice, the Swap file size is configurable
 for users who are somewhat advanced enough to go into the code and
@@ -1391,7 +1392,6 @@ EOF
 
 	clear
 	Greeting
-
 }
 
 AccountSettings(){
@@ -1549,7 +1549,7 @@ cleanup(){
 	strongly recommended that you use the simpler option to remove only
 	up to the latest three versions of your software. Thanks!
 EOF
-  	echo "What would you like to do?"
+    echo "What would you like to do?"
 	echo "1 - Remove up to the latest three versions of software"
 	echo "2 - Remove all cache except for the version on your system"
 	echo "3 - Remove all cache from every package and every version"
@@ -1586,7 +1586,7 @@ it is probably best to do it in the browser itself, but when you just want somet
 fast, this can do it for you. More browsers and options are coming. This can also
 clean undesired toolbars.
 EOF
-  #Look for the following browsers
+	#Look for the following browsers
 	browser1="$(find /usr/bin/firefox)"
 	browser2="$(find /usr/bin/vivaldi*)"
 	browser3="$(find /usr/bin/palemoon)"
@@ -1809,7 +1809,7 @@ reboot your machine. Services can be turned back on with a good backup
 and possibly by chrooting into the device via live cd and reversing the
 process by running this again and reenabling the service.
 EOF
-  	systemctl list-unit-files --type=service
+	systemctl list-unit-files --type=service
 	read -p "Press enter to continue..."
 	echo "What would you like to do?"
 	echo "1 - enable service"
@@ -1869,7 +1869,7 @@ EOF
 		;;
 		5)
 		echo "Smart choice."
-		sleep 2
+		sleep 1
 		;;
 	esac
 
