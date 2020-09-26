@@ -616,6 +616,7 @@ https://wiki.manjaro.org/index.php?title=Main_Page
 https://wiki.archlinux.org
 https://forum.manjaro.org
 https://kaosx.us/docs/
+https://averagelinuxuser.com/
 
 ########################################################################
 SECURITY IN KAOS WITH TOMOYO AND SOME STUFF WITH UFW
@@ -806,7 +807,7 @@ during hibernation etc. These scripts will eventually all have the ability
 to create one in the event that your system does not currently have
 one. The blog article about this issue can be found here:
 https://techiegeek123.blogspot.com/2019/02/swap-files-in-linux.html.
-Please  email me at jackharkness444@protonmail.com for more info about
+Please  email me at VeilofMaya@vivaldi.net for more info about
 these scripts or any problems you have with Linux. I will be more than
 happy to help. One further notice, the Swap file size is configurable
 for users who are somewhat advanced enough to go into the code and
@@ -876,7 +877,6 @@ InstallAndConquer(){
 		echo "16 - Virtualbox"
 		echo "17 - Wine and or PlayonLinux"
 		echo "18 - get out of this menu"
-
 		read software;
 
 		case $software in
@@ -1265,7 +1265,7 @@ AccountSettings(){
 	case $operation in
 		1)
 		echo $(cat /etc/group | awk -F: '{print $1}')
-		sleep 3
+		sleep 2
 		read -p "Please enter the groups you wish the user to be in:" $group1 $group2 $group3 $group4 $group5
 		echo "Please enter the name of the user"
 		read name
@@ -1662,7 +1662,7 @@ EOF
 			echo "2 - Disable services"
 			echo "3 - create a list of all services running on your system"
 			echo "4 - Nothing just get me out of this menu"
-      			read operation;
+			read operation;
 
 			case $operation in
 				1)
