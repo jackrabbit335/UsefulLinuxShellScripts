@@ -1377,8 +1377,8 @@ cleanup(){
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
-	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
+	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
