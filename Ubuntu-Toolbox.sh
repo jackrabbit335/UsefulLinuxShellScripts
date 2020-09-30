@@ -977,7 +977,7 @@ InstallAndConquer(){
 				sudo apt install -f
 			elif [[ $browser == 6 ]];
 			then
-				wget http://linux.palemoon.org/datastore/release/palemoon-28.13.0.linux-x86_64.tar.xz; tar -xvf palemoon-28.13.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget http://linux.palemoon.org/datastore/release/palemoon-28.14.0.linux-x86_64.tar.xz; tar -xvf palemoon-28.14.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
