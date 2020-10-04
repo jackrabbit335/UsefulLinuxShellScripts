@@ -145,14 +145,14 @@ EOF
 		echo 'alias update="sudo eopkg -y upgrade"' >> ~/.bashrc
 		echo "#Alias to clear package cache" >> ~/.bashrc
 		echo 'alias cleanse="sudo eopkg -y delete-cache"' >> ~/.bashrc
-		echo "#Alias to clean stale blocks" >> ~/.bashrc
+		echo "#Alias to clean stale locks" >> ~/.bashrc
 		echo 'alias purge="sudo eopkg -y clean"' >> ~/.bashrc
 		echo "#Alias to remove orphaned packages" >> ~/.bashrc
 		echo 'alias rmo="sudo eopkg remove-orphans"' >> ~/.bashrc
 		echo "#Alias to check installation integrity of software" >> ~/.bashrc
-		echo 'alias convey="sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg -y install --reinstall"' >> ~/.bashrc
+		echo 'alias repair="sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg -y install --reinstall"' >> ~/.bashrc
 		echo "#Alias to rebuild the database" >> ~/.bashrc
-		echo 'alias rdb="sudo eopkg -y rebuild-db"' >> ~/.bashrc
+		echo 'alias rebuild="sudo eopkg -y rebuild-db"' >> ~/.bashrc
 		echo "#Alias to Free up RAM" >> ~/.bashrc
 		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
 		echo "#Alias to trim journal size" >> ~/.bashrc
@@ -1048,17 +1048,17 @@ The third party repository fetches software from remote servers and
 installs the software on the system using the EOPKG standard technique
 of software management. Solus also ships with snapd by default. This
 allows the user access to even more software, some even platform
-agnosticated packages like Notepad Plus Plus(Still wont work on linux). 
-Snap also offers Chromium as the standard repository does not, at this 
-time, ship it. The differences in package management is among 
-the multitude of things that make Solus different. Developing working 
-scripts for the three major OSes required a deal of research and trial 
-and error. This is not the only reason, but it is a big one as to why 
-there are three toolbox scripts rather than just one. Upgrading is 
-simple with this one though and learning a few key commands should get you by. 
-All the main commands will be used in this script so enjoy. Sudo eopkg up 
-will update the system, while sudo eopkg remove $name will remove an 
-application. To install an application in the standard repo simply type 
+agnosticated packages like Notepad Plus Plus(Still wont work on linux).
+Snap also offers Chromium as the standard repository does not, at this
+time, ship it. The differences in package management is among
+the multitude of things that make Solus different. Developing working
+scripts for the three major OSes required a deal of research and trial
+and error. This is not the only reason, but it is a big one as to why
+there are three toolbox scripts rather than just one. Upgrading is
+simple with this one though and learning a few key commands should get you by.
+All the main commands will be used in this script so enjoy. Sudo eopkg up
+will update the system, while sudo eopkg remove $name will remove an
+application. To install an application in the standard repo simply type
 sudo eopkg install $name.
 
 ########################################################################
@@ -1221,7 +1221,7 @@ in these scripts. I will get there though, so please be patient.
 CONTACT ME
 ########################################################################
 For sending me hate mail, for inquiring assistance, and for sending me
-feedback and suggestions, email me at VeilofMaya@vivaldi.net 
+feedback and suggestions, email me at VeilofMaya@vivaldi.net
 Send your inquiries and suggestions with a
 corresponding subject line.
 EOF
@@ -1365,11 +1365,14 @@ cleanup(){
 	sudo rm -r ~/.nv/*
 	sudo rm -r ~/.npm/*
 	sudo rm -r ~/.w3m/*
-	sudo rm ~/.esd_auth #Best I can tell cookie for pulse audio
+	sudo rm ~/.esd_auth
 	sudo rm ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
 	sudo rm -r /var/tmp/*
+
+	#This remove old configurations for software
+	sudo rm -r ~/.config/*-old
 
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
@@ -1378,7 +1381,7 @@ cleanup(){
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
 	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
@@ -1556,7 +1559,7 @@ SystemMaintenance(){
 	checkNetwork
 
 	#This attempts to fix databases and update your system
-	sudo eopkg -y rebuild-db;sudo eopkg -y upgrade
+	sudo eopkg -y rebuild-db; sudo eopkg -y upgrade
 
 	#This checks for broken packages
 	sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg -y install --reinstall
@@ -1859,7 +1862,6 @@ Greeting(){
 		;;
 		19)
 		echo $'\n'$"Thank you for using Solus-Toolbox... Goodbye!"
-		sleep 1
 		exit
 		;;
 		*)
