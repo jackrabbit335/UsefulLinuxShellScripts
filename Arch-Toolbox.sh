@@ -1507,7 +1507,10 @@ cleanup(){
 	sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
 	sudo rm -r /var/tmp/*
-
+	
+	#This removes old configurations for software
+	sudo rm -r ~/.config/*-old
+	
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
 
@@ -2183,7 +2186,6 @@ Greeting(){
 		;;
 		20)
 		echo $'\n'$"Thank you for using Arch-Toolbox... Goodbye!"
-		sleep 1
 		exit
 		;;
 		*)
