@@ -1387,6 +1387,9 @@ EOF
 	sudo rm -r ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
+	
+	#This removes old configurations of software
+	sudo rm -r ~/.config/*-old
 
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches; swapoff -a && swapon -a"
@@ -1869,8 +1872,7 @@ Greeting(){
 		Reset
 		;;
 		19)
-		echo $'\n'"Thank you for using Ubuntu-Toolbox... Goodbye!"
-		sleep 1
+		echo $'\n'$"Thank you for using Ubuntu-Toolbox... Goodbye!"
 		exit
 		;;
 		*)
