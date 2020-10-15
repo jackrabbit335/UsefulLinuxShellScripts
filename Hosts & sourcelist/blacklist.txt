@@ -82,3 +82,4 @@
 0.0.0.0  www.aol.com
 0.0.0.0  src.ebay-us.com #This scans ports on ebay
 0.0.0.0  xhh95.mjt.lu
+0.0.0.0  connect.facebook.net
