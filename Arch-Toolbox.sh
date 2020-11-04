@@ -11,6 +11,7 @@ Setup(){
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
 	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 	sudo cp /etc/profile /etc/profile.bak
+	sudo cp /etc/bash.bashrc /etc/bash.bashrc.bak
 	sudo cp /etc/environment /etc/environment.bak
 	sudo cp /etc/host.conf /etc/host.conf.bak
 	sudo cp /etc/passwd /etc/passwd.bak
@@ -771,7 +772,7 @@ EOF
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz; gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar; cd vivaldi && makepkg -si
 			elif [[ $browser == 7 ]];
 			then
-				wget linux.palemoon.org/datastore/release/palemoon-28.14.2.linux-x86_64.tar.xz; tar -xf palemoon-28.14.2.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget linux.palemoon.org/datastore/release/palemoon-28.15.0.linux-x86_64.tar.xz; tar -xf palemoon-28.14.2.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 8 ]];
 			then
@@ -788,7 +789,7 @@ EOF
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz; gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
 			elif [[ $browser == 12 ]];
 			then
-				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-classic-2020.09.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.09.en-US.linux-x86_64.tar.bz2
+				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-classic-2020.10.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.09.en-US.linux-x86_64.tar.bz2
 				sudo ln -s ~/waterfox-classic/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 13 ]];
