@@ -13,9 +13,9 @@ Setup(){
 	sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
 	sudo cp /etc/shadow /etc/shadow.bak
 	sudo cp /etc/passwd /etc/passwd.bak
+	sudo cp /etc/bash.bashrc /etc/bash.bashrc.bak
 	sudo cp /etc/environment /etc/environment.bak
 	sudo cp /etc/profile /etc/profile.bak
-	sudo cp /etc/bash.bashrc /etc/bash.bashrc.bak
 	sudo cp /etc/default/grub /etc/default/grub.bak
 	sudo cp /etc/fstab /etc/fstab.bak
 	sudo cp -r /boot /boot-old
