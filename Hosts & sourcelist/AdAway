@@ -3439,8 +3439,6 @@
 0.0.0.0  cdn.spotxcdn.com.edgekey.net
 0.0.0.0  marketingassets.staples.com.edgekey.net
 0.0.0.0  stickyadstv.com.edgekey.net
-0.0.0.0  tiqcdn.com.edgekey.net
-0.0.0.0  tags.tiqcdn.com.edgekey.net
 0.0.0.0  unityads.unity3d.com.edgekey.net
 0.0.0.0  cdn-creatives-akamai-prd.unityads.unity3d.com.edgekey.net
 0.0.0.0  cdn-store-icons-akamai-prd.unityads.unity3d.com.edgekey.net
@@ -4016,7 +4014,6 @@
 0.0.0.0  stat.hasmobi.net
 0.0.0.0  stra.hasmobi.net
 0.0.0.0  hbi-ingest.net
-0.0.0.0  glimmer.hearstapps.com
 0.0.0.0  adv.herocraft.com
 0.0.0.0  gamestats.herocraft.com
 0.0.0.0  collection-endpoint-prod.herokuapp.com
@@ -4613,17 +4610,6 @@
 0.0.0.0  sdk.api.kaffnet.com
 0.0.0.0  ad.click.kaffnet.com
 0.0.0.0  analytics.kaltura.com
-0.0.0.0  cdnapisec.kaltura.com
-0.0.0.0  cdnsecakmi.kaltura.com
-0.0.0.0  cfvod.kaltura.com
-0.0.0.0  origin.kaltura.com
-0.0.0.0  stats.origin.kaltura.com
-0.0.0.0  pa-stats.origin-cogent.kaltura.com
-0.0.0.0  ott.kaltura.com
-0.0.0.0  images-or.ott.kaltura.com
-0.0.0.0  rest-as.ott.kaltura.com
-0.0.0.0  tvpapi-as.ott.kaltura.com
-0.0.0.0  stats.kaltura.com
 0.0.0.0  customers.kameleoon.com
 0.0.0.0  eldamar01-loadbalanced.kameleoon.com
 0.0.0.0  eldamar02-loadbalanced.kameleoon.com
@@ -7290,7 +7276,6 @@
 0.0.0.0  prebid.s-onetag.com
 0.0.0.0  signal-beacon.s-onetag.com
 0.0.0.0  signal-metrics-collector-beta.s-onetag.com
-0.0.0.0  tracking.s24.com
 0.0.0.0  pixel.s3xified.com
 0.0.0.0  stats.sa-as.com
 0.0.0.0  api.safedk.com
@@ -8378,10 +8363,6 @@
 0.0.0.0  tia.timeinc.net
 0.0.0.0  metrics.timewarnercable.com
 0.0.0.0  beacon.tingyun.com
-0.0.0.0  tiqcdn.com
-0.0.0.0  akamai.tiqcdn.com
-0.0.0.0  tags.tiqcdn.com
-0.0.0.0  tags-eu.tiqcdn.com
 0.0.0.0  tnkfactory.com
 0.0.0.0  ap.tnkfactory.com
 0.0.0.0  ar.tns-counter.ru
