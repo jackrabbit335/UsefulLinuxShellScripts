@@ -125,3 +125,6 @@ then
 		sudo systemctl restart NetworkManager
 	fi
 fi
+
+#This calculates the number of lines in the finished file
+wc -l /etc/hosts
