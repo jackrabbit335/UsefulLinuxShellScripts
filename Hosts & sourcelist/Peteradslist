@@ -228,7 +228,6 @@
 0.0.0.0  adcenter.net
 0.0.0.0  adcentriconline.com
 0.0.0.0  adclick.com
-0.0.0.0  adclient.uimserv.net
 0.0.0.0  adclient1.tucows.com
 0.0.0.0  adcolony.com
 0.0.0.0  adcomplete.com
@@ -568,7 +567,6 @@
 0.0.0.0  ads.liberte.pl
 0.0.0.0  ads.lifethink.net
 0.0.0.0  ads.linkedin.com
-0.0.0.0  ads.linuxfoundation.org
 0.0.0.0  ads.livenation.com
 0.0.0.0  ads.lordlucky.com
 0.0.0.0  ads.ma7.tv
@@ -944,7 +942,6 @@
 0.0.0.0  advertiseireland.com
 0.0.0.0  advertisementafterthought.com
 0.0.0.0  advertiserurl.com
-0.0.0.0  advertisespace.com
 0.0.0.0  advertising.com
 0.0.0.0  advertisingbanners.com
 0.0.0.0  advertisingbox.com
@@ -1510,7 +1507,6 @@
 0.0.0.0  counter.cnw.cz
 0.0.0.0  counter.cz
 0.0.0.0  counter.dreamhost.com
-0.0.0.0  counter.fateback.com
 0.0.0.0  counter.mirohost.net
 0.0.0.0  counter.mojgorod.ru
 0.0.0.0  counter.nowlinux.com
@@ -1743,7 +1739,6 @@
 0.0.0.0  exitexchange.com
 0.0.0.0  exitfuel.com
 0.0.0.0  exoclick.com
-0.0.0.0  exogripper.com
 0.0.0.0  exosrv.com
 0.0.0.0  experianmarketingservices.digital
 0.0.0.0  explorads.com
@@ -2755,6 +2750,7 @@
 0.0.0.0  ratings.lycos.com
 0.0.0.0  rayjump.com
 0.0.0.0  rb1.design.ru
+0.0.0.0  re-directme.com
 0.0.0.0  reachjunction.com
 0.0.0.0  reactx.com
 0.0.0.0  readgoldfish.com
@@ -3405,6 +3401,7 @@
 0.0.0.0  visistat.com
 0.0.0.0  visit.webhosting.yahoo.com
 0.0.0.0  visitbox.de
+0.0.0.0  visitpath.com
 0.0.0.0  visual-pagerank.fr
 0.0.0.0  visualrevenue.com
 0.0.0.0  vivtracking.com
