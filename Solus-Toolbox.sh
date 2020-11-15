@@ -495,9 +495,9 @@ Systeminfo(){
 	sudo dmesg >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	echo "MORE LOGS" >> $host-sysinfo.txt
+	echo "JOURNAL LOG ERRORS" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	journalctl >> $host-sysinfo.txt
+	journalctl -p 3 -xb >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEMD SERVICES(ALSO FOUND IN SERVICE MANAGER)" >> $host-sysinfo.txt
