@@ -499,9 +499,9 @@ Systeminfo(){
 	sudo dmesg >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	echo "MORE LOGS" >> $host-sysinfo.txt
+	echo "JOURNAL LOG ERRORS" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	journalctl >> $host-sysinfo.txt
+	journalctl -p 3 -xb >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "SYSTEMD SERVICES(ALSO FOUND IN SERVICE MANAGER)" >> $host-sysinfo.txt
@@ -1538,6 +1538,9 @@ cleanup(){
 
 	#This helps get rid of old archived log entries
 	sudo journalctl --vacuum-size=25M
+	
+	#Remove unwanted dependencies 
+	yay -Yc
 
 	#This will remove orphan packages from pacman
 	sudo pacman -Rsn --noconfirm $(pacman -Qqdt)
@@ -1553,7 +1556,7 @@ cleanup(){
 	strongly recommended that you use the simpler option to remove only
 	up to the latest three versions of your software. Thanks!
 EOF
-    echo "What would you like to do?"
+	echo "What would you like to do?"
 	echo "1 - Remove up to the latest three versions of software"
 	echo "2 - Remove all cache except for the version on your system"
 	echo "3 - Remove all cache from every package and every version"
