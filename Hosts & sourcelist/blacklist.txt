@@ -76,8 +76,6 @@
 0.0.0.0  revjet.com
 0.0.0.0  sp.analytics.yahoo.com
 0.0.0.0  subscribe.theepochtimes.com #Fake News Balderdash
-0.0.0.0  www.theepochtimes.com
-0.0.0.0  theepochtimes.com
 0.0.0.0  aol.com
 0.0.0.0  www.aol.com
 0.0.0.0  src.ebay-us.com #This scans ports on ebay
