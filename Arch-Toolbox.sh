@@ -137,7 +137,7 @@ EOF
 		echo "#Alias to update grub" >> ~/.bashrc
 		echo 'alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"' >> ~/.bashrc
 		echo "#Alias to update the system" >> ~/.bashrc
-		echo 'alias update="sudo pacman -Syu --noconfirm"' >> ~/.bashrc
+		echo 'alias update="yay -Syu --noconfirm"' >> ~/.bashrc
 		echo "#Alias to clean pacman cache" >> ~/.bashrc
 		echo 'alias clean="sudo pacman -Scc"' >> ~/.bashrc
 		echo "#Alias to clean all but the latest three versions of packages in cache" >> ~/.bashrc
@@ -174,7 +174,6 @@ EOF
 			echo "#Alias to update the mirrors" >> ~/.bashrc
 			echo 'alias mirrors="sudo reflector-antergos --verbose -l 50 -f 20 --save /etc/pacman.d/antergos-mirrorlist; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syy"' >> ~/.bashrc
 		fi
-
 	fi
 
 	checkNetwork
@@ -211,7 +210,10 @@ EOF
 			fi
 		fi
 	done
-	
+
+	#This pins the kernel in Arch Linux
+	sudo sed -i 's/#IgnorePkg   =/IgnorePkg   =linux linux-headers/g' /etc/pacman.conf
+
 	#This starts your firewall
 	pacman -Q | grep ufw || sudo pacman -S --noconfirm ufw; sudo systemctl enable ufw; sudo ufw enable
 	echo "Would you like to deny ssh and telnet for security?(Y/n)"
@@ -247,7 +249,6 @@ EOF
 		clear
 		Greeting
 	fi
-
 }
 
 Update(){
@@ -543,6 +544,9 @@ ScreenFix(){
 	echo "Choose a resolution from the list above"
 	read resolution
 	xrandr -s $resolution
+
+	clear
+	Greeting
 }
 
 InstallAndConquer(){
@@ -705,12 +709,6 @@ InstallAndConquer(){
 			fi
 			;;
 			8)
-cat <<EOF
-It is important to note that while you can install many of the listed
-applications through pamac or octopi, you will not be able to utilize the aur
-for future updates of some of the software installed via tarballs without one of these...
-You have been warned. These also might not work on EndeavourOS.
-EOF
 			echo "1 - pacaur"
 			echo "2 - yaourt"
 			echo "3 - trizen"
@@ -991,6 +989,7 @@ EOF
 			echo "This installs a few common themes"
 			sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme arc-gtk-theme
 			sudo pacman -S --noconfirm papirus-icon-theme materia-gtk-theme paper-icon-theme
+			yay -S numix-gtk-theme
 			;;
 			20)
 			echo "This installs screenfetch"
@@ -2026,7 +2025,7 @@ Backup(){
 	echo "What would you like to do?"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition"
-  read operation;
+	read operation;
 
 	case $operation in
 		1)
@@ -2129,7 +2128,7 @@ Greeting(){
 	echo "18 - Restart"
 	echo "19 - Reset the desktop"
 	echo "20 - exit"
-  read selection;
+	read selection;
 
 	case $selection in
 		1)
