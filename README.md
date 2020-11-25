@@ -4,3 +4,4 @@ These scripts are meant for new users but anyone can use them or tweak them to b
 Tools include a small set of cleanup commands, maintenance, troubleshooting information gathering and software installing
 functionality. These scripts also help with quickly setting up a fresh Linux system in under 30 minutes(Your time will vary).
 These scripts are delivered as is and in accordance with a GPL v3 license. With any luck, these tools will be widely available soon.
+(These are a continuation of Helpful Linux Shell Scripts.)
