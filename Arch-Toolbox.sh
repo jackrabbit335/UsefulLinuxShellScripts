@@ -208,6 +208,19 @@ EOF
 				sudo pacman-key --populate archlinux; sudo pacman-key --refresh-keys; sudo pacman -Scc
 				sudo pacman -Syyu --noconfirm
 			fi
+		elif [[ $distribution == EndeavourOS ]];
+		then
+			pacman -Q | grep reflector || sudo pacman -S reflector
+			sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
+			if [[ $? -eq 0 ]];
+			then
+				echo "update successful"
+			else
+				sudo rm -r /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg
+				sudo pacman -Sy --noconfirm gnupg archlinux-keyring; sudo pacman-key --init
+				sudo pacman-key --populate archlinux; sudo pacman-key --refresh-keys; sudo pacman -Scc
+				sudo pacman -Syyu --noconfirm
+			fi
 		fi
 	done
 
@@ -1741,6 +1754,9 @@ SystemMaintenance(){
 	then
 		sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu --noconfirm
 	elif [[ $distribution == Arch ]];
+	then
+		sudo pacman -Q | grep reflector || sudo pacman -S --noconfirm reflector; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
+	elif [[ $distribution == EndeavourOS ]];
 	then
 		sudo pacman -Q | grep reflector || sudo pacman -S --noconfirm reflector; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
 	elif [[ $distribution == KaOS ]];
