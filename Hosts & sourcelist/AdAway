@@ -1336,18 +1336,6 @@
 0.0.0.0  fls-fe.amazon.com
 0.0.0.0  fls-na.amazon.com
 0.0.0.0  mads.amazon.com
-0.0.0.0  fls-fe.amazon.com.au
-0.0.0.0  fls-na.amazon.com.br
-0.0.0.0  fls-na.amazon.com.mx
-0.0.0.0  fls-eu.amazon.de
-0.0.0.0  fls-eu.amazon.es
-0.0.0.0  fls-eu.amazon.fr
-0.0.0.0  fls-eu.amazon.in
-0.0.0.0  fls-eu.amazon.it
-0.0.0.0  fls-eu.amazon.nl
-0.0.0.0  fls-eu.amazon.sa
-0.0.0.0  fls-eu.amazon.se
-0.0.0.0  fls-fe.amazon.sg
 0.0.0.0  ads-api-new-2052271615.ap-northeast-1.elb.amazonaws.com
 0.0.0.0  adserver-1277986481.ap-northeast-1.elb.amazonaws.com
 0.0.0.0  adserver-vpc-alb-0-649637586.ap-northeast-1.elb.amazonaws.com
@@ -3403,8 +3391,6 @@
 0.0.0.0  ssum-sec.casalemedia.com.edgekey.net
 0.0.0.0  convertexperiments.com.edgekey.net
 0.0.0.0  cdn-3.convertexperiments.com.edgekey.net
-0.0.0.0  cookiebot.com.edgekey.net
-0.0.0.0  consent.cookiebot.com.edgekey.net
 0.0.0.0  cxense.com.edgekey.net
 0.0.0.0  cdn.cxense.com.edgekey.net
 0.0.0.0  doubleverify.com.edgekey.net
@@ -3487,7 +3473,6 @@
 0.0.0.0  push.io.edgekey.net
 0.0.0.0  san.push.io.edgekey.net
 0.0.0.0  moatpixel1.edgekey.net
-0.0.0.0  mobi.edgekey.net
 0.0.0.0  tracking.admarketplace.net.edgekey.net
 0.0.0.0  tag.aticdn.net.edgekey.net
 0.0.0.0  mobilepartner.avcdn.net.edgekey.net
