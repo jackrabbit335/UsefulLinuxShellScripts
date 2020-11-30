@@ -595,6 +595,7 @@ InstallAndConquer(){
 		echo "24 - Stellarium constellation and space observation"
 		echo "25 - exit out of this menu"
 		read software;
+
 		case $software in
 			1)
 			echo "This installs a series of utility software"
@@ -1169,6 +1170,7 @@ https://wiki.archlinux.org
 https://forum.manjaro.org
 https://kaosx.us/docs/
 https://averagelinuxuser.com/
+https://endeavouros.com/wiki/
 
 ########################################################################
 SECURITY IN KAOS WITH TOMOYO AND SOME STUFF WITH UFW
@@ -1189,9 +1191,38 @@ unnecessary files on the system. Tomoyo is the preferred method for users
 of KaOS Linux and uses a learning period before it fully effects changes
 on user applications. Tomoyo uses ACLs and MAC style methods of determining
 application access. Tomoyo can be installed in other distributions and
-can be set in the grub commandline for the kernel by using security=tomoyo.
+can be set in the grub commandline for the kernel by using security = tomoyo
 KaOS has a basic wiki in docs to get you started with setting it up, however,
-if you wish to get more in depth you will be required to go to the tomoyo wiki.
+if you wish to get more in depth you will be required to go to the tomoyo 
+wiki.
+
+########################################################################
+SCREEN RESOLUTION
+########################################################################
+As you can see with the newest releases of my toolbox scripts, I have
+implemented a new function which leverages xrandr to allow the user to 
+pick and choose their screen resolution. Sometimes Linux doesn't always
+choose the best resolution for your needs, this is why this was implemen-
+ted. Simply type the number for ScreenFix and it will prompt you with
+a list of possible screen resolutions supported by your distribution.
+Choose the proper resolution to fit with your monitor and go. Sometimes
+Linux uses ancient 800x600 resolutions or some other resolution that is 
+either too big or small and this can be caused by the driver or some other
+issue. Xrandr will allow you to save your resolution in place and keep it
+consistent between boots. Xrandr is installed in most distributions now-
+adays.
+
+########################################################################
+WATERFOX CLASSIC OVER THIRD GEN
+########################################################################
+I have chosen to continue to support the installation of Waterfox class-
+ic edition over the newest Third Gen as the classic allows users to 
+retain many of their older npapi extensions. Old extensions went out 
+Firefox changed to their new engine, Quantum that only uses 
+Webextensions now. Web extensions are still good and viable for the
+future, however, many users complained when this change took place. 
+This isn't a permanent thing and I will eventually switch it over,
+this just allows users their convenience and peace of mind for now.
 
 ########################################################################
 BACK UP IMPORTANT SYSTEM FILES
@@ -1521,7 +1552,7 @@ cleanup(){
 	sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
 	sudo rm -r /var/tmp/*
-	
+
 	#This removes old configurations for software
 	sudo rm -r ~/.config/*-old
 	
@@ -1964,8 +1995,8 @@ Kernels are an essential part of the operating system. Failure to use precaution
 could inadvertently screw up system functions. The kernel is the main engine behind
 the scenes making everything operate within normal parameters, changing kernel settings
 or installing/uninstalling a bad updated version could give undesirable results. It should
-also be noted that this works in Manjaro, but probably will not work in any other Arch-based operating system
-at this time.
+also be noted that this works in Manjaro, but probably will not work in any other Arch-based 
+operating system at this time.
 EOF
 	sudo mhwd-kernel -l
 	sudo mhwd-kernel -li
