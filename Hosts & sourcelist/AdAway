@@ -1336,6 +1336,18 @@
 0.0.0.0  fls-fe.amazon.com
 0.0.0.0  fls-na.amazon.com
 0.0.0.0  mads.amazon.com
+0.0.0.0  fls-fe.amazon.com.au
+0.0.0.0  fls-na.amazon.com.br
+0.0.0.0  fls-na.amazon.com.mx
+0.0.0.0  fls-eu.amazon.de
+0.0.0.0  fls-eu.amazon.es
+0.0.0.0  fls-eu.amazon.fr
+0.0.0.0  fls-eu.amazon.in
+0.0.0.0  fls-eu.amazon.it
+0.0.0.0  fls-eu.amazon.nl
+0.0.0.0  fls-eu.amazon.sa
+0.0.0.0  fls-eu.amazon.se
+0.0.0.0  fls-fe.amazon.sg
 0.0.0.0  ads-api-new-2052271615.ap-northeast-1.elb.amazonaws.com
 0.0.0.0  adserver-1277986481.ap-northeast-1.elb.amazonaws.com
 0.0.0.0  adserver-vpc-alb-0-649637586.ap-northeast-1.elb.amazonaws.com
@@ -5958,8 +5970,6 @@
 0.0.0.0  api.analytics.nexonm.com
 0.0.0.0  nextclick.pl
 0.0.0.0  ads.nicovideo.jp
-0.0.0.0  api.nicovideo.jp
-0.0.0.0  public.api.nicovideo.jp
 0.0.0.0  awaf.answers.nielsen.com
 0.0.0.0  dc2.answers.nielsen.com
 0.0.0.0  apps.nielsen.com
