@@ -234,6 +234,17 @@ Update(){
 	Greeting
 }
 
+Downgrade(){
+	checkNetwork
+
+	echo "Please enter the number to which you wish to downgrade or revert"
+	read number
+	sudo eopkg history -t $number
+
+	clear
+	Greeting
+}
+
 Reset(){
 	#This resets the desktop
 	eopkg list-installed | grep dconf || sudo eopkg install dconf
@@ -995,6 +1006,34 @@ https://getsol.us/articles/package-management/history-and-rollback/en/
 Of course, this does probably require package cache to be left alone,
 however, in some situations, you can't install updates with invalid or
 corrupted packages in there.
+
+########################################################################
+SCREEN RESOLUTION
+########################################################################
+As you can see with the newest releases of my toolbox scripts, I have
+implemented a new function which leverages xrandr to allow the user to 
+pick and choose their screen resolution. Sometimes Linux doesn't always
+choose the best resolution for your needs, this is why this was implemen-
+ted. Simply type the number for ScreenFix and it will prompt you with
+a list of possible screen resolutions supported by your distribution.
+Choose the proper resolution to fit with your monitor and go. Sometimes
+Linux uses ancient 800x600 resolutions or some other resolution that is 
+either too big or small and this can be caused by the driver or some other
+issue. Xrandr will allow you to save your resolution in place and keep it
+consistent between boots. Xrandr is installed in most distributions now-
+adays.
+
+########################################################################
+WATERFOX CLASSIC OVER THIRD GEN
+########################################################################
+I have chosen to continue to support the installation of Waterfox class-
+ic edition over the newest Third Gen as the classic allows users to 
+retain many of their older npapi extensions. Old extensions went out 
+Firefox changed to their new engine, Quantum that only uses 
+Webextensions now. Web extensions are still good and viable for the
+future, however, many users complained when this change took place. 
+This isn't a permanent thing and I will eventually switch it over,
+this just allows users their convenience and peace of mind for now.
 
 ########################################################################
 SECURITY IN KAOS WITH TOMOYO AND SOME STUFF WITH UFW
@@ -1799,11 +1838,12 @@ Greeting(){
 	echo "12 - System Maintenance"
 	echo "13 - Browser Repair"
 	echo "14 - Update"
-	echo "15 - MakeSwap"
-	echo "16 - Help"
-	echo "17 - Restart"
-	echo "18 - Reset the desktop"
-	echo "19 - exit"
+	echo "15 - Downgrade"
+	echo "16 - MakeSwap"
+	echo "17 - Help"
+	echo "18 - Restart"
+	echo "19 - Reset the desktop"
+	echo "20 - exit"
 	read selection;
 
 	case $selection in
@@ -1850,18 +1890,21 @@ Greeting(){
 		Update
 		;;
 		15)
-		MakeSwap
+		Downgrade
 		;;
 		16)
-		Help
+		MakeSwap
 		;;
 		17)
-		Restart
+		Help
 		;;
 		18)
-		Reset
+		Restart
 		;;
 		19)
+		Reset
+		;;
+		20)
 		echo $'\n'$"Thank you for using Solus-Toolbox... Goodbye!"
 		exit
 		;;
