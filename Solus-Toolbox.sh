@@ -253,19 +253,19 @@ Reset(){
 		echo "############################################################################"
 		echo "This resets Budgie"
 		echo "############################################################################"
-		dconf dump /org/budgie/ > budgie-desktop-backup; dconf reset -f /org/budgie
+		dconf dump /org/budgie/ > budgie-desktop-backup; dconf reset -f /
 	elif [[ $DESKTOP_SESSION == gnome ]];
 	then
 		echo "############################################################################"
 		echo "This resets Gnome Shell"
 		echo "############################################################################"
-		dconf dump /org/gnome/ > gnome-desktop-backup; dconf reset -f /org/gnome
+		dconf dump /org/gnome/ > gnome-desktop-backup; dconf reset -f /
 	elif [[ $DESKTOP_SESSION == mate ]];
 	then
 		echo "############################################################################"
 		echo "This resets MATE"
 		echo "############################################################################"
-		dconf dump /org/mate/ > mate-desktop-backup; dconf reset -f /org/mate
+		dconf dump /org/mate/ > mate-desktop-backup; dconf reset -f /
 	else
 		echo "You're running a desktop/Window Manager that we do not yet support... Come back later."
 	fi
