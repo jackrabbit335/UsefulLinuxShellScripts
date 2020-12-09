@@ -661,6 +661,18 @@ template only and if you use it you will have to tweak it to fit your
 needs. See 10-monitor.conf
 
 ########################################################################
+WATERFOX CLASSIC OVER THIRD GEN
+########################################################################
+I have chosen to continue to support the installation of Waterfox class-
+ic edition over the newest Third Gen as the classic allows users to 
+retain many of their older npapi extensions. Old extensions went out 
+Firefox changed to their new engine, Quantum that only uses 
+Webextensions now. Web extensions are still good and viable for the
+future, however, many users complained when this change took place. 
+This is not a permanent thing and I will eventually switch it over,
+this just allows users their convenience and peace of mind for now.
+
+########################################################################
 APT/DPKG AND PACKAGE MANAGERS IN GENERAL
 ########################################################################
 Aptitude has been around in one form or another since Ubuntu and Ubuntu-
