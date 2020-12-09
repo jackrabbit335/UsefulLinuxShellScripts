@@ -602,7 +602,7 @@ InstallAndConquer(){
 			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools
 			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu
 			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit
-			sudo pacman -S --needed --noconfirm pacman-contrib yay grsync tlp powertop
+			sudo pacman -S --needed --noconfirm pacman-contrib yay grsync tlp powertop youtub-dl 
 			;;
 			2)
 			echo "This installs your choice of terminals If you already have one, don't worry"
@@ -802,7 +802,7 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz; gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
 			elif [[ $browser == 12 ]];
 			then
-				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-classic-2020.10.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.10.en-US.linux-x86_64.tar.bz2
+				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-classic-2020.12.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.12.en-US.linux-x86_64.tar.bz2
 				sudo ln -s ~/waterfox-classic/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 13 ]];
@@ -1001,9 +1001,9 @@ InstallAndConquer(){
 			;;
 			19)
 			echo "This installs a few common themes"
-			sudo pacman -S --noconfirm adapta-gtk-theme moka-icon-theme faba-icon-theme arc-icon-theme evopop-icon-theme arc-gtk-theme
+			sudo pacman -S --noconfirm adapta-gtk-theme arc-icon-theme evopop-icon-theme arc-gtk-theme
 			sudo pacman -S --noconfirm papirus-icon-theme materia-gtk-theme paper-icon-theme
-			yay -S numix-gtk-theme
+			yay -S numix-gtk-theme faba-icon-theme-git moka-icon-theme-git --noconfirm
 			;;
 			20)
 			echo "This installs screenfetch"
@@ -1210,7 +1210,9 @@ Linux uses ancient 800x600 resolutions or some other resolution that is
 either too big or small and this can be caused by the driver or some other
 issue. Xrandr will allow you to save your resolution in place and keep it
 consistent between boots. Xrandr is installed in most distributions now-
-adays.
+adays. I've recently added a monitor configuration file to Github. Is a 
+template only and if you use it you will have to tweak it to fit your 
+needs. See 10-monitor.conf
 
 ########################################################################
 WATERFOX CLASSIC OVER THIRD GEN
