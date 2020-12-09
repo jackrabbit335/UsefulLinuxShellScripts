@@ -643,6 +643,24 @@ KaOS has a basic wiki in docs to get you started with setting it up, however,
 if you wish to get more in depth you will be required to go to the tomoyo wiki.
 
 ########################################################################
+SCREEN RESOLUTION
+########################################################################
+As you can see with the newest releases of my toolbox scripts, I have
+implemented a new function which leverages xrandr to allow the user to 
+pick and choose their screen resolution. Sometimes Linux does not always
+choose the best resolution for your needs, this is why this was implemen-
+ted. Simply type the number for ScreenFix and it will prompt you with
+a list of possible screen resolutions supported by your distribution.
+Choose the proper resolution to fit with your monitor and go. Sometimes
+Linux uses ancient 800x600 resolutions or some other resolution that is 
+either too big or small and this can be caused by the driver or some other
+issue. Xrandr will allow you to save your resolution in place and keep it
+consistent between boots. Xrandr is installed in most distributions now-
+adays. I have recently added a monitor configuration file to Github. Is a 
+template only and if you use it you will have to tweak it to fit your 
+needs. See 10-monitor.conf
+
+########################################################################
 APT/DPKG AND PACKAGE MANAGERS IN GENERAL
 ########################################################################
 Aptitude has been around in one form or another since Ubuntu and Ubuntu-
@@ -995,7 +1013,7 @@ InstallAndConquer(){
 				sudo apt install -y dillo
 			elif [[ $browser == 11 ]];
 			then
-				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-classic-2020.10.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-classic-2020.10.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-classic-2020.12.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-classic-2020.12.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 12 ]];
 			then
