@@ -703,7 +703,7 @@ InstallAndConquer(){
 				sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/web/browser/google-chrome-stable/pspec.xml; sudo eopkg it google-chrome-*.eopkg;sudo rm google-chrome-*.eopkg
 			elif [[ $browser == 9 ]];
 			then
-				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.10.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.10.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.12.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.12.en-US.linux-x86_64.tar.bz2; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 10 ]];
 			then
@@ -1001,10 +1001,10 @@ To rollback to a previous package state, you only need to issue the comm-
 and sudo eopkg history -t and the number of the state you wish to revert
 to. This will be available in a future release of this script and can be
 quite handy in troubleshooting situations(specifically when booting older-
-kernels doesn't help). More on this can be found here:
+kernels does not help). More on this can be found here:
 https://getsol.us/articles/package-management/history-and-rollback/en/
 Of course, this does probably require package cache to be left alone,
-however, in some situations, you can't install updates with invalid or
+however, in some situations, you can not install updates with invalid or
 corrupted packages in there.
 
 ########################################################################
@@ -1012,7 +1012,7 @@ SCREEN RESOLUTION
 ########################################################################
 As you can see with the newest releases of my toolbox scripts, I have
 implemented a new function which leverages xrandr to allow the user to 
-pick and choose their screen resolution. Sometimes Linux doesn't always
+pick and choose their screen resolution. Sometimes Linux does not always
 choose the best resolution for your needs, this is why this was implemen-
 ted. Simply type the number for ScreenFix and it will prompt you with
 a list of possible screen resolutions supported by your distribution.
@@ -1021,7 +1021,9 @@ Linux uses ancient 800x600 resolutions or some other resolution that is
 either too big or small and this can be caused by the driver or some other
 issue. Xrandr will allow you to save your resolution in place and keep it
 consistent between boots. Xrandr is installed in most distributions now-
-adays.
+adays. I have recently added a monitor configuration file to Github. Is a 
+template only and if you use it you will have to tweak it to fit your 
+needs. See 10-monitor.conf
 
 ########################################################################
 WATERFOX CLASSIC OVER THIRD GEN
@@ -1032,7 +1034,7 @@ retain many of their older npapi extensions. Old extensions went out
 Firefox changed to their new engine, Quantum that only uses 
 Webextensions now. Web extensions are still good and viable for the
 future, however, many users complained when this change took place. 
-This isn't a permanent thing and I will eventually switch it over,
+This is not a permanent thing and I will eventually switch it over,
 this just allows users their convenience and peace of mind for now.
 
 ########################################################################
