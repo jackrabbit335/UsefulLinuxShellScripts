@@ -1226,7 +1226,7 @@ retain many of their older npapi extensions. Old extensions went out
 Firefox changed to their new engine, Quantum that only uses 
 Webextensions now. Web extensions are still good and viable for the
 future, however, many users complained when this change took place. 
-This isn't a permanent thing and I will eventually switch it over,
+This is not a permanent thing and I will eventually switch it over,
 this just allows users their convenience and peace of mind for now.
 
 ########################################################################
@@ -1810,20 +1810,13 @@ SystemMaintenance(){
 	sudo updatedb; sudo mandb
 
 	#Checks for pacnew files and other extra configuration file updates
-	find /usr/bin/etc-update
-	if [ $? -eq 0 ];
-	then
-		sudo etc-update
-	fi
+	yay -Q | grep etc-update || yay -S etc-update --noconfirm; sudo etc-update
 
 	#update the grub
 	sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 	#This runs a disk checkup and attempts to fix filesystem
 	sudo touch /forcefsck
-
-	#This allows the user to manage pacnew files with etc-update script
-	yay -Q | grep etc-update || yay -S etc-update --noconfirm
 
 	#Optional and prolly not needed
 	drive=$(cat /sys/block/sda/queue/rotational)
