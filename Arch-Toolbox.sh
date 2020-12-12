@@ -880,8 +880,10 @@ InstallAndConquer(){
 			then
 				sudo pacman -S --noconfirm clementine
 			elif [[ $player == 13 ]];
+			then
 				sudo pacman -S --noconfirm gnome-mplayer
 			elif [[ $player == 14 ]];
+			then
 				sudo pacman -S celluloid
 			else
 				echo "You have entered an invalid number"
