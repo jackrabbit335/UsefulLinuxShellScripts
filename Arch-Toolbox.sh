@@ -602,7 +602,8 @@ InstallAndConquer(){
 			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools
 			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu
 			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit
-			sudo pacman -S --needed --noconfirm pacman-contrib yay grsync tlp powertop youtube-dl 
+			sudo pacman -S --needed --noconfirm pacman-contrib yay grsync tlp powertop youtube-dl
+			yay -S inxi --noconfirm
 			;;
 			2)
 			echo "This installs your choice of terminals If you already have one, don't worry"
@@ -838,6 +839,8 @@ InstallAndConquer(){
 			echo "10 - totem"
 			echo "11 - pragha"
 			echo "12 - clementine"
+			echo "13 - gnome-mplayer"
+			echo "14 - celluloid"
 			read player
 			if [[ $player == 1 ]];
 			then
@@ -866,13 +869,7 @@ InstallAndConquer(){
 				sudo pacman -S --noconfirm smplayer smplayer-skins
 			elif [[ $player == 9 ]];
 			then
-				distribution=$(cat /etc/issue | awk '{print $1}')
-				if [[ $distribution == manjaro ]];
-				then
-					sudo pacman -Rs --noconfirm vlc && sudo pacman -S vlc-nightly clementine
-				else
-					sudo pacman -S --noconfirm vlc
-				fi
+				sudo pacman -S --noconfirm vlc 
 			elif [[ $player == 10 ]];
 			then
 				sudo pacman -s --noconfirm totem
@@ -882,6 +879,10 @@ InstallAndConquer(){
 			elif [[ $player == 12 ]];
 			then
 				sudo pacman -S --noconfirm clementine
+			elif [[ $player == 13 ]];
+				sudo pacman -S --noconfirm gnome-mplayer
+			elif [[ $player == 14 ]];
+				sudo pacman -S celluloid
 			else
 				echo "You have entered an invalid number"
 				InstallAndConquer
@@ -1043,7 +1044,6 @@ InstallAndConquer(){
 			echo "4 - Arch Audit"
 			echo "5 - All"
 			read software;
-
 			case $software in
 				1)
 				sudo pacman -S --noconfirm rkhunter ;;
@@ -1212,7 +1212,8 @@ issue. Xrandr will allow you to save your resolution in place and keep it
 consistent between boots. Xrandr is installed in most distributions now-
 adays. I've recently added a monitor configuration file to Github. Is a 
 template only and if you use it you will have to tweak it to fit your 
-needs. See 10-monitor.conf
+needs. See 10-monitor.conf. 10-monitor.conf will go in 
+/etc/X11/xorg.conf.d/
 
 ########################################################################
 WATERFOX CLASSIC OVER THIRD GEN
