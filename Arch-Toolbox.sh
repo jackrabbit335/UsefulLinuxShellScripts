@@ -1822,6 +1822,9 @@ SystemMaintenance(){
 	#This runs a disk checkup and attempts to fix filesystem
 	sudo touch /forcefsck
 
+	#This allows the user to manage pacnew files with etc-update script
+	yay -Q | grep etc-update || yay -S etc-update --noconfirm
+
 	#Optional and prolly not needed
 	drive=$(cat /sys/block/sda/queue/rotational)
 	for rota in drive;
