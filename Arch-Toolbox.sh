@@ -1932,7 +1932,6 @@ EOF
 		;;
 	esac
 
-
 	clear
 	Greeting
 }
@@ -2024,7 +2023,6 @@ EOF
 			sudo mhwd-kernel -i $kernel
 		break
 		done
-
 		echo "Restart?(Y/n)"
 		read answer
 		while [ $answer == Y ];
@@ -2043,7 +2041,6 @@ EOF
 			sudo mhwd-kernel -r $kernel
 		break
 		done
-
 		echo "Restart?(Y/n)"
 		read answer
 		while [ $answer == Y ];
