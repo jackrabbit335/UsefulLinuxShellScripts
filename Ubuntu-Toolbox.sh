@@ -658,7 +658,8 @@ issue. Xrandr will allow you to save your resolution in place and keep it
 consistent between boots. Xrandr is installed in most distributions now-
 adays. I have recently added a monitor configuration file to Github. Is a 
 template only and if you use it you will have to tweak it to fit your 
-needs. See 10-monitor.conf
+needs. See 10-monitor.conf. This file is to be placed in 
+/etc/X11/xorg.conf.d/
 
 ########################################################################
 WATERFOX CLASSIC OVER THIRD GEN
