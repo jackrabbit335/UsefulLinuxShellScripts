@@ -1579,14 +1579,8 @@ cleanup(){
 	find $HOME -type f -name "*~" -print -exec rm {} \;
 
 	#cleans old kernel crash logs
-	echo "Would you like to remove kernel crash logs?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		sudo find /var -type f -name "core" -print -exec rm {} \;
-	break
-	done
-
+	sudo find /var -type f -name "core" -print -exec rm {} \;
+	
 	#This helps get rid of old archived log entries
 	sudo journalctl --vacuum-size=25M
 	
