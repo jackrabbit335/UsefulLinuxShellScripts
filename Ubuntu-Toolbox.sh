@@ -92,10 +92,10 @@ Setup(){
 	sudo sysctl -p
 
 	#Block ICMP requests or Ping from foreign systems
-cat <<EOF
-We can also block ping requests. Ping requests coming from unknown sources can mean that people are
-potentially trying to locate/attack your network. If you need this functionality
-you can always comment this line out later. Chances are, this will not affect normal users.
+	cat <<EOF
+	We can also block ping requests. Ping requests coming from unknown sources can mean that people are
+	potentially trying to locate/attack your network. If you need this functionality
+	you can always comment this line out later. Chances are, this will not affect normal users.
 EOF
 	echo "Block ping requests from foreign systems?(Y/n)"
 	read answer
@@ -175,10 +175,10 @@ EOF
 	done
 
 
-#This fixes gufw not opening in kde plasma desktop
-cat <<EOF
-This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue.
-This is only a plasma issue as far as I know.
+	#This fixes gufw not opening in kde plasma desktop
+	cat <<EOF
+	This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue.
+	This is only a plasma issue as far as I know.
 EOF
 	for env in $DESKTOP_SESSION;
 	do
@@ -1380,8 +1380,8 @@ cleanup(){
 	sudo apt remove --purge $OLDCONF
 
 	#This optionally removes old kernels
-cat <<EOF
-It is encouraged that you leave at least one older kernel on your system
+	cat <<EOF
+	It is encouraged that you leave at least one older kernel on your system
 EOF
 	OldKernels=$(dpkg -l | tail -n +6 | grep -E 'linux-image-[0-9]+' | grep -Fv $(uname -r))
 	echo $OldKernels
@@ -1397,13 +1397,7 @@ EOF
 	done
 
 	#cleans old kernel crash logs
-	echo "Would you like to remove kernel crash logs?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		sudo find /var -type f -name "core" -print -exec rm {} \;
-	break
-	done
+	sudo find /var -type f -name "core" -print -exec rm {} \;
 
 	#This removes the apt list
 	sudo rm -r /var/lib/apt/lists/*
@@ -1446,11 +1440,11 @@ EOF
 }
 
 BrowserRepair(){
-cat <<EOF
-This can fix a lot of the usual issues with a few of the bigger browsers.
-These can include performance hitting issues. If your browser needs a tuneup,
-it is probably best to do it in the browser itself, but when you just want something
-fast, this can do it for you. More browsers and options are coming.
+	cat <<EOF
+	This can fix a lot of the usual issues with a few of the bigger browsers.
+	These can include performance hitting issues. If your browser needs a tuneup,
+	it is probably best to do it in the browser itself, but when you just want something
+	fast, this can do it for you. More browsers and options are coming.
 EOF
   #Look for the following browsers
 	browser1="$(find /usr/bin/firefox)"
@@ -1632,14 +1626,14 @@ SystemMaintenance(){
 }
 
 ServiceManager(){
-#This is for service management. Prolly not a good idea but...
-cat <<EOF
-This is usually better off left undone, only disable services you know
-you will not need or miss. I can not be held responsible if you brick
-your system. Handle with caution. Also, may only take effect once you
-reboot your machine. Services can be turned back on with a good backup
-and possibly by chrooting into the device via live cd and reversing the
-process by running this again and reenabling the service.
+	#This is for service management. Prolly not a good idea but...
+	cat <<EOF
+	This is usually better off left undone, only disable services you know
+	you will not need or miss. I can not be held responsible if you brick
+	your system. Handle with caution. Also, may only take effect once you
+	reboot your machine. Services can be turned back on with a good backup
+	and possibly by chrooting into the device via live cd and reversing the
+	process by running this again and reenabling the service.
 EOF
   init=$(ps -p1 | awk 'NR!=1{print $4}')
 	for init in $init;
@@ -1794,14 +1788,14 @@ Backup(){
 }
 
 Restore(){
-#This tries to restore the home folder
-cat <<EOF
-This tries to restore the home folder and nothing else, if you want to
-restore the entire system,  you will have to do that in a live environment.
-This can, however, help in circumstances where you have family photos and
-school work stored in the home directory. This also assumes that your home
-directory is on the drive in question. This can also restore browser settings
-including unwanted toolbars so be warned.
+	#This tries to restore the home folder
+	cat <<EOF
+	This tries to restore the home folder and nothing else, if you want to
+	restore the entire system,  you will have to do that in a live environment.
+	This can, however, help in circumstances where you have family photos and
+	school work stored in the home directory. This also assumes that your home
+	directory is on the drive in question. This can also restore browser settings
+	including unwanted toolbars so be warned.
 EOF
 	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
 	if [[ $Mountpoint != /run/media/$USER/* ]];
