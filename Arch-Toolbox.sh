@@ -52,7 +52,7 @@ Setup(){
 	sudo sysctl --system
 	sudo sysctl -p
 
-#WE can block ICMP requests from the kernel if you'd like
+	#WE can block ICMP requests from the kernel if you'd like
 	cat <<EOF
 	Ping requests from unknown sources could mean that people are trying to
 	locate/attack your network. If you need this functionality, you can comment
@@ -237,7 +237,7 @@ EOF
 	break
 	done
 
-#This fixes gufw not opening in kde plasma desktop
+	#This fixes gufw not opening in kde plasma desktop
 	cat <<EOF
 	This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue.
 	This is only a plasma issue as far as I know.
@@ -1580,7 +1580,7 @@ cleanup(){
 
 	#cleans old kernel crash logs
 	sudo find /var -type f -name "core" -print -exec rm {} \;
-	
+
 	#This helps get rid of old archived log entries
 	sudo journalctl --vacuum-size=25M
 	
