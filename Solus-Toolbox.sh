@@ -56,12 +56,12 @@ Setup(){
 	sudo sysctl --system
 	sudo sysctl -p
 
-#WE can block ICMP requests from the kernel if you'd like
-cat <<EOF
-Ping requests from unknown sources could mean that people are trying to
-locate/attack your network. If you need this functionality, you can comment
-this line out, however, this shouldn't impact normal users. If you blocked ICMP traffic
-in Iptables or UFW, you really don't need this here.
+	#WE can block ICMP requests from the kernel if you'd like
+	cat <<EOF
+	Ping requests from unknown sources could mean that people are trying to
+	locate/attack your network. If you need this functionality, you can comment
+	this line out, however, this shouldn't impact normal users. If you blocked ICMP traffic
+	in Iptables or UFW, you really don't need this here.
 EOF
 	echo "Block icmp ping requests?(Y/n)"
 	read answer
@@ -772,6 +772,7 @@ InstallAndConquer(){
 			echo "2 - playonlinux"
 			echo "3 - Both"
 			read software;
+			
 			case $software in
 				1)
 				sudo eopkg install wine ;;
@@ -889,13 +890,13 @@ InstallAndConquer(){
 
 	read -p "Please press enter to continue..."
 
-#This installs preload for faster load of apps
-cat <<EOF
-Preload is as the name implies, a preloader. This nifty tool can shadow
-your uses of the desktop and store bits of applications into memory for
-faster future use. This does have its drawbacks though as preload does
-take up its own cache of memory. This is debatably better on low end
-devices.
+	#This installs preload for faster load of apps
+	cat <<EOF
+	Preload is as the name implies, a preloader. This nifty tool can shadow
+	your uses of the desktop and store bits of applications into memory for
+	faster future use. This does have its drawbacks though as preload does
+	take up its own cache of memory. This is debatably better on low end
+	devices.
 EOF
 	echo "Would you like to install preload?(Y/n)"
 	read answer
@@ -1274,9 +1275,9 @@ EOF
 }
 
 AccountSettings(){
-cat <<EOF
-This is a completely untested and experimental utility at best.
-Use this function "Account Settings" at your own risk.
+	cat <<EOF
+	This is a completely untested and experimental utility at best.
+	Use this function "Account Settings" at your own risk.
 EOF
 	echo "What would you like to do?"
 	echo "1 - Create user account(s)"
@@ -1433,13 +1434,7 @@ cleanup(){
 	find $HOME -type f -name "*~" -print -exec rm {} \;
 
 	#cleans old kernel crash logs
-	echo "Would you like to remove kernel crash logs?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		sudo find /var -type f -name "core" -print -exec rm {} \;
-	break
-	done
+	sudo find /var -type f -name "core" -print -exec rm {} \;
 
 	#This helps get rid of old archived log entries
 	sudo journalctl --vacuum-size=25M
@@ -1455,11 +1450,11 @@ cleanup(){
 }
 
 BrowserRepair(){
-cat <<EOF
-This can fix a lot of the usual issues with a few of the bigger browsers.
-These can include performance hitting issues. If your browser needs a tuneup,
-it is probably best to do it in the browser itself, but when you just want something
-fast, this can do it for you. More browsers and options are coming.
+	cat <<EOF
+	This can fix a lot of the usual issues with a few of the bigger browsers.
+	These can include performance hitting issues. If your browser needs a tuneup,
+	it is probably best to do it in the browser itself, but when you just want something
+	fast, this can do it for you. More browsers and options are coming.
 EOF
 	browser1="$(find /usr/bin/firefox)"
 	browser2="$(find /usr/bin/vivaldi*)"
@@ -1660,13 +1655,13 @@ SystemMaintenance(){
 }
 
 ServiceManager(){
-cat <<EOF
-This is usually better off left undone, only disable services you know
-you will not need or miss. I can not be held responsible if you brick
-your system. Handle with caution. Also, may only take effect once you
-reboot your machine. Services can be turned back on with a good backup
-and possibly by chrooting into the device via live cd and reversing the
-process by running this again and reenabling the service.
+	cat <<EOF
+	This is usually better off left undone, only disable services you know
+	you will not need or miss. I can not be held responsible if you brick
+	your system. Handle with caution. Also, may only take effect once you
+	reboot your machine. Services can be turned back on with a good backup
+	and possibly by chrooting into the device via live cd and reversing the
+	process by running this again and reenabling the service.
 EOF
 	systemctl list-unit-files --type=service
 	read -p "Press enter to continue..."
@@ -1795,13 +1790,13 @@ Backup(){
 }
 
 Restore(){
-cat <<EOF
-This tries to restore the home folder and nothing else, if you want to
-restore the entire system,  you will have to do that in a live environment.
-This can, however, help in circumstances where you have family photos and
-school work stored in the home directory. This also assumes that your home
-directory is on the drive in question. This can also restore browser settings
-including unwanted toolbars so be warned.
+	cat <<EOF
+	This tries to restore the home folder and nothing else, if you want to
+	restore the entire system,  you will have to do that in a live environment.
+	This can, however, help in circumstances where you have family photos and
+	school work stored in the home directory. This also assumes that your home
+	directory is on the drive in question. This can also restore browser settings
+	including unwanted toolbars so be warned.
 EOF
 	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
 	if [[ $Mountpoint != /run/media/$USER/* ]];
