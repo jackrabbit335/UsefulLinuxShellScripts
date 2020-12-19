@@ -4403,7 +4403,6 @@
 0.0.0.0  ads.intergi.com
 0.0.0.0  cdn.intergi.com
 0.0.0.0  intermarkets.net
-0.0.0.0  cloud.internetstores.com
 0.0.0.0  intowow.com
 0.0.0.0  adcfg.intowow.com
 0.0.0.0  geoinfo.intowow.com
@@ -4439,9 +4438,6 @@
 0.0.0.0  media-cdn.ipredictive.com
 0.0.0.0  sync.ipredictive.com
 0.0.0.0  adserver.iprom.net
-0.0.0.0  cdn.ipromote.com
-0.0.0.0  fra1.ipromote.com
-0.0.0.0  fra2.ipromote.com
 0.0.0.0  i.ipromote.com
 0.0.0.0  iad1.ipromote.com
 0.0.0.0  iad2.ipromote.com
@@ -4535,8 +4531,6 @@
 0.0.0.0  sync.jivox.com
 0.0.0.0  traffick.jivox.com
 0.0.0.0  ad.jorte.com
-0.0.0.0  finlogs.joyeggs.com
-0.0.0.0  payback.joyeggs.com
 0.0.0.0  im64.jpush.cn
 0.0.0.0  s.jpush.cn
 0.0.0.0  stats.jpush.cn
@@ -4599,7 +4593,6 @@
 0.0.0.0  screencaptue-cdn.kampyle.com
 0.0.0.0  screencapture.kampyle.com
 0.0.0.0  udc-neb.kampyle.com
-0.0.0.0  kaotic.com
 0.0.0.0  ad-monitor.kargo.com
 0.0.0.0  storage.cloud.kargo.com
 0.0.0.0  cma.kargo.com
