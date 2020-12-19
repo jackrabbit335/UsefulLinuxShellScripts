@@ -600,7 +600,7 @@ InstallAndConquer(){
 			1)
 			echo "This installs a series of utility software"
 			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools
-			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu
+			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu fwupd
 			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit
 			sudo pacman -S --needed --noconfirm pacman-contrib yay grsync tlp powertop youtube-dl
 			yay -S inxi --noconfirm
