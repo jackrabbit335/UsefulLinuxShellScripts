@@ -7,9 +7,12 @@ Setup(){
 	#This backs up important system files for your convenience
 	sudo cp /etc/sysctl.conf /etc/sysctl.conf.bak
 	sudo cp /etc/systemd/logind.conf /etc/systemd/logind.conf.bak
+	sudo cp /etc/systemd/system.conf /etc/systemd/system.conf.bak
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
 	sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
 	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+	sudo cp /etc/sudoers /etc/sudoers.bak
+	sudo cp /etc/login.defs /etc/login.defs.bak
 	sudo cp /etc/environment /etc/environment.bak
 	sudo cp /etc/profile /etc/profile.bak
 	sudo cp /etc/bash.bashrc /etc/bash.bashrc.bak
@@ -909,6 +912,7 @@ InstallAndConquer(){
 		echo "16 - Virtualbox"
 		echo "17 - Wine and or PlayonLinux"
 		echo "18 - get out of this menu"
+		
 		read software;
 
 		case $software in
@@ -1292,6 +1296,7 @@ AccountSettings(){
 	echo "4 - Look for empty password users on the system"
 	echo "5 - See a list of accounts and groups on the system"
 	echo "6 - skip this menu"
+	
 	read operation;
 
 	case $operation in
@@ -1482,6 +1487,7 @@ EOF
 	echo "8 - Midori"
 	echo "9 - Falkon"
 	echo "10 - Epiphany"
+	
 	read operation;
 
 	case $operation in
@@ -1647,7 +1653,8 @@ EOF
 			echo "2 - Disable services"
 			echo "3 - create a list of all services running on your system"
 			echo "4 - Nothing just get me out of this menu"
-      			read operation;
+			
+			read operation;
 
 			case $operation in
 				1)
@@ -1691,6 +1698,7 @@ EOF
 			echo "2 - Disable services"
 			echo "3 - create a list of all services running on your system"
 			echo "4 - Nothing just get me out of this menu"
+			
 			read operation;
 
 			case $operation in
@@ -1737,6 +1745,7 @@ Backup(){
 	echo "What would you like to do?"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition(skipping unnecessary items)"
+  	
   	read operation;
 
 	case $operation in
@@ -1840,6 +1849,7 @@ Greeting(){
 	echo "17 - Restart"
 	echo "18 - Reset the desktop"
 	echo "19 - exit"
+  	
   	read selection;
 
 	case $selection in
