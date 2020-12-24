@@ -6,6 +6,7 @@ Setup(){
 
 	#This backs up very important system files for your sanity
 	sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
+	sudo cp /etc/systemd/system.conf /etc/systemd/system.conf.bak
 	sudo cp /etc/systemd/logind.conf /etc/systemd/logind.conf.bak
 	sudo cp /etc/default/grub /etc/default/grub.bak
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
