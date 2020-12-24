@@ -10,6 +10,7 @@ Setup(){
 	sudo cp /etc/default/grub /etc/default/grub.bak
 	sudo cp /etc/systemd/coredump.conf /etc/systemd/coredump.conf.bak
 	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+	sudo cp /etc/sudoers /etc/sudoers.bak
 	sudo cp /etc/profile /etc/profile.bak
 	sudo cp /etc/pacman.conf /etc/pacman.conf.bak
 	sudo cp /etc/bash.bashrc /etc/bash.bashrc.bak
@@ -594,8 +595,9 @@ InstallAndConquer(){
 		echo "23 - Security checkers/scanners"
 		echo "24 - Stellarium constellation and space observation"
 		echo "25 - exit out of this menu"
+		
 		read software;
-
+		
 		case $software in
 			1)
 			echo "This installs a series of utility software"
@@ -898,6 +900,7 @@ InstallAndConquer(){
 			echo "This installs Wine or Windows emulation software"
 			echo "1 - Wine"
 			echo "2 - playonlinux"
+			
 			read software;
 			
 			case $software in
@@ -1047,7 +1050,6 @@ InstallAndConquer(){
 			echo "4 - Arch Audit"
 			echo "5 - All"
 			read software;
-			
 			case $software in
 				1)
 				sudo pacman -S --noconfirm rkhunter ;;
@@ -1454,6 +1456,7 @@ AccountSettings(){
 	echo "4 - Look for empty password users on the system"
 	echo "5 - See a list of accounts and groups on the system"
 	echo "6 - Skip this menu"
+	
 	read operation;
 
 	case $operation in
@@ -1606,8 +1609,9 @@ EOF
 	echo "2 - Remove all cache except for the version on your system"
 	echo "3 - Remove all cache from every package and every version"
 	echo "4 - Skip this step"
+	
 	read operation;
-
+	
 	case $operation in
 		1)
 		sudo paccache -rvk3
@@ -1680,8 +1684,9 @@ EOF
 	echo "10 - Midori"
 	echo "11 - Basilisk"
 	echo "12 - Brave"
+	
 	read operation;
-
+	
 	case $operation in
 		1)
 		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old
@@ -1868,8 +1873,9 @@ EOF
 	echo "3 - mask service"
 	echo "4 - save a copy of all the services on your system to a text file"
 	echo "5 - Exit without doing anything"
+	
 	read operation;
-
+	
 	case $operation in
 		1)
 		echo "Please enter the name of a service to enable"
@@ -2002,8 +2008,9 @@ EOF
 	echo "2 - Uninstall kernel(s)"
 	echo "3 - save a list of available and installed kernels to a text file"
 	echo "4 - skip"
+	
 	read operation;
-
+	
 	case $operation in
 		1)
 		echo "Are you sure you want to install a kernel?(Y/n)"
@@ -2065,8 +2072,9 @@ Backup(){
 	echo "What would you like to do?"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition"
+	
 	read operation;
-
+	
 	case $operation in
 		1)
 		host=$(hostname)
@@ -2168,8 +2176,9 @@ Greeting(){
 	echo "18 - Restart"
 	echo "19 - Reset the desktop"
 	echo "20 - exit"
+	
 	read selection;
-
+	
 	case $selection in
 		1)
 		Setup
