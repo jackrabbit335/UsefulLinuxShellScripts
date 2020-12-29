@@ -32,9 +32,10 @@ str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/mas
 str10=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Gambling
 str11=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Tomslist
 str12=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/bjornhosts
+str13=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/urlhaus
 
 
-while getopts :ABCDEFGHIJKL option; do
+while getopts :ABCDEFGHIJKLM option; do
 	case $option in
 		A) wget $str1 && cat MVPShosts >> adblock && rm MVPShosts
 		;;
@@ -59,6 +60,8 @@ while getopts :ABCDEFGHIJKL option; do
 		K) wget $str11 && cat Tomslist >> adblock && rm Tomslist
 		;;
 		L) wget $str12 && cat bjornhosts >> adblock && rm bjornhosts
+		;;
+		M) wget $str13 && cat urlhaus >> adblock && rm urlhaus
 		;;
 		*)
 	esac
@@ -85,7 +88,6 @@ then
 fi
 
 #This merges adblock with /etc/hosts then removes adblock
-#echo "" | sudo tee -a /etc/hosts
 sudo cat adblock.txt >> /etc/hosts
 rm adblock.txt
 
