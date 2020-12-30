@@ -270,7 +270,7 @@ EOF
 Update(){
 	checkNetwork
 
-	sudo pacman -Syyu --noconfirm
+	yay -Syyu --noconfirm
 
 	clear
 	Greeting
@@ -768,6 +768,8 @@ InstallAndConquer(){
 			echo "14 - Slimjet"
 			echo "15 - Brave"
 			echo "16 - qutebrowser"
+			echo "17 - otter"
+			echo "18 - iridium"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -824,6 +826,12 @@ InstallAndConquer(){
 			elif [[ $browser == 16 ]];
 			then
 				sudo pacman -S qutebrowser
+			elif [[ $browser == 17 ]];
+			then
+				sudo pacman -S otter-browser --noconfirm
+			elif [[ $browser == 18 ]];
+			then
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/iridium-rpm.tar.gz; gunzip iridium-rpm.tar.gz; tar -xvf iridium-rpm.tar; cd iridium-rpm && makepkg -si
 			else
 				echo "You have entered an invalid number"
 				InstallAndConquer
