@@ -842,7 +842,7 @@ InstallAndConquer(){
 			echo "1 - xplayer"
 			echo "2 - parole"
 			echo "3 - kodi"
-			echo "4 - Music"
+			echo "4 - quodlibet"
 			echo "5 - Spotify"
 			echo "6 - rhythmbox"
 			echo "7 - mpv"
@@ -865,7 +865,7 @@ InstallAndConquer(){
 				sudo pacman -S --noconfirm kodi
 			elif [[ $player == 4 ]];
 			then
-				sudo pacman -S --noconfirm Music
+				sudo pacman -S --noconfirm quodlibet
 			elif [[ $player == 5 ]];
 			then
 				cd /tmp
