@@ -591,7 +591,7 @@ InstallAndConquer(){
 		echo "17 - Plank"
 		echo "18 - Backup"
 		echo "19 - THEMES!!!!!!!!"
-		echo "20 - screenfetch"
+		echo "20 - neofetch"
 		echo "21 - office software"
 		echo "22 - Proprietary Fonts"
 		echo "23 - Security checkers/scanners"
@@ -1027,8 +1027,8 @@ InstallAndConquer(){
 			yay -S numix-gtk-theme faba-icon-theme-git moka-icon-theme-git --noconfirm
 			;;
 			20)
-			echo "This installs screenfetch"
-			sudo pacman -S --noconfirm screenfetch
+			echo "This installs neofetch"
+			sudo pacman -S --noconfirm neofetch
 			;;
 			21)
 			echo "This installs office software"
