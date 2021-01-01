@@ -1035,6 +1035,7 @@ InstallAndConquer(){
 			echo "1 - Libreoffice"
 			echo "2 - Libreoffice-fresh"
 			echo "3 - Abiword/Gnumeric"
+			echo "4 - Onlyoffice"
 			read software
 			if [[ $software == 1 ]];
 			then
@@ -1045,6 +1046,9 @@ InstallAndConquer(){
 			elif [[ $software == 3 ]];
 			then
 				sudo pacman -S --noconfirm abiword gnumeric
+			elif [[ $software == 4 ]];
+			then
+				yay -S --noconfirm onlyoffice-bin
 			else
 				echo "You've entered an invalid number"
 				InstallAndConquer
@@ -1098,14 +1102,10 @@ InstallAndConquer(){
 	do
 		if [[ $DESKTOP_SESSION == xfce ]];
 		then
-			echo "We found you're running the xfce desktop, would you like
-			to install extra extensions for xfce?(Y/n)"
-			read answer
-			while [ $answer == Y ];
-			do
-				sudo pacman -S --noconfirm xfce4-goodies
-			break
-			done
+			sudo pacman -S --noconfirm xfce4-goodies 
+		elif [[ $DESKTOP_SESSION == gnome ]];
+		then
+			sudo pacman -S --needed --noconfirm gnome-tweaks
 		fi
 	done
 
