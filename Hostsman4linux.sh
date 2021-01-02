@@ -87,8 +87,7 @@ then
 fi
 
 #This merges adblock with /etc/hosts then removes adblock
-sudo cat adblock.txt >> /etc/hosts
-rm adblock.txt
+sudo cat adblock.txt >> /etc/hosts && rm adblock.txt
 
 #Go to /etc/ directory and check for distribution specific directories
 find /etc/pacman.d > /dev/null
