@@ -165,7 +165,7 @@ EOF
 		echo 'alias mem="watch free -lh"' >> ~/.bashrc
 		echo "#Alias to show swaps info" >> ~/.bashrc
 		echo 'alias swaps="cat /proc/swaps"' >> ~/.bashrc
-
+		
 		#Determines your os in order to apply correct alias
 		distribution=$(cat /etc/issue | awk '{print $1}')
 		if [[ $distribution == Manjaro ]];
@@ -1067,7 +1067,9 @@ InstallAndConquer(){
 			echo "3 - Lynis"
 			echo "4 - Arch Audit"
 			echo "5 - All"
+			
 			read software;
+			
 			case $software in
 				1)
 				sudo pacman -S --noconfirm rkhunter ;;
@@ -1570,7 +1572,7 @@ cleanup(){
 	sudo rm -r ~/.nv/*
 	sudo rm -r ~/.npm/*
 	sudo rm -r ~/.w3m/*
-	sudo rm -r ~/.esd_auth #Best I can tell cookie for pulse audio
+	sudo rm -r ~/.esd_auth
 	sudo rm -r ~/.local/share/recently-used.xbel
 	sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
