@@ -172,10 +172,10 @@ EOF
 		then
 			echo "#Alias to update the mirrors" >> ~/.bashrc
 			echo 'alias mirrors="sudo pacman-mirrors -f 5 && sudo pacman -Syy"' >> ~/.bashrc
-		elif [[ $distribution == Antergos ]];
+		elif [[ $distribution == Arch ]];
 		then
 			echo "#Alias to update the mirrors" >> ~/.bashrc
-			echo 'alias mirrors="sudo reflector-antergos --verbose -l 50 -f 20 --save /etc/pacman.d/antergos-mirrorlist; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syy"' >> ~/.bashrc
+			echo 'alias mirrors="sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syy"' >> ~/.bashrc
 		fi
 	fi
 
