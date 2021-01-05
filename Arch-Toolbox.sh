@@ -809,8 +809,7 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz; gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
 			elif [[ $browser == 12 ]];
 			then
-				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-classic-2020.12.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.12.en-US.linux-x86_64.tar.bz2
-				sudo ln -s ~/waterfox-classic/waterfox /usr/bin/waterfox
+				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-classic-2020.12.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.12.en-US.linux-x86_64.tar.bz2; sudo ln -s ~/waterfox-classic/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 13 ]];
 			then
@@ -1056,8 +1055,7 @@ InstallAndConquer(){
 			;;
 			22)
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz; wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gz
-			gunzip ttf-ms-fonts.tar.gz; gunzip ttf-mac-fonts.tar.gz; tar -xvf ttf-ms-fonts.tar; tar -xvf ttf-mac-fonts.tar
-			cd ttf-ms-fonts; makepkg -si; pushd ttf-mac-fonts; makepkg -si; cd
+			gunzip ttf-ms-fonts.tar.gz; gunzip ttf-mac-fonts.tar.gz; tar -xvf ttf-ms-fonts.tar; tar -xvf ttf-mac-fonts.tar; cd ttf-ms-fonts; makepkg -si; pushd ttf-mac-fonts; makepkg -si; cd
 			;;
 			23)
 			echo "This installs possible security software and virus checker if you wish"
