@@ -911,7 +911,8 @@ InstallAndConquer(){
 		echo "15 - GAMES"
 		echo "16 - Virtualbox"
 		echo "17 - Wine and or PlayonLinux"
-		echo "18 - get out of this menu"
+		echo "18 - Dropbox"
+		echo "19 - get out of this menu"
 		
 		read software;
 
@@ -919,7 +920,9 @@ InstallAndConquer(){
 			1)
 			echo "1 - Geany"
 			echo "2 - Sublime"
-			echo "3 - both"
+			echo "3 - atom"
+			echo "4 - meld"
+			echo "5 - all"
 			read package
 			if [[ $package == 1 ]];
 			then
@@ -928,6 +931,12 @@ InstallAndConquer(){
 			then
 				sudo apt install -y sublime-text
 			elif [[ $package == 3 ]];
+			then
+				sudo apt install -y atom
+			elif [[ $package == 4 ]];
+			then
+				sudo apt install -y meld
+			elif [[ $package == 5 ]];
 			then
 				sudo apt install -y geany sublime-text
 			fi
@@ -995,7 +1004,7 @@ InstallAndConquer(){
 			read browser
 			if [[ $browser == 1 ]];
 			then
-				sudo apt install -y chromium-browser
+				sudo snap install chromium
 			elif [[ $browser == 2 ]];
 			then
 				sudo apt install -y epiphany
@@ -1047,7 +1056,8 @@ InstallAndConquer(){
 			echo "5 - clementine"
 			echo "6 - mplayer"
 			echo "7 - smplayer"
-			echo "8 - kodi"
+			echo "8 - celluloid"
+			echo "9 - kodi"
 			read player
 			if [[ $player == 1 ]];
 			then
@@ -1069,9 +1079,11 @@ InstallAndConquer(){
 				sudo apt install -y mplayer
 			elif [[ $player == 7 ]];
 			then
-				sudo add-apt-repository ppa:rvm/smplayer; sudo apt update
-				sudo apt install -y smplayer smplayer-themes smplayer-skins
+				sudo apt install -y smplayer smplayer-themes
 			elif [[ $player == 8 ]];
+			then
+				sudo apt install -y celluloid
+			elif [[ $player == 9 ]];
 			then
 				sudo apt install -y software-properties-common; sudo add-apt-repository ppa:team-xbmc/ppa
 				sudo apt update; sudo apt install -y kodi
@@ -1183,6 +1195,10 @@ InstallAndConquer(){
 			sudo apt update && sudo apt install -y wine playonlinux
 			;;
 			18)
+			echo "Dropbox"
+			sudo apt install -y dropbox
+			;;
+			19)
 			echo "Alrighty then!"
 			break
 			;;
@@ -1249,7 +1265,7 @@ InstallAndConquer(){
 				sudo apt install -y ubuntu-restricted-extras
 			elif [[ $DESKTOP_SESSION == cinnamon ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras gnome-tweak-tool
+				sudo apt install -y ubuntu-restricted-extras
 			elif [[ $DESKTOP_SESSION == ubuntu ]];
 			then
 				sudo apt install -y ubuntu-restricted-extras gnome-tweak-tool dconf-editor chrome-gnome-shell gnome-shell-extensions
