@@ -642,6 +642,7 @@ InstallAndConquer(){
 			echo "5 - gedit"
 			echo "6 - kate/kwrite"
 			echo "7 - leafpad"
+			echo "8 - Visual Studio"
 			read package
 			if [[ $package == 1 ]];
 			then
@@ -674,6 +675,9 @@ InstallAndConquer(){
 			elif [[ $editor == 7 ]];
 			then
 				sudo pacman -S --noconfirm leafpad
+			elif [[ $editor == 8 ]];
+			then
+				sudo pacman -S --noconfirm code
 			else
 				echo "You've entered an invalid number"
 				InstallAndConquer
