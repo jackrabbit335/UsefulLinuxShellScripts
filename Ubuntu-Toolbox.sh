@@ -922,7 +922,8 @@ InstallAndConquer(){
 			echo "2 - Sublime"
 			echo "3 - atom"
 			echo "4 - meld"
-			echo "5 - all"
+			echo "5 - Visual Studio"
+			echo "6 - all"
 			read package
 			if [[ $package == 1 ]];
 			then
@@ -937,6 +938,9 @@ InstallAndConquer(){
 			then
 				sudo apt install -y meld
 			elif [[ $package == 5 ]];
+			then
+				sudo snap install code --classic
+			elif [[ $package == 6 ]];
 			then
 				sudo apt install -y geany sublime-text
 			fi
@@ -965,7 +969,7 @@ InstallAndConquer(){
 			3)
 			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync
 			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop
-			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools
+			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools keepassxc
 			;;
 			4)
 			echo "1 - deja-dup"
