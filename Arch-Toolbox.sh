@@ -771,9 +771,10 @@ InstallAndConquer(){
 			echo "13 - Basilisk"
 			echo "14 - Slimjet"
 			echo "15 - Brave"
-			echo "16 - qutebrowser"
-			echo "17 - otter"
-			echo "18 - iridium"
+			echo "16 - Qutebrowser"
+			echo "17 - Otter"
+			echo "18 - Iridium"
+			echo "19 - Ungoogled-Chromium"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -835,6 +836,9 @@ InstallAndConquer(){
 			elif [[ $browser == 18 ]];
 			then
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/iridium-rpm.tar.gz; gunzip iridium-rpm.tar.gz; tar -xvf iridium-rpm.tar; cd iridium-rpm && makepkg -si
+			elif [[ $browser == 19 ]];
+			then
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/ungoogled-chromium.tar.gz; tar -xvf ungoogled-chromium.tar; cd ungoogled-chromium && makepkg -si
 			else
 				echo "You have entered an invalid number"
 				InstallAndConquer
@@ -1106,7 +1110,7 @@ InstallAndConquer(){
 	do
 		if [[ $DESKTOP_SESSION == xfce ]];
 		then
-			sudo pacman -S --noconfirm xfce4-goodies 
+			sudo pacman -S --needed --noconfirm xfce4-goodies 
 		elif [[ $DESKTOP_SESSION == gnome ]];
 		then
 			sudo pacman -S --needed --noconfirm gnome-tweaks
