@@ -1580,7 +1580,7 @@ cleanup(){
 	sudo rm -r ~/.w3m/*
 	sudo rm -r ~/.esd_auth
 	sudo rm -r ~/.local/share/recently-used.xbel
-	sudo rm -r /tmp/*
+	#sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
 	sudo rm -r /var/tmp/*
 
