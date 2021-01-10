@@ -920,7 +920,7 @@ InstallAndConquer(){
 			;;
 			12)
 			echo "This installs a virtualbox client"
-			sudo pacman -S --noconfirm virtualbox
+			sudo pacman -S --noconfirm virtualbox virtualbox-guest-utils
 			;;
 			13)
 			echo "This installs Wine or Windows emulation software"
@@ -948,14 +948,7 @@ InstallAndConquer(){
 			echo "etc-update can help you manage pacnew files and other configuration files after system updates."
 			sleep 2
 			sudo pacman -S --needed base-devel
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz; gunzip etc-update.tar.gz && tar -xvf etc-update.tar; cd etc-update && makepkg -si
-			echo "Would you also like to install downgrade?(Y/n)"
-			read answer
-			while [ $answer ==  Y ];
-			do
-				sudo pacman -S --noconfirm downgrade
-				break
-			done
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz; gunzip etc-update.tar.gz && tar -xvf etc-update.tar; cd etc-update && makepkg -si && sudo pacman -S --noconfirm downgrade
 			;;
 			16)
 			echo "This installs a choice in small games"
