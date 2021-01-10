@@ -1436,7 +1436,7 @@ EOF
 	sudo rm -r ~/.w3m/*
 	sudo rm -r ~/.esd_auth #Best I can tell cookie for pulse audio
 	sudo rm -r ~/.local/share/recently-used.xbel
-	sudo rm -r /tmp/*
+	#sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
 	
 	#This removes old configurations of software
