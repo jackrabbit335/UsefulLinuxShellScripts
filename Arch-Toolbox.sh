@@ -578,25 +578,26 @@ InstallAndConquer(){
 		echo "4 - Cleaning software"
 		echo "5 - prelauncher"
 		echo "6 - Download managers"
-		echo "7 - Torrent clients"
-		echo "8 - AUR Helpers"
-		echo "9 - Web browser from a list"
-		echo "10 - Media/home theater software"
-		echo "11 - Virtual machine client"
-		echo "12 - Wine and play on linux"
-		echo "13 - quvcview"
-		echo "14 - Manipulate config files and switch between versions of software"
-		echo "15 - GAMES!!!!!!!!!"
-		echo "16 - Video editing/encoding"
-		echo "17 - Plank"
-		echo "18 - Backup"
-		echo "19 - THEMES!!!!!!!!"
-		echo "20 - neofetch"
-		echo "21 - office software"
-		echo "22 - Proprietary Fonts"
-		echo "23 - Security checkers/scanners"
-		echo "24 - Stellarium constellation and space observation"
-		echo "25 - exit out of this menu"
+		echo "7 - Dropbox"
+		echo "8 - Torrent clients"
+		echo "9 - AUR Helpers"
+		echo "10 - Web browser from a list"
+		echo "11 - Media/home theater software"
+		echo "12 - Virtual machine client"
+		echo "13 - Wine and play on linux"
+		echo "14 - quvcview"
+		echo "15 - Manipulate config files and switch between versions of software"
+		echo "16 - GAMES!!!!!!!!!"
+		echo "17 - Video editing/encoding"
+		echo "18 - Plank"
+		echo "19 - Backup"
+		echo "20 - THEMES!!!!!!!!"
+		echo "21 - neofetch"
+		echo "22 - office software"
+		echo "23 - Proprietary Fonts"
+		echo "24 - Security checkers/scanners"
+		echo "25 - Stellarium constellation and space observation"
+		echo "26 - exit out of this menu"
 		
 		read software;
 		
@@ -712,6 +713,10 @@ InstallAndConquer(){
 			fi
 			;;
 			7)
+			echo "This installs Dropbox"
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/dropbox.tar.gz; gunzip dropbox.tar.gz; tar -xvf dropbox.tar; cd dropbox && makepkg -si
+			;;
+			8)
 			echo "This installs your choice of torrent clients"
 			echo "1 - transmission-gtk"
 			echo "2 - deluge"
@@ -731,7 +736,7 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			8)
+			9)
 			echo "1 - pacaur"
 			echo "2 - yaourt"
 			echo "3 - trizen"
@@ -754,7 +759,7 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			9)
+			10)
 			echo "This installs your choice in browsers"
 			echo "1 - Chromium"
 			echo "2 - Epiphany"
@@ -838,13 +843,13 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/iridium-rpm.tar.gz; gunzip iridium-rpm.tar.gz; tar -xvf iridium-rpm.tar; cd iridium-rpm && makepkg -si
 			elif [[ $browser == 19 ]];
 			then
-				wget https://aur.archlinux.org/cgit/aur.git/snapshot/ungoogled-chromium.tar.gz; tar -xvf ungoogled-chromium.tar; cd ungoogled-chromium && makepkg -si
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/ungoogled-chromium.tar.gz; gunzip ungoogled-chromium.tar.gz; tar -xvf ungoogled-chromium.tar; cd ungoogled-chromium && makepkg -si
 			else
 				echo "You have entered an invalid number"
 				InstallAndConquer
 			fi
 			;;
-			10)
+			11)
 			echo "This installs a choice in media players"
 			echo "1 - xplayer"
 			echo "2 - parole"
@@ -913,11 +918,11 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			11)
+			12)
 			echo "This installs a virtualbox client"
 			sudo pacman -S --noconfirm virtualbox
 			;;
-			12)
+			13)
 			echo "This installs Wine or Windows emulation software"
 			echo "1 - Wine"
 			echo "2 - playonlinux"
@@ -935,11 +940,11 @@ InstallAndConquer(){
 				;;
 			esac
 			;;
-			13)
+			14)
 			echo "This installs a webcam application for laptops"
 			sudo pacman -S --noconfirm guvcview
 			;;
-			14)
+			15)
 			echo "etc-update can help you manage pacnew files and other configuration files after system updates."
 			sleep 2
 			sudo pacman -S --needed base-devel
@@ -952,7 +957,7 @@ InstallAndConquer(){
 				break
 			done
 			;;
-			15)
+			16)
 			echo "This installs a choice in small games"
 			echo "1 - supertuxkart"
 			echo "2 - gnome-mahjongg"
@@ -996,7 +1001,7 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			16)
+			17)
 			echo "This installs video/audio decoding/reencoding software"
 			sudo pacman -S --noconfirm kdenlive audacity
 			echo "Would you also like obs-studio?(Y/n)"
@@ -1007,11 +1012,11 @@ InstallAndConquer(){
 				break
 			done
 			;;
-			17)
+			18)
 			echo "This installs a dock application"
 			sudo pacman -S --noconfirm plank
 			;;
-			18)
+			19)
 			echo "This installs your backup software"
 			echo "1 - deja-dup"
 			echo "2 - timeshift"
@@ -1027,17 +1032,17 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			19)
+			20)
 			echo "This installs a few common themes"
 			sudo pacman -S --noconfirm adapta-gtk-theme arc-icon-theme evopop-icon-theme arc-gtk-theme
 			sudo pacman -S --noconfirm papirus-icon-theme materia-gtk-theme paper-icon-theme
 			yay -S numix-gtk-theme faba-icon-theme-git moka-icon-theme-git --noconfirm
 			;;
-			20)
+			21)
 			echo "This installs neofetch"
 			sudo pacman -S --noconfirm neofetch
 			;;
-			21)
+			22)
 			echo "This installs office software"
 			echo "1 - Libreoffice"
 			echo "2 - Libreoffice-fresh"
@@ -1061,11 +1066,11 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			22)
+			23)
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz; wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gz
 			gunzip ttf-ms-fonts.tar.gz; gunzip ttf-mac-fonts.tar.gz; tar -xvf ttf-ms-fonts.tar; tar -xvf ttf-mac-fonts.tar; cd ttf-ms-fonts; makepkg -si; pushd ttf-mac-fonts; makepkg -si; cd
 			;;
-			23)
+			24)
 			echo "This installs possible security software and virus checker if you wish"
 			echo "KaOS doesn't have these by default(has tomoyo) and clam av can be installed as flatpak"
 			echo "1 - Rkhunter"
@@ -1092,11 +1097,11 @@ InstallAndConquer(){
 				InstallAndConquer;;
 			esac
 			;;
-			24)
+			25)
 			echo "This installs stellarium incase you are a night sky observer"
 			sudo pacman -S --noconfirm stellarium
 			;;
-			25)
+			26)
 			echo "Ok, well, I'm here if you change your mind"
 			break
 			;;
