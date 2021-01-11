@@ -205,7 +205,6 @@ EOF
 			then
 				echo "update successful"
 			else
-				sudo rankmirrors -v /etc/pacman.d/mirrorlist #This works for KaOS but probably not for Arch itself.
 				sudo rm -r /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg
 				sudo pacman -Sy --noconfirm gnupg archlinux-keyring; sudo pacman-key --init
 				sudo pacman-key --populate archlinux; sudo pacman-key --refresh-keys; sudo pacman -Scc
@@ -223,6 +222,13 @@ EOF
 				sudo pacman -Sy --noconfirm gnupg archlinux-keyring; sudo pacman-key --init
 				sudo pacman-key --populate archlinux; sudo pacman-key --refresh-keys; sudo pacman -Scc
 				sudo pacman -Syyu --noconfirm
+			fi
+		elif [[ $distribution == KaOS ]];
+		then
+			sudo rankmirrors -v /etc/pacman.d/mirrolist; sudo pacman -Syyu --noconfirm
+			if [[ $? -eq 0 ]];
+			then
+				echo "update successful"
 			fi
 		fi
 	done
