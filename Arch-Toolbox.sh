@@ -165,7 +165,7 @@ EOF
 		echo 'alias mem="watch free -lh"' >> ~/.bashrc
 		echo "#Alias to show swaps info" >> ~/.bashrc
 		echo 'alias swaps="cat /proc/swaps"' >> ~/.bashrc
-		
+
 		#Determines your os in order to apply correct alias
 		distribution=$(cat /etc/issue | awk '{print $1}')
 		if [[ $distribution == Manjaro ]];
@@ -234,7 +234,7 @@ EOF
 	done
 
 	#This pins the kernel in Arch Linux
-	sudo sed -i 's/#IgnorePkg   =/IgnorePkg   =linux linux-headers/g' /etc/pacman.conf
+	sudo sed -i 's/#IgnorePkg   =/IgnorePkg   =linux linux-headers linux-lts linux-lts-headers/g' /etc/pacman.conf
 
 	#This starts your firewall
 	pacman -Q | grep ufw || sudo pacman -S --noconfirm ufw; sudo systemctl enable ufw; sudo ufw enable
@@ -604,9 +604,9 @@ InstallAndConquer(){
 		echo "24 - Security checkers/scanners"
 		echo "25 - Stellarium constellation and space observation"
 		echo "26 - exit out of this menu"
-		
+
 		read software;
-		
+
 		case $software in
 			1)
 			echo "This installs a series of utility software"
@@ -900,7 +900,7 @@ InstallAndConquer(){
 				sudo pacman -S --noconfirm smplayer smplayer-skins
 			elif [[ $player == 9 ]];
 			then
-				sudo pacman -S --noconfirm vlc 
+				sudo pacman -S --noconfirm vlc
 			elif [[ $player == 10 ]];
 			then
 				sudo pacman -s --noconfirm totem
@@ -932,9 +932,9 @@ InstallAndConquer(){
 			echo "This installs Wine or Windows emulation software"
 			echo "1 - Wine"
 			echo "2 - playonlinux"
-			
+
 			read software;
-			
+
 			case $software in
 				1)
 				sudo pacman -S --noconfirm wine ;;
@@ -1077,9 +1077,9 @@ InstallAndConquer(){
 			echo "3 - Lynis"
 			echo "4 - Arch Audit"
 			echo "5 - All"
-			
+
 			read software;
-			
+
 			case $software in
 				1)
 				sudo pacman -S --noconfirm rkhunter ;;
@@ -1114,7 +1114,7 @@ InstallAndConquer(){
 	do
 		if [[ $DESKTOP_SESSION == xfce ]];
 		then
-			sudo pacman -S --needed --noconfirm xfce4-goodies 
+			sudo pacman -S --needed --noconfirm xfce4-goodies
 		elif [[ $DESKTOP_SESSION == gnome ]];
 		then
 			sudo pacman -S --needed --noconfirm gnome-tweaks
@@ -1225,37 +1225,37 @@ on user applications. Tomoyo uses ACLs and MAC style methods of determining
 application access. Tomoyo can be installed in other distributions and
 can be set in the grub commandline for the kernel by using security = tomoyo
 KaOS has a basic wiki in docs to get you started with setting it up, however,
-if you wish to get more in depth you will be required to go to the tomoyo 
+if you wish to get more in depth you will be required to go to the tomoyo
 wiki.
 
 ########################################################################
 SCREEN RESOLUTION
 ########################################################################
 As you can see with the newest releases of my toolbox scripts, I have
-implemented a new function which leverages xrandr to allow the user to 
+implemented a new function which leverages xrandr to allow the user to
 pick and choose their screen resolution. Sometimes Linux doesn't always
 choose the best resolution for your needs, this is why this was implemen-
 ted. Simply type the number for ScreenFix and it will prompt you with
 a list of possible screen resolutions supported by your distribution.
 Choose the proper resolution to fit with your monitor and go. Sometimes
-Linux uses ancient 800x600 resolutions or some other resolution that is 
+Linux uses ancient 800x600 resolutions or some other resolution that is
 either too big or small and this can be caused by the driver or some other
 issue. Xrandr will allow you to save your resolution in place and keep it
 consistent between boots. Xrandr is installed in most distributions now-
-adays. I've recently added a monitor configuration file to Github. Is a 
-template only and if you use it you will have to tweak it to fit your 
-needs. See 10-monitor.conf. 10-monitor.conf will go in 
+adays. I've recently added a monitor configuration file to Github. Is a
+template only and if you use it you will have to tweak it to fit your
+needs. See 10-monitor.conf. 10-monitor.conf will go in
 /etc/X11/xorg.conf.d/
 
 ########################################################################
 WATERFOX CLASSIC OVER THIRD GEN
 ########################################################################
 I have chosen to continue to support the installation of Waterfox class-
-ic edition over the newest Third Gen as the classic allows users to 
-retain many of their older npapi extensions. Old extensions went out 
-Firefox changed to their new engine, Quantum that only uses 
+ic edition over the newest Third Gen as the classic allows users to
+retain many of their older npapi extensions. Old extensions went out
+Firefox changed to their new engine, Quantum that only uses
 Webextensions now. Web extensions are still good and viable for the
-future, however, many users complained when this change took place. 
+future, however, many users complained when this change took place.
 This is not a permanent thing and I will eventually switch it over,
 this just allows users their convenience and peace of mind for now.
 
@@ -1481,7 +1481,7 @@ AccountSettings(){
 	echo "4 - Look for empty password users on the system"
 	echo "5 - See a list of accounts and groups on the system"
 	echo "6 - Skip this menu"
-	
+
 	read operation;
 
 	case $operation in
@@ -1590,7 +1590,7 @@ cleanup(){
 
 	#This removes old configurations for software
 	sudo rm -r ~/.config/*-old
-	
+
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
 
@@ -1611,8 +1611,8 @@ cleanup(){
 
 	#This helps get rid of old archived log entries
 	sudo journalctl --vacuum-size=25M
-	
-	#Remove unwanted dependencies 
+
+	#Remove unwanted dependencies
 	yay -Yc
 
 	#This will remove orphan packages from pacman
@@ -1634,9 +1634,9 @@ EOF
 	echo "2 - Remove all cache except for the version on your system"
 	echo "3 - Remove all cache from every package and every version"
 	echo "4 - Skip this step"
-	
+
 	read operation;
-	
+
 	case $operation in
 		1)
 		sudo paccache -rvk3
@@ -1709,9 +1709,9 @@ EOF
 	echo "10 - Midori"
 	echo "11 - Basilisk"
 	echo "12 - Brave"
-	
+
 	read operation;
-	
+
 	case $operation in
 		1)
 		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old
@@ -1823,7 +1823,7 @@ SystemMaintenance(){
 		sudo pacman -Q | grep reflector || sudo pacman -S --noconfirm reflector; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
 	elif [[ $distribution == KaOS ]];
 	then
-		sudo pacman -Syyu --noconfirm
+		sudo rankmirrors -v /etc/pacman.d/mirrolist; sudo pacman -Syyu --noconfirm
 	fi
 
 	#This refreshes systemd in case of failed or changed units
@@ -1898,9 +1898,9 @@ EOF
 	echo "3 - mask service"
 	echo "4 - save a copy of all the services on your system to a text file"
 	echo "5 - Exit without doing anything"
-	
+
 	read operation;
-	
+
 	case $operation in
 		1)
 		echo "Please enter the name of a service to enable"
@@ -2022,7 +2022,7 @@ KernelManager(){
 	could inadvertently screw up system functions. The kernel is the main engine behind
 	the scenes making everything operate within normal parameters, changing kernel settings
 	or installing/uninstalling a bad updated version could give undesirable results. It should
-	also be noted that this works in Manjaro, but probably will not work in any other Arch-based 
+	also be noted that this works in Manjaro, but probably will not work in any other Arch-based
 	operating system at this time.
 EOF
 	sudo mhwd-kernel -l
@@ -2033,9 +2033,9 @@ EOF
 	echo "2 - Uninstall kernel(s)"
 	echo "3 - save a list of available and installed kernels to a text file"
 	echo "4 - skip"
-	
+
 	read operation;
-	
+
 	case $operation in
 		1)
 		echo "Are you sure you want to install a kernel?(Y/n)"
@@ -2097,9 +2097,9 @@ Backup(){
 	echo "What would you like to do?"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition"
-	
+
 	read operation;
-	
+
 	case $operation in
 		1)
 		host=$(hostname)
@@ -2201,9 +2201,9 @@ Greeting(){
 	echo "18 - Restart"
 	echo "19 - Reset the desktop"
 	echo "20 - exit"
-	
+
 	read selection;
-	
+
 	case $selection in
 		1)
 		Setup
@@ -2279,16 +2279,16 @@ cat <<EOF
 ########################################################################
 Hello! Thank you for using Arch Toolbox. Within this script is a multitu-
 de of potential solutions for every day tasks as trivial as maintenance,
-all the way to as important as setting up a new system. This script is 
-meant for new users, but anyone can read, change and use this script to 
-their liking. This script is to be placed under the GPLv3 and is to be 
-redistributable, however, if you are distributing, I would appreciate it 
-if you gave the credit back to the original author. I should also add that 
-I have a few blog articles which may or may not be of benefit for newbies 
-on occasion. The link will be placed here. In the blog I write about typical 
-scenarios that I face on a day to day basis as well as add commentary and my 
-opinions about software and technology. You may copy and paste the following 
-link into your browser: https://techiegeek123.blogspot.com/ 
+all the way to as important as setting up a new system. This script is
+meant for new users, but anyone can read, change and use this script to
+their liking. This script is to be placed under the GPLv3 and is to be
+redistributable, however, if you are distributing, I would appreciate it
+if you gave the credit back to the original author. I should also add that
+I have a few blog articles which may or may not be of benefit for newbies
+on occasion. The link will be placed here. In the blog I write about typical
+scenarios that I face on a day to day basis as well as add commentary and my
+opinions about software and technology. You may copy and paste the following
+link into your browser: https://techiegeek123.blogspot.com/
 Again, Thank you!
 ########################################################################
 EOF
