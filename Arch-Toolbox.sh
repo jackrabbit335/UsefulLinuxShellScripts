@@ -613,8 +613,8 @@ InstallAndConquer(){
 			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools
 			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu fwupd
 			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit
-			sudo pacman -S --needed --noconfirm pacman-contrib yay grsync tlp powertop youtube-dl keepassxc
-			yay -S inxi --noconfirm
+			sudo pacman -S --needed --noconfirm pacman-contrib grsync tlp powertop youtube-dl keepassxc
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/inxi.tar.gz; gunzip inxi.tar.gz; tar -xvf inxi.tar; cd inxi && makepkg -si
 			;;
 			2)
 			echo "This installs your choice of terminals If you already have one, don't worry"
@@ -744,22 +744,18 @@ InstallAndConquer(){
 			;;
 			9)
 			echo "1 - pacaur"
-			echo "2 - yaourt"
-			echo "3 - trizen"
-			echo "4 - yay"
+			echo "2 - trizen"
+			echo "3 - yay"
 			read helper
 			if [[ $helper == 1 ]];
 			then
-				sudo pacman -S --noconfirm pacaur
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz; gunzip pacaur.tar.gz; tar -xvf pacaur.tar; cd pacaur && makepkg -si
 			elif [[ $helper == 2 ]];
 			then
-				sudo pacman -S --noconfirm yaourt
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/trizen.tar.gz; gunzip trizen.tar.gz; tar -xvf trizen.tar; cd trizen && makepkg -si
 			elif [[ $helper == 3 ]];
 			then
-				sudo pacman -S --noconfirm trizen
-			elif [[ $helper == 4 ]];
-			then
-				sudo pacman -S --noconfirm yay
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/yay.tar.gz; gunzip yay.tar.gz; tar-xvf yay.tar; cd yay && makepkg -si
 			else
 				echo "You have entered an invalid number"
 				InstallAndConquer
@@ -1566,7 +1562,7 @@ Uninstall(){
 	do
 		echo "Please enter the name of any software you wish to remove"
 		read software
-		sudo pacman -Rs --noconfirm $software
+		yay -Rs --noconfirm $software
 		break
 	done
 
