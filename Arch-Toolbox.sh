@@ -2025,68 +2025,27 @@ KernelManager(){
 	also be noted that this works in Manjaro, but probably will not work in any other Arch-based
 	operating system at this time.
 EOF
-	sudo mhwd-kernel -l
-	sudo mhwd-kernel -li
-	read -p "Press enter to continue..."
-	echo "What would you like to do today?"
-	echo "1 - Install new kernel(s)"
-	echo "2 - Uninstall kernel(s)"
-	echo "3 - save a list of available and installed kernels to a text file"
-	echo "4 - skip"
+	pacman -Q linux linux-lts
+	echo "What would you like to do?"
+	echo "1 - Install lts"
+	echo "2 - Install current"
+	echo "3 - Remove lts"
+	echo "4 - Remove current"
+	echo "5 - Get out of this menu"
 
 	read operation;
 
 	case $operation in
 		1)
-		echo "Are you sure you want to install a kernel?(Y/n)"
-		read answer
-		while [ $answer == Y ];
-		do
-			echo "Enter the name of the kernel you wish to install"
-			read kernel
-			sudo mhwd-kernel -i $kernel
-		break
-		done
-		echo "Restart?(Y/n)"
-		read answer
-		while [ $answer == Y ];
-		do
-			Restart
-		break
-		done
-		;;
+		sudo pacman -Sy linux-lts linux-lts-headers;;
 		2)
-		echo "Are you sure you want to remove a kernel?(Y/n)"
-		read answer
-		while [ $answer == Y ];
-		do
-			echo "Enter the name of the kernel you wish to remove"
-			read kernel
-			sudo mhwd-kernel -r $kernel
-		break
-		done
-		echo "Restart?(Y/n)"
-		read answer
-		while [ $answer == Y ];
-		do
-			Restart
-		break
-		done
-		;;
+		sudo pacman -Sy linux-current linux-current-headers;;
 		3)
-		echo "############################################################################" >> kernels.txt
-		echo "WELCOME TO THE ALL NEW MANJARO KERNEL MANAGER" >> kernels.txt
-		echo "############################################################################" >> kernels.txt
-		sudo mhwd-kernel -l >> kernels.txt
-		echo "****************************************************************************" >> kernels.txt
-		sudo mhwd-kernel -li >> kernels.txt
-		echo "############################################################################" >> kernels.txt
-		echo "END OF FILE" >> kernels.txt
-		echo "############################################################################" >> kernels.txt
-		;;
+		sudo pacman -Rs linux-lts linux-lts-headers;;
 		4)
-		echo "Skipping"
-		;;
+		sudo pacman -Rs linux-current linux-current-headers;;
+		5)
+		echo "You've chosen not to mess with the kernel, a good idea in most cases";;
 	esac
 
 	clear
