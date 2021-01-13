@@ -2027,9 +2027,13 @@ EOF
 	echo "What would you like to do?"
 	echo "1 - Install lts"
 	echo "2 - Install current"
-	echo "3 - Remove lts"
-	echo "4 - Remove current"
-	echo "5 - Get out of this menu"
+	echo "3 - Install hardened"
+	echo "4 - Install zen"
+	echo "5 - Remove lts"
+	echo "6 - Remove current"
+	echo "7 - Remove hardened"
+	echo "8 - Remove zen"
+	echo "9 - Get out of this menu"
 
 	read operation;
 
@@ -2039,10 +2043,18 @@ EOF
 		2)
 		sudo pacman -Sy linux-current linux-current-headers;;
 		3)
-		sudo pacman -Rs linux-lts linux-lts-headers;;
+		sudo pacman -Sy linux-hardened linux-hardened-headers;;
 		4)
-		sudo pacman -Rs linux-current linux-current-headers;;
+		sudo pacman -Sy linux-zen linux-zen-headers;;
 		5)
+		sudo pacman -Rs linux-lts linux-lts-headers;;
+		6)
+		sudo pacman -Rs linux-current linux-current-headers;;
+		7)
+		sudo pacman -Rs linux-hardened linux-hardened-headers;;
+		8)
+		sudo pacman -Rs linux-zen linux-zen-headers;;
+		9)
 		echo "You've chosen not to mess with the kernel, a good idea in most cases";;
 	esac
 
