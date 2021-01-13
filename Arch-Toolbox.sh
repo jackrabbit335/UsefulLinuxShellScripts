@@ -1615,41 +1615,7 @@ cleanup(){
 	sudo pacman -Rsn --noconfirm $(pacman -Qqdt)
 
 	#Optional This will remove the pacman cached applications and older versions
-	cat <<EOF
-	It is probably not a great idea to be cleaning this part of the system
-	all willy nilly, but here is a way to free up some space before doing
-	backups that may cause you to not be able to downgrade, so be careful.
-	It is possible and encouraged to clean all but the latest three
-	versions of software on your system that you may not need, but this
-	removes all backup versions. You will be given a choice, but it is
-	strongly recommended that you use the simpler option to remove only
-	up to the latest three versions of your software. Thanks!
-EOF
-	echo "What would you like to do?"
-	echo "1 - Remove up to the latest three versions of software"
-	echo "2 - Remove all cache except for the version on your system"
-	echo "3 - Remove all cache from every package and every version"
-	echo "4 - Skip this step"
-
-	read operation;
-
-	case $operation in
-		1)
-		sudo paccache -rvk3
-		sleep 1
-		;;
-		2)
-		sudo pacman -Sc
-		sleep 1
-		;;
-		3)
-		sudo pacman -Scc
-		sleep 1
-		;;
-		4)
-		echo "NICE!"
-		;;
-	esac
+	#sudo pacman -Scc
 
 	#This removes unwanted apps
 	Uninstall
