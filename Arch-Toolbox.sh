@@ -2021,9 +2021,7 @@ KernelManager(){
 	Kernels are an essential part of the operating system. Failure to use precaution
 	could inadvertently screw up system functions. The kernel is the main engine behind
 	the scenes making everything operate within normal parameters, changing kernel settings
-	or installing/uninstalling a bad updated version could give undesirable results. It should
-	also be noted that this works in Manjaro, but probably will not work in any other Arch-based
-	operating system at this time.
+	or installing/uninstalling a bad updated version could give undesirable results.
 EOF
 	pacman -Q linux linux-lts
 	echo "What would you like to do?"
