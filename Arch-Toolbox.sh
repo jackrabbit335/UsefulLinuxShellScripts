@@ -1562,7 +1562,7 @@ Uninstall(){
 	do
 		echo "Please enter the name of any software you wish to remove"
 		read software
-		yay -Rs --noconfirm $software
+		sudo pacman -Rs --noconfirm $software
 		break
 	done
 
