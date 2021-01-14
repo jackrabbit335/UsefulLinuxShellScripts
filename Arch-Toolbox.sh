@@ -276,7 +276,7 @@ EOF
 Update(){
 	checkNetwork
 
-	yay -Syyu --noconfirm
+	sudo pacman -Syyu --noconfirm
 
 	clear
 	Greeting
@@ -285,6 +285,7 @@ Update(){
 Systeminfo(){
 	pacman -Q | grep lsb-release || sudo pacman -S --noconfirm lsb-release
 	pacman -Q | grep wmctrl || sudo pacman -S --noconfirm wmctrl
+	pacman -Q | grep hwinfo || sudo pacman -S --noconfirm hwinfo
 	host=$(hostname)
 	drive=$(df -P / | awk '{print $1}' | grep "/dev/")
 	distribution=$(cat /etc/issue | awk '{print $1}')
@@ -506,6 +507,11 @@ Systeminfo(){
 	echo "YET STILL MORE HARDWARE INFORMATION" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	lscpu >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SIGH" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	hwinfo --short >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "MEMORY INFOMRATION" >> $host-sysinfo.txt
@@ -1963,7 +1969,7 @@ MakeSwap(){
 	grep -q "swap" /etc/fstab
 	if [ $? -eq 0 ];
 	then
-		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 4G /swapfile; sudo chmod 600 /swapfile; sudo mkswap /swapfile; sudo swapon /swapfile
+		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 2G /swapfile; sudo chmod 600 /swapfile; sudo mkswap /swapfile; sudo swapon /swapfile
 		echo "/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
 	else
 		echo "Swap was already there so there is nothing to do"
