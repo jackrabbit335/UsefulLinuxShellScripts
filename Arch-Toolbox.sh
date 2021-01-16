@@ -595,21 +595,22 @@ InstallAndConquer(){
 		echo "9 - AUR Helpers"
 		echo "10 - Web browser from a list"
 		echo "11 - Media/home theater software"
-		echo "12 - Virtual machine client"
-		echo "13 - Wine and play on linux"
-		echo "14 - quvcview"
-		echo "15 - Manipulate config files and switch between versions of software"
-		echo "16 - GAMES!!!!!!!!!"
-		echo "17 - Video editing/encoding"
-		echo "18 - Plank"
-		echo "19 - Backup"
-		echo "20 - THEMES!!!!!!!!"
-		echo "21 - neofetch"
-		echo "22 - office software"
-		echo "23 - Proprietary Fonts"
-		echo "24 - Security checkers/scanners"
-		echo "25 - Stellarium constellation and space observation"
-		echo "26 - exit out of this menu"
+		echo "12 - Messenger Apps"
+		echo "13 - Virtual machine client"
+		echo "14 - Wine and play on linux"
+		echo "15 - quvcview"
+		echo "16 - Manipulate config files and switch between versions of software"
+		echo "17 - GAMES!!!!!!!!!"
+		echo "18 - Video editing/encoding"
+		echo "19 - Plank"
+		echo "20 - Backup"
+		echo "21 - THEMES!!!!!!!!"
+		echo "22 - neofetch"
+		echo "23 - office software"
+		echo "24 - Proprietary Fonts"
+		echo "25 - Security checkers/scanners"
+		echo "26 - Stellarium constellation and space observation"
+		echo "27 - exit out of this menu"
 
 		read software;
 
@@ -927,10 +928,39 @@ InstallAndConquer(){
 			fi
 			;;
 			12)
+			echo "This installs a Messenger or chat client"
+			echo "1 - Pidgin"
+			echo "2 - Hexchat"
+			echo "3 - Skype"
+			echo "4 - Signal"
+			echo "5 - Telegram"
+			echo "6 - Discord-Canary"
+			read client
+			if [[ $client == 1 ]];
+			then
+				sudo pacman -S pidgin
+			elif [[ $client == 2 ]];
+			then
+				sudo pacman -S hexchat
+			elif [[ $client == 3 ]];
+			then
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/skypeforlinux-stable-bin.tar.gz; gunzip skypeforlinux-stable-bin.tar.gz; tar -xvf skypeforlinux-stable-bin.tar
+			elif [[ $client == 4 ]];
+			then
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/signal-desktop-beta.tar.gz; gunzip signal-desktop-beta.tar.gz; tar -xvf signal-desktop-beta.tar; cd signal-desktop-beta && makepkg -si
+			elif [[ $client == 5 ]];
+			then
+				sudo pacman -S telegram-desktop
+			elif [[ $client == 6 ]];
+			then
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/discord-canary.tar.gz; gunzip discord-canary.tar.gz; tar -xvf discord-canary.tar; cd discord-canary && makepkg -si
+			fi
+			;;
+			13)
 			echo "This installs a virtualbox client"
 			sudo pacman -S --noconfirm virtualbox virtualbox-guest-utils
 			;;
-			13)
+			14)
 			echo "This installs Wine or Windows emulation software"
 			echo "1 - Wine"
 			echo "2 - playonlinux"
@@ -948,17 +978,17 @@ InstallAndConquer(){
 				;;
 			esac
 			;;
-			14)
+			15)
 			echo "This installs a webcam application for laptops"
 			sudo pacman -S --noconfirm guvcview
 			;;
-			15)
+			16)
 			echo "etc-update can help you manage pacnew files and other configuration files after system updates."
 			sleep 2
 			sudo pacman -S --needed base-devel
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz; gunzip etc-update.tar.gz && tar -xvf etc-update.tar; cd etc-update && makepkg -si && sudo pacman -S --noconfirm downgrade
 			;;
-			16)
+			17)
 			echo "This installs a choice in small games"
 			echo "1 - supertuxkart"
 			echo "2 - gnome-mahjongg"
@@ -1002,7 +1032,7 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			17)
+			18)
 			echo "This installs video/audio decoding/reencoding software"
 			sudo pacman -S --noconfirm kdenlive audacity
 			echo "Would you also like obs-studio?(Y/n)"
@@ -1013,11 +1043,11 @@ InstallAndConquer(){
 				break
 			done
 			;;
-			18)
+			19)
 			echo "This installs a dock application"
 			sudo pacman -S --noconfirm plank
 			;;
-			19)
+			20)
 			echo "This installs your backup software"
 			echo "1 - deja-dup"
 			echo "2 - timeshift"
@@ -1033,17 +1063,17 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			20)
+			21)
 			echo "This installs a few common themes"
 			sudo pacman -S --noconfirm adapta-gtk-theme arc-icon-theme evopop-icon-theme arc-gtk-theme
 			sudo pacman -S --noconfirm papirus-icon-theme materia-gtk-theme paper-icon-theme
 			yay -S numix-gtk-theme faba-icon-theme-git moka-icon-theme-git --noconfirm
 			;;
-			21)
+			22)
 			echo "This installs neofetch"
 			sudo pacman -S --noconfirm neofetch
 			;;
-			22)
+			23)
 			echo "This installs office software"
 			echo "1 - Libreoffice"
 			echo "2 - Libreoffice-fresh"
@@ -1067,11 +1097,11 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			23)
+			24)
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz; wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gz
 			gunzip ttf-ms-fonts.tar.gz; gunzip ttf-mac-fonts.tar.gz; tar -xvf ttf-ms-fonts.tar; tar -xvf ttf-mac-fonts.tar; cd ttf-ms-fonts; makepkg -si; pushd ttf-mac-fonts; makepkg -si; cd
 			;;
-			24)
+			25)
 			echo "This installs possible security software and virus checker if you wish"
 			echo "KaOS doesn't have these by default(has tomoyo) and clam av can be installed as flatpak"
 			echo "1 - Rkhunter"
@@ -1098,11 +1128,11 @@ InstallAndConquer(){
 				InstallAndConquer;;
 			esac
 			;;
-			25)
+			26)
 			echo "This installs stellarium incase you are a night sky observer"
 			sudo pacman -S --noconfirm stellarium
 			;;
-			26)
+			27)
 			echo "Ok, well, I'm here if you change your mind"
 			break
 			;;
