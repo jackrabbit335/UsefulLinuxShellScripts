@@ -786,7 +786,7 @@ InstallAndConquer(){
 			echo "14 - Slimjet"
 			echo "15 - Brave"
 			echo "16 - Qutebrowser"
-			echo "17 - Otter"
+			echo "17 - Otter-browser"
 			echo "18 - Iridium"
 			echo "19 - Ungoogled-Chromium"
 			read browser
@@ -1678,6 +1678,9 @@ EOF
 	browser10="$(find /usr/bin/midori)"
 	browser11="$(find /usr/bin/basilisk)"
 	browser12="$(find /usr/bin/brave)"
+	browser13="$(find /usr/bin/iridium)"
+	browser14="$(find /usr/bin/otter-browser)"
+	browser15="$(find /usr/bin/ungoogled-chromium)"
 
 	echo $browser1
 	echo $browser2
@@ -1691,6 +1694,9 @@ EOF
 	echo $browser10
 	echo $browser11
 	echo $browser12
+	echo $browser13
+	echo $browser14
+	echo $browser15
 
 	sleep 1
 
@@ -1707,6 +1713,9 @@ EOF
 	echo "10 - Midori"
 	echo "11 - Basilisk"
 	echo "12 - Brave"
+	echo "13 - Iridium"
+	echo "14 - Otter-browser"
+	echo "15 - Ungoogled-chromium"
 
 	read operation;
 
@@ -1781,6 +1790,24 @@ EOF
 		sudo cp -r ~/.config/BraveSoftware ~/.config/BraveSoftware-old
 		sudo rm -rf ~/.config/BraveSoftware/*
 		echo "Your browser has now been reset"
+		sleep 1
+		;;
+		13)
+		sudo cp -r ~/.config/iridium ~/.config/iridium-old
+		sudo rm -rf ~/.config/iridium/*
+		echo "Your browser has now been reset"
+		sleep 1
+		;;
+		14)
+		sudo cp -r ~/.config/otter-browser ~/.config/otter-browser-old
+		sudo rm -rf ~/.config/otter-browser/*
+		echo "Your browser has been reset"
+		sleep 1
+		;;
+		15)
+		sudo cp -r ~/.config/ungoogled-chromium ~/.config/ungoogled-chromium-old
+		sudo rm -rf ~/.config/ungoogled-chromium/*
+		echo "Your browser has been reset"
 		sleep 1
 		;;
 		*)
