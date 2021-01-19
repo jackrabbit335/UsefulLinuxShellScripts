@@ -776,19 +776,20 @@ InstallAndConquer(){
 			echo "4 - Midori"
 			echo "5 - Opera"
 			echo "6 - Vivaldi"
-			echo "7 - Pale Moon"
-			echo "8 - Seamonkey"
-			echo "9 - Dillo"
-			echo "10 - Lynx"
-			echo "11 - Google-chrome"
-			echo "12 - Waterfox"
-			echo "13 - Basilisk"
-			echo "14 - Slimjet"
-			echo "15 - Brave"
-			echo "16 - Qutebrowser"
-			echo "17 - Otter-browser"
-			echo "18 - Iridium"
-			echo "19 - Ungoogled-Chromium"
+			echo "7 - Vivaldi-Snapshot"
+			echo "8 - Pale Moon"
+			echo "9 - Seamonkey"
+			echo "10 - Dillo"
+			echo "11 - Lynx"
+			echo "12 - Google-chrome"
+			echo "13 - Waterfox"
+			echo "14 - Basilisk"
+			echo "15 - Slimjet"
+			echo "16 - Brave"
+			echo "17 - Qutebrowser"
+			echo "18 - Otter-Browser"
+			echo "19 - Iridium"
+			echo "20 - Ungoogled-Chromium"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -807,50 +808,50 @@ InstallAndConquer(){
 				sudo pacman -S --noconfirm opera opera-ffmpeg-codecs
 			elif [[ $browser == 6 ]];
 			then
-				cd /tmp
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz; gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar; cd vivaldi && makepkg -si
 			elif [[ $browser == 7 ]];
 			then
-				wget linux.palemoon.org/datastore/release/palemoon-28.17.0.linux-x86_64.tar.xz; tar -xf palemoon-28.17.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
-				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi-snapshot.tar.gz; gunzip vivaldi-snapshot.tar.gz; tar -xvf vivaldi-snapshot.tar; cd vivaldi-snapshot && makepkg -si
 			elif [[ $browser == 8 ]];
 			then
-				sudo pacman -S --noconfirm seamonkey
+				wget linux.palemoon.org/datastore/release/palemoon-28.17.0.linux-x86_64.tar.xz; tar -xf palemoon-28.17.0.linux-x86_64.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 9 ]];
 			then
-				sudo pacman -S --noconfirm dillo
+				sudo pacman -S --noconfirm seamonkey
 			elif [[ $browser == 10 ]];
 			then
-				sudo pacman -S --noconfirm lynx
+				sudo pacman -S --noconfirm dillo
 			elif [[ $browser == 11 ]];
 			then
-				cd /tmp
-				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz; gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
+				sudo pacman -S --noconfirm lynx
 			elif [[ $browser == 12 ]];
+			then
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz; gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
+			elif [[ $browser == 13 ]];
 			then
 				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-classic-2020.12.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.12.en-US.linux-x86_64.tar.bz2; sudo ln -s ~/waterfox-classic/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
-			elif [[ $browser == 13 ]];
+			elif [[ $browser == 14 ]];
 			then
 				wget http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz; tar -xvf basilisk-latest.linux64.tar.xz; sudo mv basilisk /opt; sudo touch /usr/share/applications/basilisk.desktop; sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
-			elif [[ $browser == 14 ]];
-			then
-				cd /tmp
-				wget https://aur.archlinux.org/cgit/aur.git/snapshot/slimjet.tar.gz; gunzip slimjet.tar.gz; tar -xvf slimjet.tar; cd slimjet && makepkg -si
 			elif [[ $browser == 15 ]];
 			then
-				wget https://aur.archlinux.org/cgit/aur.git/snapshot/brave-bin.tar.gz; gunzip brave-bin.tar.gz; tar -xvf brave-bin.tar; cd brave-bin; makepkg -si
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/slimjet.tar.gz; gunzip slimjet.tar.gz; tar -xvf slimjet.tar; cd slimjet && makepkg -si
 			elif [[ $browser == 16 ]];
 			then
-				sudo pacman -S qutebrowser
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/brave-bin.tar.gz; gunzip brave-bin.tar.gz; tar -xvf brave-bin.tar; cd brave-bin; makepkg -si
 			elif [[ $browser == 17 ]];
 			then
-				sudo pacman -S otter-browser --noconfirm
+				sudo pacman -S qutebrowser
 			elif [[ $browser == 18 ]];
 			then
-				wget https://aur.archlinux.org/cgit/aur.git/snapshot/iridium-rpm.tar.gz; gunzip iridium-rpm.tar.gz; tar -xvf iridium-rpm.tar; cd iridium-rpm && makepkg -si
+				sudo pacman -S otter-browser --noconfirm
 			elif [[ $browser == 19 ]];
+			then
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/iridium-rpm.tar.gz; gunzip iridium-rpm.tar.gz; tar -xvf iridium-rpm.tar; cd iridium-rpm && makepkg -si
+			elif [[ $browser == 20 ]];
 			then
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/ungoogled-chromium.tar.gz; gunzip ungoogled-chromium.tar.gz; tar -xvf ungoogled-chromium.tar; cd ungoogled-chromium && makepkg -si
 			else
