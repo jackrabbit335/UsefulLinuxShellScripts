@@ -23,6 +23,7 @@ Setup(){
 	sudo cp /etc/host.conf /etc/host.conf.bak
 	sudo cp -r /boot /boot-old
 	cp .bashrc .bashrc.bak
+	cp .xsession-errors .xsession-errors.bak
 
 	#Fix screen RESOLUTION
 	echo "Would you like to choose a more accurate screen resolution?(Y/n)"
