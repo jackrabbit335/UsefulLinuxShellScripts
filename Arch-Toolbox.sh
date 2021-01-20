@@ -618,6 +618,7 @@ InstallAndConquer(){
 		case $software in
 			1)
 			echo "This installs a series of utility software"
+			#wget https://aur.archlinux.org/cgit/aur.git/snapshot/pamac-all.tar.gz; gunzip pamac-all.tar.gz; tar -xvf pamac-all.tar; cd pamac-all && makepkg -si
 			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools expac
 			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu fwupd
 			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit
