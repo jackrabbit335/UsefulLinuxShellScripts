@@ -21,6 +21,7 @@ Setup(){
 	sudo cp /etc/fstab /etc/fstab.bak
 	sudo cp -r /boot /boot-old
 	cp .bashrc .bashrc.bak
+	cp .xsession-errors .xsession-errors.bak
 
 	#Fix screen RESOLUTION
 	echo "Would you like to choose a more accurate screen resolution?(Y/n)"
