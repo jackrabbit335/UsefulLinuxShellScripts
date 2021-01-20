@@ -23,6 +23,7 @@ Setup(){
 	sudo cp /etc/fstab /etc/fstab.bak
 	sudo cp -r /boot /boot-old
 	cp .bashrc .bashrc.bak
+	cp .xsession-errors .xsession-errors.bak
 
 	#This fixes screen Resolution
 	echo "Would you like to choose a more accurate resolution?(Y/n)"
@@ -617,11 +618,13 @@ InstallAndConquer(){
 		case $software in
 			1)
 			echo "This installs a series of utility software"
-			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools
+			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools expac
 			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu fwupd
 			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit
 			sudo pacman -S --needed --noconfirm pacman-contrib grsync tlp powertop youtube-dl keepassxc
+			sudo pacman -S --needed --noconfirm p7zip unrar zip unzip file-roller gstreamer xdg-user-dirs
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/inxi.tar.gz; gunzip inxi.tar.gz; tar -xvf inxi.tar; cd inxi && makepkg -si
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/downgrade.tar.gz; gunzip downgrade.tar.gz; tar -xvf downgrade.tar; cd downgrade && makepkg -si
 			;;
 			2)
 			echo "This installs your choice of terminals If you already have one, don't worry"
