@@ -968,9 +968,9 @@ InstallAndConquer(){
 			fi
 			;;
 			3)
-			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync
-			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop
-			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools keepassxc
+			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync p7zip zip 
+			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop file-roller xdg-user-dirs
+			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools keepassxc unrar unzip
 			;;
 			4)
 			echo "1 - deja-dup"
