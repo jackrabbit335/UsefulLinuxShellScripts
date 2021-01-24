@@ -124,7 +124,6 @@ EOF
 
 	#This removes that stupid gnome-keyring unlock error you get with chrome
 	echo "Killing this might make your passwords less secure on chrome."
-	sleep 1
 	echo "Do you wish to kill gnome-keyring? (Y/n)"
 	read answer
 	if [[ $answer == Y ]];
