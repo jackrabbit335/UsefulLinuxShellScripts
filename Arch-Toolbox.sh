@@ -849,7 +849,7 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz; gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
 			elif [[ $browser == 13 ]];
 			then
-				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-classic-2020.12.en-US.linux-x86_64.tar.bz2; tar -xvjf waterfox-classic-2020.12.en-US.linux-x86_64.tar.bz2; sudo ln -s ~/waterfox-classic/waterfox /usr/bin/waterfox
+				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-G3.0.2.en-US.linux-x86_64.tar.bz2; waterfox-G3.0.2.en-US.linux-x86_64.tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo ln -s ~/waterfox-classic/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 14 ]];
 			then
