@@ -568,7 +568,6 @@ Systeminfo(){
 
 ScreenFix(){
 	xrandr
-	sleep 1
 	echo "Choose a resolution from the list above"
 	read resolution
 	xrandr -s $resolution
