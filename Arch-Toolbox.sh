@@ -117,8 +117,7 @@ EOF
 	done
 
 	#This removes that stupid gnome-keyring unlock error you get with chrome
-	echo "Killing this might make your passwords less secure on chrome."
-	echo "Do you wish to kill gnome-keyring? (Y/n)"
+	echo "Killing this might make your passwords less secure on chrome. Do you wish to kill gnome-keyring? (Y/n)"
 	read answer
 	if [[ $answer == Y ]];
 	then
@@ -128,7 +127,6 @@ EOF
 	fi
 
 	#This allows you to add aliases to .bashrc
-	echo "Aliases are shortcuts for commonly used commands."
 	echo "Would you like to add some commonly used aliases?(Y/n)"
 	read answer
 	if [[ $answer == Y ]];
@@ -170,12 +168,10 @@ EOF
 		distribution=$(cat /etc/issue | awk '{print $1}')
 		if [[ $distribution == Manjaro ]];
 		then
-			echo "#Alias to update the mirrors" >> ~/.bashrc
-			echo 'alias mirrors="sudo pacman-mirrors -f 5 && sudo pacman -Syy"' >> ~/.bashrc
+			echo "#Alias to update the mirrors" >> ~/.bashrc; echo 'alias mirrors="sudo pacman-mirrors -f 5 && sudo pacman -Syy"' >> ~/.bashrc
 		elif [[ $distribution == Arch ]];
 		then
-			echo "#Alias to update the mirrors" >> ~/.bashrc
-			echo 'alias mirrors="sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syy"' >> ~/.bashrc
+			echo "#Alias to update the mirrors" >> ~/.bashrc; echo 'alias mirrors="sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syy"' >> ~/.bashrc
 		fi
 	fi
 
@@ -192,10 +188,7 @@ EOF
 			then
 				echo "Update successful"
 			else
-				sudo rm -r /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg
-				sudo pacman -Sy --noconfirm gnupg archlinux-keyring manjaro-keyring; sudo pacman-key --init
-				sudo pacman-key --populate archlinux manjaro; sudo pacman-key --refresh-keys; sudo pacman -Scc
-				sudo pacman -Syyu --noconfirm
+				sudo rm -r /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg; sudo pacman -Sy --noconfirm gnupg archlinux-keyring manjaro-keyring; sudo pacman-key --init; sudo pacman-key --populate archlinux manjaro; sudo pacman-key --refresh-keys; sudo pacman -Scc; sudo pacman -Syyu --noconfirm
 			fi
 		elif [[ $distribution == Arch ]];
 		then
@@ -205,10 +198,7 @@ EOF
 			then
 				echo "update successful"
 			else
-				sudo rm -r /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg
-				sudo pacman -Sy --noconfirm gnupg archlinux-keyring; sudo pacman-key --init
-				sudo pacman-key --populate archlinux; sudo pacman-key --refresh-keys; sudo pacman -Scc
-				sudo pacman -Syyu --noconfirm
+				sudo rm -r /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg; sudo pacman -Sy --noconfirm gnupg archlinux-keyring; sudo pacman-key --init; sudo pacman-key --populate archlinux; sudo pacman-key --refresh-keys; sudo pacman -Scc; sudo pacman -Syyu --noconfirm
 			fi
 		elif [[ $distribution == EndeavourOS ]];
 		then
@@ -218,10 +208,7 @@ EOF
 			then
 				echo "update successful"
 			else
-				sudo rm -r /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg
-				sudo pacman -Sy --noconfirm gnupg archlinux-keyring; sudo pacman-key --init
-				sudo pacman-key --populate archlinux; sudo pacman-key --refresh-keys; sudo pacman -Scc
-				sudo pacman -Syyu --noconfirm
+				sudo rm -r /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg; sudo pacman -Sy --noconfirm gnupg archlinux-keyring; sudo pacman-key --init; sudo pacman-key --populate archlinux; sudo pacman-key --refresh-keys; sudo pacman -Scc; sudo pacman -Syyu --noconfirm
 			fi
 		elif [[ $distribution == KaOS ]];
 		then
@@ -617,11 +604,10 @@ InstallAndConquer(){
 		case $software in
 			1)
 			echo "This installs a series of utility software"
-			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools expac
-			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu fwupd base-devel
-			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit
-			sudo pacman -S --needed --noconfirm pacman-contrib grsync tlp powertop youtube-dl keepassxc
-			sudo pacman -S --needed --noconfirm p7zip unrar zip unzip file-roller gstreamer xdg-user-dirs
+			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools expac file-roller
+			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu fwupd base-devel xdg-user-dirs
+			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit p7zip unrar
+			sudo pacman -S --needed --noconfirm pacman-contrib grsync tlp powertop youtube-dl keepassxc unzip zip gstreamer
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/inxi.tar.gz; gunzip inxi.tar.gz; tar -xvf inxi.tar; cd inxi && makepkg -si
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/downgrade.tar.gz; gunzip downgrade.tar.gz; tar -xvf downgrade.tar; cd downgrade && makepkg -si
 			;;
@@ -1541,14 +1527,13 @@ AccountSettings(){
 	case $operation in
 		1)
 		echo $(cat /etc/group | awk -F: '{print $1}')
-		sleep 2
+		sleep 1
 		read -p "Please enter the groups you wish the user to be in:" $group1 $group2 $group3
 		echo "Please enter the name of the user"
 		read name
 		echo "Please enter the password"
 		read password
-		sudo useradd $name -m -s /bin/bash -G $group1 $group2 $group3
-		echo $password | passwd --stdin $name
+		sudo useradd $name -m -s /bin/bash -G $group1 $group2 $group3; echo $password | passwd --stdin $name
 		;;
 		2)
 		echo "Note, this will remove all files related to the account"
@@ -1562,8 +1547,7 @@ AccountSettings(){
 		sudo passwd -l $account
 		;;
 		4)
-		sudo cat /etc/shadow | awk -F: '($2==""){print $1}' >> ~/accounts.txt
-		cat /etc/passwd | awk -F: '{print $1}' >> ~/accounts.txt
+		sudo cat /etc/shadow | awk -F: '($2==""){print $1}' >> ~/accounts.txt; cat /etc/passwd | awk -F: '{print $1}' >> ~/accounts.txt
 		;;
 		5)
 		echo "########################################################################" >> Accounts.txt
@@ -1740,92 +1724,77 @@ EOF
 
 	case $operation in
 		1)
-		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old
-		sudo rm -rf ~/.mozilla/firefox/*
+		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old; sudo rm -rf ~/.mozilla/firefox/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		2)
-		sudo cp -r ~/.config/vivaldi/ ~/.config/vivaldi-old
-		sudo rm -rf ~/.config/vivaldi/*
+		sudo cp -r ~/.config/vivaldi/ ~/.config/vivaldi-old; sudo rm -rf ~/.config/vivaldi/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		3)
-		sudo cp -r ~/'.moonchild productions'/'pale moon' ~/'.moonchild productions'/'pale moon'-old
-		sudo rm -rf ~/'.moonchild productions'/'pale moon'/*
+		sudo cp -r ~/'.moonchild productions'/'pale moon' ~/'.moonchild productions'/'pale moon'-old; sudo rm -rf ~/'.moonchild productions'/'pale moon'/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		4)
-		sudo cp -r ~/.config/google-chrome ~/.config/google-chrome-old
-		sudo rm -rf ~/.config/google-chrome/*
+		sudo cp -r ~/.config/google-chrome ~/.config/google-chrome-old; sudo rm -rf ~/.config/google-chrome/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		5)
-		sudo cp -r ~/.config/chromium ~/.config/chromium-old
-		sudo rm -rf ~/.config/chromium/*
+		sudo cp -r ~/.config/chromium ~/.config/chromium-old; sudo rm -rf ~/.config/chromium/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		6)
-		sudo cp -r ~/.config/opera ~/.config/opera-old
-		sudo rm -rf ~/.config/opera/*
+		sudo cp -r ~/.config/opera ~/.config/opera-old; sudo rm -rf ~/.config/opera/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		7)
-		sudo cp -r ~/.waterfox ~/.waterfox-old
-		sudo rm -rf ~/.waterfox/*
+		sudo cp -r ~/.waterfox ~/.waterfox-old; sudo rm -rf ~/.waterfox/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		8)
-		sudo cp -r ~/.config/falkon ~/.config/falkon-old
-		sudo rm -rf ~/.config/falkon/*
+		sudo cp -r ~/.config/falkon ~/.config/falkon-old; sudo rm -rf ~/.config/falkon/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		9)
-		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old
-		sudo rm -rf ~/.config/epiphany/*
+		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old; sudo rm -rf ~/.config/epiphany/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		10)
-		sudo cp -r ~/.config/midori ~/.config/midori-old
-		sudo rm -rf ~/.config/midori/*
+		sudo cp -r ~/.config/midori ~/.config/midori-old; sudo rm -rf ~/.config/midori/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		11)
-		sudo cp -r ~/'.moonchild productions'/'basilisk' ~/'.moonchild productions'/'basilisk'-old
-		sudo rm -rf ~/'.moonchild productions'/'basilisk'/*
+		sudo cp -r ~/'.moonchild productions'/'basilisk' ~/'.moonchild productions'/'basilisk'-old; sudo rm -rf ~/'.moonchild productions'/'basilisk'/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		12)
-		sudo cp -r ~/.config/BraveSoftware ~/.config/BraveSoftware-old
-		sudo rm -rf ~/.config/BraveSoftware/*
+		sudo cp -r ~/.config/BraveSoftware ~/.config/BraveSoftware-old; sudo rm -rf ~/.config/BraveSoftware/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		13)
-		sudo cp -r ~/.config/iridium ~/.config/iridium-old
-		sudo rm -rf ~/.config/iridium/*
+		sudo cp -r ~/.config/iridium ~/.config/iridium-old; sudo rm -rf ~/.config/iridium/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		14)
-		sudo cp -r ~/.config/otter-browser ~/.config/otter-browser-old
-		sudo rm -rf ~/.config/otter-browser/*
+		sudo cp -r ~/.config/otter-browser ~/.config/otter-browser-old; sudo rm -rf ~/.config/otter-browser/*
 		echo "Your browser has been reset"
 		sleep 1
 		;;
 		15)
-		sudo cp -r ~/.config/ungoogled-chromium ~/.config/ungoogled-chromium-old
-		sudo rm -rf ~/.config/ungoogled-chromium/*
+		sudo cp -r ~/.config/ungoogled-chromium ~/.config/ungoogled-chromium-old; sudo rm -rf ~/.config/ungoogled-chromium/*
 		echo "Your browser has been reset"
 		sleep 1
 		;;
@@ -2049,13 +2018,11 @@ MakeSwap(){
 	grep -q "swap" /etc/fstab
 	if [ $? -eq 0 ];
 	then
-		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 2G /swapfile; sudo chmod 600 /swapfile; sudo mkswap /swapfile; sudo swapon /swapfile
-		echo "/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
+		sudo cp /etc/fstab /etc/fstab.old; sudo fallocate --length 2G /swapfile; sudo chmod 600 /swapfile; sudo mkswap /swapfile; sudo swapon /swapfile; echo "/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
 	else
 		echo "Swap was already there so there is nothing to do"
 	fi
-	cat /proc/swaps >> swaplog.txt
-	free -h >> swaplog.txt
+	cat /proc/swaps >> swaplog.txt; free -h >> swaplog.txt
 
 	Restart
 }
@@ -2128,9 +2095,7 @@ Backup(){
 			sleep 1
 			echo "Please select the device you wish to use"
 			read device
-			sudo mount $device /mnt
-			sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*","*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups
-			sudo sync
+			sudo mount $device /mnt; sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*","*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups; sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
 			read -p "Found a block device at designated coordinates...
@@ -2147,13 +2112,10 @@ Backup(){
 			sleep 1
 			echo "Please select the device you wish to use"
 			read device
-			sudo mount $device /mnt
-			sudo rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /mnt/$host-backups
-			sudo sync
+			sudo mount $device /mnt; sudo rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /mnt/$host-backups; sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
-			echo "Found a block device at designated coordinates...
-			if this is the preferred drive, unmount it, leave it plugged in, and then run this again. Press enter to continue..."
+			echo "Found a block device at designated coordinates...If this is the preferred drive, unmount it, leave it plugged in, and then run this again. Press enter to continue..."
 		fi
 		;;
 		*)
