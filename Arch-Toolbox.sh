@@ -618,7 +618,7 @@ InstallAndConquer(){
 			1)
 			echo "This installs a series of utility software"
 			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools expac
-			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu fwupd
+			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu fwupd base-devel
 			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit
 			sudo pacman -S --needed --noconfirm pacman-contrib grsync tlp powertop youtube-dl keepassxc
 			sudo pacman -S --needed --noconfirm p7zip unrar zip unzip file-roller gstreamer xdg-user-dirs
@@ -784,7 +784,7 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/yay.tar.gz; gunzip yay.tar.gz; tar-xvf yay.tar; cd yay && makepkg -si
 			elif [[ $helper == 4 ]];
 			then
-				sudo pacman -S --needed base-devel; git clone https://aur.archlinux.org/paru.git; cd paru && makepkg -si
+				sudo pacman -S --needed --noconfirm base-devel; git clone https://aur.archlinux.org/paru.git; cd paru && makepkg -si
 			else
 				echo "You have entered an invalid number"
 				InstallAndConquer
@@ -1666,9 +1666,6 @@ cleanup(){
 	#This helps get rid of old archived log entries
 	sudo journalctl --vacuum-size=25M
 
-	#Remove unwanted dependencies
-	yay -Yc
-
 	#This will remove orphan packages from pacman
 	sudo pacman -Rsn --noconfirm $(pacman -Qqdt)
 
@@ -1883,7 +1880,7 @@ SystemMaintenance(){
 	sudo updatedb; sudo mandb
 
 	#Checks for pacnew files and other extra configuration file updates
-	yay -Q | grep etc-update || yay -S etc-update --noconfirm; sudo etc-update
+	pacman -Q | grep etc-update || wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz; gunzip etc-update.tar.gz; tar -xvf etc-update.tar; cd etc-update && makepkg -si; sudo etc-update
 
 	#update the grub
 	sudo grub-mkconfig -o /boot/grub/grub.cfg
