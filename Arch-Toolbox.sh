@@ -784,7 +784,7 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/yay.tar.gz; gunzip yay.tar.gz; tar-xvf yay.tar; cd yay && makepkg -si
 			elif [[ $helper == 4 ]];
 			then
-				sudo pacman -S --needed base-devel; git clone https://aur.archlinux.org/paru.git; cd paru; makepkg -si
+				sudo pacman -S --needed base-devel; git clone https://aur.archlinux.org/paru.git; cd paru && makepkg -si
 			else
 				echo "You have entered an invalid number"
 				InstallAndConquer
