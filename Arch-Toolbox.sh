@@ -1870,7 +1870,7 @@ SystemMaintenance(){
 		sudo rankmirrors -v /etc/pacman.d/mirrolist; sudo pacman -Syyu --noconfirm
 	fi
 
-	#This refreshes systemd in case of failed or changed units
+	#This refreshes systemd in case of failed or missing units
 	sudo systemctl daemon-reload
 
 	#This will ensure the firewall is enabled
@@ -1880,7 +1880,11 @@ SystemMaintenance(){
 	sudo updatedb; sudo mandb
 
 	#Checks for pacnew files and other extra configuration file updates
-	pacman -Q | grep etc-update || wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz; gunzip etc-update.tar.gz; tar -xvf etc-update.tar; cd etc-update && makepkg -si; sudo etc-update
+	pacman -Q | grep etc-update 
+	if [[ $? -gt 0 ]];
+	then
+		wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz; gunzip etc-update.tar.gz; tar -xvf etc-update.tar; cd etc-update && makepkg -si;
+	fi
 
 	#update the grub
 	sudo grub-mkconfig -o /boot/grub/grub.cfg
