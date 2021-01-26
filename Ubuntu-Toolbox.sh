@@ -548,8 +548,7 @@ MakeSwap(){
 	else
 		echo "Swap was already there so there is nothing to do"
 	fi
-	cat /proc/swaps >> swaplog.txt
-	free -h >> swaplog.txt
+	cat /proc/swaps >> swaplog.txt; free -h >> swaplog.txt
 
 	Restart
 }
@@ -881,7 +880,6 @@ EOF
 
 Screenfix(){
 	xrandr
-	sleep 1
 	echo "Choose a resolution from the list above"
 	read resolution
 	xrandr -s $resolution
@@ -967,9 +965,9 @@ InstallAndConquer(){
 			fi
 			;;
 			3)
-			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync p7zip zip 
+			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync p7zip zip unzip
 			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop file-roller xdg-user-dirs
-			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools keepassxc unrar unzip
+			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools keepassxc unrar
 			;;
 			4)
 			echo "1 - deja-dup"
@@ -1233,9 +1231,7 @@ InstallAndConquer(){
 	done
 
 	#This tries to install codecs
-	echo "This will install codecs."
-	echo "These depend upon your environment."
-	echo "Would you like me to continue?(Y/n)"
+	echo "This will install codecs. These depend upon your environment. Would you like me to continue?(Y/n)"
 	read answer
 	while [ $answer == Y ];
 	do
@@ -1251,7 +1247,6 @@ InstallAndConquer(){
 			elif [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]];
 			then
 				sudo apt install -y kubuntu-restricted-extras
-				echo "kdesu python3 /usr/lib/python3.7/site-packages/gufw/gufw.py" | sudo tee -a /bin/gufw
 			elif [[ $DESKTOP_SESSION == lxde ]];
 			then
 				sudo apt install -y lubuntu-restricted-extras
@@ -1328,8 +1323,7 @@ AccountSettings(){
 		read name
 		echo "Please enter the password"
 		read password
-		sudo useradd $name -m -s /bin/bash -G $group1 $group2 $group3 $group4 $group5
-		echo $password | passwd --stdin $name
+		sudo useradd $name -m -s /bin/bash -G $group1 $group2 $group3 $group4 $group5; echo $password | passwd --stdin $name
 		;;
 		2)
 		echo "Note, this will remove all files related to the account"
@@ -1343,8 +1337,7 @@ AccountSettings(){
 		sudo passwd -l $account
 		;;
 		4)
-		sudo cat /etc/shadow | awk -F: '($2==""){print $1}' >> ~/accounts.txt
-		cat /etc/passwd | awk -F: '{print $1}' >> ~/accounts.txt
+		sudo cat /etc/shadow | awk -F: '($2==""){print $1}' >> ~/accounts.txt; cat /etc/passwd | awk -F: '{print $1}' >> ~/accounts.txt
 		;;
 		5)
 		echo "########################################################################" >> Accounts.txt
@@ -1512,62 +1505,52 @@ EOF
 
 	case $operation in
 		1)
-		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old
-		sudo rm -rf ~/.mozilla/firefox/*
+		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old; sudo rm -rf ~/.mozilla/firefox/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		2)
-		sudo cp -r ~/.config/vivaldi/ ~/.config/vivaldi-old
-		sudo rm -rf ~/.config/vivaldi/*
+		sudo cp -r ~/.config/vivaldi/ ~/.config/vivaldi-old; sudo rm -rf ~/.config/vivaldi/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		3)
-		sudo cp -r ~/'.moonchild productions'/'pale moon' ~/'.moonchild productions'/'pale moon'-old
-		sudo rm -rf ~/'.moonchild productions'/'pale moon'/*
+		sudo cp -r ~/'.moonchild productions'/'pale moon' ~/'.moonchild productions'/'pale moon'-old; sudo rm -rf ~/'.moonchild productions'/'pale moon'/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		4)
-		sudo cp -r ~/.config/google-chrome ~/.config/google-chrome-old
-		sudo rm -rf ~/.config/google-chrome/*
+		sudo cp -r ~/.config/google-chrome ~/.config/google-chrome-old; sudo rm -rf ~/.config/google-chrome/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		5)
-		sudo cp -r ~/.config/chromium ~/.config/chromium-old
-		sudo rm -rf ~/.config/chromium/*
+		sudo cp -r ~/.config/chromium ~/.config/chromium-old; sudo rm -rf ~/.config/chromium/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		6)
-		sudo cp -r ~/.config/opera ~/.config/opera-old
-		sudo rm -rf ~/.config/opera/*
+		sudo cp -r ~/.config/opera ~/.config/opera-old; sudo rm -rf ~/.config/opera/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		7)
-		sudo cp -r ~/.waterfox ~/.waterfox-old
-		sudo rm -rf ~/.waterfox/*
+		sudo cp -r ~/.waterfox ~/.waterfox-old; sudo rm -rf ~/.waterfox/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		8)
-		sudo cp -r ~/.config/midori ~/.config/midori-old
-		sudo rm -rf ~/.config/midori/*
+		sudo cp -r ~/.config/midori ~/.config/midori-old; sudo rm -rf ~/.config/midori/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		9)
-		sudo cp -r ~/.config/falkon ~/.config/falkon-old
-		sudo rm -rf ~/.config/falkon/*
+		sudo cp -r ~/.config/falkon ~/.config/falkon-old; sudo rm -rf ~/.config/falkon/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		10)
-		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old
-		sudo rm -rf ~/.config/epiphany/*
+		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old; sudo rm -rf ~/.config/epiphany/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
@@ -1686,8 +1669,7 @@ EOF
 				echo "Enter the name of the service you wish to disable"
 				read service
 				sudo /etc/init.d/$service stop
-				echo "Optionally we can create an override which will keep this setting"
-				echo "Would you like to retain this setting after reboot?(Y/n)"
+				echo "Optionally we can create an override which will keep this setting. Would you like to retain this setting after reboot?(Y/n)"
 				read answer
 				while [ $answer == Y ];
 				do
@@ -1725,14 +1707,12 @@ EOF
 				1)
 				echo "Enter the name of the service you wish to enable"
 				read service
-				sudo systemctl enable $service
-				sudo systemctl start $service
+				sudo systemctl enable $service; sudo systemctl start $service
 				;;
 				2)
 				echo "Enter the name of the service you wish to disable"
 				read service
-				sudo systemctl stop $service
-				sudo systemctl disable $service
+				sudo systemctl stop $service; sudo systemctl disable $service
 				;;
 				3)
 				echo "##################################################" >> services.txt
@@ -1779,9 +1759,7 @@ Backup(){
 			sleep 1
 			echo "Please select the device you wish to use"
 			read device
-			sudo mount $device /mnt
-			sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*","*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups
-			sudo sync
+			sudo mount $device /mnt; sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*","*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups; sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
 			read -p "Found a block device at designated coordinates...
@@ -1798,9 +1776,7 @@ Backup(){
 			sleep 1
 			echo "Please select the device you wish to use"
 			read device
-			sudo mount $device /mnt
-			sudo rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /mnt/$host-backups
-			sudo sync
+			sudo mount $device /mnt; sudo rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /mnt/$host-backups; sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
 			echo "Found a block device at designated coordinates...
@@ -1834,10 +1810,7 @@ EOF
 		sleep 1
 		echo "Please select the device from the list"
 		read device
-		sudo mount $device /mnt
-		sudo rsync -aAXv --delete /mnt/$host-$date-backups/* /home/$USER
-		sudo sync
-		Restart
+		sudo mount $device /mnt; sudo rsync -aAXv --delete /mnt/$host-$date-backups/* /home/$USER; sudo sync; Restart
 	elif [[ $Mountpoint == /run/media/$USER/* ]];
 	then
 		read -p "Found a block device at designated coordinates... If this is the preferred
