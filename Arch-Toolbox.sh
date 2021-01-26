@@ -1073,9 +1073,9 @@ InstallAndConquer(){
 			;;
 			22)
 			echo "This installs a few common themes"
-			sudo pacman -S --noconfirm adapta-gtk-theme arc-icon-theme evopop-icon-theme arc-gtk-theme
-			sudo pacman -S --noconfirm papirus-icon-theme materia-gtk-theme paper-icon-theme
-			yay -S numix-gtk-theme faba-icon-theme-git moka-icon-theme-git --noconfirm
+			sudo pacman -S --noconfirm adapta-gtk-theme arc-icon-theme evopop-icon-theme arc-gtk-theme papirus-icon-theme materia-gtk-theme paper-icon-theme
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/numix-gtk-theme.tar.gz; gunzip numix-gtk-theme.tar.gz; tar -xvf numix-gtk-theme.tar; cd numix-gtk-theme && makepkg -si
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/numix-icon-theme-git.tar.gz; gunzip numix-icon-theme-git.tar.gz; tar -xvf numix-icon-theme-git.tar; cd numix-icon-theme-git && makepkg -si
 			;;
 			23)
 			echo "This installs neofetch"
