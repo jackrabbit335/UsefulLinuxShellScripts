@@ -546,7 +546,6 @@ Systeminfo(){
 
 ScreenFix(){
 	xrandr
-	sleep 1
 	echo "Choose a resolution from the list above"
 	read resolution
 	xrandr -s $resolution
@@ -579,7 +578,7 @@ InstallAndConquer(){
 		echo "18 - Stellarium constellation and space observation"
 		echo "19 - Security software"
 		echo "20 - exit out of this menu"
-		
+
 		read software;
 
 		case $software in
@@ -773,9 +772,9 @@ InstallAndConquer(){
 			echo "1 - Wine"
 			echo "2 - playonlinux"
 			echo "3 - Both"
-			
+
 			read software;
-			
+
 			case $software in
 				1)
 				sudo eopkg install wine ;;
@@ -1289,7 +1288,7 @@ EOF
 	echo "4 - Look for empty password users on the system"
 	echo "5 - See a list of accounts and groups on the system"
 	echo "6 - Skip this menu"
-	
+
 	read operation;
 
 	case $operation in
@@ -1301,8 +1300,7 @@ EOF
 		read name
 		echo "Please enter the password"
 		read password
-		sudo useradd $name -m -s /bin/bash -G $group1 $group2 $group3
-		echo $password | passwd --stdin $name
+		sudo useradd $name -m -s /bin/bash -G $group1 $group2 $group3; echo $password | passwd --stdin $name
 		;;
 		2)
 		echo "Note, this will remove all files related to the account"
@@ -1316,8 +1314,7 @@ EOF
 		sudo passwd -l $account
 		;;
 		4)
-		sudo cat /etc/shadow | awk -F: '($2==""){print $1}' >> ~/accounts.txt
-		cat /etc/passwd | awk -F: '{print $1}' >> ~/accounts.txt
+		sudo cat /etc/shadow | awk -F: '($2==""){print $1}' >> ~/accounts.txt; cat /etc/passwd | awk -F: '{print $1}' >> ~/accounts.txt
 		;;
 		5)
 		echo "########################################################################" >> Accounts.txt
@@ -1372,13 +1369,11 @@ MakeSwap(){
 	cat /etc/fstab | grep "swap"
 	if [ $? -eq 0 ];
 	then
-		sudo fallocate --length 4G /swapfile; chmod 600 /swapfile
-		sudo mkswap /swapfile; sudo swapon /swapfile; echo "/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
+		sudo fallocate --length 2G /swapfile; chmod 600 /swapfile; sudo mkswap /swapfile; sudo swapon /swapfile; echo "/swapfile swap swap sw 0 0" | sudo tee -a /etc/fstab
 	else
 		echo "Swap was already there so there is nothing to do"
 	fi
-	cat /proc/swaps >> swaplog.txt
-	free -h >> swaplog.txt
+	cat /proc/swaps >> swaplog.txt; free -h >> swaplog.txt
 
 	Restart
 }
@@ -1504,74 +1499,62 @@ EOF
 
 	case $operation in
 		1)
-		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old
-		sudo rm -rf ~/.mozilla/firefox/*
+		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old; sudo rm -rf ~/.mozilla/firefox/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		2)
-		sudo cp -r ~/.config/vivaldi/ ~/.config/vivaldi-old
-		sudo rm -rf ~/.config/vivaldi/*
+		sudo cp -r ~/.config/vivaldi/ ~/.config/vivaldi-old; sudo rm -rf ~/.config/vivaldi/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		3)
-		sudo cp -r ~/'.moonchild productions'/'pale moon' ~/'.moonchild productions'/'pale moon'-old
-		sudo rm -rf ~/'.moonchild productions'/'pale moon'/*
+		sudo cp -r ~/'.moonchild productions'/'pale moon' ~/'.moonchild productions'/'pale moon'-old; sudo rm -rf ~/'.moonchild productions'/'pale moon'/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		4)
-		sudo cp -r ~/.config/google-chrome ~/.config/google-chrome-old
-		sudo rm -rf ~/.config/google-chrome/*
+		sudo cp -r ~/.config/google-chrome ~/.config/google-chrome-old; sudo rm -rf ~/.config/google-chrome/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		5)
-		sudo cp -r ~/.config/opera ~/.config/opera-old
-		sudo rm -rf ~/.config/opera/*
+		sudo cp -r ~/.config/opera ~/.config/opera-old; sudo rm -rf ~/.config/opera/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		6)
-		sudo cp -r ~/.config/vivaldi-snapshot ~/.config/vivaldi-snapshot-old
-		sudo rm -rf ~/.config/vivaldi-snapshot/*
+		sudo cp -r ~/.config/vivaldi-snapshot ~/.config/vivaldi-snapshot-old; sudo rm -rf ~/.config/vivaldi-snapshot/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		7)
-		sudo cp -r ~/.waterfox ~/.waterfox-old
-		sudo rm -rf ~/.waterfox/*
+		sudo cp -r ~/.waterfox ~/.waterfox-old; sudo rm -rf ~/.waterfox/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		8)
-		sudo cp -r ~/'.moonchild productions'/'basilisk' ~/'.moonchild productions'/'basilisk'-old
-		sudo rm -rf ~/'.moonchild productions'/'basilisk'/*
+		sudo cp -r ~/'.moonchild productions'/'basilisk' ~/'.moonchild productions'/'basilisk'-old; sudo rm -rf ~/'.moonchild productions'/'basilisk'/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		9)
-		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old
-		sudo rm -rf ~/.config/epiphany/*
+		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old; sudo rm -rf ~/.config/epiphany/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		10)
-		sudo cp -r ~/.config/midori ~/.config/midori-old
-		sudo rm -rf ~/.config/midori/*
+		sudo cp -r ~/.config/midori ~/.config/midori-old; sudo rm -rf ~/.config/midori/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		11)
-		sudo cp -r ~/.config/BraveSoftware ~/.config/BraveSoftware-old
-		sudo rm -rf ~/.config/BraveSoftware/*
+		sudo cp -r ~/.config/BraveSoftware ~/.config/BraveSoftware-old; sudo rm -rf ~/.config/BraveSoftware/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
 		12)
-		sudo cp -r ~/.config/falkon ~/.config/falkon-old
-		sudo rm -rf ~/.config/falkon/*
+		sudo cp -r ~/.config/falkon ~/.config/falkon-old; sudo rm -rf ~/.config/falkon/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
@@ -1759,9 +1742,7 @@ Backup(){
 			sleep 1
 			echo "Please select the device you wish to use"
 			read device
-			sudo mount $device /mnt
-			sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*","*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups
-			sudo sync
+			sudo mount $device /mnt; sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*","*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups; sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
 			read -p "Found a block device at designated coordinates...
@@ -1778,13 +1759,10 @@ Backup(){
 			sleep 1
 			echo "Please select the device you wish to use"
 			read device
-			sudo mount $device /mnt
-			sudo rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /mnt/$host-backups
-			sudo sync
+			sudo mount $device /mnt; sudo rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /mnt/$host-backups; sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
-			echo "Found a block device at designated coordinates...
-			if this is the preferred drive, unmount it, leave it plugged in, and then run this again. Press enter to continue..."
+			echo "Found a block device at designated coordinates...If this is the preferred drive, unmount it, leave it plugged in, and then run this again. Press enter to continue..."
 		fi
 		;;
 		*)
@@ -1813,14 +1791,11 @@ EOF
 		sleep 1
 		echo "Please select the device from the list"
 		read device
-		sudo mount $device /mnt
-		sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*"."*/.local/share/Trash/*"}  /mnt/$host-$date-backups/* /home
-		sudo sync
+		sudo mount $device /mnt; sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*"."*/.local/share/Trash/*"}  /mnt/$host-$date-backups/* /home; sudo sync
 		Restart
 	elif [[ $Mountpoint == /run/media/$USER/* ]];
 	then
-		read -p "Found a block device at designated coordinates... If this is the preferred
-		drive, try unmounting the device, leaving it plugged in, and running this again. Press enter to continue..."
+		read -p "Found a block device at designated coordinates... If this is the preferred drive, try unmounting the device, leaving it plugged in, and running this again. Press enter to continue..."
 	fi
 
 	clear
