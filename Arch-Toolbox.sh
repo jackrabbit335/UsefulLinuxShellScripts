@@ -605,8 +605,8 @@ InstallAndConquer(){
 			1)
 			echo "This installs a series of utility software"
 			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools expac file-roller
-			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop ntop nmap xsensors ncdu fwupd base-devel xdg-user-dirs
-			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit p7zip unrar
+			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop nmap xsensors ncdu fwupd base-devel xdg-user-dirs
+			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit p7zip unrar mesa-demos
 			sudo pacman -S --needed --noconfirm pacman-contrib grsync tlp powertop youtube-dl keepassxc unzip zip gstreamer
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/inxi.tar.gz; gunzip inxi.tar.gz; tar -xvf inxi.tar; cd inxi && makepkg -si
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/downgrade.tar.gz; gunzip downgrade.tar.gz; tar -xvf downgrade.tar; cd downgrade && makepkg -si
