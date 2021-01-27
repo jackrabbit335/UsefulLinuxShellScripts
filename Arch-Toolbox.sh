@@ -658,7 +658,7 @@ InstallAndConquer(){
 			echo "3 - bluefish"
 			echo "4 - atom"
 			echo "5 - gedit"
-			echo "6 - kate/kwrite"
+			echo "6 - kate"
 			echo "7 - leafpad"
 			echo "8 - Visual Studio"
 			read package
@@ -667,8 +667,7 @@ InstallAndConquer(){
 				sudo pacman -S --noconfirm geany
 			elif [[ $package == 2 ]];
 			then
-				wget https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2; tar -xvf sublime_text_3_build_3211_x64.tar.bz2
-				cd sublime_text_3; makepkg -si
+				wget https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2; tar -xvf sublime_text_3_build_3211_x64.tar.bz2; cd sublime_text_3; makepkg -si
 			elif [[ $package == 3 ]];
 			then
 				sudo pacman -S --noconfirm bluefish
@@ -680,16 +679,7 @@ InstallAndConquer(){
 				sudo pacman -S --noconfirm gedit
 			elif [[ $package == 6 ]];
 			then
-				echo "1 - Kate"
-				echo "2 - Kwrite"
-				read editor
-				if [[ $editor == 1 ]];
-				then
 					sudo pacman -S --noconfirm kate
-				elif [[ $editor == 2 ]];
-				then
-					sudo pacman -S --noconfirm kwrite
-				fi
 			elif [[ $editor == 7 ]];
 			then
 				sudo pacman -S --noconfirm leafpad
