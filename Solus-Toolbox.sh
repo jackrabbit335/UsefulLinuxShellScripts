@@ -929,9 +929,9 @@ less <<EOF
 
 Press "q" to quit
 
-########################################################################
+##########################################################################
 ACKNOWLEDGEMENTS
-########################################################################
+##########################################################################
 I wrote these scripts and of course, I had to learn to
 do some of the things in this work. Many of the ideas came from me
 but the information came from various other linux users. Without their
@@ -948,9 +948,9 @@ Steven Black, the creator of the other hosts lists
 I utilize on my own machines.
 Many others...
 
-########################################################################
+##########################################################################
 WELCOME AND RAMBLE WITH LICENSING
-########################################################################
+##########################################################################
 Welcome to Solus-Toolbox. This is a useful little utility that
 tries to setup, maintain, and keep up to date with the latest
 software on your system. Solus-Toolbox is delivered as is and thus,
@@ -992,9 +992,9 @@ https://kaosx.us/docs/
 https://getsol.us/help-center/home/
 https://averagelinuxuser.com/after-installing-solus/
 
-########################################################################
+##########################################################################
 UPDATE ROLLBACK FEATURE
-########################################################################
+##########################################################################
 EOPKG in Solus provides its own rollback feature. To use this feature,
 you have to know the number in the historical record of operations
 in EOPKG. EOPKG records every action taken to update repos and the system
@@ -1010,40 +1010,40 @@ Of course, this does probably require package cache to be left alone,
 however, in some situations, you can not install updates with invalid or
 corrupted packages in there.
 
-########################################################################
+##########################################################################
 SCREEN RESOLUTION
-########################################################################
+##########################################################################
 As you can see with the newest releases of my toolbox scripts, I have
-implemented a new function which leverages xrandr to allow the user to 
+implemented a new function which leverages xrandr to allow the user to
 pick and choose their screen resolution. Sometimes Linux does not always
 choose the best resolution for your needs, this is why this was implemen-
 ted. Simply type the number for ScreenFix and it will prompt you with
 a list of possible screen resolutions supported by your distribution.
 Choose the proper resolution to fit with your monitor and go. Sometimes
-Linux uses ancient 800x600 resolutions or some other resolution that is 
+Linux uses ancient 800x600 resolutions or some other resolution that is
 either too big or small and this can be caused by the driver or some other
 issue. Xrandr will allow you to save your resolution in place and keep it
 consistent between boots. Xrandr is installed in most distributions now-
-adays. I have recently added a monitor configuration file to Github. Is a 
-template only and if you use it you will have to tweak it to fit your 
-needs. See 10-monitor.conf. This file is to be placed in 
+adays. I have recently added a monitor configuration file to Github. Is a
+template only and if you use it you will have to tweak it to fit your
+needs. See 10-monitor.conf. This file is to be placed in
 /etc/X11/xorg.conf.d/
 
-########################################################################
+##########################################################################
 WATERFOX CLASSIC OVER THIRD GEN
-########################################################################
+##########################################################################
 I have chosen to continue to support the installation of Waterfox class-
-ic edition over the newest Third Gen as the classic allows users to 
-retain many of their older npapi extensions. Old extensions went out 
-Firefox changed to their new engine, Quantum that only uses 
+ic edition over the newest Third Gen as the classic allows users to
+retain many of their older npapi extensions. Old extensions went out
+Firefox changed to their new engine, Quantum that only uses
 Webextensions now. Web extensions are still good and viable for the
-future, however, many users complained when this change took place. 
+future, however, many users complained when this change took place.
 This is not a permanent thing and I will eventually switch it over,
 this just allows users their convenience and peace of mind for now.
 
-########################################################################
+##########################################################################
 SECURITY IN KAOS WITH TOMOYO AND SOME STUFF WITH UFW
-########################################################################
+##########################################################################
 UFW is the uncomplicated firewall. Firewalls filter content getting in
 and going out on your local network. UFW is meant to make interfacing
 with iptables on Linux much easier. IPtables is the kernel version of
@@ -1062,11 +1062,12 @@ on user applications. Tomoyo uses ACLs and MAC style methods of determining
 application access. Tomoyo can be installed in other distributions and
 can be set in the grub commandline for the kernel by using security=tomoyo.
 KaOS has a basic wiki in docs to get you started with setting it up, however,
-if you wish to get more in depth you will be required to go to the tomoyo wiki.
+if you wish to get more in depth you will be required to go to the tomoyo
+wiki.
 
-########################################################################
+##########################################################################
 BACK UP IMPORTANT SYSTEM FILES
-########################################################################
+##########################################################################
 It is important to keep a back up copy of certain system files in Arch
 Linux as pacnew files become abundant on the system and these files
 bring with them many changes that can help with the system, but you
@@ -1081,9 +1082,9 @@ is Meld. Still, it is good practice when modifying or setting up your Linux
 system to keep a back up copy of many of these and so I have added it in to
 this script automatically on Setup function.
 
-########################################################################
+##########################################################################
 EOPKG AND PACKAGE MANAGERS IN GENERAL
-########################################################################
+##########################################################################
 EOPKG is a package manager forked from Pisi. It is unlike any other pack-
 age manager software as it does not use deb or rpm package formats by
 default. EOPKG is meant to be used with Solus OS and is therefore the
@@ -1101,15 +1102,15 @@ the multitude of things that make Solus different. Developing working
 scripts for the three major OSes required a deal of research and trial
 and error. This is not the only reason, but it is a big one as to why
 there are three toolbox scripts rather than just one. Upgrading is
-simple with this one though and learning a few key commands should get you by.
-All the main commands will be used in this script so enjoy. Sudo eopkg up
-will update the system, while sudo eopkg remove $name will remove an
-application. To install an application in the standard repo simply type
-sudo eopkg install $name.
+simple with this one though and learning a few key commands should get
+you by. All the main commands will be used in this script so enjoy.
+Sudo eopkg up will update the system, while sudo eopkg remove $name
+will remove an application. To install an application in the standard
+repo simply type sudo eopkg install $name.
 
-########################################################################
+##########################################################################
 ClEANING AND ROUTINE MAINTENANCE
-########################################################################
+##########################################################################
 Within this and the other two scripts is a section devoted to cleaning
 and maintaining the system. Cleaning is not as necessary as in
 Windows, however, it is something to consider doing when things
@@ -1136,9 +1137,9 @@ update cache and orphaned packages among other things. When ran together,
 these items can make a significant and noticeable difference in the
 smooth and secure feeling of your distribution.
 
-########################################################################
+##########################################################################
 SYSTEM INFORMATION
-########################################################################
+##########################################################################
 This script has the ability to help with troubleshooting as well. It can
 collect hardware and software information for troubleshooting issues
 online as well as for reinstalling fresh in the future. This script
@@ -1149,9 +1150,9 @@ data will be saved to one rather large text file in the home folder of
 the user who executes the script. Many of this will be useless to a new
 user, so there are online forums for help.
 
-########################################################################
+##########################################################################
 KERNELS AND SERVICES
-########################################################################
+##########################################################################
 Kernels, as mentioned in the manager, are an important and integral part
 of the system. For your system to work, it needs to run a certain kernel
 I would suggest the LTS that is recommended or preconfigured by your OS.
@@ -1166,9 +1167,9 @@ services. It should be noted that in Solus, the default kernel package
 is the linux-current package. Users can still use this script during
 setup to install the LTS if they so choose.
 
-########################################################################
+##########################################################################
 MICROCODE
-########################################################################
+##########################################################################
 Microcode is a piece of system language programming that is used in
 giving instructions to the CPU(Brain of the device). Microcode updates
 are not only important for updating the security of the CPU, but also
@@ -1183,9 +1184,9 @@ tries to install this piece of coding in the event that it wasnt installed
 and or loaded already. On most systems, Intel microcode is wrapped in the
 package intel-ucode, while AMDs microcode is wrapped under amd-ucode.
 
-########################################################################
+##########################################################################
 BACKUP AND RESTORE
-########################################################################
+##########################################################################
 Backup and Restore functions are there to provide a quick and painless
 service. The backup will be sent to an alternate drive by your request.
 This was designed that way as the working drive could infact become com-
@@ -1203,9 +1204,9 @@ Update: There is now an ability to backup the entire system using rsync.
 With this new ability, in time there should be a way to restore the
 system in the event of a catastrophic issue.
 
-########################################################################
+##########################################################################
 HOSTS FILE MANIPULATION
-########################################################################
+##########################################################################
 Setting up a custom hosts file can be selectively simple with the script
 Hostsman4linux and the corresponding function HostsfileSelect Both have
 the ability to compile and sort one central file out of multiple source
@@ -1223,15 +1224,15 @@ script from a menu as a regular user, chmoding the file to 755 might
 help before storing it in the /usr/local/bin directory and creating a
 desktop file for it. I will write a blog article for that later.
 to find my blog just go to: https://techiegeek123.blogspot.com/ in a
-browser. Update: I have finally created the perfect script for automation.
-Now users are able to create the perfect hosts file for them Without
-being bothered to answer questions. The defaults I have chosen
-cover a broad spectrum of Ads, Trackers and Malware, for your
-convenience.
+browser. Update: I have finally created the perfect script for
+automation. Now users are able to create the perfect hosts file
+for them Without being bothered to answer questions. The defaults
+I have chosen cover a broad spectrum of Ads, Trackers and Malware,
+for your convenience.
 
-########################################################################
+##########################################################################
 SWAP FILES
-########################################################################
+##########################################################################
 Swap files are an important asset to any Linux system. Swap files are
 responsible for storing temporary data when there is no available memory
 left on the device. Swap is also useful for storing system contents
@@ -1245,9 +1246,9 @@ happy to help. One further notice, the Swap file size is configurable
 for users who are somewhat advanced enough to go into the code and
 change the size from 2G to whatever they desire.
 
-########################################################################
+##########################################################################
 LINUX PERMISSIONS
-########################################################################
+##########################################################################
 Unlike Windows, Linux permissions are a bit different. There is a learning
 curve to implementing specially tailored policies on Linux that are just
 easier in Windows. Linux uses numbers frequently to determine the read,
@@ -1259,13 +1260,14 @@ of thumb is that 4 is equal to read, 1 to execute, and 2 to write. So a series
 of numbers like 755 would imply that the user and group is probably different
 from the way in which these attributes were assigned originally on your system
 by default. It was probably something like 777 or something, but everyones
-system is different. It is simple enough to change with either the chown or chmod
-commands, but I have yet to figure out an easy way to streamline this for new users
-in these scripts. I will get there though, so please be patient.
+system is different. It is simple enough to change with either the chown or
+chmod commands, but I have yet to figure out an easy way to streamline
+this for new users in these scripts. I will get there though,
+so please be patient.
 
-########################################################################
+##########################################################################
 CONTACT ME
-########################################################################
+##########################################################################
 For sending me hate mail, for inquiring assistance, and for sending me
 feedback and suggestions, email me at VeilofMaya@vivaldi.net
 Send your inquiries and suggestions with a
@@ -1494,7 +1496,7 @@ EOF
 	echo "10 - Midori"
 	echo "11 - Brave"
 	echo "12 - Falkon"
-	
+
 	read operation;
 
 	case $operation in
@@ -1659,7 +1661,7 @@ EOF
 	echo "3 - mask service"
 	echo "4 - save a copy of all the services on your system to a text file"
 	echo "5 - Exit without doing anything"
-	
+
 	read operation;
 
 	case $operation in
@@ -1728,7 +1730,7 @@ Backup(){
 	echo "What would you like to do?"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition"
-	
+
 	read operation;
 
 	case $operation in
@@ -1823,7 +1825,7 @@ Greeting(){
 	echo "18 - Restart"
 	echo "19 - Reset the desktop"
 	echo "20 - exit"
-	
+
 	read selection;
 
 	case $selection in
@@ -1911,8 +1913,7 @@ of benefit for newbies on occasion. The link will be placed here. In the
 blog I write about typical scenarios that I face on a day to day basis
 as well as add commentary and my opinions about software and technology.
 You may copy and paste the following link into your browser:
-https://techiegeek123.blogspot.com/
-Again, Thank you!
+https://techiegeek123.blogspot.com/ Again, Thank you!
 ##########################################################################
 EOF
 Greeting
