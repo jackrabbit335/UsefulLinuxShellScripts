@@ -592,12 +592,12 @@ InstallAndConquer(){
 		echo "20 - Plank"
 		echo "21 - Backup"
 		echo "22 - THEMES!!!!!!!!"
-		echo "23 - neofetch"
-		echo "24 - office software"
+		echo "23 - Neofetch"
+		echo "24 - Office software"
 		echo "25 - Proprietary Fonts"
 		echo "26 - Security checkers/scanners"
 		echo "27 - Stellarium constellation and space observation"
-		echo "28 - exit out of this menu"
+		echo "28 - Exit out of this menu"
 
 		read software;
 
@@ -1267,7 +1267,7 @@ SCREEN RESOLUTION
 ########################################################################
 As you can see with the newest releases of my toolbox scripts, I have
 implemented a new function which leverages xrandr to allow the user to
-pick and choose their screen resolution. Sometimes Linux doesn't always
+pick and choose their screen resolution. Sometimes Linux does not always
 choose the best resolution for your needs, this is why this was implemen-
 ted. Simply type the number for ScreenFix and it will prompt you with
 a list of possible screen resolutions supported by your distribution.
@@ -1276,7 +1276,7 @@ Linux uses ancient 800x600 resolutions or some other resolution that is
 either too big or small and this can be caused by the driver or some other
 issue. Xrandr will allow you to save your resolution in place and keep it
 consistent between boots. Xrandr is installed in most distributions now-
-adays. I've recently added a monitor configuration file to Github. Is a
+adays. I have recently added a monitor configuration file to Github. Is a
 template only and if you use it you will have to tweak it to fit your
 needs. See 10-monitor.conf. 10-monitor.conf will go in
 /etc/X11/xorg.conf.d/
@@ -2247,7 +2247,7 @@ Greeting(){
 }
 
 cat <<EOF
-########################################################################
+##########################################################################
 Hello! Thank you for using Arch Toolbox. Within this script is a multitu-
 de of potential solutions for every day tasks as trivial as maintenance,
 all the way to as important as setting up a new system. This script is
@@ -2261,6 +2261,6 @@ typical scenarios that I face on a day to day basis as well as add commen-
 tary and my opinions about software and technology. You may copy and paste
 the following link into your browser: https://techiegeek123.blogspot.com/
 Again, Thank you!
-########################################################################
+##########################################################################
 EOF
 Greeting
