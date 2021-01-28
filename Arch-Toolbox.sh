@@ -615,6 +615,7 @@ InstallAndConquer(){
 			echo "This installs an option in Package Managers"
 			echo "1 - Pamac"
 			echo "2 - Octopi"
+			echo "3 - Packagekit"
 			read package
 			if [[ $package == 1 ]];
 			then
@@ -622,6 +623,9 @@ InstallAndConquer(){
 			elif [[ $package == 2 ]];
 			then
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/octopi.tar.gz; gunzip octopi.tar.gz; tar -xvf octopi.tar; cd octopi && makepkg -si
+			elif [[ $package == 3 ]];
+			then
+				sudo pacman -S gnome-packagekit --noconfirm
 			else
 				echo "You've entered an invalid number"
 				InstallAndConquer
@@ -1839,7 +1843,7 @@ SystemMaintenance(){
 	sudo updatedb; sudo mandb
 
 	#Checks for pacnew files and other extra configuration file updates
-	pacman -Q | grep etc-update 
+	pacman -Q | grep etc-update
 	if [[ $? -gt 0 ]];
 	then
 		wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz; gunzip etc-update.tar.gz; tar -xvf etc-update.tar; cd etc-update && makepkg -si;
@@ -2088,8 +2092,7 @@ Backup(){
 			sudo mount $device /mnt; sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*","*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups; sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
-			read -p "Found a block device at designated coordinates...
-			if this is the preferred drive, unmount it, leave it plugged in, and run this again. Press enter to continue..."
+			read -p "Found a block device at designated coordinates...If this is the preferred drive, unmount it, leave it plugged in, and run this again. Press enter to continue..."
 		fi
 		;;
 		2)
@@ -2140,8 +2143,7 @@ EOF
 		Restart
 	elif [[ $Mountpoint == /run/media/$USER/* ]];
 	then
-		read -p "Found a block device at designated coordinates... If this is the preferred
-		drive, try unmounting the device, leaving it plugged in, and running this again. Press enter to continue..."
+		read -p "Found a block device at designated coordinates... If this is the preferred drive, try unmounting the device, leaving it plugged in, and running this again. Press enter to continue..."
 	fi
 
 	clear
@@ -2254,10 +2256,10 @@ their liking. This script is to be placed under the GPLv3 and is to be
 redistributable, however, if you are distributing, I would appreciate it
 if you gave the credit back to the original author. I should also add that
 I have a few blog articles which may or may not be of benefit for newbies
-on occasion. The link will be placed here. In the blog I write about typical
-scenarios that I face on a day to day basis as well as add commentary and my
-opinions about software and technology. You may copy and paste the following
-link into your browser: https://techiegeek123.blogspot.com/
+on occasion. The link will be placed here. In the blog I write about
+typical scenarios that I face on a day to day basis as well as add commen-
+tary and my opinions about software and technology. You may copy and paste
+the following link into your browser: https://techiegeek123.blogspot.com/
 Again, Thank you!
 ########################################################################
 EOF
