@@ -1178,9 +1178,9 @@ less <<EOF
 
 Press "q" to quit
 
-########################################################################
+##########################################################################
 ACKNOWLEDGEMENTS
-########################################################################
+##########################################################################
 I wrote these scripts and of course, I had to learn to
 do some of the things in this work. Many of the ideas came from me
 but the information came from various other linux users. Without their
@@ -1197,9 +1197,9 @@ Steven Black,
 The creator of the other hosts lists I utilize on my own machines.
 Many others...
 
-########################################################################
+##########################################################################
 WELCOME AND RAMBLE WITH LICENSING
-########################################################################
+##########################################################################
 Welcome to Arch-Toolbox. This is a useful little utility that
 tries to setup, maintain, and keep up to date with the latest
 software on your system. Arch-Toolbox is delivered as is and thus,
@@ -1238,9 +1238,9 @@ https://kaosx.us/docs/
 https://averagelinuxuser.com/
 https://endeavouros.com/wiki/
 
-########################################################################
+##########################################################################
 SECURITY IN KAOS WITH TOMOYO AND SOME STUFF WITH UFW
-########################################################################
+##########################################################################
 UFW is the uncomplicated firewall. Firewalls filter content getting in
 and going out on your local network. UFW is meant to make interfacing
 with iptables on Linux much easier. IPtables is the kernel version of
@@ -1262,12 +1262,12 @@ KaOS has a basic wiki in docs to get you started with setting it up, however,
 if you wish to get more in depth you will be required to go to the tomoyo
 wiki.
 
-########################################################################
+##########################################################################
 SCREEN RESOLUTION
-########################################################################
+##########################################################################
 As you can see with the newest releases of my toolbox scripts, I have
 implemented a new function which leverages xrandr to allow the user to
-pick and choose their screen resolution. Sometimes Linux does not always
+pick and choose their screen resolution. Sometimes Linux doesn't always
 choose the best resolution for your needs, this is why this was implemen-
 ted. Simply type the number for ScreenFix and it will prompt you with
 a list of possible screen resolutions supported by your distribution.
@@ -1276,14 +1276,14 @@ Linux uses ancient 800x600 resolutions or some other resolution that is
 either too big or small and this can be caused by the driver or some other
 issue. Xrandr will allow you to save your resolution in place and keep it
 consistent between boots. Xrandr is installed in most distributions now-
-adays. I have recently added a monitor configuration file to Github. Is a
+adays. I've recently added a monitor configuration file to Github. Is a
 template only and if you use it you will have to tweak it to fit your
 needs. See 10-monitor.conf. 10-monitor.conf will go in
 /etc/X11/xorg.conf.d/
 
-########################################################################
+##########################################################################
 WATERFOX CLASSIC OVER THIRD GEN
-########################################################################
+##########################################################################
 I have chosen to continue to support the installation of Waterfox class-
 ic edition over the newest Third Gen as the classic allows users to
 retain many of their older npapi extensions. Old extensions went out
@@ -1293,9 +1293,9 @@ future, however, many users complained when this change took place.
 This is not a permanent thing and I will eventually switch it over,
 this just allows users their convenience and peace of mind for now.
 
-########################################################################
+##########################################################################
 BACK UP IMPORTANT SYSTEM FILES
-########################################################################
+##########################################################################
 It is important to keep a back up copy of certain system files in Arch
 Linux as pacnew files become abundant on the system and these files
 bring with them many changes that can help with the system, but you
@@ -1305,14 +1305,14 @@ system will be unbootable if your fstab is changed or you might lose admin
 permissions if you are suddenly taken out of the wheel by the passwd file
 update. It is also important to look these files over and compare them
 before applying them to your system. There is a really good program in
-Linux now that can help you accomplish this. The software I am referring to
-is Meld. Still, it is good practice when modifying or setting up your Linux
-system to keep a back up copy of many of these and so I have added it in to
-this script automatically on Setup function.
+Linux now that can help you accomplish this. The software I am referring 
+to is Meld. Still, it is good practice when modifying or setting up your 
+Linux system to keep a back up copy of many of these and so I have added 
+it in to this script automatically on Setup function.
 
-########################################################################
+##########################################################################
 PACMAN/OCTOPI AND PACKAGE MANAGERS IN GENERAL
-########################################################################
+##########################################################################
 There are two big points that set Arch Linux and its package management
 apart and those are the support for AUR or Arch User Repository and
 control over individual mirrors. Pamac or Pacman has many ways to
@@ -1336,9 +1336,9 @@ are covered in this script. To learn them, just read the script and study
 it. It is a simpler method than Apt and Debian package management
 as these are so separated with several commands each.
 
-########################################################################
+##########################################################################
 ClEANING AND ROUTINE MAINTENANCE
-########################################################################
+##########################################################################
 Within this and the other two scripts is a section devoted to cleaning
 and maintaining the system. Cleaning is not as necessary as in
 Windows, however, it is something to consider doing when things
@@ -1355,8 +1355,8 @@ older ones get purged from the system as well as file databases are
 ammended as needed. The grub configurations get updated incase of changes
 made and not accounted for since last boot, there is also a flag file
 created to force fsck to run and fix any file system corruption it finds
-on next boot. The user is then asked if the user would like to run clean up
-as well. Cleaning handles things like removing all cache and thumbnails
+on next boot. The user is then asked if the user would like to run clean 
+up as well. Cleaning handles things like removing all cache and thumbnails
 from the system as well as freeing memory taken up and clearing tmp which
 does get cleared on boot. Cleaning also clears broken symbolic links and
 remnant cloned files and left over application files in the home folder.
@@ -1365,9 +1365,9 @@ update cache and orphaned packages among other things. When ran together,
 these items can make a significant and noticeable difference in the
 smooth and secure feeling of your distribution.
 
-########################################################################
+##########################################################################
 SYSTEM INFORMATION
-########################################################################
+##########################################################################
 This script has the ability to help with troubleshooting as well. It can
 collect hardware and software information for troubleshooting issues
 online as well as for reinstalling fresh in the future. This script
@@ -1378,9 +1378,9 @@ data will be saved to one rather large text file in the home folder of
 the user who executes the script. Many of this will be useless to a new
 user, so there are online forums for help.
 
-########################################################################
+##########################################################################
 KERNELS AND SERVICES
-########################################################################
+##########################################################################
 Kernels, as mentioned in the manager, are an important and integral part
 of the system. For your system to work, it needs to run a certain kernel
 I would suggest the LTS that is recommended or preconfigured by your OS.
@@ -1398,9 +1398,9 @@ distributions. Read the documentation for your distribution before
 attempting to install or uninstall other kernels. The Arch wiki is a
 valuable resource.
 
-########################################################################
+##########################################################################
 MICROCODE
-########################################################################
+##########################################################################
 Microcode is a piece of system language programming that is used in
 giving instructions to the CPU(Brain of the device). Microcode updates
 are not only important for updating the security of the CPU, but also
@@ -1415,9 +1415,9 @@ tries to install this piece of coding in the event that it wasnt installed
 and or loaded already. On most systems, Intel microcode is wrapped in the
 package intel-ucode, while AMDs microcode is wrapped under amd-ucode.
 
-########################################################################
+##########################################################################
 BACKUP AND RESTORE
-########################################################################
+##########################################################################
 Backup and Restore functions are there to provide a quick and painless
 service. The backup will be sent to an alternate drive by your request.
 This was designed that way as the working drive could infact become com-
@@ -1435,9 +1435,9 @@ Update: There is now an ability to backup the entire system using rsync.
 With this new ability, in time there should be a way to restore the
 system in the event of a catastrophic issue.
 
-########################################################################
+##########################################################################
 HOSTS FILE MANIPULATION
-########################################################################
+##########################################################################
 Setting up a custom hosts file can be selectively simple with the script
 Hostsman4linux and the corresponding function HostsfileSelect Both have
 the ability to compile and sort one central file out of multiple source
@@ -1455,15 +1455,15 @@ script from a menu as a regular user, chmoding the file to 755 might
 help before storing it in the /usr/local/bin directory and creating a
 desktop file for it. I will write a blog article for that later.
 to find my blog just go to: https://techiegeek123.blogspot.com/ in a
-browser. Update: I have finally created the perfect script for automation.
-Now users are able to create the perfect hosts file for them Without
-being bothered to answer questions. The defaults I have chosen
-cover a broad spectrum of Ads, Trackers and Malware, for your
-convenience.
+browser. Update: I have finally created the perfect script for 
+automation. Now users are able to create the perfect hosts file 
+for them Without being bothered to answer questions. The defaults 
+I have chosen cover a broad spectrum of Ads, Trackers and Malware, 
+for your convenience.
 
-########################################################################
+##########################################################################
 SWAP FILES
-########################################################################
+##########################################################################
 Swap files are an important asset to any Linux system. Swap files are
 responsible for storing temporary data when there is no available memory
 left on the device. Swap is also useful for storing system contents
@@ -1477,27 +1477,28 @@ happy to help. One further notice, the Swap file size is configurable
 for users who are somewhat advanced enough to go into the code and
 change the size from 2G to whatever they desire.
 
-########################################################################
+##########################################################################
 LINUX PERMISSIONS
-########################################################################
+##########################################################################
 Unlike Windows, Linux permissions are a bit different. There is a learning
 curve to implementing specially tailored policies on Linux that are just
 easier in Windows. Linux uses numbers frequently to determine the read,
 write, and execute permissions of the files on the disk. Sometimes in Arch,
 these numbers do not always match up after an update. Users and Groups assi-
-gned to each can be found in the etc-passwd or etc-group files. When changing
-user and groups assigned to a file, the numbers also change. A general rule
-of thumb is that 4 is equal to read, 1 to execute, and 2 to write. So a series
-of numbers like 755 would imply that the user and group is probably different
-from the way in which these attributes were assigned originally on your system
-by default. It was probably something like 777 or something, but everyones
-system is different. It is simple enough to change with either the chown or chmod
-commands, but I have yet to figure out an easy way to streamline this for new users
-in these scripts. I will get there though, so please be patient.
+gned to each can be found in the etc-passwd or etc-group files. When 
+changing user and groups assigned to a file, the numbers also change. 
+A general rule of thumb is that 4 is equal to read, 1 to execute, and 
+2 to write. So a series of numbers like 755 would imply that the user and 
+group is probably different from the way in which these attributes were 
+assigned originally on your system by default. It was probably something 
+like 777 or something, but everyones system is different. It is simple 
+enough to change with either the chown or chmod commands, but I have yet 
+to figure out an easy way to streamline this for new users in these scripts. 
+I will get there though, so please be patient.
 
-########################################################################
+##########################################################################
 CONTACT ME
-########################################################################
+##########################################################################
 For sending me hate mail, for inquiring assistance, and for sending me
 feedback and suggestions, email me at VeilofMaya@vivaldi.net
 Send your inquiries and suggestions with a corresponding subject line.
