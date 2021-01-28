@@ -1745,8 +1745,7 @@ Backup(){
 			sudo mount $device /mnt; sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*","*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups; sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
-			read -p "Found a block device at designated coordinates...
-			if this is the preferred drive, unmount it, leave it plugged in, and run this again. Press enter to continue..."
+			read -p "Found a block device at designated coordinates...If this is the preferred drive, unmount it, leave it plugged in, and run this again. Press enter to continue..."
 		fi
 		;;
 		2)
@@ -1899,7 +1898,7 @@ Greeting(){
 }
 
 cat <<EOF
-########################################################################
+##########################################################################
 Hello! Thank you for using Solus Toolbox. Within this script is a multitu-
 de of potential solutions for every day tasks as trivial as maintenance,
 all the way to as important as setting up a new system.
@@ -1914,6 +1913,6 @@ as well as add commentary and my opinions about software and technology.
 You may copy and paste the following link into your browser:
 https://techiegeek123.blogspot.com/
 Again, Thank you!
-########################################################################
+##########################################################################
 EOF
 Greeting
