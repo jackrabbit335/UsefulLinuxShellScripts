@@ -1762,8 +1762,7 @@ Backup(){
 			sudo mount $device /mnt; sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*","*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups; sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
-			read -p "Found a block device at designated coordinates...
-			if this is the preferred drive, unmount it, leave it plugged in, and run this again. Press enter to continue..."
+			read -p "Found a block device at designated coordinates...If this is the preferred drive, unmount it, leave it plugged in, and run this again. Press enter to continue..."
 		fi
 		;;
 		2)
@@ -1779,8 +1778,7 @@ Backup(){
 			sudo mount $device /mnt; sudo rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /mnt/$host-backups; sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
-			echo "Found a block device at designated coordinates...
-			if this is the preferred drive, unmount it, leave it plugged in, and then run this again. Press enter to continue..."
+			echo "Found a block device at designated coordinates...If this is the preferred drive, unmount it, leave it plugged in, and then run this again. Press enter to continue..."
 		fi
 		;;
 		*)
@@ -1813,8 +1811,7 @@ EOF
 		sudo mount $device /mnt; sudo rsync -aAXv --delete /mnt/$host-$date-backups/* /home/$USER; sudo sync; Restart
 	elif [[ $Mountpoint == /run/media/$USER/* ]];
 	then
-		read -p "Found a block device at designated coordinates... If this is the preferred
-		device, try umounting it, leaving it plugged in, and then running this again. Press enter to continue..."
+		read -p "Found a block device at designated coordinates... If this is the preferred device, try umounting it, leaving it plugged in, and then running this again. Press enter to continue..."
 	fi
 
 	clear
@@ -1914,13 +1911,13 @@ Greeting(){
 }
 
 cat <<EOF
-########################################################################
+##########################################################################
 Hello! Thank you for using Ubuntu Toolbox. Within this script is a multi-
 tude of potential solutions for every day tasks such as maintenance,
 all the way to setting up a new system. This script is meant for new
 users, but anyone can read, change and use this script to their liking.
 This script is to be placed under the GPLv3 and is to be redistributable,
-however, if you are distributing, I'd appreciate it if you gave the
+however, if you are distributing, I would appreciate it if you gave the
 credit back to the original author. I should also add that I have a few
 blog articles which may or may not be of benefit for newbies on occasion.
 The link will be placed here. In the blog I write about typical scenarios
@@ -1928,6 +1925,6 @@ that I face on a day to day basis as well as add commentary and my
 opinions about software and technology. You may copy and paste the
 following link into your browser: https://techiegeek123.blogspot.com/
 Again, Thank you!
-########################################################################
+##########################################################################
 EOF
 Greeting
