@@ -1505,10 +1505,10 @@ SUDO VERSION CHECKING
 With recent news of possible privilege escalation bugs found in sudo, I 
 figured it wise to include a sudo version check option in SystemInfo.
 This will check for version numbers of sudo and sudo plugins. Versions
-1.8 are privy to the bug and some early 1.9 versions. 1.95 should be 
-immune, however as with sudo, many more bugs will eventually be discovered.
-It is imperative to keep your system updated regularly to patch these 
-kinds of vulnerabilities.
+1.8 are privy to the bug and some early 1.9 versions(eg. 1.9.2). 1.9.5 
+should be immune, however as with sudo, many more bugs will eventually 
+be discovered. It is imperative to keep your system updated regularly 
+to patch these kinds of vulnerabilities.
 
 ##########################################################################
 CONTACT ME
