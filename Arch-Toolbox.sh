@@ -346,6 +346,11 @@ Systeminfo(){
 	hostname >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SUDO VERSION CHECK" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo -V >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "UPTIME" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	uptime -p >> $host-sysinfo.txt
@@ -436,14 +441,9 @@ Systeminfo(){
 	cat /etc/pacman.conf >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	echo "NUMBER OF INSTALLED PACKAGES" >> $host-sysinfo.txt
+	echo "INSTALLED PACKAGES AND COUNT" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	sudo pacman -Q | wc -l >> $host-sysinfo.txt
-	echo "" >> $host-sysinfo.txt
-	echo "############################################################################" >> $host-sysinfo.txt
-	echo "INSTALLED PACKAGES" >> $host-sysinfo.txt
-	echo "############################################################################" >> $host-sysinfo.txt
-	sudo pacman -Q >> $host-sysinfo.txt
+	pacman -Q >> $host-sysinfo.txt; pacman -Q | wc -l >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "PACKAGE MANAGER HISTORY" >> $host-sysinfo.txt
@@ -966,7 +966,7 @@ InstallAndConquer(){
 			;;
 			14)
 			echo "This installs a virtualbox client"
-			sudo pacman -S --noconfirm virtualbox virtualbox-guest-utils
+			sudo pacman -S --noconfirm virtualbox virtualbox-guest-utils virtualbox-guest-dkms
 			;;
 			15)
 			echo "This installs Wine or Windows emulation software"
@@ -1104,8 +1104,7 @@ InstallAndConquer(){
 			fi
 			;;
 			25)
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz; wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gz
-			gunzip ttf-ms-fonts.tar.gz; gunzip ttf-mac-fonts.tar.gz; tar -xvf ttf-ms-fonts.tar; tar -xvf ttf-mac-fonts.tar; cd ttf-ms-fonts; makepkg -si; pushd ttf-mac-fonts; makepkg -si; cd
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz; wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gzgunzip ttf-ms-fonts.tar.gz; gunzip ttf-mac-fonts.tar.gz; tar -xvf ttf-ms-fonts.tar; tar -xvf ttf-mac-fonts.tar; cd ttf-ms-fonts; makepkg -si; pushd ttf-mac-fonts; makepkg -si; cd
 			;;
 			26)
 			echo "This installs possible security software and virus checker if you wish"
@@ -1499,6 +1498,17 @@ like 777 or something, but everyones system is different. It is simple
 enough to change with either the chown or chmod commands, but I have yet 
 to figure out an easy way to streamline this for new users in these scripts. 
 I will get there though, so please be patient.
+
+##########################################################################
+SUDO VERSION CHECKING
+##########################################################################
+With recent news of possible privilege escalation bugs found in sudo, I 
+figured it wise to include a sudo version check option in SystemInfo.
+This will check for version numbers of sudo and sudo plugins. Versions
+1.8 are privy to the bug and some early 1.9 versions. 1.95 should be 
+immune, however as with sudo, many more bugs will eventually be discovered.
+It is imperative to keep your system updated regularly to patch these 
+kinds of vulnerabilities.
 
 ##########################################################################
 CONTACT ME
