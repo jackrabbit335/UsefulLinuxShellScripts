@@ -44,7 +44,7 @@ Setup(){
 	break
 	done
 
-	#This restricts coredumps to prevent attackers from getting info
+	#This restricts coredumps and tweaks system
 	sudo sed -i -e '/#Storage=external/c\Storage=none ' /etc/systemd/coredump.conf
 	sudo sed -i -e '/#PermitRootLogin/c\PermitRootLogin no ' /etc/ssh/sshd_config
 	sudo touch /etc/sysctl.d/50-dmesg-restrict.conf
@@ -436,6 +436,11 @@ Systeminfo(){
 	cat /etc/pacman.conf >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "NUMBER OF INSTALLED PACKAGES" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo pacman -Q | wc -l >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "INSTALLED PACKAGES" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	sudo pacman -Q >> $host-sysinfo.txt
@@ -586,7 +591,7 @@ InstallAndConquer(){
 		echo "14 - Virtual machine client"
 		echo "15 - Wine and play on linux"
 		echo "16 - quvcview"
-		echo "17 - Manipulate config files and switch between versions of software"
+		echo "17 - Manipulate config files"
 		echo "18 - GAMES!!!!!!!!!"
 		echo "19 - Video editing/encoding"
 		echo "20 - Plank"
@@ -987,8 +992,7 @@ InstallAndConquer(){
 			;;
 			17)
 			echo "etc-update can help you manage pacnew files and other configuration files after system updates."
-			sudo pacman -S --needed base-devel
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz; gunzip etc-update.tar.gz && tar -xvf etc-update.tar; cd etc-update && makepkg -si && sudo pacman -S --noconfirm downgrade
+			sudo pacman -S --needed base-devel; wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz; gunzip etc-update.tar.gz && tar -xvf etc-update.tar; cd etc-update && makepkg -si && sudo pacman -S --noconfirm downgrade
 			;;
 			18)
 			echo "This installs a choice in small games"
@@ -1599,7 +1603,7 @@ Uninstall(){
 	do
 		echo "Please enter the name of any software you wish to remove"
 		read software
-		sudo pacman -Rs --noconfirm $software
+		sudo pacman -Rsn --noconfirm $software
 		break
 	done
 
@@ -1847,7 +1851,7 @@ SystemMaintenance(){
 	pacman -Q | grep etc-update
 	if [[ $? -gt 0 ]];
 	then
-		wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz; gunzip etc-update.tar.gz; tar -xvf etc-update.tar; cd etc-update && makepkg -si;
+		wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz; gunzip etc-update.tar.gz; tar -xvf etc-update.tar; cd etc-update && makepkg -si; sudo etc-update
 	fi
 
 	#update the grub
@@ -1856,7 +1860,7 @@ SystemMaintenance(){
 	#This runs a disk checkup and attempts to fix filesystem
 	sudo touch /forcefsck
 
-	#Optional and prolly not needed
+	#Handles trim or defragmentation based on drive rotation
 	drive=$(cat /sys/block/sda/queue/rotational)
 	for rota in drive;
 	do
