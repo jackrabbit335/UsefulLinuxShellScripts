@@ -223,6 +223,14 @@ EOF
 	#This pins the kernel in Arch Linux
 	sudo sed -i 's/#IgnorePkg   =/IgnorePkg   =linux linux-headers linux-lts linux-lts-headers/g' /etc/pacman.conf
 
+	#This sets up your Bluetooth
+	echo "Would you like to enable bluetooth?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		pacman -Q | grep bluez || sudo pacman -S --noconfirm bluez bluez-utils; sudo modprobe btusb; sudo systemctl enable bluetooth.service; sudo systemctl start bluetooth.service; break
+	done
+
 	#This starts your firewall
 	pacman -Q | grep ufw || sudo pacman -S --noconfirm ufw; sudo systemctl enable ufw; sudo ufw enable
 	echo "Would you like to deny ssh and telnet for security?(Y/n)"
@@ -1308,9 +1316,9 @@ system will be unbootable if your fstab is changed or you might lose admin
 permissions if you are suddenly taken out of the wheel by the passwd file
 update. It is also important to look these files over and compare them
 before applying them to your system. There is a really good program in
-Linux now that can help you accomplish this. The software I am referring 
-to is Meld. Still, it is good practice when modifying or setting up your 
-Linux system to keep a back up copy of many of these and so I have added 
+Linux now that can help you accomplish this. The software I am referring
+to is Meld. Still, it is good practice when modifying or setting up your
+Linux system to keep a back up copy of many of these and so I have added
 it in to this script automatically on Setup function.
 
 ##########################################################################
@@ -1358,7 +1366,7 @@ older ones get purged from the system as well as file databases are
 ammended as needed. The grub configurations get updated incase of changes
 made and not accounted for since last boot, there is also a flag file
 created to force fsck to run and fix any file system corruption it finds
-on next boot. The user is then asked if the user would like to run clean 
+on next boot. The user is then asked if the user would like to run clean
 up as well. Cleaning handles things like removing all cache and thumbnails
 from the system as well as freeing memory taken up and clearing tmp which
 does get cleared on boot. Cleaning also clears broken symbolic links and
@@ -1458,10 +1466,10 @@ script from a menu as a regular user, chmoding the file to 755 might
 help before storing it in the /usr/local/bin directory and creating a
 desktop file for it. I will write a blog article for that later.
 to find my blog just go to: https://techiegeek123.blogspot.com/ in a
-browser. Update: I have finally created the perfect script for 
-automation. Now users are able to create the perfect hosts file 
-for them Without being bothered to answer questions. The defaults 
-I have chosen cover a broad spectrum of Ads, Trackers and Malware, 
+browser. Update: I have finally created the perfect script for
+automation. Now users are able to create the perfect hosts file
+for them Without being bothered to answer questions. The defaults
+I have chosen cover a broad spectrum of Ads, Trackers and Malware,
 for your convenience.
 
 ##########################################################################
@@ -1488,26 +1496,26 @@ curve to implementing specially tailored policies on Linux that are just
 easier in Windows. Linux uses numbers frequently to determine the read,
 write, and execute permissions of the files on the disk. Sometimes in Arch,
 these numbers do not always match up after an update. Users and Groups assi-
-gned to each can be found in the etc-passwd or etc-group files. When 
-changing user and groups assigned to a file, the numbers also change. 
-A general rule of thumb is that 4 is equal to read, 1 to execute, and 
-2 to write. So a series of numbers like 755 would imply that the user and 
-group is probably different from the way in which these attributes were 
-assigned originally on your system by default. It was probably something 
-like 777 or something, but everyones system is different. It is simple 
-enough to change with either the chown or chmod commands, but I have yet 
-to figure out an easy way to streamline this for new users in these scripts. 
+gned to each can be found in the etc-passwd or etc-group files. When
+changing user and groups assigned to a file, the numbers also change.
+A general rule of thumb is that 4 is equal to read, 1 to execute, and
+2 to write. So a series of numbers like 755 would imply that the user and
+group is probably different from the way in which these attributes were
+assigned originally on your system by default. It was probably something
+like 777 or something, but everyones system is different. It is simple
+enough to change with either the chown or chmod commands, but I have yet
+to figure out an easy way to streamline this for new users in these scripts.
 I will get there though, so please be patient.
 
 ##########################################################################
 SUDO VERSION CHECKING
 ##########################################################################
-With recent news of possible privilege escalation bugs found in sudo, I 
+With recent news of possible privilege escalation bugs found in sudo, I
 figured it wise to include a sudo version check option in SystemInfo.
 This will check for version numbers of sudo and sudo plugins. Versions
-1.8 are privy to the bug and some early 1.9 versions(eg. 1.9.2). 1.9.5 
-should be immune, however as with sudo, many more bugs will eventually 
-be discovered. It is imperative to keep your system updated regularly 
+1.8 are privy to the bug and some early 1.9 versions(eg. 1.9.2). 1.9.5
+should be immune, however as with sudo, many more bugs will eventually
+be discovered. It is imperative to keep your system updated regularly
 to patch these kinds of vulnerabilities.
 
 ##########################################################################
@@ -2063,21 +2071,21 @@ EOF
 
 	case $operation in
 		1)
-		sudo pacman -Sy linux-lts linux-lts-headers;;
+		sudo pacman -S linux-lts linux-lts-headers;;
 		2)
-		sudo pacman -Sy linux-current linux-current-headers;;
+		sudo pacman -S linux-current linux-current-headers;;
 		3)
-		sudo pacman -Sy linux-hardened linux-hardened-headers;;
+		sudo pacman -S linux-hardened linux-hardened-headers;;
 		4)
-		sudo pacman -Sy linux-zen linux-zen-headers;;
+		sudo pacman -S linux-zen linux-zen-headers;;
 		5)
-		sudo pacman -Rs linux-lts linux-lts-headers;;
+		sudo pacman -Rsn linux-lts linux-lts-headers;;
 		6)
-		sudo pacman -Rs linux-current linux-current-headers;;
+		sudo pacman -Rsn linux-current linux-current-headers;;
 		7)
-		sudo pacman -Rs linux-hardened linux-hardened-headers;;
+		sudo pacman -Rsn linux-hardened linux-hardened-headers;;
 		8)
-		sudo pacman -Rs linux-zen linux-zen-headers;;
+		sudo pacman -Rsn linux-zen linux-zen-headers;;
 		9)
 		echo "You've chosen not to mess with the kernel, a good idea in most cases";;
 	esac
