@@ -414,6 +414,11 @@ Systeminfo(){
 	ip addr >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "PUBLIC IP INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	curl ifconfig.me/all >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "NETWORK STATS" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	ss -tulpn >> $host-sysinfo.txt
@@ -617,7 +622,7 @@ InstallAndConquer(){
 		case $software in
 			1)
 			echo "This installs a series of utility software"
-			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools expac file-roller
+			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools expac file-roller curl
 			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop nmap xsensors ncdu fwupd base-devel xdg-user-dirs
 			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit p7zip unrar mesa-demos
 			sudo pacman -S --needed --noconfirm pacman-contrib grsync tlp powertop youtube-dl keepassxc unzip zip gstreamer
@@ -2055,7 +2060,7 @@ KernelManager(){
 	the scenes making everything operate within normal parameters, changing kernel settings
 	or installing/uninstalling a bad updated version could give undesirable results.
 EOF
-	pacman -Q linux linux-lts
+	pacman -Q linux linux-lts linux-hardened linux-zen
 	echo "What would you like to do?"
 	echo "1 - Install lts"
 	echo "2 - Install current"
