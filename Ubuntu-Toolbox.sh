@@ -350,6 +350,11 @@ Systeminfo(){
 	ip addr >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "PUBLIC IP INFORMATION" >> $hostsysinfo.xt
+	echo "############################################################################" >> $host-sysinfo.txt
+	curl ifconfig.me/all >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "NETWORK STATS" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	ss -tulpn >> $host-sysinfo.txt
@@ -968,7 +973,7 @@ InstallAndConquer(){
 			3)
 			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync p7zip zip unzip
 			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop file-roller xdg-user-dirs
-			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools keepassxc unrar
+			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools keepassxc unrar curl
 			;;
 			4)
 			echo "1 - deja-dup"
