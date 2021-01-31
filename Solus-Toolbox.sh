@@ -397,6 +397,11 @@ Systeminfo(){
 	ip addr >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "PUBLIC IP INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	curl ifconfig.me/all >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "NETWORK STATS" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	ss -tulpn >> $host-sysinfo.txt
@@ -584,7 +589,7 @@ InstallAndConquer(){
 		case $software in
 			1)
 			echo "This installs a choice of utility software"
-			sudo eopkg install --reinstall mtr lshw hdparm tlp gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw grsync
+			sudo eopkg install --reinstall mtr lshw hdparm tlp gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw grsync curl net-tools
 			sudo snap install youtube-dl
 			sudo eopkg install -c system.devel linux-current-headers
 			;;
