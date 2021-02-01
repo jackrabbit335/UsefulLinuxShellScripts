@@ -589,33 +589,35 @@ InstallAndConquer(){
 	while [ $answer == Y ];
 	do
 		echo "1 - Utility suite/Monitoring Software"
-		echo "2 - Package Manager"
-		echo "3 - Terminals"
-		echo "4 - IDE or text/code editor"
-		echo "5 - Cleaning software"
-		echo "6 - prelauncher"
-		echo "7 - Download managers"
-		echo "8 - Dropbox"
-		echo "9 - Torrent clients"
-		echo "10 - AUR Helpers"
-		echo "11 - Web browser from a list"
-		echo "12 - Media/home theater software"
-		echo "13 - Messenger Apps"
-		echo "14 - Virtual machine client"
-		echo "15 - Wine and play on linux"
-		echo "16 - quvcview"
-		echo "17 - Manipulate config files"
-		echo "18 - GAMES!!!!!!!!!"
-		echo "19 - Video editing/encoding"
-		echo "20 - Plank"
-		echo "21 - Backup"
-		echo "22 - THEMES!!!!!!!!"
-		echo "23 - Neofetch"
-		echo "24 - Office software"
-		echo "25 - Proprietary Fonts"
-		echo "26 - Security checkers/scanners"
-		echo "27 - Stellarium constellation and space observation"
-		echo "28 - Exit out of this menu"
+		echo "2 - DESKTOP SPECIFIC"
+		echo "3 - Package Manager"
+		echo "4 - Terminals"
+		echo "5 - IDE or text/code editor"
+		echo "6 - Cleaning software"
+		echo "7 - prelauncher"
+		echo "8 - Download managers"
+		echo "9 - Dropbox"
+		echo "10 - Torrent clients"
+		echo "11 - AUR Helpers"
+		echo "12 - Web browser from a list"
+		echo "13 - Media/home theater software"
+		echo "14 - Messenger Apps"
+		echo "15 - Virtual machine client"
+		echo "16 - Wine and play on linux"
+		echo "17 - quvcview"
+		echo "18 - Manipulate config files"
+		echo "19 - GAMES!!!!!!!!!"
+		echo "20 - Video editing/encoding"
+		echo "21 - Plank"
+		echo "22 - Backup"
+		echo "23 - THEMES!!!!!!!!"
+		echo "24 - Neofetch"
+		echo "25 - Office software"
+		echo "26 - Proprietary Fonts"
+		echo "27 - Security checkers/scanners"
+		echo "28 - Stellarium constellation and space observation"
+		echo "29 - Microcode"
+		echo "30 - Exit out of this menu"
 
 		read software;
 
@@ -629,6 +631,22 @@ InstallAndConquer(){
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/inxi.tar.gz; gunzip inxi.tar.gz; tar -xvf inxi.tar; cd inxi && makepkg -si
 			;;
 			2)
+			echo "This installs Desktop Specific utilities"
+			for env in $DESKTOP_SESSION;
+			do
+				if [[ $DESKTOP_SESSION == xfce ]];
+				then
+					sudo pacman -S --needed --noconfirm xfce4-goodies
+				elif [[ $DESKTOP_SESSION == gnome ]];
+				then
+					sudo pacman -S --needed --noconfirm gnome-tweaks
+				elif [[ $DESKTOP_SESSION == mate ]];
+				then
+					sudo pacman -S --needed --noconfirm mate-tweaks
+				fi
+			done
+			;;
+			3)
 			echo "This installs an option in Package Managers"
 			echo "1 - Pamac"
 			echo "2 - Octopi"
@@ -648,7 +666,7 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			3)
+			4)
 			echo "This installs your choice of terminals If you already have one, don't worry"
 			echo "1 - terminator"
 			echo "2 - termite"
@@ -672,7 +690,7 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			4)
+			5)
 			echo "This installs a light weight editor(text/code editor/IDE)"
 			echo "1 - geany"
 			echo "2 - sublime text editor"
@@ -712,15 +730,15 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			5)
+			6)
 			echo "This installs cleaning software for Arch Linux Systems"
 			sudo pacman -S --noconfirm bleachbit rmlint
 			;;
-			6)
+			7)
 			echo "This installs a prelauncher"
 			sudo pacman -S --noconfirm preload
 			;;
-			7)
+			8)
 			echo "This installs a choice in download managers"
 			echo "1 - wget"
 			echo "2 - uget"
@@ -740,11 +758,11 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			8)
+			9)
 			echo "This installs Dropbox"
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/dropbox.tar.gz; gunzip dropbox.tar.gz; tar -xvf dropbox.tar; cd dropbox && makepkg -si
 			;;
-			9)
+			10)
 			echo "This installs your choice of torrent clients"
 			echo "1 - transmission-gtk"
 			echo "2 - deluge"
@@ -764,7 +782,7 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			10)
+			11)
 			echo "1 - pacaur"
 			echo "2 - trizen"
 			echo "3 - yay"
@@ -787,7 +805,7 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			11)
+			12)
 			echo "This installs your choice in browsers"
 			echo "1 - Chromium"
 			echo "2 - Epiphany"
@@ -878,7 +896,7 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			12)
+			13)
 			echo "This installs a choice in media players"
 			echo "1 - xplayer"
 			echo "2 - parole"
@@ -947,7 +965,7 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			13)
+			14)
 			echo "This installs a Messenger or chat client"
 			echo "1 - Pidgin"
 			echo "2 - Hexchat"
@@ -976,17 +994,15 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/discord-canary.tar.gz; gunzip discord-canary.tar.gz; tar -xvf discord-canary.tar; cd discord-canary && makepkg -si
 			fi
 			;;
-			14)
+			15)
 			echo "This installs a virtualbox client"
 			sudo pacman -S --noconfirm virtualbox virtualbox-guest-utils virtualbox-guest-dkms
 			;;
-			15)
+			16)
 			echo "This installs Wine or Windows emulation software"
 			echo "1 - Wine"
 			echo "2 - playonlinux"
-
 			read software;
-
 			case $software in
 				1)
 				sudo pacman -S --noconfirm wine ;;
@@ -998,15 +1014,15 @@ InstallAndConquer(){
 				;;
 			esac
 			;;
-			16)
+			17)
 			echo "This installs a webcam application for laptops"
 			sudo pacman -S --noconfirm guvcview
 			;;
-			17)
+			18)
 			echo "etc-update can help you manage pacnew files and other configuration files after system updates."
 			sudo pacman -S --needed base-devel; wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz; gunzip etc-update.tar.gz && tar -xvf etc-update.tar; cd etc-update && makepkg -si; wget https://aur.archlinux.org/cgit/aur.git/snapshot/downgrade.tar.gz; gunzip downgrade.tar.gz; tar -xvf downgrade.tar; cd downgrade && makepkg -si
 			;;
-			18)
+			19)
 			echo "This installs a choice in small games"
 			echo "1 - supertuxkart"
 			echo "2 - gnome-mahjongg"
@@ -1050,7 +1066,7 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			19)
+			20)
 			echo "This installs video/audio decoding/reencoding software"
 			sudo pacman -S --noconfirm kdenlive audacity
 			echo "Would you also like obs-studio?(Y/n)"
@@ -1061,11 +1077,11 @@ InstallAndConquer(){
 				break
 			done
 			;;
-			20)
+			21)
 			echo "This installs a dock application"
 			sudo pacman -S --noconfirm plank
 			;;
-			21)
+			22)
 			echo "This installs your backup software"
 			echo "1 - deja-dup"
 			echo "2 - timeshift"
@@ -1081,17 +1097,17 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			22)
+			23)
 			echo "This installs a few common themes"
 			sudo pacman -S --noconfirm adapta-gtk-theme arc-icon-theme evopop-icon-theme arc-gtk-theme papirus-icon-theme materia-gtk-theme paper-icon-theme
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/numix-gtk-theme.tar.gz; gunzip numix-gtk-theme.tar.gz; tar -xvf numix-gtk-theme.tar; cd numix-gtk-theme && makepkg -si
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/numix-icon-theme-git.tar.gz; gunzip numix-icon-theme-git.tar.gz; tar -xvf numix-icon-theme-git.tar; cd numix-icon-theme-git && makepkg -si
 			;;
-			23)
+			24)
 			echo "This installs neofetch"
 			sudo pacman -S --noconfirm neofetch
 			;;
-			24)
+			25)
 			echo "This installs office software"
 			echo "1 - Libreoffice"
 			echo "2 - Libreoffice-fresh"
@@ -1115,10 +1131,10 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			25)
+			26)
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz; wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gzgunzip ttf-ms-fonts.tar.gz; gunzip ttf-mac-fonts.tar.gz; tar -xvf ttf-ms-fonts.tar; tar -xvf ttf-mac-fonts.tar; cd ttf-ms-fonts; makepkg -si; pushd ttf-mac-fonts; makepkg -si; cd
 			;;
-			26)
+			27)
 			echo "This installs possible security software and virus checker if you wish"
 			echo "KaOS doesn't have these by default(has tomoyo) and clam av can be installed as flatpak"
 			echo "1 - Rkhunter"
@@ -1126,9 +1142,7 @@ InstallAndConquer(){
 			echo "3 - Lynis"
 			echo "4 - Arch Audit"
 			echo "5 - All"
-
 			read software;
-
 			case $software in
 				1)
 				sudo pacman -S --noconfirm rkhunter ;;
@@ -1145,43 +1159,28 @@ InstallAndConquer(){
 				InstallAndConquer;;
 			esac
 			;;
-			27)
+			28)
 			echo "This installs stellarium incase you are a night sky observer"
 			sudo pacman -S --noconfirm stellarium
 			;;
-			28)
+			29)
+			echo "This installs Microcode based on your architecture"
+			cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
+			for c in $cpu;
+			do
+				if [[ $cpu == GenuineIntel ]];
+				then
+					sudo pacman -Q | grep intel-ucode || sudo pacman -S --noconfirm intel-ucode
+				else
+					sudo pacman -Q | grep amd-ucode || sudo pacman -S --noconfirm amd-ucode
+				fi
+			done
+			;;
+			30)
 			echo "Ok, well, I'm here if you change your mind"
 			break
 			;;
 		esac
-	done
-
-	read -p "Press enter to continue..."
-
-	#This installs xfce4-goodies package on xfce versions of Manjaro
-	for env in $DESKTOP_SESSION;
-	do
-		if [[ $DESKTOP_SESSION == xfce ]];
-		then
-			sudo pacman -S --needed --noconfirm xfce4-goodies
-		elif [[ $DESKTOP_SESSION == gnome ]];
-		then
-			sudo pacman -S --needed --noconfirm gnome-tweaks
-		fi
-	done
-
-	read -p "Press enter to continue..."
-
-	#This installs intel or amd microcode assuming it isn't installed already
-	cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
-	for c in $cpu;
-	do
-		if [[ $cpu == GenuineIntel ]];
-		then
-			sudo pacman -Q | grep intel-ucode || sudo pacman -S --noconfirm intel-ucode
-		else
-			sudo pacman -Q | grep amd-ucode || sudo pacman -S --noconfirm amd-ucode
-		fi
 	done
 
 	clear
