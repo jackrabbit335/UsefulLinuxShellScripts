@@ -243,8 +243,7 @@ EOF
 
 	#This fixes gufw not opening in kde plasma desktop
 	cat <<EOF
-	This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue.
-	This is only a plasma issue as far as I know.
+	This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue. This is only a plasma issue as far as I know.
 EOF
 	for env in $DESKTOP_SESSION;
 	do
@@ -618,9 +617,7 @@ InstallAndConquer(){
 		echo "28 - Stellarium constellation and space observation"
 		echo "29 - Microcode"
 		echo "30 - Exit out of this menu"
-
 		read software;
-
 		case $software in
 			1)
 			echo "This installs a series of utility software"
@@ -1541,9 +1538,7 @@ AccountSettings(){
 	echo "4 - Look for empty password users on the system"
 	echo "5 - See a list of accounts and groups on the system"
 	echo "6 - Skip this menu"
-
 	read operation;
-
 	case $operation in
 		1)
 		echo $(cat /etc/group | awk -F: '{print $1}')
@@ -1674,7 +1669,7 @@ cleanup(){
 	sudo pacman -Rsn --noconfirm $(pacman -Qqdt)
 
 	#Optional This will remove the pacman cached applications and older versions
-	#sudo pacman -Scc
+	sudo pacman -Scc
 
 	#This removes unwanted apps
 	Uninstall
@@ -1739,9 +1734,7 @@ EOF
 	echo "13 - Iridium"
 	echo "14 - Otter-browser"
 	echo "15 - Ungoogled-chromium"
-
 	read operation;
-
 	case $operation in
 		1)
 		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old; sudo rm -rf ~/.mozilla/firefox/*
@@ -1935,9 +1928,7 @@ EOF
 	echo "3 - mask service"
 	echo "4 - save a copy of all the services on your system to a text file"
 	echo "5 - Exit without doing anything"
-
 	read operation;
-
 	case $operation in
 		1)
 		echo "Please enter the name of a service to enable"
@@ -2069,9 +2060,7 @@ EOF
 	echo "7 - Remove hardened"
 	echo "8 - Remove zen"
 	echo "9 - Get out of this menu"
-
 	read operation;
-
 	case $operation in
 		1)
 		sudo pacman -S linux-lts linux-lts-headers;;
@@ -2101,9 +2090,7 @@ Backup(){
 	echo "What would you like to do?"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition"
-
 	read operation;
-
 	case $operation in
 		1)
 		host=$(hostname)
@@ -2198,9 +2185,7 @@ Greeting(){
 	echo "18 - Restart"
 	echo "19 - Reset the desktop"
 	echo "20 - exit"
-
 	read selection;
-
 	case $selection in
 		1)
 		Setup
