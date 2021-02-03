@@ -583,9 +583,7 @@ InstallAndConquer(){
 		echo "18 - Stellarium constellation and space observation"
 		echo "19 - Security software"
 		echo "20 - exit out of this menu"
-
 		read software;
-
 		case $software in
 			1)
 			echo "This installs a choice of utility software"
@@ -777,9 +775,7 @@ InstallAndConquer(){
 			echo "1 - Wine"
 			echo "2 - playonlinux"
 			echo "3 - Both"
-
 			read software;
-
 			case $software in
 				1)
 				sudo eopkg install wine ;;
@@ -1295,9 +1291,7 @@ EOF
 	echo "4 - Look for empty password users on the system"
 	echo "5 - See a list of accounts and groups on the system"
 	echo "6 - Skip this menu"
-
 	read operation;
-
 	case $operation in
 		1)
 		echo $(cat /etc/group | awk -F: '{print $1}')
@@ -1501,9 +1495,7 @@ EOF
 	echo "10 - Midori"
 	echo "11 - Brave"
 	echo "12 - Falkon"
-
 	read operation;
-
 	case $operation in
 		1)
 		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old; sudo rm -rf ~/.mozilla/firefox/*
@@ -1666,9 +1658,7 @@ EOF
 	echo "3 - mask service"
 	echo "4 - save a copy of all the services on your system to a text file"
 	echo "5 - Exit without doing anything"
-
 	read operation;
-
 	case $operation in
 		1)
 		echo "Please enter the name of a service to enable"
@@ -1735,9 +1725,7 @@ Backup(){
 	echo "What would you like to do?"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition"
-
 	read operation;
-
 	case $operation in
 		1)
 		host=$(hostname)
@@ -1830,9 +1818,7 @@ Greeting(){
 	echo "18 - Restart"
 	echo "19 - Reset the desktop"
 	echo "20 - exit"
-
 	read selection;
-
 	case $selection in
 		1)
 		Setup
