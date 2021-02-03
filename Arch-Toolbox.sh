@@ -147,6 +147,8 @@ EOF
 		echo 'alias purge="sudo paccache -ruk0"' >> ~/.bashrc
 		echo "#Alias to remove orphaned packages" >> ~/.bashrc
 		echo 'alias orphan="sudo pacman -Rsn $(pacman -Qqdt)"' >> ~/.bashrc
+		echo "#Alias to update mirrorlist" >> ~/.bashrc
+		echo 'alias mirrors="sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm"' >> ~/.bashrc
 		echo "#Alias to Free Up RAM" >> ~/.bashrc
 		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
 		echo "#Alias to trim journal size" >> ~/.bashrc
@@ -1274,6 +1276,25 @@ if you wish to get more in depth you will be required to go to the tomoyo
 wiki.
 
 ##########################################################################
+DRIVERS
+##########################################################################
+Drivers are important for acting as an intermediary between the kernel and
+hardware. Drivers are firmwaare that tell peripherals what to do; Modules
+that install directly to the Kernel. Drivers help with graphics, keyboard,
+mouse, Sata, etc. If you need full hardware support, you might consider
+installing the nonfree drivers, especially for video and big tasks like
+video encoding. If you are just using your computer for simple tasks like
+email, browsing the web, writing text documents and so on, the free and
+open source drivers should work for you in most cases. Nvidia is a diff-
+erent animal and much of what you need can not be done properly in Nouveau
+at this time. The most current drivers are in the repository, but if your
+card is older and needs more specific drivers or Legacy support which is no
+longer supported, you will likely have to go to the driver vendor's site
+and search for it, thus installing it manually. I am addinig a Driver manager
+function to help with installing the current kernel modules or open source
+versions. It isn't finished yet, but will soon be added to Arch-Toolbox.
+
+##########################################################################
 SCREEN RESOLUTION
 ##########################################################################
 As you can see with the newest releases of my toolbox scripts, I have
@@ -2022,6 +2043,16 @@ Reset(){
 	else
 		echo "You're running a desktop/Window Manager that we do not yet support... Come back later."
 	fi
+
+	clear
+	Greeting
+}
+
+DriverManager(){
+	echo "Coming Soon!"
+
+	clear
+	Greeting
 }
 
 MakeSwap(){
@@ -2174,17 +2205,18 @@ Greeting(){
 	echo "7 - Restore your important files and photos"
 	echo "8 - Manage system services"
 	echo "9 - Install or uninstall kernels"
-	echo "10 - Collect system information"
-	echo "11 - Screen Resolution Fix"
-	echo "12 - Create Swap File"
-	echo "13 - Cleanup"
-	echo "14 - System Maintenance"
-	echo "15 - Browser Repair"
-	echo "16 - Update"
-	echo "17 - Help"
-	echo "18 - Restart"
-	echo "19 - Reset the desktop"
-	echo "20 - exit"
+	echo "10 - Install and manage drivers"
+	echo "11 - Collect system information"
+	echo "12 - Screen Resolution Fix"
+	echo "13 - Create Swap File"
+	echo "14 - Cleanup"
+	echo "15 - System Maintenance"
+	echo "16 - Browser Repair"
+	echo "17 - Update"
+	echo "18 - Help"
+	echo "19 - Restart"
+	echo "20 - Reset the desktop"
+	echo "21 - exit"
 	read selection;
 	case $selection in
 		1)
@@ -2215,36 +2247,39 @@ Greeting(){
 		KernelManager
 		;;
 		10)
-		Systeminfo
+		DriverMaaanager
 		;;
 		11)
-		ScreenFix
+		Systeminfo
 		;;
 		12)
-		MakeSwap
+		ScreenFix
 		;;
 		13)
-		cleanup
+		MakeSwap
 		;;
 		14)
-		SystemMaintenance
+		cleanup
 		;;
 		15)
-		BrowserRepair
+		SystemMaintenance
 		;;
 		16)
-		Update
+		BrowserRepair
 		;;
 		17)
-		Help
+		Update
 		;;
 		18)
-		Restart
+		Help
 		;;
 		19)
-		Reset
+		Restart
 		;;
 		20)
+		Reset
+		;;
+		21)
 		echo $'\n'$"Thank you for using Arch-Toolbox... Goodbye!"
 		exit
 		;;
