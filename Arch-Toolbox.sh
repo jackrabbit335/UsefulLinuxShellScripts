@@ -1289,17 +1289,17 @@ open source drivers should work for you in most cases. Nvidia is a diff-
 erent animal and much of what you need can not be done properly in Nouveau
 at this time. The most current drivers are in the repository, but if your
 card is older and needs more specific drivers or Legacy support which is no
-longer supported, you will likely have to go to the driver vendor's site
+longer supported, you will likely have to go to the driver vendors site
 and search for it, thus installing it manually. I am addinig a Driver manager
 function to help with installing the current kernel modules or open source
-versions. It isn't finished yet, but will soon be added to Arch-Toolbox.
+versions. It is not finished yet, but will soon be added to Arch-Toolbox.
 
 ##########################################################################
 SCREEN RESOLUTION
 ##########################################################################
 As you can see with the newest releases of my toolbox scripts, I have
 implemented a new function which leverages xrandr to allow the user to
-pick and choose their screen resolution. Sometimes Linux doesn't always
+pick and choose their screen resolution. Sometimes Linux does not always
 choose the best resolution for your needs, this is why this was implemen-
 ted. Simply type the number for ScreenFix and it will prompt you with
 a list of possible screen resolutions supported by your distribution.
@@ -1308,7 +1308,7 @@ Linux uses ancient 800x600 resolutions or some other resolution that is
 either too big or small and this can be caused by the driver or some other
 issue. Xrandr will allow you to save your resolution in place and keep it
 consistent between boots. Xrandr is installed in most distributions now-
-adays. I've recently added a monitor configuration file to Github. Is a
+adays. I have recently added a monitor configuration file to Github. Is a
 template only and if you use it you will have to tweak it to fit your
 needs. See 10-monitor.conf. 10-monitor.conf will go in
 /etc/X11/xorg.conf.d/
@@ -1690,7 +1690,7 @@ cleanup(){
 	sudo pacman -Rsn --noconfirm $(pacman -Qqdt)
 
 	#Optional This will remove the pacman cached applications and older versions
-	sudo pacman -Scc
+	#sudo pacman -Scc
 
 	#This removes unwanted apps
 	Uninstall
