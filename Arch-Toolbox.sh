@@ -2050,6 +2050,7 @@ Reset(){
 
 DriverManager(){
 	echo "Coming Soon!"
+	sleep 1
 
 	clear
 	Greeting
