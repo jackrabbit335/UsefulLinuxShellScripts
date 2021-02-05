@@ -13,7 +13,8 @@ Setup(){
 	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 	sudo cp /etc/login.defs /etc/login.defs.bak
 	sudo cp /etc/sudoers /etc/sudoers.bak
-	sudo cp /etc/profile /etc/profile.bak
+	sudo cp -r /etc/profile /etc/profile.bak
+	sudo cp /etc/lightdm/ /etc/lightdm-old
 	sudo cp /etc/pacman.conf /etc/pacman.conf.bak
 	sudo cp /etc/bash.bashrc /etc/bash.bashrc.bak
 	sudo cp /etc/environment /etc/environment.bak
@@ -147,8 +148,6 @@ EOF
 		echo 'alias purge="sudo paccache -ruk0"' >> ~/.bashrc
 		echo "#Alias to remove orphaned packages" >> ~/.bashrc
 		echo 'alias orphan="sudo pacman -Rsn $(pacman -Qqdt)"' >> ~/.bashrc
-		echo "#Alias to update mirrorlist" >> ~/.bashrc
-		echo 'alias mirrors="sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm"' >> ~/.bashrc
 		echo "#Alias to Free Up RAM" >> ~/.bashrc
 		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
 		echo "#Alias to trim journal size" >> ~/.bashrc
