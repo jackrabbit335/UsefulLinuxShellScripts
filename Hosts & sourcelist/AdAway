@@ -722,6 +722,15 @@
 0.0.0.0  dspwin.adsame.com
 0.0.0.0  i.adsame.com
 0.0.0.0  mapping.adsame.com
+0.0.0.0  adsbynimbus.com
+0.0.0.0  growlr.adsbynimbus.com
+0.0.0.0  mixerbox-lite.adsbynimbus.com
+0.0.0.0  mw-encyclopediabritannica.adsbynimbus.com
+0.0.0.0  timehop.adsbynimbus.com
+0.0.0.0  turbo.adsbynimbus.com
+0.0.0.0  ua-myfitnesspal.adsbynimbus.com
+0.0.0.0  weatherbug.adsbynimbus.com
+0.0.0.0  yoc-steps.adsbynimbus.com
 0.0.0.0  cotads.adscale.de
 0.0.0.0  hb.adscale.de
 0.0.0.0  ih.adscale.de
@@ -8861,7 +8870,6 @@
 0.0.0.0  eks-prod-1c.vungle.com
 0.0.0.0  kourier-tpat.eks-prod-1c.vungle.com
 0.0.0.0  ingest.vungle.com
-0.0.0.0  v.w-x.co
 0.0.0.0  w3i.com
 0.0.0.0  ads.w55c.net
 0.0.0.0  i.w55c.net
