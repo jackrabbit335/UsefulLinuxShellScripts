@@ -1883,7 +1883,7 @@ SystemMaintenance(){
 	sudo updatedb; sudo mandb
 
 	#Checks for pacnew files and other extra configuration file updates
-	pacman -Q | grep etc-update
+	pacman -Q | grep etc-update; sudo etc-update
 	if [[ $? -gt 0 ]];
 	then
 		wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz; gunzip etc-update.tar.gz; tar -xvf etc-update.tar; cd etc-update && makepkg -si; sudo etc-update
