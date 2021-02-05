@@ -14,7 +14,7 @@ Setup(){
 	sudo cp /etc/login.defs /etc/login.defs.bak
 	sudo cp /etc/sudoers /etc/sudoers.bak
 	sudo cp -r /etc/profile /etc/profile.bak
-	sudo cp /etc/lightdm/ /etc/lightdm-old
+	sudo cp -r /etc/lightdm/ /etc/lightdm-old
 	sudo cp /etc/pacman.conf /etc/pacman.conf.bak
 	sudo cp /etc/bash.bashrc /etc/bash.bashrc.bak
 	sudo cp /etc/environment /etc/environment.bak
