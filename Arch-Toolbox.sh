@@ -1338,7 +1338,9 @@ before applying them to your system. There is a really good program in
 Linux now that can help you accomplish this. The software I am referring
 to is Meld. Still, it is good practice when modifying or setting up your
 Linux system to keep a back up copy of many of these and so I have added
-it in to this script automatically on Setup function.
+it in to this script automatically on Setup function. I would also suggest
+backing up the display manager configuration which can be found in etc under
+the display manager folder your system is using.
 
 ##########################################################################
 PACMAN/OCTOPI AND PACKAGE MANAGERS IN GENERAL
