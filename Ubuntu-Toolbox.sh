@@ -1024,10 +1024,7 @@ InstallAndConquer(){
 				sudo apt install -y midori
 			elif [[ $browser == 5 ]];
 			then
-				cd /tmp
-				wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-				sudo dpkg -i *.deb
-				sudo apt install -f
+				cd /tmp; wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 6 ]];
 			then
 				wget http://linux.palemoon.org/datastore/release/palemoon-29.0.0.linux-x86_64.tar.xz; tar -xvf palemoon-29.0.0.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
