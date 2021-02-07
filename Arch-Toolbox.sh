@@ -190,32 +190,20 @@ EOF
 			else
 				sudo rm -r /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg; sudo pacman -Sy --noconfirm gnupg archlinux-keyring manjaro-keyring; sudo pacman-key --init; sudo pacman-key --populate archlinux manjaro; sudo pacman-key --refresh-keys; sudo pacman -Scc; sudo pacman -Syyu --noconfirm
 			fi
-		elif [[ $distribution == Arch ]];
-		then
-			pacman -Q | grep reflector || sudo pacman -S reflector
-			sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
-			if [[ $? -eq 0 ]];
-			then
-				echo "update successful"
-			else
-				sudo rm -r /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg; sudo pacman -Sy --noconfirm gnupg archlinux-keyring; sudo pacman-key --init; sudo pacman-key --populate archlinux; sudo pacman-key --refresh-keys; sudo pacman -Scc; sudo pacman -Syyu --noconfirm
-			fi
-		elif [[ $distribution == EndeavourOS ]];
-		then
-			pacman -Q | grep reflector || sudo pacman -S reflector
-			sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
-			if [[ $? -eq 0 ]];
-			then
-				echo "update successful"
-			else
-				sudo rm -r /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg; sudo pacman -Sy --noconfirm gnupg archlinux-keyring; sudo pacman-key --init; sudo pacman-key --populate archlinux; sudo pacman-key --refresh-keys; sudo pacman -Scc; sudo pacman -Syyu --noconfirm
-			fi
 		elif [[ $distribution == KaOS ]];
 		then
 			sudo rankmirrors -v /etc/pacman.d/mirrolist; sudo pacman -Syyu --noconfirm
 			if [[ $? -eq 0 ]];
 			then
 				echo "update successful"
+			fi
+		else
+			pacman -Q | grep reflector || sudo pacman -S reflector; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
+			if [[ $? -eq 0 ]];
+			then
+				echo "update successful"
+			else
+				sudo rm -r /var/lib/pacman/sync/*; sudo rm /var/lib/pacman/db.lck; sudo rm -r /etc/pacman.d/gnupg; sudo pacman -Sy --noconfirm gnupg archlinux-keyring; sudo pacman-key --init; sudo pacman-key --populate archlinux; sudo pacman-key --refresh-keys; sudo pacman -Scc; sudo pacman -Syyu --noconfirm
 			fi
 		fi
 	done
@@ -453,9 +441,14 @@ Systeminfo(){
 	cat /etc/pacman.conf >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	echo "INSTALLED PACKAGES AND COUNT" >> $host-sysinfo.txt
+	echo "INSTALLED PACKAGE COUNT" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	pacman -Q >> $host-sysinfo.txt; pacman -Q | wc -l >> $host-sysinfo.txt
+	pacman -Q | wc -l >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "INSTALLED PACKAGE LIST" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	pacman -Q >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "PACKAGE MANAGER HISTORY" >> $host-sysinfo.txt
@@ -1099,6 +1092,7 @@ InstallAndConquer(){
 			sudo pacman -S --noconfirm adapta-gtk-theme arc-icon-theme evopop-icon-theme arc-gtk-theme papirus-icon-theme materia-gtk-theme paper-icon-theme
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/numix-gtk-theme.tar.gz; gunzip numix-gtk-theme.tar.gz; tar -xvf numix-gtk-theme.tar; cd numix-gtk-theme && makepkg -si
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/numix-icon-theme-git.tar.gz; gunzip numix-icon-theme-git.tar.gz; tar -xvf numix-icon-theme-git.tar; cd numix-icon-theme-git && makepkg -si
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/sardi-icons.tar.gz; gunzip sardi-icons.tar.gz; tar -xvf sardi-icons.tar; cd sardi-icons &&  makepkg -si 
 			;;
 			24)
 			echo "This installs neofetch"
@@ -1690,7 +1684,7 @@ cleanup(){
 	sudo pacman -Rsn --noconfirm $(pacman -Qqdt)
 
 	#Optional This will remove the pacman cached applications and older versions
-	sudo pacman -Scc
+	#sudo pacman -Scc
 
 	#This removes unwanted apps
 	Uninstall
@@ -1862,15 +1856,11 @@ SystemMaintenance(){
 	if [[ $distribution == Manjaro ]];
 	then
 		sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu --noconfirm
-	elif [[ $distribution == Arch ]];
-	then
-		sudo pacman -Q | grep reflector || sudo pacman -S --noconfirm reflector; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
-	elif [[ $distribution == EndeavourOS ]];
-	then
-		sudo pacman -Q | grep reflector || sudo pacman -S --noconfirm reflector; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
 	elif [[ $distribution == KaOS ]];
 	then
 		sudo rankmirrors -v /etc/pacman.d/mirrolist; sudo pacman -Syyu --noconfirm
+	else
+		sudo pacman -Q | grep reflector || sudo pacman -S --noconfirm reflector; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
 	fi
 
 	#This refreshes systemd in case of failed or missing units
@@ -2050,6 +2040,7 @@ Reset(){
 
 DriverManager(){
 	echo "Coming Soon!"
+	sleep 1
 
 	clear
 	Greeting
@@ -2247,7 +2238,7 @@ Greeting(){
 		KernelManager
 		;;
 		10)
-		DriverMaaanager
+		DriverManager
 		;;
 		11)
 		Systeminfo
