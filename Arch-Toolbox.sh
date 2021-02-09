@@ -1643,6 +1643,15 @@ Uninstall(){
 	Greeting
 }
 
+RAMBack(){
+
+	#This clears the cached RAM
+	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
+
+	clear
+	Greeting
+}
+
 cleanup(){
 	#This will clean the cache
 	sudo rm -r .cache/*
@@ -1659,9 +1668,6 @@ cleanup(){
 
 	#This removes old configurations for software
 	sudo rm -r ~/.config/*-old
-
-	#This clears the cached RAM
-	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
 
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/files/
@@ -1689,6 +1695,17 @@ cleanup(){
 
 	#This removes unwanted apps
 	Uninstall
+
+	#We can reboot if you want
+	echo "Reboot?(Y/n)"
+	read answer
+	if [[ $answer == Y ]];
+	then
+		Restart
+	else
+		clear
+		Greeting
+	fi
 }
 
 BrowserRepair(){
@@ -2202,13 +2219,14 @@ Greeting(){
 	echo "12 - Screen Resolution Fix"
 	echo "13 - Create Swap File"
 	echo "14 - Cleanup"
-	echo "15 - System Maintenance"
-	echo "16 - Browser Repair"
-	echo "17 - Update"
-	echo "18 - Help"
-	echo "19 - Restart"
-	echo "20 - Reset the desktop"
-	echo "21 - exit"
+	echo "15 - RAMBack"
+	echo "16 - System Maintenance"
+	echo "17 - Browser Repair"
+	echo "18 - Update"
+	echo "19 - Help"
+	echo "20 - Restart"
+	echo "21 - Reset the desktop"
+	echo "22 - exit"
 	read selection;
 	case $selection in
 		1)
@@ -2254,24 +2272,27 @@ Greeting(){
 		cleanup
 		;;
 		15)
-		SystemMaintenance
+		RAMBack
 		;;
 		16)
-		BrowserRepair
+		SystemMaintenance
 		;;
 		17)
-		Update
+		BrowserRepair
 		;;
 		18)
-		Help
+		Update
 		;;
 		19)
-		Restart
+		Help
 		;;
 		20)
-		Reset
+		Restart
 		;;
 		21)
+		Reset
+		;;
+		22)
 		echo $'\n'$"Thank you for using Arch-Toolbox... Goodbye!"
 		exit
 		;;
