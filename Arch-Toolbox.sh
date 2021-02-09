@@ -1520,7 +1520,8 @@ assigned originally on your system by default. It was probably something
 like 777 or something, but everyones system is different. It is simple
 enough to change with either the chown or chmod commands, but I have yet
 to figure out an easy way to streamline this for new users in these scripts.
-I will get there though, so please be patient.
+I will get there though, so please be patient. A good website to better
+explain this is:https://www.guru99.com/file-permissions.html
 
 ##########################################################################
 SUDO VERSION CHECKING
