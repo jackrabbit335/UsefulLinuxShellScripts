@@ -431,6 +431,11 @@ Systeminfo(){
 	ls -larS / >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "AUDIT SUID & SGID" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo -s find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \; >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "USER AND GROUPS" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	cat /etc/passwd | awk '{print $1}' >> $host-sysinfo.txt
