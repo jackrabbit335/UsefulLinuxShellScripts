@@ -13,7 +13,7 @@ Setup(){
 	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 	sudo cp /etc/login.defs /etc/login.defs.bak
 	sudo cp /etc/sudoers /etc/sudoers.bak
-	sudo cp -r /etc/profile /etc/profile.bak
+	sudo cp /etc/profile /etc/profile.bak
 	sudo cp /etc/pacman.conf /etc/pacman.conf.bak
 	sudo cp /etc/bash.bashrc /etc/bash.bashrc.bak
 	sudo cp /etc/environment /etc/environment.bak
@@ -40,7 +40,8 @@ Setup(){
 	while [ $answer == Y ];
 	do
 		echo "Enter your preferred timezone"
-		read timezone; sudo timedatectl set-ntp true; sudo timedatectl set-timezone $timezone
+		read timezone
+		sudo timedatectl set-ntp true; sudo timedatectl set-timezone $timezone
 	break
 	done
 
@@ -92,6 +93,8 @@ EOF
 			read answer
 			while [ $answer == Y ];
 			do
+				echo "Enter the device you'd like to enable this on."
+				read device
 				sudo hdparm -W 1 $device
 			break
 			done
@@ -175,7 +178,7 @@ EOF
 		fi
 	fi
 
-	checkNetwork
+	CheckNetwork
 
 	#This tries to update and rate mirrors if it fails it refreshes the keys
 	distribution=$(cat /etc/issue | awk '{print $1}')
@@ -256,7 +259,7 @@ EOF
 }
 
 Update(){
-	checkNetwork
+	CheckNetwork
 
 	sudo pacman -Syyu --noconfirm
 
@@ -476,12 +479,12 @@ Systeminfo(){
 	sudo hddtemp /dev/sda >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	echo "DISK READ SPEED"
+	echo "DISK READ SPEED" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	sudo hdparm -tT /dev/sda >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	echo " DRIVER INFO" >> $host-sysinfo.txt
+	echo "DRIVER INFO" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	sudo lsmod >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
@@ -579,7 +582,7 @@ ScreenFix(){
 }
 
 InstallAndConquer(){
-	checkNetwork
+	CheckNetwork
 
 	echo "Would you like to install software?(Y/n)"
 	read answer
@@ -713,7 +716,7 @@ InstallAndConquer(){
 				sudo pacman -S --noconfirm gedit
 			elif [[ $package == 6 ]];
 			then
-					sudo pacman -S --noconfirm kate
+				sudo pacman -S --noconfirm kate
 			elif [[ $editor == 7 ]];
 			then
 				sudo pacman -S --noconfirm leafpad
@@ -997,12 +1000,15 @@ InstallAndConquer(){
 			echo "This installs Wine or Windows emulation software"
 			echo "1 - Wine"
 			echo "2 - playonlinux"
+			echo "3 - Both"
 			read software;
 			case $software in
 				1)
 				sudo pacman -S --noconfirm wine ;;
 				2)
-				sudo pacman -S --noconfirm playonlinux ;;
+				sudo eopkg install playonlinux ;;
+				3)
+				sudo eopkg install wine playonlinux ;;
 				*)
 				echo "You have entered an invalid number"
 				InstallAndConquer
@@ -1467,6 +1473,21 @@ With this new ability, in time there should be a way to restore the
 system in the event of a catastrophic issue.
 
 ##########################################################################
+Recent Changes with Installing certain apps and things
+##########################################################################
+Since Pale Moon 28.x there have been some changes as to how we install
+the browser. Pale Moons lead Developer states how to install the browser
+in Linux systems via this page:
+http://linux.palemoon.org/help/installation/ I have still added a basic
+set up of palemoon that will extract the browser and send it to the opt
+directory while allowing the user to set up a symbolic link to the usr
+bin directory. This will allow you to use the browser by typing the name
+into a terminal much like any other application. For more tips and details
+see his website. Also, due to recently working with a friend on her
+laptop, I have found the need for Wine and so I added a simple command
+way to install wine on newer systems. Will work on this further.
+
+##########################################################################
 HOSTS FILE MANIPULATION
 ##########################################################################
 Setting up a custom hosts file can be selectively simple with the script
@@ -1603,7 +1624,7 @@ AccountSettings(){
 	Greeting
 }
 
-checkNetwork(){
+CheckNetwork(){
 	for c in computer;
 	do
 		ping -c4 google.com
@@ -1665,8 +1686,8 @@ cleanup(){
 	sudo rm -r ~/.nv/*
 	sudo rm -r ~/.npm/*
 	sudo rm -r ~/.w3m/*
-	sudo rm -r ~/.esd_auth
-	sudo rm -r ~/.local/share/recently-used.xbel
+	sudo rm ~/.esd_auth
+	sudo rm ~/.local/share/recently-used.xbel
 	#sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
 	sudo rm -r /var/tmp/*
@@ -1718,10 +1739,8 @@ BrowserRepair(){
 	This can fix a lot of the usual issues with a few of the bigger browsers.
 	These can include performance hitting issues. If your browser needs a tuneup,
 	it is probably best to do it in the browser itself, but when you just want something
-	fast, this can do it for you. More browsers and options are coming. This can also
-	clean undesired toolbars.
+	fast, this can do it for you. More browsers and options are coming.
 EOF
-	#Look for the following browsers
 	browser1="$(find /usr/bin/firefox)"
 	browser2="$(find /usr/bin/vivaldi*)"
 	browser3="$(find /usr/bin/palemoon)"
@@ -1872,7 +1891,7 @@ EOF
 }
 
 SystemMaintenance(){
-	checkNetwork
+	CheckNetwork
 
 	#This attempts to rank mirrors and update your system
 	distribution=$(cat /etc/issue | awk '{print $1}')
@@ -2195,9 +2214,7 @@ EOF
 		sleep 1
 		echo "Please select the device from the list"
 		read device
-		sudo mount $device /mnt
-		sudo rsync -aAXv --delete /mnt/$host-backups/* /home
-		sudo sync
+		sudo mount $device /mnt; sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*"."*/.local/share/Trash/*"}  /mnt/$host-$date-backups/* /home; sudo sync
 		Restart
 	elif [[ $Mountpoint == /run/media/$USER/* ]];
 	then
@@ -2209,7 +2226,7 @@ EOF
 }
 
 Greeting(){
-	echo "Enter a selection from the following list:"
+	echo "Enter a selection from the following list"
 	echo "1 - Setup your system"
 	echo "2 - Add/Remove user accounts"
 	echo "3 - Install software"
