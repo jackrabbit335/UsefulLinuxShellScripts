@@ -121,8 +121,7 @@ EOF
 	done
 
 	#This removes that stupid gnome-keyring unlock error you get with chrome
-	echo "Killing this might make your passwords less secure on chrome."
-	echo "Do you wish to kill gnome-keyring? (Y/n)"
+	echo "Killing this might make your passwords less secure on chrome. Do you wish to kill gnome-keyring? (Y/n)"
 	read answer
 	if [[ $answer == Y ]];
 	then
@@ -132,7 +131,6 @@ EOF
 	fi
 
 	#This allows you to add aliases to .bashrc
-	echo "Aliases are shortcuts for commonly used commands."
 	echo "Would you like to add some commonly used aliases?(Y/n)"
 	read answer
 	if [[ $answer == Y ]];
@@ -342,6 +340,11 @@ Systeminfo(){
 	hostname >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SUDO VERSION CHECK" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo -V >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "UPTIME" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	uptime -p >> $host-sysinfo.txt
@@ -430,6 +433,11 @@ Systeminfo(){
 	echo "PERMISSIONS" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	ls -larS / >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "AUDIT SUID & SGID" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo -s find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \; >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "USER AND GROUPS" >> $host-sysinfo.txt
@@ -554,6 +562,9 @@ ScreenFix(){
 	echo "Choose a resolution from the list above"
 	read resolution
 	xrandr -s $resolution
+
+	clear
+	Greeting
 }
 
 InstallAndConquer(){
@@ -768,7 +779,7 @@ InstallAndConquer(){
 			;;
 			8)
 			echo "This installs a virtualbox client"
-			sudo eopkg install virtualbox
+			sudo eopkg install virtualbox virtualbox-guest-utils
 			;;
 			9)
 			echo "This installs Wine or Windows emulation software"
@@ -784,7 +795,9 @@ InstallAndConquer(){
 				3)
 				sudo eopkg install wine playonlinux ;;
 				*)
-				echo "You have entered an invalid number" ;;
+				echo "You have entered an invalid number"
+				InstallAndConquer
+				;;
 			esac
 			;;
 			10)
@@ -832,6 +845,7 @@ InstallAndConquer(){
 				sudo eopkg install supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux
 			else
 				echo "You have entered an invalid number"
+				InstallAndConquer
 			fi
 			;;
 			12)
@@ -866,6 +880,7 @@ InstallAndConquer(){
 				sudo eopkg install grsync
 			else
 				echo "You have entered an invalid number"
+				InstallAndConquer
 			fi
 			;;
 			16)
@@ -945,8 +960,8 @@ Matthew Moore
 Chris Titus
 Average Linux User
 Joshua Strobl of the Solus project
-Steven Black, the creator of the other hosts lists
-I utilize on my own machines.
+Steven Black,
+The creator of the other hosts lists I utilize on my own machines.
 Many others...
 
 ##########################################################################
@@ -1255,24 +1270,35 @@ curve to implementing specially tailored policies on Linux that are just
 easier in Windows. Linux uses numbers frequently to determine the read,
 write, and execute permissions of the files on the disk. Sometimes in Arch,
 these numbers do not always match up after an update. Users and Groups assi-
-gned to each can be found in the etc-passwd or etc-group files. When changing
-user and groups assigned to a file, the numbers also change. A general rule
-of thumb is that 4 is equal to read, 1 to execute, and 2 to write. So a series
-of numbers like 755 would imply that the user and group is probably different
-from the way in which these attributes were assigned originally on your system
-by default. It was probably something like 777 or something, but everyones
-system is different. It is simple enough to change with either the chown or
-chmod commands, but I have yet to figure out an easy way to streamline
-this for new users in these scripts. I will get there though,
-so please be patient.
+gned to each can be found in the etc-passwd or etc-group files. When
+changing user and groups assigned to a file, the numbers also change.
+A general rule of thumb is that 4 is equal to read, 1 to execute, and
+2 to write. So a series of numbers like 755 would imply that the user and
+group is probably different from the way in which these attributes were
+assigned originally on your system by default. It was probably something
+like 777 or something, but everyones system is different. It is simple
+enough to change with either the chown or chmod commands, but I have yet
+to figure out an easy way to streamline this for new users in these scripts.
+I will get there though, so please be patient. A good website to better
+explain this is:https://www.guru99.com/file-permissions.html
+
+##########################################################################
+SUDO VERSION CHECKING
+##########################################################################
+With recent news of possible privilege escalation bugs found in sudo, I
+figured it wise to include a sudo version check option in SystemInfo.
+This will check for version numbers of sudo and sudo plugins. Versions
+1.8 are privy to the bug and some early 1.9 versions(eg. 1.9.2). 1.9.5
+should be immune, however as with sudo, many more bugs will eventually
+be discovered. It is imperative to keep your system updated regularly
+to patch these kinds of vulnerabilities.
 
 ##########################################################################
 CONTACT ME
 ##########################################################################
 For sending me hate mail, for inquiring assistance, and for sending me
 feedback and suggestions, email me at VeilofMaya@vivaldi.net
-Send your inquiries and suggestions with a
-corresponding subject line.
+Send your inquiries and suggestions with a corresponding subject line.
 EOF
 
 	clear
@@ -1280,10 +1306,6 @@ EOF
 }
 
 AccountSettings(){
-	cat <<EOF
-	This is a completely untested and experimental utility at best.
-	Use this function "Account Settings" at your own risk.
-EOF
 	echo "What would you like to do?"
 	echo "1 - Create user account(s)"
 	echo "2 - Delete user account(s)"
@@ -1295,7 +1317,7 @@ EOF
 	case $operation in
 		1)
 		echo $(cat /etc/group | awk -F: '{print $1}')
-		sleep 2
+		sleep 1
 		read -p "Please enter the groups you wish the user to be in:" $group1 $group2 $group3
 		echo "Please enter the name of the user"
 		read name
@@ -1343,11 +1365,11 @@ checkNetwork(){
 		then
 			echo "Connection successful"
 		else
-			read -p "Check hardware cable status then press enter..."
+			read -p "Check hardware cable status and press enter..."
 			interface=$(ip -o -4 route show to default | awk '{print $5}')
 			sudo dhclient -v -r && sudo dhclient; sudo systemctl stop NetworkManager.service
 			sudo systemctl disable NetworkManager.service; sudo systemctl enable NetworkManager.service
-			sudo systemctl start NetworkManager.service; sudo ip link set $interface up #Refer to networkconfig.log
+			sudo systemctl start NetworkManager.service; sudo ip link set $interface up
 		fi
 	done
 }
@@ -1401,6 +1423,15 @@ Uninstall(){
 	Greeting
 }
 
+RAMBack(){
+
+	#This clears the cached RAM
+	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
+
+	clear
+	Greeting
+}
+
 cleanup(){
 	#This will clean the cache
 	sudo rm -r .cache/*
@@ -1417,9 +1448,6 @@ cleanup(){
 
 	#This remove old configurations for software
 	sudo rm -r ~/.config/*-old
-
-	#This clears the cached RAM
-	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
 
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/files/
@@ -1447,6 +1475,17 @@ cleanup(){
 
 	#This will also remove unwanted programs
 	Uninstall
+
+	#We can reboot if you want
+	echo "Reboot?(Y/n)"
+	read answer
+	if [[ $answer == Y ]];
+	then
+		Restart
+	else
+		clear
+		Greeting
+	fi
 }
 
 BrowserRepair(){
@@ -1623,7 +1662,7 @@ SystemMaintenance(){
 			read answer
 			while [ $answer == Y ];
 			do
-				sudo fstrim -v /
+				sudo fstrim -v --all
 			break
 			done
 		fi
@@ -1810,14 +1849,15 @@ Greeting(){
 	echo "10 - Screen Resolution Switcher"
 	echo "11 - Cleanup"
 	echo "12 - System Maintenance"
-	echo "13 - Browser Repair"
-	echo "14 - Update"
-	echo "15 - Downgrade"
-	echo "16 - MakeSwap"
-	echo "17 - Help"
-	echo "18 - Restart"
-	echo "19 - Reset the desktop"
-	echo "20 - exit"
+	echo "13 - RAMBack"
+	echo "14 - Browser Repair"
+	echo "15 - Update"
+	echo "16 - Downgrade"
+	echo "17 - MakeSwap"
+	echo "18 - Help"
+	echo "19 - Restart"
+	echo "20 - Reset the desktop"
+	echo "21 - exit"
 	read selection;
 	case $selection in
 		1)
@@ -1857,27 +1897,30 @@ Greeting(){
 		SystemMaintenance
 		;;
 		13)
-		BrowserRepair
+		RAMBack
 		;;
 		14)
-		Update
+		BrowserRepair
 		;;
 		15)
-		Downgrade
+		Update
 		;;
 		16)
-		MakeSwap
+		Downgrade
 		;;
 		17)
-		Help
+		MakeSwap
 		;;
 		18)
-		Restart
+		Help
 		;;
 		19)
-		Reset
+		Restart
 		;;
 		20)
+		Reset
+		;;
+		21)
 		echo $'\n'$"Thank you for using Solus-Toolbox... Goodbye!"
 		exit
 		;;

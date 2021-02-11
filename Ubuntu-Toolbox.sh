@@ -180,8 +180,7 @@ EOF
 
 	#This fixes gufw not opening in kde plasma desktop
 	cat <<EOF
-	This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue.
-	This is only a plasma issue as far as I know.
+	This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue. This is only a plasma issue as far as I know.
 EOF
 	for env in $DESKTOP_SESSION;
 	do
@@ -199,9 +198,9 @@ EOF
 	sudo apt update; sudo apt upgrade -yy; sudo apt dist-upgrade -yy
 
 	#Optional
-	echo "Would you like to restart?(Y/n)"
+	echo "Do you wish to reboot(Y/n)"
 	read answer
-	if [ $answer == Y ];
+	if [[ $answer == Y ]];
 	then
 		Restart
 	else
@@ -290,6 +289,11 @@ Systeminfo(){
 	hostname >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SUDO VERSION CHECK" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo -V >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "UPTIME" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	uptime -p >> $host-sysinfo.txt
@@ -350,7 +354,7 @@ Systeminfo(){
 	ip addr >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	echo "PUBLIC IP INFORMATION" >> $hostsysinfo.xt
+	echo "PUBLIC IP INFORMATION" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	curl ifconfig.me/all >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
@@ -385,6 +389,11 @@ Systeminfo(){
 	ls -larS / >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "AUDIT SUID & SGID" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo -s find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \; >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "USER AND GROUPS" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	cat /etc/passwd | awk '{print $1}' >> $host-sysinfo.txt
@@ -413,6 +422,11 @@ Systeminfo(){
 	echo "Inxi" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	inxi -F >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "CPU TEMP" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sensors >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "HD TEMP" >> $host-sysinfo.txt
@@ -645,7 +659,7 @@ unnecessary files on the system. Tomoyo is the preferred method for users
 of KaOS Linux and uses a learning period before it fully effects changes
 on user applications. Tomoyo uses ACLs and MAC style methods of determining
 application access. Tomoyo can be installed in other distributions and
-can be set in the grub commandline for the kernel by using security=tomoyo.
+can be set in the grub commandline for the kernel by using security = tomoyo
 KaOS has a basic wiki in docs to get you started with setting it up, however,
 if you wish to get more in depth you will be required to go to the tomoyo
 wiki.
@@ -666,7 +680,7 @@ issue. Xrandr will allow you to save your resolution in place and keep it
 consistent between boots. Xrandr is installed in most distributions now-
 adays. I have recently added a monitor configuration file to Github. Is a
 template only and if you use it you will have to tweak it to fit your
-needs. See 10-monitor.conf. This file is to be placed in
+needs. See 10-monitor.conf. 10-monitor.conf will go in
 /etc/X11/xorg.conf.d/
 
 ##########################################################################
@@ -721,8 +735,8 @@ older ones get purged from the system as well as file databases are
 ammended as needed. The grub configurations get updated incase of changes
 made and not accounted for since last boot, there is also a flag file
 created to force fsck to run and fix any file system corruption it finds
-on next boot. The user is then asked if the user would like to run clean up
-as well. Cleaning handles things like removing all cache and thumbnails
+on next boot. The user is then asked if the user would like to run clean
+up as well. Cleaning handles things like removing all cache and thumbnails
 from the system as well as freeing memory taken up and clearing tmp which
 does get cleared on boot. Cleaning also clears broken symbolic links and
 remnant cloned files and left over application files in the home folder.
@@ -749,7 +763,7 @@ KERNELS AND SERVICES
 ##########################################################################
 Kernels, as mentioned in the manager, are an important and integral part
 of the system. For your system to work, it needs to run a certain kernel
-I wouldd suggest the LTS that is recommended or preconfigured by your OS.
+I would suggest the LTS that is recommended or preconfigured by your OS.
 Assuming that you have that kernel installed, testing out newer kernels
 for specific hardware and or security functionality is not a bad idea
 just use caution. Disabling services is generally a bad idea, however,
@@ -815,7 +829,7 @@ way to install wine on newer systems. Will work on this further.
 HOSTS FILE MANIPULATION
 ##########################################################################
 Setting up a custom hosts file can be selectively simple with the script
-Hostsman4linux and the corresponding function HostsFileSelect Both have
+Hostsman4linux and the corresponding function HostsfileSelect Both have
 the ability to compile and sort one central file out of multiple source
 third party hosts files. These can be a great extra layer to your system
 security regimen or can be a helpful adblocking tool allowing your
@@ -861,23 +875,35 @@ curve to implementing specially tailored policies on Linux that are just
 easier in Windows. Linux uses numbers frequently to determine the read,
 write, and execute permissions of the files on the disk. Sometimes in Arch,
 these numbers do not always match up after an update. Users and Groups assi-
-gned to each can be found in the etc-passwd or etc-group files. When changing
-user and groups assigned to a file, the numbers also change. A general rule
-of thumb is that 4 is equal to read, 1 to execute, and 2 to write. So a series
-of numbers like 755 would imply that the user and group is probably different
-from the way in which these attributes were assigned originally on your system
-by default. It was probably something like 777 or something, but everyones
-system is different. It is simple enough to change with either the chown or
-chmod commands, but I have yet to figure out an easy way to streamline this
-for new users in these scripts. I will get there though, so please be patient.
+gned to each can be found in the etc-passwd or etc-group files. When
+changing user and groups assigned to a file, the numbers also change.
+A general rule of thumb is that 4 is equal to read, 1 to execute, and
+2 to write. So a series of numbers like 755 would imply that the user and
+group is probably different from the way in which these attributes were
+assigned originally on your system by default. It was probably something
+like 777 or something, but everyones system is different. It is simple
+enough to change with either the chown or chmod commands, but I have yet
+to figure out an easy way to streamline this for new users in these scripts.
+I will get there though, so please be patient. A good website to better
+explain this is:https://www.guru99.com/file-permissions.html
+
+##########################################################################
+SUDO VERSION CHECKING
+##########################################################################
+With recent news of possible privilege escalation bugs found in sudo, I
+figured it wise to include a sudo version check option in SystemInfo.
+This will check for version numbers of sudo and sudo plugins. Versions
+1.8 are privy to the bug and some early 1.9 versions(eg. 1.9.2). 1.9.5
+should be immune, however as with sudo, many more bugs will eventually
+be discovered. It is imperative to keep your system updated regularly
+to patch these kinds of vulnerabilities.
 
 ##########################################################################
 CONTACT ME
 ##########################################################################
 For sending me hate mail, for inquiring assistance, and for sending me
 feedback and suggestions, email me at VeilofMaya@vivaldi.net
-Send your inquiries and suggestions with a
-corresponding subject line.
+Send your inquiries and suggestions with a corresponding subject line.
 EOF
 
 	clear
@@ -917,9 +943,7 @@ InstallAndConquer(){
 		echo "17 - Wine and or PlayonLinux"
 		echo "18 - Dropbox"
 		echo "19 - get out of this menu"
-
 		read software;
-
 		case $software in
 			1)
 			echo "1 - Geany"
@@ -1290,6 +1314,15 @@ InstallAndConquer(){
 	Greeting
 }
 
+RAMBack(){
+
+	#This clears the cached RAM
+	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
+
+	clear
+	Greeting
+}
+
 Uninstall(){
 	echo "Are there any other applications you wish to remove(Y/n)"
 	read answer
@@ -1314,19 +1347,17 @@ AccountSettings(){
 	echo "4 - Look for empty password users on the system"
 	echo "5 - See a list of accounts and groups on the system"
 	echo "6 - skip this menu"
-
 	read operation;
-
 	case $operation in
 		1)
 		echo $(cat /etc/group | awk -F: '{print $1}')
-		sleep 2
-		read -p "Please enter the groups you wish the user to be in:" $group1 $group2 $group3 $group4 $group5
+		sleep 1
+		read -p "Please enter the groups you wish the user to be in:" $group1 $group2 $group3
 		echo "Please enter the name of the user"
 		read name
 		echo "Please enter the password"
 		read password
-		sudo useradd $name -m -s /bin/bash -G $group1 $group2 $group3 $group4 $group5; echo $password | passwd --stdin $name
+		sudo useradd $name -m -s /bin/bash -G $group1 $group2 $group3; echo $password | passwd --stdin $name
 		;;
 		2)
 		echo "Note, this will remove all files related to the account"
@@ -1352,7 +1383,7 @@ AccountSettings(){
 		echo "We can do this later"
 		;;
 		*)
-		echo "This is an invaldi selection, please run this function again and try another."
+		echo "This is an invalid selection, please run this function again and try another."
 		;;
 	esac
 
@@ -1363,16 +1394,16 @@ AccountSettings(){
 CheckNetwork(){
 	for c in computer;
 	do
-		ping -c4 google.com > /dev/null
+		ping -c4 google.com
 		if [[ $? -eq 0 ]];
 		then
-			echo "Connection successful!"
+			echo "Connection successful"
 		else
 			read -p "Check hardware cable status and press enter..."
 			interface=$(ip -o -4 route show to default | awk '{print $5}')
-			sudo dhclient -v -r && sudo dhclient; sudo mmcli nm enable false
-			sudo nmcli nm enable true; sudo /etc/init.d/ network-manager restart
-			sudo ip link set $interface up #Refer to networkconfig.log
+			sudo dhclient -v -r && sudo dhclient; sudo systemctl stop NetworkManager.service
+			sudo systemctl disable NetworkManager.service; sudo systemctl enable NetworkManager.service
+			sudo systemctl start NetworkManager.service; sudo ip link set $interface up
 		fi
 	done
 }
@@ -1426,16 +1457,16 @@ EOF
 	#This clears the cache and thumbnails and other junk
 	sudo rm -r .cache/*
 	sudo rm -r .thumbnails/*
-	sudo rm -r ~/.local/share/Trash/*
+	sudo rm -r ~/.local/share/Trash/files/*
 	sudo rm -r ~/.nv/*
 	sudo rm -r ~/.npm/*
 	sudo rm -r ~/.w3m/*
-	sudo rm -r ~/.esd_auth #Best I can tell cookie for pulse audio
-	sudo rm -r ~/.local/share/recently-used.xbel
+	sudo rm ~/.esd_auth
+	sudo rm ~/.local/share/recently-used.xbel
 	#sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
 
-	#This removes old configurations of software
+	#This removes old configurations for software
 	sudo rm -r ~/.config/*-old
 
 	#This clears the cached RAM
@@ -1458,6 +1489,17 @@ EOF
 
 	#This uninstalls unwanted apps
 	Uninstall
+
+	#We can reboot if you want
+	echo "Reboot?(Y/n)"
+	read answer
+	if [[ $answer == Y ]];
+	then
+		Restart
+	else
+		clear
+		Greeting
+	fi
 }
 
 BrowserRepair(){
@@ -1503,9 +1545,7 @@ EOF
 	echo "8 - Midori"
 	echo "9 - Falkon"
 	echo "10 - Epiphany"
-
 	read operation;
-
 	case $operation in
 		1)
 		sudo cp -r ~/.mozilla/firefox ~/.mozilla/firefox-old; sudo rm -rf ~/.mozilla/firefox/*
@@ -1659,9 +1699,7 @@ EOF
 			echo "2 - Disable services"
 			echo "3 - create a list of all services running on your system"
 			echo "4 - Nothing just get me out of this menu"
-
 			read operation;
-
 			case $operation in
 				1)
 				echo "Enter the name of the service you wish to enable"
@@ -1703,9 +1741,7 @@ EOF
 			echo "2 - Disable services"
 			echo "3 - create a list of all services running on your system"
 			echo "4 - Nothing just get me out of this menu"
-
 			read operation;
-
 			case $operation in
 				1)
 				echo "Enter the name of the service you wish to enable"
@@ -1836,15 +1872,14 @@ Greeting(){
 	echo "11 - Make Swap"
 	echo "12 - Help"
 	echo "13 - Cleanup"
-	echo "14 - System Maintenance"
-	echo "15 - Browser Repair"
-	echo "16 - Update"
-	echo "17 - Restart"
-	echo "18 - Reset the desktop"
-	echo "19 - exit"
-
-  	read selection;
-
+	echo "14 - RAMBack"
+	echo "15 - System Maintenance"
+	echo "16 - Browser Repair"
+	echo "17 - Update"
+	echo "18 - Restart"
+	echo "19 - Reset the desktop"
+	echo "20 - exit"
+	read selection;
 	case $selection in
 		1)
 		Setup
@@ -1886,21 +1921,24 @@ Greeting(){
 		cleanup
 		;;
 		14)
-		SystemMaintenance
+		RAMBack
 		;;
 		15)
-		BrowserRepair
+		SystemMaintenance
 		;;
 		16)
-		Update
+		BrowserRepair
 		;;
 		17)
-		Restart
+		Update
 		;;
 		18)
-		Reset
+		Restart
 		;;
 		19)
+		Reset
+		;;
+		20)
 		echo $'\n'$"Thank you for using Ubuntu-Toolbox... Goodbye!"
 		exit
 		;;
