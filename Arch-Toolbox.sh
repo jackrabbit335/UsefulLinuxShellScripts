@@ -926,7 +926,6 @@ InstallAndConquer(){
 				sudo pacman -S --noconfirm quodlibet
 			elif [[ $player == 5 ]];
 			then
-				cd /tmp
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/spotify.tar.gz; gunzip spotify.tar.gz; tar -xvf spotify.tar; cd spotify && makepkg -si
 			elif [[ $player == 6 ]];
 			then
@@ -1103,7 +1102,7 @@ InstallAndConquer(){
 			sudo pacman -S --noconfirm adapta-gtk-theme arc-icon-theme evopop-icon-theme arc-gtk-theme papirus-icon-theme materia-gtk-theme paper-icon-theme
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/numix-gtk-theme.tar.gz; gunzip numix-gtk-theme.tar.gz; tar -xvf numix-gtk-theme.tar; cd numix-gtk-theme && makepkg -si
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/numix-icon-theme-git.tar.gz; gunzip numix-icon-theme-git.tar.gz; tar -xvf numix-icon-theme-git.tar; cd numix-icon-theme-git && makepkg -si
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/sardi-icons.tar.gz; gunzip sardi-icons.tar.gz; tar -xvf sardi-icons.tar; cd sardi-icons &&  makepkg -si 
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/sardi-icons.tar.gz; gunzip sardi-icons.tar.gz; tar -xvf sardi-icons.tar; cd sardi-icons &&  makepkg -si
 			;;
 			24)
 			echo "This installs neofetch"
@@ -1127,7 +1126,7 @@ InstallAndConquer(){
 				sudo pacman -S --noconfirm abiword gnumeric
 			elif [[ $software == 4 ]];
 			then
-				yay -S --noconfirm onlyoffice-bin
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/onlyoffice-bin.tar.gz; gunzip onlyoffice-bin.tar.gz; tar -xvf onlyoffice-bin.tar
 			else
 				echo "You've entered an invalid number"
 				InstallAndConquer
@@ -1670,7 +1669,6 @@ Uninstall(){
 }
 
 RAMBack(){
-
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
 
