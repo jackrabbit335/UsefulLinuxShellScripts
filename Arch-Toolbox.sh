@@ -1476,15 +1476,15 @@ Recent Changes with Installing certain apps and things
 ##########################################################################
 Since Pale Moon 28.x there have been some changes as to how we install
 the browser. Pale Moons lead Developer states how to install the browser
-in Linux systems via this page:
-http://linux.palemoon.org/help/installation/ I have still added a basic
-set up of palemoon that will extract the browser and send it to the opt
-directory while allowing the user to set up a symbolic link to the usr
-bin directory. This will allow you to use the browser by typing the name
-into a terminal much like any other application. For more tips and details
-see his website. Also, due to recently working with a friend on her
-laptop, I have found the need for Wine and so I added a simple command
-way to install wine on newer systems. Will work on this further.
+in Linux systems via this page: http://linux.palemoon.org/help/installation/ 
+I have still added a basic set up of palemoon that will extract the browser 
+and send it to the home directory while allowing the user to set up a symbolic 
+link to the usr bin directory. This will allow you to use the browser by 
+typing the name into a terminal much like any other application. For more 
+tips and details see his website. Also, due to recently working with a 
+friend on her laptop, I have found the need for Wine and so I added a 
+simple command way to install wine on newer systems. Will work on this 
+further.
 
 ##########################################################################
 HOSTS FILE MANIPULATION
@@ -2071,7 +2071,7 @@ Reset(){
 }
 
 DriverManager(){
-	echo "Coming Soon!"
+	echo "COMING SOON!!!!"
 	sleep 1
 
 	clear
