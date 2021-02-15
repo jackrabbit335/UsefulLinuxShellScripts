@@ -279,6 +279,11 @@ Systeminfo(){
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SHELL" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	which $SHELL >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DATE"  >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	date >> $host-sysinfo.txt
@@ -592,32 +597,33 @@ InstallAndConquer(){
 		echo "2 - DESKTOP SPECIFIC"
 		echo "3 - Package Manager"
 		echo "4 - Terminals"
-		echo "5 - IDE or text/code editor"
-		echo "6 - Cleaning software"
-		echo "7 - prelauncher"
-		echo "8 - Download managers"
-		echo "9 - Dropbox"
-		echo "10 - Torrent clients"
-		echo "11 - AUR Helpers"
-		echo "12 - Web browser from a list"
-		echo "13 - Media/home theater software"
-		echo "14 - Messenger Apps"
-		echo "15 - Virtual machine client"
-		echo "16 - Wine and play on linux"
-		echo "17 - quvcview"
-		echo "18 - Manipulate config files"
-		echo "19 - GAMES!!!!!!!!!"
-		echo "20 - Video editing/encoding"
-		echo "21 - Plank"
-		echo "22 - Backup"
-		echo "23 - THEMES!!!!!!!!"
-		echo "24 - Neofetch"
-		echo "25 - Office software"
-		echo "26 - Proprietary Fonts"
-		echo "27 - Security checkers/scanners"
-		echo "28 - Stellarium constellation and space observation"
-		echo "29 - Microcode"
-		echo "30 - Exit out of this menu"
+		echo "5 - Alternate shells"
+		echo "6 - IDE or text/code editor"
+		echo "7 - Cleaning software"
+		echo "8 - prelauncher"
+		echo "9 - Download managers"
+		echo "10 - Dropbox"
+		echo "11 - Torrent clients"
+		echo "12 - AUR Helpers"
+		echo "13 - Web browser from a list"
+		echo "14 - Media/home theater software"
+		echo "15 - Messenger Apps"
+		echo "16 - Virtual machine client"
+		echo "17 - Wine and play on linux"
+		echo "18 - quvcview"
+		echo "19 - Manipulate config files"
+		echo "20 - GAMES!!!!!!!!!"
+		echo "21 - Video editing/encoding"
+		echo "22 - Plank"
+		echo "23 - Backup"
+		echo "24 - THEMES!!!!!!!!"
+		echo "25 - Neofetch"
+		echo "26 - Office software"
+		echo "27 - Proprietary Fonts"
+		echo "28 - Security checkers/scanners"
+		echo "29 - Stellarium constellation and space observation"
+		echo "30 - Microcode"
+		echo "31 - Exit out of this menu"
 		read software;
 		case $software in
 			1)
@@ -689,6 +695,20 @@ InstallAndConquer(){
 			fi
 			;;
 			5)
+			echo "This installs alternate shells You will have to configure these yourself"
+			echo "1 - zsh"
+			echo "2 - fish"
+			read selection
+			if [[ $selection == 1 ]];
+			then
+				sudo pacman -S --noconfirm zsh zsh-completions
+			elif [[ $selection == 2 ]];
+			then
+				sudo pacman -S --needed --noconfirm fish pkgfile inetutils
+				#echo "exec fish" ~/.bashrc
+			fi 
+			;;
+			6)
 			echo "This installs a light weight editor(text/code editor/IDE)"
 			echo "1 - geany"
 			echo "2 - sublime text editor"
@@ -728,15 +748,15 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			6)
+			7)
 			echo "This installs cleaning software for Arch Linux Systems"
 			sudo pacman -S --noconfirm bleachbit rmlint
 			;;
-			7)
+			8)
 			echo "This installs a prelauncher"
 			sudo pacman -S --noconfirm preload
 			;;
-			8)
+			9)
 			echo "This installs a choice in download managers"
 			echo "1 - wget"
 			echo "2 - uget"
@@ -756,11 +776,11 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			9)
+			10)
 			echo "This installs Dropbox"
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/dropbox.tar.gz; gunzip dropbox.tar.gz; tar -xvf dropbox.tar; cd dropbox && makepkg -si
 			;;
-			10)
+			11)
 			echo "This installs your choice of torrent clients"
 			echo "1 - transmission-gtk"
 			echo "2 - deluge"
@@ -780,7 +800,7 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			11)
+			12)
 			echo "1 - pacaur"
 			echo "2 - trizen"
 			echo "3 - yay"
@@ -803,7 +823,7 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			12)
+			13)
 			echo "This installs your choice in browsers"
 			echo "1 - Chromium"
 			echo "2 - Epiphany"
@@ -894,7 +914,7 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			13)
+			14)
 			echo "This installs a choice in media players"
 			echo "1 - xplayer"
 			echo "2 - parole"
@@ -962,7 +982,7 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			14)
+			15)
 			echo "This installs a Messenger or chat client"
 			echo "1 - Pidgin"
 			echo "2 - Hexchat"
@@ -991,11 +1011,11 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/discord-canary.tar.gz; gunzip discord-canary.tar.gz; tar -xvf discord-canary.tar; cd discord-canary && makepkg -si
 			fi
 			;;
-			15)
+			16)
 			echo "This installs a virtualbox client"
 			sudo pacman -S --noconfirm virtualbox virtualbox-guest-utils virtualbox-guest-dkms
 			;;
-			16)
+			17)
 			echo "This installs Wine or Windows emulation software"
 			echo "1 - Wine"
 			echo "2 - playonlinux"
@@ -1014,15 +1034,15 @@ InstallAndConquer(){
 				;;
 			esac
 			;;
-			17)
+			18)
 			echo "This installs a webcam application for laptops"
 			sudo pacman -S --noconfirm guvcview
 			;;
-			18)
+			19)
 			echo "etc-update can help you manage pacnew files and other configuration files after system updates."
 			sudo pacman -S --needed base-devel; wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz; gunzip etc-update.tar.gz && tar -xvf etc-update.tar; cd etc-update && makepkg -si; wget https://aur.archlinux.org/cgit/aur.git/snapshot/downgrade.tar.gz; gunzip downgrade.tar.gz; tar -xvf downgrade.tar; cd downgrade && makepkg -si
 			;;
-			19)
+			20)
 			echo "This installs a choice in small games"
 			echo "1 - supertuxkart"
 			echo "2 - gnome-mahjongg"
@@ -1066,7 +1086,7 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			20)
+			21)
 			echo "This installs video/audio decoding/reencoding software"
 			sudo pacman -S --noconfirm kdenlive audacity
 			echo "Would you also like obs-studio?(Y/n)"
@@ -1077,11 +1097,11 @@ InstallAndConquer(){
 				break
 			done
 			;;
-			21)
+			22)
 			echo "This installs a dock application"
 			sudo pacman -S --noconfirm plank
 			;;
-			22)
+			23)
 			echo "This installs your backup software"
 			echo "1 - deja-dup"
 			echo "2 - timeshift"
@@ -1097,18 +1117,18 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			23)
+			24)
 			echo "This installs a few common themes"
 			sudo pacman -S --noconfirm adapta-gtk-theme arc-icon-theme evopop-icon-theme arc-gtk-theme papirus-icon-theme materia-gtk-theme paper-icon-theme
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/numix-gtk-theme.tar.gz; gunzip numix-gtk-theme.tar.gz; tar -xvf numix-gtk-theme.tar; cd numix-gtk-theme && makepkg -si
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/numix-icon-theme-git.tar.gz; gunzip numix-icon-theme-git.tar.gz; tar -xvf numix-icon-theme-git.tar; cd numix-icon-theme-git && makepkg -si
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/sardi-icons.tar.gz; gunzip sardi-icons.tar.gz; tar -xvf sardi-icons.tar; cd sardi-icons &&  makepkg -si
 			;;
-			24)
-			echo "This installs neofetch"
-			sudo pacman -S --noconfirm neofetch
-			;;
 			25)
+			echo "This installs neofetch"
+			sudo pacman -S --noconfirm neofetch; echo "neofetch" ~/.bashrc
+			;;
+			26)
 			echo "This installs office software"
 			echo "1 - Libreoffice"
 			echo "2 - Libreoffice-fresh"
@@ -1132,10 +1152,10 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			26)
+			27)
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz; wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gzgunzip ttf-ms-fonts.tar.gz; gunzip ttf-mac-fonts.tar.gz; tar -xvf ttf-ms-fonts.tar; tar -xvf ttf-mac-fonts.tar; cd ttf-ms-fonts; makepkg -si; pushd ttf-mac-fonts; makepkg -si; cd
 			;;
-			27)
+			28)
 			echo "This installs possible security software and virus checker if you wish"
 			echo "KaOS doesn't have these by default(has tomoyo) and clam av can be installed as flatpak"
 			echo "1 - Rkhunter"
@@ -1160,11 +1180,11 @@ InstallAndConquer(){
 				InstallAndConquer;;
 			esac
 			;;
-			28)
+			29)
 			echo "This installs stellarium incase you are a night sky observer"
 			sudo pacman -S --noconfirm stellarium
 			;;
-			29)
+			30)
 			echo "This installs Microcode based on your architecture"
 			cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
 			for c in $cpu;
@@ -1177,7 +1197,7 @@ InstallAndConquer(){
 				fi
 			done
 			;;
-			30)
+			31)
 			echo "Ok, well, I'm here if you change your mind"
 			break
 			;;
@@ -1210,6 +1230,7 @@ Average Linux User
 Joshua Strobl of the Solus project
 Steven Black,
 The creator of the other hosts lists I utilize on my own machines.
+EF LINUX MADE SIMPLE
 Many others...
 
 ##########################################################################
@@ -1314,6 +1335,19 @@ adays. I have recently added a monitor configuration file to Github. Is a
 template only and if you use it you will have to tweak it to fit your
 needs. See 10-monitor.conf. 10-monitor.conf will go in
 /etc/X11/xorg.conf.d/
+
+##########################################################################
+ALTERNATE SHELLS
+##########################################################################
+When installing an alternate shell it is important to note that other
+shells might not work with the current Arch-Toolbox script. Nevertheless
+If you would like to use these alternate shell programs I have added two 
+such applications in the InstallandConquer function. To enable the fish 
+shell you will have to manually edit this script and uncomment the 
+line which adds an exec command to the end of bashrc file. It is also
+important to note that manual configuration is required at this time.
+Some sites of import: https://wiki.archlinux.org/index.php/Fish
+https://wiki.archlinux.org/index.php/zsh
 
 ##########################################################################
 WATERFOX CLASSIC OVER THIRD GEN
