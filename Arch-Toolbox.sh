@@ -226,10 +226,9 @@ EOF
 	pacman -Q | grep ufw || sudo pacman -S --noconfirm ufw; sudo systemctl enable ufw; sudo ufw enable
 	echo "Would you like to deny ssh and telnet for security?(Y/n)"
 	read answer
-	while [ $answer == Y ]
+	while [ $answer == Y ];
 	do
-	sudo ufw deny ssh; sudo ufw deny telnet; sudo ufw reload
-	break
+		sudo ufw deny ssh; sudo ufw deny telnet; sudo ufw reload; break
 	done
 
 	#This fixes gufw not opening in kde plasma desktop
@@ -279,11 +278,6 @@ Systeminfo(){
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	echo "SHELL" >> $host-sysinfo.txt
-	echo "############################################################################" >> $host-sysinfo.txt
-	which $SHELL >> $host-sysinfo.txt
-	echo "" >> $host-sysinfo.txt
-	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DATE"  >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	date >> $host-sysinfo.txt
@@ -292,6 +286,11 @@ Systeminfo(){
 	echo "USER" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo $USER >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SHELL" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	which $SHELL >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DISTRIBUTION" >> $host-sysinfo.txt
