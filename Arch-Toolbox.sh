@@ -45,6 +45,17 @@ Setup(){
 	break
 	done
 
+	#This sets up your locale
+	echo "Would you like to set a locale?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		echo "Enter your preferred locale"
+		read locale
+		sudo localectl set-locale LANG=$locale; locale -a
+	break
+	done
+
 	#This restricts coredumps and tweaks system
 	sudo sed -i -e '/#Storage=external/c\Storage=none ' /etc/systemd/coredump.conf
 	sudo sed -i -e '/#PermitRootLogin/c\PermitRootLogin no ' /etc/ssh/sshd_config
