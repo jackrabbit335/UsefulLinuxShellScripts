@@ -234,7 +234,7 @@ EOF
 	done
 
 	#This starts your firewall
-	pacman -Q | grep ufw || sudo pacman -S --noconfirm ufw; sudo systemctl enable ufw; sudo ufw enable
+	pacman -Q | grep ufw || sudo pacman -S --noconfirm ufw; sudo systemctl enable ufw; sudo ufw default deny incoming; sudo ufw default allow outgoing; sudo ufw enable
 	echo "Would you like to deny ssh and telnet for security?(Y/n)"
 	read answer
 	while [ $answer == Y ];
