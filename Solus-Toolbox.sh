@@ -197,7 +197,7 @@ EOF
 	done
 
 	#This starts your firewall
-	eopkg list-installed | grep gufw || sudo eopkg -y install gufw; sudo systemctl enable ufw; sudo ufw enable
+	eopkg list-installed | grep gufw || sudo eopkg -y install gufw; sudo systemctl enable ufw; sudo ufw default deny incoming; sudo ufw default allow outgoing; sudo ufw enable
 	echo "Would you also like to deny ssh and telnet for security?(Y/n)"
 	read answer
 	while [ $answer == Y ]
