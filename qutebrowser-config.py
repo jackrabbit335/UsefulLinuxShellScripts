@@ -175,6 +175,8 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 #   - false
 #   - ask
 config.set('content.notifications', False, 'https://www.reddit.com')
+config.set('content.notifications', False, 'https://www.youtube.com')
+config.set('content.notifications', False, 'https://www.facebook.com')
 
 # Padding (in pixels) around text for tabs.
 # Type: Padding
