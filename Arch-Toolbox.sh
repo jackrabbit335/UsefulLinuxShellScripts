@@ -69,12 +69,6 @@ Setup(){
 	sudo sysctl -p
 
 	#WE can block ICMP requests from the kernel if you'd like
-	cat <<EOF
-	Ping requests from unknown sources could mean that people are trying to
-	locate/attack your network. If you need this functionality, you can comment
-	this line out, however, this shouldn't impact normal users. If you blocked ICMP traffic
-	in Iptables or UFW, you really don't need this here.
-EOF
 	echo "Block icmp ping requests?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -234,7 +228,7 @@ EOF
 	done
 
 	#This starts your firewall
-	pacman -Q | grep ufw || sudo pacman -S --noconfirm ufw; sudo systemctl enable ufw; sudo ufw default deny incoming; sudo ufw default allow outgoing; sudo ufw enable
+	pacman -Q | grep ufw || sudo pacman -S --noconfirm ufw; sudo systemctl enable ufw; sudo ufw default allow outgoing; sudo ufw default deny incoming; sudo ufw enable
 	echo "Would you like to deny ssh and telnet for security?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -909,10 +903,10 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/brave-bin.tar.gz; gunzip brave-bin.tar.gz; tar -xvf brave-bin.tar; cd brave-bin; makepkg -si
 			elif [[ $browser == 17 ]];
 			then
-				sudo pacman -S qutebrowser
+				sudo pacman -S --noconfirm qutebrowser python-adblock
 			elif [[ $browser == 18 ]];
 			then
-				sudo pacman -S otter-browser --noconfirm
+				sudo pacman -S --noconfirm otter-browser
 			elif [[ $browser == 19 ]];
 			then
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/iridium-rpm.tar.gz; gunzip iridium-rpm.tar.gz; tar -xvf iridium-rpm.tar; cd iridium-rpm && makepkg -si
