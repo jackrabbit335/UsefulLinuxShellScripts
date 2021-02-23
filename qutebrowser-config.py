@@ -178,6 +178,9 @@ config.set('content.notifications', False, 'https://www.reddit.com')
 config.set('content.notifications', False, 'https://www.youtube.com')
 config.set('content.notifications', False, 'https://www.facebook.com')
 
+#Set Download Location
+#c.downloads.location.directory = '/home/$USER/Downloads'
+
 # Padding (in pixels) around text for tabs.
 # Type: Padding
 c.tabs.padding = {'bottom': 0, 'left': 5, 'right': 5, 'top': 9}
