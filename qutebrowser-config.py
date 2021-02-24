@@ -198,7 +198,7 @@ c.tabs.padding = {'bottom': 0, 'left': 5, 'right': 5, 'top': 9}
 #   - left
 #   - right
 #   - center
-c.tabs.title.alignment = 'left'
+c.tabs.title.alignment = 'center'
 
 # Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 # for a blank page.
@@ -248,5 +248,5 @@ c.colors.webpage.darkmode.enabled = True
 # Bindings for normal mode
 config.bind('<Ctrl+Shift+y>', 'hint links spawn --detach mpv --force-window yes {hint-url}')
 
-#Uses youtube-dl to download content from site... Got this one from Derek Taylor's config on gitlab'
+#Uses youtube-dl to download content from site... Got this one from Derek Taylor's config on gitlab but changed the shortcut
 config.bind('<Ctrl+shift+z>', 'hint links spawn st -e youtube-dl {hint-url}')
