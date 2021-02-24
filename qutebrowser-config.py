@@ -186,7 +186,7 @@ config.set('content.notifications', False, 'https://www.facebook.com')
 # - Never
 # - Multiple(Shows only when multiple tabs are open)
 # - Switching(When switching only)
-c.tabs.show = 'Multiple'
+c.tabs.show = 'multiple'
 
 # Padding (in pixels) around text for tabs.
 # Type: Padding
