@@ -181,6 +181,13 @@ config.set('content.notifications', False, 'https://www.facebook.com')
 #Set Download Location
 #c.downloads.location.directory = '/home/$USER/Downloads'
 
+#When to show tabs
+# - Always(Default)
+# - Never
+# - Multiple(Shows only when multiple tabs are open)
+# - Switching(When switching only)
+c.tabs.show = 'Multiple'
+
 # Padding (in pixels) around text for tabs.
 # Type: Padding
 c.tabs.padding = {'bottom': 0, 'left': 5, 'right': 5, 'top': 9}
