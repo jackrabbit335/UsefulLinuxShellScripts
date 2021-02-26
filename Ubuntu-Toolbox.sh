@@ -229,7 +229,7 @@ Systeminfo(){
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	echo "DATE" >> $host-sysinfo.txt
+	echo "DATE"  >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	date >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
@@ -237,6 +237,11 @@ Systeminfo(){
 	echo "USER" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo $USER >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SHELL" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	which $SHELL >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DISTRIBUTION" >> $host-sysinfo.txt
