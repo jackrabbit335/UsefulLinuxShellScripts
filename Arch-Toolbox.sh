@@ -423,6 +423,11 @@ Systeminfo(){
 	ss -tulpn >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "DNS INFO" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	dig | grep SERVER >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "FIREWALL STATUS" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	sudo ufw status verbose >> $host-sysinfo.txt
