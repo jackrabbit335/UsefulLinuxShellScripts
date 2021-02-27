@@ -59,12 +59,6 @@ Setup(){
 	sudo sysctl -p
 
 	#WE can block ICMP requests from the kernel if you'd like
-	cat <<EOF
-	Ping requests from unknown sources could mean that people are trying to
-	locate/attack your network. If you need this functionality, you can comment
-	this line out, however, this shouldn't impact normal users. If you blocked ICMP traffic
-	in Iptables or UFW, you really don't need this here.
-EOF
 	echo "Block icmp ping requests?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -288,6 +282,11 @@ Systeminfo(){
 	echo "USER" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo $USER >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SHELL" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	which $SHELL >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DISTRIBUTION" >> $host-sysinfo.txt
@@ -1219,6 +1218,21 @@ the home directory can save some user settings as well.
 Update: There is now an ability to backup the entire system using rsync.
 With this new ability, in time there should be a way to restore the
 system in the event of a catastrophic issue.
+
+##########################################################################
+Recent Changes with Installing certain apps and things
+##########################################################################
+Since Pale Moon 28.x there have been some changes as to how we install
+the browser. Pale Moons lead Developer states how to install the browser
+in Linux systems via this page: http://linux.palemoon.org/help/installation/ 
+I have still added a basic set up of palemoon that will extract the browser 
+and send it to the home directory while allowing the user to set up a symbolic 
+link to the usr bin directory. This will allow you to use the browser by 
+typing the name into a terminal much like any other application. For more 
+tips and details see his website. Also, due to recently working with a 
+friend on her laptop, I have found the need for Wine and so I added a 
+simple command way to install wine on newer systems. Will work on this 
+further.
 
 ##########################################################################
 HOSTS FILE MANIPULATION
