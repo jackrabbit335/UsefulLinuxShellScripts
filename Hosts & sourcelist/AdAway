@@ -2326,7 +2326,6 @@
 0.0.0.0  remain.chartboosts.com
 0.0.0.0  chitika.com
 0.0.0.0  smetrics.chrysler.com
-0.0.0.0  chtbl.com
 0.0.0.0  jp.cinarra.com
 0.0.0.0  3ppa.jp.cinarra.com
 0.0.0.0  dps.jp.cinarra.com
@@ -8443,7 +8442,7 @@
 0.0.0.0  ads5.truecaller.com
 0.0.0.0  ads5-noneu.truecaller.com
 0.0.0.0  ads-router-noneu.truecaller.com
-127.0.0.0 batchlogging4.truecaller.com
+0.0.0.0  batchlogging4.truecaller.com
 0.0.0.0  pushid-noneu.truecaller.com
 0.0.0.0  choices.trustarc.com
 0.0.0.0  consent.trustarc.com
