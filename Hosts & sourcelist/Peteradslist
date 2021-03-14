@@ -179,7 +179,6 @@
 0.0.0.0  ad.wsod.com
 0.0.0.0  ad.wz.cz
 0.0.0.0  ad.xiaomi.com
-0.0.0.0  ad.xmovies8.si
 0.0.0.0  ad.xrea.com
 0.0.0.0  ad.yadro.ru
 0.0.0.0  ad.zanox.com
@@ -807,6 +806,7 @@
 0.0.0.0  adserver.janes.com
 0.0.0.0  adserver.lecool.com
 0.0.0.0  adserver.libero.it
+0.0.0.0  adserver.madeby.ws
 0.0.0.0  adserver.mobi
 0.0.0.0  adserver.msmb.biz
 0.0.0.0  adserver.news.com.au
@@ -1102,7 +1102,6 @@
 0.0.0.0  audience2media.com
 0.0.0.0  audienceinsights.com
 0.0.0.0  audit.median.hu
-0.0.0.0  audit.quantcast.mgr.consensu.org
 0.0.0.0  audit.webinform.hu
 0.0.0.0  augur.io
 0.0.0.0  auto-bannertausch.de
@@ -1278,7 +1277,6 @@
 0.0.0.0  bongacash.com
 0.0.0.0  boomads.com
 0.0.0.0  boomtrain.com
-0.0.0.0  boost-my-pr.de
 0.0.0.0  boredcrown.com
 0.0.0.0  boringcoat.com
 0.0.0.0  boudja.com
@@ -1384,14 +1382,12 @@
 0.0.0.0  cjlog.com
 0.0.0.0  cl0udh0st1ng.com
 0.0.0.0  claria.com
-0.0.0.0  clearcomb.com
 0.0.0.0  clevernt.com
 0.0.0.0  click.a-ads.com
 0.0.0.0  click.cartsguru.io
 0.0.0.0  click.email.bbc.com
 0.0.0.0  click.email.sonos.com
 0.0.0.0  click.fool.com
-0.0.0.0  click.kmindex.ru
 0.0.0.0  click.negociosdigitaisnapratica.com.br
 0.0.0.0  click.twcwigs.com
 0.0.0.0  click2freemoney.com
@@ -1508,7 +1504,6 @@
 0.0.0.0  counter.sparklit.com
 0.0.0.0  counter.yadro.ru
 0.0.0.0  counters.honesty.com
-0.0.0.0  counting.kmindex.ru
 0.0.0.0  coupling-media.de
 0.0.0.0  coxmt.com
 0.0.0.0  cp.abbp1.pw
@@ -1805,7 +1800,6 @@
 0.0.0.0  freebanner.com
 0.0.0.0  freecounterstat.com
 0.0.0.0  freelogs.com
-0.0.0.0  freeonlineusers.com
 0.0.0.0  freepay.com
 0.0.0.0  freeskreen.com
 0.0.0.0  freestats.com
@@ -1886,9 +1880,7 @@
 0.0.0.0  gunggo.com
 0.0.0.0  h-bid.com
 0.0.0.0  h0.t.hubspotemail.net
-0.0.0.0  h3btqpy2abc3.com
 0.0.0.0  h78xb.pw
-0.0.0.0  h92zbpn4zcv1.com
 0.0.0.0  habitualhumor.com
 0.0.0.0  hadskiz.com
 0.0.0.0  haltingbadge.com
@@ -2040,7 +2032,6 @@
 0.0.0.0  instrumentsponge.com
 0.0.0.0  intelliads.com
 0.0.0.0  intellitxt.com
-0.0.0.0  intentmedia.com
 0.0.0.0  interactive.forthnet.gr
 0.0.0.0  intergi.com
 0.0.0.0  internetfuel.com
@@ -2258,7 +2249,6 @@
 0.0.0.0  measuremap.com
 0.0.0.0  media-adrunner.mycomputer.com
 0.0.0.0  media-servers.net
-0.0.0.0  media.ftv-publicite.fr
 0.0.0.0  media.funpic.de
 0.0.0.0  media.net
 0.0.0.0  media01.eu
@@ -2493,7 +2483,6 @@
 0.0.0.0  opentag-stats.qubit.com
 0.0.0.0  openx.actvtech.com
 0.0.0.0  openx.angelsgroup.org.uk
-0.0.0.0  openx.aosis.co.za
 0.0.0.0  openx.cairo360.com
 0.0.0.0  openx.kgmedia.eu
 0.0.0.0  openx.net
@@ -2593,6 +2582,7 @@
 0.0.0.0  pix.spot.im
 0.0.0.0  pixel.adsafeprotected.com
 0.0.0.0  pixel.condenastdigital.com
+0.0.0.0  pixel.digitru.st
 0.0.0.0  pixel.keywee.co
 0.0.0.0  pixel.mtrcs.samba.tv
 0.0.0.0  pixel.sojern.com
@@ -3422,6 +3412,7 @@
 0.0.0.0  voodoo-ads.io
 0.0.0.0  vpon.com
 0.0.0.0  vrs.cz
+0.0.0.0  vrtzcontextualads.com
 0.0.0.0  vs.tucows.com
 0.0.0.0  vtracy.de
 0.0.0.0  vungle.com
@@ -3542,7 +3533,6 @@
 0.0.0.0  yoggrt.com
 0.0.0.0  ypu.samsungelectronics.com
 0.0.0.0  z3dmbpl6309s.com
-0.0.0.0  z501lpfg9x8v.com
 0.0.0.0  z5x.net
 0.0.0.0  zangocash.com
 0.0.0.0  zanox-affiliate.de
