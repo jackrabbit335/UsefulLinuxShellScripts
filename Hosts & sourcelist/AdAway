@@ -1191,6 +1191,7 @@
 0.0.0.0  appnext-a.akamaihd.net
 0.0.0.0  ds-aksb-a.akamaihd.net
 0.0.0.0  inmobisdk-a.akamaihd.net
+0.0.0.0  middycdn-a.akamaihd.net
 0.0.0.0  supersonicads-a.akamaihd.net
 0.0.0.0  cdn-guile.akamaized.net
 0.0.0.0  appsflyer.com.akamaized.net
@@ -1458,6 +1459,7 @@
 0.0.0.0  api.appcelerator.com
 0.0.0.0  cloud.appcelerator.com
 0.0.0.0  api.cloud.appcelerator.com
+0.0.0.0  in.appcenter.ms
 0.0.0.0  ads.appchair.com
 0.0.0.0  log.appchina.com
 0.0.0.0  mobile.appchina.com
@@ -1722,6 +1724,8 @@
 0.0.0.0  ir.us.y.atwola.com
 0.0.0.0  adctrl.aubemobile.com
 0.0.0.0  update.aubemobile.com
+0.0.0.0  configs-community-app.audent.io
+0.0.0.0  sentry.audent.io
 0.0.0.0  auditude.com
 0.0.0.0  augur.io
 0.0.0.0  autoads.asia
@@ -1937,6 +1941,7 @@
 0.0.0.0  licensing.blinkreceipt.com
 0.0.0.0  sdk-resources.blinkreceipt.com
 0.0.0.0  tr.blismedia.com
+0.0.0.0  personalization.bloomberg.com
 0.0.0.0  cdn.bluebillywig.com
 0.0.0.0  stats.bluebillywig.com
 0.0.0.0  vms.bluebillywig.com
@@ -2216,6 +2221,7 @@
 0.0.0.0  api.circularhub.com
 0.0.0.0  app.cision.com
 0.0.0.0  prapi.cision.com
+0.0.0.0  www.clarity.ms
 0.0.0.0  i.clean.gg
 0.0.0.0  report.clevernt.com
 0.0.0.0  sender.clevernt.com
@@ -3473,6 +3479,8 @@
 0.0.0.0  fastapi.net
 0.0.0.0  mparticle.map.fastly.net
 0.0.0.0  sonar-iad.xx.fbcdn.net
+0.0.0.0  video-dfw5-1.xx.fbcdn.net
+0.0.0.0  video-dfw5-2.xx.fbcdn.net
 0.0.0.0  affiliate.fc2.com
 0.0.0.0  aimg.fc2.com
 0.0.0.0  enrichmentservices.fccinteractive.com
@@ -3787,6 +3795,9 @@
 0.0.0.0  s.update.wo.gumgum.com
 0.0.0.0  t.update.wo.gumgum.com
 0.0.0.0  ad-specs.guoshipartners.com
+0.0.0.0  beacons.gvt2.com
+0.0.0.0  beacons.gcp.gvt2.com
+0.0.0.0  beacons5.gvt3.com
 0.0.0.0  gwallet.com
 0.0.0.0  panel.gwallet.com
 0.0.0.0  rp.gwallet.com
@@ -4632,6 +4643,7 @@
 0.0.0.0  tracking.listhub.net
 0.0.0.0  player.stats.live-video.net
 0.0.0.0  server.iad.liveperson.net
+0.0.0.0  lptag.liveperson.net
 0.0.0.0  sds.livesegmentservice.com
 0.0.0.0  ad.lkqd.net
 0.0.0.0  creative.lkqd.net
@@ -5060,8 +5072,12 @@
 0.0.0.0  dsp.send.microadinc.com
 0.0.0.0  s-rtb.send.microadinc.com
 0.0.0.0  ssp.send.microadinc.com
+0.0.0.0  mobile.pipe.aria.microsoft.com
 0.0.0.0  bingads.microsoft.com
 0.0.0.0  advertise.bingads.microsoft.com
+0.0.0.0  mobile.events.data.microsoft.com
+0.0.0.0  self.events.data.microsoft.com
+0.0.0.0  vortex.data.microsoft.com
 0.0.0.0  midasplayer.com
 0.0.0.0  adtrack1.midasplayer.com
 0.0.0.0  bling2.midasplayer.com
@@ -5607,6 +5623,7 @@
 0.0.0.0  prod-m-node-2112.nexage.com
 0.0.0.0  ccpa.psg.nexstardigital.net
 0.0.0.0  nextclick.pl
+0.0.0.0  geo.ngtv.io
 0.0.0.0  ads.nicovideo.jp
 0.0.0.0  awaf.answers.nielsen.com
 0.0.0.0  apps.nielsen.com
@@ -5692,6 +5709,7 @@
 0.0.0.0  mboxedge17.tt.omtrdc.net
 0.0.0.0  mboxedge28.tt.omtrdc.net
 0.0.0.0  southwestairlines.tt.omtrdc.net
+0.0.0.0  verizontelecom.tt.omtrdc.net
 0.0.0.0  pixel.onaudience.com
 0.0.0.0  browsercollector.oneapm.com
 0.0.0.0  miv2dc.oneapm.com
@@ -6175,6 +6193,7 @@
 0.0.0.0  vastcdn.outbrain.com
 0.0.0.0  videoclientsservicescalls.outbrain.com
 0.0.0.0  videoevents.outbrain.com
+0.0.0.0  vrt.outbrain.com
 0.0.0.0  widget-pixels.outbrain.com
 0.0.0.0  widgetmonitor.outbrain.com
 0.0.0.0  widgets.outbrain.com
@@ -6189,6 +6208,7 @@
 0.0.0.0  log.outbrainimg.com
 0.0.0.0  tcheck.outbrainimg.com
 0.0.0.0  zem.outbrainimg.com
+0.0.0.0  prod-collecticon.outlookmobile.com
 0.0.0.0  bidder.owneriq.net
 0.0.0.0  lbnyj2.bidder.owneriq.net
 0.0.0.0  lbsjc.bidder.owneriq.net
@@ -6899,6 +6919,7 @@
 0.0.0.0  ios-quinoa-personal-identify-prod.sense360eng.com
 0.0.0.0  quinoa-personal-identify-prod.sense360eng.com
 0.0.0.0  api.sentiance.com
+0.0.0.0  o430870.ingest.sentry.io
 0.0.0.0  servebom.com
 0.0.0.0  ads.servebom.com
 0.0.0.0  ads2.servebom.com
@@ -8485,6 +8506,7 @@
 0.0.0.0  analytics.query.yahoo.com
 0.0.0.0  geo.query.yahoo.com
 0.0.0.0  onepush.query.yahoo.com
+0.0.0.0  edge-mcdn-beacon.secure.yahoo.com
 0.0.0.0  bats.video.yahoo.com
 0.0.0.0  visit.webhosting.yahoo.com
 0.0.0.0  ads.yap.yahoo.com
