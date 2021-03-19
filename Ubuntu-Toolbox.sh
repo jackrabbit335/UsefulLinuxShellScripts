@@ -820,9 +820,8 @@ Recent Changes with Installing certain apps and things
 ##########################################################################
 Since Pale Moon 28.x there have been some changes as to how we install
 the browser. Pale Moons lead Developer states how to install the browser
-in Linux systems via this page:
-http://linux.palemoon.org/help/installation/ I have still added a basic
-set up of palemoon that will extract the browser and send it to the opt
+in Linux systems via this page: http://linux.palemoon.org/help/installation/
+I have set up of palemoon that will extract the browser and send it to the opt
 directory while allowing the user to set up a symbolic link to the usr
 bin directory. This will allow you to use the browser by typing the name
 into a terminal much like any other application. For more tips and details
@@ -1320,7 +1319,6 @@ InstallAndConquer(){
 }
 
 RAMBack(){
-
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
 
