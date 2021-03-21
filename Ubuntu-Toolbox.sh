@@ -1426,9 +1426,7 @@ Adblocking(){
 
 cleanup(){
 	#This flushes apt cache
-	sudo apt autoremove -y
-	sudo apt autoclean -y
-	sudo apt clean -y
+	sudo apt autoremove -y; sudo apt autoclean -y; sudo apt clean -y
 
 	#This removes older config files left by no longer installed applications
 	OLDCONF=$(dpkg -l | grep '^rc' | awk '{print $2}')
