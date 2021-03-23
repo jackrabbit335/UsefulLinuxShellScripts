@@ -973,10 +973,10 @@ InstallAndConquer(){
 				sudo apt install -y meld
 			elif [[ $package == 5 ]];
 			then
-				sudo snap install vscode
+				sudo snap install vscodium
 			elif [[ $package == 6 ]];
 			then
-				sudo apt install -y geany meld; sudo snap install sublime-text atom vscode
+				sudo apt install -y geany meld; sudo snap install sublime-text atom vscodium
 			fi
 			;;
 			2)
