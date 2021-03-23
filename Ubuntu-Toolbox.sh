@@ -964,19 +964,19 @@ InstallAndConquer(){
 				sudo apt install -y geany
 			elif [[ $package == 2 ]];
 			then
-				sudo apt install -y sublime-text
+				sudo snap install sublime-text
 			elif [[ $package == 3 ]];
 			then
-				sudo apt install -y atom
+				sudo snap install atom
 			elif [[ $package == 4 ]];
 			then
 				sudo apt install -y meld
 			elif [[ $package == 5 ]];
 			then
-				sudo snap install code --classic
+				sudo snap install vscode
 			elif [[ $package == 6 ]];
 			then
-				sudo apt install -y geany sublime-text
+				sudo apt install -y geany meld; sudo snap install sublime-text atom vscode
 			fi
 			;;
 			2)
@@ -1001,9 +1001,10 @@ InstallAndConquer(){
 			fi
 			;;
 			3)
-			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync p7zip zip unzip
+			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync p7zip zip software-properties-gtk
 			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop file-roller xdg-user-dirs
-			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools keepassxc unrar curl
+			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools keepassxc unrar curl unzip ffmpeg
+			sudo snap install youtube-dl
 			;;
 			4)
 			echo "1 - deja-dup"
@@ -1061,11 +1062,10 @@ InstallAndConquer(){
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_3.7.2218.45-1_amd64.deb; sudo apt install -f
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_3.6.2165.40-1_amd64.deb; sudo apt install -f
 			elif [[ $browser == 8 ]];
 			then
-				sudo sh -c 'echo "deb http://deb.opera.com/opera/ stable non-free" >> /etc/apt/sources.list.d/opera.list'; sudo sh -c 'wget -O - http://deb.opera.com/archive.key | apt-key add -'
-				sudo apt update && sudo apt install -y opera
+				sudo snap install opera
 			elif [[ $browser == 9 ]];
 			then
 				sudo apt install -y lynx
@@ -1166,7 +1166,7 @@ InstallAndConquer(){
 			sudo apt install -y guvcview
 			;;
 			12)
-			sudo apt install -y bleachbit gtkorphan
+			sudo apt install -y bleachbit deborphan
 			;;
 			13)
 			sudo apt install -y ttf-mscorefonts-installer
