@@ -1120,8 +1120,7 @@ InstallAndConquer(){
 				sudo apt install -y celluloid
 			elif [[ $player == 9 ]];
 			then
-				sudo apt install -y software-properties-common; sudo add-apt-repository ppa:team-xbmc/ppa
-				sudo apt update; sudo apt install -y kodi
+				sudo apt install -y kodi
 			fi
 			;;
 			7)
