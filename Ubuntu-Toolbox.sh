@@ -1264,10 +1264,10 @@ InstallAndConquer(){
 	do
 		if [[ $cpu == GenuineIntel ]];
 		then
-			sudo pacman -Q | grep intel-ucode || sudo pacman -S --noconfirm intel-ucode
+			sudo apt install -y intel-microcode && sudo update-initramfs -u 
 		elif [[ $cpu == AuthenticAMD ]];
 		then
-			sudo pacman -Q | grep amd-ucode || sudo pacman -S --noconfirm amd-ucode
+			sudo apt install -y amd-microcode && sudo update-initramfs -u
 		fi
 	done
 
