@@ -1264,10 +1264,10 @@ InstallAndConquer(){
 	do
 		if [[ $cpu == GenuineIntel ]];
 		then
-			sudo apt install -y intel-microcode && sudo update-initramfs -u 
+			apt list | grep intel-microcode || sudo apt install -y intel-microcode && sudo update-initramfs -u 
 		elif [[ $cpu == AuthenticAMD ]];
 		then
-			sudo apt install -y amd-microcode && sudo update-initramfs -u
+			apt list | grep amd64-microcode || sudo apt install -y amd64-microcode && sudo update-initramfs -u
 		fi
 	done
 
