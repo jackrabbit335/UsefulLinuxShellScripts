@@ -1414,9 +1414,9 @@ CheckNetwork(){
 		else
 			read -p "Check hardware cable status and press enter..."
 			interface=$(ip -o -4 route show to default | awk '{print $5}')
-			sudo dhclient -v -r && sudo dhclient; sudo systemctl stop NetworkManager.service
-			sudo systemctl disable NetworkManager.service; sudo systemctl enable NetworkManager.service
-			sudo systemctl start NetworkManager.service; sudo ip link set $interface up
+			sudo dhclient -v -r && sudo dhclient; sudo /etc/init.d/network-manager stop
+			sudo /etc/init.d/network-manager disable; sudo /etc/init.d/network-manager enable
+			sudo /etc/init.d/network-manager start; sudo ip link set $interface up
 		fi
 	done
 }
