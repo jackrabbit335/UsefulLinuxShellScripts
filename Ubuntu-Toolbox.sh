@@ -721,7 +721,7 @@ natural. .deb packages still do not handle dependencies very well, This
 is one of the reasons for some applications moving to Snap. Snap is yet
 another package management system that is coming installed into newer
 Ubuntu systems along with Flatpak. Between these two, the idea is that
-dependency issues and more updated software would come faster and easier
+dependency resolutions and more updated software would come faster and easier
 to the user and developers with just one package. It would be easier to
 maintain a Linux system or any other system if they were all using the
 same package across multiple platforms and distributions getting the same
@@ -1520,7 +1520,6 @@ BrowserRepair(){
 	it is probably best to do it in the browser itself, but when you just want something
 	fast, this can do it for you. More browsers and options are coming.
 EOF
-  #Look for the following browsers
 	browser1="$(find /usr/bin/firefox)"
 	browser2="$(find /usr/bin/vivaldi*)"
 	browser3="$(find /usr/bin/palemoon)"
@@ -1634,7 +1633,7 @@ SystemMaintenance(){
 	CheckNetwork
 
 	#This updates your system
-	sudo dpkg --configure -a; sudo apt install -f; sudo apt update; sudo apt upgrade -yy
+	sudo dpkg --configure -a; sudo apt install -f; sudo apt update; sudo apt upgrade -yy; sudo snap refresh
 
 	#This restarts systemd daemon. This can be useful for different reasons.
 	sudo systemctl daemon-reload #For systemd releases
@@ -1689,7 +1688,6 @@ SystemMaintenance(){
 }
 
 ServiceManager(){
-	#This is for service management. Prolly not a good idea but...
 	cat <<EOF
 	This is usually better off left undone, only disable services you know
 	you will not need or miss. I can not be held responsible if you brick
@@ -1698,7 +1696,7 @@ ServiceManager(){
 	and possibly by chrooting into the device via live cd and reversing the
 	process by running this again and reenabling the service.
 EOF
-  init=$(ps -p1 | awk 'NR!=1{print $4}')
+  	init=$(ps -p1 | awk 'NR!=1{print $4}')
 	for init in $init;
 	do
 		if [[ $init == upstart ]];
@@ -1791,7 +1789,6 @@ Restart(){
 }
 
 Backup(){
-	#This tries to backup your system
 	echo "What would you like to do?"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition(skipping unnecessary items)"
@@ -1841,7 +1838,6 @@ Backup(){
 }
 
 Restore(){
-	#This tries to restore the home folder
 	cat <<EOF
 	This tries to restore the home folder and nothing else, if you want to
 	restore the entire system,  you will have to do that in a live environment.
