@@ -411,6 +411,11 @@ Systeminfo(){
 	sudo apt list --installed >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "INSTALLED SNAPS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	snap list >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DEB PACKAGE MANAGER HISTORY" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	cat /var/log/dpkg.log >> $host-sysinfo.txt
@@ -1002,7 +1007,7 @@ InstallAndConquer(){
 			;;
 			3)
 			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync p7zip zip software-properties-gtk
-			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop file-roller xdg-user-dirs
+			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop file-roller xdg-user-dirs build-essential
 			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools keepassxc unrar curl unzip ffmpeg
 			sudo snap install youtube-dl
 			;;
@@ -1040,6 +1045,7 @@ InstallAndConquer(){
 			echo "10 - Dillo"
 			echo "11 - Waterfox"
 			echo "12 - Basilisk"
+			echo "13 - Brave"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -1080,6 +1086,9 @@ InstallAndConquer(){
 			then
 				wget http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz; tar -xvf basilisk-latest.linux64.tar.xz; sudo mv basilisk /opt && sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
+			elif [[ $browser == 13 ]];
+			then
+				sudo snap install brave
 			fi
 			;;
 			6)
