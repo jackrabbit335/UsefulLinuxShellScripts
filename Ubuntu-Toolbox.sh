@@ -1280,35 +1280,37 @@ InstallAndConquer(){
 		do
 			if [[ $DESKTOP_SESSION == unity ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras
+				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
 			elif [[ $DESKTOP_SESSION == xfce ]];
 			then
-				sudo apt install -y xubuntu-restricted-extras
+				sudo apt install -y xubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
 				sudo apt install -y xfce4-goodies
 			elif [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]];
 			then
-				sudo apt install -y kubuntu-restricted-extras
+				sudo apt install -y kubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
 			elif [[ $DESKTOP_SESSION == lxde ]];
 			then
-				sudo apt install -y lubuntu-restricted-extras
+				sudo apt install -y lubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
 			elif [[ $DESKTOP_SESSION == mate ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras
+				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
 			elif [[ $DESKTOP_SESSION == gnome ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras gnome-session gnome-tweak-tool gnome-shell-extensions
+				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
+				sudo apt install -y gnome-session gnome-tweak-tool gnome-shell-extensions 
 			elif [[ $DESKTOP_SESSION == enlightenment ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras
+				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
 			elif [[ $DESKTOP_SESSION == Budgie ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras
+				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
 			elif [[ $DESKTOP_SESSION == cinnamon ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras
+				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
 			elif [[ $DESKTOP_SESSION == ubuntu ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras gnome-tweak-tool dconf-editor chrome-gnome-shell gnome-shell-extensions
+				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
+				sudo apt install -y gnome-tweak-tool dconf-editor chrome-gnome-shell gnome-shell-extensions
 			else
 				echo "You're running some other window manager I haven't tested yet."
 				sleep 1
