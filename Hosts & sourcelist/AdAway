@@ -1421,7 +1421,6 @@
 0.0.0.0  app-adforce.jp
 0.0.0.0  analytics.app-adforce.jp
 0.0.0.0  app-measurement.com
-0.0.0.0  app.link
 0.0.0.0  cdn-api.appadhoc.com
 0.0.0.0  experiment.appadhoc.com
 0.0.0.0  sdk.appadhoc.com
@@ -5072,18 +5071,12 @@
 0.0.0.0  dsp.send.microadinc.com
 0.0.0.0  s-rtb.send.microadinc.com
 0.0.0.0  ssp.send.microadinc.com
-0.0.0.0  mobile.pipe.aria.microsoft.com
 0.0.0.0  bingads.microsoft.com
 0.0.0.0  advertise.bingads.microsoft.com
 0.0.0.0  mobile.events.data.microsoft.com
 0.0.0.0  self.events.data.microsoft.com
 0.0.0.0  vortex.data.microsoft.com
-0.0.0.0  midasplayer.com
 0.0.0.0  adtrack1.midasplayer.com
-0.0.0.0  bling2.midasplayer.com
-0.0.0.0  k1.midasplayer.com
-0.0.0.0  k1qa.midasplayer.com
-0.0.0.0  p.midasplayer.com
 0.0.0.0  client.midosoo.com
 0.0.0.0  minimob.com
 0.0.0.0  tracking.intl.miui.com
@@ -5721,7 +5714,6 @@
 0.0.0.0  apicosdk.onemt.co
 0.0.0.0  apicssdk.onemt.co
 0.0.0.0  click.oneplus.com
-0.0.0.0  onesignal.com
 0.0.0.0  geolocation.onetrust.com
 0.0.0.0  aa.online-metrix.net
 0.0.0.0  d.aa.online-metrix.net
