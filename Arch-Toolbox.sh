@@ -628,13 +628,14 @@ InstallAndConquer(){
 		echo "22 - Plank"
 		echo "23 - Backup"
 		echo "24 - THEMES!!!!!!!!"
-		echo "25 - Neofetch"
-		echo "26 - Office software"
-		echo "27 - Proprietary Fonts"
-		echo "28 - Security checkers/scanners"
-		echo "29 - Stellarium constellation and space observation"
-		echo "30 - Microcode"
-		echo "31 - Exit out of this menu"
+		echo "25 - Desktops"
+		echo "26 - Neofetch"
+		echo "27 - Office software"
+		echo "28 - Proprietary Fonts"
+		echo "29 - Security checkers/scanners"
+		echo "30 - Stellarium constellation and space observation"
+		echo "31 - Microcode"
+		echo "32 - Exit out of this menu"
 		read software;
 		case $software in
 			1)
@@ -880,7 +881,7 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi-snapshot.tar.gz; gunzip vivaldi-snapshot.tar.gz; tar -xvf vivaldi-snapshot.tar; cd vivaldi-snapshot && makepkg -si
 			elif [[ $browser == 8 ]];
 			then
-				wget http://linux.palemoon.org/datastore/release/palemoon-29.1.0.linux-x86_64-gtk3.tar.xz; tar -xf palemoon-29.1.0.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget http://linux.palemoon.org/datastore/release/palemoon-29.0.1.linux-x86_64-gtk3.tar.xz; tar -xf palemoon-29.0.1.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 9 ]];
 			then
@@ -1136,10 +1137,26 @@ InstallAndConquer(){
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/sardi-icons.tar.gz; gunzip sardi-icons.tar.gz; tar -xvf sardi-icons.tar; cd sardi-icons &&  makepkg -si
 			;;
 			25)
+			echo "1 - Openbox"
+			echo "2 - XFCE"
+			echo "3 - Gnome"
+			echo "4 - Mate"
+			echo "5 - i3"
+			read option
+			case $option in;
+			1) sudo pacman -S --noconfirm --needed openbox obconf obmenu nitrogen tint2;;
+			2) sudo pacman -S --noconfirm --needed xfce4 xfwm4-themes xfce4-goodies;;
+			3) sudo pacman -S --noconfirm --needed gnome;;
+			4) sudo pacman -S --noconfirm --needed mate;;
+			5) sudo pacman -s --noconfirm --needed i3;;
+			*) echo "You've selected an invalid number please try again"
+			esac
+			;;
+			26)
 			echo "This installs neofetch"
 			sudo pacman -S --noconfirm neofetch; echo "neofetch" ~/.bashrc
 			;;
-			26)
+			27)
 			echo "This installs office software"
 			echo "1 - Libreoffice"
 			echo "2 - Libreoffice-fresh"
@@ -1163,10 +1180,10 @@ InstallAndConquer(){
 				InstallAndConquer
 			fi
 			;;
-			27)
+			28)
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz; wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gzgunzip ttf-ms-fonts.tar.gz; gunzip ttf-mac-fonts.tar.gz; tar -xvf ttf-ms-fonts.tar; tar -xvf ttf-mac-fonts.tar; cd ttf-ms-fonts; makepkg -si; pushd ttf-mac-fonts; makepkg -si; cd
 			;;
-			28)
+			29)
 			echo "This installs possible security software and virus checker if you wish"
 			echo "KaOS doesn't have these by default(has tomoyo) and clam av can be installed as flatpak"
 			echo "1 - Rkhunter"
@@ -1191,11 +1208,11 @@ InstallAndConquer(){
 				InstallAndConquer;;
 			esac
 			;;
-			29)
+			30)
 			echo "This installs stellarium incase you are a night sky observer"
 			sudo pacman -S --noconfirm stellarium
 			;;
-			30)
+			31)
 			echo "This installs Microcode based on your architecture"
 			cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
 			for c in $cpu;
@@ -1208,7 +1225,7 @@ InstallAndConquer(){
 				fi
 			done
 			;;
-			31)
+			32)
 			echo "Ok, well, I'm here if you change your mind"
 			break
 			;;
@@ -2220,7 +2237,7 @@ Backup(){
 			sudo mount $device /mnt; sudo rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /mnt/$host-backups; sudo sync
 		elif [[ $Mountpoint == /run/media/$USER/* ]];
 		then
-			echo "Found a block device at designated coordinates...If this is the preferred drive, unmount it, leave it plugged in, and then run this again. Press enter to continue..."
+			read -p "Found a block device at designated coordinates...If this is the preferred drive, unmount it, leave it plugged in, and then run this again. Press enter to continue..."
 		fi
 		;;
 		*)
