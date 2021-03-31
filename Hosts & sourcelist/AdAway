@@ -40,11 +40,13 @@
 0.0.0.0  us-east-tlx.3lift.com
 0.0.0.0  us-west-eb2.3lift.com
 0.0.0.0  us-west-tlx.3lift.com
+0.0.0.0  404mobi.com
 0.0.0.0  4dsply.com
 0.0.0.0  4seeresults.com
 0.0.0.0  controller.4seeresults.com
 0.0.0.0  device.4seeresults.com
 0.0.0.0  replaycontroller.4seeresults.com
+0.0.0.0  51ginkgo.com
 0.0.0.0  www.5rocks.io
 0.0.0.0  logs.81plug.com
 0.0.0.0  cdn.88-f.net
@@ -1064,6 +1066,7 @@
 0.0.0.0  affiz.net
 0.0.0.0  c.affntwklnk.com
 0.0.0.0  fizzylabs.afftrack.com
+0.0.0.0  app.aflink.com
 0.0.0.0  code.afsanalytics.com
 0.0.0.0  new.afsanalytics.com
 0.0.0.0  api6.agilone.com
@@ -1274,6 +1277,7 @@
 0.0.0.0  fls-eu.amazon.sa
 0.0.0.0  fls-eu.amazon.se
 0.0.0.0  fls-fe.amazon.sg
+0.0.0.0  kinesis.ap-southeast-1.amazonaws.com
 0.0.0.0  ads-api-new-2052271615.ap-northeast-1.elb.amazonaws.com
 0.0.0.0  adserver-1277986481.ap-northeast-1.elb.amazonaws.com
 0.0.0.0  adserver-vpc-alb-0-649637586.ap-northeast-1.elb.amazonaws.com
@@ -1344,6 +1348,8 @@
 0.0.0.0  nativead.s3.amazonaws.com
 0.0.0.0  surveygizmobeacon.s3.amazonaws.com
 0.0.0.0  later-analytics-reports.s3-accelerate.amazonaws.com
+0.0.0.0  upload-tutelawest.s3-accelerate.amazonaws.com
+0.0.0.0  bin5y4muil.execute-api.us-east-1.amazonaws.com
 0.0.0.0  mobileanalytics.us-east-1.amazonaws.com
 0.0.0.0  global.cmcs.service.amazonsilk.com
 0.0.0.0  ambient-platform.com
@@ -1866,6 +1872,7 @@
 0.0.0.0  api.beaconstreetservices.com
 0.0.0.0  t.beanstalkdata.com
 0.0.0.0  t2.beanstalkdata.com
+0.0.0.0  alb.bearclod.com
 0.0.0.0  api.bee7.com
 0.0.0.0  api-proxy.bee7.com
 0.0.0.0  bepolite.eu
@@ -1984,6 +1991,7 @@
 0.0.0.0  em.bm23.com
 0.0.0.0  hosting-source.bm23.com
 0.0.0.0  incoming.bm23.com
+0.0.0.0  bnc.lt
 0.0.0.0  bnmla.com
 0.0.0.0  p.bokecc.com
 0.0.0.0  events.api.boomtrain.com
@@ -2222,6 +2230,7 @@
 0.0.0.0  prapi.cision.com
 0.0.0.0  www.clarity.ms
 0.0.0.0  i.clean.gg
+0.0.0.0  net.cleverjp.com
 0.0.0.0  report.clevernt.com
 0.0.0.0  sender.clevernt.com
 0.0.0.0  ui.clevernt.com
@@ -2271,6 +2280,7 @@
 0.0.0.0  bi-analytics.cloudapp.net
 0.0.0.0  bkt.clouddn.com
 0.0.0.0  metrics.cloudflarebolt.com
+0.0.0.0  us-central1-production-242307.cloudfunctions.net
 0.0.0.0  cloudmobi.net
 0.0.0.0  api.cloudmobi.net
 0.0.0.0  logger.cloudmobi.net
@@ -2320,6 +2330,8 @@
 0.0.0.0  company-target.com
 0.0.0.0  api.company-target.com
 0.0.0.0  segments.company-target.com
+0.0.0.0  complementics.com
+0.0.0.0  sdk-as.complementics.com
 0.0.0.0  mymetrix.comscore.com
 0.0.0.0  siterecruit.comscore.com
 0.0.0.0  comscoreresearch.com
@@ -2462,6 +2474,7 @@
 0.0.0.0  firebase-settings.crashlytics.com
 0.0.0.0  reports.crashlytics.com
 0.0.0.0  settings.crashlytics.com
+0.0.0.0  update.crashlytics.com
 0.0.0.0  sample-api-v2.crazyegg.com
 0.0.0.0  script.crazyegg.com
 0.0.0.0  tracking.crazyegg.com
@@ -2662,6 +2675,7 @@
 0.0.0.0  sync.crwdcntrl.net
 0.0.0.0  tags.crwdcntrl.net
 0.0.0.0  cszz.ru
+0.0.0.0  cuebiq.com
 0.0.0.0  in.cuebiq.com
 0.0.0.0  assets.customer.io
 0.0.0.0  edge-west.customer.io
@@ -2833,6 +2847,7 @@
 0.0.0.0  ads.dofunapps.com
 0.0.0.0  sdk.dofunapps.com
 0.0.0.0  m-motu.doglobal.net
+0.0.0.0  ti.domainforlite.com
 0.0.0.0  t.domdex.com
 0.0.0.0  gourmetads-1.t.domdex.com
 0.0.0.0  magnetic.t.domdex.com
@@ -3354,6 +3369,7 @@
 0.0.0.0  consoliads-api.us-west-2.elasticbeanstalk.com
 0.0.0.0  wpsconfig4svr.elasticbeanstalk.com
 0.0.0.0  elephantdata.net
+0.0.0.0  udata.elephantdata.net
 0.0.0.0  static.emporis.com
 0.0.0.0  emxdgt.com
 0.0.0.0  cs.emxdgt.com
@@ -3575,6 +3591,7 @@
 0.0.0.0  query.fqtag.com
 0.0.0.0  s.fqtag.com
 0.0.0.0  freegeoip.net
+0.0.0.0  dat.funheroic.com
 0.0.0.0  pub.funshion.com
 0.0.0.0  enjoynet.fuse-ad.com
 0.0.0.0  pokkt.fuse-ad.com
@@ -3779,6 +3796,9 @@
 0.0.0.0  api.growthbeat.com
 0.0.0.0  api.growthpush.com
 0.0.0.0  phar.gu-web.net
+0.0.0.0  guardianapps.co.uk
+0.0.0.0  nextgen.guardianapps.co.uk
+0.0.0.0  api.nextgen.guardianapps.co.uk
 0.0.0.0  gumgum.com
 0.0.0.0  aba.gumgum.com
 0.0.0.0  jp-g2.gumgum.com
@@ -3809,6 +3829,7 @@
 0.0.0.0  dil.hansel.io
 0.0.0.0  sdk.hansel.io
 0.0.0.0  ujm.hansel.io
+0.0.0.0  hanstrackr.com
 0.0.0.0  analytics-production.hapyak.com
 0.0.0.0  beacon.hariken.co
 0.0.0.0  sync.hariken.co
@@ -3924,6 +3945,7 @@
 0.0.0.0  aucollector.tealeaf.ibmcloud.com
 0.0.0.0  collector.tealeaf.ibmcloud.com
 0.0.0.0  uscollector.tealeaf.ibmcloud.com
+0.0.0.0  stable.icecyber.org
 0.0.0.0  iclickyou.com
 0.0.0.0  ads.icloseli.com
 0.0.0.0  api.icloseli.com
@@ -4057,6 +4079,7 @@
 0.0.0.0  messaging.influencemobile.com
 0.0.0.0  targeting.influencemobile.com
 0.0.0.0  images.informatm.com
+0.0.0.0  i151125.infourl.net
 0.0.0.0  studcat.infra.systems
 0.0.0.0  adapi.inlcorp.com
 0.0.0.0  sdk.inlocomedia.com
@@ -4211,6 +4234,8 @@
 0.0.0.0  pe1.intentiq.com
 0.0.0.0  sync.intentiq.com
 0.0.0.0  sync1.intentiq.com
+0.0.0.0  mobile-sdk-api.intercom.io
+0.0.0.0  js.intercomcdn.com
 0.0.0.0  cdn.intergi.com
 0.0.0.0  intermarkets.net
 0.0.0.0  intowow.com
@@ -4718,6 +4743,7 @@
 0.0.0.0  conf.lsosad.com
 0.0.0.0  dc.lsosad.com
 0.0.0.0  user.lucidmedia.com
+0.0.0.0  lg.luckyforworlds.com
 0.0.0.0  clientsdk.luminati.io
 0.0.0.0  dasdk.luojilab.com
 0.0.0.0  api.lytics.io
@@ -5079,7 +5105,10 @@
 0.0.0.0  adtrack1.midasplayer.com
 0.0.0.0  client.midosoo.com
 0.0.0.0  minimob.com
+0.0.0.0  tracking.india.miui.com
+0.0.0.0  sa.api.intl.miui.com
 0.0.0.0  tracking.intl.miui.com
+0.0.0.0  tracking.rus.miui.com
 0.0.0.0  api.sec.miui.com
 0.0.0.0  logupdate.avlyun.sec.miui.com
 0.0.0.0  tracking.miui.com
@@ -5519,6 +5548,7 @@
 0.0.0.0  cvt.mydas.mobi
 0.0.0.0  ads.mp.mydas.mobi
 0.0.0.0  androidsdk.ads.mp.mydas.mobi
+0.0.0.0  api.myendpoint.io
 0.0.0.0  ad.myinstashot.com
 0.0.0.0  hb.mynativeplatform.com
 0.0.0.0  web-clients.mynativeplatform.com
@@ -5632,6 +5662,7 @@
 0.0.0.0  lrc.nct.nixcdn.com
 0.0.0.0  stc-nas.nixcdn.com
 0.0.0.0  nmcdn.us
+0.0.0.0  dev.nodle.io
 0.0.0.0  ads.nordcurrent.com
 0.0.0.0  www.npttech.com
 0.0.0.0  insights.nr-assets.net
@@ -5708,7 +5739,9 @@
 0.0.0.0  miv2dc.oneapm.com
 0.0.0.0  api.oneaudience.com
 0.0.0.0  tracking.onefeed.co.uk
+0.0.0.0  onelink.me
 0.0.0.0  snssdk1233.onelink.me
+0.0.0.0  onelnk.com
 0.0.0.0  ads-au.onelouder.com
 0.0.0.0  advrts.onelouder.com
 0.0.0.0  apicosdk.onemt.co
@@ -6201,6 +6234,7 @@
 0.0.0.0  tcheck.outbrainimg.com
 0.0.0.0  zem.outbrainimg.com
 0.0.0.0  prod-collecticon.outlookmobile.com
+0.0.0.0  cdn.owebanalytics.com
 0.0.0.0  bidder.owneriq.net
 0.0.0.0  lbnyj2.bidder.owneriq.net
 0.0.0.0  lbsjc.bidder.owneriq.net
@@ -6371,6 +6405,7 @@
 0.0.0.0  jadserve.postrelease.com
 0.0.0.0  patriot.cs.pp.cn
 0.0.0.0  currency.prebid.org
+0.0.0.0  sdk.predic.io
 0.0.0.0  tags.premiumads.com.br
 0.0.0.0  presage.io
 0.0.0.0  a-v2.presage.io
@@ -6405,6 +6440,7 @@
 0.0.0.0  cdn-resources.prfct.cc
 0.0.0.0  track.pricespider.com
 0.0.0.0  sdk.privacy-center.org
+0.0.0.0  static.privacytrck.com
 0.0.0.0  privy.com
 0.0.0.0  assets.privy.com
 0.0.0.0  events.privy.com
@@ -6506,6 +6542,7 @@
 0.0.0.0  uefa.pushwoosh.com
 0.0.0.0  wetter.pushwoosh.com
 0.0.0.0  api.pxlad.io
+0.0.0.0  api.pythonexample.com
 0.0.0.0  qccoccocmedia.vn
 0.0.0.0  sdk.api.qgraph.io
 0.0.0.0  sdk.qikify.com
@@ -7119,6 +7156,7 @@
 0.0.0.0  sxp.smartclip.net
 0.0.0.0  stats.sxp.smartclip.net
 0.0.0.0  sync.sxp.smartclip.net
+0.0.0.0  api.smartechmetrics.com
 0.0.0.0  cdn.smartnews-ads.com
 0.0.0.0  conf.smartnews-ads.com
 0.0.0.0  i.smartnews-ads.com
@@ -7495,6 +7533,7 @@
 0.0.0.0  link.swrve.com
 0.0.0.0  sink-prod-us-east-1-star.swrve.com
 0.0.0.0  banner.synergy-e.com
+0.0.0.0  n.systemlog.me
 0.0.0.0  events.tabmo.io
 0.0.0.0  actions-latb.taboola.com
 0.0.0.0  am-match.taboola.com
@@ -7743,6 +7782,7 @@
 0.0.0.0  track.tend.io
 0.0.0.0  track.tenjin.com
 0.0.0.0  track.tenjin.io
+0.0.0.0  control.teragence.net
 0.0.0.0  terraclicks.com
 0.0.0.0  ondemand.tf-cdn.net
 0.0.0.0  push.tf-cdn.net
@@ -7762,6 +7802,7 @@
 0.0.0.0  smaato-server.thinknearhub.com
 0.0.0.0  thinknear-hosted.thinknearhub.com
 0.0.0.0  thrtle.com
+0.0.0.0  apd1.thunup.com
 0.0.0.0  sdk.tigertext.me
 0.0.0.0  registration.tiltingpoint.io
 0.0.0.0  utctime.tiltingpoint.io
@@ -7769,6 +7810,8 @@
 0.0.0.0  metrics.timewarnercable.com
 0.0.0.0  beacon.tingyun.com
 0.0.0.0  tags.tiqcdn.com
+0.0.0.0  api.tllms.com
+0.0.0.0  marketing.tllms.com
 0.0.0.0  tnkfactory.com
 0.0.0.0  ap.tnkfactory.com
 0.0.0.0  ar.tns-counter.ru
@@ -7805,6 +7848,8 @@
 0.0.0.0  vz-cdn2.trafficjunky.net
 0.0.0.0  t.trafmag.com
 0.0.0.0  traktum.com
+0.0.0.0  static.trckingbyte.com
+0.0.0.0  static.trckpath.com
 0.0.0.0  in.treasuredata.com
 0.0.0.0  cdp.in.treasuredata.com
 0.0.0.0  tremorhub.com
@@ -8359,6 +8404,7 @@
 0.0.0.0  analytics.mobile.walmart.com
 0.0.0.0  sdk.wappier.com
 0.0.0.0  wapstart.ru
+0.0.0.0  apd1.warnlog.com
 0.0.0.0  waust.at
 0.0.0.0  t.wayfair.com
 0.0.0.0  ads-resources.waze.com
@@ -8401,6 +8447,7 @@
 0.0.0.0  analytics.wildtangent.com
 0.0.0.0  mobile.analytics.wildtangent.com
 0.0.0.0  tracker.winudf.com
+0.0.0.0  pie.wirelessregistry.com
 0.0.0.0  opensdk.wlanbanlv.com
 0.0.0.0  api.wonderpush.com
 0.0.0.0  static.woopra.com
@@ -8453,9 +8500,12 @@
 0.0.0.0  sdkconfig.ad.xiaomi.com
 0.0.0.0  track.ad.xiaomi.com
 0.0.0.0  zeus.ad.xiaomi.com
+0.0.0.0  data.mistat.india.xiaomi.com
 0.0.0.0  api.ad.intl.xiaomi.com
 0.0.0.0  sdkconfig.ad.intl.xiaomi.com
 0.0.0.0  zeus.ad.intl.xiaomi.com
+0.0.0.0  data.mistat.intl.xiaomi.com
+0.0.0.0  data.mistat.rus.xiaomi.com
 0.0.0.0  ad-sdk.altamob.xiaoying.co
 0.0.0.0  ximad.com
 0.0.0.0  mjp-analytics.ximad.com
