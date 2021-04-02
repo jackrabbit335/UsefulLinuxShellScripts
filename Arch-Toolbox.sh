@@ -1142,8 +1142,8 @@ InstallAndConquer(){
 			echo "3 - Gnome"
 			echo "4 - Mate"
 			echo "5 - i3"
-			read option
-			case $option in;
+			read option;
+			case $option in
 			1) sudo pacman -S --noconfirm --needed openbox obconf obmenu nitrogen tint2;;
 			2) sudo pacman -S --noconfirm --needed xfce4 xfwm4-themes xfce4-goodies;;
 			3) sudo pacman -S --noconfirm --needed gnome;;
