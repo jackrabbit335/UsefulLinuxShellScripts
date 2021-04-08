@@ -1,5 +1,12 @@
 #0.0.0.0	yandex.ru
 #0.0.0.0	www.yandex.ru
+# https://github.com/bjornstar/hosts/issues/20
+#0.0.0.0	ww2.sinaimg.cn
+#0.0.0.0	wx1.sinaimg.cn
+#0.0.0.0	wx2.sinaimg.cn
+#0.0.0.0	wx3.sinaimg.cn
+#0.0.0.0	wx4.sinaimg.cn
+#0.0.0.0	js.t.sinajs.cn
 
 0.0.0.0	api.content.ad
 0.0.0.0	yts.ag
@@ -272,6 +279,7 @@
 0.0.0.0	dcads.sina.com.cn
 0.0.0.0	int.dpool.sina.com.cn
 0.0.0.0	ba.sass.sina.com.cn
+0.0.0.0	sbeacon.sina.com.cn
 0.0.0.0	mapping.yoyi.com.cn
 0.0.0.0	qzonestyle.gtimg.cn
 0.0.0.0	track.haiwai9.cn
@@ -279,13 +287,7 @@
 0.0.0.0	www.nianluen.cn
 0.0.0.0	p.sharele.cn
 0.0.0.0	i2.sinaimg.cn
-0.0.0.0	ww2.sinaimg.cn
-0.0.0.0	wx1.sinaimg.cn
-0.0.0.0	wx2.sinaimg.cn
-0.0.0.0	wx3.sinaimg.cn
-0.0.0.0	wx4.sinaimg.cn
 0.0.0.0	tjs.sjs.sinajs.cn
-0.0.0.0	js.t.sinajs.cn
 0.0.0.0	uic.sinajs.cn
 0.0.0.0	a.xnimg.cn
 0.0.0.0	jebe.xnimg.cn
@@ -1032,7 +1034,6 @@
 0.0.0.0	c.aol.com
 0.0.0.0	o.sa.aol.com
 0.0.0.0	2mdn.aolcdn.com
-0.0.0.0	o.aolcdn.com
 0.0.0.0	s.aolcdn.com
 0.0.0.0	aoredi.com
 0.0.0.0	display.apester.com
@@ -5531,6 +5532,8 @@
 0.0.0.0	y6a7tqyr.com
 0.0.0.0	y72yuyr9.com
 0.0.0.0	pixel.yabidos.com
+0.0.0.0	3p-geo.yahoo.com
+0.0.0.0	3p-udc.yahoo.com
 0.0.0.0	ads.yahoo.com
 0.0.0.0	tw2.adserver.yahoo.com
 0.0.0.0	uk.adserver.yahoo.com
@@ -5553,6 +5556,7 @@
 0.0.0.0	beap-bc.yahoo.com
 0.0.0.0	csp.yahoo.com
 0.0.0.0	fc.yahoo.com
+0.0.0.0	ganon.yahoo.com
 0.0.0.0	beap.gemini.yahoo.com
 0.0.0.0	tp2.beap.gemini.yahoo.com
 0.0.0.0	n.gemini.yahoo.com

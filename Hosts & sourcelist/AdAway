@@ -1515,8 +1515,11 @@
 0.0.0.0  iadsdk.apple.com
 0.0.0.0  ca.iadsdk.apple.com
 0.0.0.0  cf.iadsdk.apple.com
+0.0.0.0  news.iadsdk.apple.com
+0.0.0.0  su.iadsdk.apple.com
 0.0.0.0  tr.iadsdk.apple.com
 0.0.0.0  ut.iadsdk.apple.com
+0.0.0.0  www.iadsdk.apple.com
 0.0.0.0  banners.itunes.apple.com
 0.0.0.0  assets-secure.applicaster.com
 0.0.0.0  impact.applifier.com
@@ -1654,6 +1657,7 @@
 0.0.0.0  applift-b.apptornado.com
 0.0.0.0  eu-srv.apptornado.com
 0.0.0.0  sdk-b.apptornado.com
+0.0.0.0  tracking.apptrackerlink.com
 0.0.0.0  c.apptrk.io
 0.0.0.0  api.appwifi.com
 0.0.0.0  apsalar.com
@@ -2842,7 +2846,6 @@
 0.0.0.0  ufz.doesxyz.com
 0.0.0.0  ads.dofunapps.com
 0.0.0.0  sdk.dofunapps.com
-0.0.0.0  m-motu.doglobal.net
 0.0.0.0  ti.domainforlite.com
 0.0.0.0  t.domdex.com
 0.0.0.0  gourmetads-1.t.domdex.com
@@ -7047,6 +7050,7 @@
 0.0.0.0  beacon.sina.com.cn
 0.0.0.0  emarketing.sina.com.cn
 0.0.0.0  sbeacon.sina.com.cn
+0.0.0.0  pubstatus.sinaapp.com
 0.0.0.0  newspush.sinajs.cn
 0.0.0.0  api.icmobile.singlewire.com
 0.0.0.0  singular.net
@@ -7388,13 +7392,6 @@
 0.0.0.0  strikeiron.com
 0.0.0.0  filev4.subiz.com
 0.0.0.0  static.subiz.com
-0.0.0.0  collection.sumologic.com
-0.0.0.0  endpoint2.collection.sumologic.com
-0.0.0.0  collectors.sumologic.com
-0.0.0.0  us2.sumologic.com
-0.0.0.0  collection.us2.sumologic.com
-0.0.0.0  endpoint1.collection.us2.sumologic.com
-0.0.0.0  collectors.us2.sumologic.com
 0.0.0.0  sumome.com
 0.0.0.0  load.sumome.com
 0.0.0.0  superad2.com.sg
@@ -7939,6 +7936,8 @@
 0.0.0.0  trialpay.com
 0.0.0.0  ads.triongames.com
 0.0.0.0  tracking.trnox.com
+0.0.0.0  tracking-3-9f58.trnox.com
+0.0.0.0  trcakingapp.trnox.com
 0.0.0.0  beacon.tru.am
 0.0.0.0  ads-router-noneu.truecaller.com
 0.0.0.0  ads5-noneu.truecaller.com
@@ -8498,6 +8497,7 @@
 0.0.0.0  zeus.ad.xiaomi.com
 0.0.0.0  data.mistat.india.xiaomi.com
 0.0.0.0  api.ad.intl.xiaomi.com
+0.0.0.0  diagnosis.ad.intl.xiaomi.com
 0.0.0.0  sdkconfig.ad.intl.xiaomi.com
 0.0.0.0  zeus.ad.intl.xiaomi.com
 0.0.0.0  data.mistat.intl.xiaomi.com
@@ -8571,6 +8571,7 @@
 0.0.0.0  yandexadexchange.net
 0.0.0.0  mobile.yandexadexchange.net
 0.0.0.0  yemonisoni.com
+0.0.0.0  bi.yeshen.com
 0.0.0.0  ppsdk.yhmapi.com
 0.0.0.0  yicha.jp
 0.0.0.0  assets.yieldify-production.com
