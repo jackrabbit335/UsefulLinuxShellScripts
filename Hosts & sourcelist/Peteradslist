@@ -144,7 +144,6 @@
 0.0.0.0  ad.media-servers.net
 0.0.0.0  ad.mediastorm.hu
 0.0.0.0  ad.mg
-0.0.0.0  ad.mgd.de
 0.0.0.0  ad.mobstazinc.cn
 0.0.0.0  ad.musicmatch.com
 0.0.0.0  ad.myapple.pl
@@ -178,6 +177,7 @@
 0.0.0.0  ad.wsod.com
 0.0.0.0  ad.wz.cz
 0.0.0.0  ad.xiaomi.com
+0.0.0.0  ad.xmovies8.si
 0.0.0.0  ad.xrea.com
 0.0.0.0  ad.yadro.ru
 0.0.0.0  ad.zanox.com
@@ -865,7 +865,6 @@
 0.0.0.0  adsrv.deviantart.com
 0.0.0.0  adsrv.eacdn.com
 0.0.0.0  adsrv.iol.co.za
-0.0.0.0  adsrv.kobi.tv
 0.0.0.0  adsrv.moebelmarkt.tv
 0.0.0.0  adsrv.swidnica24.pl
 0.0.0.0  adsrv2.swidnica24.pl
@@ -896,6 +895,7 @@
 0.0.0.0  adtilt.com
 0.0.0.0  adtng.com
 0.0.0.0  adtology.com
+0.0.0.0  adtoma.com
 0.0.0.0  adtrace.org
 0.0.0.0  adtrade.net
 0.0.0.0  adtrak.net
@@ -1034,6 +1034,7 @@
 0.0.0.0  analytics.icons8.com
 0.0.0.0  analytics.inlinemanual.com
 0.0.0.0  analytics.jst.ai
+0.0.0.0  analytics.justuno.com
 0.0.0.0  analytics.live.com
 0.0.0.0  analytics.mailmunch.co
 0.0.0.0  analytics.myfinance.com
@@ -1175,7 +1176,6 @@
 0.0.0.0  banners.czi.cz
 0.0.0.0  banners.dine.com
 0.0.0.0  banners.direction-x.com
-0.0.0.0  banners.freett.com
 0.0.0.0  banners.friendfinder.com
 0.0.0.0  banners.getiton.com
 0.0.0.0  banners.golfasian.com
@@ -1274,6 +1274,7 @@
 0.0.0.0  bongacash.com
 0.0.0.0  boomads.com
 0.0.0.0  boomtrain.com
+0.0.0.0  boost-my-pr.de
 0.0.0.0  boredcrown.com
 0.0.0.0  boringcoat.com
 0.0.0.0  boudja.com
@@ -1803,6 +1804,7 @@
 0.0.0.0  freebanner.com
 0.0.0.0  freecounterstat.com
 0.0.0.0  freelogs.com
+0.0.0.0  freeonlineusers.com
 0.0.0.0  freepay.com
 0.0.0.0  freeskreen.com
 0.0.0.0  freestats.com
@@ -2079,7 +2081,6 @@
 0.0.0.0  justicejudo.com
 0.0.0.0  justpremium.com
 0.0.0.0  justrelevant.com
-0.0.0.0  justuno.com
 0.0.0.0  k.iinfo.cz
 0.0.0.0  kameleoon.eu
 0.0.0.0  kanoodle.com
@@ -2473,7 +2474,6 @@
 0.0.0.0  online-metrix.net
 0.0.0.0  online.miarroba.com
 0.0.0.0  onlinecash.com
-0.0.0.0  onlinecashmethod.com
 0.0.0.0  onlinerewardcenter.com
 0.0.0.0  onscroll.com
 0.0.0.0  onthe.io
@@ -2777,7 +2777,6 @@
 0.0.0.0  reklame.unwired-i.net
 0.0.0.0  relevanz10.de
 0.0.0.0  relmaxtop.com
-0.0.0.0  remarketingpixel.com
 0.0.0.0  remistrainew.club
 0.0.0.0  remox.com
 0.0.0.0  republika.onet.pl
