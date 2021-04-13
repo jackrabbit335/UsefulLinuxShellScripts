@@ -4517,7 +4517,6 @@
 0.0.0.0  ilb.pns.kt.com
 0.0.0.0  olb.pns.kt.com
 0.0.0.0  dataapi.ktplay.com
-0.0.0.0  dwimg.ktplay.com
 0.0.0.0  track.ktplay.com
 0.0.0.0  c.ktxtr.com
 0.0.0.0  t.ktxtr.com
@@ -6438,7 +6437,6 @@
 0.0.0.0  cdn-otf-cas.prfct.cc
 0.0.0.0  cdn-resources.prfct.cc
 0.0.0.0  track.pricespider.com
-0.0.0.0  sdk.privacy-center.org
 0.0.0.0  static.privacytrck.com
 0.0.0.0  privy.com
 0.0.0.0  assets.privy.com
