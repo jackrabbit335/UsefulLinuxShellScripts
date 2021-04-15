@@ -718,7 +718,7 @@ InstallAndConquer(){
 			then
 				sudo pacman -S --needed --noconfirm fish pkgfile inetutils
 				#echo "exec fish" ~/.bashrc
-			fi 
+			fi
 			;;
 			6)
 			echo "This installs a light weight editor(text/code editor/IDE)"
@@ -1144,7 +1144,7 @@ InstallAndConquer(){
 			echo "5 - i3"
 			read option;
 			case $option in
-			1) sudo pacman -S --noconfirm --needed openbox obconf obmenu nitrogen tint2;;
+			1) sudo pacman -S --noconfirm --needed openbox obconf obmenu nitrogen tint2 lxappearance picom;;
 			2) sudo pacman -S --noconfirm --needed xfce4 xfwm4-themes xfce4-goodies;;
 			3) sudo pacman -S --noconfirm --needed gnome;;
 			4) sudo pacman -S --noconfirm --needed mate;;
@@ -1369,9 +1369,9 @@ ALTERNATE SHELLS
 ##########################################################################
 When installing an alternate shell it is important to note that other
 shells might not work with the current Arch-Toolbox script. Nevertheless
-If you would like to use these alternate shell programs I have added two 
-such applications in the InstallandConquer function. To enable the fish 
-shell you will have to manually edit this script and uncomment the 
+If you would like to use these alternate shell programs I have added two
+such applications in the InstallandConquer function. To enable the fish
+shell you will have to manually edit this script and uncomment the
 line which adds an exec command to the end of bashrc file. It is also
 important to note that manual configuration is required at this time.
 Some sites of import: https://wiki.archlinux.org/index.php/Fish
@@ -1538,14 +1538,14 @@ Recent Changes with Installing certain apps and things
 ##########################################################################
 Since Pale Moon 28.x there have been some changes as to how we install
 the browser. Pale Moons lead Developer states how to install the browser
-in Linux systems via this page: http://linux.palemoon.org/help/installation/ 
-I have still added a basic set up of palemoon that will extract the browser 
-and send it to the home directory while allowing the user to set up a symbolic 
-link to the usr bin directory. This will allow you to use the browser by 
-typing the name into a terminal much like any other application. For more 
-tips and details see his website. Also, due to recently working with a 
-friend on her laptop, I have found the need for Wine and so I added a 
-simple command way to install wine on newer systems. Will work on this 
+in Linux systems via this page: http://linux.palemoon.org/help/installation/
+I have still added a basic set up of palemoon that will extract the browser
+and send it to the home directory while allowing the user to set up a symbolic
+link to the usr bin directory. This will allow you to use the browser by
+typing the name into a terminal much like any other application. For more
+tips and details see his website. Also, due to recently working with a
+friend on her laptop, I have found the need for Wine and so I added a
+simple command way to install wine on newer systems. Will work on this
 further.
 
 ##########################################################################
