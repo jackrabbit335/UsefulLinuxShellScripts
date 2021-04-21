@@ -3511,8 +3511,6 @@
 0.0.0.0  fastapi.net
 0.0.0.0  mparticle.map.fastly.net
 0.0.0.0  sonar-iad.xx.fbcdn.net
-0.0.0.0  video-dfw5-1.xx.fbcdn.net
-0.0.0.0  video-dfw5-2.xx.fbcdn.net
 0.0.0.0  affiliate.fc2.com
 0.0.0.0  aimg.fc2.com
 0.0.0.0  enrichmentservices.fccinteractive.com
@@ -5121,9 +5119,6 @@
 0.0.0.0  bingads.microsoft.com
 0.0.0.0  advertise.bingads.microsoft.com
 0.0.0.0  si.bingads.microsoft.com
-0.0.0.0  mobile.events.data.microsoft.com
-0.0.0.0  self.events.data.microsoft.com
-0.0.0.0  vortex.data.microsoft.com
 0.0.0.0  adtrack1.midasplayer.com
 0.0.0.0  client.midosoo.com
 0.0.0.0  minimob.com
@@ -6708,10 +6703,7 @@
 0.0.0.0  hal9000.redintelligence.net
 0.0.0.0  redirectpopads.com
 0.0.0.0  api.redshell.io
-0.0.0.0  redtram.com
 0.0.0.0  ads.reembed.com
-0.0.0.0  registeridm.com
-0.0.0.0  regmedia.co.uk
 0.0.0.0  adserver.reklamstore.com
 0.0.0.0  adimg.rekmob.com
 0.0.0.0  ads.rekmob.com
@@ -7985,7 +7977,6 @@
 0.0.0.0  trfmxt.com
 0.0.0.0  trialpay.com
 0.0.0.0  ads.triongames.com
-0.0.0.0  midrollmedia.mc.tritondigital.com
 0.0.0.0  tracking.trnox.com
 0.0.0.0  tracking-3-9f58.trnox.com
 0.0.0.0  trcakingapp.trnox.com
@@ -7997,6 +7988,8 @@
 0.0.0.0  consent.trustarc.com
 0.0.0.0  preferences.trustarc.com
 0.0.0.0  choices.truste.com
+0.0.0.0  cdn.tsyndicate.com
+0.0.0.0  lcdn.tsyndicate.com
 0.0.0.0  gateway.ttpsdk.info
 0.0.0.0  promo-images.ttpsdk.info
 0.0.0.0  ttplugins.ttpsdk.info
@@ -8547,6 +8540,7 @@
 0.0.0.0  events.xg4ken.com
 0.0.0.0  resources.xg4ken.com
 0.0.0.0  services.xg4ken.com
+0.0.0.0  collector.xhamster.com
 0.0.0.0  api.ad.xiaomi.com
 0.0.0.0  log.ad.xiaomi.com
 0.0.0.0  sdkconfig.ad.xiaomi.com
