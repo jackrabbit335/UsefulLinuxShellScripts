@@ -1495,6 +1495,7 @@
 0.0.0.0	b.casalemedia.com
 0.0.0.0	c.casalemedia.com
 0.0.0.0	dsum.casalemedia.com
+0.0.0.0	htlb.casalemedia.com
 0.0.0.0	ip.casalemedia.com
 0.0.0.0	js.casalemedia.com
 0.0.0.0	r.casalemedia.com
@@ -1730,6 +1731,7 @@
 0.0.0.0	api.company-target.com
 0.0.0.0	segments.company-target.com
 0.0.0.0	c.compete.com
+0.0.0.0	completedmisunderstand.com
 0.0.0.0	cdnl.complex.com
 0.0.0.0	media.complex.com
 0.0.0.0	stats.complex.com
@@ -1833,6 +1835,7 @@
 0.0.0.0	script.crazyegg.com
 0.0.0.0	ads.creafi-online-media.com
 0.0.0.0	ads.creative-serving.com
+0.0.0.0	www.creativedisplayformat.com
 0.0.0.0	crentgate.com
 0.0.0.0	criteo.com
 0.0.0.0	dis.as.criteo.com
@@ -2575,6 +2578,8 @@
 0.0.0.0	t.grtyo.com
 0.0.0.0	i.api.grvcdn.com
 0.0.0.0	b.grvcdn.com
+0.0.0.0	grvmedia.com
+0.0.0.0	s.grvmedia.com
 0.0.0.0	csi.gstatic.com
 0.0.0.0	gu-api.com
 0.0.0.0	www.gu-ecom.com
@@ -2641,6 +2646,8 @@
 0.0.0.0	www.hicpm10.com
 0.0.0.0	www.hicpm5.com
 0.0.0.0	hidefinstall.com
+0.0.0.0	highperformancecpmnetwork.com
+0.0.0.0	pl15927205.highperformancecpmnetwork.com
 0.0.0.0	www.highprofitnetwork.com
 0.0.0.0	highrevenuecpm.com
 0.0.0.0	pl15897498.highrevenuecpm.com
@@ -2663,6 +2670,7 @@
 0.0.0.0	s4.histats.com
 0.0.0.0	sstatic1.histats.com
 0.0.0.0	loga.hit-parade.com
+0.0.0.0	cmpv2.hitc.com
 0.0.0.0	www.hitcpm.com
 0.0.0.0	www.hitfreegames.com
 0.0.0.0	101756.hittail.com
@@ -3126,6 +3134,8 @@
 0.0.0.0	rt.legolas-media.com
 0.0.0.0	lehechapunevent.com
 0.0.0.0	letsadvertisetogether.com
+0.0.0.0	lever-analytics.com
+0.0.0.0	t.lever-analytics.com
 0.0.0.0	lfclktkwnc.com
 0.0.0.0	lffyoomtjjhvc.com
 0.0.0.0	www.lffyoomtjjhvc.com
@@ -3624,6 +3634,9 @@
 0.0.0.0	xhr.nimdinb.com
 0.0.0.0	vd.nimem.com
 0.0.0.0	ninjagod.com
+0.0.0.0	nitropay.com
+0.0.0.0	a.nitropay.com
+0.0.0.0	s.nitropay.com
 0.0.0.0	tracker.nitropay.com
 0.0.0.0	njjybqyiuotl.com
 0.0.0.0	www.njjybqyiuotl.com
@@ -3671,6 +3684,7 @@
 0.0.0.0	consent.cmp.oath.com
 0.0.0.0	go.oclaserver.com
 0.0.0.0	go.oclasrv.com
+0.0.0.0	cdn.ocmhood.com
 0.0.0.0	icon3.octophor.com
 0.0.0.0	content.oddcast.com
 0.0.0.0	data.oddcast.com
@@ -4024,6 +4038,7 @@
 0.0.0.0	addons.prestashop.com
 0.0.0.0	pricee.com
 0.0.0.0	cdn.printfriendly.com
+0.0.0.0	privacy-mgmt.com
 0.0.0.0	privitize.com
 0.0.0.0	api.privy.com
 0.0.0.0	assets.privy.com
@@ -5174,6 +5189,7 @@
 0.0.0.0	targeting.unrulymedia.com
 0.0.0.0	unrulyx-sg-8.unrulymedia.com
 0.0.0.0	video.unrulymedia.com
+0.0.0.0	untiloutrage.com
 0.0.0.0	uoarbhxfyygn.com
 0.0.0.0	cm4.upclick.com
 0.0.0.0	www.upload2.com
@@ -5722,6 +5738,7 @@
 0.0.0.0	www.zkzpfpoazfgq.com
 0.0.0.0	zlfgedpuxrbpgm.com
 0.0.0.0	www.zlfgedpuxrbpgm.com
+0.0.0.0	www.zmnkduay.com
 0.0.0.0	srv-uk.znaptag.com
 0.0.0.0	www.znnmzggbw.com
 0.0.0.0	secure.zombaio.com
@@ -5762,6 +5779,8 @@
 0.0.0.0	adserver.adtech.de
 0.0.0.0	ad.dc2.adtech.de
 0.0.0.0	ads.adtiger.de
+0.0.0.0	audiencemanager.de
+0.0.0.0	ad.audiencemanager.de
 0.0.0.0	www1.belboon.de
 0.0.0.0	rc.rtl.btt.betarget.de
 0.0.0.0	e-wolff-tools.de
@@ -6481,6 +6500,7 @@
 0.0.0.0	s.ato.mx
 0.0.0.0	blampspot.x10.mx
 0.0.0.0	i2.cnt.my
+0.0.0.0	21689.directpaper.name
 0.0.0.0	shacsda.name
 0.0.0.0	21647.shacsda.name
 0.0.0.0	rcp.c.appier.ne
@@ -6545,6 +6565,8 @@
 0.0.0.0	4-you.net
 0.0.0.0	www.5221.net
 0.0.0.0	image.52bt.net
+0.0.0.0	a-mo.net
+0.0.0.0	prebid.a-mo.net
 0.0.0.0	www.a135.net
 0.0.0.0	js.a3p4.net
 0.0.0.0	px.a8.net
@@ -6606,6 +6628,7 @@
 0.0.0.0	alcobro.net
 0.0.0.0	bmp.ali213.net
 0.0.0.0	www.all-pages.net
+0.0.0.0	aloha-news.net
 0.0.0.0	cdn.alphaguards.net
 0.0.0.0	amgload.net
 0.0.0.0	ampproject.net
@@ -6735,6 +6758,7 @@
 0.0.0.0	dr3k6qonw2kee.cloudfront.net
 0.0.0.0	dsh1ct2zrfakt.cloudfront.net
 0.0.0.0	dtv5loup63fac.cloudfront.net
+0.0.0.0	dxgo95ahe73e8.cloudfront.net
 0.0.0.0	dy48bnzanqw0v.cloudfront.net
 0.0.0.0	dylasklmlxige.cloudfront.net
 0.0.0.0	dzcx04lyk9hjp.cloudfront.net
@@ -7196,6 +7220,8 @@
 0.0.0.0	soma-assets.smaato.net
 0.0.0.0	c.smartclick.net
 0.0.0.0	solutiontoyourissues.net
+0.0.0.0	sp-prod.net
+0.0.0.0	ccpa.sp-prod.net
 0.0.0.0	specificclick.net
 0.0.0.0	adopt.specificclick.net
 0.0.0.0	afe.specificclick.net
