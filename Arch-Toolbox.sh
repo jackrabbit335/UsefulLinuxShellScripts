@@ -943,6 +943,7 @@ InstallAndConquer(){
 			echo "13 - gnome-mplayer"
 			echo "14 - celluloid"
 			echo "15 - lollypop"
+			echo "16 - strawberry"
 			read player
 			if [[ $player == 1 ]];
 			then
@@ -989,6 +990,9 @@ InstallAndConquer(){
 			elif [[ $player == 15 ]];
 			then
 				sudo pacman -S --noconfirm lollypop
+			elif [[ $player == 16 ]];
+			then
+				sudo pacman -S --noconfirm strawberry
 			else
 				echo "You have entered an invalid number"
 				InstallAndConquer
