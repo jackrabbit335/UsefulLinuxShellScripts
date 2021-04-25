@@ -409,7 +409,6 @@
 0.0.0.0  ads.bigfoot.com
 0.0.0.0  ads.bing.com
 0.0.0.0  ads.bittorrent.com
-0.0.0.0  ads.biz.tr
 0.0.0.0  ads.blog.com
 0.0.0.0  ads.bloomberg.com
 0.0.0.0  ads.bluemountain.com
@@ -1355,6 +1354,7 @@
 0.0.0.0  cdn.heapanalytics.com
 0.0.0.0  cdn.keywee.co
 0.0.0.0  cdn.onesignal.com
+0.0.0.0  cdn.panelbear.com
 0.0.0.0  cdn.segment.com
 0.0.0.0  cecash.com
 0.0.0.0  cedato.com
@@ -1542,7 +1542,6 @@
 0.0.0.0  crwdcntrl.net
 0.0.0.0  crypto-loot.org
 0.0.0.0  ctnetwork.hu
-0.0.0.0  cubics.com
 0.0.0.0  culturedcrayon.com
 0.0.0.0  cumbersomecloud.com
 0.0.0.0  curtaincows.com
@@ -1867,6 +1866,7 @@
 0.0.0.0  go-clicks.de
 0.0.0.0  go-mpulse.net
 0.0.0.0  go-rank.de
+0.0.0.0  go.pardot.com
 0.0.0.0  go2affise.com
 0.0.0.0  goingplatinum.com
 0.0.0.0  goldstats.com
@@ -3388,7 +3388,6 @@
 0.0.0.0  utl-1.com
 0.0.0.0  uttermosthobbies.com
 0.0.0.0  uu.domainforlite.com
-0.0.0.0  uzk4umokyri3.com
 0.0.0.0  v1.cnzz.com
 0.0.0.0  v1adserver.com
 0.0.0.0  validclick.com

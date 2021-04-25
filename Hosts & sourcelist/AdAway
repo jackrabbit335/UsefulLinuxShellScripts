@@ -602,7 +602,6 @@
 0.0.0.0  adpxljs.adpxl.co
 0.0.0.0  fl.adpxl.co
 0.0.0.0  adserver.adreactor.com
-0.0.0.0  s.adrise.tv
 0.0.0.0  adroll.com
 0.0.0.0  adx-winners-ap-southeast-1-rtb.adroll.com
 0.0.0.0  adx-winners-eu-west-1-rtb.adroll.com
@@ -7195,8 +7194,6 @@
 0.0.0.0  i.smartnews-ads.com
 0.0.0.0  thumbnail.smartnews-ads.com
 0.0.0.0  ads.smartstream.tv
-0.0.0.0  cdn.smassets.net
-0.0.0.0  prod.smassets.net
 0.0.0.0  abort-count.smbeat.jp
 0.0.0.0  api.smbeat.jp
 0.0.0.0  control.smbeat.jp
@@ -8751,7 +8748,6 @@
 0.0.0.0  log.news.zing.vn
 0.0.0.0  stats.zmags.com
 0.0.0.0  ssl.zoomanalytics.co
-0.0.0.0  widget-mediator.zopim.com
 0.0.0.0  track.zorkanetwork.com
 0.0.0.0  stats.zotabox.com
 0.0.0.0  api-us-east.zqtk.net
