@@ -82,4 +82,6 @@
 0.0.0.0  xhh95.mjt.lu
 0.0.0.0  connect.facebook.net
 0.0.0.0  conviva.com
-0.0.0.0 www.conviva.com
+0.0.0.0  www.conviva.com
+0.0.0.0  ads.pinterest.com
+0.0.0.0  log.pinterest.com
