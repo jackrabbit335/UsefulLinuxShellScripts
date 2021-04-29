@@ -203,6 +203,7 @@ Setup(){
 		elif [[ $distribution == KaOS ]];
 		then
 			echo "Ranking mirrors is no longer required for this distribution."
+			sudo pacman -Syyu --noconfirm
 			if [[ $? -eq 0 ]];
 			then
 				echo "update successful"
