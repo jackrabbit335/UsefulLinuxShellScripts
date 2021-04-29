@@ -202,7 +202,7 @@ Setup(){
 			fi
 		elif [[ $distribution == KaOS ]];
 		then
-			sudo rankmirrors -v /etc/pacman.d/mirrolist; sudo pacman -Syyu --noconfirm
+			echo "Ranking mirrors is no longer required for this distribution."
 			if [[ $? -eq 0 ]];
 			then
 				echo "update successful"
@@ -1968,7 +1968,7 @@ SystemMaintenance(){
 		sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu --noconfirm
 	elif [[ $distribution == KaOS ]];
 	then
-		sudo rankmirrors -v /etc/pacman.d/mirrolist; sudo pacman -Syyu --noconfirm
+		sudo pacman -Syyu --noconfirm
 	else
 		sudo pacman -Q | grep reflector || sudo pacman -S --noconfirm reflector; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
 	fi
