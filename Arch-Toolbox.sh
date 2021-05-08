@@ -1042,7 +1042,7 @@ InstallAndConquer(){
 			;;
 			16)
 			echo "This installs a virtualbox client"
-			sudo pacman -S --noconfirm virtualbox virtualbox-guest-utils virtualbox-guest-dkms
+			sudo pacman -S --noconfirm virtualbox virtualbox-guest-iso
 			;;
 			17)
 			echo "This installs Wine or Windows emulation software"
@@ -1794,7 +1794,7 @@ cleanup(){
 	sudo pacman -Rsn --noconfirm $(pacman -Qqdt)
 
 	#Optional This will remove the pacman cached applications and older versions
-	sudo pacman -Scc
+	#sudo pacman -Scc
 
 	#This removes unwanted apps
 	Uninstall
