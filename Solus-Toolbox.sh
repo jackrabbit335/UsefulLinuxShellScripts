@@ -725,7 +725,7 @@ InstallAndConquer(){
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
 			elif [[ $browser == 11 ]];
 			then
-				wget https://linux.palemoon.org/datastore/release/palemoon-29.2.0.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-29.2.0.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget https://linux.palemoon.org/datastore/release/palemoon-29.2.1.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-29.2.1.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 12 ]];
 			then
