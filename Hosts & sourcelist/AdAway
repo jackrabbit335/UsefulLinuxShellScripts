@@ -6399,15 +6399,9 @@
 0.0.0.0  tag.placelocal.com
 0.0.0.0  api.placer.io
 0.0.0.0  conf.placer.io
-0.0.0.0  65c6.playfabapi.com
-0.0.0.0  92ab.playfabapi.com
-0.0.0.0  b343.playfabapi.com
-0.0.0.0  b77ad.playfabapi.com
-0.0.0.0  ca87.playfabapi.com
 0.0.0.0  playhaven.com
 0.0.0.0  stats.playrix.com
 0.0.0.0  sdk.playtem.com
-0.0.0.0  playtomic.com
 0.0.0.0  analytics.po.st
 0.0.0.0  i.po.st
 0.0.0.0  p.po.st
@@ -6501,10 +6495,6 @@
 0.0.0.0  promo.propellerads.com
 0.0.0.0  publishers.propellerads.com
 0.0.0.0  global.proper.io
-0.0.0.0  gsdk.proximabeta.com
-0.0.0.0  cloud.gsdk.proximabeta.com
-0.0.0.0  cloud2.gsdk.proximabeta.com
-0.0.0.0  speed.na.gsdk.proximabeta.com
 0.0.0.0  abs-v2.proxistore.com
 0.0.0.0  pub.network
 0.0.0.0  a.pub.network
