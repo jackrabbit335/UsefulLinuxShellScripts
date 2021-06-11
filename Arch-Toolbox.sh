@@ -731,7 +731,8 @@ InstallAndConquer(){
 			echo "5 - gedit"
 			echo "6 - kate"
 			echo "7 - leafpad"
-			echo "8 - Visual Studio"
+			echo "8 - notepadqq"
+			echo "9 - Visual Studio"
 			read package
 			if [[ $package == 1 ]];
 			then
@@ -754,7 +755,10 @@ InstallAndConquer(){
 			elif [[ $editor == 7 ]];
 			then
 				sudo pacman -S --noconfirm leafpad
-			elif [[ $editor == 8 ]];
+			elif [[ $package == 8 ]];
+			then
+				sudo pacman -S --noconfirm notepadqq
+			elif [[ $editor == 9 ]];
 			then
 				sudo pacman -S --noconfirm code
 			else
