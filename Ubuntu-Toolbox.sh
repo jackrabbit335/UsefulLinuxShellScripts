@@ -946,7 +946,7 @@ InstallAndConquer(){
 		echo "9 - video and audio editing"
 		echo "10 - preload"
 		echo "11 - Webcam application"
-		echo "12 - bleachbit cleaning software and gtkorphan"
+		echo "12 - Cleaning and Orphan management"
 		echo "13 - proprietary fonts"
 		echo "14 - THEMES"
 		echo "15 - GAMES"
@@ -1174,7 +1174,21 @@ InstallAndConquer(){
 			sudo apt install -y guvcview
 			;;
 			12)
-			sudo apt install -y bleachbit deborphan
+			echo "Cleaning Software"
+			echo "1 - Bleachbit"
+			echo "2 - Stacer" 
+			echo "3 - Deborphan"
+			read package
+			if [[ $package == 1 ]];
+			then
+				sudo pacman -S bleachbit
+			elif [[ $package == 2 ]];
+			then
+				sudo add-apt-repository ppa:oguzhaninan/stacer; sudo apt-get update; sudo apt-get install stacer
+			elif [[ $package == 3 ]];
+			then
+				sudo apt install deborphan
+			fi
 			;;
 			13)
 			sudo apt install -y ttf-mscorefonts-installer
