@@ -888,7 +888,7 @@ InstallAndConquer(){
 				sudo pacman -S --noconfirm opera opera-ffmpeg-codecs
 			elif [[ $browser == 6 ]];
 			then
-				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi.tar.gz; gunzip vivaldi.tar.gz; tar -xvf vivaldi.tar; cd vivaldi && makepkg -si
+				sudo pacman -S vivaldi
 			elif [[ $browser == 7 ]];
 			then
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi-snapshot.tar.gz; gunzip vivaldi-snapshot.tar.gz; tar -xvf vivaldi-snapshot.tar; cd vivaldi-snapshot && makepkg -si
