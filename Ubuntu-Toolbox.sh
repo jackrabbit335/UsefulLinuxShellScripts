@@ -962,7 +962,8 @@ InstallAndConquer(){
 			echo "3 - atom"
 			echo "4 - meld"
 			echo "5 - Visual Studio"
-			echo "6 - all"
+			echo "6 - notepadqq"
+			echo "7 - all"
 			read package
 			if [[ $package == 1 ]];
 			then
@@ -981,7 +982,10 @@ InstallAndConquer(){
 				sudo snap install vscodium
 			elif [[ $package == 6 ]];
 			then
-				sudo apt install -y geany meld; sudo snap install sublime-text atom vscodium
+				sudo snap install notepadqq
+			elif [[ $package == 7 ]];
+			then
+				sudo apt install -y geany meld; sudo snap install sublime-text atom vscodium notepadqq
 			fi
 			;;
 			2)
