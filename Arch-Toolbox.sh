@@ -766,6 +766,7 @@ InstallAndConquer(){
 			echo "This installs cleaning software for Arch Linux Systems"
 			echo "1 - bleachbit and rmlint"
 			echo "2 - kde sweeper"
+			echo "3 - stacer"
 			read package
 			if [[ $package == 1 ]];
 			then
@@ -773,6 +774,9 @@ InstallAndConquer(){
 			elif [[ $package == 2 ]];
 			then
 				sudo pacman -S sweeper
+			elif [[ $packaage == 3 ]];
+			then
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/stacer.tar.gz; gunzip stacer.tar.gz; tar -xvf stacer.tar; cd stacer && makepkg -si
 			else
 				echo "You've entered an invalid number"
 				InstallAndConquer
