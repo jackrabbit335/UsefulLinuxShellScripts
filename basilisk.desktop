@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Basilisk
-GenericName=Basilisk
-Exec=basilisk %u
-Terminal=false
-Icon=basilisk
-Type=Application
-Categories=Application;Network;Internet;WebBrowser;
-Comment=Browse The World Wide Web
