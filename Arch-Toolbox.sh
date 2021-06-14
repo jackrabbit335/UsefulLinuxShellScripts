@@ -904,7 +904,7 @@ InstallAndConquer(){
 			elif [[ $browser == 8 ]];
 			then
 				wget https://linux.palemoon.org/datastore/release/palemoon-29.2.1.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-29.2.1.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
-				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
+				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 9 ]];
 			then
 				sudo pacman -S --noconfirm seamonkey
@@ -920,11 +920,11 @@ InstallAndConquer(){
 			elif [[ $browser == 13 ]];
 			then
 				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-G3.2.2.en-US.linux-x86_64.tar.bz2; gunzip waterfox-G3.2.2.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-G3.1.0.en-US.linux-x86_64.tar; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox
-				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/waterfox.desktop && sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
+				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 14 ]];
 			then
 				wget https://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz; tar -xvf basilisk-latest.linux64.tar.xz; sudo mv basilisk /opt; sudo touch /usr/share/applications/basilisk.desktop; sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
-				wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
+				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
 			elif [[ $browser == 15 ]];
 			then
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/slimjet.tar.gz; gunzip slimjet.tar.gz; tar -xvf slimjet.tar; cd slimjet && makepkg -si
