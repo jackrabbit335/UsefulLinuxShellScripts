@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Waterfox
-GenericName=Waterfox
-Exec=waterfox %u
-Terminal=false
-Icon=waterfox
-Type=Application
-Categories=Application;Network;Internet;WebBrowser;
-Comment=Browse The World Wide Web
