@@ -1489,17 +1489,6 @@ cleanup(){
 
 	#This will also remove unwanted programs
 	Uninstall
-
-	#We can reboot if you want
-	echo "Reboot?(Y/n)"
-	read answer
-	if [[ $answer == Y ]];
-	then
-		Restart
-	else
-		clear
-		Greeting
-	fi
 }
 
 BrowserRepair(){
