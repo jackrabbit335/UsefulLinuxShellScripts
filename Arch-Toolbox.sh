@@ -1807,9 +1807,6 @@ cleanup(){
 
 	#This removes unwanted apps
 	Uninstall
-
-	#We can reboot if you want
-	Restart
 }
 
 BrowserRepair(){
