@@ -2723,9 +2723,6 @@
 0.0.0.0  clickserve.dartsearch.net
 0.0.0.0  databerries.com
 0.0.0.0  tracker.databrain.com
-0.0.0.0  mobile-http-intake.logs.datadoghq.com
-0.0.0.0  public-trace-http-intake.logs.datadoghq.com
-0.0.0.0  rum-http-intake.logs.datadoghq.com
 0.0.0.0  brands.datahc.com
 0.0.0.0  media.datahc.com
 0.0.0.0  redirect.datahc.com
@@ -3244,7 +3241,6 @@
 0.0.0.0  wildcard.bkrtx.com.edgekey.net
 0.0.0.0  bluekai.com.edgekey.net
 0.0.0.0  tags.bluekai.com.edgekey.net
-0.0.0.0  log.byteoversea.com.edgekey.net
 0.0.0.0  casalemedia.com.edgekey.net
 0.0.0.0  as-sec.casalemedia.com.edgekey.net
 0.0.0.0  dsum.casalemedia.com.edgekey.net
@@ -4321,7 +4317,6 @@
 0.0.0.0  dm.isnssdk.com
 0.0.0.0  h5.isnssdk.com
 0.0.0.0  hotapi-va.isnssdk.com
-0.0.0.0  i.isnssdk.com
 0.0.0.0  i16-tb.isnssdk.com
 0.0.0.0  ichannel.isnssdk.com
 0.0.0.0  ichannel-tb.isnssdk.com
