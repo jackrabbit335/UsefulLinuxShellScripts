@@ -1646,10 +1646,10 @@ SystemMaintenance(){
 	sudo dpkg --configure -a; sudo apt install -f; sudo apt update; sudo apt upgrade -yy; sudo snap refresh
 
 	#This restarts systemd daemon. This can be useful for different reasons.
-	sudo systemctl daemon-reload #For systemd releases
+	sudo systemctl daemon-reload 
 
 	#It is recommended that your firewall is enabled
-	sudo systemctl restart ufw; sudo ufw enable; sudo ufw reload
+	sudo systemctl restart ufw; sudo ufw enable;
 
 	#This runs update db for index cache and cleans the manual database
 	sudo updatedb; sudo mandb
@@ -1716,8 +1716,9 @@ EOF
 			echo "What would you like to do?"
 			echo "1 - Enable services"
 			echo "2 - Disable services"
-			echo "3 - create a list of all services running on your system"
-			echo "4 - Nothing just get me out of this menu"
+			echo "3 - Reset Failed"
+			echo "4 - create a list of all services running on your system"
+			echo "5 - Nothing just get me out of this menu"
 			read operation;
 			case $operation in
 				1)
@@ -1738,6 +1739,9 @@ EOF
 				done
 				;;
 				3)
+				sudo systemctl reset-failed
+				;;
+				4)
 				echo "################################################################" >> services.txt
 				echo "SERVICE MANAGER" >> services.txt
 				echo "################################################################" >> services.txt
@@ -1747,7 +1751,7 @@ EOF
 				echo "END OF FILE" >> services.txt
 				echo "################################################################" >> services.txt
 				;;
-				4)
+				5)
 				echo "Great choice"
 				;;
 			esac
