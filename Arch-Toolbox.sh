@@ -1980,11 +1980,11 @@ SystemMaintenance(){
 		sudo pacman -Q | grep reflector || sudo pacman -S --noconfirm reflector; sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syyu --noconfirm
 	fi
 
-	#This refreshes systemd in case of failed or missing units
+	#This refreshes systemd in case of corrupt or changed unit configurations
 	sudo systemctl daemon-reload
 
 	#This will ensure the firewall is enabled
-	sudo systemctl restart ufw; sudo ufw enable; sudo ufw reload
+	sudo systemctl restart ufw; sudo ufw enable;
 
 	#This refreshes index cache
 	sudo updatedb; sudo mandb
@@ -2054,8 +2054,9 @@ EOF
 	echo "1 - enable service"
 	echo "2 - disable service"
 	echo "3 - mask service"
-	echo "4 - save a copy of all the services on your system to a text file"
-	echo "5 - Exit without doing anything"
+	echo "4 - reset failed"
+	echo "5 - save a copy of all the services on your system to a text file"
+	echo "6 - Exit without doing anything"
 	read operation;
 	case $operation in
 		1)
@@ -2095,6 +2096,9 @@ EOF
 		done
 		;;
 		4)
+		sudo systemctl reset-failed
+		;;
+		5)
 		echo "########################################################################" >> services.txt
 		echo "SERVICES MANAGER" >> services.txt
 		echo "########################################################################" >> services.txt
@@ -2105,7 +2109,7 @@ EOF
 		echo "Thank you for your patience"
 		sleep 1
 		;;
-		5)
+		6)
 		echo "Smart choice."
 		sleep 1
 		;;
