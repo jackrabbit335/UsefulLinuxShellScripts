@@ -1649,7 +1649,7 @@ SystemMaintenance(){
 	sudo systemctl daemon-reload 
 
 	#It is recommended that your firewall is enabled
-	sudo systemctl restart ufw; sudo ufw enable;
+	sudo systemctl restart ufw; sudo ufw enable
 
 	#This runs update db for index cache and cleans the manual database
 	sudo updatedb; sudo mandb
