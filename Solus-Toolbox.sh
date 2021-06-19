@@ -1631,11 +1631,11 @@ SystemMaintenance(){
 	#This checks for broken packages
 	sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg -y install --reinstall
 
-	#This refreshes systemd in case of failed or changed units
+	#This refreshes systemd in case of or changed configurations of units
 	sudo systemctl daemon-reload
 
 	#This will reload the firewall to ensure it's enabled
-	sudo systemctl restart ufw; sudo ufw enable; sudo ufw reload
+	sudo systemctl restart ufw; sudo ufw enable
 
 	#This refreshes file index
 	sudo updatedb && sudo mandb
@@ -1698,8 +1698,9 @@ EOF
 	echo "1 - enable service"
 	echo "2 - disable service"
 	echo "3 - mask service"
-	echo "4 - save a copy of all the services on your system to a text file"
-	echo "5 - Exit without doing anything"
+	echo "4 - reset failed"
+	echo "5 - save a copy of all the services on your system to a text file"
+	echo "6 - Exit without doing anything"
 	read operation;
 	case $operation in
 		1)
@@ -1739,6 +1740,9 @@ EOF
 		done
 		;;
 		4)
+		sudo systemctl reset-failed
+		;;
+		5)
 		echo "########################################################################" >> services.txt
 		echo "SERVICES MANAGER" >> services.txt
 		echo "########################################################################" >> services.txt
@@ -1749,7 +1753,7 @@ EOF
 		echo "Thank you for your patience"
 		sleep 1
 		;;
-		5)
+		6)
 		echo "Smart choice."
 		sleep 1
 		;;
