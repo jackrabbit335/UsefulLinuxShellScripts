@@ -1984,7 +1984,7 @@ SystemMaintenance(){
 	sudo systemctl daemon-reload
 
 	#This will ensure the firewall is enabled
-	sudo systemctl restart ufw; sudo ufw enable;
+	sudo systemctl restart ufw; sudo ufw enable
 
 	#This refreshes index cache
 	sudo updatedb; sudo mandb
