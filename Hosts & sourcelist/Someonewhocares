@@ -277,6 +277,7 @@
 0.0.0.0  api2.murdoog.com
 0.0.0.0  apiadapter.ad5track.com
 0.0.0.0  apis.murdoog.com
+0.0.0.0  app-analytics-v2.snapchat.com
 0.0.0.0  app-analytics.snapchat.com
 0.0.0.0  app.yesware.com
 0.0.0.0  apple.com-onlinesupport.host
@@ -2545,7 +2546,6 @@
 0.0.0.0  pdns.nudt.edu.cn
 0.0.0.0  personalantispy.com
 0.0.0.0  petra.nic.gov.jo
-0.0.0.0  phatthalung.go.th
 0.0.0.0  phorm.biz.tr
 0.0.0.0  phorm.ch
 0.0.0.0  phorm.cl
@@ -8296,6 +8296,7 @@
 0.0.0.0  eventtracker.videostrip.com
 0.0.0.0  evroteplo.ru
 0.0.0.0  excellent.michaelanthonyrobinson.com
+0.0.0.0  exchange.scalemonk.com
 0.0.0.0  exclusivegiftcards.com
 0.0.0.0  exits1.webquest.net
 0.0.0.0  exits2.webquest.net
@@ -11041,6 +11042,7 @@
 0.0.0.0  sb.scorecardresearch.com
 0.0.0.0  sc1.admob.com
 0.0.0.0  sc9.admob.com
+0.0.0.0  scalemonk.com
 0.0.0.0  scdown.qq.com
 0.0.0.0  scegli-vinci.it
 0.0.0.0  scgis.co.uk

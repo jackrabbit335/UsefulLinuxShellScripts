@@ -524,6 +524,7 @@
 0.0.0.0  ads.hollywood.com
 0.0.0.0  ads.horsehero.com
 0.0.0.0  ads.horyzon-media.com
+0.0.0.0  ads.hsoub.com
 0.0.0.0  ads.ibest.com.br
 0.0.0.0  ads.ibryte.com
 0.0.0.0  ads.icq.com
@@ -738,6 +739,7 @@
 0.0.0.0  ads2.contentabc.com
 0.0.0.0  ads2.femmefab.nl
 0.0.0.0  ads2.gamecity.net
+0.0.0.0  ads2.hsoub.com
 0.0.0.0  ads2.net-communities.co.uk
 0.0.0.0  ads2.oneplace.com
 0.0.0.0  ads2.rne.com
@@ -801,6 +803,7 @@
 0.0.0.0  adserver.freecity.de
 0.0.0.0  adserver.friendfinder.com
 0.0.0.0  adserver.generationiron.com
+0.0.0.0  adserver.gilligan.tech
 0.0.0.0  adserver.html.it
 0.0.0.0  adserver.hwupgrade.it
 0.0.0.0  adserver.ilango.de
@@ -826,8 +829,10 @@
 0.0.0.0  adserver.sciflicks.com
 0.0.0.0  adserver.scr.sk
 0.0.0.0  adserver.sharewareonline.com
+0.0.0.0  adserver.smgfiles.com
 0.0.0.0  adserver.theonering.net
 0.0.0.0  adserver.trojaner-info.de
+0.0.0.0  adserver.tupolska.com
 0.0.0.0  adserver.twitpic.com
 0.0.0.0  adserver.virginmedia.com
 0.0.0.0  adserver.yahoo.com

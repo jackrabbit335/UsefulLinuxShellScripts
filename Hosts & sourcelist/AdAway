@@ -5187,7 +5187,6 @@
 0.0.0.0  mobileads.msn.com
 0.0.0.0  rads.msn.com
 0.0.0.0  srtb.msn.com
-0.0.0.0  superapp.msn.com
 0.0.0.0  sdkconf.msstatic.com
 0.0.0.0  mtburn.com
 0.0.0.0  mtrcss.com
@@ -5397,19 +5396,6 @@
 0.0.0.0  apicssdk.onemt.co
 0.0.0.0  click.oneplus.com
 0.0.0.0  geolocation.onetrust.com
-0.0.0.0  aa.online-metrix.net
-0.0.0.0  d.aa.online-metrix.net
-0.0.0.0  e.aa.online-metrix.net
-0.0.0.0  eu-aa.online-metrix.net
-0.0.0.0  h.online-metrix.net
-0.0.0.0  h-ebay.online-metrix.net
-0.0.0.0  h-fidelity.online-metrix.net
-0.0.0.0  h-sdk.online-metrix.net
-0.0.0.0  h-signifyd.online-metrix.net
-0.0.0.0  h-tdcanada.online-metrix.net
-0.0.0.0  h6.online-metrix.net
-0.0.0.0  rbc.online-metrix.net
-0.0.0.0  h-d3tracking.rbc.online-metrix.net
 0.0.0.0  impl.onscroll.com
 0.0.0.0  onetag-geo.onscroll.com
 0.0.0.0  tag.onscroll.com
