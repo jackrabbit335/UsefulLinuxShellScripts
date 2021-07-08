@@ -333,7 +333,7 @@ Systeminfo(){
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "UPDATE CHANNEL" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	cat /etc/pacman-mirrors.conf | grep "Branch" >> $host-sysinfo.txt
+	sudo pacman-mirrors --get-branch >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "KERNEL AND OPERATING SYSTEM INFORMATION" >> $host-sysinfo.txt
@@ -919,7 +919,7 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz; gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
 			elif [[ $browser == 13 ]];
 			then
-				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-G3.2.2.en-US.linux-x86_64.tar.bz2; gunzip waterfox-G3.2.2.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-G3.1.0.en-US.linux-x86_64.tar; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox
+				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-G3.2.3.en-US.linux-x86_64.tar.bz2; gunzip waterfox-G3.2.3.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-G3.1.0.en-US.linux-x86_64.tar; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 14 ]];
 			then
