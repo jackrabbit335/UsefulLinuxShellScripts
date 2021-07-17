@@ -5322,8 +5322,8 @@
 0.0.0.0  synad2.nuffnang.com.my
 0.0.0.0  synad3.nuffnang.com.my
 0.0.0.0  als-svc.nytimes.com
-0.0.0.0  meter-svc.nytimes.com
 0.0.0.0  a.et.nytimes.com
+0.0.0.0  meter-svc.nytimes.com
 0.0.0.0  cdn.o333o.com
 0.0.0.0  consent.cmp.oath.com
 0.0.0.0  service.cmp.oath.com
