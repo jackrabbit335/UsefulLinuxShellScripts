@@ -903,7 +903,7 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi-snapshot.tar.gz; gunzip vivaldi-snapshot.tar.gz; tar -xvf vivaldi-snapshot.tar; cd vivaldi-snapshot && makepkg -si
 			elif [[ $browser == 8 ]];
 			then
-				wget https://linux.palemoon.org/datastore/release/palemoon-29.2.1.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-29.2.1.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget https://linux.palemoon.org/datastore/release/palemoon-29.3.0.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-29.3.0.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 9 ]];
 			then
@@ -919,7 +919,7 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz; gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
 			elif [[ $browser == 13 ]];
 			then
-				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-G3.2.3.en-US.linux-x86_64.tar.bz2; gunzip waterfox-G3.2.3.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-G3.1.0.en-US.linux-x86_64.tar; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox
+				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-G3.2.4.1.en-US.linux-x86_64.tar.bz2; gunzip waterfox-G3.2.4.1.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-G3.1.0.en-US.linux-x86_64.tar; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 14 ]];
 			then
