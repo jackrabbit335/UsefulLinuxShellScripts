@@ -80,9 +80,8 @@ then
 	read -p "Would you like to exclude domains?(Y/n)" answer
 	while [ $answer == Y ];
 	do
-		echo "Please enter a domain to whitelist"
-		read domain
-		sed -i "/$domain/d" adblock.txt
+		read -a domains
+		sed -i "/${domains[@]}/d" adblock.txt
 	break
 	done
 fi
