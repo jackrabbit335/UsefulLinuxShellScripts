@@ -215,7 +215,7 @@ EOF
 Update(){
 	CheckNetwork
 
-	sudo apt update; sudo apt upgrade -yy
+	sudo apt update; sudo apt full-upgrade -yy; sudo snap refresh
 
 	clear
 	Greeting
@@ -1662,9 +1662,12 @@ EOF
 
 SystemMaintenance(){
 	CheckNetwork
+	
+	#This fixes broken packages
+	sudo dpkg --configure -a; sudo apt install -f
 
 	#This updates your system
-	sudo dpkg --configure -a; sudo apt install -f; sudo apt update; sudo apt full-upgrade -yy; sudo snap refresh
+	sudo apt update; sudo apt full-upgrade -yy; sudo snap refresh
 
 	#This restarts systemd daemon. This can be useful for different reasons.
 	sudo systemctl daemon-reload 
