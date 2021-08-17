@@ -1177,7 +1177,6 @@
 0.0.0.0  fls-eu.amazon.sa
 0.0.0.0  fls-eu.amazon.se
 0.0.0.0  fls-fe.amazon.sg
-0.0.0.0  kinesis.ap-southeast-1.amazonaws.com
 0.0.0.0  ads-api-new-2052271615.ap-northeast-1.elb.amazonaws.com
 0.0.0.0  adserver-1277986481.ap-northeast-1.elb.amazonaws.com
 0.0.0.0  adserver-vpc-alb-0-649637586.ap-northeast-1.elb.amazonaws.com
@@ -1241,7 +1240,6 @@
 0.0.0.0  surveygizmobeacon.s3.amazonaws.com
 0.0.0.0  later-analytics-reports.s3-accelerate.amazonaws.com
 0.0.0.0  bin5y4muil.execute-api.us-east-1.amazonaws.com
-0.0.0.0  kinesis.us-east-1.amazonaws.com
 0.0.0.0  mobileanalytics.us-east-1.amazonaws.com
 0.0.0.0  global.cmcs.service.amazonsilk.com
 0.0.0.0  ambient-platform.com
@@ -6310,7 +6308,6 @@
 0.0.0.0  rbnt.org
 0.0.0.0  realclever.com
 0.0.0.0  cdn.rebel.ai
-0.0.0.0  assets.rebelmouse.io
 0.0.0.0  recreativ.ru
 0.0.0.0  track.recreativ.ru
 0.0.0.0  events.redditmedia.com
@@ -7567,9 +7564,6 @@
 0.0.0.0  ads-router-noneu.truecaller.com
 0.0.0.0  ads5-noneu.truecaller.com
 0.0.0.0  pushid-noneu.truecaller.com
-0.0.0.0  choices.trustarc.com
-0.0.0.0  consent.trustarc.com
-0.0.0.0  preferences.trustarc.com
 0.0.0.0  choices.truste.com
 0.0.0.0  sofia.trustx.org
 0.0.0.0  cdn.tsyndicate.com
