@@ -60,7 +60,7 @@ Setup(){
 	if [[ $answer == Y ]];
 	then
 		echo "#Alias to update the system" >> ~/.bashrc
-		echo 'alias update="sudo apt update && sudo apt dist-upgrade -yy"' >> ~/.bashrc
+		echo 'alias update="sudo apt update && sudo apt full-upgrade -yy"' >> ~/.bashrc
 		echo "#Alias to clean the apt cache" >> ~/.bashrc
 		echo 'alias clean="sudo apt autoremove && sudo apt autoclean && sudo apt clean"' >> ~/.bashrc
 		echo "#Alias to free up RAM" >> ~/.bashrc
@@ -95,7 +95,7 @@ Setup(){
 	echo "vm.vfs_cache_pressure = 50" | sudo tee -a /etc/sysctl.conf
 	echo "#tcp flaw workaround" | sudo tee -a /etc/sysctl.conf
 	echo "net.ipv4.tcp_challenge_ack_limit = 999999999" | sudo tee -a /etc/sysctl.conf
-	sudo sysctl -p
+	sudo sysctl -p && sudo sysctl --system
 
 	#Block ICMP requests or Ping from foreign systems
 	cat <<EOF
