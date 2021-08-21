@@ -61,6 +61,8 @@ Setup(){
 	then
 		echo "#Alias to update the system" >> ~/.bashrc
 		echo 'alias update="sudo apt update && sudo apt full-upgrade -yy"' >> ~/.bashrc
+		echo "#Alias for those who have flatpaks or snaps" >> ~/.bashrc
+		echo 'alias flatup="sudo flatpak update; sudo snap refresh"' >> ~/.bashrc
 		echo "#Alias to clean the apt cache" >> ~/.bashrc
 		echo 'alias clean="sudo apt autoremove && sudo apt autoclean && sudo apt clean"' >> ~/.bashrc
 		echo "#Alias to free up RAM" >> ~/.bashrc
@@ -197,7 +199,7 @@ EOF
 	CheckNetwork
 
 	#Updates the system
-	sudo apt update; sudo apt upgrade -yy; sudo apt full-upgrade -yy
+	sudo apt update; sudo apt full-upgrade -yy
 
 	#Optional
 	echo "Do you wish to reboot(Y/n)"
@@ -409,6 +411,11 @@ Systeminfo(){
 	echo "INSTALLED PACKAGES" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	sudo apt list --installed >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "INSTALLED FLATPAKS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	flatpak list >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "INSTALLED SNAPS" >> $host-sysinfo.txt
@@ -1073,7 +1080,7 @@ InstallAndConquer(){
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_4.1.2369.18-1_amd64.deb; sudo apt install -f
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_4.1.2369.21-1_amd64.deb; sudo apt install -f
 			elif [[ $browser == 8 ]];
 			then
 				sudo snap install opera
@@ -1085,7 +1092,7 @@ InstallAndConquer(){
 				sudo apt install -y dillo
 			elif [[ $browser == 11 ]];
 			then
-				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-G3.2.4.1.en-US.linux-x86_64.tar.bz2; waterfox-G3.2.4.1.en-US.linux-x86_64.tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-G3.2.5.en-US.linux-x86_64.tar.bz2; waterfox-G3.2.5.en-US.linux-x86_64.tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 12 ]];
 			then
@@ -1365,9 +1372,8 @@ Uninstall(){
 	read answer
 	while [ $answer ==  Y ];
 	do
-		echo "Please enter the name of the software you wish to remove"
-  		read software
-		sudo apt remove --purge -yy $software
+  		read -a software
+		sudo apt remove --purge -yy ${software[@]}; sudo flatpak uninstall ${software[@]}; sudo snap remove ${software[@]}
 	break
 	done
 
@@ -1668,9 +1674,12 @@ SystemMaintenance(){
 	
 	#This fixes broken packages
 	sudo dpkg --configure -a; sudo apt install -f
+	
+	#Repairs flatpaks installed on your system not everyone has these on Ubuntu
+	#sudo flatpak uninstall --unused; sudo flatpak repair
 
 	#This updates your system
-	sudo apt update; sudo apt full-upgrade -yy; sudo snap refresh
+	sudo apt update; sudo apt full-upgrade -yy; sudo snap refresh; sudo flatpak update
 
 	#This restarts systemd daemon. This can be useful for different reasons.
 	sudo systemctl daemon-reload 
