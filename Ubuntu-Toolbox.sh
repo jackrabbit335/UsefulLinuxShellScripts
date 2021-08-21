@@ -217,7 +217,7 @@ EOF
 Update(){
 	CheckNetwork
 
-	sudo apt update; sudo apt full-upgrade -yy; sudo snap refresh
+	sudo apt update; sudo apt full-upgrade -yy; sudo snap refresh; sudo flatpak update
 
 	clear
 	Greeting
