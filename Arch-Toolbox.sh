@@ -903,7 +903,7 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi-snapshot.tar.gz; gunzip vivaldi-snapshot.tar.gz; tar -xvf vivaldi-snapshot.tar; cd vivaldi-snapshot && makepkg -si
 			elif [[ $browser == 8 ]];
 			then
-				wget https://linux.palemoon.org/datastore/release/palemoon-29.4.0.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-29.4.0.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget https://linux.palemoon.org/datastore/release/palemoon-29.4.0.1.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-29.4.0.1.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 9 ]];
 			then
