@@ -83,6 +83,8 @@ Setup(){
 		echo 'alias temp="watch sensors"' >> ~/.bashrc
 		echo "#Alias to view swap info" >> ~/.bashrc
 		echo 'alias swaps="cat /proc/swaps"' >> ~/.bashrc
+		echo "#Alias to show uptime" >> ~/.bashrc
+		echo 'alias ut="uptime -p"' >> ~/.bashrc
 	fi
 
 	#System tweaks
@@ -736,6 +738,19 @@ version updates at the same time. While a step in the right direction, it
 will be a while before they fully catch on.
 
 ##########################################################################
+FLATPAKS AND SNAPS
+##########################################################################
+Flatpaks and snaps are package formats that are universal across platforms 
+and every Linux distribution can run the same package version and get the 
+same updates at the same time. These formats allow for the developers to 
+load the correct dependencies with the package every time. This prevents 
+broken packages which are common with apt. These formats also allow for 
+users of LTS and Interim releases to use more up to date packages and a 
+wider range of such packages similar to what is offered in Arch Linux 
+with the AUR. Flatpaks and snaps are both offered from a central repository
+and setting up the two managers on Ubuntu systems are relatively painless.
+
+##########################################################################
 ClEANING AND ROUTINE MAINTENANCE
 ##########################################################################
 Within this and the other two scripts is a section devoted to cleaning
@@ -1076,7 +1091,7 @@ InstallAndConquer(){
 				cd /tmp; wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 6 ]];
 			then
-				wget https://linux.palemoon.org/datastore/release/palemoon-29.3.0.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-29.3.0.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget https://linux.palemoon.org/datastore/release/palemoon-29.4.0.1.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-29.4.0.1.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
@@ -1679,7 +1694,7 @@ SystemMaintenance(){
 	#sudo flatpak uninstall --unused; sudo flatpak repair
 
 	#This updates your system
-	sudo apt update; sudo apt full-upgrade -yy; sudo snap refresh; sudo flatpak update
+	Update
 
 	#This restarts systemd daemon. This can be useful for different reasons.
 	sudo systemctl daemon-reload 
