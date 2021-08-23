@@ -662,6 +662,13 @@ https://kaosx.us/docs/
 https://averagelinuxuser.com/
 
 ##########################################################################
+DRIVE OPTIONS AND NOATIME
+##########################################################################
+Gnome disks is a utility which will allow you to check on the health and
+space on your drive, will also allow you to create new drives and turn on
+/off certain drive performance features. 
+
+##########################################################################
 SECURITY IN KAOS WITH TOMOYO AND SOME STUFF WITH UFW
 ##########################################################################
 UFW is the uncomplicated firewall. Firewalls filter content getting in
@@ -747,8 +754,9 @@ load the correct dependencies with the package every time. This prevents
 broken packages which are common with apt. These formats also allow for 
 users of LTS and Interim releases to use more up to date packages and a 
 wider range of such packages similar to what is offered in Arch Linux 
-with the AUR. Flatpaks and snaps are both offered from a central repository
-and setting up the two managers on Ubuntu systems are relatively painless.
+with the AUR. Flatpaks and snaps are both offered from a central 
+repository and setting up the two managers on Ubuntu systems are 
+relatively painless.
 
 ##########################################################################
 ClEANING AND ROUTINE MAINTENANCE
