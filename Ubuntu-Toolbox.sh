@@ -62,7 +62,7 @@ Setup(){
 		echo "#Alias to update the system" >> ~/.bashrc
 		echo 'alias update="sudo apt update && sudo apt full-upgrade -yy"' >> ~/.bashrc
 		echo "#Alias for those who have flatpaks or snaps" >> ~/.bashrc
-		echo 'alias flatup="sudo flatpak update; sudo snap refresh"' >> ~/.bashrc
+		echo 'alias flatup="flatpak --user update; sudo snap refresh"' >> ~/.bashrc
 		echo "#Alias to clean flatpaks" >> ~/.bashrc
 		echo 'alias purge="flatpak --user uninstall --unused"' >> ~/.bashrc
 		echo "#Alias to repair broken flatpak" >> ~/.bashrc
@@ -227,7 +227,7 @@ EOF
 Update(){
 	CheckNetwork
 
-	sudo apt update; sudo apt full-upgrade -yy; sudo snap refresh; sudo flatpak update
+	sudo apt update; sudo apt full-upgrade -yy; sudo snap refresh; flatpak --user update
 
 	clear
 	Greeting
@@ -674,11 +674,11 @@ DRIVE OPTIONS AND NOATIME
 ##########################################################################
 Gnome disks is a utility which will allow you to check on the health and
 space on your drive, will also allow you to create new drives and turn on
-/off certain drive performance features. Noatime prevents writing time 
-stamps to files as they are read or accessed by the system. 
+/off certain drive performance features. Noatime prevents writing time
+stamps to files as they are read or accessed by the system.
 Atime attributes a time stamp and Relatime attributes a stamp when
 necessary only. Relatime is the option preferred by most modern
-distributions today. Noatime is sometimes used by Arch. To add noatime 
+distributions today. Noatime is sometimes used by Arch. To add noatime
 to a drive, simply add noatime to the end of the corresponding fstab entry.
 Discard can be added here as well, but this is not recommended as this will
 run trim on every single file deletion.
@@ -773,17 +773,17 @@ with the AUR. Flatpaks and snaps are both offered from a central
 repository and setting up the two managers on Ubuntu systems are
 relatively painless. setting up snapd consists mostly of just in-
 stalling snapd on Ubuntu. To install simply type: sudo apt update &&
-sudo apt install snapd && sudo snap install snapd. To set up flatpaks, 
+sudo apt install snapd && sudo snap install snapd. To set up flatpaks,
 ensure flatpak is installed on your distribution, you can find it in the
 package manager repository on most distros. Then install the flathub
-repository by typing: flatpak remote-add --if-not-exists flathub 
+repository by typing: flatpak remote-add --if-not-exists flathub
 https://flathub.org/repo/flathub.flatpakrepo and that's it. Cleaning flat-
-paks is a pretty easy endeavor as well. sudo flatpak --user uninstall --unused. 
-To repair broken flatpaks or flatpak itself; sudo flatpak repair. 
+paks is a pretty easy endeavor as well. sudo flatpak --user uninstall --unused.
+To repair broken flatpaks or flatpak itself; sudo flatpak repair.
 To install apps sudo flatpak install appname; sudo flatpak uninstall appname.
 Users can remove them as well with the --user flag(Which negates the need for sudo).
 To refresh and install/uninstall snaps; sudo snap refresh(Update)
-sudo snap install appname/sudo snap remove appname. It may be 
+sudo snap install appname/sudo snap remove appname. It may be
 necessary to reboot after installing snap or flatpak to ensure it loads
 and updates the path properly.
 
@@ -1979,7 +1979,7 @@ Greeting(){
 	echo "6 - Backup your system"
 	echo "7 - Restore your system"
 	echo "8 - Manage system services"
-	echo "9 - Collect System Information"
+	echo "9 - Troubleshooting Information"
 	echo "10 - Screenfix"
 	echo "11 - Make Swap"
 	echo "12 - Help"
