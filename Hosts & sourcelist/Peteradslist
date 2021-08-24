@@ -1072,6 +1072,7 @@
 0.0.0.0  api.amplitude.com
 0.0.0.0  api.intensifier.de
 0.0.0.0  api.kameleoon.com
+0.0.0.0  api.rudderlabs.com
 0.0.0.0  apolloprogram.io
 0.0.0.0  app-ab33.marketo.com
 0.0.0.0  app-analytics.snapchat.com
@@ -1578,9 +1579,11 @@
 0.0.0.0  dacdn.visualwebsiteoptimizer.com
 0.0.0.0  dacdn.vwo.com
 0.0.0.0  dakic-ia-300.com
+0.0.0.0  damageddistance.com
 0.0.0.0  damdoor.com
 0.0.0.0  dancemistake.com
 0.0.0.0  dapper.net
+0.0.0.0  dapperfloor.com
 0.0.0.0  dashbida.com
 0.0.0.0  dashingdirt.com
 0.0.0.0  dashingsweater.com
@@ -2893,6 +2896,7 @@
 0.0.0.0  sail-horizon.com
 0.0.0.0  samsungacr.com
 0.0.0.0  samsungads.com
+0.0.0.0  sanity-dataplane.rudderstack.com
 0.0.0.0  saysidewalk.com
 0.0.0.0  sbx.pagesjaunes.fr
 0.0.0.0  sc-analytics.appspot.com
@@ -3127,6 +3131,7 @@
 0.0.0.0  sugarcurtain.com
 0.0.0.0  sugoicounter.com
 0.0.0.0  sulkybutter.com
+0.0.0.0  sulkycook.com
 0.0.0.0  summerhamster.com
 0.0.0.0  summerobject.com
 0.0.0.0  sumo.com
