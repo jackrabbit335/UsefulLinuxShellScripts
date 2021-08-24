@@ -1245,7 +1245,7 @@ InstallAndConquer(){
 			read package
 			if [[ $package == 1 ]];
 			then
-				sudo pacman -S bleachbit
+				wget https://www.bleachbit.org/download/file/t?file=bleachbit_4.4.0-0_all_ubuntu2004.deb; sudo dpkg -i bleachbit
 			elif [[ $package == 2 ]];
 			then
 				sudo add-apt-repository ppa:oguzhaninan/stacer; sudo apt-get update; sudo apt-get install stacer
