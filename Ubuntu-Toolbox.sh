@@ -641,14 +641,14 @@ this:
 +------------- min (0 - 59) source:
 http://www.adminschoice.com/crontab-quick-reference
 What I normally do is set the hosts updater to run at 8 every night ex.
-00 20 * * * /bin/sh /home/$USER/hostsupdater.sh.
+00 20 * * * /bin/sh /home/USER/hostsupdater.sh.
 I set it up under the root account by typing su followed by my password
 in manjaro, sudo -i in Ubuntu systems and then typing crontab -e.
 The maintenance scripts are ok to run manually each month.
 It is recommended that you do not run these without being present.
 Hoever, if you wish to run them as cron jobs then you can tweak the
 cleaning routines as follows."sudo rm -r ./cache/*" should be changed to
-"rm -r /home/$USER/.cache/*" and etc. The setup script should only be
+"rm -r /home/USER/.cache/*" and etc. The setup script should only be
 ran once to set the system up.
 Some good reference sites are:
 https://usn.ubuntu.com/
@@ -666,7 +666,14 @@ DRIVE OPTIONS AND NOATIME
 ##########################################################################
 Gnome disks is a utility which will allow you to check on the health and
 space on your drive, will also allow you to create new drives and turn on
-/off certain drive performance features.
+/off certain drive performance features. Noatime prevents writing time 
+stamps to files as they are read or accessed by the system. 
+Atime attributes a time stamp and Relatime attributes a stamp when
+necessary only. Relatime is the option preferred by most modern
+distributions today. Noatime is sometimes used by Arch. To add noatime 
+to a drive, simply add noatime to the end of the corresponding fstab entry.
+Discard can be added here as well, but this is not recommended as this will
+run trim on every single file deletion.
 
 ##########################################################################
 SECURITY IN KAOS WITH TOMOYO AND SOME STUFF WITH UFW
@@ -756,7 +763,21 @@ users of LTS and Interim releases to use more up to date packages and a
 wider range of such packages similar to what is offered in Arch Linux
 with the AUR. Flatpaks and snaps are both offered from a central
 repository and setting up the two managers on Ubuntu systems are
-relatively painless.
+relatively painless. setting up snapd consists mostly of just in-
+stalling snapd on Ubuntu. To install simply type: sudo apt update &&
+sudo apt install snapd && sudo snap install snapd. To set up flatpaks, 
+ensure flatpak is installed on your distribution, you can find it in the
+package manager repository on most distros. Then install the flathub
+repository by typing: flatpak remote-add --if-not-exists flathub 
+https://flathub.org/repo/flathub.flatpakrepo and that's it. Cleaning flat-
+paks is a pretty easy endeavor as well. sudo flatpak --user uninstall --unused. 
+To repair broken flatpaks or flatpak itself; sudo flatpak repair. 
+To install apps sudo flatpak install appname; sudo flatpak uninstall appname.
+Users can remove them as well with the --user flag(Which negates the need for sudo).
+To refresh and install/uninstall snaps; sudo snap refresh(Update)
+sudo snap install appname/sudo snap remove appname. It may be 
+necessary to reboot after installing snap or flatpak to ensure it loads
+and updates the path properly.
 
 ##########################################################################
 ClEANING AND ROUTINE MAINTENANCE
