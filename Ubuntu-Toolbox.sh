@@ -63,6 +63,14 @@ Setup(){
 		echo 'alias update="sudo apt update && sudo apt full-upgrade -yy"' >> ~/.bashrc
 		echo "#Alias for those who have flatpaks or snaps" >> ~/.bashrc
 		echo 'alias flatup="sudo flatpak update; sudo snap refresh"' >> ~/.bashrc
+		echo "#Alias to clean flatpaks" >> ~/.bashrc
+		echo 'alias purge="flatpak --user uninstall --unused"' >> ~/.bashrc
+		echo "#Alias to repair broken flatpak" >> ~/.bashrc
+		echo 'alias repair="sudo flatpak repair"' >> ~/.bashrc
+		echo "#Alias to list packages from apt and dpkg" >> ~/.bashrc
+		echo 'alias pkglist="sudo dpkg --list && sudo apt list"' >> ~/.bashrc
+		echo "#Alias to list snaps and flatpaks" >> ~/.bashrc
+		echo 'alias show="flatpak list; snap list"' >> ~/.bashrc
 		echo "#Alias to clean the apt cache" >> ~/.bashrc
 		echo 'alias clean="sudo apt autoremove && sudo apt autoclean && sudo apt clean"' >> ~/.bashrc
 		echo "#Alias to free up RAM" >> ~/.bashrc
