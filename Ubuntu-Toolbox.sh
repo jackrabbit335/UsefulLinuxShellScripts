@@ -666,7 +666,7 @@ DRIVE OPTIONS AND NOATIME
 ##########################################################################
 Gnome disks is a utility which will allow you to check on the health and
 space on your drive, will also allow you to create new drives and turn on
-/off certain drive performance features. 
+/off certain drive performance features.
 
 ##########################################################################
 SECURITY IN KAOS WITH TOMOYO AND SOME STUFF WITH UFW
@@ -747,15 +747,15 @@ will be a while before they fully catch on.
 ##########################################################################
 FLATPAKS AND SNAPS
 ##########################################################################
-Flatpaks and snaps are package formats that are universal across platforms 
-and every Linux distribution can run the same package version and get the 
-same updates at the same time. These formats allow for the developers to 
-load the correct dependencies with the package every time. This prevents 
-broken packages which are common with apt. These formats also allow for 
-users of LTS and Interim releases to use more up to date packages and a 
-wider range of such packages similar to what is offered in Arch Linux 
-with the AUR. Flatpaks and snaps are both offered from a central 
-repository and setting up the two managers on Ubuntu systems are 
+Flatpaks and snaps are package formats that are universal across platforms
+and every Linux distribution can run the same package version and get the
+same updates at the same time. These formats allow for the developers to
+load the correct dependencies with the package every time. This prevents
+broken packages which are common with apt. These formats also allow for
+users of LTS and Interim releases to use more up to date packages and a
+wider range of such packages similar to what is offered in Arch Linux
+with the AUR. Flatpaks and snaps are both offered from a central
+repository and setting up the two managers on Ubuntu systems are
 relatively painless.
 
 ##########################################################################
@@ -1211,7 +1211,7 @@ InstallAndConquer(){
 			12)
 			echo "Cleaning Software"
 			echo "1 - Bleachbit"
-			echo "2 - Stacer" 
+			echo "2 - Stacer"
 			echo "3 - Deborphan"
 			read package
 			if [[ $package == 1 ]];
@@ -1313,7 +1313,7 @@ InstallAndConquer(){
 	do
 		if [[ $cpu == GenuineIntel ]];
 		then
-			apt list | grep intel-microcode || sudo apt install -y intel-microcode && sudo update-initramfs -u 
+			apt list | grep intel-microcode || sudo apt install -y intel-microcode && sudo update-initramfs -u
 		elif [[ $cpu == AuthenticAMD ]];
 		then
 			apt list | grep amd64-microcode || sudo apt install -y amd64-microcode && sudo update-initramfs -u
@@ -1329,36 +1329,36 @@ InstallAndConquer(){
 		do
 			if [[ $DESKTOP_SESSION == unity ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
+				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 			elif [[ $DESKTOP_SESSION == xfce ]];
 			then
-				sudo apt install -y xubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
+				sudo apt install -y xubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 				sudo apt install -y xfce4-goodies
 			elif [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]];
 			then
-				sudo apt install -y kubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
+				sudo apt install -y kubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 			elif [[ $DESKTOP_SESSION == lxde ]];
 			then
-				sudo apt install -y lubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
+				sudo apt install -y lubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 			elif [[ $DESKTOP_SESSION == mate ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
+				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 			elif [[ $DESKTOP_SESSION == gnome ]];
 			then
 				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
-				sudo apt install -y gnome-session gnome-tweak-tool gnome-shell-extensions 
+				sudo apt install -y gnome-session gnome-tweak-tool gnome-shell-extensions
 			elif [[ $DESKTOP_SESSION == enlightenment ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
+				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 			elif [[ $DESKTOP_SESSION == Budgie ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
+				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 			elif [[ $DESKTOP_SESSION == cinnamon ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
+				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 			elif [[ $DESKTOP_SESSION == ubuntu ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
+				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 				sudo apt install -y gnome-tweak-tool dconf-editor chrome-gnome-shell gnome-shell-extensions
 			else
 				echo "You're running some other window manager I haven't tested yet."
@@ -1374,7 +1374,7 @@ InstallAndConquer(){
 		fi
 	break
 	done
-	
+
 	#Make sure dvd codecs are working
 	sudo dpkg-reconfigure libdvd-pkg
 
@@ -1511,6 +1511,9 @@ Adblocking(){
 cleanup(){
 	#This flushes apt cache
 	sudo apt autoremove -y; sudo apt autoclean -y; sudo apt clean -y
+
+	#This cleans flatpaks that are unused by the user
+	#flatpak --user uninstall --unused
 
 	#This removes older config files left by no longer installed applications
 	OLDCONF=$(dpkg -l | grep '^rc' | awk '{print $2}')
@@ -1694,18 +1697,18 @@ EOF
 
 SystemMaintenance(){
 	CheckNetwork
-	
+
 	#This fixes broken packages
 	sudo dpkg --configure -a; sudo apt install -f
-	
+
 	#Repairs flatpaks installed on your system not everyone has these on Ubuntu
-	#sudo flatpak uninstall --unused; sudo flatpak repair
+	#sudo flatpak repair
 
 	#This updates your system
 	Update
 
 	#This restarts systemd daemon. This can be useful for different reasons.
-	sudo systemctl daemon-reload 
+	sudo systemctl daemon-reload
 
 	#It is recommended that your firewall is enabled
 	sudo systemctl restart ufw; sudo ufw enable
