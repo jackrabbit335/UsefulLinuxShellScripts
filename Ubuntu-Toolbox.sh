@@ -1245,7 +1245,7 @@ InstallAndConquer(){
 			read package
 			if [[ $package == 1 ]];
 			then
-				wget https://sourceforge.net/projects/bleachbit/files/bleachbit/4.2.0/bleachbit_4.2.0-0_all_ubuntu2004.deb; sudo dpkg -i bleachbit
+				wget https://sourceforge.net/projects/bleachbit/files/bleachbit/4.2.0/bleachbit_4.2.0-0_all_ubuntu2004.deb; sudo dpkg -i *.deb
 			elif [[ $package == 2 ]];
 			then
 				sudo snap install stacer
