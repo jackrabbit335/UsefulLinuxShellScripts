@@ -1038,7 +1038,7 @@ InstallAndConquer(){
 				sudo apt install -y meld
 			elif [[ $package == 5 ]];
 			then
-				sudo snap install vscodium
+				sudo snap install code --classic
 			elif [[ $package == 6 ]];
 			then
 				sudo snap install notepadqq
@@ -1245,10 +1245,10 @@ InstallAndConquer(){
 			read package
 			if [[ $package == 1 ]];
 			then
-				wget https://www.bleachbit.org/download/file/t?file=bleachbit_4.4.0-0_all_ubuntu2004.deb; sudo dpkg -i bleachbit
+				wget https://sourceforge.net/projects/bleachbit/files/bleachbit/4.2.0/bleachbit_4.2.0-0_all_ubuntu2004.deb; sudo dpkg -i bleachbit
 			elif [[ $package == 2 ]];
 			then
-				sudo add-apt-repository ppa:oguzhaninan/stacer; sudo apt-get update; sudo apt-get install stacer
+				sudo snap install stacer
 			elif [[ $package == 3 ]];
 			then
 				sudo apt install deborphan
