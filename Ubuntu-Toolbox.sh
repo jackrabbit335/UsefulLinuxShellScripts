@@ -1395,6 +1395,13 @@ InstallAndConquer(){
 			fi
 		done
 
+		echo "If you're running Pop OS, it's a good idea to install the extra codecs"
+		distribution=$(cat /etc/issue | awk '{print $1}')
+		if [[ $distribution == Pop!_OS ]];
+		then
+			sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
+		fi
+
 		echo "If you're running Mint, it's a good idea to install the mint meta package"
 		distribution=$(cat /etc/issue | awk '{print $2}')
 		if [[ $distribution == Mint ]];
