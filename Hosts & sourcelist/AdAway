@@ -2919,7 +2919,6 @@
 0.0.0.0  ffconf.ecbsn.com
 0.0.0.0  static.ecorebates.com
 0.0.0.0  analytics.edgekey.net
-0.0.0.0  79423.analytics.edgekey.net
 0.0.0.0  ma1169-r.analytics.edgekey.net
 0.0.0.0  ma1275-r.analytics.edgekey.net
 0.0.0.0  ma1498-r.analytics.edgekey.net
@@ -6068,12 +6067,6 @@
 0.0.0.0  rta.pubocean.com
 0.0.0.0  puhtml.com
 0.0.0.0  app.pulsatehq.com
-0.0.0.0  api.punchh.com
-0.0.0.0  apidq.punchh.com
-0.0.0.0  dl.punchh.com
-0.0.0.0  isl.punchh.com
-0.0.0.0  mobileandroidapi.punchh.com
-0.0.0.0  mobileiosapi.punchh.com
 0.0.0.0  assets.purch.com
 0.0.0.0  app.push-ad.com
 0.0.0.0  ws.push-notifs.com
@@ -8121,7 +8114,6 @@
 0.0.0.0  youradexchange.com
 0.0.0.0  analytics.youramigo.com
 0.0.0.0  ads.youtube.com
-0.0.0.0  s.youtube.com
 0.0.0.0  global.yyapi.net
 0.0.0.0  t.global.yyapi.net
 0.0.0.0  adtima-media-td.zadn.vn
