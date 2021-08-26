@@ -1071,9 +1071,9 @@ InstallAndConquer(){
 			3)
 			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync p7zip zip software-properties-gtk
 			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop file-roller xdg-user-dirs build-essential
-			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools keepassxc unrar curl unzip ffmpeg
+			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools unrar curl unzip ffmpeg
 			#sudo apt-add-repository ppa:agornostal/ulauncher; sudo apt-get update; sudo apt-get install ulauncher
-			sudo snap install youtube-dl
+			sudo snap install youtube-dl keepassxc
 			;;
 			4)
 			echo "1 - deja-dup"
@@ -1116,7 +1116,7 @@ InstallAndConquer(){
 				sudo snap install chromium
 			elif [[ $browser == 2 ]];
 			then
-				sudo apt install -y epiphany
+				sudo apt install -y epiphany-browser
 			elif [[ $browser == 3 ]];
 			then
 				sudo apt install -y falkon
@@ -1245,7 +1245,7 @@ InstallAndConquer(){
 			read package
 			if [[ $package == 1 ]];
 			then
-				wget https://sourceforge.net/projects/bleachbit/files/bleachbit/4.2.0/bleachbit_4.2.0-0_all_ubuntu2004.deb; sudo dpkg -i *.deb
+				wget https://sourceforge.net/projects/bleachbit/files/bleachbit/4.2.0/bleachbit_4.2.0-0_all_ubuntu2004.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $package == 2 ]];
 			then
 				sudo snap install stacer
