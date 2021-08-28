@@ -3518,10 +3518,6 @@
 0.0.0.0  s.update.wo.gumgum.com
 0.0.0.0  t.update.wo.gumgum.com
 0.0.0.0  ad-specs.guoshipartners.com
-0.0.0.0  beacons.gvt2.com
-0.0.0.0  beacons2.gvt2.com
-0.0.0.0  beacons.gcp.gvt2.com
-0.0.0.0  beacons5.gvt3.com
 0.0.0.0  gwallet.com
 0.0.0.0  panel.gwallet.com
 0.0.0.0  rp.gwallet.com
@@ -7437,10 +7433,7 @@
 0.0.0.0  sync.tubemogul.com
 0.0.0.0  syncf.tubemogul.com
 0.0.0.0  ud.tubemogul.com
-0.0.0.0  production-public.tubi.io
 0.0.0.0  analytics-ingestion.production-public.tubi.io
-0.0.0.0  lb.production-public.tubi.io
-0.0.0.0  rainmaker.production-public.tubi.io
 0.0.0.0  activity.tuifish.com
 0.0.0.0  yun.tuitiger.com
 0.0.0.0  ma.tune.com
