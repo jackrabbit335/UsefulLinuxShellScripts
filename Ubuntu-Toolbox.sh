@@ -1549,7 +1549,7 @@ cleanup(){
 	sudo apt autoremove -y; sudo apt autoclean -y; sudo apt clean -y
 
 	#This cleans flatpaks that are unused by the user
-	#flatpak --user uninstall --unused
+	flatpak --user uninstall --unused
 
 	#This removes older config files left by no longer installed applications
 	OLDCONF=$(dpkg -l | grep '^rc' | awk '{print $2}')
@@ -1738,7 +1738,10 @@ SystemMaintenance(){
 	sudo dpkg --configure -a; sudo apt install -f
 
 	#Repairs flatpaks installed on your system not everyone has these on Ubuntu
-	#sudo flatpak repair
+	flatpak repair; flatpak update
+
+	#Updates snap PACKAGES
+	#sudo snap refresh
 
 	#This updates your system
 	Update
