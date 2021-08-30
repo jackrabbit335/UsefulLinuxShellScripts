@@ -1110,6 +1110,7 @@ InstallAndConquer(){
 			echo "11 - Waterfox"
 			echo "12 - Basilisk"
 			echo "13 - Brave"
+			echo "14 - Librewolf"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -1153,6 +1154,10 @@ InstallAndConquer(){
 			elif [[ $browser == 13 ]];
 			then
 				sudo snap install brave
+			elif [[ $browser == 14 ]];
+			then
+				wget https://gitlab.com/librewolf-community/browser/appimage/-/jobs/1521882881/artifacts/raw/LibreWolf-91.0.1-1.x86_64.AppImage; chmod +x LibreWolf-91.0.1-1.x86_64.AppImage
+				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/LibreWolf.desktop; sudo mv LibreWolf.desktop /usr/share/applications/LibreWolf.desktop
 			fi
 			;;
 			6)
