@@ -137,6 +137,8 @@ Setup(){
 		echo 'alias grubup="sudo clr-boot-manager update"' >> ~/.bashrc
 		echo "#Alias to update the system" >> ~/.bashrc
 		echo 'alias update="sudo eopkg -y upgrade"' >> ~/.bashrc
+		echo "#Alias to update flatpaks" >> ~/.bashrc
+		echo 'alias flatup="flatpak --user update"' >> ~/.bashrc
 		echo "#Alias to clear package cache" >> ~/.bashrc
 		echo 'alias cleanse="sudo eopkg -y delete-cache"' >> ~/.bashrc
 		echo "#Alias to clean stale locks" >> ~/.bashrc
@@ -165,6 +167,8 @@ Setup(){
 		echo 'alias ll="ls -l"' >> ~/.bashrc
 		echo "#Alias to view swap usage stats" >> ~/.bashrc
 		echo 'alias swaps="cat /proc/swaps"' >> ~/.bashrc
+		echo "#Alias to show uptime information" >> ~/.bashrc
+		echo 'alias ut="uptime -p"' >> ~/.bashrc
 	fi
 
 	checkNetwork
@@ -690,6 +694,7 @@ InstallAndConquer(){
 			echo "11 - palemoon"
 			echo "12 - firefox"
 			echo "13 - brave"
+			echo "14 - LibreWolf"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -733,6 +738,9 @@ InstallAndConquer(){
 			elif [[ $browser == 13 ]];
 			then
 				sudo eopkg install brave
+			elif [[ $browser == 14 ]];
+			then
+				flatpak install librewolf
 			else
 				echo "You have entered an invalid number"
 			fi
@@ -1124,6 +1132,34 @@ will remove an application. To install an application in the standard
 repo simply type sudo eopkg install $name.
 
 ##########################################################################
+FLATPAKS AND SNAPS
+##########################################################################
+Flatpaks and snaps are package formats that are universal across platforms
+and every Linux distribution can run the same package version and get the
+same updates at the same time. These formats allow for the developers to
+load the correct dependencies with the package every time. This prevents
+broken packages which are common with apt. These formats also allow for
+users of LTS and Interim releases to use more up to date packages and a
+wider range of such packages similar to what is offered in Arch Linux
+with the AUR. Flatpaks and snaps are both offered from a central
+repository and setting up the two managers on Ubuntu systems are
+relatively painless. setting up snapd consists mostly of just in-
+stalling snapd on Ubuntu. To install simply type: sudo apt update &&
+sudo apt install snapd && sudo snap install snapd. To set up flatpaks,
+ensure flatpak is installed on your distribution, you can find it in the
+package manager repository on most distros. Then install the flathub
+repository by typing: flatpak remote-add --if-not-exists flathub
+https://flathub.org/repo/flathub.flatpakrepo and that's it. Cleaning flat-
+paks is a pretty easy endeavor as well. sudo flatpak --user uninstall --unused.
+To repair broken flatpaks or flatpak itself; sudo flatpak repair.
+To install apps sudo flatpak install appname; sudo flatpak uninstall appname.
+Users can remove them as well with the --user flag(Which negates the need for sudo).
+To refresh and install/uninstall snaps; sudo snap refresh(Update)
+sudo snap install appname/sudo snap remove appname. It may be
+necessary to reboot after installing snap or flatpak to ensure it loads
+and updates the path properly.
+
+##########################################################################
 ClEANING AND ROUTINE MAINTENANCE
 ##########################################################################
 Within this and the other two scripts is a section devoted to cleaning
@@ -1505,9 +1541,20 @@ cleanup(){
 
 	#Optional This will remove the eopkg cached applications, cleans stale blocks, etc.
 	sudo eopkg delete-cache; sudo eopkg clean
+	
+	#This cleans flatpaks that are unused by the user
+	#flatpak --user uninstall --unused
 
 	#This will also remove unwanted programs
-	Uninstall
+	echo "Would you like to remove software?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		Uninstall
+	done
+	
+	clear
+	Greeting
 }
 
 BrowserRepair(){
@@ -1646,6 +1693,9 @@ SystemMaintenance(){
 
 	#This attempts to fix databases and update your system
 	sudo eopkg -y rebuild-db; sudo eopkg -y upgrade
+	
+	#Repairs flatpaks installed on your system not everyone has these on Ubuntu
+	#flatpak repair; flatpak update
 
 	#This checks for broken packages
 	sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg -y install --reinstall
