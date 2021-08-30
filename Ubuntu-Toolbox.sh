@@ -1752,13 +1752,13 @@ SystemMaintenance(){
 	sudo dpkg --configure -a; sudo apt install -f
 
 	#Repairs flatpaks installed on your system not everyone has these on Ubuntu
-	#flatpak repair; flatpak update
-
-	#Updates snap PACKAGES
+	sudo flatpak repair; flatpak update
+	
+	#This updates snaps on the system
 	#sudo snap refresh
 
 	#This updates your system
-	Update
+	sudo apt update && sudo apt full-upgrade -yy
 
 	#This restarts systemd daemon. This can be useful for different reasons.
 	sudo systemctl daemon-reload
