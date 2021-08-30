@@ -73,6 +73,8 @@
 0.0.0.0  prod.pw.analytics.console.aws.a2z.com
 0.0.0.0  us-east-1.prod.pw.analytics.console.aws.a2z.com
 0.0.0.0  metrics.client-eng.a2z.com
+0.0.0.0  global.telemetry.insights.video.a2z.com
+0.0.0.0  us-east-1.telemetry.insights.video.a2z.com
 0.0.0.0  segment.a3cloud.net
 0.0.0.0  a8.net
 0.0.0.0  smetrics.aa.com
@@ -113,6 +115,8 @@
 0.0.0.0  static.accesstrade.vn
 0.0.0.0  track.accesstrade.vn
 0.0.0.0  tags.acmeaom.com
+0.0.0.0  activemetering.com
+0.0.0.0  track.activemetering.com
 0.0.0.0  as.ad-brix.com
 0.0.0.0  campaign.ad-brix.com
 0.0.0.0  config.ad-brix.com
@@ -972,6 +976,9 @@
 0.0.0.0  debug.aerserv.com
 0.0.0.0  events.aerserv.com
 0.0.0.0  prod-ads.aerserv.com
+0.0.0.0  metrics.aetn.com
+0.0.0.0  pulse.svod.aetnd.com
+0.0.0.0  insights.vip.aetnd.com
 0.0.0.0  track.afcpatrk.com
 0.0.0.0  cdn.go.affec.tv
 0.0.0.0  map.go.affec.tv
@@ -1002,6 +1009,7 @@
 0.0.0.0  api.airpush.com
 0.0.0.0  apportal.airpush.com
 0.0.0.0  cdnap.airpush.com
+0.0.0.0  pop-iad-2.cf.dash.row.aiv-cdn.net
 0.0.0.0  s3-iad-2.cf.dash.row.aiv-cdn.net
 0.0.0.0  s3-iad-ww.cf.videorolls.row.aiv-cdn.net
 0.0.0.0  s3.ll.videorolls.row.aiv-cdn.net
@@ -1201,6 +1209,7 @@
 0.0.0.0  adsk-pnxproxy-prd-1753980530.us-east-1.elb.amazonaws.com
 0.0.0.0  analytics-collector-28944298.us-east-1.elb.amazonaws.com
 0.0.0.0  audience-164723144.us-east-1.elb.amazonaws.com
+0.0.0.0  detailed-ad-logger-load-balancer-561104410.us-east-1.elb.amazonaws.com
 0.0.0.0  engagement-bus-prod-713264365.us-east-1.elb.amazonaws.com
 0.0.0.0  log-collectors-73517960.us-east-1.elb.amazonaws.com
 0.0.0.0  lynx-prod-beacon-alb-498367235.us-east-1.elb.amazonaws.com
@@ -2014,6 +2023,7 @@
 0.0.0.0  app.cision.com
 0.0.0.0  prapi.cision.com
 0.0.0.0  www.clarity.ms
+0.0.0.0  events.claspws.tv
 0.0.0.0  i.clean.gg
 0.0.0.0  net.cleverjp.com
 0.0.0.0  report.clevernt.com
@@ -2191,6 +2201,7 @@
 0.0.0.0  sjc-tr-bgp.contextweb.com
 0.0.0.0  tag-st.contextweb.com
 0.0.0.0  contineljs.com
+0.0.0.0  conviva.com
 0.0.0.0  cws.conviva.com
 0.0.0.0  133446f3fa16c4a2f02e9f45a1d9d640705b7b62.cws.conviva.com
 0.0.0.0  268a2000018370f5f35b29272d1942aa2ff7b6a9.cws.conviva.com
@@ -2495,6 +2506,8 @@
 0.0.0.0  compass-events.deliverimp.com
 0.0.0.0  compass-v2.deliverimp.com
 0.0.0.0  deloton.com
+0.0.0.0  balanced-collect.deltadna.net
+0.0.0.0  balanced-engage.deltadna.net
 0.0.0.0  collect10665dd4kq.deltadna.net
 0.0.0.0  collect10791rllrc.deltadna.net
 0.0.0.0  collect10854wrdcr.deltadna.net
@@ -2510,6 +2523,7 @@
 0.0.0.0  collect3515gvrnr.deltadna.net
 0.0.0.0  collect4739mgndm.deltadna.net
 0.0.0.0  collect5081wrdch.deltadna.net
+0.0.0.0  collect82532756ggplc.deltadna.net
 0.0.0.0  engage10665dd4kq.deltadna.net
 0.0.0.0  engage10791rllrc.deltadna.net
 0.0.0.0  engage10854wrdcr.deltadna.net
@@ -2522,6 +2536,7 @@
 0.0.0.0  engage17070dvntr.deltadna.net
 0.0.0.0  engage3515gvrnr.deltadna.net
 0.0.0.0  engage5081wrdch.deltadna.net
+0.0.0.0  engage82532756ggplc.deltadna.net
 0.0.0.0  engage8829thscr.deltadna.net
 0.0.0.0  deltago.com
 0.0.0.0  api.demandbase.com
@@ -3194,6 +3209,11 @@
 0.0.0.0  loadus.tm.ssl.exelator.com
 0.0.0.0  vdna.exelator.com
 0.0.0.0  smetrics1.experian.com
+0.0.0.0  extend.tv
+0.0.0.0  adserver-east.extend.tv
+0.0.0.0  freewheeleventsbidder-east.extend.tv
+0.0.0.0  sync.extend.tv
+0.0.0.0  telariaeventsbidder-east.extend.tv
 0.0.0.0  extreme-ip-lookup.com
 0.0.0.0  beacons.extremereach.io
 0.0.0.0  beacons2.extremereach.io
@@ -3263,6 +3283,8 @@
 0.0.0.0  sdk.follow-apps.com
 0.0.0.0  sor-sdk.follow-apps.com
 0.0.0.0  king-contenido-prod.secure2.footprint.net
+0.0.0.0  fuse.forbes.com
+0.0.0.0  geolocation.forbes.com
 0.0.0.0  analytics.foresee.com
 0.0.0.0  bd-nplb01.foresee.com
 0.0.0.0  bd-nplb02.foresee.com
@@ -3598,6 +3620,8 @@
 0.0.0.0  vc.hotjar.io
 0.0.0.0  howdoesin.net
 0.0.0.0  click.howdoesin.net
+0.0.0.0  hrzn-nxt.com
+0.0.0.0  hmi-hershey.hrzn-nxt.com
 0.0.0.0  hs-analytics.net
 0.0.0.0  analytics.htmedia.in
 0.0.0.0  api.huqindustries.co.uk
@@ -3651,6 +3675,8 @@
 0.0.0.0  game.idoing3d.com
 0.0.0.0  server.idreams.pl
 0.0.0.0  d.ifengimg.com
+0.0.0.0  adlog.ifood.tv
+0.0.0.0  log.ifood.tv
 0.0.0.0  igaworks.com
 0.0.0.0  dedao.igetget.com
 0.0.0.0  entree.igetget.com
@@ -3744,6 +3770,7 @@
 0.0.0.0  secure-us.imrworldwide.com
 0.0.0.0  static.imrworldwide.com
 0.0.0.0  uaid-linkage.imrworldwide.com
+0.0.0.0  imtwjwoasak.com
 0.0.0.0  imwx.com
 0.0.0.0  trk.in25app.com
 0.0.0.0  ads.indeed.com
@@ -3955,6 +3982,8 @@
 0.0.0.0  api.ipstack.com
 0.0.0.0  iqzone.com
 0.0.0.0  pssvc.iqzone.com
+0.0.0.0  iris.tv
+0.0.0.0  context.iris.tv
 0.0.0.0  ovp.iris.tv
 0.0.0.0  iam-agof-app.irquest.com
 0.0.0.0  irr.ru
@@ -3977,6 +4006,8 @@
 0.0.0.0  tnc16-alisg.isnssdk.com
 0.0.0.0  tnc16-useast1a.isnssdk.com
 0.0.0.0  banners.isoftmarketing.com
+0.0.0.0  ispot.tv
+0.0.0.0  pi.ispot.tv
 0.0.0.0  pt.ispot.tv
 0.0.0.0  api.iterable.com
 0.0.0.0  assets.iterable.com
@@ -4257,6 +4288,9 @@
 0.0.0.0  njinmobirtb.lfstmedia.com
 0.0.0.0  scadxrtb.lfstmedia.com
 0.0.0.0  tracking.lg.com
+0.0.0.0  us.ibs.lgappstv.com
+0.0.0.0  us.rdx2.lgtvsdp.com
+0.0.0.0  us.lgtvsdp.com
 0.0.0.0  b-code.liadm.com
 0.0.0.0  snap.licdn.com
 0.0.0.0  licensebuttons.net
@@ -4313,6 +4347,8 @@
 0.0.0.0  parameter.lionmobi.com
 0.0.0.0  updater.lionmobi.com
 0.0.0.0  tracking.listhub.net
+0.0.0.0  litix.io
+0.0.0.0  18lus0524edvcif1pa0hruc0e.litix.io
 0.0.0.0  player.stats.live-video.net
 0.0.0.0  server.iad.liveperson.net
 0.0.0.0  lptag.liveperson.net
@@ -4398,6 +4434,7 @@
 0.0.0.0  c.lytics.io
 0.0.0.0  m1-shop.ru
 0.0.0.0  ingest.m2appmonitor.com
+0.0.0.0  macromill.com
 0.0.0.0  metrics.macys.net
 0.0.0.0  madadsmedia.com
 0.0.0.0  api.madkudu.com
@@ -5240,6 +5277,8 @@
 0.0.0.0  networld.hk
 0.0.0.0  wpm.neustar.biz
 0.0.0.0  rum-collector.wpm.neustar.biz
+0.0.0.0  newrelic.com
+0.0.0.0  insights-collector.newrelic.com
 0.0.0.0  us.tags.newscgp.com
 0.0.0.0  nex8.net
 0.0.0.0  cs.nex8.net
@@ -5332,6 +5371,7 @@
 0.0.0.0  hulu.hb.omtrdc.net
 0.0.0.0  allstate.sc.omtrdc.net
 0.0.0.0  audible.sc.omtrdc.net
+0.0.0.0  fox.com.ssl.d2.sc.omtrdc.net
 0.0.0.0  philipslighting.d3.sc.omtrdc.net
 0.0.0.0  dsg.sc.omtrdc.net
 0.0.0.0  abcnews.tt.omtrdc.net
@@ -6186,6 +6226,9 @@
 0.0.0.0  proximitykit.radiusnetworks.com
 0.0.0.0  beacon.rallydev.com
 0.0.0.0  client.rave-api.com
+0.0.0.0  ravm.tv
+0.0.0.0  display.ravm.tv
+0.0.0.0  hb-t5u9.raps.ravm.tv
 0.0.0.0  sdk-h5-cdn.rayjoy.com
 0.0.0.0  rayjump.com
 0.0.0.0  adx-tk.rayjump.com
@@ -6214,6 +6257,8 @@
 0.0.0.0  recreativ.ru
 0.0.0.0  track.recreativ.ru
 0.0.0.0  events.redditmedia.com
+0.0.0.0  redfast.com
+0.0.0.0  conduit.redfast.com
 0.0.0.0  redintelligence.net
 0.0.0.0  hal9000.redintelligence.net
 0.0.0.0  go.redirectingat.com
@@ -6295,6 +6340,9 @@
 0.0.0.0  ads.roblox.com
 0.0.0.0  metrics.roblox.com
 0.0.0.0  analytics.rogersmedia.com
+0.0.0.0  p.ads.roku.com
+0.0.0.0  austin.logs.roku.com
+0.0.0.0  scribe.logs.roku.com
 0.0.0.0  roosterfirework.com
 0.0.0.0  rotaban.ru
 0.0.0.0  ads-cloud.rovio.com
@@ -6451,6 +6499,9 @@
 0.0.0.0  server.seadform.net
 0.0.0.0  track.seadform.net
 0.0.0.0  analytics.seattleclouds.com
+0.0.0.0  secondstreetapp.com
+0.0.0.0  api.secondstreetapp.com
+0.0.0.0  embed.secondstreetapp.com
 0.0.0.0  agoda.securedtouch.com
 0.0.0.0  hub.securedtouch.com
 0.0.0.0  static.securedtouch.com
@@ -6466,6 +6517,8 @@
 0.0.0.0  whitelabel-apricot.xid.segment.com
 0.0.0.0  api.segment.io
 0.0.0.0  cdn.segment.io
+0.0.0.0  segmentapis.com
+0.0.0.0  silver-fir.cd.segmentapis.com
 0.0.0.0  cdn.segmentify.com
 0.0.0.0  dce1.segmentify.com
 0.0.0.0  dcetr4.segmentify.com
@@ -6815,6 +6868,7 @@
 0.0.0.0  engine.spotscenered.info
 0.0.0.0  aka.spotxcdn.com
 0.0.0.0  cdn.spotxcdn.com
+0.0.0.0  spotxchange.com
 0.0.0.0  den01-event.spotxchange.com
 0.0.0.0  den01-search.spotxchange.com
 0.0.0.0  event.spotxchange.com
@@ -6830,6 +6884,7 @@
 0.0.0.0  sin01.sync.search.spotxchange.com
 0.0.0.0  sin01-event.spotxchange.com
 0.0.0.0  sin01-search.spotxchange.com
+0.0.0.0  springserve.com
 0.0.0.0  bc-ssb-iad.springserve.com
 0.0.0.0  cdn.springserve.com
 0.0.0.0  datplus.springserve.com
@@ -6947,6 +7002,8 @@
 0.0.0.0  ua.supersonicads.com
 0.0.0.0  ads.supplyframe.com
 0.0.0.0  search.supplyframe.com
+0.0.0.0  survata.com
+0.0.0.0  ir.surveywall-api.survata.com
 0.0.0.0  api.survicate.com
 0.0.0.0  survey.survicate.com
 0.0.0.0  telemetry.api.swiftkey.com
@@ -7250,6 +7307,9 @@
 0.0.0.0  ads.themoneytizer.com
 0.0.0.0  theoremreach.com
 0.0.0.0  analytics-tracker.thescore.com
+0.0.0.0  thetimmedia.site
+0.0.0.0  trinity-cdn.thetimmedia.site
+0.0.0.0  trinity-player.thetimmedia.site
 0.0.0.0  thetrafficstat.net
 0.0.0.0  mopub-server.thinknearhub.com
 0.0.0.0  openx-server.thinknearhub.com
@@ -7257,6 +7317,8 @@
 0.0.0.0  smaato-server.thinknearhub.com
 0.0.0.0  thinknear-hosted.thinknearhub.com
 0.0.0.0  thrtle.com
+0.0.0.0  tidaltv.com
+0.0.0.0  trk.tidaltv.com
 0.0.0.0  registration.tiltingpoint.io
 0.0.0.0  utctime.tiltingpoint.io
 0.0.0.0  tia.timeinc.net
@@ -7409,6 +7471,10 @@
 0.0.0.0  ads-router-noneu.truecaller.com
 0.0.0.0  ads5-noneu.truecaller.com
 0.0.0.0  pushid-noneu.truecaller.com
+0.0.0.0  truex.com
+0.0.0.0  ctv.truex.com
+0.0.0.0  truoptik.com
+0.0.0.0  dmp.truoptik.com
 0.0.0.0  choices.truste.com
 0.0.0.0  sofia.trustx.org
 0.0.0.0  cdn.tsyndicate.com
@@ -7439,10 +7505,12 @@
 0.0.0.0  ma.tune.com
 0.0.0.0  analytics.ma.tune.com
 0.0.0.0  marketing.tunity.com
+0.0.0.0  turn.com
 0.0.0.0  ad.turn.com
 0.0.0.0  cdns.turn.com
 0.0.0.0  ad2.cdns.turn.com
 0.0.0.0  img.cdns.turn.com
+0.0.0.0  d.turn.com
 0.0.0.0  d-sjc2.turn.com
 0.0.0.0  img.turn.com
 0.0.0.0  presentation-ams1.turn.com
@@ -7694,16 +7762,20 @@
 0.0.0.0  sourcepoint.vice.com
 0.0.0.0  bis.vidazoo.com
 0.0.0.0  bisdr.vidazoo.com
-0.0.0.0  bisdr.vidazoo.com
 0.0.0.0  inventory.vidazoo.com
 0.0.0.0  pl.vidazoo.com
 0.0.0.0  static.vidazoo.com
 0.0.0.0  wserver.vidazoo.com
 0.0.0.0  ads.videoadex.com
+0.0.0.0  videoamp.com
+0.0.0.0  b.videoamp.com
+0.0.0.0  videohub.tv
 0.0.0.0  ads-secure.videohub.tv
 0.0.0.0  adserver.videohub.tv
+0.0.0.0  dt-secure.videohub.tv
 0.0.0.0  nginx13.iad1.videohub.tv
 0.0.0.0  l0-secure.videohub.tv
+0.0.0.0  tp.videohub.tv
 0.0.0.0  sdkcdn.videojj.com
 0.0.0.0  kinja-com.videoplayerhub.com
 0.0.0.0  pmc-com.videoplayerhub.com
@@ -8100,6 +8172,8 @@
 0.0.0.0  tracking.yomedia.vn
 0.0.0.0  rg.yottos.com
 0.0.0.0  sdk.youappi.com
+0.0.0.0  youborafds01.com
+0.0.0.0  a-fds.youborafds01.com
 0.0.0.0  infinity-c4.youboranqs01.com
 0.0.0.0  dsp.youdao.com
 0.0.0.0  youmi.net
