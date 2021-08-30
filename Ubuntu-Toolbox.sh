@@ -1156,8 +1156,9 @@ InstallAndConquer(){
 				sudo snap install brave
 			elif [[ $browser == 14 ]];
 			then
-				wget https://gitlab.com/librewolf-community/browser/appimage/-/jobs/1521882881/artifacts/raw/LibreWolf-91.0.1-1.x86_64.AppImage; chmod +x LibreWolf-91.0.1-1.x86_64.AppImage
-				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/LibreWolf.desktop; sudo mv LibreWolf.desktop /usr/share/applications/LibreWolf.desktop
+				mkdir AppImages
+				wget https://gitlab.com/librewolf-community/browser/appimage/-/jobs/1521882881/artifacts/raw/LibreWolf-91.0.1-1.x86_64.AppImage; chmod +x LibreWolf-91.0.1-1.x86_64.AppImage; mv LibreWolf-91.0.1-1.x86_64.AppImage ~/AppImages
+				wget https://librewolf-community.gitlab.io/images/logo.png; mv logo.png ~/AppImages; wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/LibreWolf.desktop; sudo mv LibreWolf.desktop /usr/share/applications/LibreWolf.desktop
 			fi
 			;;
 			6)
