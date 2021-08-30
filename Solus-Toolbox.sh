@@ -138,6 +138,8 @@ Setup(){
 		echo "#Alias to update the system" >> ~/.bashrc
 		echo 'alias update="sudo eopkg -y upgrade"' >> ~/.bashrc
 		echo "#Alias to update flatpaks" >> ~/.bashrc
+		echo "#Alias to repair and clean flatpaks" >> ~/.bashrc
+		echo 'alias fix="sudo flatpak repair && flatpak --user uninstall --unused"' >> ~/.bashrc
 		echo 'alias flatup="flatpak --user update"' >> ~/.bashrc
 		echo "#Alias to clear package cache" >> ~/.bashrc
 		echo 'alias cleanse="sudo eopkg -y delete-cache"' >> ~/.bashrc
