@@ -777,7 +777,7 @@ sudo apt install snapd && sudo snap install snapd. To set up flatpaks,
 ensure flatpak is installed on your distribution, you can find it in the
 package manager repository on most distros. Then install the flathub
 repository by typing: flatpak remote-add --if-not-exists flathub
-https://flathub.org/repo/flathub.flatpakrepo and that is it. Cleaning flat-
+https://flathub.org/repo/flathub.flatpakrepo and that's it. Cleaning flat-
 paks is a pretty easy endeavor as well. sudo flatpak --user uninstall --unused.
 To repair broken flatpaks or flatpak itself; sudo flatpak repair.
 To install apps sudo flatpak install appname; sudo flatpak uninstall appname.
@@ -1128,7 +1128,7 @@ InstallAndConquer(){
 				cd /tmp; wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 6 ]];
 			then
-				wget https://linux.palemoon.org/datastore/release/palemoon-29.4.0.2.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-29.4.0.2.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget https://linux.palemoon.org/datastore/release/palemoon-29.4.0.1.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-29.4.0.1.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
@@ -1430,7 +1430,7 @@ Uninstall(){
 	read answer
 	while [ $answer ==  Y ];
 	do
-  		read -a software
+		read -a software
 		sudo apt remove --purge -yy ${software[@]}; sudo flatpak uninstall ${software[@]}; sudo snap remove ${software[@]}
 	break
 	done
@@ -1543,12 +1543,12 @@ Adblocking(){
 	Greeting
 }
 
-cleanup(){
+Cleanup(){
 	#This flushes apt cache
 	sudo apt autoremove -y; sudo apt autoclean -y; sudo apt clean -y
 
 	#This cleans flatpaks that are unused by the user
-	flatpak --user uninstall --unused
+	#flatpak --user uninstall --unused
 
 	#This removes older config files left by no longer installed applications
 	OLDCONF=$(dpkg -l | grep '^rc' | awk '{print $2}')
@@ -1611,7 +1611,16 @@ EOF
 	sudo journalctl --vacuum-size=25M
 
 	#This uninstalls unwanted apps
-	Uninstall
+	echo "Do you wish to uninstall apps?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		Uninstall
+		break
+done
+
+clear
+Greeting
 }
 
 BrowserRepair(){
@@ -1723,7 +1732,7 @@ EOF
 		echo "Enter the name of the browser you wish to use"
 		read browser
 		sudo update-alternatives --set x-www-browser /usr/bin/$browser
-	break
+		break
 	done
 
 	clear
@@ -1737,7 +1746,7 @@ SystemMaintenance(){
 	sudo dpkg --configure -a; sudo apt install -f
 
 	#Repairs flatpaks installed on your system not everyone has these on Ubuntu
-	flatpak repair; flatpak update
+	#flatpak repair; flatpak update
 
 	#Updates snap PACKAGES
 	#sudo snap refresh
@@ -1786,11 +1795,11 @@ SystemMaintenance(){
 	done
 
 	#Optional
-	echo "Would you like to run cleanup?(Y/n)"
+	echo "Would you like to run Cleanup?(Y/n)"
 	read answer
 	if [[ $answer == Y ]];
 	then
-		cleanup
+		Cleanup
 	else
 		clear
 		Greeting
@@ -1806,7 +1815,7 @@ ServiceManager(){
 	and possibly by chrooting into the device via live cd and reversing the
 	process by running this again and reenabling the service.
 EOF
-  	init=$(ps -p1 | awk 'NR!=1{print $4}')
+init=$(ps -p1 | awk 'NR!=1{print $4}')
 	for init in $init;
 	do
 		if [[ $init == upstart ]];
@@ -1906,9 +1915,7 @@ Backup(){
 	echo "What would you like to do?"
 	echo "1 - Backup home folder and user files"
 	echo "2 - Backup entire drive and root partition(skipping unnecessary items)"
-
-  	read operation;
-
+	read operation;
 	case $operation in
 		1)
 		host=$(hostname)
@@ -2039,7 +2046,7 @@ Greeting(){
 		HELP
 		;;
 		13)
-		cleanup
+		Cleanup
 		;;
 		14)
 		RAMBack
@@ -2066,6 +2073,7 @@ Greeting(){
 		*)
 		echo "This is an invalid number, please try again."
 		sleep 1
+		
 		clear
 		Greeting
 		;;
