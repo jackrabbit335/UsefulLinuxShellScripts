@@ -227,7 +227,7 @@ EOF
 Update(){
 	CheckNetwork
 
-	sudo apt update; sudo apt full-upgrade -yy; sudo snap refresh; flatpak --user update
+	sudo apt update; sudo apt full-upgrade -yy
 
 	clear
 	Greeting
@@ -1753,7 +1753,7 @@ SystemMaintenance(){
 
 	#Repairs flatpaks installed on your system not everyone has these on Ubuntu
 	sudo flatpak repair; flatpak update
-	
+
 	#This updates snaps on the system
 	#sudo snap refresh
 
@@ -2079,7 +2079,7 @@ Greeting(){
 		*)
 		echo "This is an invalid number, please try again."
 		sleep 1
-		
+
 		clear
 		Greeting
 		;;
