@@ -177,6 +177,9 @@ Setup(){
 
 	#This tries to update repositories and upgrade the system
 	sudo eopkg -y delete-cache; sudo eopkg -y clean; sudo eopkg -y rebuild-db; sudo eopkg -y upgrade
+	
+	#This optionally sets up flatpak support
+	#sudo eopkg install flatpak xdg-desktop-portal-gtk; sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 	#This allows you to install the latest LTS kernel in Solus
 	cat <<EOF
