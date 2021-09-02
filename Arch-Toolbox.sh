@@ -879,6 +879,7 @@ InstallAndConquer(){
 			echo "18 - Otter-Browser"
 			echo "19 - Iridium"
 			echo "20 - Ungoogled-Chromium"
+			echo "21 - Librewolf"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -943,6 +944,9 @@ InstallAndConquer(){
 			elif [[ $browser == 20 ]];
 			then
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/ungoogled-chromium.tar.gz; gunzip ungoogled-chromium.tar.gz; tar -xvf ungoogled-chromium.tar; cd ungoogled-chromium && makepkg -si
+			elif [[ $browser == 21 ]];
+			then
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/librewolf-bin.tar.gz; gunzip librewolf-bin.tar.gz; tar -xvf librewolf-bin.tar; cd librewolf-bin && makepkg -si
 			else
 				echo "You have entered an invalid number"
 				InstallAndConquer
