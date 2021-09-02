@@ -777,7 +777,7 @@ sudo apt install snapd && sudo snap install snapd. To set up flatpaks,
 ensure flatpak is installed on your distribution, you can find it in the
 package manager repository on most distros. Then install the flathub
 repository by typing: flatpak remote-add --if-not-exists flathub
-https://flathub.org/repo/flathub.flatpakrepo and that's it. Cleaning flat-
+https://flathub.org/repo/flathub.flatpakrepo and that is it. Cleaning flat-
 paks is a pretty easy endeavor as well. sudo flatpak --user uninstall --unused.
 To repair broken flatpaks or flatpak itself; sudo flatpak repair.
 To install apps sudo flatpak install appname; sudo flatpak uninstall appname.
@@ -1622,8 +1622,7 @@ EOF
 	while [ $answer == Y ];
 	do
 		Uninstall
-		break
-done
+	done
 
 clear
 Greeting
@@ -1752,7 +1751,7 @@ SystemMaintenance(){
 	sudo dpkg --configure -a; sudo apt install -f
 
 	#Repairs flatpaks installed on your system not everyone has these on Ubuntu
-	sudo flatpak repair; flatpak update
+	#sudo flatpak repair; flatpak update
 
 	#This updates snaps on the system
 	#sudo snap refresh
