@@ -1751,9 +1751,8 @@ Uninstall(){
 	read answer
 	while [ $answer == Y ];
 	do
-		echo "Please enter the name of any software you wish to remove"
-		read software
-		sudo pacman -Rsn --noconfirm $software
+		read -a software
+		sudo pacman -Rsn --noconfirm ${software[@]}
 		break
 	done
 
@@ -1810,7 +1809,15 @@ cleanup(){
 	sudo pacman -Scc
 
 	#This removes unwanted apps
-	Uninstall
+	echo "Should we remove unneeded software?(Y/n)"
+	read answer 
+	while [ $answer == Y ];
+	do
+		Uninstall
+	done
+	
+	clear
+	Greeting
 }
 
 BrowserRepair(){
@@ -2166,7 +2173,7 @@ Reset(){
 Disclaimer(){
 cat <<EOF
 ##########################################################################
-Hello! Thank you for using Arch Toolbox. Within this script is a multitu-
+Hello! Thank you for using Arch-Toolbox. Within this script is a multitu-
 de of potential solutions for every day tasks as trivial as maintenance,
 all the way to as important as setting up a new system. This script is
 meant for new users, but anyone can read, change and use this script to

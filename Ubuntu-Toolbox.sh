@@ -64,7 +64,7 @@ Setup(){
 		echo "#Alias for those who have flatpaks or snaps" >> ~/.bashrc
 		echo 'alias flatup="flatpak --user update; sudo snap refresh"' >> ~/.bashrc
 		echo "#Alias to clean flatpaks" >> ~/.bashrc
-		echo 'alias purge="flatpak --user uninstall --unused"' >> ~/.bashrc
+		echo 'alias purge="flatpak --user --unused"' >> ~/.bashrc
 		echo "#Alias to repair broken flatpak" >> ~/.bashrc
 		echo 'alias repair="sudo flatpak repair"' >> ~/.bashrc
 		echo "#Alias to list packages from apt and dpkg" >> ~/.bashrc
@@ -1523,7 +1523,7 @@ CheckNetwork(){
 Disclaimer(){
 cat <<EOF
 ##########################################################################
-Hello! Thank you for using Arch Toolbox. Within this script is a multitu-
+Hello! Thank you for using Ubuntu-Toolbox. Within this script is a multitu-
 de of potential solutions for every day tasks as trivial as maintenance,
 all the way to as important as setting up a new system. This script is
 meant for new users, but anyone can read, change and use this script to
@@ -1628,9 +1628,9 @@ EOF
 	do
 		Uninstall
 	done
-
-clear
-Greeting
+	
+	clear
+	Greeting
 }
 
 BrowserRepair(){
