@@ -64,7 +64,7 @@ Setup(){
 		echo "#Alias for those who have flatpaks or snaps" >> ~/.bashrc
 		echo 'alias flatup="flatpak --user update; sudo snap refresh"' >> ~/.bashrc
 		echo "#Alias to clean flatpaks" >> ~/.bashrc
-		echo 'alias purge="flatpak --user uninstall --unused"' >> ~/.bashrc
+		echo 'alias purge="flatpak --user --unused"' >> ~/.bashrc
 		echo "#Alias to repair broken flatpak" >> ~/.bashrc
 		echo 'alias repair="sudo flatpak repair"' >> ~/.bashrc
 		echo "#Alias to list packages from apt and dpkg" >> ~/.bashrc
@@ -777,7 +777,7 @@ sudo apt install snapd && sudo snap install snapd. To set up flatpaks,
 ensure flatpak is installed on your distribution, you can find it in the
 package manager repository on most distros. Then install the flathub
 repository by typing: flatpak remote-add --if-not-exists flathub
-https://flathub.org/repo/flathub.flatpakrepo and that is it. Cleaning flat-
+https://flathub.org/repo/flathub.flatpakrepo and that's it. Cleaning flat-
 paks is a pretty easy endeavor as well. sudo flatpak --user uninstall --unused.
 To repair broken flatpaks or flatpak itself; sudo flatpak repair.
 To install apps sudo flatpak install appname; sudo flatpak uninstall appname.
@@ -1007,8 +1007,8 @@ InstallAndConquer(){
 		echo "11 - Webcam application"
 		echo "12 - Cleaning and Orphan management"
 		echo "13 - proprietary fonts"
-		echo "14 - THEMES"
-		echo "15 - GAMES"
+		echo "14 - THEMES!!!!"
+		echo "15 - GAMES!!!!"
 		echo "16 - Virtualbox"
 		echo "17 - Wine and or PlayonLinux"
 		echo "18 - Dropbox"
