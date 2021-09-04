@@ -64,7 +64,7 @@ Setup(){
 		echo "#Alias for those who have flatpaks or snaps" >> ~/.bashrc
 		echo 'alias flatup="flatpak --user update; sudo snap refresh"' >> ~/.bashrc
 		echo "#Alias to clean flatpaks" >> ~/.bashrc
-		echo 'alias purge="flatpak --user --unused"' >> ~/.bashrc
+		echo 'alias purge="flatpak --user uninstall --unused"' >> ~/.bashrc
 		echo "#Alias to repair broken flatpak" >> ~/.bashrc
 		echo 'alias repair="sudo flatpak repair"' >> ~/.bashrc
 		echo "#Alias to list packages from apt and dpkg" >> ~/.bashrc
