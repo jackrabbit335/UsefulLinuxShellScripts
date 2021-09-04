@@ -1991,7 +1991,6 @@
 0.0.0.0  ailoganalyticsportal-eus.cloudapp.net
 0.0.0.0  bi-analytics.cloudapp.net
 0.0.0.0  bkt.clouddn.com
-0.0.0.0  tls10.newrelic.com.cdn.cloudflare.net
 0.0.0.0  metrics.cloudflarebolt.com
 0.0.0.0  static.cloudflareinsights.com
 0.0.0.0  us-central1-adaptive-growth.cloudfunctions.net
@@ -2967,9 +2966,6 @@
 0.0.0.0  clicktale.net.edgekey.net
 0.0.0.0  cdn-dsa.clicktale.net.edgekey.net
 0.0.0.0  everestjs.net.edgekey.net
-0.0.0.0  go-mpulse.net.edgekey.net
-0.0.0.0  ip46s2.go-mpulse.net.edgekey.net
-0.0.0.0  wildcard46.go-mpulse.net.edgekey.net
 0.0.0.0  marketo.net.edgekey.net
 0.0.0.0  wildcard.marketo.net.edgekey.net
 0.0.0.0  owneriq.net.edgekey.net
@@ -3145,7 +3141,6 @@
 0.0.0.0  fam-ad.com
 0.0.0.0  fastapi.net
 0.0.0.0  mparticle.map.fastly.net
-0.0.0.0  newrelic.map.fastly.net
 0.0.0.0  confiant-integrations.global.ssl.fastly.net
 0.0.0.0  sonar-iad.xx.fbcdn.net
 0.0.0.0  aimg.fc2.com
@@ -3359,10 +3354,6 @@
 0.0.0.0  adn-d.sp.gmossp-sp.jp
 0.0.0.0  adn-i.sp.gmossp-sp.jp
 0.0.0.0  adn-j.sp.gmossp-sp.jp
-0.0.0.0  go-mpulse.net
-0.0.0.0  c.go-mpulse.net
-0.0.0.0  s.go-mpulse.net
-0.0.0.0  s2.go-mpulse.net
 0.0.0.0  log.go.com
 0.0.0.0  sw88.go.com
 0.0.0.0  tredir.go.com
@@ -5158,10 +5149,6 @@
 0.0.0.0  networld.hk
 0.0.0.0  wpm.neustar.biz
 0.0.0.0  rum-collector.wpm.neustar.biz
-0.0.0.0  newrelic.com
-0.0.0.0  insights-collector.newrelic.com
-0.0.0.0  js-agent.newrelic.com
-0.0.0.0  mobile-collector.newrelic.com
 0.0.0.0  www.newsbreak.com
 0.0.0.0  us.tags.newscgp.com
 0.0.0.0  nex8.net
