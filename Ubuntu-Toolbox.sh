@@ -64,7 +64,7 @@ Setup(){
 		echo "#Alias for those who have flatpaks or snaps" >> ~/.bashrc
 		echo 'alias flatup="flatpak --user update; sudo snap refresh"' >> ~/.bashrc
 		echo "#Alias to clean flatpaks" >> ~/.bashrc
-		echo 'alias purge="flatpak --user uninstall --unused"' >> ~/.bashrc
+		echo 'alias purge="flatpak --user --unused"' >> ~/.bashrc
 		echo "#Alias to repair broken flatpak" >> ~/.bashrc
 		echo 'alias repair="sudo flatpak repair"' >> ~/.bashrc
 		echo "#Alias to list packages from apt and dpkg" >> ~/.bashrc
@@ -777,7 +777,7 @@ sudo apt install snapd && sudo snap install snapd. To set up flatpaks,
 ensure flatpak is installed on your distribution, you can find it in the
 package manager repository on most distros. Then install the flathub
 repository by typing: flatpak remote-add --if-not-exists flathub
-https://flathub.org/repo/flathub.flatpakrepo and that is it. Cleaning flat-
+https://flathub.org/repo/flathub.flatpakrepo and that's it. Cleaning flat-
 paks is a pretty easy endeavor as well. sudo flatpak --user uninstall --unused.
 To repair broken flatpaks or flatpak itself; sudo flatpak repair.
 To install apps sudo flatpak install appname; sudo flatpak uninstall appname.
@@ -1011,7 +1011,7 @@ InstallAndConquer(){
 		echo "15 - GAMES!!!!"
 		echo "16 - Virtualbox"
 		echo "17 - Wine and or PlayonLinux"
-		echo "18 - Dropbox"
+		echo "18 - File syncing clients"
 		echo "19 - get out of this menu"
 		read software;
 		case $software in
@@ -1038,7 +1038,7 @@ InstallAndConquer(){
 				sudo apt install -y meld
 			elif [[ $package == 5 ]];
 			then
-				sudo snap install code --classic
+				sudo apt install -y code
 			elif [[ $package == 6 ]];
 			then
 				sudo snap install notepadqq
@@ -1071,7 +1071,7 @@ InstallAndConquer(){
 			3)
 			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync p7zip zip software-properties-gtk
 			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop file-roller xdg-user-dirs build-essential
-			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools unrar curl unzip ffmpeg
+			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools unrar curl unzip ffmpeg git
 			#sudo apt-add-repository ppa:agornostal/ulauncher; sudo apt-get update; sudo apt-get install ulauncher
 			sudo snap install youtube-dl keepassxc
 			;;
@@ -1322,8 +1322,13 @@ InstallAndConquer(){
 			sudo apt update && sudo apt install -y wine playonlinux
 			;;
 			18)
-			echo "Dropbox"
-			sudo apt install -y dropbox
+			echo "1 - Dropbox"
+			echo "2 - Nextcloud"
+			read package;
+			case $package in
+				1) sudo apt install -y dropbox;;
+				2) sudo apt install -y nextcloud-desktop;;
+			esac
 			;;
 			19)
 			echo "Alrighty then!"
@@ -1381,7 +1386,7 @@ InstallAndConquer(){
 			elif [[ $DESKTOP_SESSION == gnome ]];
 			then
 				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
-				sudo apt install -y gnome-session gnome-tweak-tool gnome-shell-extensions
+				sudo apt install -y gnome-session gnome-tweak-tool gnome-shell-extensions nautilus-admin
 			elif [[ $DESKTOP_SESSION == enlightenment ]];
 			then
 				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
@@ -1394,7 +1399,7 @@ InstallAndConquer(){
 			elif [[ $DESKTOP_SESSION == ubuntu ]];
 			then
 				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
-				sudo apt install -y gnome-tweak-tool dconf-editor chrome-gnome-shell gnome-shell-extensions
+				sudo apt install -y gnome-tweak-tool dconf-editor chrome-gnome-shell gnome-shell-extensions nautilus-admin
 			else
 				echo "You're running some other window manager I haven't tested yet."
 				sleep 1
@@ -1980,7 +1985,7 @@ EOF
 		sleep 1
 		echo "Please select the device from the list"
 		read device
-		sudo mount $device /mnt; sudo rsync -aAXv --delete /mnt/$host-$date-backups/* /home/$USER; sudo sync; Restart
+		sudo mount $device /mnt; sudo rsync -aAXv --delete /mnt/$host-$date-backups/* /home/$USER; sudo sync; sudo chown -R $USER:$USER /home/$USER; Restart
 	elif [[ $Mountpoint == /run/media/$USER/* ]];
 	then
 		read -p "Found a block device at designated coordinates... If this is the preferred device, try umounting it, leaving it plugged in, and then running this again. Press enter to continue..."
