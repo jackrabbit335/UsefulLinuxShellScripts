@@ -138,9 +138,9 @@ Setup(){
 		echo "#Alias to update the system" >> ~/.bashrc
 		echo 'alias update="sudo eopkg -y upgrade"' >> ~/.bashrc
 		echo "#Alias to update flatpaks" >> ~/.bashrc
+		echo 'alias flatup="flatpak --user update"' >> ~/.bashrc
 		echo "#Alias to repair and clean flatpaks" >> ~/.bashrc
 		echo 'alias fix="sudo flatpak repair && flatpak --user uninstall --unused"' >> ~/.bashrc
-		echo 'alias flatup="flatpak --user update"' >> ~/.bashrc
 		echo "#Alias to clear package cache" >> ~/.bashrc
 		echo 'alias cleanse="sudo eopkg -y delete-cache"' >> ~/.bashrc
 		echo "#Alias to clean stale locks" >> ~/.bashrc
@@ -458,6 +458,11 @@ Systeminfo(){
 	eopkg list-installed >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "INSTALLED FLATPAKS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	flatpak list >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "PACKAGE MANAGER HISTORY" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	sudo eopkg history >> $host-sysinfo.txt
@@ -592,7 +597,7 @@ InstallAndConquer(){
 		echo "8 - Virtual machine client"
 		echo "9 - Wine and play on linux"
 		echo "10 - quvcview"
-		echo "11 - GAMES!!!!!!!!!"
+		echo "11 - GAMES!!!!!!!!"
 		echo "12 - Video editing/encoding"
 		echo "13 - Proprietary fonts"
 		echo "14 - Plank"
@@ -1003,14 +1008,14 @@ this:
 +------------- min (0 - 59) source:
 http://www.adminschoice.com/crontab-quick-reference
 What I normally do is set the hosts updater to run at 8 every night ex.
-00 20 * * * /bin/sh /home/$USER/hostsupdater.sh.
+00 20 * * * /bin/sh /home/USER/hostsupdater.sh.
 I set it up under the root account by typing su followed by my password
 in manjaro, sudo -i in Ubuntu systems and then typing crontab -e.
 The maintenance scripts are ok to run manually each month.
 It is recommended that you do not run these without being present.
 However, if you wish to run them as cron jobs then you can tweak the
 cleaning routines as follows."sudo rm -r ./cache/*" should be changed to
-"rm -r /home/$USER/.cache/*" and etc. The setup script should only be
+"rm -r /home/USER/.cache/*" and etc. The setup script should only be
 ran once to set the system up.
 Some good reference sites are:
 https://wiki.manjaro.org/index.php?title=Main_Page
@@ -1132,9 +1137,9 @@ and error. This is not the only reason, but it is a big one as to why
 there are three toolbox scripts rather than just one. Upgrading is
 simple with this one though and learning a few key commands should get
 you by. All the main commands will be used in this script so enjoy.
-Sudo eopkg up will update the system, while sudo eopkg remove $name
+Sudo eopkg up will update the system, while sudo eopkg remove name
 will remove an application. To install an application in the standard
-repo simply type sudo eopkg install $name.
+repo simply type sudo eopkg install name.
 
 ##########################################################################
 FLATPAKS AND SNAPS
@@ -1482,16 +1487,8 @@ Uninstall(){
 	read answer
 	while [ $answer == Y ];
 	do
-		echo "Please enter the name of any software you wish to remove"
-		read software
-		echo "Should we remove the unnecessary dependencies?(Y/n)"
-		read answer
-		if [[ $answer == Y ]];
-		then
-			sudo eopkg autoremove $software
-		else
-			sudo eopkg remove $software
-		fi
+		read -a software
+		sudo eopkg -y autoremove ${software[@]}; flatpak --user uninstall ${software[@]}
 	break
 	done
 
