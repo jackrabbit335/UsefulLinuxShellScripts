@@ -777,7 +777,7 @@ sudo apt install snapd && sudo snap install snapd. To set up flatpaks,
 ensure flatpak is installed on your distribution, you can find it in the
 package manager repository on most distros. Then install the flathub
 repository by typing: flatpak remote-add --if-not-exists flathub
-https://flathub.org/repo/flathub.flatpakrepo and that is it. Cleaning flat-
+https://flathub.org/repo/flathub.flatpakrepo and that's it. Cleaning flat-
 paks is a pretty easy endeavor as well. sudo flatpak --user uninstall --unused.
 To repair broken flatpaks or flatpak itself; sudo flatpak repair.
 To install apps sudo flatpak install appname; sudo flatpak uninstall appname.
@@ -1072,8 +1072,8 @@ InstallAndConquer(){
 			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync p7zip zip software-properties-gtk
 			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop file-roller xdg-user-dirs build-essential
 			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools unrar curl unzip ffmpeg git
-			#sudo apt install -y caffeine
 			#sudo apt-add-repository ppa:agornostal/ulauncher; sudo apt-get update; sudo apt-get install ulauncher
+			#sudo apt install -y caffeine
 			sudo snap install youtube-dl keepassxc
 			;;
 			4)
@@ -1112,6 +1112,7 @@ InstallAndConquer(){
 			echo "12 - Basilisk"
 			echo "13 - Brave"
 			echo "14 - Librewolf"
+			echo "15 - Qutebrowser"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -1160,6 +1161,9 @@ InstallAndConquer(){
 				mkdir AppImages
 				wget https://gitlab.com/librewolf-community/browser/appimage/-/jobs/1521882881/artifacts/raw/LibreWolf-91.0.1-1.x86_64.AppImage; chmod +x LibreWolf-91.0.1-1.x86_64.AppImage; mv LibreWolf-91.0.1-1.x86_64.AppImage ~/AppImages
 				wget https://librewolf-community.gitlab.io/images/logo.png; mv logo.png ~/AppImages; wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/LibreWolf.desktop; sudo mv LibreWolf.desktop /usr/share/applications/LibreWolf.desktop
+			elif [[ $browser == 15 ]];
+			then
+				sudo apt install qutebrowser python3-pip; pip install adblock
 			fi
 			;;
 			6)
@@ -1172,7 +1176,8 @@ InstallAndConquer(){
 			echo "6 - mplayer"
 			echo "7 - smplayer"
 			echo "8 - celluloid"
-			echo "9 - kodi"
+			echo "9 - mpv"
+			echo "10 - kodi"
 			read player
 			if [[ $player == 1 ]];
 			then
@@ -1199,6 +1204,9 @@ InstallAndConquer(){
 			then
 				sudo apt install -y celluloid
 			elif [[ $player == 9 ]];
+			then
+				sudo apt install -y mpv
+			elif [[ $player == 10 ]];
 			then
 				sudo apt install -y kodi
 			fi
@@ -1629,7 +1637,7 @@ EOF
 	do
 		Uninstall
 	done
-	
+
 	clear
 	Greeting
 }
