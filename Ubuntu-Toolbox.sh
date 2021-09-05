@@ -777,7 +777,7 @@ sudo apt install snapd && sudo snap install snapd. To set up flatpaks,
 ensure flatpak is installed on your distribution, you can find it in the
 package manager repository on most distros. Then install the flathub
 repository by typing: flatpak remote-add --if-not-exists flathub
-https://flathub.org/repo/flathub.flatpakrepo and that's it. Cleaning flat-
+https://flathub.org/repo/flathub.flatpakrepo and that is it. Cleaning flat-
 paks is a pretty easy endeavor as well. sudo flatpak --user uninstall --unused.
 To repair broken flatpaks or flatpak itself; sudo flatpak repair.
 To install apps sudo flatpak install appname; sudo flatpak uninstall appname.
@@ -1684,6 +1684,7 @@ EOF
 	echo "8 - Midori"
 	echo "9 - Falkon"
 	echo "10 - Epiphany"
+	echo "11 - Qutebrowser"
 	read operation;
 	case $operation in
 		1)
@@ -1733,6 +1734,11 @@ EOF
 		;;
 		10)
 		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old; sudo rm -rf ~/.config/epiphany/*
+		echo "Your browser has now been reset"
+		sleep 1
+		;;
+		11)
+		sudo cp -r ~/.config/qutebrowser ~/.config/qutebrowser-old; sudo rm -rf ~/.config/qutebrowser/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
