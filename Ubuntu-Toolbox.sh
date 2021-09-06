@@ -1659,6 +1659,7 @@ EOF
 	browser8="$(find /usr/bin/falkon)"
 	browser9="$(find /usr/bin/epiphany)"
 	browser10="$(find /usr/bin/midori)"
+	browser11="$(find /usr/bin/qutebrowser)"
 
 	echo $browser1
 	echo $browser2
@@ -1670,6 +1671,7 @@ EOF
 	echo $browser8
 	echo $browser9
 	echo $browser10
+	echo $browser11
 
 	sleep 1
 
