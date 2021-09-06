@@ -1741,7 +1741,7 @@ EOF
 		;;
 		11)
 		sudo cp -r ~/.config/qutebrowser ~/.config/qutebrowser-old; sudo rm -rf ~/.config/qutebrowser/*
-		sudo cp ~/.local/share/qutebrowser ~/.local/share/qutebrowser-old; sudo rm -rf ~/.local/share/qutebrowser/*
+		sudo cp -r ~/.local/share/qutebrowser ~/.local/share/qutebrowser-old; sudo rm -rf ~/.local/share/qutebrowser/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
