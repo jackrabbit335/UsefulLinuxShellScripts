@@ -1879,7 +1879,7 @@ EOF
 	echo "13 - Iridium"
 	echo "14 - Otter-browser"
 	echo "15 - Ungoogled-chromium"
-	echo "16 - Qutebrowser
+	echo "16 - Qutebrowser"
 	read operation;
 	case $operation in
 		1)
@@ -1959,7 +1959,7 @@ EOF
 		;;
 		16)
 		sudo cp -r ~/.config/qutebrowser ~/.config/qutebrowser; sudo rm -rf ~/.config/qutebrowser/*
-		sudo cp ~/.local/share/qutebrowser ~/.local/share/qutebrowser-old; sudo rm -rf ~/.local/share/qutebrowser/*
+		sudo cp -r ~/.local/share/qutebrowser ~/.local/share/qutebrowser-old; sudo rm -rf ~/.local/share/qutebrowser/*
 		echo "Your browser has been reset"
 		sleep 1
 		;;
