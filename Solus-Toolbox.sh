@@ -1654,6 +1654,7 @@ EOF
 		;;
 		9)
 		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old; sudo rm -rf ~/.config/epiphany/*
+		sudo cp -r ~/.local/share/epiphany ~/.local/share/epiphany-old; sudo rm -rf ~/.local/share/epiphany/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
