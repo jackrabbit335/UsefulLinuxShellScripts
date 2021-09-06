@@ -1842,6 +1842,7 @@ EOF
 	browser13="$(find /usr/bin/iridium)"
 	browser14="$(find /usr/bin/otter-browser)"
 	browser15="$(find /usr/bin/ungoogled-chromium)"
+	browser16="$(find /usr/bin/qutebrowser)"
 
 	echo $browser1
 	echo $browser2
@@ -1858,6 +1859,7 @@ EOF
 	echo $browser13
 	echo $browser14
 	echo $browser15
+	echo $browser16
 
 	sleep 1
 
@@ -1877,6 +1879,7 @@ EOF
 	echo "13 - Iridium"
 	echo "14 - Otter-browser"
 	echo "15 - Ungoogled-chromium"
+	echo "16 - Qutebrowser
 	read operation;
 	case $operation in
 		1)
@@ -1951,6 +1954,12 @@ EOF
 		;;
 		15)
 		sudo cp -r ~/.config/ungoogled-chromium ~/.config/ungoogled-chromium-old; sudo rm -rf ~/.config/ungoogled-chromium/*
+		echo "Your browser has been reset"
+		sleep 1
+		;;
+		16)
+		sudo cp -r ~/.config/qutebrowser ~/.config/qutebrowser; sudo rm -rf ~/.config/qutebrowser/*
+		sudo cp ~/.local/share/qutebrowser ~/.local/share/qutebrowser-old; sudo rm -rf ~/.local/share/qutebrowser/*
 		echo "Your browser has been reset"
 		sleep 1
 		;;
