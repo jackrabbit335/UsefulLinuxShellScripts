@@ -1159,7 +1159,7 @@ sudo apt install snapd && sudo snap install snapd. To set up flatpaks,
 ensure flatpak is installed on your distribution, you can find it in the
 package manager repository on most distros. Then install the flathub
 repository by typing: flatpak remote-add --if-not-exists flathub
-https://flathub.org/repo/flathub.flatpakrepo and that's it. Cleaning flat-
+https://flathub.org/repo/flathub.flatpakrepo and that is it. Cleaning flat-
 paks is a pretty easy endeavor as well. sudo flatpak --user uninstall --unused.
 To repair broken flatpaks or flatpak itself; sudo flatpak repair.
 To install apps sudo flatpak install appname; sudo flatpak uninstall appname.
@@ -1571,12 +1571,14 @@ EOF
 	browser3="$(find /usr/bin/palemoon)"
 	browser4="$(find /usr/bin/google-chrome*)"
 	browser5="$(find /usr/bin/opera)"
-	browser6="$(find /usr/bin/waterfox)"
-	browser7="$(find /usr/bin/basilisk)"
-	browser8="$(find /usr/bin/epiphany)"
-	browser9="$(find /usr/bin/midori)"
-	browser10="$(find /usr/bin/brave-browser)"
-	browser11="$(find /usr/bin/falkon)"
+	browser6="$(find /usr/bin/vivaldi-snapshot)"
+	browser7="$(find /usr/bin/waterfox)"
+	browser8="$(find /usr/bin/basilisk)"
+	browser9="$(find /usr/bin/epiphany)"
+	browser10="$(find /usr/bin/midori)"
+	browser11="$(find /usr/bin/brave-browser)"
+	browser12="$(find /usr/bin/falkon)"
+	browser13="$(find /usr/bin/qutebrowser)"
 
 	echo $browser1
 	echo $browser2
@@ -1589,6 +1591,8 @@ EOF
 	echo $browser9
 	echo $browser10
 	echo $browser11
+	echo $browser12
+	echo $browser13
 
 	sleep 1
 
@@ -1605,6 +1609,7 @@ EOF
 	echo "10 - Midori"
 	echo "11 - Brave"
 	echo "12 - Falkon"
+	echo "13 - Qutebrowser"
 	read operation;
 	case $operation in
 		1)
@@ -1665,6 +1670,11 @@ EOF
 		12)
 		sudo cp -r ~/.config/falkon ~/.config/falkon-old; sudo rm -rf ~/.config/falkon/*
 		echo "Your browser has now been reset"
+		sleep 1
+		;;
+		sudo cp -r ~/.config/qutebrowser ~/.config/qutebrowser-old; sudo rm -rf ~/.config/qutebrowser/*
+		sudo cp -r ~/.local/share/qutebrowser ~/.local/share/qutebrowser-old; sudo rm -rf ~/.local/share/qutebrowser/*
+		echo "Your browser has been reset"
 		sleep 1
 		;;
 		*)
