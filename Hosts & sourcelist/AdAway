@@ -1055,6 +1055,9 @@
 0.0.0.0  abcd.mdc.akamaized.net
 0.0.0.0  speee-ad.akamaized.net
 0.0.0.0  statics-marketingsites-eus-ms-com.akamaized.net
+0.0.0.0  co.akisinn.info
+0.0.0.0  int.akisinn.info
+0.0.0.0  int.akisinn.site
 0.0.0.0  p.alcmpn.com
 0.0.0.0  alexametrics.com
 0.0.0.0  certify.alexametrics.com
@@ -1519,7 +1522,6 @@
 0.0.0.0  tw.as.y.atwola.com
 0.0.0.0  eu.y.atwola.com
 0.0.0.0  us.y.atwola.com
-0.0.0.0  audioboom.com
 0.0.0.0  ws.audioeye.com
 0.0.0.0  auditude.com
 0.0.0.0  augur.io
@@ -2493,6 +2495,9 @@
 0.0.0.0  cdn.destinilocators.com
 0.0.0.0  balancer.devtodev.com
 0.0.0.0  statgw.devtodev.com
+0.0.0.0  co.dewrain.life
+0.0.0.0  int.dewrain.life
+0.0.0.0  int.dewrain.site
 0.0.0.0  realstats.dhgate.com
 0.0.0.0  insights.dice.com
 0.0.0.0  smetrics.dickssportinggoods.com
@@ -4054,10 +4059,13 @@
 0.0.0.0  kochava.com
 0.0.0.0  api.kochava.com
 0.0.0.0  kvinit-prod.api.kochava.com
+0.0.0.0  token.api.kochava.com
 0.0.0.0  assets.kochava.com
 0.0.0.0  control.kochava.com
 0.0.0.0  imp.control.kochava.com
 0.0.0.0  web-sdk.control.kochava.com
+0.0.0.0  entitlements.kochava.com
+0.0.0.0  icm.kochava.com
 0.0.0.0  analytics.kongregate.io
 0.0.0.0  sdkapi.kookong.com
 0.0.0.0  g.koowo.com
@@ -6410,7 +6418,6 @@
 0.0.0.0  ios-quinoa-personal-identify-prod.sense360eng.com
 0.0.0.0  quinoa-personal-identify-prod.sense360eng.com
 0.0.0.0  api.sentiance.com
-0.0.0.0  sentry.io
 0.0.0.0  servebom.com
 0.0.0.0  ads.servebom.com
 0.0.0.0  ads2.servebom.com
@@ -6567,6 +6574,7 @@
 0.0.0.0  lg.smardroid.com
 0.0.0.0  sc.smardroid.com
 0.0.0.0  tkclick.smardroid.com
+0.0.0.0  smart.link
 0.0.0.0  cdn1.smartadserver.com
 0.0.0.0  diff.smartadserver.com
 0.0.0.0  diff3.smartadserver.com
@@ -7584,6 +7592,11 @@
 0.0.0.0  utarget.ru
 0.0.0.0  log.apk.v-mate.mobi
 0.0.0.0  vads.net.vn
+0.0.0.0  co.vaicore.site
+0.0.0.0  int.vaicore.site
+0.0.0.0  vaicore.xyz
+0.0.0.0  co.vaicore.xyz
+0.0.0.0  int.vaicore.xyz
 0.0.0.0  analytics.valuepotion.com
 0.0.0.0  vamaker.com
 0.0.0.0  admicro1.vcmedia.vn
