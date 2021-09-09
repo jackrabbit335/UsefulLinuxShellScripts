@@ -1032,7 +1032,7 @@ InstallAndConquer(){
 				sudo snap install sublime-text
 			elif [[ $package == 3 ]];
 			then
-				sudo snap install atom
+				sudo apt install -y atom
 			elif [[ $package == 4 ]];
 			then
 				sudo apt install -y meld
@@ -1071,7 +1071,7 @@ InstallAndConquer(){
 			3)
 			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync p7zip zip software-properties-gtk
 			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop file-roller xdg-user-dirs build-essential
-			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools unrar curl unzip ffmpeg git
+			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools unrar curl unzip ffmpeg git ncal
 			#sudo apt-add-repository ppa:agornostal/ulauncher; sudo apt-get update; sudo apt-get install ulauncher
 			#sudo apt install -y caffeine
 			sudo snap install youtube-dl keepassxc
@@ -1775,7 +1775,7 @@ SystemMaintenance(){
 	sudo dpkg --configure -a; sudo apt install -f
 
 	#Repairs flatpaks installed on your system not everyone has these on Ubuntu
-	#sudo flatpak repair; flatpak update
+	#flatpak --user repair; flatpak update
 
 	#This updates snaps on the system
 	#sudo snap refresh
