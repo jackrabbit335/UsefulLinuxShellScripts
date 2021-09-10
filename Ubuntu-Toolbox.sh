@@ -1032,7 +1032,7 @@ InstallAndConquer(){
 				sudo snap install sublime-text
 			elif [[ $package == 3 ]];
 			then
-				sudo apt install -y atom
+				wget https://pilotfiber.dl.sourceforge.net/project/atom.mirror/v1.58.0/atom-amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $package == 4 ]];
 			then
 				sudo apt install -y meld
