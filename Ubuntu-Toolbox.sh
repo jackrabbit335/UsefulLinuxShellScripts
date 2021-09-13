@@ -210,7 +210,10 @@ EOF
 
 	#Updates the system
 	sudo apt update; sudo apt full-upgrade -yy
-
+	
+	#This optionally sets up flatpak support
+	#sudo apt install flatpak xdg-desktop-portal-gtk; sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+	
 	#Optional
 	echo "Do you wish to reboot(Y/n)"
 	read answer
