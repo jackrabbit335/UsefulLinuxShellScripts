@@ -105,6 +105,8 @@ Setup(){
 	echo "vm.swappiness = 10" | sudo tee -a /etc/sysctl.conf
 	echo "# Improve cache management" | sudo tee -a /etc/sysctl.conf
 	echo "vm.vfs_cache_pressure = 50" | sudo tee -a /etc/sysctl.conf
+	echo "vm.watermark_scale_factor = 200" | sudo tee -a /etc/sysctl.conf
+	echo "vm.dirty_ratio = 3" | sudo tee -a /etc/sysctl.conf
 	echo "#tcp flaw workaround" | sudo tee -a /etc/sysctl.conf
 	echo "net.ipv4.tcp_challenge_ack_limit = 999999999" | sudo tee -a /etc/sysctl.conf
 	sudo sysctl -p && sudo sysctl --system
@@ -120,7 +122,7 @@ EOF
 	if [[ $answer == Y ]];
 	then
 		echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.conf
-	sudo sysctl -p
+		sudo sysctl -p && sudo sysctl --system
 	fi
 
 	#This attempts to place noatime at the end of your drive entry in fstab
@@ -359,6 +361,11 @@ Systeminfo(){
 	echo "MEMORY USAGE" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	free -h >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "VIRTUAL MEMORY STATS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	vmstat -s >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "LISTS ALL BLOCK DEVICES WITH SIZE" >> $host-sysinfo.txt
