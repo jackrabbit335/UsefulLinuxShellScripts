@@ -493,7 +493,6 @@
 0.0.0.0  ads.gaming-universe.de
 0.0.0.0  ads.gaming1.com
 0.0.0.0  ads.gaypoint.hu
-0.0.0.0  ads.geekswithblogs.net
 0.0.0.0  ads.getlucky.com
 0.0.0.0  ads.gld.dk
 0.0.0.0  ads.gmodules.com
@@ -814,7 +813,6 @@
 0.0.0.0  adserver.sanomawsoy.fi
 0.0.0.0  adserver.sciflicks.com
 0.0.0.0  adserver.scr.sk
-0.0.0.0  adserver.sharewareonline.com
 0.0.0.0  adserver.smgfiles.com
 0.0.0.0  adserver.theonering.net
 0.0.0.0  adserver.trojaner-info.de
@@ -836,6 +834,8 @@
 0.0.0.0  adservice.google.com.mt
 0.0.0.0  adserving.unibet.com
 0.0.0.0  adservingfront.com
+0.0.0.0  adservrs.com
+0.0.0.0  adservrs.com.edgekey.net
 0.0.0.0  adsfac.eu
 0.0.0.0  adsfac.net
 0.0.0.0  adsfac.us
@@ -894,6 +894,7 @@
 0.0.0.0  adtology.com
 0.0.0.0  adtoma.com
 0.0.0.0  adtrace.org
+0.0.0.0  adtraction.com
 0.0.0.0  adtrade.net
 0.0.0.0  adtriplex.com
 0.0.0.0  adultadvertising.com
@@ -1019,7 +1020,6 @@
 0.0.0.0  americash.com
 0.0.0.0  amplitude.com
 0.0.0.0  amung.us
-0.0.0.0  analyticacdn.com
 0.0.0.0  analytics-production.hapyak.com
 0.0.0.0  analytics.adpost.org
 0.0.0.0  analytics.algoepico.net
@@ -1302,6 +1302,7 @@
 0.0.0.0  braincash.com
 0.0.0.0  brand-display.com
 0.0.0.0  brandreachsys.com
+0.0.0.0  breakableinsurance.com
 0.0.0.0  breaktime.com.tw
 0.0.0.0  brealtime.com
 0.0.0.0  bridgetrack.com
@@ -1630,7 +1631,6 @@
 0.0.0.0  directaclick.com
 0.0.0.0  directivepub.com
 0.0.0.0  directleads.com
-0.0.0.0  directorym.com
 0.0.0.0  directtrack.com
 0.0.0.0  discountclick.com
 0.0.0.0  discreetfield.com
@@ -1678,7 +1678,9 @@
 0.0.0.0  e-m.fr
 0.0.0.0  e-planning.net
 0.0.0.0  e.kde.cz
+0.0.0.0  e37364.dscd.akamaiedge.net
 0.0.0.0  eadexchange.com
+0.0.0.0  eaesie.com
 0.0.0.0  earthquakescarf.com
 0.0.0.0  earthycopy.com
 0.0.0.0  eas.almamedia.fi
@@ -2243,6 +2245,7 @@
 0.0.0.0  look.ichlnk.com
 0.0.0.0  look.opskln.com
 0.0.0.0  look.udncoeln.com
+0.0.0.0  look.ufinkln.com
 0.0.0.0  loopme.com
 0.0.0.0  lop.com
 0.0.0.0  loudlunch.com
@@ -2656,6 +2659,7 @@
 0.0.0.0  pleasantpump.com
 0.0.0.0  plista.com
 0.0.0.0  plotrabbit.com
+0.0.0.0  ployea.com
 0.0.0.0  pluckypocket.com
 0.0.0.0  plugrush.com
 0.0.0.0  pocketmath.com
@@ -2666,6 +2670,7 @@
 0.0.0.0  popmyads.com
 0.0.0.0  popub.com
 0.0.0.0  popunder.ru
+0.0.0.0  popunhot1.blogspot.com
 0.0.0.0  popup.msn.com
 0.0.0.0  popupmoney.com
 0.0.0.0  popupnation.com
@@ -2734,6 +2739,7 @@
 0.0.0.0  pubmatic.com
 0.0.0.0  pubmine.com
 0.0.0.0  pubnative.net
+0.0.0.0  pubwes.com
 0.0.0.0  puffyloss.com
 0.0.0.0  puffypaste.com
 0.0.0.0  puffypull.com
@@ -3061,6 +3067,7 @@
 0.0.0.0  specificpop.com
 0.0.0.0  speedomizer.com
 0.0.0.0  speedshiftmedia.com
+0.0.0.0  speop.com
 0.0.0.0  spezialreporte.de
 0.0.0.0  spidersboats.com
 0.0.0.0  spiffymachine.com
@@ -3126,7 +3133,6 @@
 0.0.0.0  stats.pusher.com
 0.0.0.0  stats.rdphv.net
 0.0.0.0  stats.self.com
-0.0.0.0  stats.sharksice.timetoscore.com
 0.0.0.0  stats.stb-ottow.de
 0.0.0.0  stats.townnews.com
 0.0.0.0  stats.wordpress.com
