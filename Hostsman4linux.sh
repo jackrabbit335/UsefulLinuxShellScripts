@@ -33,6 +33,7 @@ str10=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/ma
 str11=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Tomslist
 str12=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/bjornhosts
 str13=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/urlhaus
+str14=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20&%20sourcelist/shady-hosts
 
 while getopts :ABCDEFGHIJKLM option; do
 	case $option in
@@ -61,6 +62,8 @@ while getopts :ABCDEFGHIJKLM option; do
 		L) wget $str12 && cat bjornhosts >> adblock && rm bjornhosts
 		;;
 		M) wget $str13 && cat urlhaus >> adblock && rm urlhaus
+		;;
+		N) wget $str14 && cat shady-hosts >> adblock && rm shady-hosts
 		;;
 		*)
 	esac
