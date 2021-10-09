@@ -97,6 +97,9 @@ Setup(){
 
 	#System tweaks
 	sudo sed -i -e '/GRUB_TIMEOUT=10/c\GRUB_TIMEOUT=3 ' /etc/default/grub; sudo update-grub2
+	
+	#Reduces space taken by log file
+	sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
 
 	#Tweaks the sysctl config file
 	sudo touch /etc/sysctl.d/50-dmesg-restrict.conf
@@ -836,7 +839,7 @@ tries to make things as clear to read as possible by separating the
 different information into categories. Each category pertains to things
 such as hardware, software, login attempts and many more things. This
 data will be saved to one rather large text file in the home folder of
-the user who executes the script. Many of this will be useless to a new
+the user who executes the script. Much of this will be useless to a new
 user, so there are online forums for help.
 
 ##########################################################################
@@ -1575,7 +1578,9 @@ Adblocking(){
 
 Cleanup(){
 	#This flushes apt cache
-	sudo apt autoremove -y; sudo apt autoclean -y; sudo apt clean -y
+	sudo apt autoremove -y 
+	sudo apt autoclean -y 
+	sudo apt clean -y
 
 	#This cleans flatpaks that are unused by the user
 	#flatpak --user uninstall --unused
@@ -1618,6 +1623,9 @@ EOF
 	sudo rm ~/.local/share/recently-used.xbel
 	#sudo rm -r /tmp/*
 	history -c && rm ~/.bash_history
+	
+	#This runs update db for index cache and cleans the manual database
+	sudo updatedb; sudo mandb
 
 	#This removes old configurations for software
 	sudo rm -r ~/.config/*-old
@@ -1798,9 +1806,6 @@ SystemMaintenance(){
 
 	#It is recommended that your firewall is enabled
 	sudo systemctl restart ufw; sudo ufw enable
-
-	#This runs update db for index cache and cleans the manual database
-	sudo updatedb; sudo mandb
 
 	#This updates grub
 	sudo update-grub2
