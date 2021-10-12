@@ -149,7 +149,7 @@ InstallandConquer(){
 		echo "4 - Individual programming apps"
 		echo "5 - Rpi-imager"
 		echo "6 - Claws mail"
-		echo "7 - "
+		echo "7 - Office"
 		echo "8 - Games"
 		echo "9 - Get out of this menu"
 		read software;
@@ -262,6 +262,7 @@ InstallandConquer(){
 			sudo apt install -y claws-mail
 			;;
 			7)
+			sudo apt install -y libreoffice
 			;;
 			8)
 			echo "1 - Bsd-games"
@@ -997,7 +998,27 @@ Raspbian uses LXDE for the desktop and openbox for Window Manager. Both
 rely on using mostly free and open source or FOSS. Though it should be noted 
 that Raspbian uses closed source code for the firmware.
 
+##########################################################################
+SUDO VERSION CHECKING
+##########################################################################
+With recent news of possible privilege escalation bugs found in sudo, I
+figured it wise to include a sudo version check option in SystemInfo.
+This will check for version numbers of sudo and sudo plugins. Versions
+1.8 are privy to the bug and some early 1.9 versions(eg. 1.9.2). 1.9.5
+should be immune, however as with sudo, many more bugs will eventually
+be discovered. It is imperative to keep your system updated regularly
+to patch these kinds of vulnerabilities.
+
+##########################################################################
+CONTACT ME
+##########################################################################
+For sending me hate mail, for inquiring assistance, and for sending me
+feedback and suggestions, email me at VeilofMaya@vivaldi.net
+Send your inquiries and suggestions with a corresponding subject line.
 EOF
+
+clear
+Greeting
 }
 
 Screenfix(){
