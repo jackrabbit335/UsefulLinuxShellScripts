@@ -25,12 +25,12 @@ Setup(){
 	done
 	
 	#This activates the firewall
-	dpkg --list | grep ufw || sudo apt install -y gufw
+	dpkg --list | grep ufw || sudo apt install -y gufw; sudo systemctl enable ufw
 	echo "Would you like to deny ssh and telnet for security purposes?(Y/n)"
 	read answer
 	if [[ $answer == Y ]];
 	then
-		sudo ufw deny telnet; sudo ufw deny ssh; sudo ufw reload
+		sudo ufw default deny incoming; sudo ufw default allow outgoing; sudo ufw deny telnet; sudo ufw deny ssh; sudo ufw enable
 	fi
 	
 	#This downloads the widevine library to stream netflix with chromium
@@ -372,7 +372,7 @@ Maintenance(){
 	sudo systemctl daemon-reload
 
 	#It is recommended that your firewall is enabled
-	#sudo systemctl enable ufw; sudo ufw enable
+	sudo systemctl enable ufw; sudo ufw enable
 
 	#This updates grub
 	sudo update-grub2
