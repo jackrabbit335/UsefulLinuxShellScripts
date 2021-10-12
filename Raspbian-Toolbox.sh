@@ -89,6 +89,9 @@ Setup(){
 	#Reduces space taken up by log file
 	sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
 	
+	#Allocates 128MB of memory to be used by GPU, which helps with some video situations
+	#echo "gpu_mem=128" | sudo tee -a /boot/config.txt
+	
 	#Tweaks the sysctl config file
 	sudo touch /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "kernel.dmesg_restrict = 1" | sudo tee -a /etc/sysctl.d/50-dmesg-restrict.conf
