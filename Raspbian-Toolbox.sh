@@ -108,7 +108,7 @@ Setup(){
 	#Block ICMP requests or Ping from foreign systems
 	cat <<EOF
 	We can also block ping requests. Ping requests coming from unknown sources can mean that people are
-	potentially trying to locate/attack your network. If you need this functionality
+	potentially trying to locate/attack your network/device. If you need this functionality
 	you can always comment this line out later. Chances are, this will not affect normal users.
 EOF
 	echo "Block ping requests from foreign systems?(Y/n)"
@@ -190,7 +190,7 @@ InstallandConquer(){
 			fi
 			;;
 			2)
-			sudo apt install -y nmap iotop gparted gnome-disk-utility lm-sensors 
+			sudo apt install -y nmap iotop gparted gnome-disk-utility lm-sensors inxi
 			;;
 			3)
 			sudo apt install -y kodi
@@ -625,6 +625,10 @@ Update(){
 }
 
 SystemInfo(){
+	echo "Coming Soon!!!"
+	
+	clear
+	Greeting
 }
 
 HELP(){
@@ -1156,7 +1160,7 @@ read -p  $'\n'$"Press enter to continue..."
 }
 
 Greeting(){
-		echo $'\n'$"Enter a selection from the following list"
+	echo $'\n'$"Enter a selection from the following list"
 	echo "1 - Setup your system"
 	echo "2 - Add/Remove user accounts"
 	echo "3 - Install software"
@@ -1245,3 +1249,6 @@ Greeting(){
 		;;
 	esac
 }
+
+Disclaimer
+Greeting
