@@ -376,9 +376,9 @@ Maintenance(){
 
 	#It is recommended that your firewall is enabled
 	sudo systemctl enable ufw; sudo ufw enable
-
-	#This updates grub
-	sudo update-grub2
+	
+	#This checks bootloader version to see if there are updates
+	sudo rpi-eeprom-update
 
 	#Checks disk for errors
 	sudo touch /forcefsck
