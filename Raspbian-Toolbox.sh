@@ -89,6 +89,9 @@ Setup(){
 	#Reduces space taken up by log file
 	sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
 	
+	#Ensures that the new fkms gl driver is enabled on rpi 4
+	#sudo sed -i -e '/#dtoverlay=vc4-fkms-v3d/c\dtoverlay=vc4-fkms-v3d ' /boot/config.txt
+	
 	#Allocates 128MB of memory to be used by GPU, which helps with some video situations
 	#echo "gpu_mem=128" | sudo tee -a /boot/config.txt
 	
@@ -190,7 +193,7 @@ InstallandConquer(){
 			fi
 			;;
 			2)
-			sudo apt install -y nmap iotop gparted gnome-disk-utility lm-sensors inxi
+			sudo apt install -y nmap iotop gparted gnome-disk-utility lm-sensors inxi pulseaudio*
 			;;
 			3)
 			sudo apt install -y kodi
@@ -1035,6 +1038,13 @@ Screenfix(){
 	xrandr -s $resolution
 }
 
+BootloaderRepair(){
+	echo "Coming Soon!!!"
+	
+	clear
+	Greeting
+}
+
 Restart(){
 	sudo sync; reboot
 }
@@ -1176,10 +1186,11 @@ Greeting(){
 	echo "13 - Cleanup"
 	echo "14 - RAMBack"
 	echo "15 - System Maintenance"
-	echo "16 - Browser Repair"
-	echo "17 - Update"
-	echo "18 - Restart"
-	echo "19 - exit"
+	echo "16 - Bootloader Repair"
+	echo "17 - Browser Repair"
+	echo "18 - Update"
+	echo "19 - Restart"
+	echo "20 - exit"
 	read selection;
 	case $selection in
 		1)
@@ -1228,15 +1239,18 @@ Greeting(){
 		SystemMaintenance
 		;;
 		16)
-		BrowserRepair
+		BootloaderRepair
 		;;
 		17)
-		Update
+		BrowserRepair
 		;;
 		18)
-		Restart
+		Update
 		;;
 		19)
+		Restart
+		;;
+		20)
 		echo $'\n'$"Thank you for using Ubuntu-Toolbox... Goodbye!"
 		exit
 		;;
