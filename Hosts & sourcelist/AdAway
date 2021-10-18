@@ -1723,6 +1723,7 @@
 0.0.0.0  brainient.com
 0.0.0.0  tag.brainient.com
 0.0.0.0  client-analytics.braintreegateway.com
+0.0.0.0  adservices.brandcdn.com
 0.0.0.0  branch.io
 0.0.0.0  api.branch.io
 0.0.0.0  api2.branch.io
@@ -5855,6 +5856,7 @@
 0.0.0.0  playhaven.com
 0.0.0.0  stats.playrix.com
 0.0.0.0  sdk.playtem.com
+0.0.0.0  service-ad-impression-proxy.clusters.pluto.tv
 0.0.0.0  iabusprivacy.pmc.com
 0.0.0.0  analytics.po.st
 0.0.0.0  i.po.st
