@@ -373,6 +373,9 @@ Maintenance(){
 
 	#This updates your system
 	sudo apt update && sudo apt full-upgrade -yy
+	
+	#This fixes broken default keybindings that worked before in rpi
+	sudo cp /etc/xdg/openbox/lxde-pi-rc.xml ~/.config/openbox/lxde-pi-rc.xml
 
 	#This restarts systemd daemon. This can be useful for different reasons.
 	sudo systemctl daemon-reload
@@ -1039,7 +1042,25 @@ Screenfix(){
 }
 
 BootloaderRepair(){
-	echo "Coming Soon!!!"
+	cat <<EOF
+	This will have reprocussions if you agree to this by rebooting after running this
+	It's important to remember that to cancel you can run sudo rpi-eeprom-update -r.
+	You can rerun this function later to choose one of the options available.
+EOF
+	echo "1 - Update/Downgrade configuration files"
+	echo "2 - Reverse update/downgrade of configuration"
+	read answer;
+	case $operation in
+		1)
+		sudo -E rpi-eeprom-config --edit
+		;;
+		2)
+		sudo rpi-eeprom-update -r
+		;;
+		*)
+		echo "This is an invalid selection, to run this again select it from the main menu"
+		;;
+	esac
 	
 	clear
 	Greeting
@@ -1186,7 +1207,7 @@ Greeting(){
 	echo "13 - Cleanup"
 	echo "14 - RAMBack"
 	echo "15 - System Maintenance"
-	echo "16 - Bootloader Repair"
+	echo "16 - BootloaderRepair"
 	echo "17 - Browser Repair"
 	echo "18 - Update"
 	echo "19 - Restart"
@@ -1251,7 +1272,7 @@ Greeting(){
 		Restart
 		;;
 		20)
-		echo $'\n'$"Thank you for using Ubuntu-Toolbox... Goodbye!"
+		echo $'\n'$"Thank you for using Raspbian-Toolbox... Goodbye!"
 		exit
 		;;
 		*)
