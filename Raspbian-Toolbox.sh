@@ -515,8 +515,17 @@ Adblocking(){
 	Greeting
 }
 
-MakeSwap(){
-	echo "Coming Soon!"
+SuperSwapsize(){
+	cat <<EOF
+	This will sometimes help with sluggish performance, but will reduce sd card
+	lifespan if swap is used too frequently.
+	You have been warned. This is taken from Vivaldi help documentation.
+EOF
+	echo CONF_SWAPSIZE=2048 | sudo tee -a /etc/dphys-swapfile
+	
+	
+	sudo /etc/init.d/dphys-swapfile stop
+	sudo /etc/init.d/dphys-swapfile start
 	
 	clear
 	Greeting
@@ -1202,7 +1211,7 @@ Greeting(){
 	echo "8 - Manage system services"
 	echo "9 - Troubleshooting Information"
 	echo "10 - Screenfix"
-	echo "11 - Make Swap"
+	echo "11 - Increase Swap"
 	echo "12 - Help"
 	echo "13 - Cleanup"
 	echo "14 - RAMBack"
@@ -1245,7 +1254,7 @@ Greeting(){
 		Screenfix
 		;;
 		11)
-		MakeSwap
+		SuperSwapsize
 		;;
 		12)
 		HELP
