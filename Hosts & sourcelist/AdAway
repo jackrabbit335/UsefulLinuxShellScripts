@@ -3570,7 +3570,6 @@
 0.0.0.0  iclickyou.com
 0.0.0.0  ads.icloseli.com
 0.0.0.0  api.icloseli.com
-0.0.0.0  esd.icloseli.com
 0.0.0.0  relaycn.icloseli.com
 0.0.0.0  metrics.icloud.com
 0.0.0.0  id1.cn
@@ -4198,7 +4197,6 @@
 0.0.0.0  rp.liadm.com
 0.0.0.0  rp4.liadm.com
 0.0.0.0  snap.licdn.com
-0.0.0.0  licensebuttons.net
 0.0.0.0  adexp.liftoff.io
 0.0.0.0  build-cdn.liftoff.io
 0.0.0.0  cdn.liftoff.io
@@ -5270,7 +5268,6 @@
 0.0.0.0  api.oneaudience.com
 0.0.0.0  static.onecms.io
 0.0.0.0  validate.onecount.net
-23.77.251.5 image.mail.onedrive.com
 0.0.0.0  tracking.onefeed.co.uk
 0.0.0.0  onelink.me
 0.0.0.0  snssdk1233.onelink.me
