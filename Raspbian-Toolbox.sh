@@ -90,10 +90,10 @@ Setup(){
 	sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
 	
 	#Ensures that the new fkms gl driver is enabled on rpi 4
-	#sudo sed -i -e '/#dtoverlay=vc4-fkms-v3d/c\dtoverlay=vc4-fkms-v3d ' /boot/config.txt
+	sudo sed -i -e '/#dtoverlay=vc4-fkms-v3d/c\dtoverlay=vc4-fkms-v3d ' /boot/config.txt
 	
 	#Allocates 128MB of memory to be used by GPU, which helps with some video situations
-	#echo "gpu_mem=128" | sudo tee -a /boot/config.txt
+	echo "gpu_mem=128" | sudo tee -a /boot/config.txt
 	
 	#Tweaks the sysctl config file
 	sudo touch /etc/sysctl.d/50-dmesg-restrict.conf
@@ -384,7 +384,7 @@ Maintenance(){
 	sudo systemctl enable ufw; sudo ufw enable
 	
 	#This checks bootloader version to see if there are updates
-	sudo rpi-eeprom-update
+	sudo rpi-eeprom-update; sleep 1
 
 	#Checks disk for errors
 	sudo touch /forcefsck
@@ -1266,7 +1266,7 @@ Greeting(){
 		RAMBack
 		;;
 		15)
-		SystemMaintenance
+		Maintenance
 		;;
 		16)
 		BootloaderRepair
