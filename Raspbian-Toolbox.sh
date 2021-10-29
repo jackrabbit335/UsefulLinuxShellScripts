@@ -193,7 +193,7 @@ InstallandConquer(){
 			fi
 			;;
 			2)
-			sudo apt install -y nmap iotop gparted gnome-disk-utility lm-sensors inxi pulseaudio*
+			sudo apt install -y nmap iotop gparted gnome-disk-utility lm-sensors inxi lshw pulseaudio*
 			;;
 			3)
 			sudo apt install -y kodi
@@ -640,7 +640,302 @@ Update(){
 }
 
 SystemInfo(){
-	echo "Coming Soon!!!"
+	dpkg --list | grep wmctrl || sudo apt install -y wmctrl
+	host=$(hostname)
+	drive=$(df -P / | awk '{print $1}' | grep "/dev/")
+	distribution=$(cat /etc/issue | awk '{print $1,$2}')
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SYSTEM INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "DATE"  >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	date >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "USER" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo $USER >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SHELL" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	which $SHELL >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "DISTRIBUTION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo $distribution >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "DESKTOP" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo $XDG_CURRENT_DESKTOP >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "WINDOW MANAGER" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	wmctrl -m >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "DISPLAY MANAGER" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	grep'/usr/s\?bin' /etc/systemd/system/display-manager.service >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SYSTEM INITIALIZATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	ps -p1 | awk 'NR!=1{print $4}' >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SYSTEM INSTALL DATE" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo tune2fs -l $drive | grep 'Filesystem created:' >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "KERNEL AND OPERATING SYSTEM INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	uname -r >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "OS/MACHINE INFO" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	hostnamectl >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "OPERATING SYSTEM RELEASE INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	lsb_release -a >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "HOSTNAME" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	hostname >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SUDO VERSION CHECK" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo -V >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "UPTIME" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	uptime -p >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "LOAD AVERAGE" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	cat /proc/loadavg >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "APT REPOSITORY INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	cat /etc/apt/sources.list.d/raspi.list >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "DISK SECTOR INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo fdisk -l >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "DISK SPACE" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	df -h >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "I/O SCHEDULER INFO" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	cat /sys/block/sda/queue/scheduler >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "DIRECTORY USAGE" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo du -sh >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "MEMORY USAGE" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	free -h >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "VIRTUAL MEMORY STATS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	vmstat -s >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "LISTS ALL BLOCK DEVICES WITH SIZE" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	lsblk -o NAME,SIZE >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "BLOCK DEVICE ID " >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo blkid >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "NETWORK CONFIGURATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	ip addr >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "PUBLIC IP INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	curl ifconfig.me/all >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "NETWORK STATS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	ss -tulpn >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "DNS INFO" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	dig | grep SERVER >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "FIREWALL STATUS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo ufw status verbose >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "PROCESS TABLE" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	ps -aux >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "LAST LOGIN ATTEMPTS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	lastlog >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "PERMISSIONS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	ls -larS / >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "AUDIT SUID & SGID" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo -s find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \; >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "USER AND GROUPS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	cat /etc/passwd | awk '{print $1}' >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "INSTALLED PACKAGES" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo apt list --installed >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "DEB PACKAGE MANAGER HISTORY" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	cat /var/log/dpkg.log >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "APT PACKAGE MANAGER HISTORY" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	cat /var/log/apt/history.log >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "APPARMOR" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo apparmor_status >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "Inxi" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	inxi -F >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "CPU TEMP" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	vcgencmd measure_temp >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "DISK READ SPEED" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo hdparm -tT /dev/sda >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "DRIVER INFO" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo lsmod >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "USB INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	lsusb >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "HARDWARE INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	lspci >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "MORE HARDWARE INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo lshw >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "EVEN MORE HARDWARE INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo dmidecode >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "YET STILL MORE HARDWARE INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	lscpu >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "MEMORY INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	cat /proc/meminfo >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "TLP STATS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo tlp-stat >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "LOGS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	sudo dmesg >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "JOURNAL LOG ERRORS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	journalctl -p 3 -xb >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SYSTEMD SERVICES(ALSO FOUND IN SERVICE MANAGER)" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	systemctl list-unit-files --type=service >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SYSTEMD BOOT INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	systemd-analyze >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "MORE SYSTEMD BOOT INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	systemd-analyze blame >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SYSTEMD STATUS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	systemctl status | less >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SYSTEMD'S FAILED LIST" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	systemctl --failed >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "END OF FILE" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	
 	clear
 	Greeting
