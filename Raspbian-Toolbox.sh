@@ -142,7 +142,7 @@ EOF
 	fi
 }
 
-InstallandConquer(){
+InstallAndConquer(){
 	CheckNetwork
 	
 	echo "Would you like to install some useful apps?(Y/n)"
