@@ -759,6 +759,16 @@ SystemInfo(){
 	free -h >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "ARM MEMORY" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	vcgencmd get_mem arm >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "RASPBERRY PI GRAPHICAL MEMORY" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	vcgencmd get_mem gpu >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "VIRTUAL MEMORY STATS" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	vmstat -s >> $host-sysinfo.txt
@@ -852,6 +862,16 @@ SystemInfo(){
 	echo "CPU TEMP" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	vcgencmd measure_temp >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "ARM CURRENT CPU FREQUENCY" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "MAXIMUM VOLTAGE STATS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	vcgencmd measure_voltage core >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DISK READ SPEED" >> $host-sysinfo.txt
