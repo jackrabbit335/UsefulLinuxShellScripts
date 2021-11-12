@@ -523,7 +523,6 @@ SuperSwapsize(){
 EOF
 	echo CONF_SWAPSIZE=2048 | sudo tee -a /etc/dphys-swapfile
 	
-	
 	sudo /etc/init.d/dphys-swapfile stop
 	sudo /etc/init.d/dphys-swapfile start
 	
@@ -1395,14 +1394,39 @@ Restart(){
 }
 
 Backup(){
-	echo "Coming Soon!"
+	host=$(hostname)
+	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
+	if [[ $Mountpoint != /run/media/$USER/* ]];
+	then
+		read -p "Please insert a drive and hit enter"
+		echo $(lsblk | awk '{print $1}')
+		sleep 1
+		echo "Please select the device you wish to use"
+		read device
+		sudo mount $device /mnt; sudo rsync -aAXv --delete --exclude={"*.cache/*","*.thumbnails/*","*/.local/share/Trash/*"} /home/$USER /mnt/$host-backups; sudo sync; sudo umount $device
+	elif [[ $Mountpoint == /run/media/$USER/* ]];
+	then
+		read -p "Found a block device at designated coordinates...If this is the preferred drive, unmount it, leave it plugged in, and run this again. Press enter to continue..."
+	fi
 	
 	clear
 	Greeting
 }
 
 Restore(){
-	echo "Coming Soon!"
+	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
+	if [[ $Mountpoint != /run/media/$USER/* ]];
+	then
+		read -p "Please insert the backup drive and hit enter..."
+		echo $(lsblk | awk '{print $1}')
+		sleep 1
+		echo "Please select the device from the list"
+		read device
+		sudo mount $device /mnt; sudo rsync -aAXv --delete /mnt/$host-$date-backups/* /home/$USER; sudo sync; sudo chown -R $USER:$USER /home/$USER; Restart
+	elif [[ $Mountpoint == /run/media/$USER/* ]];
+	then
+		read -p "Found a block device at designated coordinates... If this is the preferred device, try umounting it, leaving it plugged in, and then running this again. Press enter to continue..."
+	fi
 	
 	clear
 	Greeting
