@@ -3841,9 +3841,6 @@
 0.0.0.0  njinmobirtb.lfstmedia.com
 0.0.0.0  scadxrtb.lfstmedia.com
 0.0.0.0  tracking.lg.com
-0.0.0.0  us.ibs.lgappstv.com
-0.0.0.0  us.rdx2.lgtvsdp.com
-0.0.0.0  us.lgtvsdp.com
 0.0.0.0  b-code.liadm.com
 0.0.0.0  p.liadm.com
 0.0.0.0  rp.liadm.com
@@ -5633,10 +5630,6 @@
 0.0.0.0  tracker.samplicio.us
 0.0.0.0  insights.samsung.com
 0.0.0.0  nmetrics.samsung.com
-0.0.0.0  samsungacr.com
-0.0.0.0  log-config.samsungacr.com
-0.0.0.0  log-ingestion.samsungacr.com
-0.0.0.0  log-ingestion-eu.samsungacr.com
 0.0.0.0  ad.samsungadhub.com
 0.0.0.0  samsungads.com
 0.0.0.0  ads.samsungads.com
@@ -5735,8 +5728,6 @@
 0.0.0.0  ws.sessioncam.com
 0.0.0.0  sessionm.com
 0.0.0.0  track.sgdmobile.com
-0.0.0.0  cookie-jam.sgn.com
-0.0.0.0  invenio.sgn.com
 0.0.0.0  analytics.shareaholic.com
 0.0.0.0  apps.shareaholic.com
 0.0.0.0  go.shareaholic.com
@@ -5817,13 +5808,11 @@
 0.0.0.0  sbeacon.sina.com.cn
 0.0.0.0  pubstatus.sinaapp.com
 0.0.0.0  newspush.sinajs.cn
-0.0.0.0  api.icmobile.singlewire.com
 0.0.0.0  singular.net
 0.0.0.0  i.singular.net
 0.0.0.0  sdk-api-v1.singular.net
 0.0.0.0  t.singular.net
 0.0.0.0  sitemaji.com
-0.0.0.0  sitescout.com
 0.0.0.0  assistjs.skimresources.com
 0.0.0.0  go.skimresources.com
 0.0.0.0  i.skimresources.com
@@ -5836,7 +5825,6 @@
 0.0.0.0  t.skimresources.com
 0.0.0.0  x.skimresources.com
 0.0.0.0  mparticle.slack.com
-0.0.0.0  analytics.slashdotmedia.com
 0.0.0.0  slicktext.com
 0.0.0.0  smaato.com
 0.0.0.0  ads.smaato.com
