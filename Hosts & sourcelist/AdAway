@@ -6772,7 +6772,6 @@
 0.0.0.0  ads-api.twitter.com
 0.0.0.0  ads-bidder-api.twitter.com
 0.0.0.0  analytics.twitter.com
-0.0.0.0  platform.twitter.com
 0.0.0.0  de.tynt.com
 0.0.0.0  p.typekit.net
 0.0.0.0  lightstep-collector.api.ua.com
