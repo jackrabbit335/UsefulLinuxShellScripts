@@ -6534,6 +6534,7 @@
 0.0.0.0  adrunnr.com
 0.0.0.0  ads-a.juicyads.com
 0.0.0.0  ads-adseast.yldbt.com
+0.0.0.0  ads-d.viber.com
 0.0.0.0  ads-de.spray.net
 0.0.0.0  ads-dev.youporn.com
 0.0.0.0  ads-direct.prodigy.net
@@ -6649,6 +6650,7 @@
 0.0.0.0  ads.aversion2.com
 0.0.0.0  ads.avocarrot.com
 0.0.0.0  ads.aws.sitepoint.com
+0.0.0.0  ads.aws.viber.com
 0.0.0.0  ads.azjmp.com
 0.0.0.0  ads.b10f.jp
 0.0.0.0  ads.baazee.com
@@ -6708,6 +6710,7 @@
 0.0.0.0  ads.cbc.ca
 0.0.0.0  ads.cc-dt.com
 0.0.0.0  ads.cdfreaks.com
+0.0.0.0  ads.cdn.viber.com
 0.0.0.0  ads.cdnow.com
 0.0.0.0  ads.centraliprom.com
 0.0.0.0  ads.cgchannel.com
@@ -8181,6 +8184,7 @@
 0.0.0.0  amplifypixel.outbrain.com
 0.0.0.0  amrytt.adk2x.com
 0.0.0.0  ams1-ib.adnxs.com
+0.0.0.0  ams1-mobile.adnxs.com
 0.0.0.0  amscdn.btrll.com
 0.0.0.0  amusun.com
 0.0.0.0  an.tacoda.net
@@ -8229,6 +8233,7 @@
 0.0.0.0  api.content.ad
 0.0.0.0  api.linkgist.com
 0.0.0.0  api.linkz.net
+0.0.0.0  api.mixpanel.com
 0.0.0.0  api.opencandy.com
 0.0.0.0  api.optnmnstr.com
 0.0.0.0  api.sagent.io
@@ -10902,6 +10907,7 @@
 0.0.0.0  loboclick.com
 0.0.0.0  local-download.com
 0.0.0.0  local.promoisland.net
+0.0.0.0  locp-ir.viber.com
 0.0.0.0  log.feedjit.com
 0.0.0.0  log.olark.com
 0.0.0.0  log.outbrain.com
@@ -11137,6 +11143,7 @@
 0.0.0.0  mediapst.adbureau.net
 0.0.0.0  medias.clicks4ads.com
 0.0.0.0  medias.europacash.com
+0.0.0.0  mediation.adnxs.com
 0.0.0.0  mediative.ca
 0.0.0.0  mediative.com
 0.0.0.0  mediauk.247realmedia.com
@@ -12323,6 +12330,7 @@
 0.0.0.0  rmcdn.f.2mdn.net
 0.0.0.0  rmedia.boston.com
 0.0.0.0  rmm1u.checkm8.com
+0.0.0.0  rmp.rakuten.com
 0.0.0.0  rms.admeta.com
 0.0.0.0  rmt-downloads.com
 0.0.0.0  ro.bbelements.com
@@ -12411,6 +12419,8 @@
 0.0.0.0  rya.rockyou.com
 0.0.0.0  ryadqsgyfwx.cinci.rr.com
 0.0.0.0  s-adserver.sandbox.cxad.cxense.com
+0.0.0.0  s-bid.rmp.rakuten.com
+0.0.0.0  s-clk.rmp.rakuten.com
 0.0.0.0  s.ad121m.com
 0.0.0.0  s.ad131m.com
 0.0.0.0  s.admob.com
@@ -14186,6 +14196,7 @@
 0.0.0.0  www.danair.es
 0.0.0.0  www.datatech.es
 0.0.0.0  www.datingadvertising.com
+0.0.0.0  www.datoben.waw.pl
 0.0.0.0  www.davion.plus.com
 0.0.0.0  www.dctracking.com
 0.0.0.0  www.debbo.plus.com
