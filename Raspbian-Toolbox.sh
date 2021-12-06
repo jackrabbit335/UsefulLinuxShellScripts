@@ -180,7 +180,7 @@ InstallAndConquer(){
 				sudo apt install -y epiphany-browser
 			elif [[ $package == 4 ]];
 			then
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_4.3.2439.71-1_armhf.deb; sudo dpkg -i *.deb; sudo apt install -f
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.0.2497.24-1_armhf.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $package == 5 ]];
 			then
 				sudo apt install -y netsurf
