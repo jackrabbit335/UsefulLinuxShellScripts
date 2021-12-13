@@ -294,7 +294,9 @@ InstallAndConquer(){
 				sudo apt install -y code-the-classics
 			fi
 			;;
-			*)
+			9)
+			echo "Alrighty then"
+			break
 			;;
 		esac
 	done
