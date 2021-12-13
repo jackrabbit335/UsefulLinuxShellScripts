@@ -57,7 +57,7 @@ Setup(){
 	echo 'alias clean="sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y"' >> ~/.bashrc
 	echo "#Alias to show disk usage and free space" >> ~/.bashrc
 	echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
-	echo "#Alias to show cpu information" >> ~.bashrc
+	echo "#Alias to show cpu information" >> ~/.bashrc
 	echo 'alias cpuinfo="cat /proc/cpuinfo"' >> ~/.bashrc
 	echo "#Alias to show memory information" >> ~/.bashrc
 	echo 'alias meminfo="cat /proc/meminfo"' >> ~/.bashrc
