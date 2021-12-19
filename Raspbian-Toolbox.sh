@@ -89,6 +89,9 @@ Setup(){
 	#Reduces space taken up by log file
 	sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
 	
+	#Overclocks the arm cpu frequency, might not wanna do this unless you know what you're doing
+	#sudo sed -i -e '/#arm_freq=800/c\arm_freq=1800 ' /boot/config.txt
+	
 	#Ensures that the new fkms gl driver is enabled on rpi 4
 	sudo sed -i -e '/#dtoverlay=vc4-fkms-v3d/c\dtoverlay=vc4-fkms-v3d ' /boot/config.txt
 	
