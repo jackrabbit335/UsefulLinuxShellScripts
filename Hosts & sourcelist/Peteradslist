@@ -215,6 +215,7 @@
 0.0.0.0  adcannyads.com
 0.0.0.0  adcash.com
 0.0.0.0  adcast.deviantart.com
+0.0.0.0  adcel.co
 0.0.0.0  adcell.de
 0.0.0.0  adcenter.net
 0.0.0.0  adcentriconline.com
@@ -842,6 +843,7 @@
 0.0.0.0  adskpak.com
 0.0.0.0  adsmart.com
 0.0.0.0  adsmart.net
+0.0.0.0  adsmetadata.startappservice.com
 0.0.0.0  adsmogo.com
 0.0.0.0  adsnative.com
 0.0.0.0  adsoftware.com
@@ -1012,7 +1014,6 @@
 0.0.0.0  ambiguousquilt.com
 0.0.0.0  ambitiousagreement.com
 0.0.0.0  americash.com
-0.0.0.0  amplitude.com
 0.0.0.0  amung.us
 0.0.0.0  analytics-production.hapyak.com
 0.0.0.0  analytics.adpost.org
@@ -1023,7 +1024,6 @@
 0.0.0.0  analytics.dnsfilter.com
 0.0.0.0  analytics.emarketer.com
 0.0.0.0  analytics.ext.go-tellm.com
-0.0.0.0  analytics.fkz.re
 0.0.0.0  analytics.google.com
 0.0.0.0  analytics.htmedia.in
 0.0.0.0  analytics.icons8.com
@@ -1059,10 +1059,14 @@
 0.0.0.0  anxiousapples.com
 0.0.0.0  apathetictheory.com
 0.0.0.0  api.amplitude.com
+0.0.0.0  api.eu.amplitude.com
 0.0.0.0  api.intensifier.de
 0.0.0.0  api.kameleoon.com
+0.0.0.0  api.lab.amplitude.com
 0.0.0.0  api.rudderlabs.com
+0.0.0.0  api2.amplitude.com
 0.0.0.0  apolloprogram.io
+0.0.0.0  app-analytics-v2.snapchat.com
 0.0.0.0  app-analytics.snapchat.com
 0.0.0.0  app.pendo.io
 0.0.0.0  appboycdn.com
@@ -1208,6 +1212,7 @@
 0.0.0.0  baremetrics.com
 0.0.0.0  barnesandnoble.bfast.com
 0.0.0.0  basebanner.com
+0.0.0.0  basketballbelieve.com
 0.0.0.0  baskettexture.com
 0.0.0.0  bat.bing.com
 0.0.0.0  batbuilding.com
@@ -1449,6 +1454,7 @@
 0.0.0.0  cloisteredhydrant.com
 0.0.0.0  closedcows.com
 0.0.0.0  cloudcoins.biz
+0.0.0.0  cloudflare-dacdn.visualwebsiteoptimizer.com
 0.0.0.0  cloudflareinsights.com
 0.0.0.0  clrstm.com
 0.0.0.0  cluster.adultworld.com
@@ -1666,6 +1672,7 @@
 0.0.0.0  dsp.colpirio.com
 0.0.0.0  dsp.io
 0.0.0.0  dstillery.com
+0.0.0.0  dustywave.com
 0.0.0.0  dyntrk.com
 0.0.0.0  e-m.fr
 0.0.0.0  e-planning.net
@@ -1718,6 +1725,7 @@
 0.0.0.0  engage.webshrinker.com
 0.0.0.0  engage.windows.com
 0.0.0.0  engagebdr.com
+0.0.0.0  engageya.com
 0.0.0.0  engine.espace.netavenir.com
 0.0.0.0  enginenetwork.com
 0.0.0.0  enormousearth.com
@@ -1756,6 +1764,7 @@
 0.0.0.0  everesttech.net
 0.0.0.0  evergage.com
 0.0.0.0  eversales.space
+0.0.0.0  evidon.com
 0.0.0.0  evyy.net
 0.0.0.0  exanae.com
 0.0.0.0  exchange-it.com
@@ -1978,7 +1987,6 @@
 0.0.0.0  hitbox.com
 0.0.0.0  hitcounters.miarroba.com
 0.0.0.0  hitfarm.com
-0.0.0.0  hitiz.com
 0.0.0.0  hitlist.ru
 0.0.0.0  hitlounge.com
 0.0.0.0  hitometer.com
@@ -2066,6 +2074,7 @@
 0.0.0.0  incentaclick.com
 0.0.0.0  inclk.com
 0.0.0.0  incognitosearches.com
+0.0.0.0  incoming-telemetry.thunderbird.net
 0.0.0.0  incoming.telemetry.mozilla.org
 0.0.0.0  indexexchange.com
 0.0.0.0  indexstats.com
@@ -2075,6 +2084,7 @@
 0.0.0.0  inetlog.ru
 0.0.0.0  infinite-ads.com
 0.0.0.0  infinityads.com
+0.0.0.0  infoevent.startappservice.com
 0.0.0.0  infolinks.com
 0.0.0.0  information.com
 0.0.0.0  inmobi.com
@@ -2183,7 +2193,6 @@
 0.0.0.0  leadclick.com
 0.0.0.0  leadingedgecash.com
 0.0.0.0  leadplace.fr
-0.0.0.0  leady.com
 0.0.0.0  leadzupc.com
 0.0.0.0  leaplunchroom.com
 0.0.0.0  leftliquid.com
@@ -2293,6 +2302,7 @@
 0.0.0.0  marketing.hearstmagazines.nl
 0.0.0.0  marketing.net.brillen.de
 0.0.0.0  marketing.net.home24.de
+0.0.0.0  marketing.net.occhiali24.it
 0.0.0.0  marketing.nyi.net
 0.0.0.0  marketing.osijek031.com
 0.0.0.0  marketingsolutions.yahoo.com
@@ -2326,6 +2336,7 @@
 0.0.0.0  mediaarea.eu
 0.0.0.0  mediabridge.cc
 0.0.0.0  mediacharger.com
+0.0.0.0  mediafuse.com
 0.0.0.0  mediageneral.com
 0.0.0.0  mediaiqdigital.com
 0.0.0.0  mediamath.com
@@ -2429,6 +2440,7 @@
 0.0.0.0  myads.net
 0.0.0.0  myads.telkomsel.com
 0.0.0.0  myaffiliateprogram.com
+0.0.0.0  mybbc-analytics.files.bbci.co.uk
 0.0.0.0  mybestmv.com
 0.0.0.0  mybetterdl.com
 0.0.0.0  mybloglog.com
@@ -2470,6 +2482,8 @@
 0.0.0.0  netcommunities.com
 0.0.0.0  netdirect.nl
 0.0.0.0  netincap.com
+0.0.0.0  netmera-web.com
+0.0.0.0  netmera.com
 0.0.0.0  netmng.com
 0.0.0.0  netpool.netbookia.net
 0.0.0.0  netshelter.net
@@ -2584,6 +2598,7 @@
 0.0.0.0  outbrain.com
 0.0.0.0  overconfidentfood.com
 0.0.0.0  overture.com
+0.0.0.0  owebanalytics.com
 0.0.0.0  owebmoney.ru
 0.0.0.0  owlsr.us
 0.0.0.0  owneriq.net
@@ -2802,6 +2817,7 @@
 0.0.0.0  r1.visualwebsiteoptimizer.com
 0.0.0.0  r2.visualwebsiteoptimizer.com
 0.0.0.0  r3.visualwebsiteoptimizer.com
+0.0.0.0  rabbitrifle.com
 0.0.0.0  radar.cedexis.com
 0.0.0.0  radarurl.com
 0.0.0.0  radiate.com
@@ -3076,6 +3092,7 @@
 0.0.0.0  spannersalesman.com
 0.0.0.0  sparklingshelf.com
 0.0.0.0  sparkstudios.com
+0.0.0.0  speakol.com
 0.0.0.0  specially4u.net
 0.0.0.0  specificmedia.co.uk
 0.0.0.0  specificpop.com
@@ -3092,6 +3109,7 @@
 0.0.0.0  sponsorpro.de
 0.0.0.0  sponsors.thoughtsmedia.com
 0.0.0.0  spookysleet.com
+0.0.0.0  sportsad.net
 0.0.0.0  spot.fitness.com
 0.0.0.0  spotlessstamp.com
 0.0.0.0  spotscenered.info
@@ -3211,6 +3229,7 @@
 0.0.0.0  t.firstpromoter.com
 0.0.0.0  t.insigit.com
 0.0.0.0  t.irtyd.com
+0.0.0.0  t.leady.com
 0.0.0.0  t.news.browns-restaurants.co.uk
 0.0.0.0  t.salesmatemail.com
 0.0.0.0  taboola.com
@@ -3338,6 +3357,7 @@
 0.0.0.0  track.freemmo2017.com
 0.0.0.0  track.game18click.com
 0.0.0.0  track.hexcan.com
+0.0.0.0  track.mailalert.io
 0.0.0.0  track.mailerlite.com
 0.0.0.0  track.segmetrics.io
 0.0.0.0  track.software-codes.com
@@ -3538,7 +3558,6 @@
 0.0.0.0  voodoo-ads.io
 0.0.0.0  vpon.com
 0.0.0.0  vrs.cz
-0.0.0.0  vrtzcontextualads.com
 0.0.0.0  vs.tucows.com
 0.0.0.0  vtracy.de
 0.0.0.0  vungle.com
