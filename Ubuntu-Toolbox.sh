@@ -1173,7 +1173,7 @@ InstallAndConquer(){
 			elif [[ $browser == 14 ]];
 			then
 				mkdir AppImages
-				wget https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/94.0.2-2/LibreWolf.x86_64.AppImage; chmod +x LibreWolf.x86_64.AppImage; mv LibreWolf.x86_64.AppImage ~/AppImages
+				wget https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/95.0-1/LibreWolf.x86_64.AppImage; chmod +x LibreWolf.x86_64.AppImage; mv LibreWolf.x86_64.AppImage ~/AppImages
 				wget https://librewolf-community.gitlab.io/images/logo.png; mv logo.png ~/AppImages; wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/LibreWolf.desktop; sudo mv LibreWolf.desktop /usr/share/applications/LibreWolf.desktop
 			elif [[ $browser == 15 ]];
 			then
