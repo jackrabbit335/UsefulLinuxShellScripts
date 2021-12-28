@@ -12,6 +12,8 @@
 #0.0.0.0	www.furk.net
 # https://github.com/bjornstar/hosts/issues/23
 #0.0.0.0	i2.ytimg.com
+# Seems like a useful service
+#0.0.0.0	cdn.transifex.com
 
 0.0.0.0	api.content.ad
 0.0.0.0	yts.ag
@@ -2756,6 +2758,8 @@
 0.0.0.0	mousescrupulousrow.com
 0.0.0.0	ads.moviease.com
 0.0.0.0	ads.movielush.com
+0.0.0.0	identity.mparticle.com
+0.0.0.0	jssdks.mparticle.com
 0.0.0.0	mr2cnjuh34jb.com
 0.0.0.0	mrotot.com
 0.0.0.0	mshft.com
@@ -4012,7 +4016,6 @@
 0.0.0.0	lib.trafit.com
 0.0.0.0	trafyield.com
 0.0.0.0	www.traktrafficflow.com
-0.0.0.0	cdn.transifex.com
 0.0.0.0	www.translation-services-usa.com
 0.0.0.0	www.travelmiso.com
 0.0.0.0	ad.travelocity.com
@@ -5166,6 +5169,7 @@
 0.0.0.0	amm.chitika.net
 0.0.0.0	cdn.chitika.net
 0.0.0.0	scripts.chitika.net
+0.0.0.0	analytics.churnzero.net
 0.0.0.0	ciksolre.net
 0.0.0.0	register.cinematrix.net
 0.0.0.0	cache-02.cleanprint.net

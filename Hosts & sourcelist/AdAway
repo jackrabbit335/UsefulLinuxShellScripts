@@ -5189,6 +5189,7 @@
 0.0.0.0  tracking.pandoiq.com
 0.0.0.0  adserver.pandora.com
 0.0.0.0  pangle.io
+0.0.0.0  api16-access-gcp.pangle.io
 0.0.0.0  api16-access-sg.pangle.io
 0.0.0.0  panickycurtain.com
 0.0.0.0  pi.pardot.com
@@ -7310,6 +7311,7 @@
 0.0.0.0  engine.widespace.com
 0.0.0.0  tag.widespace.com
 0.0.0.0  wigetmedia.com
+0.0.0.0  ad-display.wikawika.xyz
 0.0.0.0  cads.wildlifestudios.com
 0.0.0.0  exchange.wildlifestudios.com
 0.0.0.0  analytics.wildtangent.com
