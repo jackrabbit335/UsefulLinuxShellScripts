@@ -920,8 +920,7 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz; gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
 			elif [[ $browser == 13 ]];
 			then
-				wget https://cdn.waterfox.net/releases/linux64/installer/waterfox-G4.0.5.en-US.linux-x86_64.tar.bz2; gunzip waterfox-G4.0.5.en-US.linux-x86_64.tar.bz2; tar -xvf waterfox-G3.1.0.en-US.linux-x86_64.tar; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox
-				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/waterfox-g4-bin.tar.gz; gunzip *.gz; tar -xvf *.tar; cd waterfox-g4-bin && makepkg -si
 			elif [[ $browser == 14 ]];
 			then
 				wget https://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz; tar -xvf basilisk-latest.linux64.tar.xz; sudo mv basilisk /opt; sudo touch /usr/share/applications/basilisk.desktop; sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
