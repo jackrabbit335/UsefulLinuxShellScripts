@@ -872,14 +872,13 @@ InstallAndConquer(){
 			echo "11 - Lynx"
 			echo "12 - Google-chrome"
 			echo "13 - Waterfox"
-			echo "14 - Basilisk"
-			echo "15 - Slimjet"
-			echo "16 - Brave"
-			echo "17 - Qutebrowser"
-			echo "18 - Otter-Browser"
-			echo "19 - Iridium"
-			echo "20 - Ungoogled-Chromium"
-			echo "21 - Librewolf"
+			echo "14 - Slimjet"
+			echo "15 - Brave"
+			echo "16 - Qutebrowser"
+			echo "17 - Otter-Browser"
+			echo "18 - Iridium"
+			echo "19 - Ungoogled-Chromium"
+			echo "20 - Librewolf"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -923,27 +922,23 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/waterfox-g4-bin.tar.gz; gunzip *.gz; tar -xvf *.tar; cd waterfox-g4-bin && makepkg -si
 			elif [[ $browser == 14 ]];
 			then
-				wget https://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz; tar -xvf basilisk-latest.linux64.tar.xz; sudo mv basilisk /opt; sudo touch /usr/share/applications/basilisk.desktop; sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
-				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/slimjet.tar.gz; gunzip slimjet.tar.gz; tar -xvf slimjet.tar; cd slimjet && makepkg -si
 			elif [[ $browser == 15 ]];
 			then
-				wget https://aur.archlinux.org/cgit/aur.git/snapshot/slimjet.tar.gz; gunzip slimjet.tar.gz; tar -xvf slimjet.tar; cd slimjet && makepkg -si
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/brave-bin.tar.gz; gunzip brave-bin.tar.gz; tar -xvf brave-bin.tar; cd brave-bin; makepkg -si
 			elif [[ $browser == 16 ]];
 			then
-				wget https://aur.archlinux.org/cgit/aur.git/snapshot/brave-bin.tar.gz; gunzip brave-bin.tar.gz; tar -xvf brave-bin.tar; cd brave-bin; makepkg -si
+				sudo pacman -S --noconfirm qutebrowser python-adblock
 			elif [[ $browser == 17 ]];
 			then
-				sudo pacman -S --noconfirm qutebrowser python-adblock
+				sudo pacman -S --noconfirm otter-browser
 			elif [[ $browser == 18 ]];
 			then
-				sudo pacman -S --noconfirm otter-browser
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/iridium-rpm.tar.gz; gunzip iridium-rpm.tar.gz; tar -xvf iridium-rpm.tar; cd iridium-rpm && makepkg -si
 			elif [[ $browser == 19 ]];
 			then
-				wget https://aur.archlinux.org/cgit/aur.git/snapshot/iridium-rpm.tar.gz; gunzip iridium-rpm.tar.gz; tar -xvf iridium-rpm.tar; cd iridium-rpm && makepkg -si
-			elif [[ $browser == 20 ]];
-			then
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/ungoogled-chromium.tar.gz; gunzip ungoogled-chromium.tar.gz; tar -xvf ungoogled-chromium.tar; cd ungoogled-chromium && makepkg -si
-			elif [[ $browser == 21 ]];
+			elif [[ $browser == 20 ]];
 			then
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/librewolf-bin.tar.gz; gunzip librewolf-bin.tar.gz; tar -xvf librewolf-bin.tar; cd librewolf-bin && makepkg -si
 			else
@@ -1836,12 +1831,10 @@ EOF
 	browser8="$(find /usr/bin/falkon)"
 	browser9="$(find /usr/bin/epiphany)"
 	browser10="$(find /usr/bin/midori)"
-	browser11="$(find /usr/bin/basilisk)"
-	browser12="$(find /usr/bin/brave)"
+	browser11="$(find /usr/bin/brave)"
 	browser13="$(find /usr/bin/iridium)"
 	browser14="$(find /usr/bin/otter-browser)"
 	browser15="$(find /usr/bin/ungoogled-chromium)"
-	browser16="$(find /usr/bin/qutebrowser)"
 
 	echo $browser1
 	echo $browser2
@@ -1858,7 +1851,6 @@ EOF
 	echo $browser13
 	echo $browser14
 	echo $browser15
-	echo $browser16
 
 	sleep 1
 
@@ -1873,12 +1865,11 @@ EOF
 	echo "8 - Falkon"
 	echo "9 - Epiphany"
 	echo "10 - Midori"
-	echo "11 - Basilisk"
-	echo "12 - Brave"
-	echo "13 - Iridium"
-	echo "14 - Otter-browser"
-	echo "15 - Ungoogled-chromium"
-	echo "16 - Qutebrowser"
+	echo "11 - Brave"
+	echo "12 - Iridium"
+	echo "13 - Otter-browser"
+	echo "14 - Ungoogled-chromium"
+	echo "15 - Qutebrowser"
 	read operation;
 	case $operation in
 		1)
@@ -1933,31 +1924,26 @@ EOF
 		sleep 1
 		;;
 		11)
-		sudo cp -r ~/'.moonchild productions'/'basilisk' ~/'.moonchild productions'/'basilisk'-old; sudo rm -rf ~/'.moonchild productions'/'basilisk'/*
-		echo "Your browser has now been reset"
-		sleep 1
-		;;
-		12)
 		sudo cp -r ~/.config/BraveSoftware ~/.config/BraveSoftware-old; sudo rm -rf ~/.config/BraveSoftware/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
-		13)
+		12)
 		sudo cp -r ~/.config/iridium ~/.config/iridium-old; sudo rm -rf ~/.config/iridium/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
-		14)
+		15)
 		sudo cp -r ~/.config/otter-browser ~/.config/otter-browser-old; sudo rm -rf ~/.config/otter-browser/*
 		echo "Your browser has been reset"
 		sleep 1
 		;;
-		15)
+		16)
 		sudo cp -r ~/.config/ungoogled-chromium ~/.config/ungoogled-chromium-old; sudo rm -rf ~/.config/ungoogled-chromium/*
 		echo "Your browser has been reset"
 		sleep 1
 		;;
-		16)
+		17)
 		sudo cp -r ~/.config/qutebrowser ~/.config/qutebrowser; sudo rm -rf ~/.config/qutebrowser/*
 		sudo cp -r ~/.local/share/qutebrowser ~/.local/share/qutebrowser-old; sudo rm -rf ~/.local/share/qutebrowser/*
 		echo "Your browser has been reset"

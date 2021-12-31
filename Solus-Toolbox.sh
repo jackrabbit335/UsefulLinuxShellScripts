@@ -700,11 +700,10 @@ InstallAndConquer(){
 			echo "7 - vivaldi-snapshot"
 			echo "8 - google-chrome"
 			echo "9 - waterfox"
-			echo "10 - basilisk"
-			echo "11 - palemoon"
-			echo "12 - firefox"
-			echo "13 - brave"
-			echo "14 - LibreWolf"
+			echo "10 - palemoon"
+			echo "11 - firefox"
+			echo "12 - brave"
+			echo "13 - LibreWolf"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -736,19 +735,15 @@ InstallAndConquer(){
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 10 ]];
 			then
-				wget https://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz; tar -xvf basilisk-latest.linux64.tar.xz; sudo mv basilisk /opt && sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
-				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
-			elif [[ $browser == 11 ]];
-			then
 				wget https://linux.palemoon.org/datastore/release/palemoon-29.4.3.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-29.4.3.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
-			elif [[ $browser == 12 ]];
+			elif [[ $browser == 11 ]];
 			then
 				sudo eopkg install firefox
-			elif [[ $browser == 13 ]];
+			elif [[ $browser == 12 ]];
 			then
 				sudo eopkg install brave
-			elif [[ $browser == 14 ]];
+			elif [[ $browser == 13 ]];
 			then
 				flatpak install librewolf
 			else
@@ -1573,12 +1568,11 @@ EOF
 	browser5="$(find /usr/bin/opera)"
 	browser6="$(find /usr/bin/vivaldi-snapshot)"
 	browser7="$(find /usr/bin/waterfox)"
-	browser8="$(find /usr/bin/basilisk)"
-	browser9="$(find /usr/bin/epiphany)"
-	browser10="$(find /usr/bin/midori)"
-	browser11="$(find /usr/bin/brave-browser)"
-	browser12="$(find /usr/bin/falkon)"
-	browser13="$(find /usr/bin/qutebrowser)"
+	browser8="$(find /usr/bin/epiphany)"
+	browser9="$(find /usr/bin/midori)"
+	browser10="$(find /usr/bin/brave-browser)"
+	browser11="$(find /usr/bin/falkon)"
+	browser12="$(find /usr/bin/qutebrowser)"
 
 	echo $browser1
 	echo $browser2
@@ -1592,7 +1586,6 @@ EOF
 	echo $browser10
 	echo $browser11
 	echo $browser12
-	echo $browser13
 
 	sleep 1
 
@@ -1604,12 +1597,11 @@ EOF
 	echo "5 - Opera"
 	echo "6 - Vivaldi-snapshot"
 	echo "7 - Waterfox"
-	echo "8 - Basilisk"
-	echo "9 - Epiphany"
-	echo "10 - Midori"
-	echo "11 - Brave"
-	echo "12 - Falkon"
-	echo "13 - Qutebrowser"
+	echo "8 - Epiphany"
+	echo "9 - Midori"
+	echo "10 - Brave"
+	echo "11 - Falkon"
+	echo "12 - Qutebrowser"
 	read operation;
 	case $operation in
 		1)
@@ -1648,31 +1640,27 @@ EOF
 		sleep 1
 		;;
 		8)
-		sudo cp -r ~/'.moonchild productions'/'basilisk' ~/'.moonchild productions'/'basilisk'-old; sudo rm -rf ~/'.moonchild productions'/'basilisk'/*
-		echo "Your browser has now been reset"
-		sleep 1
-		;;
-		9)
 		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old; sudo rm -rf ~/.config/epiphany/*
 		sudo cp -r ~/.local/share/epiphany ~/.local/share/epiphany-old; sudo rm -rf ~/.local/share/epiphany/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
-		10)
+		9)
 		sudo cp -r ~/.config/midori ~/.config/midori-old; sudo rm -rf ~/.config/midori/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
-		11)
+		10)
 		sudo cp -r ~/.config/BraveSoftware ~/.config/BraveSoftware-old; sudo rm -rf ~/.config/BraveSoftware/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
-		12)
+		11)
 		sudo cp -r ~/.config/falkon ~/.config/falkon-old; sudo rm -rf ~/.config/falkon/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
+		12)
 		sudo cp -r ~/.config/qutebrowser ~/.config/qutebrowser-old; sudo rm -rf ~/.config/qutebrowser/*
 		sudo cp -r ~/.local/share/qutebrowser ~/.local/share/qutebrowser-old; sudo rm -rf ~/.local/share/qutebrowser/*
 		echo "Your browser has been reset"

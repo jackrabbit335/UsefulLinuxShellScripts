@@ -1122,10 +1122,9 @@ InstallAndConquer(){
 			echo "9 - Lynx"
 			echo "10 - Dillo"
 			echo "11 - Waterfox"
-			echo "12 - Basilisk"
-			echo "13 - Brave"
-			echo "14 - Librewolf"
-			echo "15 - Qutebrowser"
+			echo "12 - Brave"
+			echo "13 - Librewolf"
+			echo "14 - Qutebrowser"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -1165,17 +1164,13 @@ InstallAndConquer(){
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 12 ]];
 			then
-				wget https://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz; tar -xvf basilisk-latest.linux64.tar.xz; sudo mv basilisk /opt && sudo ln -s /opt/basilisk/basilisk /usr/bin/basilisk
-				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/basilisk.desktop; sudo mv basilisk.desktop /usr/share/applications/basilisk.desktop
-			elif [[ $browser == 13 ]];
-			then
 				sudo snap install brave
-			elif [[ $browser == 14 ]];
+			elif [[ $browser == 13 ]];
 			then
 				mkdir AppImages
 				wget https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/95.0.2-1/LibreWolf.x86_64.AppImage; chmod +x LibreWolf.x86_64.AppImage; mv LibreWolf.x86_64.AppImage ~/AppImages
 				wget https://librewolf-community.gitlab.io/images/logo.png; mv logo.png ~/AppImages; wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/LibreWolf.desktop; sudo mv LibreWolf.desktop /usr/share/applications/LibreWolf.desktop
-			elif [[ $browser == 15 ]];
+			elif [[ $browser == 14 ]];
 			then
 				sudo apt install qutebrowser python3-pip; pip install adblock
 			fi
