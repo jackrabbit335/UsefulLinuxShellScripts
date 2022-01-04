@@ -3227,7 +3227,6 @@
 0.0.0.0  havasedge.com
 0.0.0.0  event.havasedge.com
 0.0.0.0  hbi-ingest.net
-0.0.0.0  www.healthgrades.com
 0.0.0.0  cdn.heapanalytics.com
 0.0.0.0  adv.herocraft.com
 0.0.0.0  gamestats.herocraft.com
@@ -5623,7 +5622,6 @@
 0.0.0.0  media.revcontent.com
 0.0.0.0  publishers.revcontent.com
 0.0.0.0  trends.revcontent.com
-0.0.0.0  api.revenuecat.com
 0.0.0.0  ads.revjet.com
 0.0.0.0  cdn.revjet.com
 0.0.0.0  pix.revjet.com
