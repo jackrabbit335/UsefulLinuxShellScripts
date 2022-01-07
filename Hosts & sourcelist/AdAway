@@ -2110,7 +2110,6 @@
 0.0.0.0  monetize-api.coronalabs.com
 0.0.0.0  stats.coronalabs.com
 0.0.0.0  count.ly
-0.0.0.0  static.cloud.coveo.com
 0.0.0.0  smetrics.cox.com
 0.0.0.0  cpmstar.com
 0.0.0.0  cdne.cpmstar.com
@@ -2479,8 +2478,6 @@
 0.0.0.0  tag.divvit.com
 0.0.0.0  bob.dmpxs.com
 0.0.0.0  ciq.dmpxs.com
-0.0.0.0  postsign.docusign.com
-0.0.0.0  telemetry.docusign.net
 0.0.0.0  ufz.doesxyz.com
 0.0.0.0  ads.dofunapps.com
 0.0.0.0  sdk.dofunapps.com
@@ -3344,7 +3341,6 @@
 0.0.0.0  game.idoing3d.com
 0.0.0.0  server.idreams.pl
 0.0.0.0  mpsnare.iesnare.com
-0.0.0.0  d.ifengimg.com
 0.0.0.0  adlog.ifood.tv
 0.0.0.0  log.ifood.tv
 0.0.0.0  entree.igetget.com
