@@ -170,7 +170,7 @@ InstallAndConquer(){
 		read software;
 		case $software in
 			1)
-			echo "1 - Firefox"
+			echo "1 - Firefox-ESR"
 			echo "2 - Midori"
 			echo "3 - Epiphany"
 			echo "4 - Vivaldi" 
