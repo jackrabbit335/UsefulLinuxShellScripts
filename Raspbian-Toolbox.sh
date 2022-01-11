@@ -323,9 +323,7 @@ RAMBack(){
 
 Cleanup(){
 	#This removes the apt package cache
-	sudo apt autoremove -y
-	sudo apt autoclean -y 
-	sudo apt clean -y
+	sudo apt autoremove -y; sudo apt autoclean -y; sudo apt clean -y
 	
 	#This removes the apt list
 	sudo rm -r /var/lib/apt/lists/*
@@ -1068,18 +1066,18 @@ system to boot automatically with those settings. The file is called
 config.txt and it has its own section for arm and gpu overclocking. 
 Boards and chips will vary, but when setting these commands, it is 
 imperative to not go too high at once and to offer adequate cooling
-measures for your device. Canakit comes with heatsinks and a fan for just 
-that. Furthermore, setting the board vertically with heatsinks can help with
-cooling as long as it has plenty of air on both sides.
+measures for your device. Canakit comes with heatsinks and a fan for 
+just that. Furthermore, setting the board vertically with heatsinks 
+can help with cooling as long as it has plenty of air on both sides.
 
 ##########################################################################
 GPIO & FAN INSTALLATION ON PI 4
 ##########################################################################
-If you get a pi from Canakit, it will come with a booklet and a diagram of 
-GPIO map and where each circuit leads to on the board. The Fan takes up
-two such pins. If you're wiring up arduino it uses others. The pins are 
-numbered on the graph and the graph will tell you what they do. I'll post
-a link to a picture of said diagram later. 
+If you get a pi from Canakit, it will come with a booklet and a diagram 
+of GPIO map and where each circuit leads to on the board. The Fan takes 
+up two such pins. If you're wiring up arduino it uses others. The pins 
+are numbered on the graph and the graph will tell you what they do. I'll 
+post a link to a picture of said diagram later. 
 
 ##########################################################################
 MEMORY TWEAKS & SWAP MANIPULATION
@@ -1121,13 +1119,14 @@ disputes for the open-source software. There is a script made for this
 purpose and libwidevine is still available in the repositories. Perhaps 
 I will implement a function for grabbing and running this script later.
 By default, Chromium comes with Ublock Origin and H264 installed as 
-extensions. Javascript is still fully enabled, but just like using adblockers
-can help with intense webpages, so too can disabling scripts and only allowing
-scripts the user trusts or wishes to run. Considered rather extreme by many,
-this concept is nigh essential to running bloated websites on a low end device,
-however, this can brick sites, so users can allow sites they deem trustworthy.
-There are Noscript like alternatives available, but nothing as good as using
-what's already in the browser.
+extensions. Javascript is still fully enabled, but just like using 
+adblockers can help with intense webpages, so too can disabling 
+scripts and only allowing scripts the user trusts or wishes to run. 
+Considered rather extreme by many, this concept is nigh essential to 
+running bloated websites on a low end device, however, this can brick 
+sites, so users can allow sites they deem trustworthy. There are Noscript 
+like alternatives available, but nothing as good as using what's already 
+in the browser.
 
 ##########################################################################
 ADBLOCKING THROUGH THE HOSTS FILE
@@ -1233,40 +1232,53 @@ natural. .deb packages still do not handle dependencies very well, This
 is one of the reasons for some applications moving to Snap. Snap is yet
 another package management system that is coming installed into newer
 Ubuntu systems along with Flatpak. Between these two, the idea is that
-dependency resolutions and more updated software would come faster and easier
-to the user and developers with just one package. It would be easier to
-maintain a Linux system or any other system if they were all using the
-same package across multiple platforms and distributions getting the same
-version updates at the same time. While a step in the right direction, it
-will be a while before they fully catch on.
+dependency resolutions and more updated software would come faster and 
+easier to the user and developers with just one package. It would be 
+easier to maintain a Linux system or any other system if they were all 
+using the same package across multiple platforms and distributions 
+getting the same version updates at the same time. While a step in the 
+right direction, it will be a while before they fully catch on.
 
 ##########################################################################
 CLEANING AND MAINTENANCE
 ##########################################################################
-Cleaning and maintaining Raspberry Pi OS is a good practice and is done in
-much the same way it is done on regular Ubuntu, but being Debian minor 
-differences appear here and there, so I have added a function for expediting 
-and automating much of this process at the behest of the user. I recommend 
-running this once a month at least unless on critical servers. This will re-
-quire a reboot to take full effect. This will also check disk and filesystem
-health on boot by running fsck. the desired method is using sudo shutdown -rF now,
-but the old-fashioned way still exists by creating a file called
-forcefsck in the root directory that will take precedence on next boot. I suggest
-doing this as often as needed. 
+Cleaning and maintaining Raspberry Pi OS is a good practice and is done 
+in much the same way it is done on regular Ubuntu, but being Debian minor 
+differences appear here and there, so I have added a function for 
+expediting and automating much of this process at the behest of the user. 
+I recommend running this once a month at least unless on critical servers. 
+This will require a reboot to take full effect. This will also check 
+disk and filesystem health on boot by running fsck. the desired method 
+is using sudo shutdown -rF now, but the old-fashioned way still exists 
+by creating a file called forcefsck in the root directory that will 
+take precedence on next boot. I suggest doing this as often as needed. 
+
+##########################################################################
+RPI-UPDATE
+##########################################################################
+Rpi-update updates to the latest pre-release version of the kernel and 
+headers as well as possible firmware. In most cases this might work ok,
+but according to the Raspberry Pi Foundation, you shouldn't really need
+to do this. Rpi-update is a script written by the foundation for those 
+who like living on bleeding edge with their kernel modules and are
+equipped to handle it when something breaks. As it stands, this is not
+offered in this script, however, in the future I may add a separate function
+for doing this if you so desire to do so.
 
 ##########################################################################
 LOG FILES AND DISK WRITES
 ##########################################################################
 Log files are a necessary part of troubleshooting for man techs, but
-on some Pi's they are not really necessary as reloading is easier and faster
-now than it ever was before. Also, backup cards are cheaper than ever. There 
-are suggestions to move the log directory to RAM, but this will blow up your 
-RAM and not be freed until you reboot your system. Turning off the service,
-while this can free up resources, is just not a good idea either. While 
-the log file can reduce the lifespan of the sd card, it's not as much of a
-problem as it used to be. With journald, you can tweak the amount of space
-taken up by the logs at any one given time. This helps the sd technology to 
-automatically wear level more evenly. This in turn is the better option.
+on some Pi's they are not really necessary as reloading is easier and 
+faster now than it ever was before. Also, backup cards are cheaper than 
+ever. There are suggestions to move the log directory to RAM, but this 
+will blow up your RAM and not be freed until you reboot your system. 
+Turning off the service, while this can free up resources, is just not 
+a good idea either. While the log file can reduce the lifespan of the 
+sd card, it's not as much of a problem as it used to be. With journald, 
+you can tweak the amount of space taken up by the logs at any one given 
+time. This helps the sd technology to automatically wear level more evenly. 
+This in turn is the better option.
 
 ##########################################################################
 TROUBLESHOOTING INFO
@@ -1320,10 +1332,10 @@ WHY IS MY NETWORK SEEMINGLY SLOWER? AND ONBOARD WIFI/BLUETOOTH
 ##########################################################################
 Raspberry Pi 4 and Raspberry Pi 3 often get far different internet speeds
 despite the 4 being slightly more powerful as a device. The reasons aren't
-at all apparent for many people and some boards are still different than others.
-Best guess from looking at forums is that many Rasp-pi 4's suffer from
-insufficient clearance of the different receivers from LAN and WLAN and 
-Bluetooth. As raspberry pi 4 is the first one to offer wifi and bluetooth
+at all apparent for many people and some boards are still different than 
+others. Best guess from looking at forums is that many Rasp-pi 4's suffer 
+from insufficient clearance of the different receivers from LAN and WLAN 
+and Bluetooth. As raspberry pi 4 is the first one to offer wifi and bluetooth
 already built in, this seems like it makes sense. Add this to the fact that
 Raspberry Pi's have to process all data they receive through their cpu, 
 much the way a desktop would. Desktops do it faster, while Rpi's take
@@ -1342,8 +1354,8 @@ a web browser(was epiphany), and Geany as a programming IDE. VLC is the
 media player by default(I would have chosen something lighter, but vlc -
 has all the features). Mousepad is the text editor which is funny as 
 Raspbian uses LXDE for the desktop and openbox for Window Manager. Both 
-rely on using mostly free and open source or FOSS. Though it should be noted 
-that Raspbian uses closed source code for the firmware.
+rely on using mostly free and open source or FOSS. Though it should be 
+noted that Raspbian uses closed source code for the firmware.
 
 ##########################################################################
 SUDO VERSION CHECKING
@@ -1531,18 +1543,19 @@ CheckNetwork(){
 Disclaimer(){
 cat <<EOF
 ##########################################################################
-Hello! Thank you for using Raspbian-Toolbox. Within this script is a multitu-
-de of potential solutions for every day tasks as trivial as maintenance,
-all the way to as important as setting up a new system. This script is
-meant for new users, but anyone can read, change and use this script to
-their liking. This script is to be placed under the GPLv3 and is to be
-redistributable, however, if you are distributing, I would appreciate it
-if you gave the credit back to the original author. I should also add that
-I have a few blog articles which may or may not be of benefit for newbies
-on occasion. The link will be placed here. In the blog I write about
-typical scenarios that I face on a day to day basis as well as add commen-
-tary and my opinions about software and technology. You may copy and paste
-the following link into your browser: https://techiegeek123.blogspot.com/
+Hello! Thank you for using Raspbian-Toolbox. Within this script is a 
+multitude of potential solutions for every day tasks as trivial as 
+maintenance, all the way to as important as setting up a new system. This 
+script is meant for new users, but anyone can read, change and use this 
+script to their liking. This script is to be placed under the GPLv3 and 
+is to be redistributable, however, if you are distributing, I would 
+appreciate it if you gave the credit back to the original author. 
+I should also add that I have a few blog articles which may or may not be 
+of benefit for newbies on occasion. The link will be placed here. In the 
+blog I write about typical scenarios that I face on a day to day basis 
+as well as add commentary and my opinions about software and technology. 
+You may copy and paste the following link into your browser: 
+https://techiegeek123.blogspot.com/
 Again, Thank you!
 ##########################################################################
 EOF
