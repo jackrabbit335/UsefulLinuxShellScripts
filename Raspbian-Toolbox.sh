@@ -117,11 +117,11 @@ Setup(){
 	echo "net.ipv4.tcp_challenge_ack_limit = 999999999" | sudo tee -a /etc/sysctl.conf
 	sudo sysctl -p && sudo sysctl --system
 	
-	#Block ICMP requests or Ping from foreign systems
-	cat <<EOF
-	We can also block ping requests. Ping requests coming from unknown sources can mean that people are
-	potentially trying to locate/attack your network/device. If you need this functionality
-	you can always comment this line out later. Chances are, this will not affect normal users.
+#Block ICMP requests or Ping from foreign systems
+cat <<EOF
+We can also block ping requests. Ping requests coming from unknown sources can mean that people are
+potentially trying to locate/attack your network/device. If you need this functionality
+you can always comment this line out later. Chances are, this will not affect normal users.
 EOF
 	echo "Block ping requests from foreign systems?(Y/n)"
 	read answer
@@ -202,7 +202,7 @@ InstallAndConquer(){
 			fi
 			;;
 			2)
-			sudo apt install -y nmap iotop gparted gnome-disk-utility lm-sensors inxi lshw pulseaudio*
+			sudo apt install -y nmap iotop gparted gnome-disk-utility lm-sensors inxi lshw pulseaudio youtube-dl*
 			;;
 			3)
 			sudo apt install -y kodi
@@ -384,7 +384,7 @@ Maintenance(){
 	sudo apt update && sudo apt full-upgrade -yy
 	
 	#This fixes broken default keybindings that worked before in rpi
-	sudo cp /etc/xdg/openbox/lxde-pi-rc.xml ~/.config/openbox/lxde-pi-rc.xml
+	#sudo cp /etc/xdg/openbox/lxde-pi-rc.xml ~/.config/openbox/lxde-pi-rc.xml
 
 	#This restarts systemd daemon. This can be useful for different reasons.
 	sudo systemctl daemon-reload
@@ -411,13 +411,13 @@ Maintenance(){
 }
 
 ServiceManager(){
-	cat <<EOF
-	This is usually better off left undone, only disable services you know
-	you will not need or miss. I can not be held responsible if you brick
-	your system. Handle with caution. Also, may only take effect once you
-	reboot your machine. Services can be turned back on with a good backup
-	and possibly by chrooting into the device via live cd and reversing the
-	process by running this again and reenabling the service.
+cat <<EOF
+This is usually better off left undone, only disable services you know
+you will not need or miss. I can not be held responsible if you brick
+your system. Handle with caution. Also, may only take effect once you
+reboot your machine. Services can be turned back on with a good backup
+and possibly by chrooting into the device via live cd and reversing the
+process by running this again and reenabling the service.
 EOF
 init=$(ps -p1 | awk 'NR!=1{print $4}')
 	for init in $init;
@@ -525,10 +525,10 @@ Adblocking(){
 }
 
 SuperSwapsize(){
-	cat <<EOF
-	This will sometimes help with sluggish performance, but will reduce sd card
-	lifespan if swap is used too frequently.
-	You have been warned. This is taken from Vivaldi help documentation.
+cat <<EOF
+This will sometimes help with sluggish performance, but will reduce sd card
+lifespan if swap is used too frequently.
+You have been warned. This is taken from Vivaldi help documentation.
 EOF
 	echo CONF_SWAPSIZE=2048 | sudo tee -a /etc/dphys-swapfile
 	
@@ -1388,10 +1388,10 @@ Screenfix(){
 }
 
 BootloaderRepair(){
-	cat <<EOF
-	This will have reprocussions if you agree to this by rebooting after running this
-	It's important to remember that to cancel you can run sudo rpi-eeprom-update -r.
-	You can rerun this function later to choose one of the options available.
+cat <<EOF
+This will have reprocussions if you agree to this by rebooting after running this
+It's important to remember that to cancel you can run sudo rpi-eeprom-update -r.
+You can rerun this function later to choose one of the options available.
 EOF
 	echo "1 - Update/Downgrade configuration files"
 	echo "2 - Reverse update/downgrade of configuration"
