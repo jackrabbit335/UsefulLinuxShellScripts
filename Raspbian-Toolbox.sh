@@ -160,7 +160,7 @@ InstallAndConquer(){
 	do
 		echo "1 - Browsers"
 		echo "2 - Utility"
-		echo "3 - Kodi"
+		echo "3 - Media Players"
 		echo "4 - Individual programming apps"
 		echo "5 - Rpi-imager"
 		echo "6 - Claws mail"
@@ -202,10 +202,35 @@ InstallAndConquer(){
 			fi
 			;;
 			2)
-			sudo apt install -y nmap iotop gparted gnome-disk-utility lm-sensors inxi lshw pulseaudio youtube-dl*
+			sudo apt install -y nmap iotop gparted gnome-disk-utility lm-sensors inxi lshw pulseaudio*
 			;;
 			3)
-			sudo apt install -y kodi
+			echo "1 - Rhythmbox"
+			echo "2 - Mpv"
+			echo "3 - Smplayer"
+			echo "4 - Celluloid"
+			echo "5 - Clementine"
+			echo "6 - Kodi"
+			read package
+			if [[ $package == 1 ]];
+			then
+				sudo apt install -y rhythmbox
+			elif [[ $package == 2 ]];
+			then
+				sudo apt install -y mpv #Installs youtube-dl 
+			elif [[ $package == 3 ]];
+			then
+				sudo apt install -y smplayer #Installs mpv which installs youtube-dl
+			elif [[ $package == 4 ]];
+			then
+				sudo apt install -y celluloid #Installs mpv which installs youtube-dl
+			elif [[ $package == 5 ]];
+			then
+				sudo apt install -y clementine
+			elif [[ $package == 6 ]];
+			then
+				sudo apt install -y kodi
+			fi
 			;;
 			4)
 			echo "1 - Geany"
