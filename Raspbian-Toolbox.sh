@@ -217,13 +217,13 @@ InstallAndConquer(){
 				sudo apt install -y rhythmbox
 			elif [[ $package == 2 ]];
 			then
-				sudo apt install -y mpv #Installs youtube-dl 
+				sudo apt install -y mpv
 			elif [[ $package == 3 ]];
 			then
-				sudo apt install -y smplayer #Installs mpv which installs youtube-dl
+				sudo apt install -y smplayer
 			elif [[ $package == 4 ]];
 			then
-				sudo apt install -y celluloid #Installs mpv which installs youtube-dl
+				sudo apt install -y celluloid
 			elif [[ $package == 5 ]];
 			then
 				sudo apt install -y clementine
@@ -573,10 +573,7 @@ fast, this can do it for you. More browsers and options are coming.
 EOF
 	browser1="$(find /usr/bin/firefox)"
 	browser2="$(find /usr/bin/vivaldi*)"
-	browser3="$(find /usr/bin/palemoon)"
-	browser4="$(find /usr/bin/google-chrome*)"
 	browser5="$(find /usr/bin/chromium-browser)"
-	browser6="$(find /usr/bin/waterfox)"
 	browser7="$(find /usr/bin/epiphany)"
 	browser8="$(find /usr/bin/midori)"
 
@@ -585,21 +582,15 @@ EOF
 	echo $browser3
 	echo $browser4
 	echo $browser5
-	echo $browser6
-	echo $browser7
-	echo $browser8
 
 	sleep 1
 
 	echo "choose the browser you wish to reset"
 	echo "1 - Firefox"
 	echo "2 - Vivaldi"
-	echo "3 - Pale Moon"
-	echo "4 - Chrome"
-	echo "5 - Chromium"
-	echo "6 - Waterfox"
-	echo "7 - Midori"
-	echo "8 - Epiphany"
+	echo "3 - Chromium"
+	echo "4 - Midori"
+	echo "5 - Epiphany"
 	read operation;
 	case $operation in
 		1)
@@ -613,31 +604,16 @@ EOF
 		sleep 1
 		;;
 		3)
-		sudo cp -r ~/'.moonchild productions'/'pale moon' ~/'.moonchild productions'/'pale moon'-old; sudo rm -rf ~/'.moonchild productions'/'pale moon'/*
-		echo "Your browser has now been reset"
-		sleep 1
-		;;
-		4)
-		sudo cp -r ~/.config/google-chrome ~/.config/google-chrome-old; sudo rm -rf ~/.config/google-chrome/*
-		echo "Your browser has now been reset"
-		sleep 1
-		;;
-		5)
 		sudo cp -r ~/.config/chromium ~/.config/chromium-old; sudo rm -rf ~/.config/chromium/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
-		6)
-		sudo cp -r ~/.waterfox ~/.waterfox-old; sudo rm -rf ~/.waterfox/*
-		echo "Your browser has now been reset"
-		sleep 1
-		;;
-		7)
+		4)
 		sudo cp -r ~/.config/midori ~/.config/midori-old; sudo rm -rf ~/.config/midori/*
 		echo "Your browser has now been reset"
 		sleep 1
 		;;
-		8)
+		5)
 		sudo cp -r ~/.config/epiphany ~/.config/epiphany-old; sudo rm -rf ~/.config/epiphany/*
 		sudo cp -r ~/.local/share/epiphany ~/.local/share/epiphany-old; sudo rm -rf ~/.local/share/epiphany/*
 		echo "Your browser has now been reset"
