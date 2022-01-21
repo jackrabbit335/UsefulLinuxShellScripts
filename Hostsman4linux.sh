@@ -33,7 +33,7 @@ str10=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/ma
 str11=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Tomslist
 str12=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/bjornhosts
 str13=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/urlhaus
-str14=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20&%20sourcelist/shady-hosts
+str14=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/shady-hosts
 
 while getopts :ABCDEFGHIJKLMN option; do
 	case $option in
