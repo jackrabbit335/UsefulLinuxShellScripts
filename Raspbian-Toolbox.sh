@@ -158,14 +158,15 @@ InstallAndConquer(){
 	while [ $answer == Y ];
 	do
 		echo "1 - Browsers"
-		echo "2 - Utility"
-		echo "3 - Media Players"
-		echo "4 - Individual programming apps"
-		echo "5 - Rpi-imager"
-		echo "6 - Claws mail"
-		echo "7 - Office"
-		echo "8 - Games"
-		echo "9 - Get out of this menu"
+		echo "2 - Bittorrent Client"
+		echo "3 - Utility"
+		echo "4 - Media Players"
+		echo "5 - Individual programming apps"
+		echo "6 - Rpi-imager"
+		echo "7 - Claws mail"
+		echo "8 - Office"
+		echo "9 - Games"
+		echo "10 - Get out of this menu"
 		read software;
 		case $software in
 			1)
@@ -201,9 +202,12 @@ InstallAndConquer(){
 			fi
 			;;
 			2)
-			sudo apt install -y nmap iotop gparted gnome-disk-utility lm-sensors inxi lshw pulseaudio*
+			sudo apt install -y transmission
 			;;
 			3)
+			sudo apt install -y nmap iotop gparted gnome-disk-utility baobab lm-sensors inxi lshw pulseaudio*
+			;;
+			4)
 			echo "1 - Rhythmbox"
 			echo "2 - Mpv"
 			echo "3 - Smplayer"
@@ -231,7 +235,7 @@ InstallAndConquer(){
 				sudo apt install -y kodi
 			fi
 			;;
-			4)
+			5)
 			echo "1 - Geany"
 			echo "2 - Mu-editor"
 			echo "3 - Eclipse-rpm-editor"
@@ -294,16 +298,16 @@ InstallAndConquer(){
 				;;
 			esac
 			;;
-			5)
+			6)
 			sudo apt install -y rpi-imager
 			;;
-			6)
+			7)
 			sudo apt install -y claws-mail
 			;;
-			7)
+			8)
 			sudo apt install -y libreoffice
 			;;
-			8)
+			9)
 			echo "1 - Bsd-games"
 			echo "2 - Gnome-games"
 			echo "3 - Python-games"
@@ -327,7 +331,7 @@ InstallAndConquer(){
 				sudo apt install -y code-the-classics
 			fi
 			;;
-			9)
+			10)
 			echo "Alrighty then"
 			break
 			;;
