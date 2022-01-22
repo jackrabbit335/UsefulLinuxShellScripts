@@ -35,8 +35,7 @@ Setup(){
 	
 	#This downloads the widevine library to stream netflix with chromium
 	sudo apt install -y libwidevinecdm0
-	sudo mv /opt/WidevineCdm/_platform_specific/linux_arm/libwidevinecdm.so /usr/lib/chromium-browser
-	sudo chmod 644 /usr/lib/chromium-browser/libwidevinecdm.so
+	#sudo mv /opt/WidevineCdm/_platform_specific/linux_arm/libwidevinecdm.so /usr/lib/chromium-browser; sudo chmod 644 /usr/lib/chromium-browser/libwidevinecdm.so
 	
 	#This disables ipv6
 	echo "Sometimes ipv6 can cause network issues. Would you like to disable it?(Y/n)"
