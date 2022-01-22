@@ -4934,9 +4934,6 @@
 0.0.0.0  a.et.nytimes.com
 0.0.0.0  meter-svc.nytimes.com
 0.0.0.0  cdn.o333o.com
-0.0.0.0  aws.oath.cloud
-0.0.0.0  consent.cmp.oath.com
-0.0.0.0  service.cmp.oath.com
 0.0.0.0  oclaserver.com
 0.0.0.0  go.oclasrv.com
 0.0.0.0  adcanopus.offerstrack.net
