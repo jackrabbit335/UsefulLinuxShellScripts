@@ -98,7 +98,7 @@ Setup(){
 	#sudo sed -i -e '/console=serial0,115200 console=tty1 root=PARTUUID=891e3651-02 rootfstype=ext4 fsck.repair=yes rootwait/c\console=serial0,115200 console=tty1 root=PARTUUID=891e3651-02 rootfstype=ext4 fsck.repair=yes rootwait usbhid.mousepoll=0 ' /boot/cmdline.txt
 	
 	#Ensures that the new fkms gl driver is enabled on rpi 4
-	sudo sed -i -e '/#dtoverlay=vc4-fkms-v3d/c\dtoverlay=vc4-fkms-v3d ' /boot/config.txt
+	#sudo sed -i -e '/#dtoverlay=vc4-fkms-v3d/c\dtoverlay=vc4-fkms-v3d ' /boot/config.txt
 	
 	#Allocates 128MB of memory to be used by GPU, which helps with some video situations
 	echo "gpu_mem=128" | sudo tee -a /boot/config.txt
