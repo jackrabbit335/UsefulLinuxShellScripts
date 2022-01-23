@@ -75,7 +75,7 @@ Setup(){
 	echo "#Maximum CPU frequency" >> ~/.bashrc
 	echo 'alias max_freq="cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"' >> ~/.bashrc
 	echo "#Core Pi Voltage" >> ~/.bashrc
-	echo 'alias volt="vcgencmd measure_voltage core"' >> ~/.bashrc
+	echo 'alias volt="vcgencmd measure_volts core"' >> ~/.bashrc
 	echo "#Gpu Allocated memory" >> ~/.bashrc 
 	echo 'alias gx="vcgencmd get_mem gpu"' >> ~/.bashrc
 	echo "#Arm chip Allocated memory" >> ~/.bashrc
