@@ -1118,7 +1118,6 @@
 0.0.0.0  apis.com.br
 0.0.0.0  app-adforce.jp
 0.0.0.0  analytics.app-adforce.jp
-0.0.0.0  app-measurement.com
 0.0.0.0  cdn-api.appadhoc.com
 0.0.0.0  experiment.appadhoc.com
 0.0.0.0  sdk.appadhoc.com
@@ -1952,13 +1951,6 @@
 0.0.0.0  s.cpx.to
 0.0.0.0  crasheye.cn
 0.0.0.0  rp.crasheye.cn
-0.0.0.0  crashlytics.com
-0.0.0.0  api.crashlytics.com
-0.0.0.0  e.crashlytics.com
-0.0.0.0  firebase-settings.crashlytics.com
-0.0.0.0  reports.crashlytics.com
-0.0.0.0  settings.crashlytics.com
-0.0.0.0  update.crashlytics.com
 0.0.0.0  sample-api-v2.crazyegg.com
 0.0.0.0  script.crazyegg.com
 0.0.0.0  tracking.crazyegg.com
@@ -2687,7 +2679,6 @@
 0.0.0.0  sdk.fiksu.com
 0.0.0.0  ads.fingersoft.net
 0.0.0.0  ads3.fingersoft.net
-0.0.0.0  famobi-01.firebaseio.com
 0.0.0.0  firstimpression.io
 0.0.0.0  cdn.firstimpression.io
 0.0.0.0  ecdn.firstimpression.io
@@ -2918,7 +2909,6 @@
 0.0.0.0  pagead2.googleadservices.com
 0.0.0.0  www.googleadservices.com
 0.0.0.0  static.googleadsserving.cn
-0.0.0.0  crashlyticsreports-pa.googleapis.com
 0.0.0.0  googlesyndication.com
 0.0.0.0  ade.googlesyndication.com
 0.0.0.0  pagead2.googlesyndication.com
@@ -5381,6 +5371,7 @@
 0.0.0.0  etl.xlmc.sandai.net
 0.0.0.0  execution-use.ci360.sas.com
 0.0.0.0  ak-ns.sascdn.com
+0.0.0.0  mobileconfig.sascdn.com
 0.0.0.0  track.saygames.io
 0.0.0.0  saymedia.com
 0.0.0.0  embed.tempest-identity.prod.saymedia.com
@@ -5449,19 +5440,6 @@
 0.0.0.0  ios-quinoa-personal-identify-prod.sense360eng.com
 0.0.0.0  quinoa-personal-identify-prod.sense360eng.com
 0.0.0.0  api.sentiance.com
-0.0.0.0  sentry.io
-0.0.0.0  ingest.sentry.io
-0.0.0.0  o107031.ingest.sentry.io
-0.0.0.0  o129937.ingest.sentry.io
-0.0.0.0  o325556.ingest.sentry.io
-0.0.0.0  o334541.ingest.sentry.io
-0.0.0.0  o400018.ingest.sentry.io
-0.0.0.0  o472445.ingest.sentry.io
-0.0.0.0  o491168.ingest.sentry.io
-0.0.0.0  o502263.ingest.sentry.io
-0.0.0.0  o534899.ingest.sentry.io
-0.0.0.0  o77029.ingest.sentry.io
-0.0.0.0  disney.my.sentry.io
 0.0.0.0  servebom.com
 0.0.0.0  ads.servebom.com
 0.0.0.0  ads2.servebom.com
