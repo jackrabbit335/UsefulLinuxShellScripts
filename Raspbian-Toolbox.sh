@@ -48,42 +48,41 @@ Setup(){
 	fi
 	
 	#This adds aliases of import to Raspbian OS
-	echo "#Alias to fix broken packages" >> .bashrc
+	echo "### Aliases ###" >> ~/.bashrc
+	echo "# Package Manager" >> ~/.bashrc
 	echo 'alias fix="sudo dpkg --configure -a && sudo apt install -f"' >> ~/.bashrc
-	echo "#Alias to update system" >> ~/.bashrc
-	echo 'alias update="sudo apt update && sudo apt full-upgrade -yy"' >> ~/.bashrc
-	echo "#Alias to clean package cache" >> ~/.bashrc
+	echo 'alias update="sudo apt update && sudo apt full-upgrade"' >> ~/.bashrc
+	echo 'alias aptin="sudo apt install"' >> ~/.bashrc
+	echo 'alias aptrm="sudo apt remove"' >> ~/.bashrc
 	echo 'alias clean="sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y"' >> ~/.bashrc
-	echo "#Alias to show disk usage and free space" >> ~/.bashrc
+	echo "" >> ~/.bashrc
+	echo "# Disk Tools" >> ~/.bashrc
 	echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
-	echo "#Alias to show cpu information" >> ~/.bashrc
+	echo "" >> ~/.bashrc
+	echo "#System Stats" >> ~/.bashrc
 	echo 'alias cpuinfo="cat /proc/cpuinfo"' >> ~/.bashrc
-	echo "#Alias to show memory information" >> ~/.bashrc
 	echo 'alias meminfo="cat /proc/meminfo"' >> ~/.bashrc
-	echo "#Alias to show free memory in realtime" >> ~/.bashrc
 	echo 'alias mem="watch free -h"' >> ~/.bashrc
-	echo "#Alias to free cached memory" >> ~/.bashrc
-	echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
-	echo "#Alias to show cpu temps" >> ~/.bashrc
 	echo 'alias temp="watch vcgencmd measure_temp"' >> ~/.bashrc
-	echo "#Alias to show cpu information" >> ~/.bashrc
 	echo 'alias cpuinfo="cat /proc/cpuinfo"' >> ~/.bashrc
-	echo "#Current CPU frequency" >> ~/.bashrc
 	echo 'alias cur_freq="cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq"' >> ~/.bashrc
-	echo "#Minimum CPU frequency" >> ~/.bashrc
 	echo 'alias min_freq="cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq"' >> ~/.bashrc
-	echo "#Maximum CPU frequency" >> ~/.bashrc
 	echo 'alias max_freq="cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"' >> ~/.bashrc
-	echo "#Core Pi Voltage" >> ~/.bashrc
 	echo 'alias volt="vcgencmd measure_volts core"' >> ~/.bashrc
-	echo "#Gpu Allocated memory" >> ~/.bashrc 
 	echo 'alias gx="vcgencmd get_mem gpu"' >> ~/.bashrc
-	echo "#Arm chip Allocated memory" >> ~/.bashrc
 	echo 'alias armmem="vcgencmd get_mem arm"' >> ~/.bashrc
-	echo "#Alias to show swap usage" >> ~/.bashrc
 	echo 'alias swaps="cat /proc/swaps"' >> ~/.bashrc
-	echo "#Alias to show uptime information" >> ~/.bashrc
 	echo 'alias ut="uptime -p"' >> ~/.bashrc
+	echo "" >> ~/.bashrc
+	echo "# Confirmations" >> ~/.bashrc
+	echo 'alias mv="mv -i"' >> ~/.bashrc
+	echo 'alias cp="cp -i"' >> ~/.bashrc
+	echo 'alias rm="rm -i"' >> ~/.bashrc
+	echo 'alias ln="ln =i"' >> ~/.bashrc
+	echo "" >> ~/.bashrc
+	echo "# Clear Cached RAM" >> ~/.bashrc
+	echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
+	source .bashrc
 	
 	#Reduces space taken up by log file
 	sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
