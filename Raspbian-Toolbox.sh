@@ -58,6 +58,7 @@ Setup(){
 	echo "" >> ~/.bashrc
 	echo "# Disk Tools" >> ~/.bashrc
 	echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
+	echo 'alias lspart="sudo fdisk -l"' >> ~/.bashrc
 	echo "" >> ~/.bashrc
 	echo "#System Stats" >> ~/.bashrc
 	echo 'alias cpuinfo="cat /proc/cpuinfo"' >> ~/.bashrc
@@ -81,6 +82,10 @@ Setup(){
 	echo "" >> ~/.bashrc
 	echo "# Clear Cached RAM" >> ~/.bashrc
 	echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
+	echo "" >> ~/.bashrc
+	echo "# Clean system" >> ~/.bashrc
+	echo 'alias vaccum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
+	echo 'alias dust="sudo rm -r ~/.cache/*"' >> ~/.bashrc
 	source .bashrc
 	
 	#Reduces space taken up by log file
