@@ -24,6 +24,15 @@ Setup(){
 		break
 	done
 	
+	#Sets volume using alsamixer
+	echo "Would you like to raise or lower volume?(Y/n)"
+	read answer
+	while [ $answer == Y ];
+	do
+		alsamixer
+		break
+	done
+	
 	#This activates the firewall
 	dpkg --list | grep ufw || sudo apt install -y gufw; sudo systemctl enable ufw
 	echo "Would you like to deny ssh and telnet for security purposes?(Y/n)"
@@ -98,7 +107,7 @@ Setup(){
 	#echo "over_voltage=1" | sudo tee -a /boot/config.txt
 	
 	#Reducing mousepoll reduces lag and latency of wireless usb mouses
-	#sudo sed -i -e '/console=serial0,115200 console=tty1 root=PARTUUID=891e3651-02 rootfstype=ext4 fsck.repair=yes rootwait/c\console=serial0,115200 console=tty1 root=PARTUUID=891e3651-02 rootfstype=ext4 fsck.repair=yes rootwait usbhid.mousepoll=0 ' /boot/cmdline.txt
+	sudo sed -i -e '/console=serial0,115200 console=tty1 root=PARTUUID=891e3651-02 rootfstype=ext4 fsck.repair=yes rootwait/c\console=serial0,115200 console=tty1 root=PARTUUID=891e3651-02 rootfstype=ext4 fsck.repair=yes rootwait usbhid.mousepoll=0 ' /boot/cmdline.txt
 	
 	#Ensures that the new fkms gl driver is enabled on rpi 4
 	#sudo sed -i -e '/#dtoverlay=vc4-fkms-v3d/c\dtoverlay=vc4-fkms-v3d ' /boot/config.txt
@@ -192,7 +201,7 @@ InstallAndConquer(){
 				sudo apt install -y epiphany-browser
 			elif [[ $package == 4 ]];
 			then
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.0.2497.48-1_armhf.deb; sudo dpkg -i *.deb; sudo apt install -f
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.0.2497.38-1_armhf.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $package == 5 ]];
 			then
 				sudo apt install -y netsurf
@@ -363,6 +372,7 @@ Cleanup(){
 	sudo rm -r ~/.cache/*
 	sudo rm -r ~/.thumbnails/*
 	sudo rm ~/.local/share/recently-used.xbel
+	sudo rm -r ~/.local/share/Trash/files/*
 	history -c && rm ~/.bash_history
 	
 	#This cleans the manual database
