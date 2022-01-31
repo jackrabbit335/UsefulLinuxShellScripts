@@ -834,7 +834,6 @@
 0.0.0.0  adzmobi.com
 0.0.0.0  mob.adzmobi.com
 0.0.0.0  adztec.com
-0.0.0.0  click.aep-email.com
 0.0.0.0  aerserv.com
 0.0.0.0  ads.aerserv.com
 0.0.0.0  alpha-events.aerserv.com
@@ -4813,7 +4812,6 @@
 0.0.0.0  log.particlenews.com
 0.0.0.0  b.stats.paypal.com
 0.0.0.0  slc.stats.paypal.com
-0.0.0.0  t.paypal.com
 0.0.0.0  hawk.pcgamer.com
 0.0.0.0  ads.pdbarea.com
 0.0.0.0  api.pdbarea.com
@@ -6593,8 +6591,6 @@
 0.0.0.0  api.verticalscope.com
 0.0.0.0  static.verticalscope.com
 0.0.0.0  vervemobile.com
-0.0.0.0  api.vhx.tv
-0.0.0.0  collector.vhx.tv
 0.0.0.0  vi-serve.com
 0.0.0.0  nv.vi-serve.com
 0.0.0.0  s.vi-serve.com
