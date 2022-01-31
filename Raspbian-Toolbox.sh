@@ -94,7 +94,7 @@ Setup(){
 	echo "" >> ~/.bashrc
 	echo "# Clean system" >> ~/.bashrc
 	echo 'alias vaccum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
-	echo 'alias dust="sudo rm -r ~/.cache/*"' >> ~/.bashrc
+	echo 'alias dust="sudo rm -r ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
 	source .bashrc
 	
 	#Reduces space taken up by log file
