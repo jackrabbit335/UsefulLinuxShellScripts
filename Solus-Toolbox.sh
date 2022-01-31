@@ -129,48 +129,49 @@ Setup(){
 	read answer
 	if [[ $answer == Y ]];
 	then
-		echo "#Alias to edit fstab" >> ~/.bashrc
-		echo 'alias fstab="sudo nano /etc/fstab"' >> ~/.bashrc
-		echo "#Alias to edit grub" >> ~/.bashrc
-		echo 'alias grub="sudo nano /etc/default/grub"' >> ~/.bashrc
-		echo "#Alias to update grub" >> ~/.bashrc
-		echo 'alias grubup="sudo clr-boot-manager update"' >> ~/.bashrc
-		echo "#Alias to update the system" >> ~/.bashrc
+		echo "### Aliases ###" >> ~/.bashrc
+		echo "# Package Manager" >> ~/.bashrc
 		echo 'alias update="sudo eopkg -y upgrade"' >> ~/.bashrc
-		echo "#Alias to update flatpaks" >> ~/.bashrc
 		echo 'alias flatup="flatpak --user update"' >> ~/.bashrc
-		echo "#Alias to repair and clean flatpaks" >> ~/.bashrc
 		echo 'alias fix="sudo flatpak repair && flatpak --user uninstall --unused"' >> ~/.bashrc
-		echo "#Alias to clear package cache" >> ~/.bashrc
 		echo 'alias cleanse="sudo eopkg -y delete-cache"' >> ~/.bashrc
-		echo "#Alias to clean stale locks" >> ~/.bashrc
 		echo 'alias purge="sudo eopkg -y clean"' >> ~/.bashrc
-		echo "#Alias to remove orphaned packages" >> ~/.bashrc
 		echo 'alias rmo="sudo eopkg remove-orphans"' >> ~/.bashrc
-		echo "#Alias to check installation integrity of software" >> ~/.bashrc
 		echo 'alias repair="sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg -y install --reinstall"' >> ~/.bashrc
-		echo "#Alias to rebuild the database" >> ~/.bashrc
 		echo 'alias rebuild="sudo eopkg -y rebuild-db"' >> ~/.bashrc
-		echo "#Alias to Free up RAM" >> ~/.bashrc
-		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
-		echo "#Alias to trim journal size" >> ~/.bashrc
-		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
-		echo "#Alias to trim ssd" >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# Disk Tools" >> ~/.bashrc
+		echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
+		echo 'alias lspart="sudo fdisk -l"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# System Cleaning" >> ~/.bashrc
+		echo 'alias vaccum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
+		echo 'alias dust="sudo rm -r ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
+		echo "" ~/.bashrc
+		echo "# System Maintenance" >> ~/.bashrc
 		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
-		echo "#Alias to show relevant sensor information" >> ~/.bashrc
+		echo 'alias grubup="sudo clr-boot-manager update"' >> ~/.bashrc
+		echo "" ~/.bashrc
+		echo "# System Stats" >> ~/.bashrc
 		echo 'alias temp="watch sensors"' >> ~/.bashrc
-		echo "#Alias to monitor memory usage actively" >> ~/.bashrc
 		echo 'alias mem="watch free -lh"' >> ~/.bashrc
-		echo "Alias to show cpu info" >> ~/.bashrc
 		echo 'alias cpu="lscpu"' >> ~/.bashrc
-		echo "#Alias to see meminfo" >> ~/.bashrc
 		echo 'alias meminfo="cat /proc/meminfo"' >> ~/.bashrc
-		echo "#Alias to list permissions of files in directory" >> ~/.bashrc
-		echo 'alias ll="ls -l"' >> ~/.bashrc
-		echo "#Alias to view swap usage stats" >> ~/.bashrc
 		echo 'alias swaps="cat /proc/swaps"' >> ~/.bashrc
-		echo "#Alias to show uptime information" >> ~/.bashrc
 		echo 'alias ut="uptime -p"' >> ~/.bashrc
+		echo "" ~/.bashrc
+		echo "# Confirmations" >> ~/.bashrc
+		echo 'alias mv="mv -i"' >> ~/.bashrc
+		echo 'alias cp="cp -i"' >> ~/.bashrc
+		echo 'alias rm="rm -i"' >> ~/.bashrc
+		echo 'alias ln="ln =i"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# System Permissions" >> ~/.bashrc
+		echo 'alias ll="ls -l"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# Clear Cached RAM" >> ~/.bashrc
+		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
+		source .bashrc
 	fi
 
 	checkNetwork

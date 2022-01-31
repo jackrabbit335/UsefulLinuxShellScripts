@@ -59,40 +59,42 @@ Setup(){
 	read answer
 	if [[ $answer == Y ]];
 	then
-		echo "#Alias to update the system" >> ~/.bashrc
+		echo "### Aliases ###" >> ~/.bashrc
+		echo "# Package Manager" >> ~/.bashrc
 		echo 'alias update="sudo apt update && sudo apt full-upgrade -yy"' >> ~/.bashrc
-		echo "#Alias for those who have flatpaks or snaps" >> ~/.bashrc
 		echo 'alias flatup="flatpak --user update; sudo snap refresh"' >> ~/.bashrc
-		echo "#Alias to clean flatpaks" >> ~/.bashrc
 		echo 'alias purge="flatpak --user --unused"' >> ~/.bashrc
-		echo "#Alias to repair broken flatpak" >> ~/.bashrc
 		echo 'alias repair="sudo flatpak repair"' >> ~/.bashrc
-		echo "#Alias to list packages from apt and dpkg" >> ~/.bashrc
 		echo 'alias pkglist="sudo dpkg --list && sudo apt list"' >> ~/.bashrc
-		echo "#Alias to list snaps and flatpaks" >> ~/.bashrc
 		echo 'alias show="flatpak list; snap list"' >> ~/.bashrc
-		echo "#Alias to clean the apt cache" >> ~/.bashrc
 		echo 'alias clean="sudo apt autoremove && sudo apt autoclean && sudo apt clean"' >> ~/.bashrc
-		echo "#Alias to free up RAM" >> ~/.bashrc
-		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
-		echo "#Alias to trim down journal size" >> ~/.bashrc
-		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
-		echo "#Alias to trim ssd" >> ~/.bashrc
-		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
-		echo "#Alias to fix broken packages" >> ~/.bashrc
 		echo 'alias fix="sudo dpkg --configure -a && sudo apt install -f"' >> ~/.bashrc
-		echo "#Alias to see RAM info" >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# Disk Tools" >> ~/.bashrc
+		echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
+		echo 'alias lspart="sudo fdisk -l"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# System Cleaning" >> ~/.bashrc
+		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
+		echo 'alias dust="sudo rm -r ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# System Maintenance" >> ~/.bashrc
+		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# System Stats" >> ~/.bashrc
 		echo 'alias meminfo="cat /proc/meminfo"' >> ~/.bashrc
-		echo "#Alias to monitor memory usage stats over time" >> ~/.bashrc
 		echo 'alias mem="watch free -lh"' >> ~/.bashrc
-		echo "#Alias to view cpu info" >> ~/.bashrc
 		echo 'alias cpu="lscpu"' >> ~/.bashrc
-		echo "#Alias to view temp readings over time" >> ~/.bashrc
 		echo 'alias temp="watch sensors"' >> ~/.bashrc
-		echo "#Alias to view swap info" >> ~/.bashrc
 		echo 'alias swaps="cat /proc/swaps"' >> ~/.bashrc
-		echo "#Alias to show uptime" >> ~/.bashrc
 		echo 'alias ut="uptime -p"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# Confirmations" >> ~/.bashrc
+		echo 'alias mv="mv -i"' >> ~/.bashrc
+		echo 'alias cp="cp -i"' >> ~/.bashrc
+		echo 'alias rm="rm -i"' >> ~/.bashrc
+		echo 'alias ln="ln =i"' >> ~/.bashrc
+		source .bashrc 
 	fi
 
 	#System tweaks

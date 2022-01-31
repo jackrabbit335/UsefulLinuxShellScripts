@@ -141,38 +141,42 @@ Setup(){
 	read answer
 	if [[ $answer == Y ]];
 	then
-		echo "#Alias to edit fstab" >> ~/.bashrc
-		echo 'alias fstabed="sudo nano /etc/fstab"' >> ~/.bashrc
-		echo "#Alias to edit grub" >> ~/.bashrc
-		echo 'alias grubed="sudo nano /etc/default/grub"' >> ~/.bashrc
-		echo "#Alias to update grub" >> ~/.bashrc
-		echo 'alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"' >> ~/.bashrc
-		echo "#Alias to update the system" >> ~/.bashrc
+		echo "### Aliases ###" >> ~/.bashrc
+		echo "# Package Manager" >> ~/.bashrc
 		echo 'alias update="yay -Syu --noconfirm"' >> ~/.bashrc
-		echo "#Alias to clean pacman cache" >> ~/.bashrc
 		echo 'alias clean="sudo pacman -Scc"' >> ~/.bashrc
-		echo "#Alias to clean all but the latest three versions of packages in cache" >> ~/.bashrc
 		echo 'alias cut="sudo paccache -rk3"' >> ~/.bashrc
-		echo "#Alias to remove uninstalled packages from the cache" >> ~/.bashrc
 		echo 'alias purge="sudo paccache -ruk0"' >> ~/.bashrc
-		echo "#Alias to remove orphaned packages" >> ~/.bashrc
 		echo 'alias orphan="sudo pacman -Rsn $(pacman -Qqdt)"' >> ~/.bashrc
-		echo "#Alias to Free Up RAM" >> ~/.bashrc
-		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
-		echo "#Alias to trim journal size" >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# System Cleaning" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
-		echo "#Alias to trim ssd" >> ~/.bashrc
+		echo 'alias dust="sudo rm -r ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# Disk Tools" >> ~/.bashrc
+		echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
+		echo 'alias lspart="sudo fdisk -l"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# System Maintenance" >> ~/.bashrc
 		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
-		echo "#Alias to show memory info" >> ~/.bashrc
+		echo 'alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# Confirmations" >> ~/.bashrc
+		echo 'alias mv="mv -i"' >> ~/.bashrc
+		echo 'alias cp="cp -i"' >> ~/.bashrc
+		echo 'alias rm="rm -i"' >> ~/.bashrc
+		echo 'alias ln="ln =i"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# System Stats" >> ~/.bashrc
 		echo 'alias meminfo="cat /proc/meminfo"' >> ~/.bashrc
-		echo "#Alias to show cpu info" >> ~/.bashrc
 		echo 'alias cpu="lscpu"' >> ~/.bashrc
-		echo "#Alias to monitor sensor information" >> ~/.bashrc
 		echo 'alias temp="watch sensors"' >> ~/.bashrc
-		echo "#Alias to monitor live memory usage" >> ~/.bashrc
 		echo 'alias mem="watch free -lh"' >> ~/.bashrc
-		echo "#Alias to show swaps info" >> ~/.bashrc
 		echo 'alias swaps="cat /proc/swaps"' >> ~/.bashrc
+		echo 'alias ut="uptime -p"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# Clear Cached RAM" >> ~/.bashrc
+		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
 
 		#Determines your os in order to apply correct alias
 		distribution=$(cat /etc/issue | awk '{print $1}')
@@ -184,6 +188,8 @@ Setup(){
 			echo "#Alias to update the mirrors" >> ~/.bashrc; echo 'alias mirrors="sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syy"' >> ~/.bashrc
 		fi
 	fi
+	
+	source .bashrc
 
 	CheckNetwork
 
