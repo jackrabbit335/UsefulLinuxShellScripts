@@ -63,6 +63,7 @@ Setup(){
 	echo 'alias update="sudo apt update && sudo apt full-upgrade"' >> ~/.bashrc
 	echo 'alias aptin="sudo apt install"' >> ~/.bashrc
 	echo 'alias aptrm="sudo apt remove"' >> ~/.bashrc
+	echo 'alias pkglist="sudo dpkg --list && sudo apt list"' >> ~/.bashrc
 	echo 'alias clean="sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y"' >> ~/.bashrc
 	echo "" >> ~/.bashrc
 	echo "# Disk Tools" >> ~/.bashrc
