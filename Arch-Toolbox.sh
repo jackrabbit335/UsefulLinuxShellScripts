@@ -187,9 +187,8 @@ Setup(){
 		then
 			echo "#Alias to update the mirrors" >> ~/.bashrc; echo 'alias mirrors="sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syy"' >> ~/.bashrc
 		fi
+		source .bashrc
 	fi
-	
-	source .bashrc
 
 	CheckNetwork
 
