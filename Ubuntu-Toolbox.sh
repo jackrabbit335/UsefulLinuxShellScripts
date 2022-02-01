@@ -94,6 +94,9 @@ Setup(){
 		echo 'alias cp="cp -i"' >> ~/.bashrc
 		echo 'alias rm="rm -i"' >> ~/.bashrc
 		echo 'alias ln="ln =i"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# Clear Cached RAM" >> ~/.bashrc
+		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
 		source .bashrc 
 	fi
 
