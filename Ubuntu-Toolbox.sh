@@ -62,6 +62,8 @@ Setup(){
 		echo "### Aliases ###" >> ~/.bashrc
 		echo "# Package Manager" >> ~/.bashrc
 		echo 'alias update="sudo apt update && sudo apt full-upgrade -yy"' >> ~/.bashrc
+		echo 'alias aptin="sudo apt install"' >> ~/.bashrc
+		echo 'alias aptrm="sudo apt remove"' >> ~/.bashrc
 		echo 'alias flatup="flatpak --user update; sudo snap refresh"' >> ~/.bashrc
 		echo 'alias purge="flatpak --user --unused"' >> ~/.bashrc
 		echo 'alias repair="sudo flatpak repair"' >> ~/.bashrc
