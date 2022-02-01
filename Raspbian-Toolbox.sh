@@ -574,8 +574,7 @@ You have been warned. This is taken from Vivaldi help documentation.
 EOF
 	echo CONF_SWAPSIZE=2048 | sudo tee -a /etc/dphys-swapfile
 	
-	sudo /etc/init.d/dphys-swapfile stop
-	sudo /etc/init.d/dphys-swapfile start
+	sudo /etc/init.d/dphys-swapfile stop; sudo /etc/init.d/dphys-swapfile start
 	
 	clear
 	Greeting
@@ -586,7 +585,7 @@ cat <<EOF
 This can fix a lot of the usual issues with a few of the bigger browsers.
 These can include performance hitting issues. If your browser needs a tuneup,
 it is probably best to do it in the browser itself, but when you just want something
-fast, this can do it for you. More browsers and options are coming.
+fast, this can do it for you.
 EOF
 	browser1="$(find /usr/bin/firefox)"
 	browser2="$(find /usr/bin/vivaldi*)"
@@ -1407,7 +1406,7 @@ Screenfix(){
 
 BootloaderRepair(){
 cat <<EOF
-This will have reprocussions if you agree to this by rebooting after running this
+This will have repercussions if you agree to this by rebooting after running this
 It's important to remember that to cancel you can run sudo rpi-eeprom-update -r.
 You can rerun this function later to choose one of the options available.
 EOF
@@ -1668,7 +1667,7 @@ Greeting(){
 		*)
 		echo "This is an invalid number, please try again."
 		sleep 1
-
+		
 		clear
 		Greeting
 		;;
