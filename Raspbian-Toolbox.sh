@@ -101,11 +101,14 @@ Setup(){
 	#Reduces space taken up by log file
 	sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
 	
+	#Overvoltage overclocks the voltage that the Raspi can support for better stability of the chip with overclocks
+	#echo "over_voltage=1" | sudo tee -a /boot/config.txt
+	
 	#Overclocks the arm cpu frequency, might not wanna do this unless you know what you're doing
 	#sudo sed -i -e '/#arm_freq=800/c\arm_freq=1800 ' /boot/config.txt
 	
-	#Overvoltage overclocks the voltage that the Raspi can support for better stability of the chip with overclocks
-	#echo "over_voltage=1" | sudo tee -a /boot/config.txt
+	#Overclocks GPU frequency This can help with video performance, but hardware acceleration is not quite there in Rpi
+	#echo "gpu_freq=650" | sudo tee -a /boot/config.txt
 	
 	#Reducing mousepoll reduces lag and latency of wireless usb mouses
 	sudo sed -i -e '/console=serial0,115200 console=tty1 root=PARTUUID=891e3651-02 rootfstype=ext4 fsck.repair=yes rootwait/c\console=serial0,115200 console=tty1 root=PARTUUID=891e3651-02 rootfstype=ext4 fsck.repair=yes rootwait usbhid.mousepoll=0 ' /boot/cmdline.txt
