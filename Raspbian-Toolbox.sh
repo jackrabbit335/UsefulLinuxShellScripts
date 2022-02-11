@@ -70,7 +70,7 @@ Setup(){
 	echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
 	echo 'alias lspart="sudo fdisk -l"' >> ~/.bashrc
 	echo "" >> ~/.bashrc
-	echo "#System Stats" >> ~/.bashrc
+	echo "# System Stats" >> ~/.bashrc
 	echo 'alias cpuinfo="cat /proc/cpuinfo"' >> ~/.bashrc
 	echo 'alias meminfo="cat /proc/meminfo"' >> ~/.bashrc
 	echo 'alias mem="watch free -h"' >> ~/.bashrc
