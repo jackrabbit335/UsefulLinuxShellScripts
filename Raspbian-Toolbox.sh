@@ -60,9 +60,9 @@ Setup(){
 	echo "### Aliases ###" >> ~/.bashrc
 	echo "# Package Manager" >> ~/.bashrc
 	echo 'alias fix="sudo dpkg --configure -a && sudo apt install -f"' >> ~/.bashrc
-	echo 'alias update="sudo apt update && sudo apt full-upgrade"' >> ~/.bashrc
-	echo 'alias aptin="sudo apt install"' >> ~/.bashrc
-	echo 'alias aptrm="sudo apt remove"' >> ~/.bashrc
+	echo 'alias update="sudo apt update && sudo apt full-upgrade -yy"' >> ~/.bashrc
+	echo 'alias aptin="sudo apt install -y"' >> ~/.bashrc
+	echo 'alias aptrm="sudo apt remove -y"' >> ~/.bashrc
 	echo 'alias pkglist="sudo dpkg --list && sudo apt list"' >> ~/.bashrc
 	echo 'alias clean="sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y"' >> ~/.bashrc
 	echo "" >> ~/.bashrc
@@ -70,7 +70,7 @@ Setup(){
 	echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
 	echo 'alias lspart="sudo fdisk -l"' >> ~/.bashrc
 	echo "" >> ~/.bashrc
-	echo "# System Stats" >> ~/.bashrc
+	echo "#System Stats" >> ~/.bashrc
 	echo 'alias cpuinfo="cat /proc/cpuinfo"' >> ~/.bashrc
 	echo 'alias meminfo="cat /proc/meminfo"' >> ~/.bashrc
 	echo 'alias mem="watch free -h"' >> ~/.bashrc
@@ -205,7 +205,7 @@ InstallAndConquer(){
 				sudo apt install -y epiphany-browser
 			elif [[ $package == 4 ]];
 			then
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.1.2567.49-1_armhf.deb; sudo dpkg -i *.deb; sudo apt install -f
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.0.2497.51-1_armhf.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $package == 5 ]];
 			then
 				sudo apt install -y netsurf
@@ -431,8 +431,8 @@ Maintenance(){
 	#This fixes broken default keybindings that worked before in rpi
 	#sudo cp /etc/xdg/openbox/lxde-pi-rc.xml ~/.config/openbox/lxde-pi-rc.xml
 	
-	#This restores lxpanel after a mishap
-	#sudo rm -r ~/.config/lxpanel; sudo service lightdm restart
+	#This restores lxde panel
+	#sudo rm -r ~/.config/lxpanel; lxpanel restart
 
 	#This restarts systemd daemon. This can be useful for different reasons.
 	sudo systemctl daemon-reload
