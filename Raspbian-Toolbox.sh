@@ -430,6 +430,9 @@ Maintenance(){
 	
 	#This fixes broken default keybindings that worked before in rpi
 	#sudo cp /etc/xdg/openbox/lxde-pi-rc.xml ~/.config/openbox/lxde-pi-rc.xml
+	
+	#This restores lxpanel after a mishap
+	#sudo rm -r ~/.config/lxpanel; sudo service lightdm restart
 
 	#This restarts systemd daemon. This can be useful for different reasons.
 	sudo systemctl daemon-reload
