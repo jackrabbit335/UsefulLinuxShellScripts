@@ -3238,9 +3238,6 @@
 0.0.0.0  l.inmobicdn.net
 0.0.0.0  glance.l.inmobicdn.net
 0.0.0.0  i.l.inmobicdn.net
-0.0.0.0  dispawsusva.inmoment.com
-0.0.0.0  intercept.inmoment.com
-0.0.0.0  intercept-client.inmoment.com
 0.0.0.0  inner-active.mobi
 0.0.0.0  ad-tag.inner-active.mobi
 0.0.0.0  cdn2.inner-active.mobi
@@ -3775,7 +3772,6 @@
 0.0.0.0  img.macromill.com
 0.0.0.0  api.madkudu.com
 0.0.0.0  cdn.madkudu.com
-0.0.0.0  acc.magixite.com
 0.0.0.0  api.magmamobile.com
 0.0.0.0  ad.mail.ru
 0.0.0.0  top-fwz1.mail.ru
@@ -4654,7 +4650,6 @@
 0.0.0.0  verizontelecom.tt.omtrdc.net
 0.0.0.0  pixel.onaudience.com
 0.0.0.0  api.oneaudience.com
-0.0.0.0  static.onecms.io
 0.0.0.0  validate.onecount.net
 0.0.0.0  tracking.onefeed.co.uk
 0.0.0.0  snssdk1233.onelink.me
@@ -4885,7 +4880,6 @@
 0.0.0.0  secure.ads.placeiq.com
 0.0.0.0  ak-cdn.placelocal.com
 0.0.0.0  tag.placelocal.com
-0.0.0.0  playhaven.com
 0.0.0.0  stats.playrix.com
 0.0.0.0  sdk.playtem.com
 0.0.0.0  service-ad-impression-proxy.clusters.pluto.tv
@@ -4962,7 +4956,6 @@
 0.0.0.0  events.privy.com
 0.0.0.0  ads.pro-market.net
 0.0.0.0  api.proba.ai
-0.0.0.0  att.productmadness.com
 0.0.0.0  ads.programattik.com
 0.0.0.0  prooffactor.com
 0.0.0.0  api.prooffactor.com
@@ -5373,7 +5366,6 @@
 0.0.0.0  api.saypromo.net
 0.0.0.0  sbbanner.com
 0.0.0.0  sc-static.net
-0.0.0.0  images.scanalert.com
 0.0.0.0  recommender.scarabresearch.com
 0.0.0.0  aprod.scopely.io
 0.0.0.0  raven.aprod.scopely.io
@@ -6193,8 +6185,6 @@
 0.0.0.0  sandbox.tinypass.com
 0.0.0.0  tags.tiqcdn.com
 0.0.0.0  tags-eu.tiqcdn.com
-0.0.0.0  api.tllms.com
-0.0.0.0  marketing.tllms.com
 0.0.0.0  tnkfactory.com
 0.0.0.0  ap.tnkfactory.com
 0.0.0.0  ar.tns-counter.ru
@@ -6636,7 +6626,6 @@
 0.0.0.0  sync.sync.viewdeos.com
 0.0.0.0  tags.viewdeos.com
 0.0.0.0  track.viewdeos.com
-0.0.0.0  viewpoint.com
 0.0.0.0  api.viglink.com
 0.0.0.0  cdn.viglink.com
 0.0.0.0  images.viglink.com
@@ -6756,7 +6745,6 @@
 0.0.0.0  bcdn-god.we-stats.com
 0.0.0.0  cfr.us.v2.we-stats.com
 0.0.0.0  log-dbff2e04.us.v2.we-stats.com
-0.0.0.0  compare-static.weather-and-climate.com
 0.0.0.0  airlytics.airlock.twcmobile.weather.com
 0.0.0.0  and-ads.pulse.weatherbug.net
 0.0.0.0  ios-ads.pulse.weatherbug.net
