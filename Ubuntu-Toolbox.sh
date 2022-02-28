@@ -82,6 +82,7 @@ Setup(){
 		echo "" >> ~/.bashrc
 		echo "# System Maintenance" >> ~/.bashrc
 		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
+		echo 'alias refresh="sudo update-icon-caches /usr/share/icons/*"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
 		echo "# System Stats" >> ~/.bashrc
 		echo 'alias meminfo="cat /proc/meminfo"' >> ~/.bashrc
@@ -1806,6 +1807,12 @@ SystemMaintenance(){
 
 	#This restarts systemd daemon. This can be useful for different reasons.
 	sudo systemctl daemon-reload
+	
+	#This updated databases
+	sudo updatedb; sudo mandb
+	
+	#This refreshes icon cache
+	sudo update-icon-caches /usr/share/icons/*
 
 	#It is recommended that your firewall is enabled
 	sudo systemctl restart ufw; sudo ufw enable
