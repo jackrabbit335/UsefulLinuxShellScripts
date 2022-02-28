@@ -151,6 +151,7 @@ Setup(){
 		echo "# System Maintenance" >> ~/.bashrc
 		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
 		echo 'alias grubup="sudo clr-boot-manager update"' >> ~/.bashrc
+		echo 'alias refresh="sudo gtk-update-icon-cache"' >> ~/.bashrc
 		echo "" ~/.bashrc
 		echo "# System Stats" >> ~/.bashrc
 		echo 'alias temp="watch sensors"' >> ~/.bashrc
@@ -1710,6 +1711,9 @@ SystemMaintenance(){
 
 	#This refreshes file index
 	sudo updatedb && sudo mandb
+	
+	#This updates icon cache
+	sudo gtk-update-icon-cache
 
 	#update the grub
 	sudo clr-boot-manager update
