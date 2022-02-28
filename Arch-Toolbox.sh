@@ -167,6 +167,7 @@ Setup(){
 		echo 'alias index="sudo updatedb; sudo mandb"' >> ~/.bashrc
 		echo 'alias repair="sudo touch /forcefsck"' >> ~/.bashrc
 		echo 'alias firewalld=""' >> ~/.bashrc
+		echo 'alias refresh="sudo gtk-update-icon-cache"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
 		echo "# Confirmations" >> ~/.bashrc
 		echo 'alias mv="mv -i"' >> ~/.bashrc
@@ -2006,6 +2007,9 @@ SystemMaintenance(){
 
 	#This refreshes index cache
 	sudo updatedb; sudo mandb
+
+	#This refreshes the Icon Cache
+	sudo gtk-update-icon-cache
 
 	#Checks for pacnew files and other extra configuration file updates
 	pacman -Q | grep etc-update; sudo etc-update
