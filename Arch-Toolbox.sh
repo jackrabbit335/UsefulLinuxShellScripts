@@ -151,7 +151,10 @@ Setup(){
 		echo "" >> ~/.bashrc
 		echo "# System Cleaning" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
-		echo 'alias dust="sudo rm -r ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
+		echo 'alias sweep="sudo rm -r ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
+		echo 'alias dust="sudo rm -r ~/.config/*-old"' >> ~/.bashrc
+		echo 'alias mop=""' >> ~/.bashrc
+		echo 'alias garbage="sudo rm -r ~/.local/share/Trash/files/*"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
 		echo "# Disk Tools" >> ~/.bashrc
 		echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
@@ -160,6 +163,10 @@ Setup(){
 		echo "# System Maintenance" >> ~/.bashrc
 		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
 		echo 'alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"' >> ~/.bashrc
+		echo 'alias mirrors="sudo pacman-mirrors -f 5 && sudo pacman -Syy"' >> ~/.bashrc
+		echo 'alias index="sudo updatedb; sudo mandb"' >> ~/.bashrc
+		echo 'alias repair="sudo touch /forcefsck"' >> ~/.bashrc
+		echo 'alias firewalld=""' >> ~/.bashrc
 		echo "" >> ~/.bashrc
 		echo "# Confirmations" >> ~/.bashrc
 		echo 'alias mv="mv -i"' >> ~/.bashrc
