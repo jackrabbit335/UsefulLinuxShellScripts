@@ -66,11 +66,16 @@ Setup(){
 	echo 'alias pkglist="sudo dpkg --list && sudo apt list"' >> ~/.bashrc
 	echo 'alias clean="sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y"' >> ~/.bashrc
 	echo "" >> ~/.bashrc
-	echo "# Disk Tools" >> ~/.bashrc
+	echo "# System Maintenance" >> ~/.bashrc
+	echo 'alias sys="sudo systemctl daemon-reload' >> ~/.bashrc
+	echo 'alias eeprom="sudo rpi-eeprom-update-a; sudo reboot"' >> ~/.bashrc
+	echo 'alias firewalld="sudo systemctl enable ufw; sudo ufw enable"' >> ~/.bashrc
+	echo 'alias refresh="sudo update-icon-caches /usr/share/icons/*"' >> ~/.bashrc
+	echo 'alias repair="sudo touch /forcefsck"' >> ~/.bashrc
+	echo "" >> ~/.bashrc
+	echo "# System Stats" >> ~/.bashrc
 	echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
 	echo 'alias lspart="sudo fdisk -l"' >> ~/.bashrc
-	echo "" >> ~/.bashrc
-	echo "#System Stats" >> ~/.bashrc
 	echo 'alias cpuinfo="cat /proc/cpuinfo"' >> ~/.bashrc
 	echo 'alias meminfo="cat /proc/meminfo"' >> ~/.bashrc
 	echo 'alias mem="watch free -h"' >> ~/.bashrc
@@ -96,13 +101,15 @@ Setup(){
 	echo "# Clean system" >> ~/.bashrc
 	echo 'alias vaccum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
 	echo 'alias dust="sudo rm -r ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
+	echo 'alias sweep="sudo rm -r ~/.config/*-old"' >> ~/.bashrc
+	echo 'alias garbage="sudo rm -r ~/.local/share/Trash/files/*"' >> ~/.bashrc
 	source .bashrc
 	
 	#Reduces space taken up by log file
 	sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
 	
 	#Overvoltage overclocks the voltage that the Raspi can support for better stability of the chip with overclocks
-	#echo "over_voltage=1" | sudo tee -a /boot/config.txt
+	#echo "over_voltage=6" | sudo tee -a /boot/config.txt
 	
 	#Overclocks the arm cpu frequency, might not wanna do this unless you know what you're doing
 	#sudo sed -i -e '/#arm_freq=800/c\arm_freq=1800 ' /boot/config.txt
@@ -439,6 +446,9 @@ Maintenance(){
 
 	#It is recommended that your firewall is enabled
 	sudo systemctl enable ufw; sudo ufw enable
+
+	#This repairs icon cache
+	sudo update-icon-caches /usr/share/icons/*
 	
 	#This checks bootloader version to see if there are updates
 	sudo rpi-eeprom-update; sleep 1
