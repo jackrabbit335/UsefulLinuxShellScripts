@@ -143,7 +143,10 @@ Setup(){
 	then
 		echo "### Aliases ###" >> ~/.bashrc
 		echo "# Package Manager" >> ~/.bashrc
-		echo 'alias update="yay -Syu --noconfirm"' >> ~/.bashrc
+		echo 'alias mirrors="sudo pacman-mirrors -f 5 && sudo pacman -Syy"' >> ~/.bashrc
+		echo 'alias update="sudo pacman -Syu --noconfirm"' >> ~/.bashrc
+		echo 'alias pacin="sudo pacman -S"' >> ~/.bashrc
+		echo 'alias pacrm="sudo pacman  -R"' >> ~/.bashrc
 		echo 'alias clean="sudo pacman -Scc"' >> ~/.bashrc
 		echo 'alias cut="sudo paccache -rk3"' >> ~/.bashrc
 		echo 'alias purge="sudo paccache -ruk0"' >> ~/.bashrc
@@ -156,32 +159,29 @@ Setup(){
 		echo 'alias mop=""' >> ~/.bashrc
 		echo 'alias garbage="sudo rm -r ~/.local/share/Trash/files/*"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
-		echo "# Disk Tools" >> ~/.bashrc
-		echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
-		echo 'alias lspart="sudo fdisk -l"' >> ~/.bashrc
-		echo "" >> ~/.bashrc
 		echo "# System Maintenance" >> ~/.bashrc
 		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
 		echo 'alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"' >> ~/.bashrc
-		echo 'alias mirrors="sudo pacman-mirrors -f 5 && sudo pacman -Syy"' >> ~/.bashrc
 		echo 'alias index="sudo updatedb; sudo mandb"' >> ~/.bashrc
 		echo 'alias repair="sudo touch /forcefsck"' >> ~/.bashrc
 		echo 'alias firewalld=""' >> ~/.bashrc
 		echo 'alias refresh="sudo gtk-update-icon-cache"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
-		echo "# Confirmations" >> ~/.bashrc
-		echo 'alias mv="mv -i"' >> ~/.bashrc
-		echo 'alias cp="cp -i"' >> ~/.bashrc
-		echo 'alias rm="rm -i"' >> ~/.bashrc
-		echo 'alias ln="ln =i"' >> ~/.bashrc
-		echo "" >> ~/.bashrc
 		echo "# System Stats" >> ~/.bashrc
+		echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
+		echo 'alias lspart="sudo fdisk -l"' >> ~/.bashrc
 		echo 'alias meminfo="cat /proc/meminfo"' >> ~/.bashrc
 		echo 'alias cpu="lscpu"' >> ~/.bashrc
 		echo 'alias temp="watch sensors"' >> ~/.bashrc
 		echo 'alias mem="watch free -lh"' >> ~/.bashrc
 		echo 'alias swaps="cat /proc/swaps"' >> ~/.bashrc
 		echo 'alias ut="uptime -p"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
+		echo "# Confirmations" >> ~/.bashrc
+		echo 'alias mv="mv -i"' >> ~/.bashrc
+		echo 'alias cp="cp -i"' >> ~/.bashrc
+		echo 'alias rm="rm -i"' >> ~/.bashrc
+		echo 'alias ln="ln =i"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
 		echo "# Clear Cached RAM" >> ~/.bashrc
 		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
@@ -2181,27 +2181,6 @@ Reset(){
 	Greeting
 }
 
-Disclaimer(){
-cat <<EOF
-##########################################################################
-Hello! Thank you for using Arch-Toolbox. Within this script is a multitu-
-de of potential solutions for every day tasks as trivial as maintenance,
-all the way to as important as setting up a new system. This script is
-meant for new users, but anyone can read, change and use this script to
-their liking. This script is to be placed under the GPLv3 and is to be
-redistributable, however, if you are distributing, I would appreciate it
-if you gave the credit back to the original author. I should also add that
-I have a few blog articles which may or may not be of benefit for newbies
-on occasion. The link will be placed here. In the blog I write about
-typical scenarios that I face on a day to day basis as well as add commen-
-tary and my opinions about software and technology. You may copy and paste
-the following link into your browser: https://techiegeek123.blogspot.com/
-Again, Thank you!
-##########################################################################
-EOF
-read -p $'\n'$"Press enter to continue..."
-}
-
 DriverManager(){
 	echo "COMING SOON!!!!"
 	sleep 1
@@ -2345,6 +2324,27 @@ EOF
 
 	clear
 	Greeting
+}
+
+Disclaimer(){
+cat <<EOF
+##########################################################################
+Hello! Thank you for using Arch-Toolbox. Within this script is a multitu-
+de of potential solutions for every day tasks as trivial as maintenance,
+all the way to as important as setting up a new system. This script is
+meant for new users, but anyone can read, change and use this script to
+their liking. This script is to be placed under the GPLv3 and is to be
+redistributable, however, if you are distributing, I would appreciate it
+if you gave the credit back to the original author. I should also add that
+I have a few blog articles which may or may not be of benefit for newbies
+on occasion. The link will be placed here. In the blog I write about
+typical scenarios that I face on a day to day basis as well as add commen-
+tary and my opinions about software and technology. You may copy and paste
+the following link into your browser: https://techiegeek123.blogspot.com/
+Again, Thank you!
+##########################################################################
+EOF
+read -p $'\n'$"Press enter to continue..."
 }
 
 Greeting(){
