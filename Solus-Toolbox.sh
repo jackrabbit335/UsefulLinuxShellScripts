@@ -1444,27 +1444,6 @@ Adblocking(){
 	Greeting
 }
 
-Disclaimer(){
-cat <<EOF
-##########################################################################
-Hello! Thank you for using Arch Toolbox. Within this script is a multitu-
-de of potential solutions for every day tasks as trivial as maintenance,
-all the way to as important as setting up a new system. This script is
-meant for new users, but anyone can read, change and use this script to
-their liking. This script is to be placed under the GPLv3 and is to be
-redistributable, however, if you are distributing, I would appreciate it
-if you gave the credit back to the original author. I should also add that
-I have a few blog articles which may or may not be of benefit for newbies
-on occasion. The link will be placed here. In the blog I write about
-typical scenarios that I face on a day to day basis as well as add commen-
-tary and my opinions about software and technology. You may copy and paste
-the following link into your browser: https://techiegeek123.blogspot.com/
-Again, Thank you!
-##########################################################################
-EOF
-read -p $'\n'$"Press enter to continue..."
-}
-
 MakeSwap(){
 	#This attempts to create a swap file in the event the system does not have swap
 	cat /etc/fstab | grep "swap"
@@ -1915,6 +1894,27 @@ EOF
 
 	clear
 	Greeting
+}
+
+Disclaimer(){
+cat <<EOF
+##########################################################################
+Hello! Thank you for using Arch Toolbox. Within this script is a multitu-
+de of potential solutions for every day tasks as trivial as maintenance,
+all the way to as important as setting up a new system. This script is
+meant for new users, but anyone can read, change and use this script to
+their liking. This script is to be placed under the GPLv3 and is to be
+redistributable, however, if you are distributing, I would appreciate it
+if you gave the credit back to the original author. I should also add that
+I have a few blog articles which may or may not be of benefit for newbies
+on occasion. The link will be placed here. In the blog I write about
+typical scenarios that I face on a day to day basis as well as add commen-
+tary and my opinions about software and technology. You may copy and paste
+the following link into your browser: https://techiegeek123.blogspot.com/
+Again, Thank you!
+##########################################################################
+EOF
+read -p $'\n'$"Press enter to continue..."
 }
 
 Greeting(){
