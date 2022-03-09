@@ -1172,7 +1172,7 @@ InstallAndConquer(){
 				sudo apt install -y dillo
 			elif [[ $browser == 11 ]];
 			then
-				wget https://github.com/WaterfoxCo/Waterfox/releases/download/G4.0.7/waterfox-G4.0.7.en-US.linux-x86_64.tar.bz2; waterfox-G4.0.7.en-US.linux-x86_64.tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://github.com/WaterfoxCo/Waterfox/releases/download/G4.0.8/waterfox-G4.0.8.en-US.linux-x86_64.tar.bz2; waterfox-G4.0.8.en-US.linux-x86_64.tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 12 ]];
 			then
