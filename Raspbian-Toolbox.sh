@@ -67,7 +67,7 @@ Setup(){
 	echo 'alias clean="sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y"' >> ~/.bashrc
 	echo "" >> ~/.bashrc
 	echo "# System Maintenance" >> ~/.bashrc
-	echo 'alias sys="sudo systemctl daemon-reload' >> ~/.bashrc
+	echo 'alias sys="sudo systemctl daemon-reload"' >> ~/.bashrc
 	echo 'alias eeprom="sudo rpi-eeprom-update-a; sudo reboot"' >> ~/.bashrc
 	echo 'alias firewalld="sudo systemctl enable ufw; sudo ufw enable"' >> ~/.bashrc
 	echo 'alias refresh="sudo update-icon-caches /usr/share/icons/*"' >> ~/.bashrc
