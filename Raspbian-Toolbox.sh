@@ -228,7 +228,7 @@ InstallAndConquer(){
 			sudo apt install -y transmission
 			;;
 			3)
-			sudo apt install -y nmap iotop gparted gnome-disk-utility baobab lm-sensors inxi lshw pulseaudio*
+			sudo apt install -y nmap wavemon iotop gparted gnome-disk-utility baobab lm-sensors inxi lshw pulseaudio*
 			;;
 			4)
 			echo "1 - Rhythmbox"
