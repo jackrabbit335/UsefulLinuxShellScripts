@@ -639,6 +639,13 @@
 0.0.0.0  adsunflower.com
 0.0.0.0  folder.adsunflower.com
 0.0.0.0  rebootv5.adsunflower.com
+0.0.0.0  cdn.adswizz.com
+0.0.0.0  deliveryengine.cox.adswizz.com
+0.0.0.0  delivery-cdn-cf.adswizz.com
+0.0.0.0  cox.deliveryengine.adswizz.com
+0.0.0.0  streamguys.deliveryengine.adswizz.com
+0.0.0.0  synchroscript.deliveryengine.adswizz.com
+0.0.0.0  synchrobox.adswizz.com
 0.0.0.0  zc.adswizz.com
 0.0.0.0  adsymptotic.com
 0.0.0.0  api.adsymptotic.com
@@ -957,6 +964,8 @@
 0.0.0.0  co.akisinn.info
 0.0.0.0  int.akisinn.info
 0.0.0.0  int.akisinn.site
+0.0.0.0  17de4c16.akstat.io
+0.0.0.0  17de4c17.akstat.io
 0.0.0.0  p.alcmpn.com
 0.0.0.0  alexametrics.com
 0.0.0.0  certify.alexametrics.com
@@ -998,6 +1007,7 @@
 0.0.0.0  z-eu.amazon-adsystem.com
 0.0.0.0  z-na.amazon-adsystem.com
 0.0.0.0  aan.amazon.com
+0.0.0.0  fls-na.amazon.com
 0.0.0.0  ads-api-new-2052271615.ap-northeast-1.elb.amazonaws.com
 0.0.0.0  adserver-1277986481.ap-northeast-1.elb.amazonaws.com
 0.0.0.0  adserver-vpc-alb-0-649637586.ap-northeast-1.elb.amazonaws.com
@@ -1076,6 +1086,7 @@
 0.0.0.0  analytics.analytics-egain.com
 0.0.0.0  cloud-emea.analytics-egain.com
 0.0.0.0  cloud-us.analytics-egain.com
+0.0.0.0  analyticssystems.net
 0.0.0.0  andomedia.com
 0.0.0.0  go1.aniview.com
 0.0.0.0  gov.aniview.com
@@ -1698,7 +1709,6 @@
 0.0.0.0  pa.wme.catchmedia.com
 0.0.0.0  ad.cauly.co.kr
 0.0.0.0  production-cmp.isgprivacy.cbsi.com
-0.0.0.0  doppler-reporting.cbsivideo.com
 0.0.0.0  tealium.cbsnews.com
 0.0.0.0  ccgateway.net
 0.0.0.0  ads.ccgateway.net
@@ -1913,6 +1923,7 @@
 0.0.0.0  cdn-3.convertexperiments.com
 0.0.0.0  conviva.com
 0.0.0.0  47e224be59415ec068b94bca857581bd7dde7fb6.cws.conviva.com
+0.0.0.0  87a6b28bc7823e67a5bb2a0a6728c702afcae78d.cws.conviva.com
 0.0.0.0  efcad85fded269f462c434c4c5f84654a17d4a77.cws.conviva.com
 0.0.0.0  cws-eu.conviva.com
 0.0.0.0  cws-hulu.conviva.com
@@ -2366,6 +2377,8 @@
 0.0.0.0  mobile.controller.duokanbox.com
 0.0.0.0  fm.duokanbox.com
 0.0.0.0  stat.duokanbox.com
+0.0.0.0  be.durationmedia.net
+0.0.0.0  tag.durationmedia.net
 0.0.0.0  ak.dxsvr.com
 0.0.0.0  rc.dxsvr.com
 0.0.0.0  tls.dxsvr.com
@@ -2512,8 +2525,6 @@
 0.0.0.0  owneriq.net.edgekey.net
 0.0.0.0  wildcard.owneriq.net.edgekey.net
 0.0.0.0  yieldlab.net.edgekey.net
-0.0.0.0  typekit.net-v3.edgekey.net
-0.0.0.0  p.typekit.net-v3.edgekey.net
 0.0.0.0  pubmatic.edgekey.net
 0.0.0.0  aktrack.pubmatic.edgekey.net
 0.0.0.0  secure-adnxs.edgekey.net
@@ -2766,6 +2777,7 @@
 0.0.0.0  g13v.prd.ads.aws.fwmrm.net
 0.0.0.0  nbcu.prd.ads.aws.fwmrm.net
 0.0.0.0  v.fwmrm.net
+0.0.0.0  7f077.v.fwmrm.net
 0.0.0.0  api.fyber.com
 0.0.0.0  api-rewarded-video.fyber.com
 0.0.0.0  dau.fyber.com
@@ -2864,6 +2876,7 @@
 0.0.0.0  adn-d.sp.gmossp-sp.jp
 0.0.0.0  adn-i.sp.gmossp-sp.jp
 0.0.0.0  adn-j.sp.gmossp-sp.jp
+0.0.0.0  c.go-mpulse.net
 0.0.0.0  s.go-mpulse.net
 0.0.0.0  log.go.com
 0.0.0.0  sw88.go.com
@@ -3724,6 +3737,7 @@
 0.0.0.0  sparkle.locationlabs.com
 0.0.0.0  api.locuslabs.com
 0.0.0.0  assets.locuslabs.com
+0.0.0.0  rest.locuslabs.com
 0.0.0.0  smetrics.loft.com
 0.0.0.0  api.logentries.com
 0.0.0.0  data.logentries.com
@@ -4447,6 +4461,7 @@
 0.0.0.0  mpnrs.com
 0.0.0.0  r.mradx.net
 0.0.0.0  r0.mradx.net
+0.0.0.0  ad.mrtnsvr.com
 0.0.0.0  msads.net
 0.0.0.0  ads.msn.com
 0.0.0.0  a.ads1.msn.com
@@ -4613,6 +4628,7 @@
 0.0.0.0  sc5.omniture.com
 0.0.0.0  omtrdc.net
 0.0.0.0  hb.omtrdc.net
+0.0.0.0  cbsinteractive.hb.omtrdc.net
 0.0.0.0  espn.hb.omtrdc.net
 0.0.0.0  foxnews.hb.omtrdc.net
 0.0.0.0  hulu.hb.omtrdc.net
@@ -4622,6 +4638,7 @@
 0.0.0.0  audible.sc.omtrdc.net
 0.0.0.0  bamtech.sc.omtrdc.net
 0.0.0.0  carfax.sc.omtrdc.net
+0.0.0.0  coxcommunications.sc.omtrdc.net
 0.0.0.0  fox.com.ssl.d2.sc.omtrdc.net
 0.0.0.0  philipslighting.d3.sc.omtrdc.net
 0.0.0.0  kroger.sc.omtrdc.net
@@ -5154,6 +5171,7 @@
 0.0.0.0  assets.rbl.ms
 0.0.0.0  rbnt.org
 0.0.0.0  realclever.com
+0.0.0.0  ac.realvu.net
 0.0.0.0  cdn.rebel.ai
 0.0.0.0  recreativ.ru
 0.0.0.0  track.recreativ.ru
@@ -5177,6 +5195,7 @@
 0.0.0.0  tag.researchnow.com
 0.0.0.0  ds.reson8.com
 0.0.0.0  idsync.reson8.com
+0.0.0.0  cdn.resonate.com
 0.0.0.0  static.cdn.responsys.net
 0.0.0.0  restartad.com
 0.0.0.0  api2.restartad.com
@@ -5887,6 +5906,7 @@
 0.0.0.0  30572.api.swrve.com
 0.0.0.0  30736.api.swrve.com
 0.0.0.0  30819.api.swrve.com
+0.0.0.0  31123.api.swrve.com
 0.0.0.0  3193.api.swrve.com
 0.0.0.0  3285.api.swrve.com
 0.0.0.0  3426.api.swrve.com
@@ -5925,6 +5945,7 @@
 0.0.0.0  30572.content.swrve.com
 0.0.0.0  30736.content.swrve.com
 0.0.0.0  30819.content.swrve.com
+0.0.0.0  31123.content.swrve.com
 0.0.0.0  3285.content.swrve.com
 0.0.0.0  3616.content.swrve.com
 0.0.0.0  3696.content.swrve.com
@@ -5949,6 +5970,7 @@
 0.0.0.0  eu-content.swrve.com
 0.0.0.0  6379.eu-content.swrve.com
 0.0.0.0  6384.eu-content.swrve.com
+0.0.0.0  31123.identity.swrve.com
 0.0.0.0  link.swrve.com
 0.0.0.0  banner.synergy-e.com
 0.0.0.0  n.systemlog.me
@@ -6367,7 +6389,6 @@
 0.0.0.0  ads-bidder-api.twitter.com
 0.0.0.0  analytics.twitter.com
 0.0.0.0  de.tynt.com
-0.0.0.0  p.typekit.net
 0.0.0.0  lightstep-collector.api.ua.com
 0.0.0.0  uberads.com
 0.0.0.0  ads.uberads.com
@@ -6786,6 +6807,9 @@
 0.0.0.0  eligibility.wootric.com
 0.0.0.0  production.wootric.com
 0.0.0.0  survey.wootric.com
+0.0.0.0  content.worldnow.com
+0.0.0.0  ftpcontent.worldnow.com
+0.0.0.0  kake.images.worldnow.com
 0.0.0.0  wowanalytics.co.uk
 0.0.0.0  lbal.wowanalytics.co.uk
 0.0.0.0  t.wowanalytics.co.uk
