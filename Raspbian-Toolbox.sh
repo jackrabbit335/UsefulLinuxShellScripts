@@ -117,6 +117,9 @@ Setup(){
 	#Overclocks GPU frequency This can help with video performance, but hardware acceleration is not quite there in Rpi
 	#echo "gpu_freq=650" | sudo tee -a /boot/config.txt
 	
+	#This increases signal from hdmi output in the event that you have screen blanking or weak hdmi
+	#sudo sed -i -e '/#config_hdmi_boost=4/c\config_hdmi_boost=4 ' /boot/config.txt
+	
 	#Reducing mousepoll reduces lag and latency of wireless usb mouses
 	sudo sed -i -e '/console=serial0,115200 console=tty1 root=PARTUUID=891e3651-02 rootfstype=ext4 fsck.repair=yes rootwait/c\console=serial0,115200 console=tty1 root=PARTUUID=891e3651-02 rootfstype=ext4 fsck.repair=yes rootwait usbhid.mousepoll=0 ' /boot/cmdline.txt
 	
@@ -212,7 +215,14 @@ InstallAndConquer(){
 				sudo apt install -y epiphany-browser
 			elif [[ $package == 4 ]];
 			then
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.1.2567.57-1_arm64.deb; sudo dpkg -i *.deb; sudo apt install -f
+				architecture=$(lscpu | grep Architecture | awk '{print $2}')
+				if [[ $architecture == aarch64 ]];
+				then
+					wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.1.2567.57-1_arm64.deb; sudo dpkg -i *.deb; sudo apt install -f
+				else
+					wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.1.2567.57-1_armhf.deb; sudo dpkg -i *.deb; sudo apt install -f
+				fi
+				
 			elif [[ $package == 5 ]];
 			then
 				sudo apt install -y netsurf
@@ -1341,7 +1351,8 @@ is just as important. This package has to do with cooling and smooth
 operation of the board components and arm chip itself specifically. 
 This is automatically updated now by default. In the early days it 
 posed a risk, but now installing it is crucial and there are ways to
-downgrade the configuration or roll it back to a previous date. 
+downgrade the configuration or roll it back to a previous date. EEPROM 
+effects boot order and acts as kind of a grub and bios firmware all in one.
 
 ##########################################################################
 DIFFERENCE BETWEEN ARM AND X86 PLATFORMS
