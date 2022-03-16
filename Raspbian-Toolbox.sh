@@ -86,6 +86,7 @@ Setup(){
 	echo 'alias volt="vcgencmd measure_volts core"' >> ~/.bashrc
 	echo 'alias gx="vcgencmd get_mem gpu"' >> ~/.bashrc
 	echo 'alias armmem="vcgencmd get_mem arm"' >> ~/.bashrc
+	echo 'alias throttle="vcgencmd get_throttled"' >> ~/.bashrc
 	echo 'alias swaps="cat /proc/swaps"' >> ~/.bashrc
 	echo 'alias ut="uptime -p"' >> ~/.bashrc
 	echo "" >> ~/.bashrc
@@ -923,6 +924,11 @@ SystemInfo(){
 	echo "MAXIMUM VOLTAGE STATS" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	vcgencmd measure_voltage core >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "THROTTLE INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	vcgencmd get_throttled >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DISK READ SPEED" >> $host-sysinfo.txt
