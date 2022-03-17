@@ -654,7 +654,7 @@ InstallAndConquer(){
 		case $software in
 			1)
 			echo "This installs a series of utility software"
-			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools expac file-roller curl wavemon
+			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools expac file-roller curl
 			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop nmap xsensors ncdu fwupd base-devel xdg-user-dirs
 			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit p7zip unrar mesa-demos
 			sudo pacman -S --needed --noconfirm pacman-contrib grsync tlp powertop youtube-dl keepassxc unzip zip gstreamer aspell-en libmythes mythes-en languagetool
@@ -916,8 +916,7 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/vivaldi-snapshot.tar.gz; gunzip vivaldi-snapshot.tar.gz; tar -xvf vivaldi-snapshot.tar; cd vivaldi-snapshot && makepkg -si
 			elif [[ $browser == 8 ]];
 			then
-				wget https://linux.palemoon.org/datastore/release/palemoon-29.4.4.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-29.4.4.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
-				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/palemoon-bin.tar.gz; gunzip palemoon-bin.tar.gz; tar -xvjf palemoon-bin.tar; cd palemoon-bin && makepkg -si
 			elif [[ $browser == 9 ]];
 			then
 				sudo pacman -S --noconfirm seamonkey
@@ -2019,7 +2018,7 @@ SystemMaintenance(){
 	fi
 
 	#update the grub
-	sudo grub-mkconfig -o /boot/grub/grub.cfg
+	#sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 	#This runs a disk checkup and attempts to fix filesystem
 	sudo touch /forcefsck
