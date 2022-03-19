@@ -2018,7 +2018,7 @@ SystemMaintenance(){
 	fi
 
 	#update the grub
-	#sudo grub-mkconfig -o /boot/grub/grub.cfg
+	sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 	#This runs a disk checkup and attempts to fix filesystem
 	sudo touch /forcefsck
