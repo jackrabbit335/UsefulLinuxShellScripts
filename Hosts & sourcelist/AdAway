@@ -1369,7 +1369,6 @@
 0.0.0.0  tw.as.y.atwola.com
 0.0.0.0  eu.y.atwola.com
 0.0.0.0  us.y.atwola.com
-0.0.0.0  ws.audioeye.com
 0.0.0.0  ad.auditude.com
 0.0.0.0  augur.io
 0.0.0.0  autoads.asia
@@ -4443,7 +4442,6 @@
 0.0.0.0  d.r10.mopub.com
 0.0.0.0  s.mopub.com
 0.0.0.0  morgdm.ru
-0.0.0.0  mobileapi.motus.com
 0.0.0.0  analytics.moz.com
 0.0.0.0  mozbar.moz.com
 0.0.0.0  config2.mparticle.com
@@ -4568,6 +4566,7 @@
 0.0.0.0  segment.psg.nexstardigital.net
 0.0.0.0  nextclick.pl
 0.0.0.0  us-tracking.nextdoor.com
+0.0.0.0  uk-tracking.nextdoor.com
 0.0.0.0  ads.nicovideo.jp
 0.0.0.0  apps.nielsen.com
 0.0.0.0  onsite-tag-logs.apps.nielsen.com
