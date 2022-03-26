@@ -152,6 +152,9 @@ Setup(){
 		echo 'alias purge="sudo paccache -ruk0"' >> ~/.bashrc
 		echo 'alias orphan="sudo pacman -Rsn $(pacman -Qqdt)"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
+		echo "# List View" >> ~/.bashrc
+		echo 'alias ll="ls -lahs"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
 		echo "# System Cleaning" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
 		echo 'alias sweep="sudo rm -r ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
