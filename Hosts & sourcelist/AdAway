@@ -1753,6 +1753,7 @@
 0.0.0.0  ssp-events.chartboost.com
 0.0.0.0  t.chartboost.com
 0.0.0.0  t2.chartboost.com
+0.0.0.0  v-ak.chartboost.com
 0.0.0.0  v2.chartboost.com
 0.0.0.0  www.chartboost.com
 0.0.0.0  chartboosts.com
@@ -3185,6 +3186,8 @@
 0.0.0.0  image.influenster.com
 0.0.0.0  images.informatm.com
 0.0.0.0  studcat.infra.systems
+0.0.0.0  inhousedsp.com
+0.0.0.0  content.inhousedsp.com
 0.0.0.0  adapi.inlcorp.com
 0.0.0.0  sdk.inlocomedia.com
 0.0.0.0  sdk-analytics.inlocomedia.com
@@ -3208,6 +3211,7 @@
 0.0.0.0  de.inmobi.com
 0.0.0.0  b.de.inmobi.com
 0.0.0.0  e.de.inmobi.com
+0.0.0.0  ic.de.inmobi.com
 0.0.0.0  glance.inmobi.com
 0.0.0.0  analytics.glance.inmobi.com
 0.0.0.0  id.analytics.glance.inmobi.com
@@ -3218,6 +3222,8 @@
 0.0.0.0  glance-internal.inmobi.com
 0.0.0.0  analytics-prod2.glance-internal.inmobi.com
 0.0.0.0  content-prod3.glance-internal.inmobi.com
+0.0.0.0  s.iff.inmobi.com
+0.0.0.0  dspbeacons.error.ihasdsp.inmobi.com
 0.0.0.0  imces.inmobi.com
 0.0.0.0  pulse.inmobi.com
 0.0.0.0  carpet.pulse.inmobi.com
@@ -3247,6 +3253,8 @@
 0.0.0.0  l.inmobicdn.net
 0.0.0.0  glance.l.inmobicdn.net
 0.0.0.0  i.l.inmobicdn.net
+0.0.0.0  i.l-dsp.inmobicdn.net
+0.0.0.0  supply.inmobicdn.net
 0.0.0.0  inner-active.mobi
 0.0.0.0  ad-tag.inner-active.mobi
 0.0.0.0  cdn2.inner-active.mobi
@@ -3412,6 +3420,8 @@
 0.0.0.0  jampp.com
 0.0.0.0  cdn.jampp.com
 0.0.0.0  imgx.jampp.com
+0.0.0.0  imp-lb-us2.jampp.com
+0.0.0.0  static.jampp.com
 0.0.0.0  jdoqocy.com
 0.0.0.0  www.jdoqocy.com
 0.0.0.0  api.jeeng.com
@@ -4565,8 +4575,8 @@
 0.0.0.0  ccpa.psg.nexstardigital.net
 0.0.0.0  segment.psg.nexstardigital.net
 0.0.0.0  nextclick.pl
-0.0.0.0  us-tracking.nextdoor.com
 0.0.0.0  uk-tracking.nextdoor.com
+0.0.0.0  us-tracking.nextdoor.com
 0.0.0.0  ads.nicovideo.jp
 0.0.0.0  apps.nielsen.com
 0.0.0.0  onsite-tag-logs.apps.nielsen.com
@@ -4671,8 +4681,6 @@
 0.0.0.0  apicosdk.onemt.co
 0.0.0.0  apicssdk.onemt.co
 0.0.0.0  click.oneplus.com
-0.0.0.0  api.onesignal.com
-0.0.0.0  cdn.onesignal.com
 0.0.0.0  onetag-sys.com
 0.0.0.0  geolocation.onetrust.com
 0.0.0.0  online-metrix.net
@@ -5166,6 +5174,9 @@
 0.0.0.0  sg01.rayjump.com
 0.0.0.0  tknet.rayjump.com
 0.0.0.0  us01.rayjump.com
+0.0.0.0  vg-aws-us-east-1a-hb.rayjump.com
+0.0.0.0  vg-aws-us-east-1b-hb.rayjump.com
+0.0.0.0  vg-new-hb.rayjump.com
 0.0.0.0  vg-setting.rayjump.com
 0.0.0.0  assets.rbl.ms
 0.0.0.0  rbnt.org
@@ -6521,7 +6532,6 @@
 0.0.0.0  device-api.urbanairship.com
 0.0.0.0  remote-data.urbanairship.com
 0.0.0.0  sbux-dl.urbanairship.com
-0.0.0.0  wallet-api.urbanairship.com
 0.0.0.0  web-sdk.urbanairship.com
 0.0.0.0  api.usabilla.com
 0.0.0.0  w.usabilla.com
