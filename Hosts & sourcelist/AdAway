@@ -404,6 +404,7 @@
 0.0.0.0  track.adnetwork.vn
 0.0.0.0  adnium.com
 0.0.0.0  a.adnium.com
+0.0.0.0  prebids.adnsx.com
 0.0.0.0  nym1-ib.adnxs-simple.com
 0.0.0.0  acdn.adnxs.com
 0.0.0.0  adscale-emea.adnxs.com
@@ -1165,6 +1166,7 @@
 0.0.0.0  trk.apperol.com
 0.0.0.0  appflood.com
 0.0.0.0  atracking-auto.appflood.com
+0.0.0.0  inapps.appflyer.com
 0.0.0.0  creative-cdn.appgrowth.com
 0.0.0.0  appia.com
 0.0.0.0  ad.appier.net
@@ -1297,6 +1299,8 @@
 0.0.0.0  api.apptentive.com
 0.0.0.0  app-icons.apptentive.com
 0.0.0.0  sdk.apptentive.com
+0.0.0.0  brahe.apptimize.com
+0.0.0.0  md-a-c.apptimize.com
 0.0.0.0  apptornado.com
 0.0.0.0  applift-a.apptornado.com
 0.0.0.0  applift-b.apptornado.com
@@ -1461,6 +1465,8 @@
 0.0.0.0  platform.bidgear.com
 0.0.0.0  source.bidgear.com
 0.0.0.0  vn-platform.bidgear.com
+0.0.0.0  cdn.bidmatrixdsp.com
+0.0.0.0  us-trk.bidmatrixdsp.com
 0.0.0.0  bidr.io
 0.0.0.0  media.bidr.io
 0.0.0.0  prod.bidr.io
@@ -2917,6 +2923,7 @@
 0.0.0.0  static.googleadsserving.cn
 0.0.0.0  googlesyndication.com
 0.0.0.0  ade.googlesyndication.com
+0.0.0.0  pagead.googlesyndication.com
 0.0.0.0  pagead2.googlesyndication.com
 0.0.0.0  tpc.googlesyndication.com
 0.0.0.0  displayads-formats.googleusercontent.com
@@ -3422,8 +3429,6 @@
 0.0.0.0  imgx.jampp.com
 0.0.0.0  imp-lb-us2.jampp.com
 0.0.0.0  static.jampp.com
-0.0.0.0  jdoqocy.com
-0.0.0.0  www.jdoqocy.com
 0.0.0.0  api.jeeng.com
 0.0.0.0  users.api.jeeng.com
 0.0.0.0  sdk.jeeng.com
@@ -5587,6 +5592,7 @@
 0.0.0.0  ets-eu-west-1.track.smaato.net
 0.0.0.0  ets-us-east-1.track.smaato.net
 0.0.0.0  vet-us-east-1.track.smaato.net
+0.0.0.0  smadex.com
 0.0.0.0  cm.smadex.com
 0.0.0.0  creatives.smadex.com
 0.0.0.0  geo-tracker.smadex.com
@@ -6809,6 +6815,7 @@
 0.0.0.0  identity.api.wmcdp.io
 0.0.0.0  logs.psm.wmcdp.io
 0.0.0.0  api.wonderpush.com
+0.0.0.0  woobids.com
 0.0.0.0  static.woopra.com
 0.0.0.0  api.wootric.com
 0.0.0.0  app.wootric.com
