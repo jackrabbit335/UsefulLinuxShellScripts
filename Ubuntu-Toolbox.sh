@@ -1155,7 +1155,7 @@ InstallAndConquer(){
 				cd /tmp; wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 6 ]];
 			then
-				wget http://linux.palemoon.org/datastore/release/palemoon-29.4.5.1.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-29.4.5.1.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget http://linux.palemoon.org/datastore/release/palemoon-29.4.6.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-29.4.6.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
@@ -1172,7 +1172,7 @@ InstallAndConquer(){
 				sudo apt install -y dillo
 			elif [[ $browser == 11 ]];
 			then
-				wget https://github.com/WaterfoxCo/Waterfox/releases/download/G4.1.0/waterfox-G4.1.0.en-US.linux-x86_64.tar.bz2; tar -xf waterfox-G4.1.0.en-US.linux-x86_64.tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://github.com/WaterfoxCo/Waterfox/releases/download/G4.1.1/waterfox-G4.1.1.en-US.linux-x86_64.tar.bz2; tar -xf waterfox-G4.1.1.en-US.linux-x86_64.tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 12 ]];
 			then
