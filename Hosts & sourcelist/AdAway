@@ -1826,13 +1826,10 @@
 0.0.0.0  mxase.clmbtech.com
 0.0.0.0  tml.clmbtech.com
 0.0.0.0  g2c.cloud-elements.com
-0.0.0.0  ailoganalyticsportal-eus.cloudapp.net
-0.0.0.0  bi-analytics.cloudapp.net
 0.0.0.0  bkt.clouddn.com
 0.0.0.0  metrics.cloudflarebolt.com
 0.0.0.0  static.cloudflareinsights.com
 0.0.0.0  us-central1-adaptive-growth.cloudfunctions.net
-0.0.0.0  us-central1-production-242307.cloudfunctions.net
 0.0.0.0  cloudmobi.net
 0.0.0.0  api.cloudmobi.net
 0.0.0.0  logger.cloudmobi.net
@@ -3540,8 +3537,6 @@
 0.0.0.0  fast.a.klaviyo.com
 0.0.0.0  static.klaviyo.com
 0.0.0.0  telemetrics.klaviyo.com
-0.0.0.0  trk.klclick2.com
-0.0.0.0  trk.klclick3.com
 0.0.0.0  gplayer.kmpmedia.net
 0.0.0.0  update.kmpmedia.net
 0.0.0.0  brand-sdk.kmsmep.com
@@ -4121,7 +4116,6 @@
 0.0.0.0  ssp.send.microadinc.com
 0.0.0.0  bingads.microsoft.com
 0.0.0.0  advertise.bingads.microsoft.com
-0.0.0.0  c1.microsoft.com
 0.0.0.0  adtrack1.midasplayer.com
 0.0.0.0  client.midosoo.com
 0.0.0.0  minimob.com
@@ -4483,7 +4477,6 @@
 0.0.0.0  ads2.msn.com
 0.0.0.0  a.ads2.msn.com
 0.0.0.0  c.msn.com
-0.0.0.0  browser.events.data.msn.com
 0.0.0.0  mobileads.msn.com
 0.0.0.0  rads.msn.com
 0.0.0.0  srtb.msn.com
@@ -6808,7 +6801,6 @@
 0.0.0.0  ad-display.wikawika.xyz
 0.0.0.0  analytics.wildtangent.com
 0.0.0.0  mobile.analytics.wildtangent.com
-0.0.0.0  optanon.blob.core.windows.net
 0.0.0.0  tracker.winudf.com
 0.0.0.0  pie.wirelessregistry.com
 0.0.0.0  tag.wknd.ai
