@@ -961,7 +961,6 @@
 0.0.0.0  jioads.akamaized.net
 0.0.0.0  abcd.mdc.akamaized.net
 0.0.0.0  speee-ad.akamaized.net
-0.0.0.0  statics-marketingsites-eus-ms-com.akamaized.net
 0.0.0.0  co.akisinn.info
 0.0.0.0  int.akisinn.info
 0.0.0.0  int.akisinn.site
@@ -6608,10 +6607,6 @@
 0.0.0.0  t.vi-serve.com
 0.0.0.0  vis.vi-serve.com
 0.0.0.0  events-collector-api.viacom.tech
-0.0.0.0  api.viafoura.co
-0.0.0.0  realtimeeventfeeds.viafoura.co
-0.0.0.0  sub.viafoura.co
-0.0.0.0  cdn.viafoura.net
 0.0.0.0  sdk.viantsuite.com
 0.0.0.0  ads.viber.com
 0.0.0.0  ads-d.viber.com
