@@ -63,7 +63,7 @@ Setup(){
 	echo 'alias update="sudo apt update && sudo apt full-upgrade -yy"' >> ~/.bashrc
 	echo 'alias aptin="sudo apt install -y"' >> ~/.bashrc
 	echo 'alias aptrm="sudo apt remove -y"' >> ~/.bashrc
-	echo 'alias pkglist="sudo dpkg --list && sudo apt list"' >> ~/.bashrc
+	echo 'alias pkglist="sudo dpkg -l && sudo apt list"' >> ~/.bashrc
 	echo 'alias clean="sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y"' >> ~/.bashrc
 	echo "" >> ~/.bashrc
 	echo "# System Maintenance" >> ~/.bashrc
@@ -219,7 +219,7 @@ InstallAndConquer(){
 				architecture=$(lscpu | grep Architecture | awk '{print $2}')
 				if [[ $architecture == aarch64 ]];
 				then
-					wget https://downloads.vivaldi.com/stable/vivaldi-stable-5.2.2623.39-1.aarch64.rpm; sudo dpkg -i *.deb; sudo apt install -f
+					wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.2.2623.39-1_arm64.deb; sudo dpkg -i *.deb; sudo apt install -f
 				else
 					wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.2.2623.39-1_armhf.deb; sudo dpkg -i *.deb; sudo apt install -f
 				fi
@@ -706,6 +706,11 @@ SystemInfo(){
 	date >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "RASPBIAN VERSION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	cat /proc/version >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "USER" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo $USER >> $host-sysinfo.txt
@@ -786,6 +791,11 @@ SystemInfo(){
 	cat /etc/apt/sources.list.d/raspi.list >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "PARTITION INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	cat /proc/partitions >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DISK SECTOR INFORMATION" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	sudo fdisk -l >> $host-sysinfo.txt
@@ -816,7 +826,7 @@ SystemInfo(){
 	vcgencmd get_mem arm >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
-	echo "RASPBERRY PI GRAPHICAL MEMORY" >> $host-sysinfo.txt
+	echo "GRAPHICAL MEMORY" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	vcgencmd get_mem gpu >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
@@ -844,6 +854,11 @@ SystemInfo(){
 	echo "PUBLIC IP INFORMATION" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	curl ifconfig.me/all >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "PERSONAL IP INFORMATION" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	hostname -I >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "NETWORK STATS" >> $host-sysinfo.txt
@@ -1661,7 +1676,7 @@ Greeting(){
 		ServiceManager
 		;;
 		9)
-		Systeminfo
+		SystemInfo
 		;;
 		10)
 		Screenfix
