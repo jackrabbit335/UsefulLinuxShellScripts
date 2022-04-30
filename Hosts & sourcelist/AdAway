@@ -2240,6 +2240,7 @@
 0.0.0.0  foxnet.demdex.net
 0.0.0.0  foxnews.demdex.net
 0.0.0.0  gannett.demdex.net
+0.0.0.0  iqdigital.demdex.net
 0.0.0.0  fast.mtvn.demdex.net
 0.0.0.0  nbcu.demdex.net
 0.0.0.0  pepsico.demdex.net
@@ -4648,6 +4649,7 @@
 0.0.0.0  coxcommunications.sc.omtrdc.net
 0.0.0.0  fox.com.ssl.d2.sc.omtrdc.net
 0.0.0.0  philipslighting.d3.sc.omtrdc.net
+0.0.0.0  deutschebahn.sc.omtrdc.net
 0.0.0.0  kroger.sc.omtrdc.net
 0.0.0.0  nbcstreaming.sc.omtrdc.net
 0.0.0.0  nbcume.sc.omtrdc.net
@@ -5269,8 +5271,6 @@
 0.0.0.0  metric-android-am.road404.com
 0.0.0.0  ads.roblox.com
 0.0.0.0  metrics.roblox.com
-0.0.0.0  rocketreach.co
-0.0.0.0  static.rocketreach.co
 0.0.0.0  analytics.rogersmedia.com
 0.0.0.0  p.ads.roku.com
 0.0.0.0  austin.logs.roku.com
@@ -5291,7 +5291,6 @@
 0.0.0.0  static.rqmob.com
 0.0.0.0  dmp.rtbsrv.com
 0.0.0.0  bidder.rtk.io
-0.0.0.0  my.rtmark.net
 0.0.0.0  ads.rubiconproject.com
 0.0.0.0  aws.rubiconproject.com
 0.0.0.0  stats.aws.rubiconproject.com
@@ -5349,8 +5348,6 @@
 0.0.0.0  prebid.s-onetag.com
 0.0.0.0  signal-beacon.s-onetag.com
 0.0.0.0  signal-metrics-collector-beta.s-onetag.com
-0.0.0.0  pixel.s3xified.com
-0.0.0.0  stats.sa-as.com
 0.0.0.0  api.safedk.com
 0.0.0.0  config.safedk.com
 0.0.0.0  edge.safedk.com
@@ -6859,6 +6856,7 @@
 0.0.0.0  sdkconfig.ad.xiaomi.com
 0.0.0.0  track.ad.xiaomi.com
 0.0.0.0  zeus.ad.xiaomi.com
+0.0.0.0  sdkconfig.ad.india.xiaomi.com
 0.0.0.0  data.mistat.india.xiaomi.com
 0.0.0.0  api.ad.intl.xiaomi.com
 0.0.0.0  diagnosis.ad.intl.xiaomi.com
