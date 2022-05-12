@@ -995,6 +995,7 @@
 0.0.0.0  aax-fe-sin.amazon-adsystem.com
 0.0.0.0  aax-us.amazon-adsystem.com
 0.0.0.0  aax-us-east.amazon-adsystem.com
+0.0.0.0  aax-us-east-retail-direct.amazon-adsystem.com
 0.0.0.0  c.amazon-adsystem.com
 0.0.0.0  cdn-a.amazon-adsystem.com
 0.0.0.0  fls-eu.amazon-adsystem.com
@@ -1007,6 +1008,7 @@
 0.0.0.0  z-eu.amazon-adsystem.com
 0.0.0.0  z-na.amazon-adsystem.com
 0.0.0.0  aan.amazon.com
+0.0.0.0  aax-us-east-retail-direct.amazon.com
 0.0.0.0  fls-na.amazon.com
 0.0.0.0  ads-api-new-2052271615.ap-northeast-1.elb.amazonaws.com
 0.0.0.0  adserver-1277986481.ap-northeast-1.elb.amazonaws.com
@@ -3310,7 +3312,6 @@
 0.0.0.0  cdn.inspectlet.com
 0.0.0.0  hn.inspectlet.com
 0.0.0.0  ws.inspectlet.com
-0.0.0.0  api.instabug.com
 0.0.0.0  eum-orange-saas.instana.io
 0.0.0.0  hook.integromat.com
 0.0.0.0  api.intellimize.co
