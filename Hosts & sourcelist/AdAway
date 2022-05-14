@@ -3336,9 +3336,6 @@
 0.0.0.0  pnapi.invoca.net
 0.0.0.0  invocacdn.com
 0.0.0.0  solutions.invocacdn.com
-0.0.0.0  config.ioam.de
-0.0.0.0  irqs.ioam.de
-0.0.0.0  script.ioam.de
 0.0.0.0  ads.iosappsworld.com
 0.0.0.0  ci-mpsnare.iovation.com
 0.0.0.0  first.iovation.com
@@ -3805,7 +3802,6 @@
 0.0.0.0  resize.mantisadnetwork.com
 0.0.0.0  resizer.mantisadnetwork.com
 0.0.0.0  widget.manychat.com
-0.0.0.0  events.mapbox.com
 0.0.0.0  marfeel.com
 0.0.0.0  bc.marfeel.com
 0.0.0.0  cosmos.marfeel.com
@@ -4128,7 +4124,6 @@
 0.0.0.0  sa.api.intl.miui.com
 0.0.0.0  tracking.intl.miui.com
 0.0.0.0  tracking.rus.miui.com
-0.0.0.0  api.sec.miui.com
 0.0.0.0  logupdate.avlyun.sec.miui.com
 0.0.0.0  tracking.miui.com
 0.0.0.0  fcanr.tracking.miui.com
@@ -4826,7 +4821,6 @@
 0.0.0.0  log.particlenews.com
 0.0.0.0  b.stats.paypal.com
 0.0.0.0  slc.stats.paypal.com
-0.0.0.0  hawk.pcgamer.com
 0.0.0.0  ads.pdbarea.com
 0.0.0.0  api.pdbarea.com
 0.0.0.0  images.perf-serving.com
@@ -6858,13 +6852,10 @@
 0.0.0.0  track.ad.xiaomi.com
 0.0.0.0  zeus.ad.xiaomi.com
 0.0.0.0  sdkconfig.ad.india.xiaomi.com
-0.0.0.0  data.mistat.india.xiaomi.com
 0.0.0.0  api.ad.intl.xiaomi.com
 0.0.0.0  diagnosis.ad.intl.xiaomi.com
 0.0.0.0  sdkconfig.ad.intl.xiaomi.com
 0.0.0.0  zeus.ad.intl.xiaomi.com
-0.0.0.0  data.mistat.intl.xiaomi.com
-0.0.0.0  data.mistat.rus.xiaomi.com
 0.0.0.0  ad-sdk.altamob.xiaoying.co
 0.0.0.0  ximad.com
 0.0.0.0  mjp-analytics.ximad.com
