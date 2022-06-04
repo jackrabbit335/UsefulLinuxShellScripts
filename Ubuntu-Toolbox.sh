@@ -1172,7 +1172,7 @@ InstallAndConquer(){
 				sudo apt install -y dillo
 			elif [[ $browser == 11 ]];
 			then
-				wget https://github.com/WaterfoxCo/Waterfox/releases/download/G4.1.2/waterfox-G4.1.2.en-US.linux-x86_64.tar.bz2; tar -xf waterfox-G4.1.2.en-US.linux-x86_64.tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://github.com/WaterfoxCo/Waterfox/releases/download/G4.1.2.1/waterfox-G4.1.2.1.en-US.linux-x86_64.tar.bz2; tar -xf waterfox-G4.1.2.1.en-US.linux-x86_64.tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 12 ]];
 			then
@@ -1180,7 +1180,7 @@ InstallAndConquer(){
 			elif [[ $browser == 13 ]];
 			then
 				mkdir AppImages
-				wget https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/100.0.2-1/LibreWolf.x86_64.AppImage; chmod +x LibreWolf.x86_64.AppImage; mv LibreWolf.x86_64.AppImage ~/AppImages
+				wget https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/101.0-2/LibreWolf.x86_64.AppImage; chmod +x LibreWolf.x86_64.AppImage; mv LibreWolf.x86_64.AppImage ~/AppImages
 				wget https://librewolf-community.gitlab.io/images/logo.png; mv logo.png ~/AppImages; wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/LibreWolf.desktop; sudo mv LibreWolf.desktop /usr/share/applications/LibreWolf.desktop
 			elif [[ $browser == 14 ]];
 			then
