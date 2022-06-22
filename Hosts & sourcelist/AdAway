@@ -3048,14 +3048,6 @@
 0.0.0.0  i-mobile.co.jp
 0.0.0.0  i2ad.jp
 0.0.0.0  i2i.jp
-0.0.0.0  api.iadvize.com
-0.0.0.0  cdlc.iadvize.com
-0.0.0.0  cobrowsing-ha.iadvize.com
-0.0.0.0  fstatic.iadvize.com
-0.0.0.0  halc.iadvize.com
-0.0.0.0  lc.iadvize.com
-0.0.0.0  static.iadvize.com
-0.0.0.0  xmpp-ha-alb.iadvize.com
 0.0.0.0  sdk.iappgame.com
 0.0.0.0  data.iappmobi.com
 0.0.0.0  ci.iasds01.com
