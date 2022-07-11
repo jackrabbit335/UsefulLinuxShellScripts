@@ -798,6 +798,7 @@
 0.0.0.0  imagazine.advertserve.com
 0.0.0.0  roimedia.advertserve.com
 0.0.0.0  advertur.ru
+0.0.0.0  adserver.adverty.com
 0.0.0.0  bid.adview.cn
 0.0.0.0  open.adview.cn
 0.0.0.0  webfile.adview.cn
@@ -1116,6 +1117,14 @@
 0.0.0.0  t.ants.vn
 0.0.0.0  analytics.anvato.net
 0.0.0.0  rt.analytics.anvato.net
+0.0.0.0  caps-server.anzu.io
+0.0.0.0  l1-1.anzu.io
+0.0.0.0  assets.anzuinfra.com
+0.0.0.0  dynamic-l1.anzuinfra.com
+0.0.0.0  emqx.anzuinfra.com
+0.0.0.0  events.anzuinfra.com
+0.0.0.0  l3-2.anzuinfra.com
+0.0.0.0  logic.anzuinfra.com
 0.0.0.0  tkmftc.aotter.net
 0.0.0.0  tkportal.aotter.net
 0.0.0.0  tkrecorder.aotter.net
@@ -1226,6 +1235,7 @@
 0.0.0.0  stage-img.applovin.com
 0.0.0.0  stage-ms.applovin.com
 0.0.0.0  stage-pdn.applovin.com
+0.0.0.0  ue.applovin.com
 0.0.0.0  applvn.com
 0.0.0.0  a.applvn.com
 0.0.0.0  d.applvn.com
@@ -3071,7 +3081,6 @@
 0.0.0.0  sales.idio.co
 0.0.0.0  ssl-s.idio.co
 0.0.0.0  server.idreams.pl
-0.0.0.0  mpsnare.iesnare.com
 0.0.0.0  adlog.ifood.tv
 0.0.0.0  log.ifood.tv
 0.0.0.0  entree.igetget.com
@@ -3329,8 +3338,6 @@
 0.0.0.0  invocacdn.com
 0.0.0.0  solutions.invocacdn.com
 0.0.0.0  ads.iosappsworld.com
-0.0.0.0  ci-mpsnare.iovation.com
-0.0.0.0  first.iovation.com
 0.0.0.0  api.iperceptions.com
 0.0.0.0  collect.iperceptions.com
 0.0.0.0  ips-img.iperceptions.com
@@ -3527,6 +3534,7 @@
 0.0.0.0  fast.a.klaviyo.com
 0.0.0.0  static.klaviyo.com
 0.0.0.0  telemetrics.klaviyo.com
+0.0.0.0  trk.klclick1.com
 0.0.0.0  gplayer.kmpmedia.net
 0.0.0.0  update.kmpmedia.net
 0.0.0.0  brand-sdk.kmsmep.com
