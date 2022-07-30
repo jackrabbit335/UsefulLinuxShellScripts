@@ -94,6 +94,7 @@ Setup(){
 		echo 'alias cpu="lscpu"' >> ~/.bashrc
 		echo 'alias temp="watch sensors"' >> ~/.bashrc
 		echo 'alias swaps="cat /proc/swaps"' >> ~/.bashrc
+		echo 'alias diskinfo="sudo smartctl -A /dev/sda"' >> ~/.bashrc
 		echo 'alias ut="uptime -p"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
 		echo "# Confirmations" >> ~/.bashrc
@@ -1037,7 +1038,8 @@ InstallAndConquer(){
 		echo "16 - Virtualbox"
 		echo "17 - Wine and or PlayonLinux"
 		echo "18 - File syncing clients"
-		echo "19 - get out of this menu"
+		echo "19 - Microcode"
+		echo "20 - get out of this menu"
 		read software;
 		case $software in
 			1)
@@ -1096,7 +1098,7 @@ InstallAndConquer(){
 			3)
 			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync p7zip zip software-properties-gtk
 			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop file-roller xdg-user-dirs build-essential
-			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools unrar curl unzip ffmpeg git ncal wavemon
+			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools unrar curl unzip ffmpeg git ncal wavemon screenfetch
 			#sudo apt-add-repository ppa:agornostal/ulauncher; sudo apt-get update; sudo apt-get install ulauncher
 			#sudo apt install -y caffeine
 			sudo snap install youtube-dl keepassxc
@@ -1159,8 +1161,7 @@ InstallAndConquer(){
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
-				wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo apt-key add -
-				sudo add-apt-repository 'deb https://repo.vivaldi.com/archive/deb/ stable main'; sudo apt update && sudo apt install vivaldi-stable
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.3.2679.70-1_amd64.deb; sudo dpkg -i *.deb && sudo apt install -f
 			elif [[ $browser == 8 ]];
 			then
 				sudo snap install opera
@@ -1361,33 +1362,24 @@ InstallAndConquer(){
 			esac
 			;;
 			19)
+			#Microcode installer
+			cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
+			for c in $cpu;
+			do
+				if [[ $cpu == GenuineIntel ]];
+				then
+					apt list | grep intel-microcode || sudo apt install -y intel-microcode && sudo update-initramfs -u
+				elif [[ $cpu == AuthenticAMD ]];
+				then
+					apt list | grep amd64-microcode || sudo apt install -y amd64-microcode && sudo update-initramfs -u
+				fi
+			done
+			;;
+			20)
 			echo "Alrighty then!"
 			break
 			;;
 		esac
-	done
-
-	#This can install screenfetch
-	echo "Would you like to install screenfetch?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		sudo apt install -y screenfetch
-		echo "screenfetch" | sudo tee -a ~/.bashrc
-	break
-	done
-
-	#Microcode installer
-	cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
-	for c in $cpu;
-	do
-		if [[ $cpu == GenuineIntel ]];
-		then
-			apt list | grep intel-microcode || sudo apt install -y intel-microcode && sudo update-initramfs -u
-		elif [[ $cpu == AuthenticAMD ]];
-		then
-			apt list | grep amd64-microcode || sudo apt install -y amd64-microcode && sudo update-initramfs -u
-		fi
 	done
 
 	#This tries to install codecs
