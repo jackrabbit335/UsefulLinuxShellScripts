@@ -67,8 +67,8 @@ Setup(){
 	echo "kernel.kptr_restrict = 1" | sudo tee -a /etc/sysctl.d/50-kptr-restrict.conf
 	echo "vm.swappiness = 10" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
 	echo "vm.vfs_cache_pressure = 50" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
-	sudo sysctl --system
-	sudo sysctl -p
+	sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
+	sudo sysctl --system; sudo sysctl -p
 
 	#WE can block ICMP requests from the kernel if you'd like
 	echo "Block icmp ping requests?(Y/n)"
@@ -115,15 +115,6 @@ Setup(){
 			break
 			done
 		fi
-	done
-
-	#This tweaks the journal file for efficiency
-	echo "Would you like to limit the journal file from becoming too large?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
-		break
 	done
 
 	#This removes that stupid gnome-keyring unlock error you get with chrome
