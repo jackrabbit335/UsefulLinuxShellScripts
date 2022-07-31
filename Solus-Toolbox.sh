@@ -43,9 +43,6 @@ Setup(){
 	break
 	done
 
-	#This lowers grub delay
-	sudo sed -i -e '/GRUB_TIMEOUT=5/c\GRUB_TIMEOUT=3 ' /etc/default/grub; sudo clr-boot-manager update
-
 	#This restricts coredumps to prevent attackers from getting info
 	sudo sed -i -e '/#Storage=external/c\Storage=none ' /etc/systemd/coredump.conf
 	sudo sed -i -e '/#PermitRootLogin/c\PermitRootLogin no ' /etc/ssh/sshd_config
@@ -55,8 +52,9 @@ Setup(){
 	echo "kernel.dmesg_restrict = 1" | sudo tee -a /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "kernel.kptr_restrict = 1" | sudo tee -a /etc/sysctl.d/50-kptr-restrict.conf
 	echo "vm.swappiness = 10" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
-	sudo sysctl --system
-	sudo sysctl -p
+	sudo sed -i -e '/GRUB_TIMEOUT=5/c\GRUB_TIMEOUT=3 ' /etc/default/grub; sudo clr-boot-manager update
+	sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
+	sudo sysctl --system; sudo sysctl -p
 
 	#WE can block ICMP requests from the kernel if you'd like
 	echo "Block icmp ping requests?(Y/n)"
@@ -103,15 +101,6 @@ Setup(){
 			break
 			done
 		fi
-	done
-
-	#This tweaks the journal file for efficiency
-	echo "Would you like to limit the journal file from becoming too large?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
-		break
 	done
 
 	#This removes that stupid gnome-keyring unlock error you get with chrome
