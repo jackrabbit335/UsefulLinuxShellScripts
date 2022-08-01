@@ -108,12 +108,6 @@ Setup(){
 		source .bashrc 
 	fi
 
-	#System tweaks
-	sudo sed -i -e '/GRUB_TIMEOUT=10/c\GRUB_TIMEOUT=3 ' /etc/default/grub; sudo update-grub2
-	
-	#Reduces space taken by log file
-	sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
-
 	#Tweaks the sysctl config file
 	sudo touch /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "kernel.dmesg_restrict = 1" | sudo tee -a /etc/sysctl.d/50-dmesg-restrict.conf
@@ -125,6 +119,8 @@ Setup(){
 	echo "vm.dirty_ratio = 3" | sudo tee -a /etc/sysctl.conf
 	echo "#tcp flaw workaround" | sudo tee -a /etc/sysctl.conf
 	echo "net.ipv4.tcp_challenge_ack_limit = 999999999" | sudo tee -a /etc/sysctl.conf
+	sudo sed -i -e '/GRUB_TIMEOUT=10/c\GRUB_TIMEOUT=3 ' /etc/default/grub; sudo update-grub2
+	sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
 	sudo sysctl -p && sudo sysctl --system
 
 	#Block ICMP requests or Ping from foreign systems
@@ -1059,7 +1055,7 @@ InstallAndConquer(){
 				sudo snap install sublime-text
 			elif [[ $package == 3 ]];
 			then
-				wget https://pilotfiber.dl.sourceforge.net/project/atom.mirror/v1.58.0/atom-amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
+				wget https://sourceforge.net/projects/atom.mirror/files/v1.60.0/atom-amd64.deb/download; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $package == 4 ]];
 			then
 				sudo apt install -y meld
@@ -1181,7 +1177,7 @@ InstallAndConquer(){
 			elif [[ $browser == 13 ]];
 			then
 				mkdir AppImages
-				wget https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/103.0-3/LibreWolf.x86_64.AppImage; chmod +x LibreWolf.x86_64.AppImage; mv LibreWolf.x86_64.AppImage ~/AppImages
+				wget https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/102.0.1-1/LibreWolf.x86_64.AppImage; chmod +x LibreWolf.x86_64.AppImage; mv LibreWolf.x86_64.AppImage ~/AppImages
 				wget https://librewolf-community.gitlab.io/images/logo.png; mv logo.png ~/AppImages; wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/LibreWolf.desktop; sudo mv LibreWolf.desktop /usr/share/applications/LibreWolf.desktop
 			elif [[ $browser == 14 ]];
 			then
