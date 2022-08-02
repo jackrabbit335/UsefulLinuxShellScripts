@@ -244,7 +244,7 @@ EOF
 Update(){
 	CheckNetwork
 
-	sudo apt update; sudo apt full-upgrade -yy
+	sudo apt update; sudo apt full-upgrade -yy; sudo snap refresh
 
 	clear
 	Greeting
@@ -1771,7 +1771,7 @@ SystemMaintenance(){
 	#flatpak --user repair; flatpak update
 
 	#This updates snaps on the system
-	#sudo snap refresh
+	sudo snap refresh
 
 	#This updates your system
 	sudo apt update && sudo apt full-upgrade -yy
