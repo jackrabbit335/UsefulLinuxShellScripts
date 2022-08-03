@@ -1017,6 +1017,7 @@
 0.0.0.0  api.amplitude.com
 0.0.0.0  api.eu.amplitude.com
 0.0.0.0  api.intensifier.de
+0.0.0.0  api.iterable.com
 0.0.0.0  api.kameleoon.com
 0.0.0.0  api.lab.amplitude.com
 0.0.0.0  api.rudderlabs.com
@@ -2066,7 +2067,6 @@
 0.0.0.0  irchan.com
 0.0.0.0  ireklama.cz
 0.0.0.0  is-tracking-pixel-api-prod.appspot.com
-0.0.0.0  iterable.com
 0.0.0.0  itop.cz
 0.0.0.0  its-that-easy.com
 0.0.0.0  iubzka.online
@@ -2083,6 +2083,7 @@
 0.0.0.0  jinkads.de
 0.0.0.0  joetec.net
 0.0.0.0  js-agent.newrelic.com
+0.0.0.0  js.iterable.com
 0.0.0.0  js.users.51.la
 0.0.0.0  jsecoin.com
 0.0.0.0  jsrdn.com
