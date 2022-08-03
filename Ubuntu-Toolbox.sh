@@ -1097,6 +1097,7 @@ InstallAndConquer(){
 			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools unrar curl unzip ffmpeg git ncal wavemon screenfetch
 			#sudo apt-add-repository ppa:agornostal/ulauncher; sudo apt-get update; sudo apt-get install ulauncher
 			#sudo apt install -y caffeine
+			#wget https://github.com/xxxserxxx/gotop/releases/download/v4.1.4/gotop_v4.1.4_linux_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			sudo snap install youtube-dl keepassxc
 			;;
 			4)
@@ -1191,11 +1192,12 @@ InstallAndConquer(){
 			echo "3 - banshee"
 			echo "4 - parole"
 			echo "5 - clementine"
-			echo "6 - mplayer"
-			echo "7 - smplayer"
-			echo "8 - celluloid"
-			echo "9 - mpv"
-			echo "10 - kodi"
+			echo "6 - Cider"
+			echo "7 - mplayer"
+			echo "8 - smplayer"
+			echo "9 - celluloid"
+			echo "10 - mpv"
+			echo "11 - kodi"
 			read player
 			if [[ $player == 1 ]];
 			then
@@ -1214,17 +1216,20 @@ InstallAndConquer(){
 				sudo apt install -y clementine
 			elif [[ $player == 6 ]];
 			then
-				sudo apt install -y mplayer
+				wget https://github.com/ciderapp/cider-releases/releases/download/v1.5.0/cider_1.5.0_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $player == 7 ]];
 			then
-				sudo apt install -y smplayer smplayer-themes
+				sudo apt install -y mplayer
 			elif [[ $player == 8 ]];
 			then
-				sudo apt install -y celluloid
+				sudo apt install -y smplayer smplayer-themes
 			elif [[ $player == 9 ]];
 			then
-				sudo apt install -y mpv
+				sudo apt install -y celluloid
 			elif [[ $player == 10 ]];
+			then
+				sudo apt install -y mpv
+			elif [[ $player == 11 ]];
 			then
 				sudo apt install -y kodi
 			fi
