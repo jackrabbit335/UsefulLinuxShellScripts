@@ -1136,6 +1136,7 @@ InstallAndConquer(){
 			echo "12 - Brave"
 			echo "13 - Librewolf"
 			echo "14 - Qutebrowser"
+			echo "15 - Firefox"
 			read browser
 			if [[ $browser == 1 ]];
 			then
@@ -1183,6 +1184,9 @@ InstallAndConquer(){
 			elif [[ $browser == 14 ]];
 			then
 				sudo apt install qutebrowser python3-pip; pip install adblock
+			elif [[ $browser == 15 ]];
+			then
+				sudo apt install firefox
 			fi
 			;;
 			6)
@@ -1558,9 +1562,7 @@ Adblocking(){
 
 Cleanup(){
 	#This flushes apt cache
-	sudo apt autoremove -y 
-	sudo apt autoclean -y 
-	sudo apt clean -y
+	sudo apt autoremove -y; sudo apt autoclean -y; sudo apt clean -y
 
 	#This cleans flatpaks that are unused by the user
 	#flatpak --user uninstall --unused
@@ -1601,7 +1603,7 @@ EOF
 	sudo rm -r ~/.w3m/*
 	sudo rm ~/.esd_auth
 	sudo rm ~/.local/share/recently-used.xbel
-	#sudo rm -r /tmp/*
+	#sudo rm -r /tmp/*; sudo rm -r /var/tmp/*
 	history -c && rm ~/.bash_history
 	
 	#This runs update db for index cache and cleans the manual database
