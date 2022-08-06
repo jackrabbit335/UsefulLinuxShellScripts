@@ -722,11 +722,11 @@ InstallAndConquer(){
 				sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/web/browser/google-chrome-stable/pspec.xml; sudo eopkg it google-chrome-*.eopkg;sudo rm google-chrome-*.eopkg
 			elif [[ $browser == 9 ]];
 			then
-				wget https://github.com/WaterfoxCo/Waterfox/releases/download/G4.1.3.2/waterfox-G4.1.3.2.en-US.linux-x86_64.tar.bz2; waterfox-G4.1.3.2.en-US.linux-x86_64.tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://github.com/WaterfoxCo/Waterfox/releases/download/G4.1.4/waterfox-G4.1.4.en-US.linux-x86_64.tar.bz2; waterfox-G4.1.4.en-US.linux-x86_64.tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 10 ]];
 			then
-				wget https://linux.palemoon.org/datastore/release/palemoon-31.1.1.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-31.1.1.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget https://linux.palemoon.org/datastore/release/palemoon-31.2.0.1.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-31.2.0.1.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 11 ]];
 			then
