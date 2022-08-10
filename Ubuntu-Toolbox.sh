@@ -1186,7 +1186,7 @@ InstallAndConquer(){
 				sudo apt install qutebrowser python3-pip; pip install adblock
 			elif [[ $browser == 15 ]];
 			then
-				sudo apt install firefox
+				sudo snap install firefox
 			fi
 			;;
 			6)
@@ -1606,9 +1606,6 @@ EOF
 	#sudo rm -r /tmp/*; sudo rm -r /var/tmp/*
 	history -c && rm ~/.bash_history
 	
-	#This runs update db for index cache and cleans the manual database
-	sudo updatedb; sudo mandb
-
 	#This removes old configurations for software
 	sudo rm -r ~/.config/*-old
 
@@ -1786,7 +1783,7 @@ SystemMaintenance(){
 	#This restarts systemd daemon. This can be useful for different reasons.
 	sudo systemctl daemon-reload
 	
-	#This updated databases
+	#This Updates Databases
 	sudo updatedb; sudo mandb
 	
 	#This refreshes icon cache
