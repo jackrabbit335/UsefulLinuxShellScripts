@@ -1,5 +1,12 @@
 #!/bin/bash
 
+cat <<EOF
+This script is for use with Transmission or other Bittorrent clients within
+Linux. Use with caution, this will not anonymize you, this will help with some 
+countries or organizations tracking your torrenting traffic, but this is not 
+a replacement for a VPN. You've been warned!
+EOF
+
 echo "##################################################################"
 echo "Moving To Centralized Location"
 echo "##################################################################"
