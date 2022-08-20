@@ -1263,7 +1263,6 @@
 0.0.0.0  browser-http-intake.logs.datadoghq.com
 0.0.0.0  browser-http-intake.logs.datadoghq.eu
 0.0.0.0  bs.yandex.ru
-0.0.0.0  btez8.xyz
 0.0.0.0  btrll.com
 0.0.0.0  bttrack.com
 0.0.0.0  bucketbean.com
@@ -1380,6 +1379,7 @@
 0.0.0.0  clicklink.jp
 0.0.0.0  clickmate.io
 0.0.0.0  clickonometrics.pl
+0.0.0.0  clicks.deliveroo.co.uk
 0.0.0.0  clicks.equantum.com
 0.0.0.0  clicks.mods.de
 0.0.0.0  clickserve.cc-dt.com
@@ -2921,7 +2921,6 @@
 0.0.0.0  separatesilver.com
 0.0.0.0  serv0.com
 0.0.0.0  servads.net
-0.0.0.0  servadsdisrupt.com
 0.0.0.0  serve.tercept.com
 0.0.0.0  servedby-buysellads.com
 0.0.0.0  servedbyadbutler.com
@@ -3537,7 +3536,6 @@
 0.0.0.0  whiskyqueue.com
 0.0.0.0  whispa.com
 0.0.0.0  whisperingcrib.com
-0.0.0.0  whisperingflesh.com
 0.0.0.0  whoisonline.net
 0.0.0.0  wickedreports.com
 0.0.0.0  widespace.com
