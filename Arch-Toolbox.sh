@@ -947,6 +947,9 @@ InstallAndConquer(){
 			elif [[ $browser == 20 ]];
 			then
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/librewolf-bin.tar.gz; gunzip librewolf-bin.tar.gz; tar -xvf librewolf-bin.tar; cd librewolf-bin && makepkg -si
+			elif [[ $browser == 21 ]];
+			then
+				sudo pacman -S --noconfirm firefox
 			else
 				echo "You have entered an invalid number"
 				InstallAndConquer
