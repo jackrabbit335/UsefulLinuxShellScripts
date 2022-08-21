@@ -886,6 +886,7 @@ InstallAndConquer(){
 			echo "18 - Iridium"
 			echo "19 - Ungoogled-Chromium"
 			echo "20 - Librewolf"
+			echo "21 - Firefox"
 			read browser
 			if [[ $browser == 1 ]];
 			then
