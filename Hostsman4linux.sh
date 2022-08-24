@@ -20,50 +20,20 @@ fi
 
 cd /tmp
 
-str1=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/MVPShosts
-str2=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Someonewhocares
-str3=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Peteradslist
-str4=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Malwarehosts
-str5=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Trackinghosts
-str6=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/AdAway
-str7=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/blacklist.txt
-str8=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/StevenHosts
-str9=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Badd-Boyz
-str10=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Gambling
-str11=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/Tomslist
-str12=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/bjornhosts
-str13=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/urlhaus
-str14=https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hosts%20%26%20sourcelist/shady-hosts
+str1=https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+str2=https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling/hosts
+str3=https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts
+str4=https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts
 
-while getopts :ABCDEFGHIJKLMN option; do
+while getopts :ABCD option; do
 	case $option in
-		A) wget $str1 && cat MVPShosts >> adblock && rm MVPShosts
+		A) wget $str1 && cat hosts >> adblock && rm hosts
 		;;
-		B) wget $str2 && cat Someonewhocares >> adblock && rm Someonewhocares
+		B) wget $str2 && cat hosts >> adblock && rm hosts
 		;;
-		C) wget $str3 && cat Peteradslist >> adblock && rm Peteradslist
+		C) wget $str3 && cat hosts >> adblock && rm hosts
 		;;
-		D) wget $str4 && cat Malwarehosts >> adblock && rm Malwarehosts
-		;;
-		E) wget $str5 && cat Trackinghosts >> adblock && rm Trackinghosts
-		;;
-		F) wget $str6 && cat AdAway >> adblock && rm AdAway
-		;;
-		G) wget $str7 && cat blacklist.txt >> adblock && rm blacklist.txt
-		;;
-		H) wget $str8 && cat StevenBlacks >> adblock && rm StevenBlacks
-		;;
-		I) wget $str9 && cat Badd-Boyz >> adblock && rm Badd-Boyz
-		;;
-		J) wget $str10 && cat Gambling >> adblock && rm Gambling
-		;;
-		K) wget $str11 && cat Tomslist >> adblock && rm Tomslist
-		;;
-		L) wget $str12 && cat bjornhosts >> adblock && rm bjornhosts
-		;;
-		M) wget $str13 && cat urlhaus >> adblock && rm urlhaus
-		;;
-		N) wget $str14 && cat shady-hosts >> adblock && rm shady-hosts
+		D) wget $str4 && cat hosts >> adblock && rm hosts
 		;;
 		*)
 	esac
