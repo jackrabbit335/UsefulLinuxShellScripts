@@ -72,9 +72,9 @@ Setup(){
 		echo 'alias clean="sudo apt autoremove && sudo apt autoclean && sudo apt clean"' >> ~/.bashrc
 		echo 'alias fix="sudo dpkg --configure -a && sudo apt install -f"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
-        echo "# Firmware Upgrades" >> ~/.bashrc
-        echo 'alias fwup="sudo /usr/bin/fwupdmgr refresh"' >> ~/.bashrc
-        echo "" >> ~/.bashrc
+		echo "# Firmware Upgrades" >> ~/.bashrc
+		echo 'alias fwup="sudo /usr/bin/fwupdmgr refresh"' >> ~/.bashrc
+        	echo "" >> ~/.bashrc
 		echo "# System Cleaning" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
 		echo 'alias dust="sudo rm -r ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
@@ -227,9 +227,9 @@ EOF
 
 	#Updates the system
 	sudo apt update; sudo apt full-upgrade -yy
-
-    #Updates the firmware
-   	Firmware_Upgrades
+	
+	#Updates the firmware
+	Firmware_Upgrades
 	
 	#This optionally sets up flatpak support
 	#sudo apt install flatpak xdg-desktop-portal-gtk; sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
