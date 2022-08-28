@@ -72,6 +72,9 @@ Setup(){
 		echo 'alias clean="sudo apt autoremove && sudo apt autoclean && sudo apt clean"' >> ~/.bashrc
 		echo 'alias fix="sudo dpkg --configure -a && sudo apt install -f"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
+        echo "# Firmware Upgrades" >> ~/.bashrc
+        echo 'alias fwup="sudo /usr/bin/fwupdmgr refresh"' >> ~/.bashrc
+        echo "" >> ~/.bashrc
 		echo "# System Cleaning" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
 		echo 'alias dust="sudo rm -r ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
@@ -224,6 +227,9 @@ EOF
 
 	#Updates the system
 	sudo apt update; sudo apt full-upgrade -yy
+
+    #Updates the firmware
+    Firmware_Upgrades
 	
 	#This optionally sets up flatpak support
 	#sudo apt install flatpak xdg-desktop-portal-gtk; sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -884,6 +890,15 @@ and or loaded already. On most systems, Intel microcode is wrapped in the
 package intel-ucode, while AMDs microcode is wrapped under amd-ucode.
 
 ##########################################################################
+FIRMWARE UPGRADES
+##########################################################################
+Firmware upgrades are handled by an automated systemctl utility which
+periodically checks for bios and other firmware upgrades on your system.
+Bios upgrades don't typically work with legacy enabled, At least not UEFI
+upgrades. To enable this to work you need to disable legacy temporarily in
+Bios.
+
+##########################################################################
 BACKUP AND RESTORE
 ##########################################################################
 Backup and Restore functions are there to provide a quick and painless
@@ -1454,6 +1469,18 @@ InstallAndConquer(){
 
 	clear
 	Greeting
+}
+
+Firmware_Upgrades(){
+    cat <<EOF
+    This will only update firmware for devices and modules that aren't directly controlled by the UEFI bios.
+    This will not update the UEFI unless you have legacy turned off. You may need legacy boot to boot into Linux
+    and install it in the first place. Just an FYI and something to look out for if you plan to do this.
+EOF
+    sudo /usr/bin/fwupdmgr refresh
+    
+    clear
+    Greeting
 }
 
 RAMBack(){
@@ -2054,9 +2081,10 @@ Greeting(){
 	echo "15 - System Maintenance"
 	echo "16 - Browser Repair"
 	echo "17 - Update"
-	echo "18 - Restart"
-	echo "19 - Reset the desktop"
-	echo "20 - exit"
+    echo "18 - Firmware Upgrades"
+	echo "19 - Restart"
+	echo "20 - Reset the desktop"
+	echo "21 - exit"
 	read selection;
 	case $selection in
 		1)
@@ -2110,13 +2138,16 @@ Greeting(){
 		17)
 		Update
 		;;
-		18)
+        18)
+        Firmware_Upgrades
+        ;;
+		19)
 		Restart
 		;;
-		19)
+		20)
 		Reset
 		;;
-		20)
+		21)
 		echo $'\n'$"Thank you for using Ubuntu-Toolbox... Goodbye!"
 		exit
 		;;
