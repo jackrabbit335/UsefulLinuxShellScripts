@@ -72,9 +72,9 @@ Setup(){
 		echo 'alias clean="sudo apt autoremove && sudo apt autoclean && sudo apt clean"' >> ~/.bashrc
 		echo 'alias fix="sudo dpkg --configure -a && sudo apt install -f"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
-        	echo "# Firmware Upgrades" >> ~/.bashrc
-        	echo 'alias fwup="sudo /usr/bin/fwupdmgr refresh"' >> ~/.bashrc
-        	echo "" >> ~/.bashrc
+        echo "# Firmware Upgrades" >> ~/.bashrc
+        echo 'alias fwup="sudo /usr/bin/fwupdmgr refresh"' >> ~/.bashrc
+        echo "" >> ~/.bashrc
 		echo "# System Cleaning" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
 		echo 'alias dust="sudo rm -r ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
@@ -228,7 +228,7 @@ EOF
 	#Updates the system
 	sudo apt update; sudo apt full-upgrade -yy
 
-    	#Updates the firmware
+    #Updates the firmware
    	Firmware_Upgrades
 	
 	#This optionally sets up flatpak support
@@ -896,7 +896,10 @@ Firmware upgrades are handled by an automated systemctl utility which
 periodically checks for bios and other firmware upgrades on your system.
 Bios upgrades don't typically work with legacy enabled, At least not UEFI
 upgrades. To enable this to work you need to disable legacy temporarily in
-Bios.
+Bios. Firmware upgrades can include nvme and ssd various other devices as 
+well. Firmware is the layer of programming that sits between the hardware 
+and the OS or in this case the hardware and the Operating system on-board 
+the CPU.
 
 ##########################################################################
 BACKUP AND RESTORE
