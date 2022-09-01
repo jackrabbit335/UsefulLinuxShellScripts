@@ -73,7 +73,7 @@ Setup(){
 		echo 'alias fix="sudo dpkg --configure -a && sudo apt install -f"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
 		echo "# Firmware Upgrades" >> ~/.bashrc
-		echo 'alias fwup="sudo /usr/bin/fwupdmgr refresh"' >> ~/.bashrc
+		echo 'alias fwup="sudo /usr/bin/fwupdmgr refresh && sudo /usr/bin/fwupdmgr update"' >> ~/.bashrc
         	echo "" >> ~/.bashrc
 		echo "# System Cleaning" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
