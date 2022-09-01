@@ -1,4 +1,0 @@
-#In this file we place all domains we wish not to be blocked by our hosts file.
-#You can add as many sites to this as you need or wish. 
-#If enough sites are added I will eventually add this to my hostsman4linux script and make it fully autonomous
-crackle.com
