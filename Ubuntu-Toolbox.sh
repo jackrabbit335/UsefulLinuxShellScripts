@@ -74,7 +74,7 @@ Setup(){
 		echo "" >> ~/.bashrc
 		echo "# Firmware Upgrades" >> ~/.bashrc
 		echo 'alias fwup="sudo /usr/bin/fwupdmgr refresh && sudo /usr/bin/fwupdmgr update"' >> ~/.bashrc
-        	echo "" >> ~/.bashrc
+		echo "" >> ~/.bashrc
 		echo "# System Cleaning" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
 		echo 'alias dust="sudo rm -r ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
