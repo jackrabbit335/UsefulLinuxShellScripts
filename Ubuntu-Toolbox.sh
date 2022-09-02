@@ -1480,7 +1480,7 @@ Firmware_Upgrades(){
     This will not update the UEFI unless you have legacy turned off. You may need legacy boot to boot into Linux
     and install it in the first place. Just an FYI and something to look out for if you plan to do this.
 EOF
-    sudo /usr/bin/fwupdmgr refresh
+    sudo /usr/bin/fwupdmgr refresh && sudo /usr/bin/fwupdmgr update
     
     clear
     Greeting
