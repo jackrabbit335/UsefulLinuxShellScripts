@@ -1177,7 +1177,7 @@ InstallAndConquer(){
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.4.2753.40-1_amd64.deb; sudo dpkg -i *.deb && sudo apt install -f
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.4.2753.45-1_amd64.deb; sudo dpkg -i *.deb && sudo apt install -f
 			elif [[ $browser == 8 ]];
 			then
 				sudo snap install opera
@@ -1197,7 +1197,7 @@ InstallAndConquer(){
 			elif [[ $browser == 13 ]];
 			then
 				mkdir AppImages
-				wgethttps://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/103.0.2-1/LibreWolf.x86_64.AppImage ; chmod +x LibreWolf.x86_64.AppImage; mv LibreWolf.x86_64.AppImage ~/AppImages
+				wget https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/104.0-1/LibreWolf.x86_64.AppImage; chmod +x LibreWolf.x86_64.AppImage; mv LibreWolf.x86_64.AppImage ~/AppImages
 				wget https://librewolf-community.gitlab.io/images/logo.png; mv logo.png ~/AppImages; wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/LibreWolf.desktop; sudo mv LibreWolf.desktop /usr/share/applications/LibreWolf.desktop
 			elif [[ $browser == 14 ]];
 			then
