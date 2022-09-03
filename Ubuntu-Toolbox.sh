@@ -1238,7 +1238,7 @@ InstallAndConquer(){
 				sudo apt install -y clementine
 			elif [[ $player == 6 ]];
 			then
-				wget https://github.com/ciderapp/cider-releases/releases/download/v1.5.0/cider_1.5.0_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
+				wget https://github.com/ciderapp/cider-releases/releases/download/v1.5.6/cider_1.5.6_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $player == 7 ]];
 			then
 				sudo apt install -y mplayer
