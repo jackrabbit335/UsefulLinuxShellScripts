@@ -129,6 +129,9 @@ Setup(){
 		echo 'alias repair="sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg -y install --reinstall"' >> ~/.bashrc
 		echo 'alias rebuild="sudo eopkg -y rebuild-db"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
+		echo "# Firmware Upgrades" >> ~/.bashrc
+		echo 'alias fwup="sudo /usr/bin/fwupdmgr refresh && sudo /usr/bin/fwupdmgr update"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
 		echo "# Disk Tools" >> ~/.bashrc
 		echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
 		echo 'alias lspart="sudo fdisk -l"' >> ~/.bashrc
@@ -168,6 +171,9 @@ Setup(){
 
 	#This tries to update repositories and upgrade the system
 	sudo eopkg -y delete-cache; sudo eopkg -y clean; sudo eopkg -y rebuild-db; sudo eopkg -y upgrade
+	
+	#This installs firmware updates
+	Firmware_Upgrades
 	
 	#This optionally sets up flatpak support
 	#sudo eopkg install flatpak xdg-desktop-portal-gtk; sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -1232,6 +1238,18 @@ and or loaded already. On most systems, Intel microcode is wrapped in the
 package intel-ucode, while AMDs microcode is wrapped under amd-ucode.
 
 ##########################################################################
+FIRMWARE UPGRADES
+##########################################################################
+Firmware upgrades are handled by an automated systemctl utility which
+periodically checks for bios and other firmware upgrades on your system.
+Bios upgrades don't typically work with legacy enabled, At least not UEFI
+upgrades. To enable this to work you need to disable legacy temporarily in
+Bios. Firmware upgrades can include nvme and ssd various other devices as 
+well. Firmware is the layer of programming that sits between the hardware 
+and the OS or in this case the hardware and the Operating system on-board 
+the CPU.
+
+##########################################################################
 BACKUP AND RESTORE
 ##########################################################################
 Backup and Restore functions are there to provide a quick and painless
@@ -1431,6 +1449,18 @@ Adblocking(){
 
 	clear
 	Greeting
+}
+
+Firmware_Upgrades(){
+	cat <<EOF
+    This will only update firmware for devices and modules that aren't directly controlled by the UEFI bios.
+    This will not update the UEFI unless you have legacy turned off. You may need legacy boot to boot into Linux
+    and install it in the first place. Just an FYI and something to look out for if you plan to do this.
+EOF
+    sudo /usr/bin/fwupdmgr refresh && sudo /usr/bin/fwupdmgr update
+    
+    clear
+    Greeting
 }
 
 MakeSwap(){
@@ -1928,6 +1958,7 @@ Greeting(){
 	echo "18 - Help"
 	echo "19 - Restart"
 	echo "20 - Reset the desktop"
+	echo "21 - Firmware Upgrades"
 	echo "21 - exit"
 	read selection;
 	case $selection in
@@ -1992,6 +2023,9 @@ Greeting(){
 		Reset
 		;;
 		21)
+		Firmware_Upgrades
+		;;
+		22)
 		echo $'\n'$"Thank you for using Solus-Toolbox... Goodbye!"
 		exit
 		;;
