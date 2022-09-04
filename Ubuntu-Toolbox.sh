@@ -1053,7 +1053,8 @@ InstallAndConquer(){
 		echo "17 - Wine and or PlayonLinux"
 		echo "18 - File syncing clients"
 		echo "19 - Microcode"
-		echo "20 - get out of this menu"
+		echo "20 - Team Viewer"
+		echo "21 - get out of this menu"
 		read software;
 		case $software in
 			1)
@@ -1112,8 +1113,8 @@ InstallAndConquer(){
 			3)
 			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync p7zip zip software-properties-gtk
 			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop file-roller xdg-user-dirs build-essential
-			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools unrar curl unzip ffmpeg git ncal wavemon screenfetch
-			sudo apt install -y dnsutils whois iperf ifplugd
+			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools unrar curl unzip ffmpeg git ncal wavemon neofetch
+			sudo apt install -y dnsutils whois iperf ifplugd tcpdump
 			#sudo apt-add-repository ppa:agornostal/ulauncher; sudo apt-get update; sudo apt-get install ulauncher
 			#sudo apt install -y caffeine
 			#wget https://github.com/xxxserxxx/gotop/releases/download/v4.1.4/gotop_v4.1.4_linux_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
@@ -1320,8 +1321,9 @@ InstallAndConquer(){
 			;;
 			14)
 			echo "THEMES"
-			sudo add-apt-repository ppa:noobslab/icons; sudo add-apt-repository ppa:noobslab/icons
-			sudo add-apt-repository ppa:noobslab/icons; sudo add-apt-repository ppa:papirus/papirus
+			wget https://github.com/jackrabbit335/BrowserAndDesktop/raw/main/themes/Nordic.tar.xz; wget https://github.com/jackrabbit335/BrowserAndDesktop/raw/main/themes/Nephrite.tar.xz
+			tar -xvJf Nordic.tar.xz; tar -xvJf Nephrite.tar.xz; mv Nephrite Nordic /usr/share/themes/
+			sudo add-apt-repository ppa:noobslab/icons; sudo add-apt-repository ppa:noobslab/icons; sudo add-apt-repository ppa:noobslab/icons; sudo add-apt-repository ppa:papirus/papirus
 			sudo add-apt-repository ppa:moka/daily; sudo apt-get update
 			sudo apt install -y mate-themes faenza-icon-theme obsidian-1-icons dalisha-icons shadow-icon-theme moka-icon-theme papirus-icon-theme
 			;;
@@ -1400,6 +1402,10 @@ InstallAndConquer(){
 			done
 			;;
 			20)
+			#Team Viewer
+			wget -c https://download.teamviewer.com/download/linux/teamviewer_amd64.deb && sudo apt install ./teamviewer_amd64.deb
+			;;
+			21)
 			echo "Alrighty then!"
 			break
 			;;
@@ -1585,7 +1591,7 @@ Adblocking(){
 		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh; chmod +x Hostsman4linux.sh
 	break
 	done
-	sudo ./Hostsman4linux.sh -ABCD
+	sudo ./Hostsman4linux.sh -A
 
 	clear
 	Greeting
