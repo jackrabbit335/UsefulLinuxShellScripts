@@ -143,6 +143,9 @@ Setup(){
 		echo 'alias purge="sudo paccache -ruk0"' >> ~/.bashrc
 		echo 'alias orphan="sudo pacman -Rsn $(pacman -Qqdt)"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
+		echo "# Firmware Upgrades" >> ~/.bashrc
+		echo 'alias fwup="sudo /usr/bin/fwupdmgr refresh && sudo /usr/bin/fwupdmgr update"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
 		echo "# List View" >> ~/.bashrc
 		echo 'alias ll="ls -lahs"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
@@ -193,6 +196,10 @@ Setup(){
 	fi
 
 	CheckNetwork
+	
+	#This updates firmware
+	Firmware_Upgrades
+	
 
 	#This tries to update and rate mirrors if it fails it refreshes the keys
 	distribution=$(cat /etc/issue | awk '{print $1}')
@@ -648,10 +655,11 @@ InstallAndConquer(){
 		case $software in
 			1)
 			echo "This installs a series of utility software"
-			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools expac file-roller curl
-			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop nmap xsensors ncdu fwupd base-devel xdg-user-dirs
-			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit p7zip unrar mesa-demos
-			sudo pacman -S --needed --noconfirm pacman-contrib grsync tlp powertop youtube-dl keepassxc unzip zip gstreamer aspell-en libmythes mythes-en languagetool
+			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools expac file-roller curl traceroute
+			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop nmap xsensors ncdu fwupd base-devel xdg-user-dirs iperf tcpdump
+			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit p7zip unrar mesa-demos ifplugd
+			sudo pacman -S --needed --noconfirm pacman-contrib grsync tlp powertop youtube-dl keepassxc unzip zip gstreamer aspell-en 
+			sudo pacman -S --needed --noconfirm libmythes mythes-en languagetool
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/inxi.tar.gz; gunzip inxi.tar.gz; tar -xvf inxi.tar; cd inxi && makepkg -si
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/ulauncher.tar.gz; gunzip ulauncher.tar.gz; tar -xvf ulauncher.tar; cd ulauncher && makepkg -si
 			;;
@@ -1166,10 +1174,11 @@ InstallAndConquer(){
 			24)
 			echo "This installs a few common themes"
 			sudo pacman -S --noconfirm adapta-gtk-theme arc-icon-theme evopop-icon-theme arc-gtk-theme papirus-icon-theme materia-gtk-theme paper-icon-theme
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/arc-x-icons-theme.tar.gz; gunzip arc-x-icons-theme.tar.gz; tar -xvf arc-x-icons-theme.tar; cd arc-x-icons-theme && makepkg -si
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/numix-gtk-theme.tar.gz; gunzip numix-gtk-theme.tar.gz; tar -xvf numix-gtk-theme.tar; cd numix-gtk-theme && makepkg -si
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/numix-icon-theme-git.tar.gz; gunzip numix-icon-theme-git.tar.gz; tar -xvf numix-icon-theme-git.tar; cd numix-icon-theme-git && makepkg -si
-			wget https://aur.archlinux.org/cgit/aur.git/snapshot/sardi-icons.tar.gz; gunzip sardi-icons.tar.gz; tar -xvf sardi-icons.tar; cd sardi-icons &&  makepkg -si
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/arc-x-icons-theme.tar.gz; gunzip arc-x-icons-theme.tar.gz; tar -xvf arc-x-icons-theme.tar; cd arc-x-icons-theme && makepkg -si; wget https://aur.archlinux.org/cgit/aur.git/snapshot/numix-gtk-theme.tar.gz; gunzip numix-gtk-theme.tar.gz; tar -xvf numix-gtk-theme.tar; cd numix-gtk-theme && makepkg -si
+			wget https://aur.archlinux.org/cgit/aur.git/snapshot/numix-icon-theme-git.tar.gz; gunzip numix-icon-theme-git.tar.gz; tar -xvf numix-icon-theme-git.tar; cd numix-icon-theme-git && makepkg -si; wget https://aur.archlinux.org/cgit/aur.git/snapshot/sardi-icons.tar.gz; gunzip sardi-icons.tar.gz; tar -xvf sardi-icons.tar; cd sardi-icons &&  makepkg -si
+			wget https://github.com/jackrabbit335/BrowserAndDesktop/raw/main/themes/Nephrite.tar.xz; tar -xvJf Nephrite.tar.xz
+			wget https://github.com/jackrabbit335/BrowserAndDesktop/raw/main/themes/Nordic.tar.xz; tar -xvJf Nordic.tar.xz
+			mv Nordic Nephrite /usr/share/themes/
 			;;
 			25)
 			echo "1 - Openbox"
@@ -1549,6 +1558,18 @@ and or loaded already. On most systems, Intel microcode is wrapped in the
 package intel-ucode, while AMDs microcode is wrapped under amd-ucode.
 
 ##########################################################################
+FIRMWARE UPGRADES
+##########################################################################
+Firmware upgrades are handled by an automated systemctl utility which
+periodically checks for bios and other firmware upgrades on your system.
+Bios upgrades don't typically work with legacy enabled, At least not UEFI
+upgrades. To enable this to work you need to disable legacy temporarily in
+Bios. Firmware upgrades can include nvme and ssd various other devices as 
+well. Firmware is the layer of programming that sits between the hardware 
+and the OS or in this case the hardware and the Operating system on-board 
+the CPU.
+
+##########################################################################
 BACKUP AND RESTORE
 ##########################################################################
 Backup and Restore functions are there to provide a quick and painless
@@ -1746,6 +1767,18 @@ Adblocking(){
 	done
 	sudo ./Hostsman4linux.sh -ABCD
 
+	clear
+	Greeting
+}
+
+Firmware_Upgrades(){
+	cat <<EOF
+    This will only update firmware for devices and modules that aren't directly controlled by the UEFI bios.
+    This will not update the UEFI unless you have legacy turned off. You may need legacy boot to boot into Linux
+    and install it in the first place. Just an FYI and something to look out for if you plan to do this.
+EOF
+	pacman -Q | grep fwupdmgr || sudo pacman -S --noconfirm fwupdmgr; sudo /usr/bin/fwupdmgr refresh && sudo /usr/bin/fwupdmgr update
+	
 	clear
 	Greeting
 }
