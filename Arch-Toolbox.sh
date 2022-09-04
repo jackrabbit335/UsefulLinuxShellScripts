@@ -1765,7 +1765,7 @@ Adblocking(){
 		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh; chmod +x Hostsman4linux.sh
 	break
 	done
-	sudo ./Hostsman4linux.sh -ABCD
+	sudo ./Hostsman4linux.sh -A
 
 	clear
 	Greeting
