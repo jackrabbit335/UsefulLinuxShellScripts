@@ -609,6 +609,7 @@ InstallAndConquer(){
 			1)
 			echo "This installs a choice of utility software"
 			sudo eopkg install --reinstall mtr lshw hdparm tlp gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw grsync curl net-tools
+			sudo eopkg install --reinstall traceroute ifplugd tcpdump whois iperf
 			sudo snap install youtube-dl
 			sudo eopkg install -c system.devel linux-current-headers
 			;;
