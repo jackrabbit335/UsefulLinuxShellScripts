@@ -2397,10 +2397,11 @@ Greeting(){
 	echo "16 - System Maintenance"
 	echo "17 - Browser Repair"
 	echo "18 - Update"
-	echo "19 - Help"
-	echo "20 - Restart"
-	echo "21 - Reset the desktop"
-	echo "22 - exit"
+	echo "19 - Firmware Upgrades"
+	echo "20 - Help"
+	echo "21 - Restart"
+	echo "22 - Reset the desktop"
+	echo "23 - exit"
 	read selection;
 	case $selection in
 		1)
@@ -2458,15 +2459,18 @@ Greeting(){
 		Update
 		;;
 		19)
-		Help
+		Firmware_Upgrades
 		;;
 		20)
-		Restart
+		Help
 		;;
 		21)
-		Reset
+		Restart
 		;;
 		22)
+		Reset
+		;;
+		23)
 		echo $'\n'$"Thank you for using Arch-Toolbox... Goodbye!"
 		exit
 		;;
