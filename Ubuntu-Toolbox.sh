@@ -291,6 +291,11 @@ Systeminfo(){
 	echo $XDG_CURRENT_DESKTOP >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "SCREEN SERVER" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo $XDG_SESSION_TYPE >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "WINDOW MANAGER" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	wmctrl -m >> $host-sysinfo.txt
