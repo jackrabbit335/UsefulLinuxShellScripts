@@ -146,6 +146,10 @@ Setup(){
 		echo "# Firmware Upgrades" >> ~/.bashrc
 		echo 'alias fwup="sudo /usr/bin/fwupdmgr refresh && sudo /usr/bin/fwupdmgr update"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
+		echo "# DISK TOOLS" >> ~/.bashrc
+		echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
+		echo 'alias lspart="sudo fdisk-l"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
 		echo "# List View" >> ~/.bashrc
 		echo 'alias ll="ls -lahs"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
