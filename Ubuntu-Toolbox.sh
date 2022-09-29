@@ -83,7 +83,7 @@ Setup(){
 		echo "" >> ~/.bashrc
 		echo "# System Maintenance" >> ~/.bashrc
 		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
-		echo 'alias sys="sudo systemctl daemon-reload"' >> ~/.bashrc
+		echo 'alias reload="sudo systemctl daemon-reload"' >> ~/.bashrc
 		echo 'alias repair="sudo touch /forcefsck"' >> ~/.bashrc
 		echo 'alias grubup="sudo update-grub2"' >> ~/.bashrc
 		echo 'alias firewalld="sudo systemctl enable ufw; sudo ufw enable"' >> ~/.bashrc
