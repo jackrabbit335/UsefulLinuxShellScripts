@@ -139,10 +139,15 @@ Setup(){
 		echo "# System Cleaning" >> ~/.bashrc
 		echo 'alias vaccum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
 		echo 'alias dust="sudo rm -r ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
+		echo 'alias sweep="sudo rm -r ~/.config/*-old"' >> ~/.bashrc
+		echo 'alias garbage="sudo rm -r ~/.local/share/Trash/files/*"' >> ~/.bashrc
 		echo "" ~/.bashrc
 		echo "# System Maintenance" >> ~/.bashrc
 		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
+		echo 'alias reload="sudo systemctl daemon-reload"' >> ~/.bashrc
+		echo 'alias repair="sudo touch /forcefsck"' >> ~/.bashrc
 		echo 'alias grubup="sudo clr-boot-manager update"' >> ~/.bashrc
+		echo 'alias firewalld="sudo systemctl enable ufw; sudo ufw enable"' >> ~/.bashrc
 		echo 'alias refresh="sudo gtk-update-icon-cache"' >> ~/.bashrc
 		echo "" ~/.bashrc
 		echo "# System Stats" >> ~/.bashrc
@@ -151,6 +156,7 @@ Setup(){
 		echo 'alias cpu="lscpu"' >> ~/.bashrc
 		echo 'alias meminfo="cat /proc/meminfo"' >> ~/.bashrc
 		echo 'alias swaps="cat /proc/swaps"' >> ~/.bashrc
+		echo 'alias diskinfo="sudo smartctl -A /dev/sda"' >> ~/.bashrc
 		echo 'alias ut="uptime -p"' >> ~/.bashrc
 		echo "" ~/.bashrc
 		echo "# Confirmations" >> ~/.bashrc
