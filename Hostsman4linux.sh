@@ -1,13 +1,5 @@
 #!/bin/bash
 
-cat <<EOF
-This file has the ability to download and compile hosts files from multiple sources. As such, this file should be
-used with relative caution as failure to do so could result in pages no longer functioning properly. I would suggest that
-unless you absolutely needed it, using more than the first hosts file and maybe peter lowes adservers list is
-kinda redundant or probably not wise. Still if you wish to block most ads, I would suggest the first four and adaway
-to be sure.
-EOF
-
 #This updates the hosts file
 echo "searching for /etc/hosts.bak and then creating hosts file to block tracking"
 find /etc/hosts.bak
