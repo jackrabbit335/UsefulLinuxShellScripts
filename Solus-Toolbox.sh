@@ -132,14 +132,11 @@ Setup(){
 		echo "# Firmware Upgrades" >> ~/.bashrc
 		echo 'alias fwup="sudo /usr/bin/fwupdmgr refresh && sudo /usr/bin/fwupdmgr update"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
-		echo "# Disk Tools" >> ~/.bashrc
-		echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
-		echo 'alias lspart="sudo fdisk -l"' >> ~/.bashrc
-		echo "" >> ~/.bashrc
 		echo "# System Cleaning" >> ~/.bashrc
 		echo 'alias vaccum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
 		echo 'alias dust="sudo rm -r ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
 		echo 'alias sweep="sudo rm -r ~/.config/*-old"' >> ~/.bashrc
+		echo 'alias mop="sudo rm -r /var/tmp/*"' >> ~/.bashrc
 		echo 'alias garbage="sudo rm -r ~/.local/share/Trash/files/*"' >> ~/.bashrc
 		echo "" ~/.bashrc
 		echo "# System Maintenance" >> ~/.bashrc
