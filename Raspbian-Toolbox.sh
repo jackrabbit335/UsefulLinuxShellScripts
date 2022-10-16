@@ -103,6 +103,7 @@ Setup(){
 	echo 'alias vaccum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
 	echo 'alias dust="sudo rm -r ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
 	echo 'alias sweep="sudo rm -r ~/.config/*-old"' >> ~/.bashrc
+	eho 'alias mop="sudo rm -r /var/tmp/*"' >> ~/.bashrc
 	echo 'alias garbage="sudo rm -r ~/.local/share/Trash/files/*"' >> ~/.bashrc
 	source .bashrc
 	
@@ -158,7 +159,7 @@ EOF
 	fi
 	
 	#This locks down ssh
-	#sudo sed -i -e '/#PermitRootLogin/c\PermitRootLogin no ' /etc/ssh/sshd_config
+	sudo sed -i -e '/#PermitRootLogin/c\PermitRootLogin no ' /etc/ssh/sshd_config
 
 	CheckNetwork
 
