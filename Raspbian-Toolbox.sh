@@ -142,21 +142,8 @@ Setup(){
 	echo "vm.dirty_ratio = 3" | sudo tee -a /etc/sysctl.conf
 	echo "#tcp flaw workaround" | sudo tee -a /etc/sysctl.conf
 	echo "net.ipv4.tcp_challenge_ack_limit = 999999999" | sudo tee -a /etc/sysctl.conf
+	echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.conf
 	sudo sysctl -p && sudo sysctl --system
-	
-#Block ICMP requests or Ping from foreign systems
-cat <<EOF
-We can also block ping requests. Ping requests coming from unknown sources can mean that people are
-potentially trying to locate/attack your network/device. If you need this functionality
-you can always comment this line out later. Chances are, this will not affect normal users.
-EOF
-	echo "Block ping requests from foreign systems?(Y/n)"
-	read answer
-	if [[ $answer == Y ]];
-	then
-		echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.conf
-		sudo sysctl -p && sudo sysctl --system
-	fi
 	
 	#This locks down ssh
 	sudo sed -i -e '/#PermitRootLogin/c\PermitRootLogin no ' /etc/ssh/sshd_config
