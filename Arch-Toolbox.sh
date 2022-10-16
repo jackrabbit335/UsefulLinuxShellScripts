@@ -63,22 +63,14 @@ Setup(){
 	sudo touch /etc/sysctl.d/50-dmesg-restrict.conf
 	sudo touch /etc/sysctl.d/50-kptr-restrict.conf
 	sudo touch /etc/sysctl.d/99-sysctl.conf
+	sudo touch /etc/sysctl.d/60-network-hardening.conf
 	echo "kernel.dmesg_restrict = 1" | sudo tee -a /etc/sysctl.d/50-dmesg-restrict.conf
 	echo "kernel.kptr_restrict = 1" | sudo tee -a /etc/sysctl.d/50-kptr-restrict.conf
 	echo "vm.swappiness = 10" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
 	echo "vm.vfs_cache_pressure = 50" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
+	echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.d/60-network-hardening.conf
 	sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
 	sudo sysctl --system; sudo sysctl -p
-
-	#WE can block ICMP requests from the kernel if you'd like
-	echo "Block icmp ping requests?(Y/n)"
-	read answer
-	while [ $answer == Y ];
-	do
-		sudo touch /etc/syctl.d/60-network-hardening.conf
-		echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.d/60-network-hardening.conf; sudo sysctl -p
-	break
-	done
 
 	#This disables ipv6
 	echo "Sometimes ipv6 can cause network issues. Would you like to disable it?(Y/n)"
