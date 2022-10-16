@@ -122,24 +122,11 @@ Setup(){
 	echo "vm.watermark_scale_factor = 200" | sudo tee -a /etc/sysctl.conf
 	echo "vm.dirty_ratio = 3" | sudo tee -a /etc/sysctl.conf
 	echo "#tcp flaw workaround" | sudo tee -a /etc/sysctl.conf
+	echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.conf
 	echo "net.ipv4.tcp_challenge_ack_limit = 999999999" | sudo tee -a /etc/sysctl.conf
 	sudo sed -i -e '/GRUB_TIMEOUT=10/c\GRUB_TIMEOUT=3 ' /etc/default/grub; sudo update-grub2
 	sudo sed -i -e '/#SystemMaxUse=/c\SystemMaxUse=50M ' /etc/systemd/journald.conf
 	sudo sysctl -p && sudo sysctl --system
-
-	#Block ICMP requests or Ping from foreign systems
-	cat <<EOF
-	We can also block ping requests. Ping requests coming from unknown sources can mean that people are
-	potentially trying to locate/attack your network. If you need this functionality
-	you can always comment this line out later. Chances are, this will not affect normal users.
-EOF
-	echo "Block ping requests from foreign systems?(Y/n)"
-	read answer
-	if [[ $answer == Y ]];
-	then
-		echo "net.ipv4.icmp_echo_ignore_all = 1" | sudo tee -a /etc/sysctl.conf
-		sudo sysctl -p && sudo sysctl --system
-	fi
 
 	#This attempts to place noatime at the end of your drive entry in fstab
 	echo "This can potentially make your drive unbootable, use with caution"
