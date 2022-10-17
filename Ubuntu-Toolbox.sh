@@ -169,10 +169,6 @@ Setup(){
 			done
 		elif [[ $drive == 0 ]];
 		then
-			cat <<EOF
-			Trim is enabled already on most Ubuntu systems, however, it is not
-			enabled on Debian. That said, enabling Trim is easy.
-EOF
 			distribution=$(cat /etc/issue | awk '{print $1}')
 			while [ $distribution == Debian ];
 			do
@@ -198,9 +194,6 @@ EOF
 
 
 	#This fixes gufw not opening in kde plasma desktop
-	cat <<EOF
-	This will attempt to determine if your desktop is kde and resolve the kde gufw not opening issue. This is only a plasma issue as far as I know.
-EOF
 	for env in $DESKTOP_SESSION;
 	do
 		if [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]];
@@ -1108,10 +1101,10 @@ InstallAndConquer(){
 			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop file-roller xdg-user-dirs build-essential
 			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools unrar curl unzip ffmpeg git ncal wavemon neofetch
 			sudo apt install -y dnsutils whois iperf ifplugd tcpdump
+			sudo snap install youtube-dl keepassxc
 			#sudo apt-add-repository ppa:agornostal/ulauncher; sudo apt-get update; sudo apt-get install ulauncher
 			#sudo apt install -y caffeine
-			#wget https://github.com/xxxserxxx/gotop/releases/download/v4.1.4/gotop_v4.1.4_linux_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
-			sudo snap install youtube-dl keepassxc
+			wget https://github.com/xxxserxxx/gotop/releases/download/v4.1.4/gotop_v4.1.4_linux_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			;;
 			4)
 			echo "1 - deja-dup"
@@ -1417,8 +1410,7 @@ InstallAndConquer(){
 				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 			elif [[ $DESKTOP_SESSION == xfce ]];
 			then
-				sudo apt install -y xubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
-				sudo apt install -y xfce4-goodies
+				sudo apt install -y xubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly; sudo apt install -y xfce4-goodies
 			elif [[ $DESKTOP_SESSION == /usr/share/xsessions/plasma ]];
 			then
 				sudo apt install -y kubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
@@ -1430,8 +1422,7 @@ InstallAndConquer(){
 				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 			elif [[ $DESKTOP_SESSION == gnome ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
-				sudo apt install -y gnome-session gnome-tweak-tool gnome-shell-extensions nautilus-admin
+				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly; sudo apt install -y gnome-session gnome-tweak-tool gnome-shell-extensions nautilus-admin
 			elif [[ $DESKTOP_SESSION == enlightenment ]];
 			then
 				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
@@ -1443,8 +1434,7 @@ InstallAndConquer(){
 				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 			elif [[ $DESKTOP_SESSION == ubuntu ]];
 			then
-				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
-				sudo apt install -y gnome-tweak-tool dconf-editor chrome-gnome-shell gnome-shell-extensions nautilus-admin
+				sudo apt install -y ubuntu-restricted-extras libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly; sudo apt install -y gnome-tweak-tool dconf-editor chrome-gnome-shell gnome-shell-extensions nautilus-admin
 			else
 				echo "You're running some other window manager I haven't tested yet."
 				sleep 1
@@ -1584,7 +1574,7 @@ Adblocking(){
 		wget https://raw.githubusercontent.com/jackrabbit335/UsefulLinuxShellScripts/master/Hostsman4linux.sh; chmod +x Hostsman4linux.sh
 	break
 	done
-	sudo ./Hostsman4linux.sh -A
+	sudo ./Hostsman4linux.sh -B
 
 	clear
 	Greeting
@@ -1633,7 +1623,7 @@ EOF
 	sudo rm -r ~/.w3m/*
 	sudo rm ~/.esd_auth
 	sudo rm ~/.local/share/recently-used.xbel
-	#sudo rm -r /tmp/*; sudo rm -r /var/tmp/*
+	sudo rm -r /tmp/*; sudo rm -r /var/tmp/*
 	history -c && rm ~/.bash_history
 	
 	#This removes old configurations for software
@@ -1670,12 +1660,6 @@ EOF
 }
 
 BrowserRepair(){
-	cat <<EOF
-	This can fix a lot of the usual issues with a few of the bigger browsers.
-	These can include performance hitting issues. If your browser needs a tuneup,
-	it is probably best to do it in the browser itself, but when you just want something
-	fast, this can do it for you. More browsers and options are coming.
-EOF
 	browser1="$(find /usr/bin/firefox)"
 	browser2="$(find /usr/bin/vivaldi*)"
 	browser3="$(find /usr/bin/palemoon)"
@@ -1866,14 +1850,6 @@ SystemMaintenance(){
 }
 
 ServiceManager(){
-	cat <<EOF
-	This is usually better off left undone, only disable services you know
-	you will not need or miss. I can not be held responsible if you brick
-	your system. Handle with caution. Also, may only take effect once you
-	reboot your machine. Services can be turned back on with a good backup
-	and possibly by chrooting into the device via live cd and reversing the
-	process by running this again and reenabling the service.
-EOF
 init=$(ps -p1 | awk 'NR!=1{print $4}')
 	for init in $init;
 	do
@@ -2018,14 +1994,6 @@ Backup(){
 }
 
 Restore(){
-	cat <<EOF
-	This tries to restore the home folder and nothing else, if you want to
-	restore the entire system,  you will have to do that in a live environment.
-	This can, however, help in circumstances where you have family photos and
-	school work stored in the home directory. This also assumes that your home
-	directory is on the drive in question. This can also restore browser settings
-	including unwanted toolbars so be warned.
-EOF
 	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
 	if [[ $Mountpoint != /run/media/$USER/* ]];
 	then
