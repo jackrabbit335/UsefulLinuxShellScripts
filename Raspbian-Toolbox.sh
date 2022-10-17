@@ -379,10 +379,15 @@ Cleanup(){
 	sudo rm -r /var/lib/apt/lists/*
 
 	#This cleans the cache and recently used apps list
-	sudo rm -r ~/.cache/*
-	sudo rm -r ~/.thumbnails/*
-	sudo rm ~/.local/share/recently-used.xbel
+	sudo rm -r .cache/*
+	sudo rm -r .thumbnails/*
 	sudo rm -r ~/.local/share/Trash/files/*
+	sudo rm -r ~/.nv/*
+	sudo rm -r ~/.npm/*
+	sudo rm -r ~/.w3m/*
+	sudo rm ~/.esd_auth
+	sudo rm ~/.local/share/recently-used.xbel
+	#sudo rm -r /tmp/*; sudo rm  -r /var/tmp/*
 	history -c && rm ~/.bash_history
 	
 	#This cleans the manual database
@@ -468,14 +473,6 @@ Maintenance(){
 }
 
 ServiceManager(){
-cat <<EOF
-This is usually better off left undone, only disable services you know
-you will not need or miss. I can not be held responsible if you brick
-your system. Handle with caution. Also, may only take effect once you
-reboot your machine. Services can be turned back on with a good backup
-and possibly by chrooting into the device via live cd and reversing the
-process by running this again and reenabling the service.
-EOF
 init=$(ps -p1 | awk 'NR!=1{print $4}')
 	for init in $init;
 	do
@@ -582,11 +579,6 @@ Adblocking(){
 }
 
 SuperSwapsize(){
-cat <<EOF
-This will sometimes help with sluggish performance, but will reduce sd card
-lifespan if swap is used too frequently.
-You have been warned. This is taken from Vivaldi help documentation.
-EOF
 	echo CONF_SWAPSIZE=2048 | sudo tee -a /etc/dphys-swapfile
 	
 	sudo /etc/init.d/dphys-swapfile stop; sudo /etc/init.d/dphys-swapfile start
@@ -596,12 +588,6 @@ EOF
 }
 
 BrowserRepair(){
-cat <<EOF
-This can fix a lot of the usual issues with a few of the bigger browsers.
-These can include performance hitting issues. If your browser needs a tuneup,
-it is probably best to do it in the browser itself, but when you just want something
-fast, this can do it for you.
-EOF
 	browser1="$(find /usr/bin/firefox)"
 	browser2="$(find /usr/bin/vivaldi*)"
 	browser5="$(find /usr/bin/chromium-browser)"
@@ -1446,11 +1432,6 @@ Screenfix(){
 }
 
 BootloaderRepair(){
-cat <<EOF
-This will have repercussions if you agree to this by rebooting after running this
-It's important to remember that to cancel you can run sudo rpi-eeprom-update -r.
-You can rerun this function later to choose one of the options available.
-EOF
 	echo "1 - Update/Downgrade configuration files"
 	echo "2 - Reverse update/downgrade of configuration"
 	read answer;

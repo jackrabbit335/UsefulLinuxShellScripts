@@ -651,7 +651,6 @@ InstallAndConquer(){
 		read software;
 		case $software in
 			1)
-			echo "This installs a series of utility software"
 			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools expac file-roller curl traceroute
 			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop nmap xsensors ncdu fwupd base-devel xdg-user-dirs iperf tcpdump
 			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit p7zip unrar mesa-demos ifplugd
@@ -661,7 +660,6 @@ InstallAndConquer(){
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/ulauncher.tar.gz; gunzip ulauncher.tar.gz; tar -xvf ulauncher.tar; cd ulauncher && makepkg -si
 			;;
 			2)
-			echo "This installs Desktop Specific utilities"
 			for env in $DESKTOP_SESSION;
 			do
 				if [[ $DESKTOP_SESSION == xfce ]];
@@ -677,7 +675,6 @@ InstallAndConquer(){
 			done
 			;;
 			3)
-			echo "This installs an option in Package Managers"
 			echo "1 - Pamac"
 			echo "2 - Octopi"
 			echo "3 - Packagekit"
@@ -691,13 +688,9 @@ InstallAndConquer(){
 			elif [[ $package == 3 ]];
 			then
 				sudo pacman -S gnome-packagekit --noconfirm
-			else
-				echo "You've entered an invalid number"
-				InstallAndConquer
 			fi
 			;;
 			4)
-			echo "This installs your choice of terminals If you already have one, don't worry"
 			echo "1 - terminator"
 			echo "2 - termite"
 			echo "3 - lxterminal"
@@ -715,13 +708,9 @@ InstallAndConquer(){
 			elif [[ $package == 4 ]];
 			then
 				sudo pacman -S --noconfirm xterm
-			else
-				echo "You've entered an invalid number"
-				InstallAndConquer
 			fi
 			;;
 			5)
-			echo "This installs alternate shells You will have to configure these yourself"
 			echo "1 - zsh"
 			echo "2 - fish"
 			read selection
@@ -730,12 +719,10 @@ InstallAndConquer(){
 				sudo pacman -S --noconfirm zsh zsh-completions
 			elif [[ $selection == 2 ]];
 			then
-				sudo pacman -S --needed --noconfirm fish pkgfile inetutils
-				#echo "exec fish" ~/.bashrc
+				sudo pacman -S --needed --noconfirm fish pkgfile inetutils; echo "exec fish" ~/.bashrc
 			fi
 			;;
 			6)
-			echo "This installs a light weight editor(text/code editor/IDE)"
 			echo "1 - geany"
 			echo "2 - sublime text editor"
 			echo "3 - bluefish"
@@ -773,13 +760,9 @@ InstallAndConquer(){
 			elif [[ $editor == 9 ]];
 			then
 				sudo pacman -S --noconfirm code
-			else
-				echo "You've entered an invalid number"
-				InstallAndConquer
 			fi
 			;;
 			7)
-			echo "This installs cleaning software for Arch Linux Systems"
 			echo "1 - bleachbit and rmlint"
 			echo "2 - kde sweeper"
 			echo "3 - stacer"
@@ -793,17 +776,12 @@ InstallAndConquer(){
 			elif [[ $packaage == 3 ]];
 			then
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/stacer.tar.gz; gunzip stacer.tar.gz; tar -xvf stacer.tar; cd stacer && makepkg -si
-			else
-				echo "You've entered an invalid number"
-				InstallAndConquer
 			fi
 			;;
 			8)
-			echo "This installs a prelauncher"
 			sudo pacman -S --noconfirm preload
 			;;
 			9)
-			echo "This installs a choice in download managers"
 			echo "1 - wget"
 			echo "2 - uget"
 			echo "3 - aria2"
@@ -817,17 +795,12 @@ InstallAndConquer(){
 			elif [[ $software == 3 ]];
 			then
 				sudo pacman -S --noconfirm aria2
-			else
-				echo "You have entered an invalid number"
-				InstallAndConquer
 			fi
 			;;
 			10)
-			echo "This installs Dropbox"
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/dropbox.tar.gz; gunzip dropbox.tar.gz; tar -xvf dropbox.tar; cd dropbox && makepkg -si
 			;;
 			11)
-			echo "This installs your choice of torrent clients"
 			echo "1 - transmission-gtk"
 			echo "2 - deluge"
 			echo "3 - qbittorrent"
@@ -841,9 +814,6 @@ InstallAndConquer(){
 			elif [[ $client == 3 ]];
 			then
 				sudo pacman -S --noconfirm qbittorrent
-			else
-				echo "You have entered an invalid number"
-				InstallAndConquer
 			fi
 			;;
 			12)
@@ -864,13 +834,9 @@ InstallAndConquer(){
 			elif [[ $helper == 4 ]];
 			then
 				sudo pacman -S --needed --noconfirm base-devel; git clone https://aur.archlinux.org/paru.git; cd paru && makepkg -si
-			else
-				echo "You have entered an invalid number"
-				InstallAndConquer
 			fi
 			;;
 			13)
-			echo "This installs your choice in browsers"
 			echo "1 - Chromium"
 			echo "2 - Epiphany"
 			echo "3 - Falkon"
@@ -956,13 +922,9 @@ InstallAndConquer(){
 			elif [[ $browser == 21 ]];
 			then
 				sudo pacman -S --noconfirm firefox
-			else
-				echo "You have entered an invalid number"
-				InstallAndConquer
 			fi
 			;;
 			14)
-			echo "This installs a choice in media players"
 			echo "1 - xplayer"
 			echo "2 - parole"
 			echo "3 - kodi"
@@ -1028,13 +990,9 @@ InstallAndConquer(){
 			elif [[ $player == 16 ]];
 			then
 				sudo pacman -S --noconfirm strawberry
-			else
-				echo "You have entered an invalid number"
-				InstallAndConquer
 			fi
 			;;
 			15)
-			echo "This installs a Messenger or chat client"
 			echo "1 - Pidgin"
 			echo "2 - Hexchat"
 			echo "3 - Skype"
@@ -1063,11 +1021,9 @@ InstallAndConquer(){
 			fi
 			;;
 			16)
-			echo "This installs a virtualbox client"
 			sudo pacman -S --noconfirm virtualbox virtualbox-guest-iso
 			;;
 			17)
-			echo "This installs Wine or Windows emulation software"
 			echo "1 - Wine"
 			echo "2 - playonlinux"
 			echo "3 - Both"
@@ -1086,15 +1042,12 @@ InstallAndConquer(){
 			esac
 			;;
 			18)
-			echo "This installs a webcam application for laptops"
 			sudo pacman -S --noconfirm guvcview
 			;;
 			19)
-			echo "etc-update can help you manage pacnew files and other configuration files after system updates."
 			sudo pacman -S --needed base-devel; wget https://aur.archlinux.org/cgit/aur.git/snapshot/etc-update.tar.gz; gunzip etc-update.tar.gz && tar -xvf etc-update.tar; cd etc-update && makepkg -si; wget https://aur.archlinux.org/cgit/aur.git/snapshot/downgrade.tar.gz; gunzip downgrade.tar.gz; tar -xvf downgrade.tar; cd downgrade && makepkg -si
 			;;
 			20)
-			echo "This installs a choice in small games"
 			echo "1 - supertuxkart"
 			echo "2 - gnome-mahjongg"
 			echo "3 - aisleriot"
@@ -1132,13 +1085,9 @@ InstallAndConquer(){
 			elif [[ $package == 9 ]];
 			then
 				sudo pacman -S --noconfirm supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux
-			else
-				echo "You have entered an invalid number"
-				InstallAndConquer
 			fi
 			;;
 			21)
-			echo "This installs video/audio decoding/reencoding software"
 			sudo pacman -S --noconfirm kdenlive audacity
 			echo "Would you also like obs-studio?(Y/n)"
 			read answer
@@ -1149,11 +1098,9 @@ InstallAndConquer(){
 			done
 			;;
 			22)
-			echo "This installs a dock application"
 			sudo pacman -S --noconfirm plank
 			;;
 			23)
-			echo "This installs your backup software"
 			echo "1 - deja-dup"
 			echo "2 - timeshift"
 			read package
@@ -1163,13 +1110,9 @@ InstallAndConquer(){
 			elif [[ $package == 2 ]];
 			then
 				sudo pacman -S --noconfirm timeshift
-			else
-				echo "You have entered an invalid number"
-				InstallAndConquer
 			fi
 			;;
 			24)
-			echo "This installs a few common themes"
 			sudo pacman -S --noconfirm adapta-gtk-theme arc-icon-theme evopop-icon-theme arc-gtk-theme papirus-icon-theme materia-gtk-theme paper-icon-theme
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/arc-x-icons-theme.tar.gz; gunzip arc-x-icons-theme.tar.gz; tar -xvf arc-x-icons-theme.tar; cd arc-x-icons-theme && makepkg -si; wget https://aur.archlinux.org/cgit/aur.git/snapshot/numix-gtk-theme.tar.gz; gunzip numix-gtk-theme.tar.gz; tar -xvf numix-gtk-theme.tar; cd numix-gtk-theme && makepkg -si
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/numix-icon-theme-git.tar.gz; gunzip numix-icon-theme-git.tar.gz; tar -xvf numix-icon-theme-git.tar; cd numix-icon-theme-git && makepkg -si; wget https://aur.archlinux.org/cgit/aur.git/snapshot/sardi-icons.tar.gz; gunzip sardi-icons.tar.gz; tar -xvf sardi-icons.tar; cd sardi-icons &&  makepkg -si
@@ -1194,11 +1137,9 @@ InstallAndConquer(){
 			esac
 			;;
 			26)
-			echo "This installs neofetch"
 			sudo pacman -S --noconfirm neofetch; echo "neofetch" ~/.bashrc
 			;;
 			27)
-			echo "This installs office software"
 			echo "1 - Libreoffice"
 			echo "2 - Libreoffice-fresh"
 			echo "3 - Abiword/Gnumeric"
@@ -1216,17 +1157,12 @@ InstallAndConquer(){
 			elif [[ $software == 4 ]];
 			then
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/onlyoffice-bin.tar.gz; gunzip onlyoffice-bin.tar.gz; tar -xvf onlyoffice-bin.tar
-			else
-				echo "You've entered an invalid number"
-				InstallAndConquer
 			fi
 			;;
 			28)
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-ms-fonts.tar.gz; wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-mac-fonts.tar.gzgunzip ttf-ms-fonts.tar.gz; gunzip ttf-mac-fonts.tar.gz; tar -xvf ttf-ms-fonts.tar; tar -xvf ttf-mac-fonts.tar; cd ttf-ms-fonts; makepkg -si; pushd ttf-mac-fonts; makepkg -si; cd
 			;;
 			29)
-			echo "This installs possible security software and virus checker if you wish"
-			echo "KaOS doesn't have these by default(has tomoyo) and clam av can be installed as flatpak"
 			echo "1 - Rkhunter"
 			echo "2 - Clamav"
 			echo "3 - Lynis"
@@ -1250,11 +1186,9 @@ InstallAndConquer(){
 			esac
 			;;
 			30)
-			echo "This installs stellarium incase you are a night sky observer"
 			sudo pacman -S --noconfirm stellarium
 			;;
 			31)
-			echo "This installs Microcode based on your architecture"
 			cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
 			for c in $cpu;
 			do
@@ -1811,9 +1745,8 @@ cleanup(){
 	sudo rm -r ~/.w3m/*
 	sudo rm ~/.esd_auth
 	sudo rm ~/.local/share/recently-used.xbel
-	#sudo rm -r /tmp/*
+	sudo rm -r /tmp/*; sudo rm -r /var/tmp/*
 	history -c && rm ~/.bash_history
-	sudo rm -r /var/tmp/*
 
 	#This removes old configurations for software
 	sudo rm -r ~/.config/*-old
@@ -1855,12 +1788,6 @@ cleanup(){
 }
 
 BrowserRepair(){
-	cat <<EOF
-	This can fix a lot of the usual issues with a few of the bigger browsers.
-	These can include performance hitting issues. If your browser needs a tuneup,
-	it is probably best to do it in the browser itself, but when you just want something
-	fast, this can do it for you. More browsers and options are coming.
-EOF
 	browser1="$(find /usr/bin/firefox)"
 	browser2="$(find /usr/bin/vivaldi*)"
 	browser3="$(find /usr/bin/palemoon)"
@@ -2089,14 +2016,6 @@ SystemMaintenance(){
 }
 
 ServiceManager(){
-	cat <<EOF
-	This is usually better off left undone, only disable services you know
-	you will not need or miss. I can not be held responsible if you brick
-	your system. Handle with caution. Also, may only take effect once you
-	reboot your machine. Services can be turned back on with a good backup
-	and possibly by chrooting into the device via live cd and reversing the
-	process by running this again and reenabling the service.
-EOF
 	systemctl list-unit-files --type=service
 	read -p "Press enter to continue..."
 	echo "What would you like to do?"
@@ -2235,12 +2154,6 @@ Restart(){
 }
 
 KernelManager(){
-	cat <<EOF
-	Kernels are an essential part of the operating system. Failure to use precaution
-	could inadvertently screw up system functions. The kernel is the main engine behind
-	the scenes making everything operate within normal parameters, changing kernel settings
-	or installing/uninstalling a bad updated version could give undesirable results.
-EOF
 	pacman -Q linux linux-lts linux-hardened linux-zen
 	echo "What would you like to do?"
 	echo "1 - Install lts"
@@ -2326,14 +2239,6 @@ Backup(){
 }
 
 Restore(){
-	cat <<EOF
-	This tries to restore the home folder and nothing else, if you want to
-	restore the entire system,  you will have to do that in a live environment.
-	This can, however, help in circumstances where you have family photos and
-	school work stored in the home directory. This also assumes that your home
-	directory is on the drive in question. This can also restore browser settings
-	including unwanted toolbars so be warned.
-EOF
 	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
 	if [[ $Mountpoint != /run/media/$USER/* ]];
 	then
