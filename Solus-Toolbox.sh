@@ -174,14 +174,6 @@ Setup(){
 	#sudo eopkg install flatpak xdg-desktop-portal-gtk; sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 	#This allows you to install the latest LTS kernel in Solus
-	cat <<EOF
-	LTS Kernels are those kernels which receive security patches for prolonged periods.
-	Where kernel modules and headers do receive periodic updates, the overall
-	system and user experience remains mostly unaffected. These kernels are
-	handy for older systems or new users who experience driver incompatibilities with the latest
-	kernels. CAUTION: Installing kernels should be done with caution and a back up should
-	be ready should anything go wrong. You have been warned.
-EOF
 	echo "Would you like to install the latest LTS kernel stack?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -607,14 +599,12 @@ InstallAndConquer(){
 		read software;
 		case $software in
 			1)
-			echo "This installs a choice of utility software"
 			sudo eopkg install --reinstall mtr lshw hdparm tlp gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw grsync curl net-tools
 			sudo eopkg install --reinstall traceroute ifplugd tcpdump whois iperf
 			sudo snap install youtube-dl
 			sudo eopkg install -c system.devel linux-current-headers
 			;;
 			2)
-			echo "This installs a light weight editor(text/code editor/IDE)"
 			echo "1 - geany"
 			echo "2 - bluefish"
 			echo "3 - atom"
@@ -636,8 +626,6 @@ InstallAndConquer(){
 			elif [[ $package == 5 ]];
 			then
 				sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/programming/sublime-text-3/pspec.xml; sudo eopkg it sublime*.eopkg;sudo rm sublime*.eopkg
-			else
-				echo "You've entered an invalid number"
 			fi
 			;;
 			3)
@@ -651,12 +639,9 @@ InstallAndConquer(){
 			elif [[ $software == 2 ]];
 			then
 				sudo eopkg install uget
-			else
-				echo "You have entered an invalid number"
 			fi
 			;;
 			4)
-			echo "This installs your choice of torrent clients"
 			echo "1 - transmission"
 			echo "2 - deluge"
 			echo "3 - qbittorrent"
@@ -670,12 +655,9 @@ InstallAndConquer(){
 			elif [[ $client == 3 ]];
 			then
 				sudo eopkg install qbittorrent
-			else
-				echo "You have entered an invalid number"
 			fi
 			;;
 			5)
-			echo "This installs a chat/face-time program"
 			echo "1 - HexChat"
 			echo "2 - Skype"
 			read package
@@ -688,7 +670,6 @@ InstallAndConquer(){
 			fi
 			;;
 			6)
-			echo "This installs your choice in browsers"
 			echo "1 - epiphany"
 			echo "2 - falkon"
 			echo "3 - midori"
@@ -744,12 +725,9 @@ InstallAndConquer(){
 			elif [[ $browser == 13 ]];
 			then
 				flatpak install librewolf
-			else
-				echo "You have entered an invalid number"
 			fi
 			;;
 			7)
-			echo "This installs a choice in media players"
 			echo "1 - kodi"
 			echo "2 - spotify"
 			echo "3 - rhythmbox"
@@ -783,16 +761,12 @@ InstallAndConquer(){
 			elif [[ $player == 8 ]];
 			then
 				sudo eopkg install strawberry
-			else
-				echo "You have entered an invalid number"
 			fi
 			;;
 			8)
-			echo "This installs a virtualbox client"
 			sudo eopkg install virtualbox virtualbox-guest-utils
 			;;
 			9)
-			echo "This installs Wine or Windows emulation software"
 			echo "1 - Wine"
 			echo "2 - playonlinux"
 			echo "3 - Both"
@@ -811,11 +785,9 @@ InstallAndConquer(){
 			esac
 			;;
 			10)
-			echo "This installs a webcam application for laptops"
 			sudo eopkg install guvcview
 			;;
 			11)
-			echo "This installs a choice in small games"
 			echo "1 - supertuxkart"
 			echo "2 - gnome-mahjongg"
 			echo "3 - aisleriot"
@@ -853,13 +825,9 @@ InstallAndConquer(){
 			elif [[ $package == 9 ]];
 			then
 				sudo eopkg install supertuxkart gnome-mahjongg aisleriot ace-of-penguins gnome-sudoku gnome-mines chromium-bsu supertux
-			else
-				echo "You have entered an invalid number"
-				InstallAndConquer
 			fi
 			;;
 			12)
-			echo "This installs video/audio decoding/reencoding software"
 			sudo eopkg install kdenlive audacity
 			echo "Would you also like obs-studio?(Y/n)"
 			read answer
@@ -870,15 +838,12 @@ InstallAndConquer(){
 			done
 			;;
 			13)
-			echo "This installs Microsoft Core Fonts"
 			sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/desktop/font/mscorefonts/pspec.xml; sudo eopkg it mscorefonts*.eopkg;sudo rm mscorefonts*.eopkg
 			;;
 			14)
-			echo "This installs a dock application"
 			sudo eopkg install plank
 			;;
 			15)
-			echo "This installs your backup software"
 			echo "1 - deja-dup"
 			echo "2 - grsync"
 			read package
@@ -888,25 +853,18 @@ InstallAndConquer(){
 			elif [[ $package == 2 ]];
 			then
 				sudo eopkg install grsync
-			else
-				echo "You have entered an invalid number"
-				InstallAndConquer
 			fi
 			;;
 			16)
-			echo "This installs a few common themes"
 			sudo eopkg install adapta-gtk-theme moka-icon-theme mate-icon-theme-faenza faba-icon-theme numix-icon-theme arc-icon-theme evopop-icon-theme numix-gtk-theme vertex-gtk-theme arc-gtk-theme papirus-icon-theme faenza-green-icon-theme
 			;;
 			17)
-			echo "This installs screenfetch"
 			sudo eopkg install screenfetch
 			;;
 			18)
-			echo "This installs stellarium incase you are a night sky observer"
 			sudo eopkg install stellarium
 			;;
 			19)
-			echo "This installs commonly used security software"
 			sudo eopkg install firejail
 			;;
 			20)
@@ -919,13 +877,6 @@ InstallAndConquer(){
 	read -p "Please press enter to continue..."
 
 	#This installs preload for faster load of apps
-	cat <<EOF
-	Preload is as the name implies, a preloader. This nifty tool can shadow
-	your uses of the desktop and store bits of applications into memory for
-	faster future use. This does have its drawbacks though as preload does
-	take up its own cache of memory. This is debatably better on low end
-	devices.
-EOF
 	echo "Would you like to install preload?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -1453,11 +1404,6 @@ Adblocking(){
 }
 
 Firmware_Upgrades(){
-	cat <<EOF
-    This will only update firmware for devices and modules that aren't directly controlled by the UEFI bios.
-    This will not update the UEFI unless you have legacy turned off. You may need legacy boot to boot into Linux
-    and install it in the first place. Just an FYI and something to look out for if you plan to do this.
-EOF
     sudo /usr/bin/fwupdmgr refresh && sudo /usr/bin/fwupdmgr update
     
     clear
@@ -1556,12 +1502,6 @@ cleanup(){
 }
 
 BrowserRepair(){
-	cat <<EOF
-	This can fix a lot of the usual issues with a few of the bigger browsers.
-	These can include performance hitting issues. If your browser needs a tuneup,
-	it is probably best to do it in the browser itself, but when you just want something
-	fast, this can do it for you. More browsers and options are coming.
-EOF
 	browser1="$(find /usr/bin/firefox)"
 	browser2="$(find /usr/bin/vivaldi*)"
 	browser3="$(find /usr/bin/palemoon)"
@@ -1758,14 +1698,6 @@ SystemMaintenance(){
 }
 
 ServiceManager(){
-	cat <<EOF
-	This is usually better off left undone, only disable services you know
-	you will not need or miss. I can not be held responsible if you brick
-	your system. Handle with caution. Also, may only take effect once you
-	reboot your machine. Services can be turned back on with a good backup
-	and possibly by chrooting into the device via live cd and reversing the
-	process by running this again and reenabling the service.
-EOF
 	systemctl list-unit-files --type=service
 	read -p "Press enter to continue..."
 	echo "What would you like to do?"
@@ -1889,14 +1821,6 @@ Backup(){
 }
 
 Restore(){
-	cat <<EOF
-	This tries to restore the home folder and nothing else, if you want to
-	restore the entire system,  you will have to do that in a live environment.
-	This can, however, help in circumstances where you have family photos and
-	school work stored in the home directory. This also assumes that your home
-	directory is on the drive in question. This can also restore browser settings
-	including unwanted toolbars so be warned.
-EOF
 	Mountpoint=$(lsblk | awk '{print $7}' | grep /run/media/$USER/*)
 	if [[ $Mountpoint != /run/media/$USER/* ]];
 	then
@@ -1960,7 +1884,7 @@ Greeting(){
 	echo "19 - Restart"
 	echo "20 - Reset the desktop"
 	echo "21 - Firmware Upgrades"
-	echo "21 - exit"
+	echo "22 - exit"
 	read selection;
 	case $selection in
 		1)
