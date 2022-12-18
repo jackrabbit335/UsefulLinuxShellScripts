@@ -1161,11 +1161,11 @@ InstallAndConquer(){
 				cd /tmp; wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 6 ]];
 			then
-				wget https://linux.palemoon.org/datastore/release/palemoon-31.3.1.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-31.3.1.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget https://linux.palemoon.org/datastore/release/palemoon-31.4.1.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-31.4.1.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.5.2805.44-1_amd64.deb; sudo dpkg -i *.deb && sudo apt install -f
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.6.2867.46-1_amd64.deb; sudo dpkg -i *.deb && sudo apt install -f
 			elif [[ $browser == 8 ]];
 			then
 				sudo snap install opera
@@ -1177,7 +1177,7 @@ InstallAndConquer(){
 				sudo apt install -y dillo
 			elif [[ $browser == 11 ]];
 			then
-				wget https://cdn1.waterfox.net/waterfox/releases/G5.0.1/Linux_x86_64/waterfox-G5.0.1.tar.bz2; tar -xf waterfox-G5.0.1..tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://cdn1.waterfox.net/waterfox/releases/G5.1.1/Linux_x86_64/waterfox-G5.1.1.tar.bz2; tar -xf waterfox-G5.1.1..tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 12 ]];
 			then
@@ -1185,7 +1185,7 @@ InstallAndConquer(){
 			elif [[ $browser == 13 ]];
 			then
 				mkdir AppImages
-				wget https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/106.0.4-1/LibreWolf.x86_64.AppImage; chmod +x LibreWolf.x86_64.AppImage; mv LibreWolf.x86_64.AppImage ~/AppImages
+				wget https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/108.0-1/LibreWolf.x86_64.AppImage; chmod +x LibreWolf.x86_64.AppImage; mv LibreWolf.x86_64.AppImage ~/AppImages
 				wget https://librewolf-community.gitlab.io/images/logo.png; mv logo.png ~/AppImages; wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/LibreWolf.desktop; sudo mv LibreWolf.desktop /usr/share/applications/LibreWolf.desktop
 			elif [[ $browser == 14 ]];
 			then
@@ -1226,7 +1226,7 @@ InstallAndConquer(){
 				sudo apt install -y clementine
 			elif [[ $player == 6 ]];
 			then
-				wget https://github.com/ciderapp/cider-releases/releases/download/v1.5.9/cider_1.5.9_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
+				wget https://github.com/ciderapp/cider-releases/releases/download/v1.6.0/cider_1.6.0_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $player == 7 ]];
 			then
 				sudo apt install -y mplayer
