@@ -105,6 +105,9 @@ Setup(){
 	echo 'alias sweep="sudo rm -r ~/.config/*-old"' >> ~/.bashrc
 	eho 'alias mop="sudo rm -r /var/tmp/*"' >> ~/.bashrc
 	echo 'alias garbage="sudo rm -r ~/.local/share/Trash/files/*"' >> ~/.bashrc
+	#echo "" >> ~/.bashrc
+	#echo "# Adblocking" >> ~/.bashrc
+	#echo 'alias hostsup="sudo ./Hostsman4linux.sh -B"' >> ~/.bashrc
 	source .bashrc
 	
 	#Reduces space taken up by log file
