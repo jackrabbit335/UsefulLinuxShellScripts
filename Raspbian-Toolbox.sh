@@ -210,9 +210,9 @@ InstallAndConquer(){
 				architecture=$(lscpu | grep Architecture | awk '{print $2}')
 				if [[ $architecture == aarch64 ]];
 				then
-					wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.6.2867.50-1_arm64.deb; sudo dpkg -i *.deb; sudo apt install -f
+					wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.6.2867.58-1_arm64.deb; sudo dpkg -i *.deb; sudo apt install -f
 				else	
-					wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.6.2867.50-1_armhf.deb; sudo dpkg -i *.deb; sudo apt install -f
+					wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.6.2867.58-1_armhf.deb; sudo dpkg -i *.deb; sudo apt install -f
 				fi
 				
 			elif [[ $package == 5 ]];
