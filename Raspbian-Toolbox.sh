@@ -399,6 +399,9 @@ Cleanup(){
 	#This removes old config files
 	sudo rm -r ~/.config/*-old
 	
+	#This removes Internet Traces in Firefox
+	#sudo rm -rf ~/.mozilla/firefox/*.default-release/storage/default/*; sudo rm -rf ~/.mozilla/firefox/*.default-release/{places.sqlite,cookies.sqlite,formhistory.sqlite}
+	
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
