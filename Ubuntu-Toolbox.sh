@@ -1626,6 +1626,9 @@ EOF
 	
 	#This removes old configurations for software
 	sudo rm -r ~/.config/*-old
+	
+	#Cleans Internet Traces in Firefox
+	#sudo rm -rf ~/.mozilla/firefox/*.default-release/storage/default/*; sudo rm -rf ~/.mozilla/firefox/*.default-release/{places.sqlite,cookies.sqlite,formhistory.sqlite}
 
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches; swapoff -a && swapon -a"
