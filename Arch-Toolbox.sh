@@ -1748,7 +1748,8 @@ cleanup(){
 	sudo rm -r ~/.w3m/*
 	sudo rm ~/.esd_auth
 	sudo rm ~/.local/share/recently-used.xbel
-	sudo rm -r /tmp/*; sudo rm -r /var/tmp/*
+	sudo rm -r /tmp/*
+	sudo rm -r /var/tmp/*
 	history -c && rm ~/.bash_history
 
 	#This removes old configurations for software
