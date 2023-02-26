@@ -77,10 +77,10 @@ Setup(){
 		echo "" >> ~/.bashrc
 		echo "# System Cleaning" >> ~/.bashrc
 		echo 'alias vacuum="sudo journalctl --vacuum-size=25M"' >> ~/.bashrc
-		echo 'alias dust="sudo rm -r ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
-		echo 'alias sweep="sudo rm -r ~/.config/*-old"' >> ~/.bashrc
-		echo 'alias mop="sudo rm -r /var/tmp/*"' >> ~/.bashrc
-		echo 'alias garbage="sudo rm -r ~/.local/share/Trash/files/*"' >> ~/.bashrc
+		echo 'alias dust="sudo rm -rf ~/.cache/*; sudo rm -r ~/.thumbnails/*"' >> ~/.bashrc
+		echo 'alias sweep="sudo rm -rf ~/.config/*-old"' >> ~/.bashrc
+		echo 'alias mop="sudo rm -rf /var/tmp/*"' >> ~/.bashrc
+		echo 'alias garbage="sudo rm -rf ~/.local/share/Trash/files/*"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
 		echo "# System Maintenance" >> ~/.bashrc
 		echo 'alias trim="sudo fstrim -v --all"' >> ~/.bashrc
@@ -1164,11 +1164,11 @@ InstallAndConquer(){
 				cd /tmp; wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb; sudo dpkg -i *.deb; sudo apt install -f
 			elif [[ $browser == 6 ]];
 			then
-				wget https://linux.palemoon.org/datastore/release/palemoon-32.0.0.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-32.0.0.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget https://linux.palemoon.org/datastore/release/palemoon-32.0.1.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-32.0.1.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.6.2867.62-1_amd64.deb; sudo dpkg -i *.deb && sudo apt install -f
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.7.2921.60-1_amd64.deb; sudo dpkg -i *.deb && sudo apt install -f
 			elif [[ $browser == 8 ]];
 			then
 				sudo snap install opera
@@ -1180,7 +1180,7 @@ InstallAndConquer(){
 				sudo apt install -y dillo
 			elif [[ $browser == 11 ]];
 			then
-				wget https://cdn1.waterfox.net/waterfox/releases/G5.1.2/Linux_x86_64/waterfox-G5.1.2.tar.bz2; tar -xf waterfox-G5.1.2..tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://cdn1.waterfox.net/waterfox/releases/G5.1.3/Linux_x86_64/waterfox-G5.1.3.tar.bz2; tar -xf waterfox-G5.1.3..tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 12 ]];
 			then
@@ -1188,7 +1188,7 @@ InstallAndConquer(){
 			elif [[ $browser == 13 ]];
 			then
 				mkdir AppImages
-				wget https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/109.0-1/LibreWolf.x86_64.AppImage; chmod +x LibreWolf.x86_64.AppImage; mv LibreWolf.x86_64.AppImage ~/AppImages
+				wget https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/110.0-2/LibreWolf.x86_64.AppImage; chmod +x LibreWolf.x86_64.AppImage; mv LibreWolf.x86_64.AppImage ~/AppImages
 				wget https://librewolf-community.gitlab.io/images/logo.png; mv logo.png ~/AppImages; wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/LibreWolf.desktop; sudo mv LibreWolf.desktop /usr/share/applications/LibreWolf.desktop
 			elif [[ $browser == 14 ]];
 			then
@@ -1613,20 +1613,20 @@ EOF
 	sudo rm -r /var/lib/apt/lists/*
 
 	#This clears the cache and thumbnails and other junk
-	sudo rm -r .cache/*
-	sudo rm -r .thumbnails/*
-	sudo rm -r ~/.local/share/Trash/files/*
-	sudo rm -r ~/.nv/*
-	sudo rm -r ~/.npm/*
-	sudo rm -r ~/.w3m/*
+	sudo rm -rf .cache/*
+	sudo rm -rf .thumbnails/*
+	sudo rm -rf ~/.local/share/Trash/files/*
+	sudo rm -rf ~/.nv/*
+	sudo rm -rf ~/.npm/*
+	sudo rm -rf ~/.w3m/*
 	sudo rm ~/.esd_auth
 	sudo rm ~/.local/share/recently-used.xbel
-	sudo rm -r /tmp/*
-	sudo rm -r /var/tmp/*
+	sudo rm -rf /tmp/*
+	sudo rm -rf /var/tmp/*
 	history -c && rm ~/.bash_history
 	
 	#This removes old configurations for software
-	sudo rm -r ~/.config/*-old
+	sudo rm -rf ~/.config/*-old
 	
 	#Cleans Internet Traces in Firefox
 	#sudo rm -rf ~/.mozilla/firefox/*.default-release/storage/default/*; sudo rm -rf ~/.mozilla/firefox/*.default-release/{places.sqlite,cookies.sqlite,formhistory.sqlite}
