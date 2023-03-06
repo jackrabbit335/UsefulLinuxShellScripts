@@ -234,7 +234,8 @@ EOF
 Update(){
 	CheckNetwork
 
-	sudo apt update; sudo apt full-upgrade -yy; sudo snap refresh
+	sudo apt update; sudo apt full-upgrade -yy
+	#sudo snap refresh
 
 	clear
 	Greeting
@@ -568,7 +569,6 @@ Systeminfo(){
 }
 
 Reset(){
-	#This resets the desktop
 	if [[ $DESKTOP_SESSION == cinnamon ]];
 	then
 		echo "############################################################################"
@@ -605,7 +605,6 @@ Reset(){
 }
 
 MakeSwap(){
-	#This attempts to create a swap file in the event the system doesn't have swap
 	cat /etc/fstab | grep "swap"
 	if [ $? -eq 0 ];
 	then
@@ -1377,7 +1376,6 @@ InstallAndConquer(){
 			esac
 			;;
 			19)
-			#Microcode installer
 			cpu=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
 			for c in $cpu;
 			do
@@ -1391,7 +1389,6 @@ InstallAndConquer(){
 			done
 			;;
 			20)
-			#Team Viewer
 			wget -c https://download.teamviewer.com/download/linux/teamviewer_amd64.deb && sudo apt install ./teamviewer_amd64.deb
 			;;
 			21)
@@ -1401,7 +1398,6 @@ InstallAndConquer(){
 		esac
 	done
 
-	#This tries to install codecs
 	echo "This will install codecs. These depend upon your environment. Would you like me to continue?(Y/n)"
 	read answer
 	while [ $answer == Y ];
@@ -1460,7 +1456,6 @@ InstallAndConquer(){
 	break
 	done
 
-	#Make sure dvd codecs are working
 	sudo dpkg-reconfigure libdvd-pkg
 
 	clear
@@ -1945,7 +1940,7 @@ init=$(ps -p1 | awk 'NR!=1{print $4}')
 }
 
 Restart(){
-	sudo sync; sudo systemctl reboot
+	sudo sync; sudo reboot
 }
 
 Backup(){
