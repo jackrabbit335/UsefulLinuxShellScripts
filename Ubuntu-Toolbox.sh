@@ -90,6 +90,16 @@ Setup(){
 		echo 'alias firewalld="sudo systemctl enable ufw; sudo ufw enable"' >> ~/.bashrc
 		echo 'alias refresh="sudo update-icon-caches /usr/share/icons/*"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
+		echo "# Networking" >> ~/.bashrc
+		echo 'alias ipconfig="ip addr show"'
+		echo 'alias tracert="traceroute google.com"'
+		echo 'alias ping="ping -c4 google.com && ping -c4 facebook.com"'
+		echo 'alias netstat="ss -tulpn"'
+		echo 'alias query="nslookup www.google.com && host www.google.com"'
+		echo 'alias netinfo="hostname -I"'
+		echo 'alias arpinfo="arp -e"'
+		echo 'alias dns="dig google.com"'
+		echo "" >> ~/.bashrc
 		echo "# System Stats" >> ~/.bashrc
 		echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
 		echo 'alias lspart="sudo fdisk -l"' >> ~/.bashrc
@@ -404,6 +414,21 @@ Systeminfo(){
 	echo "DNS INFO" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	dig | grep SERVER >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "ARP TABLE" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	arp -e >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "Query" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	nslookup www.google.com && host www.google.com >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "BASIC NETWORK TESTS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	ping -c4 google.com && traceroute google.com >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "FIREWALL STATUS" >> $host-sysinfo.txt
