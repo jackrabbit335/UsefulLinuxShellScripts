@@ -90,6 +90,16 @@ Setup(){
 	echo 'alias swaps="cat /proc/swaps"' >> ~/.bashrc
 	echo 'alias ut="uptime -p"' >> ~/.bashrc
 	echo "" >> ~/.bashrc
+	echo "# Networking" >> ~/.bashrc
+	echo 'alias ipconfig="ip addr show"'
+	echo 'alias tracert="traceroute google.com"'
+	echo 'alias ping="ping -c4 google.com && ping -c4 facebook.com"'
+	echo 'alias netstat="ss -tulpn"'
+	echo 'alias query="nslookup www.google.com && host www.google.com"'
+	echo 'alias netinfo="hostname -I"'
+	echo 'alias arpinfo="arp -e"'
+	echo 'alias dns="dig google.com"'
+	echo "" >> ~/.bashrc
 	echo "# Confirmations" >> ~/.bashrc
 	echo 'alias mv="mv -i"' >> ~/.bashrc
 	echo 'alias cp="cp -i"' >> ~/.bashrc
@@ -845,6 +855,21 @@ SystemInfo(){
 	echo "PERSONAL IP INFORMATION" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	hostname -I >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "ARP TABLE" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	arp -e >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "Query" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	nslookup www.google.com && host www.google.com >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "BASIC NETWORK TESTS" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	ping -c4 google.com && traceroute google.com >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "NETWORK STATS" >> $host-sysinfo.txt
