@@ -237,7 +237,7 @@ InstallAndConquer(){
 			fi
 			;;
 			2)
-			sudo apt install -y transmission
+			sudo apt install -y transmission && sudo ufw allow transmission && sudo ufw reload
 			;;
 			3)
 			sudo apt install -y nmap wavemon iotop gparted gnome-disk-utility baobab lm-sensors inxi lshw pulseaudio* dnsutils
