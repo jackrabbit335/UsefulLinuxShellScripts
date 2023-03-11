@@ -650,7 +650,7 @@ InstallAndConquer(){
 			read client
 			if [[ $client == 1 ]];
 			then
-				sudo eopkg install transmission
+				sudo eopkg install transmission && sudo ufw allow transmission && sudo ufw reload
 			elif [[ $client == 2 ]];
 			then
 				sudo eopkg install deluge
