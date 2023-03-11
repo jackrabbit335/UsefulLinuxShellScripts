@@ -810,7 +810,7 @@ InstallAndConquer(){
 			read client
 			if [[ $client == 1 ]];
 			then
-				sudo pacman -S --noconfirm transmission-gtk
+				sudo pacman -S --noconfirm transmission-gtk && sudo ufw allow transmission-gtk && sudo ufw reload
 			elif [[ $client == 2 ]];
 			then
 				sudo pacman -S --noconfirm deluge
