@@ -139,6 +139,17 @@ Setup(){
 		echo 'alias firewalld="sudo systemctl enable ufw; sudo ufw enable"' >> ~/.bashrc
 		echo 'alias refresh="sudo gtk-update-icon-cache"' >> ~/.bashrc
 		echo "" ~/.bashrc
+		echo "# Networking" >> ~/.bashrc
+		echo 'alias ipconfig="ip addr show"'
+		echo 'alias tracert="traceroute google.com"'
+		echo 'alias ping="ping -c4 google.com && ping -c4 facebook.com"'
+		echo 'alias netstat="ss -tulpn"'
+		echo 'alias query="nslookup www.google.com && host www.google.com"'
+		echo 'alias netinfo="hostname -I"'
+		echo 'alias arpinfo="arp -e"'
+		echo 'alias dns="dig google.com"'
+		echo 'alias wifi="iwconfig"'
+		echo "" >> ~/.bashrc
 		echo "# System Stats" >> ~/.bashrc
 		echo 'alias temp="watch sensors"' >> ~/.bashrc
 		echo 'alias mem="watch free -lh"' >> ~/.bashrc
@@ -408,6 +419,11 @@ Systeminfo(){
 	echo "NETWORK STATS" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	ss -tulpn >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "WIFI INFO" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	iwconfig >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DNS INFO" >> $host-sysinfo.txt
@@ -712,11 +728,11 @@ InstallAndConquer(){
 				sudo eopkg bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/web/browser/google-chrome-stable/pspec.xml; sudo eopkg it google-chrome-*.eopkg;sudo rm google-chrome-*.eopkg
 			elif [[ $browser == 9 ]];
 			then
-				wget https://cdn1.waterfox.net/waterfox/releases/G5.1.3/Linux_x86_64/waterfox-G5.1.3.tar.bz2; waterfox-G5.1.3.tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
+				wget https://cdn1.waterfox.net/waterfox/releases/G5.1.4/Linux_x86_64/waterfox-G5.1.4.tar.bz2; waterfox-G5.1.4.tar.bz2; sudo ln -s ~/waterfox/waterfox /usr/bin/waterfox; sudo mv waterfox /opt && sudo ln -s /opt/waterfox/waterfox /usr/bin/waterfox
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/waterfox.desktop; sudo mv waterfox.desktop /usr/share/applications/waterfox.desktop
 			elif [[ $browser == 10 ]];
 			then
-				wget https://linux.palemoon.org/datastore/release/palemoon-32.0.1.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-32.0.1.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
+				wget https://linux.palemoon.org/datastore/release/palemoon-32.1.0.linux-x86_64-gtk3.tar.xz; tar -xvf palemoon-32.1.0.linux-x86_64-gtk3.tar.xz; sudo ln -s ~/palemoon/palemoon /usr/bin/palemoon
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 11 ]];
 			then
