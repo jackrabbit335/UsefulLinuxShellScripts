@@ -156,6 +156,17 @@ Setup(){
 		echo 'alias firewalld="sudo systemctl restart ufw; sudo ufw enable"' >> ~/.bashrc
 		echo 'alias refresh="sudo gtk-update-icon-cache"' >> ~/.bashrc
 		echo "" >> ~/.bashrc
+		echo "# Networking" >> ~/.bashrc
+		echo 'alias ipconfig="ip addr show"'
+		echo 'alias tracert="traceroute google.com"'
+		echo 'alias ping="ping -c4 google.com && ping -c4 facebook.com"'
+		echo 'alias netstat="ss -tulpn"'
+		echo 'alias query="nslookup www.google.com && host www.google.com"'
+		echo 'alias netinfo="hostname -I"'
+		echo 'alias arpinfo="arp -e"'
+		echo 'alias dns="dig google.com"'
+		echo 'alias wifi="iwconfig"'
+		echo "" >> ~/.bashrc
 		echo "# System Stats" >> ~/.bashrc
 		echo 'alias disk="du -sh && df -h"' >> ~/.bashrc
 		echo 'alias lspart="sudo fdisk -l"' >> ~/.bashrc
@@ -438,6 +449,11 @@ Systeminfo(){
 	echo "NETWORK STATS" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	ss -tulpn >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	echo "WIFI INFO" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	iwconfig >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DNS INFO" >> $host-sysinfo.txt
@@ -900,7 +916,7 @@ InstallAndConquer(){
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz; gunzip google-chrome.tar.gz; tar -xvf google-chrome.tar; cd google-chrome && makepkg -si
 			elif [[ $browser == 13 ]];
 			then
-				wget https://aur.archlinux.org/cgit/aur.git/snapshot/waterfox-g4-bin.tar.gz; gunzip *.gz; tar -xvf *.tar; cd waterfox-g4-bin && makepkg -si
+				wget https://aur.archlinux.org/cgit/aur.git/snapshot/waterfox-g5-bin.tar.gz; gunzip *.gz; tar -xvf *.tar; cd waterfox-g5-bin && makepkg -si
 			elif [[ $browser == 14 ]];
 			then
 				wget https://aur.archlinux.org/cgit/aur.git/snapshot/slimjet.tar.gz; gunzip slimjet.tar.gz; tar -xvf slimjet.tar; cd slimjet && makepkg -si
