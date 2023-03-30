@@ -99,6 +99,7 @@ Setup(){
 	echo 'alias netinfo="hostname -I"'
 	echo 'alias arpinfo="arp -e"'
 	echo 'alias dns="dig google.com"'
+	echo 'alias wifi="iwconfig"'
 	echo "" >> ~/.bashrc
 	echo "# Confirmations" >> ~/.bashrc
 	echo 'alias mv="mv -i"' >> ~/.bashrc
@@ -220,9 +221,9 @@ InstallAndConquer(){
 				architecture=$(lscpu | grep Architecture | awk '{print $2}')
 				if [[ $architecture == aarch64 ]];
 				then
-					wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.7.2921.63-1_arm64.deb; sudo dpkg -i *.deb; sudo apt install -f
+					wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.7.2921.65-1_arm64.deb; sudo dpkg -i *.deb; sudo apt install -f
 				else	
-					wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.7.2921.63-1_armhf.deb; sudo dpkg -i *.deb; sudo apt install -f
+					wget https://downloads.vivaldi.com/stable/vivaldi-stable_5.7.2921.65-1_armhf.deb; sudo dpkg -i *.deb; sudo apt install -f
 				fi
 				
 			elif [[ $package == 5 ]];
