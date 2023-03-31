@@ -878,6 +878,11 @@ SystemInfo(){
 	ss -tulpn >> $host-sysinfo.txt
 	echo "" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
+	echo "WIFI INFO" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
+	iwconfig >> $host-sysinfo.txt
+	echo "" >> $host-sysinfo.txt
+	echo "############################################################################" >> $host-sysinfo.txt
 	echo "DNS INFO" >> $host-sysinfo.txt
 	echo "############################################################################" >> $host-sysinfo.txt
 	dig | grep SERVER >> $host-sysinfo.txt
