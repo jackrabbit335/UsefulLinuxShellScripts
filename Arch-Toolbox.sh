@@ -198,7 +198,7 @@ Setup(){
 		then
 			echo "#Alias to update the mirrors" >> ~/.bashrc; echo 'alias mirrors="sudo reflector --verbose -l 50 -f 20 --save /etc/pacman.d/mirrorlist; sudo pacman -Syy"' >> ~/.bashrc
 		fi
-		echo "neofetch"
+		echo "neofetch" >> ~/.bashrc
 		source .bashrc
 	fi
 
