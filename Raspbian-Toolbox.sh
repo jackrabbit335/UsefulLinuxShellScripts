@@ -119,6 +119,7 @@ Setup(){
 	#echo "" >> ~/.bashrc
 	#echo "# Adblocking" >> ~/.bashrc
 	#echo 'alias hostsup="sudo ./Hostsman4linux.sh -B"' >> ~/.bashrc
+	echo "neofetch" >> ~/.bashrc
 	source .bashrc
 	
 	#Reduces space taken up by log file
