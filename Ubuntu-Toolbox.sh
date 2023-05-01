@@ -1336,10 +1336,8 @@ InstallAndConquer(){
 			;;
 			14)
 			echo "THEMES"
-			wget https://github.com/jackrabbit335/BrowserAndDesktop/raw/main/themes/Nordic.tar.xz; wget https://github.com/jackrabbit335/BrowserAndDesktop/raw/main/themes/Nephrite.tar.xz
-			tar -xvJf Nordic.tar.xz; tar -xvJf Nephrite.tar.xz; mv Nephrite Nordic /usr/share/themes/
-			sudo add-apt-repository ppa:noobslab/icons; sudo add-apt-repository ppa:noobslab/icons; sudo add-apt-repository ppa:noobslab/icons; sudo add-apt-repository ppa:papirus/papirus
-			sudo add-apt-repository ppa:moka/daily; sudo apt-get update
+			wget https://github.com/jackrabbit335/BrowserAndDesktop/raw/main/themes/Nordic.tar.xz; wget https://github.com/jackrabbit335/BrowserAndDesktop/raw/main/themes/Nephrite.tar.xz; tar -xvJf Nordic.tar.xz; tar -xvJf Nephrite.tar.xz; mv Nephrite Nordic /usr/share/themes/
+			sudo add-apt-repository ppa:noobslab/icons; sudo add-apt-repository ppa:noobslab/icons; sudo add-apt-repository ppa:noobslab/icons; sudo add-apt-repository ppa:papirus/papirus; sudo add-apt-repository ppa:moka/daily; sudo apt-get update
 			sudo apt install -y mate-themes faenza-icon-theme obsidian-1-icons dalisha-icons shadow-icon-theme moka-icon-theme papirus-icon-theme
 			;;
 			15)
@@ -1580,9 +1578,8 @@ CheckNetwork(){
 		else
 			read -p "Check hardware cable status and press enter..."
 			interface=$(ip -o -4 route show to default | awk '{print $5}')
-			sudo dhclient -v -r && sudo dhclient; sudo /etc/init.d/network-manager stop
-			sudo /etc/init.d/network-manager disable; sudo /etc/init.d/network-manager enable
-			sudo /etc/init.d/network-manager start; sudo ip link set $interface up
+			sudo dhclient -v -r && sudo dhclient; sudo /etc/init.d/network-manager stop; sudo /etc/init.d/network-manager disable
+			sudo /etc/init.d/network-manager enable; sudo /etc/init.d/network-manager start; sudo ip link set $interface up
 		fi
 	done
 }
@@ -1649,9 +1646,6 @@ EOF
 	
 	#This removes old configurations for software
 	sudo rm -rf ~/.config/*-old
-	
-	#Cleans Internet Traces in Firefox
-	#sudo rm -rf ~/.mozilla/firefox/*.default-release/storage/default/*; sudo rm -rf ~/.mozilla/firefox/*.default-release/{places.sqlite,cookies.sqlite,formhistory.sqlite}
 
 	#This clears the cached RAM
 	sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches; swapoff -a && swapon -a"
@@ -1681,6 +1675,34 @@ EOF
 
 	clear
 	Greeting
+}
+
+TraceCleaner(){
+	echo "Choose a browser to clean"
+	echo "1 - Firefox"
+	echo "2 - Google Chrome"
+	echo "3 - Vivaldi"
+	echo "4 - All of the above"
+	read operation;
+	case $operation in
+		1)
+		sudo rm -rf ~/.mozilla/firefox/*.default-release/storage/default/*; sudo rm -rf ~/.mozilla/firefox/*.default-release/{places.sqlite,cookies.sqlite,formhistory.sqlite}
+		;;
+		2)
+		sudo rm -rf ~/.config/google-chrome/Default/Cookies; sudo rm -rf ~/.config/google-chrome/Default/History; sudo rm -rf ~/.config/google-chrome/{}
+		;;
+		3)
+		sudo rm -rf ~/.config/vivaldi/Default/Cookies; sudo rm -rf ~/.config/vivaldi/Default/History; sudo rm -rf ~/.config/vivaldi/{}
+		;;
+		4)
+		sudo rm -rf ~/.mozilla/firefox/*.default-release/storage/default/*; sudo rm -rf ~/.mozilla/firefox/*.default-release/{places.sqlite,cookies.sqlite,formhistory.sqlite}; sudo rm -rf ~/.config/google-chrome/Default/Cookies; sudo rm -rf ~/.config/google-chrome/Default/History; sudo rm -rf ~/.config/google-chrome/{}; sudo rm -rf ~/.config/vivaldi/Default/Cookies; sudo rm -rf ~/.config/vivaldi/Default/History; sudo rm -rf ~/.config/vivaldi/{}
+		;;
+		*)
+		echo "No browser for that number exists, please try again."
+		sleep 1
+		TraceCleaner
+		;;
+	esac
 }
 
 BrowserRepair(){
@@ -2072,14 +2094,15 @@ Greeting(){
 	echo "11 - Make Swap"
 	echo "12 - Help"
 	echo "13 - Cleanup"
-	echo "14 - RAMBack"
-	echo "15 - System Maintenance"
-	echo "16 - Browser Repair"
-	echo "17 - Update"
-    echo "18 - Firmware Upgrades"
-	echo "19 - Restart"
-	echo "20 - Reset the desktop"
-	echo "21 - exit"
+	echo "14 - TraceCleaner"
+	echo "15 - RAMBack"
+	echo "16 - System Maintenance"
+	echo "17 - Browser Repair"
+	echo "18 - Update"
+    echo "19 - Firmware Upgrades"
+	echo "20 - Restart"
+	echo "21 - Reset the desktop"
+	echo "22 - exit"
 	read selection;
 	case $selection in
 		1)
@@ -2122,27 +2145,30 @@ Greeting(){
 		Cleanup
 		;;
 		14)
-		RAMBack
+		TraceCleaner
 		;;
 		15)
-		SystemMaintenance
+		RAMBack
 		;;
 		16)
-		BrowserRepair
+		SystemMaintenance
 		;;
 		17)
+		BrowserRepair
+		;;
+		18)
 		Update
 		;;
-        18)
+        19)
         Firmware_Upgrades
         ;;
-		19)
+		20)
 		Restart
 		;;
-		20)
+		21)
 		Reset
 		;;
-		21)
+		22)
 		echo $'\n'$"Thank you for using Ubuntu-Toolbox... Goodbye!"
 		exit
 		;;
