@@ -2099,7 +2099,7 @@ Greeting(){
 	echo "16 - System Maintenance"
 	echo "17 - Browser Repair"
 	echo "18 - Update"
-    echo "19 - Firmware Upgrades"
+	echo "19 - Firmware Upgrades"
 	echo "20 - Restart"
 	echo "21 - Reset the desktop"
 	echo "22 - exit"
@@ -2159,9 +2159,9 @@ Greeting(){
 		18)
 		Update
 		;;
-        19)
-        Firmware_Upgrades
-        ;;
+		19)
+		Firmware_Upgrades
+		;;
 		20)
 		Restart
 		;;
