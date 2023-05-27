@@ -394,17 +394,7 @@ Cleanup(){
 	sudo rm -r /var/lib/apt/lists/*
 
 	#This cleans the cache and recently used apps list
-	sudo rm -r .cache/*
-	sudo rm -r .thumbnails/*
-	sudo rm -r ~/.local/share/Trash/files/*
-	sudo rm -r ~/.nv/*
-	sudo rm -r ~/.npm/*
-	sudo rm -r ~/.w3m/*
-	sudo rm ~/.esd_auth
-	sudo rm ~/.local/share/recently-used.xbel
-	sudo rm -r /tmp/* 
-	sudo rm  -r /var/tmp/*
-	history -c && rm ~/.bash_history
+	sudo rm -r {.cache/*,.thumbnails/*,~/.local/share/Trash/files/*,~/.nv/*,~/npm/*,~/.w3m/*,~/.esd_auth,~/.local/share/recently-used.xbel,~/tmp/*,/var/tmp/*}; history -c && rm ~/.bash_history
 	
 	#This cleans the manual database
 	sudo mandb
@@ -418,8 +408,8 @@ Cleanup(){
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 	
 	#cleans old kernel crash logs
 	sudo find /var -type f -name "core" -print -exec rm {} \;

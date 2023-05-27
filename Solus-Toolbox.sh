@@ -1466,17 +1466,7 @@ RAMBack(){
 
 cleanup(){
 	#This will clean the cache
-	sudo rm -r .cache/*
-	sudo rm -r .thumbnails/*
-	sudo rm -r ~/.local/share/Trash/files/*
-	sudo rm -r ~/.nv/*
-	sudo rm -r ~/.npm/*
-	sudo rm -r ~/.w3m/*
-	sudo rm ~/.esd_auth
-	sudo rm ~/.local/share/recently-used.xbel
-	sudo rm -r /tmp/*
-	sudo rm -r /var/tmp/*
-	history -c && rm ~/.bash_history
+	sudo rm -r {.cache/*,.thumbnails/*,~/.local/share/Trash/files/*,~/.nv/*,~/.npm/*,~/.w3m/*,~/.esd_auth,~/.local/share/recently-used.xbel,/.tmp/*,/var/tmp/*}; history -c && rm ~/.bash_history
 
 	#This remove old configurations for software
 	sudo rm -r ~/.config/*-old
@@ -1487,8 +1477,8 @@ cleanup(){
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
