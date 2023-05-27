@@ -1757,29 +1757,16 @@ RAMBack(){
 
 cleanup(){
 	#This will clean the cache
-	sudo rm -r .cache/*
-	sudo rm -r .thumbnails/*
-	sudo rm -r ~/.local/share/Trash/files/*
-	sudo rm -r ~/.nv/*
-	sudo rm -r ~/.npm/*
-	sudo rm -r ~/.w3m/*
-	sudo rm ~/.esd_auth
-	sudo rm ~/.local/share/recently-used.xbel
-	sudo rm -r /tmp/*
-	sudo rm -r /var/tmp/*
-	history -c && rm ~/.bash_history
+	sudo rm -r {.cache/*,.thumbnails/*,~/.local/share/Trash/files/*,~/.nv/*,~/.npm/*,~/.w3m/*,~/esd_auth,~/.local/share/recently-used.xbel,/tmp/*,/var/tmp/*}; history -c && rm ~/.bash_history
 
 	#This removes old configurations for software
 	sudo rm -r ~/.config/*-old
-	
-	#This cleans internet traces in Firefox
-	#sudo rm -rf ~/.mozilla/firefox/*.default-release/storage/default/*; sudo rm -rf ~/.mozilla/firefox/*.default-release/{places.sqlite,cookies.sqlite,formhistory.sqlite}
 
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
+	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
@@ -1809,6 +1796,34 @@ cleanup(){
 	
 	clear
 	Greeting
+}
+
+Trace_Cleaner(){
+	echo "Choose a browser to clean"
+	echo "1 - Firefox"
+	echo "2 - Google Chrome"
+	echo "3 - Vivaldi"
+	echo "4 - All of the above"
+	read operation;
+	case $operation in
+		1)
+		sudo rm -rf ~/.mozilla/firefox/*.default-release/storage/default/*; sudo rm -rf ~/.mozilla/firefox/*.default-release/{places.sqlite,cookies.sqlite,formhistory.sqlite}
+		;;
+		2)
+		sudo rm -rf ~/.config/google-chrome/Default/Cookies; sudo rm -rf ~/.config/google-chrome/Default/History; sudo rm -rf ~/.config/google-chrome/{}
+		;;
+		3)
+		sudo rm -rf ~/.config/vivaldi/Default/Cookies; sudo rm -rf ~/.config/vivaldi/Default/History; sudo rm -rf ~/.config/vivaldi/{}
+		;;
+		4)
+		sudo rm -rf ~/.mozilla/firefox/*.default-release/storage/default/*; sudo rm -rf ~/.mozilla/firefox/*.default-release/{places.sqlite,cookies.sqlite,formhistory.sqlite}; sudo rm -rf ~/.config/google-chrome/Default/Cookies; sudo rm -rf ~/.config/google-chrome/Default/History; sudo rm -rf ~/.config/google-chrome/{}; sudo rm -rf ~/.config/vivaldi/Default/Cookies; sudo rm -rf ~/.config/vivaldi/Default/History; sudo rm -rf ~/.config/vivaldi/{}
+		;;
+		*)
+		echo "No browser for that number exists, please try again."
+		sleep 1
+		TraceCleaner
+		;;
+	esac
 }
 
 BrowserRepair(){
@@ -2319,15 +2334,16 @@ Greeting(){
 	echo "12 - Screen Resolution Fix"
 	echo "13 - Create Swap File"
 	echo "14 - Cleanup"
-	echo "15 - RAMBack"
-	echo "16 - System Maintenance"
-	echo "17 - Browser Repair"
-	echo "18 - Update"
-	echo "19 - Firmware Upgrades"
-	echo "20 - Help"
-	echo "21 - Restart"
-	echo "22 - Reset the desktop"
-	echo "23 - exit"
+    echo "15 - Trace Cleaner"
+	echo "16 - RAMBack"
+	echo "17 - System Maintenance"
+	echo "18 - Browser Repair"
+	echo "19 - Update"
+	echo "20 - Firmware Upgrades"
+	echo "21 - Help"
+	echo "22 - Restart"
+	echo "23 - Reset the desktop"
+	echo "24 - exit"
 	read selection;
 	case $selection in
 		1)
@@ -2372,31 +2388,34 @@ Greeting(){
 		14)
 		cleanup
 		;;
-		15)
+        15)
+        Trace_Cleaner
+        ;;
+		16)
 		RAMBack
 		;;
-		16)
+		17)
 		SystemMaintenance
 		;;
-		17)
+		18)
 		BrowserRepair
 		;;
-		18)
+		19)
 		Update
 		;;
-		19)
+		20)
 		Firmware_Upgrades
 		;;
-		20)
+		21)
 		Help
 		;;
-		21)
+		22)
 		Restart
 		;;
-		22)
+		23)
 		Reset
 		;;
-		23)
+		24)
 		echo $'\n'$"Thank you for using Arch-Toolbox... Goodbye!"
 		exit
 		;;
