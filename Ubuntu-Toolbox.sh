@@ -1194,7 +1194,7 @@ InstallAndConquer(){
 				wget https://raw.githubusercontent.com/jackrabbit335/BrowserAndDesktop/main/palemoon.desktop; sudo mv palemoon.desktop /usr/share/applications/palemoon.desktop
 			elif [[ $browser == 7 ]];
 			then
-				wget https://downloads.vivaldi.com/stable/vivaldi-stable_6.1.3035.51-1_amd64.deb; sudo dpkg -i *.deb && sudo apt install -f
+				wget https://downloads.vivaldi.com/stable/vivaldi-stable_6.1.3035.75-1_amd64.deb; sudo dpkg -i *.deb && sudo apt install -f
 			elif [[ $browser == 8 ]];
 			then
 				sudo snap install opera
