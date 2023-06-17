@@ -620,7 +620,7 @@ InstallAndConquer(){
 		case $software in
 			1)
 			sudo eopkg install --reinstall mtr lshw hdparm tlp gparted gnome-disk-utility ncdu nmap smartmontools htop inxi gufw grsync curl net-tools
-			sudo eopkg install --reinstall -c traceroute ifplugd tcpdump whois iperf cpu-x system.devel linux-current-headers
+			sudo eopkg install --reinstall -c traceroute ifplugd tcpdump whois iperf cpu-x system.devel linux-current-headers smem
 			sudo snap install youtube-dl
 			;;
 			2)
