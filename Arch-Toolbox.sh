@@ -675,7 +675,7 @@ InstallAndConquer(){
 			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop nmap xsensors ncdu fwupd base-devel xdg-user-dirs iperf tcpdump
 			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit p7zip unrar mesa-demos ifplugd
 			sudo pacman -S --needed --noconfirm pacman-contrib grsync tlp powertop youtube-dl keepassxc unzip zip gstreamer aspell-en 
-			sudo pacman -S --needed --noconfirm libmythes mythes-en languagetool smem
+			sudo pacman -S --needed --noconfirm libmythes mythes-en languagetool smem tldr autojump
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/inxi.tar.gz; gunzip inxi.tar.gz; tar -xvf inxi.tar; cd inxi && makepkg -si
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/ulauncher.tar.gz; gunzip ulauncher.tar.gz; tar -xvf ulauncher.tar; cd ulauncher && makepkg -si
 			;;
