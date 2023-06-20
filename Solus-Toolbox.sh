@@ -1640,7 +1640,38 @@ BrowserRepair(){
 
 	clear
 	Greeting
-}
+ }
+
+TraceCleaner(){
+	echo "Choose a browser to clean"
+	echo "1 - Firefox"
+	echo "2 - Google Chrome"
+	echo "3 - Vivaldi"
+	echo "4 - All of the above"
+	read operation;
+	case $operation in
+		1)
+		sudo rm -rf ~/.mozilla/firefox/*.default-release/storage/default/*; sudo rm -rf ~/.mozilla/firefox/*.default-release/{places.sqlite,cookies.sqlite,formhistory.sqlite}
+		;;
+		2)
+		sudo rm -rf ~/.config/google-chrome/Default/Cookies; sudo rm -rf ~/.config/google-chrome/Default/History; sudo rm -rf ~/.config/google-chrome/{}
+		;;
+		3)
+		sudo rm -rf ~/.config/vivaldi/Default/Cookies; sudo rm -rf ~/.config/vivaldi/Default/History; sudo rm -rf ~/.config/vivaldi/{}
+		;;
+		4)
+		sudo rm -rf ~/.mozilla/firefox/*.default-release/storage/default/*; sudo rm -rf ~/.mozilla/firefox/*.default-release/{places.sqlite,cookies.sqlite,formhistory.sqlite}; sudo rm -rf ~/.config/google-chrome/Default/Cookies; sudo rm -rf ~/.config/google-chrome/Default/History; sudo rm -rf ~/.config/google-chrome/{}; sudo rm -rf ~/.config/vivaldi/Default/Cookies; sudo rm -rf ~/.config/vivaldi/Default/History; sudo rm -rf ~/.config/vivaldi/{}
+		;;
+		*)
+		echo "No browser for that number exists, please try again."
+		sleep 1
+		TraceCleaner
+		;;
+	esac
+
+ 	clear
+  	Greeting
+   }
 
 SystemMaintenance(){
 	checkNetwork
@@ -1877,14 +1908,15 @@ Greeting(){
 	echo "12 - System Maintenance"
 	echo "13 - RAMBack"
 	echo "14 - Browser Repair"
-	echo "15 - Update"
-	echo "16 - Downgrade"
-	echo "17 - MakeSwap"
-	echo "18 - Help"
-	echo "19 - Restart"
-	echo "20 - Reset the desktop"
-	echo "21 - Firmware Upgrades"
-	echo "22 - exit"
+ 	echo "15 - Trace Cleaner"
+	echo "16 - Update"
+	echo "17 - Downgrade"
+	echo "18 - MakeSwap"
+	echo "19 - Help"
+	echo "20 - Restart"
+	echo "21 - Reset the desktop"
+	echo "22 - Firmware Upgrades"
+	echo "23 - exit"
 	read selection;
 	case $selection in
 		1)
@@ -1929,28 +1961,31 @@ Greeting(){
 		14)
 		BrowserRepair
 		;;
-		15)
+  		15)
+    		TraceCleaner
+      		;;
+		16)
 		Update
 		;;
-		16)
+		17)
 		Downgrade
 		;;
-		17)
+		18)
 		MakeSwap
 		;;
-		18)
+		19)
 		Help
 		;;
-		19)
+		20)
 		Restart
 		;;
-		20)
+		21)
 		Reset
 		;;
-		21)
+		22)
 		Firmware_Upgrades
 		;;
-		22)
+		23)
 		echo $'\n'$"Thank you for using Solus-Toolbox... Goodbye!"
 		exit
 		;;
