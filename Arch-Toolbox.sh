@@ -2023,22 +2023,10 @@ SystemMaintenance(){
 	do
 		if [[ $drive == 1 ]];
 		then
-			echo "Would you like to check fragmentation levels?(Y/n)"
-			read answer
-			while [ $answer == Y ];
-			do
-				sudo e4defrag / -c > fragmentation.log
-			break
-			done
+			sudo e4defrag / -c > fragmentation.log
 		elif [[ $drive == 0 ]];
 		then
-			echo "Would you also like to run trim?(Y/n)"
-			read answer
-			while [ $answer == Y ];
-			do
-				sudo fstrim -v --all
-			break
-			done
+			sudo fstrim -v --all
 		fi
 	done
 
