@@ -64,7 +64,14 @@ Setup(){
 		echo 'alias update="sudo apt update && sudo apt full-upgrade -yy"' >> ~/.bashrc
 		echo 'alias aptin="sudo apt install"' >> ~/.bashrc
 		echo 'alias aptrm="sudo apt remove"' >> ~/.bashrc
-		echo 'alias flatup="flatpak --user update; sudo snap refresh"' >> ~/.bashrc
+		echo 'alias flathunt="flatpak search"' >> ~/.bashrc
+		echo 'alias flatin="flatpak install flathub"' >> ~/.bashrc
+		echo 'alias flatrm="flatpak uninstall --delete-data"' >> ~/.bashrc
+		echo 'alias flatlist="flatpak list"' >> ~/.bashrc
+		echo 'alias flatup="flatpak --user update"' >> ~/.bashrc
+		echo 'alias snapup="sudo snap refresh"' >> ~/.bashrc
+		echo 'alias snapin="sudo snap install"' >> ~/.bashrc
+		echo 'alias snaprm="sudo snap remove --purge"' >> ~/.bashrc
 		echo 'alias purge="flatpak --user --unused"' >> ~/.bashrc
 		echo 'alias repair="sudo flatpak repair"' >> ~/.bashrc
 		echo 'alias pkglist="sudo dpkg --list && sudo apt list"' >> ~/.bashrc
@@ -1129,7 +1136,7 @@ InstallAndConquer(){
 			sudo apt install -y hddtemp hdparm ncdu nmap hardinfo traceroute tlp grsync p7zip zip software-properties-gtk
 			sudo apt install -y gnome-disk-utility htop iotop atop inxi powertop file-roller xdg-user-dirs build-essential
 			sudo apt install -y xsensors lm-sensors gufw gparted smartmontools unrar curl unzip ffmpeg git ncal wavemon neofetch
-			sudo apt install -y dnsutils whois iperf ifplugd tcpdump cpu-x smem
+			sudo apt install -y dnsutils whois iperf ifplugd tcpdump cpu-x smem cmatrix tldr autojump
 			sudo snap install youtube-dl keepassxc
 			#sudo apt-add-repository ppa:agornostal/ulauncher; sudo apt-get update; sudo apt-get install ulauncher
 			#sudo apt install -y caffeine
@@ -1854,22 +1861,10 @@ SystemMaintenance(){
 	do
 		if [[ $drive == 1 ]];
 		then
-			echo "Would you like to check fragmentation levels?(Y/n)"
-			read answer
-			while [ $answer == Y ];
-			do
-				sudo e4defrag / -c > fragmentation.log
-			break
-			done
+			sudo e4defrag / -c > fragmentation.log
 		elif [[ $drive == 0 ]];
 		then
-			echo "Would you also like to run trim?(Y/n)"
-			read answer
-			while [ $answer == Y ];
-			do
-				sudo fstrim -v --all
-			break
-			done
+			sudo fstrim -v --all
 		fi
 	done
 
