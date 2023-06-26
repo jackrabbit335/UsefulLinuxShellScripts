@@ -203,10 +203,10 @@ Setup(){
 	fi
 
 	CheckNetwork
-	
+
 	#This updates firmware
 	Firmware_Upgrades
-	
+
 
 	#This tries to update and rate mirrors if it fails it refreshes the keys
 	distribution=$(cat /etc/issue | awk '{print $1}')
@@ -674,8 +674,8 @@ InstallAndConquer(){
 			sudo pacman -S --needed --noconfirm dnsutils traceroute hdparm gparted smartmontools expac file-roller curl traceroute
 			sudo pacman -S --needed --noconfirm hddtemp htop iotop atop nmap xsensors ncdu fwupd base-devel xdg-user-dirs iperf tcpdump
 			sudo pacman -S --needed --noconfirm gnome-disk-utility hardinfo lshw net-tools pastebinit p7zip unrar mesa-demos ifplugd
-			sudo pacman -S --needed --noconfirm pacman-contrib grsync tlp powertop youtube-dl keepassxc unzip zip gstreamer aspell-en 
-			sudo pacman -S --needed --noconfirm libmythes mythes-en languagetool smem tldr autojump cmatrix
+			sudo pacman -S --needed --noconfirm pacman-contrib grsync tlp powertop youtube-dl keepassxc unzip zip gstreamer aspell-en
+			sudo pacman -S --needed --noconfirm libmythes mythes-en languagetool smem tldr autojump cmatrix power-profiles-daemon
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/inxi.tar.gz; gunzip inxi.tar.gz; tar -xvf inxi.tar; cd inxi && makepkg -si
 			wget https://aur.archlinux.org/cgit/aur.git/snapshot/ulauncher.tar.gz; gunzip ulauncher.tar.gz; tar -xvf ulauncher.tar; cd ulauncher && makepkg -si
 			;;
@@ -1037,11 +1037,11 @@ InstallAndConquer(){
 				sudo pacman -S telegram-desktop
 			elif [[ $client == 6 ]];
 			then
-				wget https://aur.archlinux.org/cgit/aur.git/snapshot/discord-canary.tar.gz; gunzip discord-canary.tar.gz; tar -xvf discord-canary.tar; cd discord-canary && makepkg -si
+                wget https://aur.archlinux.org/cgit/aur.git/snapshot/discord-canary.tar.gz; gunzip discord-canary.tar.gz; tar -xvf discord-canary.tar; cd discord-canary && makepkg -si
 			fi
 			;;
 			16)
-			sudo pacman -S --noconfirm virtualbox virtualbox-guest-iso
+			sudo pacman -S --noconfirm virtualbox virtualbox-guest-utils xf86-video-vmware virtualbox-guest-iso; sudo systemctl enable vboxservice
 			;;
 			17)
 			echo "1 - Wine"
@@ -1515,9 +1515,9 @@ Firmware upgrades are handled by an automated systemctl utility which
 periodically checks for bios and other firmware upgrades on your system.
 Bios upgrades don't typically work with legacy enabled, At least not UEFI
 upgrades. To enable this to work you need to disable legacy temporarily in
-Bios. Firmware upgrades can include nvme and ssd various other devices as 
-well. Firmware is the layer of programming that sits between the hardware 
-and the OS or in this case the hardware and the Operating system on-board 
+Bios. Firmware upgrades can include nvme and ssd various other devices as
+well. Firmware is the layer of programming that sits between the hardware
+and the OS or in this case the hardware and the Operating system on-board
 the CPU.
 
 ##########################################################################
@@ -1729,7 +1729,7 @@ Firmware_Upgrades(){
     and install it in the first place. Just an FYI and something to look out for if you plan to do this.
 EOF
 	pacman -Q | grep fwupdmgr || sudo pacman -S --noconfirm fwupdmgr; sudo /usr/bin/fwupdmgr refresh && sudo /usr/bin/fwupdmgr update
-	
+
 	clear
 	Greeting
 }
@@ -1765,8 +1765,8 @@ cleanup(){
 	#This could clean your Video folder and Picture folder based on a set time
 	TRASHCAN=~/.local/share/Trash/files/
 	find ~/Downloads/* -mtime +30 -exec mv {} $TRASHCAN \;
-	#find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
-	#find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
+	find ~/Video/* -mtime +30 -exec mv {} $TRASHCAN \;
+	find ~/Pictures/* -mtime +30 -exec mv {} $TRASHCAN \;
 
 	#Sometimes it's good to check for and remove broken symlinks
 	find -xtype l -delete
@@ -1784,16 +1784,16 @@ cleanup(){
 	sudo pacman -Rsn --noconfirm $(pacman -Qqdt)
 
 	#Optional This will remove the pacman cached applications and older versions
-	sudo pacman -Scc
+	sudo paccache -rvk3
 
 	#This removes unwanted apps
 	echo "Should we remove unneeded software?(Y/n)"
-	read answer 
+	read answer
 	while [ $answer == Y ];
 	do
 		Uninstall
 	done
-	
+
 	clear
 	Greeting
 }
