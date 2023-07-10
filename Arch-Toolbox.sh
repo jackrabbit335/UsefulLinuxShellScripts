@@ -2322,7 +2322,7 @@ Greeting(){
 	echo "12 - Screen Resolution Fix"
 	echo "13 - Create Swap File"
 	echo "14 - Cleanup"
-    echo "15 - Trace Cleaner"
+ 	echo "15 - Trace Cleaner"
 	echo "16 - RAMBack"
 	echo "17 - System Maintenance"
 	echo "18 - Browser Repair"
@@ -2376,9 +2376,9 @@ Greeting(){
 		14)
 		cleanup
 		;;
-        15)
-        Trace_Cleaner
-        ;;
+  		15)
+    		Trace_Cleaner
+      		;;
 		16)
 		RAMBack
 		;;
