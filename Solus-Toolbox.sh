@@ -170,9 +170,12 @@ Setup(){
 		echo "" >> ~/.bashrc
 		echo "# Clear Cached RAM" >> ~/.bashrc
 		echo 'alias boost="sudo sysctl -w vm.drop_caches=3"' >> ~/.bashrc
-		#echo "" >> ~/.bashrc
-		#echo "# Adblocking" >> ~/.bashrc
-		#echo 'alias hostsup="sudo ./Hostsman4linux.sh -B"' >> ~/.bashrc
+		echo "" >> ~/.bashrc
+  		echo "# P2P blocking" >> ~/.bashrc
+    		echo 'alias filter="~/bin/blocklist-update.sh"' >> ~/.bashrc
+      		echo "" >> ~/.bashrc
+		echo "# Adblocking" >> ~/.bashrc
+		echo '#alias hostsup="sudo ./Hostsman4linux.sh -B"' >> ~/.bashrc
 		echo "neofetch" >> ~/.bashrc
 		source .bashrc
 	fi
